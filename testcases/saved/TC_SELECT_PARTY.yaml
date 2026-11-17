@@ -1,0 +1,14 @@
+- id: TC_SELECT_PARTY
+  module: sales
+  title: select party
+  priority: p2
+  tags: []
+  destructive: false
+  preconditions:
+  - Created by ajay | 2026-10-15 15:19
+  expected: []
+  steps:
+  - action: open_screen
+    target: sale_bill
+  - action: set_party
+    value: cash account

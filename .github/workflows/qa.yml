@@ -1,0 +1,26 @@
+name: MargBooks QA
+on:
+  schedule: [{cron: "30 1 * * *"}]   # 7:00 AM IST daily
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install -r requirements.txt && python -m playwright install --with-deps chromium
+      - name: Run suite
+        env:
+          MARGBOOKS_URL: ${{ secrets.MARGBOOKS_URL }}
+          MARGBOOKS_USER: ${{ secrets.MARGBOOKS_USER }}
+          MARGBOOKS_PASS: ${{ secrets.MARGBOOKS_PASS }}
+          ALLOW_DESTRUCTIVE: "true"
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: pytest || true
+      - name: AI triage of failures
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m agent.triage || true
+      - uses: actions/upload-artifact@v4
+        with: {name: qa-artifacts, path: artifacts/}

@@ -1,0 +1,7985 @@
+{
+ "version": 1,
+ "screens": {
+  "sale_bill": {
+   "SearchBox": {
+    "tag": "input",
+    "type": "search",
+    "id": "",
+    "name": "SearchBox",
+    "fcn": "",
+    "placeholder": "Type to search",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Dashboard",
+    "css": "input[name=\"SearchBox\"]",
+    "xpath": "//input[@name=\"SearchBox\"]",
+    "fallbacks": [
+     {
+      "kind": "name",
+      "sel": "input[name=\"SearchBox\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Type to search\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Dashboard"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//input[@name=\"SearchBox\"]"
+     },
+     {
+      "kind": "id",
+      "sel": "input#SearchBox"
+     },
+     {
+      "kind": "aria",
+      "sel": "[aria-label=\"Search\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Search here..\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Search"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 12,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "my-tabs > div > div > a": {
+    "tag": "a",
+    "type": "",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-toggle": "dropdown"
+    },
+    "text": "",
+    "label": "₹",
+    "css": "my-tabs > div > div > a",
+    "xpath": "/html/body/margerpapp-root/master-layout/div[2]/div[2]/main/transaction-container/div/div/my-tabs/div/div/a",
+    "fallbacks": [
+     {
+      "kind": "data",
+      "sel": "[data-toggle=\"dropdown\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=₹"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[1]/div[2]/main/transaction-container/div/div/my-tabs/div/div/a"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[2]/div[2]/main/transaction-container/div/div/my-tabs/div/div/a"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "div > div:nth-of-type(1) > marg-youtube > button": {
+    "tag": "button",
+    "type": "",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "₹",
+    "css": "div > div:nth-of-type(1) > marg-youtube > button",
+    "xpath": "/html/body/margerpapp-root/master-layout/div[2]/div[2]/main/transaction-container/div/div/my-tabs/my-tab/div/transaction-out-process/div/div/div[1]/marg-youtube/button",
+    "fallbacks": [
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=₹"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[1]/div[2]/main/transaction-container/div/div/my-tabs/my-tab/div/transaction-out-process/div/div/div[1]/marg-youtube/button"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[2]/div[2]/main/transaction-container/div/div/my-tabs/my-tab/div/transaction-out-process/div/div/div[1]/marg-youtube/button"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "txtbillDate44": {
+    "tag": "input",
+    "type": "",
+    "id": "txtbillDate44",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-mat-calendar": "mat-datepicker-3"
+    },
+    "text": "30-09-2026",
+    "label": "",
+    "css": "input#txtbillDate44",
+    "xpath": "//*[@id=\"txtbillDate44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDate44"
+     },
+     {
+      "kind": "data",
+      "sel": "[data-mat-calendar=\"mat-datepicker-3\"]"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDate44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "[aria-label=\"Open calendar\"]": {
+    "tag": "button",
+    "type": "button",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "Open calendar",
+    "data": {},
+    "text": "",
+    "label": "Open calendar",
+    "css": "[aria-label=\"Open calendar\"]",
+    "xpath": "/html/body/margerpapp-root/master-layout/div[2]/div[2]/main/transaction-container/div/div/my-tabs/my-tab/div/transaction-out-process/div/form/div[1]/div[1]/div[1]/div/div/div/marg-mat-datepicker/div/div/mat-form-field/div/div[1]/div[2]/mat-datepicker-toggle/button",
+    "fallbacks": [
+     {
+      "kind": "aria",
+      "sel": "[aria-label=\"Open calendar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Open calendar"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[1]/div[2]/main/transaction-container/div/div/my-tabs/my-tab/div/transaction-out-process/div/form/div[1]/div[1]/div[1]/div/div/div/marg-mat-datepicker/div/div/mat-form-field/div/div[1]/div[2]/mat-datepicker-toggle/button"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[2]/div[2]/main/transaction-container/div/div/my-tabs/my-tab/div/transaction-out-process/div/form/div[1]/div[1]/div[1]/div/div/div/marg-mat-datepicker/div/div/mat-form-field/div/div[1]/div[2]/mat-datepicker-toggle/button"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "txtLedgerName44": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtLedgerName44",
+    "name": "txtLedgerName44",
+    "fcn": "ledgerName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Party Name",
+    "css": "input#txtLedgerName44",
+    "xpath": "//*[@id=\"txtLedgerName44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtLedgerName44"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"ledgerName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtLedgerName44\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Party Name"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtLedgerName44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtentryNo44": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtentryNo44",
+    "name": "txtentryNo44",
+    "fcn": "entryNo",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Bill No.",
+    "css": "input#txtentryNo44",
+    "xpath": "//*[@id=\"txtentryNo44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtentryNo44"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"entryNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtentryNo44\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill No."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtentryNo44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtptmobile44": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptmobile44",
+    "name": "txtptmobile44",
+    "fcn": "patientMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptmobile44",
+    "xpath": "//*[@id=\"txtptmobile44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptmobile44"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptmobile44\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptmobile44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtptname44": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptname44",
+    "name": "txtptname44",
+    "fcn": "PatientName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptname44",
+    "xpath": "//*[@id=\"txtptname44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptname44"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"PatientName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptname44\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptname44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtpatientaddress44": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtpatientaddress44",
+    "name": "patientaddress44",
+    "fcn": "patientAddress",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Address",
+    "css": "input#txtpatientaddress44",
+    "xpath": "//*[@id=\"txtpatientaddress44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtpatientaddress44"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientAddress\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"patientaddress44\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Address"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtpatientaddress44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtdrmobile44": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrmobile44",
+    "name": "txtdrmobile44",
+    "fcn": "doctorMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrmobile44",
+    "xpath": "//*[@id=\"txtdrmobile44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrmobile44"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"doctorMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrmobile44\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrmobile44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtdrname44": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrname44",
+    "name": "txtdrname44",
+    "fcn": "DoctorName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrname44",
+    "xpath": "//*[@id=\"txtdrname44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrname44"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"DoctorName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrname44\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrname44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtmrname44": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtmrname44",
+    "name": "txtmrname44",
+    "fcn": "mrName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "MRmaster",
+    "css": "input#txtmrname44",
+    "xpath": "//*[@id=\"txtmrname44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtmrname44"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"mrName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtmrname44\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=MRmaster"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtmrname44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtStore44": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtStore44",
+    "name": "txtStore44",
+    "fcn": "tmp_StoreName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Store",
+    "css": "input#txtStore44",
+    "xpath": "//*[@id=\"txtStore44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtStore44"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"tmp_StoreName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtStore44\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Store"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtStore44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtSaleType44": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtSaleType44",
+    "name": "txtSaleType44",
+    "fcn": "billTypeName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Type",
+    "css": "input#txtSaleType44",
+    "xpath": "//*[@id=\"txtSaleType44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtSaleType44"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billTypeName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtSaleType44\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Type"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtSaleType44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtbillDiscountPercentage44": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage44",
+    "name": "txtbillDiscountPercentage44",
+    "fcn": "billDiscountInPercent",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage44",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage44"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage44\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtbillDiscountPercentage244": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage244",
+    "name": "txtbillDiscountPercentage44",
+    "fcn": "billDiscountInPercent2",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage244",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage244\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage244"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent2\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage44\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage244\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtbillDiscountAmount44": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountAmount44",
+    "name": "txtbillDiscountAmount44",
+    "fcn": "billDiscountInAmount",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Disc. Amt.",
+    "css": "input#txtbillDiscountAmount44",
+    "xpath": "//*[@id=\"txtbillDiscountAmount44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountAmount44"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInAmount\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountAmount44\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Disc. Amt."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountAmount44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "btnSave44": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnSave44",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "F10 / End Save",
+    "label": "Save",
+    "css": "button#btnSave44",
+    "xpath": "//*[@id=\"btnSave44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnSave44"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"F10 / End Save\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnSave44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "div > div:nth-of-type(2) > div:nth-of-type(1) > button:nth-of-type(2)": {
+    "tag": "button",
+    "type": "button",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-toggle": "dropdown"
+    },
+    "text": "Toggle Dropdown",
+    "label": "Save",
+    "css": "div > div:nth-of-type(2) > div:nth-of-type(1) > button:nth-of-type(2)",
+    "xpath": "/html/body/margerpapp-root/master-layout/div[1]/div[2]/main/transaction-container/div/div/my-tabs/my-tab/div/transaction-out-process/div/form/div[2]/div/div/div[2]/div[1]/button[2]",
+    "fallbacks": [
+     {
+      "kind": "data",
+      "sel": "[data-toggle=\"dropdown\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Toggle Dropdown\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[1]/div[2]/main/transaction-container/div/div/my-tabs/my-tab/div/transaction-out-process/div/form/div[2]/div/div/div[2]/div[1]/button[2]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 7,
+    "first": 1790748898,
+    "last": 1792058762
+   },
+   "btnDraft44": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnDraft44",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Save As Draft",
+    "label": "Save As Draft",
+    "css": "button#btnDraft44",
+    "xpath": "//*[@id=\"btnDraft44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnDraft44"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Save As Draft\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save As Draft"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnDraft44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "btnEsc44": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnEsc44",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Esc Close",
+    "label": "Close",
+    "css": "button#btnEsc44",
+    "xpath": "//*[@id=\"btnEsc44\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnEsc44"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Esc Close\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Close"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnEsc44\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "lastDeal": {
+    "tag": "button",
+    "type": "button",
+    "id": "lastDeal",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Last Deal",
+    "label": "Last Deal",
+    "css": "button#lastDeal",
+    "xpath": "//*[@id=\"lastDeal\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#lastDeal"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Last Deal\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Last Deal"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"lastDeal\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "startScan": {
+    "tag": "button",
+    "type": "button",
+    "id": "startScan",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "CTRL+B Fast Scanning",
+    "label": "Fast Scanning",
+    "css": "button#startScan",
+    "xpath": "//*[@id=\"startScan\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#startScan"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"CTRL+B Fast Scanning\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Fast Scanning"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"startScan\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 7,
+    "first": 1790748898,
+    "last": 1792058762
+   },
+   "div > div > h2 > button": {
+    "tag": "button",
+    "type": "button",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "×",
+    "label": "×",
+    "css": "div > div > h2 > button",
+    "xpath": "/html/body/margerpapp-root/master-layout/control-room/div/div/div/h2/button",
+    "fallbacks": [
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"×\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=×"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/control-room/div/div/div/h2/button"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "controlRoomSearchField": {
+    "tag": "input",
+    "type": "search",
+    "id": "controlRoomSearchField",
+    "name": "",
+    "fcn": "",
+    "placeholder": "Search here..",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "×",
+    "css": "input#controlRoomSearchField",
+    "xpath": "//*[@id=\"controlRoomSearchField\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#controlRoomSearchField"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Search here..\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=×"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"controlRoomSearchField\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "sale-bill-discount": {
+    "tag": "button",
+    "type": "button",
+    "id": "sale-bill-discount",
+    "name": "sale-bill-discount",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Configure",
+    "label": "",
+    "css": "button#sale-bill-discount",
+    "xpath": "//*[@id=\"sale-bill-discount\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#sale-bill-discount"
+     },
+     {
+      "kind": "name",
+      "sel": "button[name=\"sale-bill-discount\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Configure\")"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"sale-bill-discount\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "calculationTypeForSale": {
+    "tag": "select",
+    "type": "",
+    "id": "calculationTypeForSale",
+    "name": "calculationTypeForSale",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Inclusive Exclusive Tax on MRP(inc.)",
+    "label": "Calculation Type in Sale",
+    "css": "select#calculationTypeForSale",
+    "xpath": "//*[@id=\"calculationTypeForSale\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "select#calculationTypeForSale"
+     },
+     {
+      "kind": "name",
+      "sel": "select[name=\"calculationTypeForSale\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Calculation Type in Sale"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"calculationTypeForSale\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "select",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "negativeAllowed": {
+    "tag": "select",
+    "type": "",
+    "id": "negativeAllowed",
+    "name": "negativeAllowed",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Yes No Item wise",
+    "label": "Stock Negative allowed",
+    "css": "select#negativeAllowed",
+    "xpath": "//*[@id=\"negativeAllowed\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "select#negativeAllowed"
+     },
+     {
+      "kind": "name",
+      "sel": "select[name=\"negativeAllowed\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "select:has-text(\"Yes No Item wise\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Stock Negative allowed"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"negativeAllowed\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "select",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "txtisModeofPayment": {
+    "tag": "select",
+    "type": "",
+    "id": "txtisModeofPayment",
+    "name": "isModeofPayment",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "No Yes",
+    "label": "Mode of Payment Required ?",
+    "css": "select#txtisModeofPayment",
+    "xpath": "//*[@id=\"txtisModeofPayment\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "select#txtisModeofPayment"
+     },
+     {
+      "kind": "name",
+      "sel": "select[name=\"isModeofPayment\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "select:has-text(\"No Yes\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Mode of Payment Required ?"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtisModeofPayment\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "select",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "txtcursorwaitonadditionaledger": {
+    "tag": "select",
+    "type": "",
+    "id": "txtcursorwaitonadditionaledger",
+    "name": "cursorwaitonadditionaledger",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Wait on Tab Yes No",
+    "label": "",
+    "css": "select#txtcursorwaitonadditionaledger",
+    "xpath": "//*[@id=\"txtcursorwaitonadditionaledger\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "select#txtcursorwaitonadditionaledger"
+     },
+     {
+      "kind": "name",
+      "sel": "select[name=\"cursorwaitonadditionaledger\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "select:has-text(\"Wait on Tab Yes No\")"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtcursorwaitonadditionaledger\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "select",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "txtaskpartyinretailbilling": {
+    "tag": "select",
+    "type": "",
+    "id": "txtaskpartyinretailbilling",
+    "name": "askpartyinretailbilling",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Don't Ask Ask Ask on Spacebar",
+    "label": "Ask Party in Retail Billing",
+    "css": "select#txtaskpartyinretailbilling",
+    "xpath": "//*[@id=\"txtaskpartyinretailbilling\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "select#txtaskpartyinretailbilling"
+     },
+     {
+      "kind": "name",
+      "sel": "select[name=\"askpartyinretailbilling\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "select:has-text(\"Don't Ask Ask Ask on Spacebar\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Ask Party in Retail Billing"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtaskpartyinretailbilling\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "select",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "txtCursorshouldwait": {
+    "tag": "select",
+    "type": "",
+    "id": "txtCursorshouldwait",
+    "name": "onwhichfieldCursorshouldwait",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "All Quantity",
+    "label": "Cursor wait on",
+    "css": "select#txtCursorshouldwait",
+    "xpath": "//*[@id=\"txtCursorshouldwait\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "select#txtCursorshouldwait"
+     },
+     {
+      "kind": "name",
+      "sel": "select[name=\"onwhichfieldCursorshouldwait\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "select:has-text(\"All Quantity\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Cursor wait on"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtCursorshouldwait\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "select",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "lastDealInSale": {
+    "tag": "select",
+    "type": "",
+    "id": "lastDealInSale",
+    "name": "lastDealInSale",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Batchwise ItemWise No",
+    "label": "Last deal in Sale",
+    "css": "select#lastDealInSale",
+    "xpath": "//*[@id=\"lastDealInSale\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "select#lastDealInSale"
+     },
+     {
+      "kind": "name",
+      "sel": "select[name=\"lastDealInSale\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "select:has-text(\"Batchwise ItemWise No\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Last deal in Sale"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"lastDealInSale\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "select",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "txtMandatoryPatientandDoctor": {
+    "tag": "select",
+    "type": "",
+    "id": "txtMandatoryPatientandDoctor",
+    "name": "MandatoryPatientandDoctor",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "No Yes",
+    "label": "Patient & Doctor Name Must",
+    "css": "select#txtMandatoryPatientandDoctor",
+    "xpath": "//*[@id=\"txtMandatoryPatientandDoctor\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "select#txtMandatoryPatientandDoctor"
+     },
+     {
+      "kind": "name",
+      "sel": "select[name=\"MandatoryPatientandDoctor\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "select:has-text(\"No Yes\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient & Doctor Name Must"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtMandatoryPatientandDoctor\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "select",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "txtAskpatientstartandsave": {
+    "tag": "select",
+    "type": "",
+    "id": "txtAskpatientstartandsave",
+    "name": "Askpatientstartandsave",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Start Save",
+    "label": "Ask patient startandsave?",
+    "css": "select#txtAskpatientstartandsave",
+    "xpath": "//*[@id=\"txtAskpatientstartandsave\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "select#txtAskpatientstartandsave"
+     },
+     {
+      "kind": "name",
+      "sel": "select[name=\"Askpatientstartandsave\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "select:has-text(\"Start Save\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Ask patient startandsave?"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtAskpatientstartandsave\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "select",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "txtnetScheme": {
+    "tag": "select",
+    "type": "",
+    "id": "txtnetScheme",
+    "name": "netScheme",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "No Yes",
+    "label": "Net Scheme",
+    "css": "select#txtnetScheme",
+    "xpath": "//*[@id=\"txtnetScheme\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "select#txtnetScheme"
+     },
+     {
+      "kind": "name",
+      "sel": "select[name=\"netScheme\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "select:has-text(\"No Yes\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Net Scheme"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtnetScheme\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "select",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "div:nth-of-type(3) > div > div:nth-of-type(1) > button": {
+    "tag": "button",
+    "type": "button",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "×",
+    "label": "×",
+    "css": "div:nth-of-type(3) > div > div:nth-of-type(1) > button",
+    "xpath": "/html/body/margerpapp-root/master-layout/div[3]/div/div[1]/button",
+    "fallbacks": [
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"×\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=×"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[3]/div/div[1]/button"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 7,
+    "first": 1790748898,
+    "last": 1792058762
+   },
+   "[aria-label=\"Close\"]": {
+    "tag": "button",
+    "type": "",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "Close",
+    "data": {},
+    "text": "✕",
+    "label": "Close",
+    "css": "[aria-label=\"Close\"]",
+    "xpath": "/html/body/margerpapp-root/master-layout/div[5]/div/div/header/button",
+    "fallbacks": [
+     {
+      "kind": "aria",
+      "sel": "[aria-label=\"Close\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"✕\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Close"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[4]/div/div/header/button"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[5]/div/div/header/button"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "[aria-label=\"Copy email address\"]": {
+    "tag": "button",
+    "type": "",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "Copy email address",
+    "data": {},
+    "text": "",
+    "label": "Copy email address",
+    "css": "[aria-label=\"Copy email address\"]",
+    "xpath": "/html/body/margerpapp-root/master-layout/div[5]/div/div/section[1]/div[2]/div[1]/div[2]/button",
+    "fallbacks": [
+     {
+      "kind": "aria",
+      "sel": "[aria-label=\"Copy email address\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Copy email address"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[4]/div/div/section[1]/div[2]/div[1]/div[3]/button"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[4]/div/div/section[1]/div[2]/div[1]/div[2]/button"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[5]/div/div/section[1]/div[2]/div[1]/div[2]/button"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 8,
+    "first": 1790748898,
+    "last": 1792146517
+   },
+   "ul > li > notifier-notification > button": {
+    "tag": "button",
+    "type": "button",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "",
+    "css": "ul > li > notifier-notification > button",
+    "xpath": "/html/body/margerpapp-root/notifier-container/ul/li/notifier-notification/button",
+    "fallbacks": [
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/notifier-container/ul/li/notifier-notification/button"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "div > unsave-bill > div:nth-of-type(1) > button": {
+    "tag": "button",
+    "type": "button",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-dismiss": "modal"
+    },
+    "text": "×",
+    "label": "Select Unsaved Bills",
+    "css": "div > unsave-bill > div:nth-of-type(1) > button",
+    "xpath": "/html/body/ngb-modal-window/div/div/unsave-bill/div[1]/button",
+    "fallbacks": [
+     {
+      "kind": "data",
+      "sel": "[data-dismiss=\"modal\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"×\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Select Unsaved Bills"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/ngb-modal-window/div/div/unsave-bill/div[1]/button"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "btn-Save": {
+    "tag": "button",
+    "type": "button",
+    "id": "btn-Save",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "F10 Save",
+    "label": "Save",
+    "css": "button#btn-Save",
+    "xpath": "//*[@id=\"btn-Save\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btn-Save"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"F10 Save\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btn-Save\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "btn-Close": {
+    "tag": "button",
+    "type": "button",
+    "id": "btn-Close",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Esc Close",
+    "label": "Close",
+    "css": "button#btn-Close",
+    "xpath": "//*[@id=\"btn-Close\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btn-Close"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Esc Close\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Close"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btn-Close\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790748898,
+    "last": 1790748898
+   },
+   "txtbillDate78": {
+    "tag": "input",
+    "type": "",
+    "id": "txtbillDate78",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-mat-calendar": "mat-datepicker-3"
+    },
+    "text": "30-09-2026",
+    "label": "",
+    "css": "input#txtbillDate78",
+    "xpath": "//*[@id=\"txtbillDate78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDate78"
+     },
+     {
+      "kind": "data",
+      "sel": "[data-mat-calendar=\"mat-datepicker-3\"]"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDate78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtLedgerName78": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtLedgerName78",
+    "name": "txtLedgerName78",
+    "fcn": "ledgerName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Party Name",
+    "css": "input#txtLedgerName78",
+    "xpath": "//*[@id=\"txtLedgerName78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtLedgerName78"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"ledgerName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtLedgerName78\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Party Name"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtLedgerName78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtentryNo78": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtentryNo78",
+    "name": "txtentryNo78",
+    "fcn": "entryNo",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "0000013",
+    "label": "Bill No.",
+    "css": "input#txtentryNo78",
+    "xpath": "//*[@id=\"txtentryNo78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtentryNo78"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"entryNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtentryNo78\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill No."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtentryNo78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtptmobile78": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptmobile78",
+    "name": "txtptmobile78",
+    "fcn": "patientMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptmobile78",
+    "xpath": "//*[@id=\"txtptmobile78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptmobile78"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptmobile78\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptmobile78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtptname78": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptname78",
+    "name": "txtptname78",
+    "fcn": "PatientName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptname78",
+    "xpath": "//*[@id=\"txtptname78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptname78"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"PatientName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptname78\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptname78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtpatientaddress78": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtpatientaddress78",
+    "name": "patientaddress78",
+    "fcn": "patientAddress",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Address",
+    "css": "input#txtpatientaddress78",
+    "xpath": "//*[@id=\"txtpatientaddress78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtpatientaddress78"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientAddress\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"patientaddress78\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Address"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtpatientaddress78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtdrmobile78": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrmobile78",
+    "name": "txtdrmobile78",
+    "fcn": "doctorMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrmobile78",
+    "xpath": "//*[@id=\"txtdrmobile78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrmobile78"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"doctorMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrmobile78\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrmobile78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtdrname78": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrname78",
+    "name": "txtdrname78",
+    "fcn": "DoctorName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrname78",
+    "xpath": "//*[@id=\"txtdrname78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrname78"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"DoctorName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrname78\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrname78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtmrname78": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtmrname78",
+    "name": "txtmrname78",
+    "fcn": "mrName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "MRmaster",
+    "css": "input#txtmrname78",
+    "xpath": "//*[@id=\"txtmrname78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtmrname78"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"mrName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtmrname78\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=MRmaster"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtmrname78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtStore78": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtStore78",
+    "name": "txtStore78",
+    "fcn": "tmp_StoreName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Store",
+    "css": "input#txtStore78",
+    "xpath": "//*[@id=\"txtStore78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtStore78"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"tmp_StoreName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtStore78\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Store"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtStore78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtSaleType78": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtSaleType78",
+    "name": "txtSaleType78",
+    "fcn": "billTypeName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Type",
+    "css": "input#txtSaleType78",
+    "xpath": "//*[@id=\"txtSaleType78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtSaleType78"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billTypeName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtSaleType78\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Type"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtSaleType78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtbillDiscountPercentage78": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage78",
+    "name": "txtbillDiscountPercentage78",
+    "fcn": "billDiscountInPercent",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage78",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage78"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage78\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtbillDiscountPercentage278": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage278",
+    "name": "txtbillDiscountPercentage78",
+    "fcn": "billDiscountInPercent2",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage278",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage278\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage278"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent2\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage78\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage278\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "txtbillDiscountAmount78": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountAmount78",
+    "name": "txtbillDiscountAmount78",
+    "fcn": "billDiscountInAmount",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Disc. Amt.",
+    "css": "input#txtbillDiscountAmount78",
+    "xpath": "//*[@id=\"txtbillDiscountAmount78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountAmount78"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInAmount\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountAmount78\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Disc. Amt."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountAmount78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "btnSave78": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnSave78",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "F10 / End Save",
+    "label": "Save",
+    "css": "button#btnSave78",
+    "xpath": "//*[@id=\"btnSave78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnSave78"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"F10 / End Save\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnSave78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "btnDraft78": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnDraft78",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Save As Draft",
+    "label": "Save As Draft",
+    "css": "button#btnDraft78",
+    "xpath": "//*[@id=\"btnDraft78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnDraft78"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Save As Draft\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save As Draft"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnDraft78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "btnEsc78": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnEsc78",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Esc Close",
+    "label": "Close",
+    "css": "button#btnEsc78",
+    "xpath": "//*[@id=\"btnEsc78\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnEsc78"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Esc Close\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Close"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnEsc78\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790749211,
+    "last": 1790749211
+   },
+   "div:nth-of-type(1) > div > marg-create-button > button": {
+    "tag": "button",
+    "type": "",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Create/F2",
+    "label": "Create/F2",
+    "css": "div:nth-of-type(1) > div > marg-create-button > button",
+    "xpath": "/html/body/ngb-modal-window/div/div/app-modal/div[1]/div/marg-create-button/button",
+    "fallbacks": [
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Create/F2\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Create/F2"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/ngb-modal-window/div/div/app-modal/div[1]/div/marg-create-button/button"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "mrgSearchBox": {
+    "tag": "select",
+    "type": "",
+    "id": "mrgSearchBox",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Search By Name Mobile D.L. No. Address T",
+    "label": "Ledger Name",
+    "css": "select#mrgSearchBox",
+    "xpath": "//*[@id=\"mrgSearchBox\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "select#mrgSearchBox"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Ledger Name"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"mrgSearchBox\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "select",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Grideditbtn7145310918122": {
+    "tag": "button",
+    "type": "button",
+    "id": "Grideditbtn7145310918122",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Ajay Rai",
+    "css": "button#Grideditbtn7145310918122",
+    "xpath": "//*[@id=\"Grideditbtn7145310918122\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Grideditbtn7145310918122"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Ajay Rai"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Grideditbtn7145310918122\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Griddeletetbtn7145310918122": {
+    "tag": "button",
+    "type": "button",
+    "id": "Griddeletetbtn7145310918122",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Ajay Rai",
+    "css": "button#Griddeletetbtn7145310918122",
+    "xpath": "//*[@id=\"Griddeletetbtn7145310918122\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Griddeletetbtn7145310918122"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Ajay Rai"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Griddeletetbtn7145310918122\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Grideditbtn7145314336161": {
+    "tag": "button",
+    "type": "button",
+    "id": "Grideditbtn7145314336161",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Ajay Rai 25082026",
+    "css": "button#Grideditbtn7145314336161",
+    "xpath": "//*[@id=\"Grideditbtn7145314336161\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Grideditbtn7145314336161"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Ajay Rai 25082026"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Grideditbtn7145314336161\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Griddeletetbtn7145314336161": {
+    "tag": "button",
+    "type": "button",
+    "id": "Griddeletetbtn7145314336161",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Ajay Rai 25082026",
+    "css": "button#Griddeletetbtn7145314336161",
+    "xpath": "//*[@id=\"Griddeletetbtn7145314336161\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Griddeletetbtn7145314336161"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Ajay Rai 25082026"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Griddeletetbtn7145314336161\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Grideditbtn7120947200115": {
+    "tag": "button",
+    "type": "button",
+    "id": "Grideditbtn7120947200115",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Cash Account",
+    "css": "button#Grideditbtn7120947200115",
+    "xpath": "//*[@id=\"Grideditbtn7120947200115\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Grideditbtn7120947200115"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Cash Account"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Grideditbtn7120947200115\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Griddeletetbtn7120947200115": {
+    "tag": "button",
+    "type": "button",
+    "id": "Griddeletetbtn7120947200115",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Cash Account",
+    "css": "button#Griddeletetbtn7120947200115",
+    "xpath": "//*[@id=\"Griddeletetbtn7120947200115\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Griddeletetbtn7120947200115"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Cash Account"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Griddeletetbtn7120947200115\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Grideditbtn7120947200696": {
+    "tag": "button",
+    "type": "button",
+    "id": "Grideditbtn7120947200696",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "General Ledger",
+    "css": "button#Grideditbtn7120947200696",
+    "xpath": "//*[@id=\"Grideditbtn7120947200696\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Grideditbtn7120947200696"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=General Ledger"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Grideditbtn7120947200696\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Griddeletetbtn7120947200696": {
+    "tag": "button",
+    "type": "button",
+    "id": "Griddeletetbtn7120947200696",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "General Ledger",
+    "css": "button#Griddeletetbtn7120947200696",
+    "xpath": "//*[@id=\"Griddeletetbtn7120947200696\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Griddeletetbtn7120947200696"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=General Ledger"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Griddeletetbtn7120947200696\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Grideditbtn7120947200158": {
+    "tag": "button",
+    "type": "button",
+    "id": "Grideditbtn7120947200158",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Marg Mart",
+    "css": "button#Grideditbtn7120947200158",
+    "xpath": "//*[@id=\"Grideditbtn7120947200158\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Grideditbtn7120947200158"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Marg Mart"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Grideditbtn7120947200158\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Griddeletetbtn7120947200158": {
+    "tag": "button",
+    "type": "button",
+    "id": "Griddeletetbtn7120947200158",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Marg Mart",
+    "css": "button#Griddeletetbtn7120947200158",
+    "xpath": "//*[@id=\"Griddeletetbtn7120947200158\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Griddeletetbtn7120947200158"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Marg Mart"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Griddeletetbtn7120947200158\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Grideditbtn7120947200704": {
+    "tag": "button",
+    "type": "button",
+    "id": "Grideditbtn7120947200704",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Online Store",
+    "css": "button#Grideditbtn7120947200704",
+    "xpath": "//*[@id=\"Grideditbtn7120947200704\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Grideditbtn7120947200704"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Online Store"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Grideditbtn7120947200704\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Griddeletetbtn7120947200704": {
+    "tag": "button",
+    "type": "button",
+    "id": "Griddeletetbtn7120947200704",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Online Store",
+    "css": "button#Griddeletetbtn7120947200704",
+    "xpath": "//*[@id=\"Griddeletetbtn7120947200704\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Griddeletetbtn7120947200704"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Online Store"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Griddeletetbtn7120947200704\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Grideditbtn7120947200816": {
+    "tag": "button",
+    "type": "button",
+    "id": "Grideditbtn7120947200816",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Sample Ledger",
+    "css": "button#Grideditbtn7120947200816",
+    "xpath": "//*[@id=\"Grideditbtn7120947200816\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Grideditbtn7120947200816"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Sample Ledger"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Grideditbtn7120947200816\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "Griddeletetbtn7120947200816": {
+    "tag": "button",
+    "type": "button",
+    "id": "Griddeletetbtn7120947200816",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Sample Ledger",
+    "css": "button#Griddeletetbtn7120947200816",
+    "xpath": "//*[@id=\"Griddeletetbtn7120947200816\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#Griddeletetbtn7120947200816"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Sample Ledger"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Griddeletetbtn7120947200816\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "btn-Ledger": {
+    "tag": "button",
+    "type": "button",
+    "id": "btn-Ledger",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "F4 Ledger",
+    "label": "Ledger",
+    "css": "button#btn-Ledger",
+    "xpath": "//*[@id=\"btn-Ledger\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btn-Ledger"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"F4 Ledger\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Ledger"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btn-Ledger\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "btn-Outstanding": {
+    "tag": "button",
+    "type": "button",
+    "id": "btn-Outstanding",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "F8 Outstanding",
+    "label": "Outstanding",
+    "css": "button#btn-Outstanding",
+    "xpath": "//*[@id=\"btn-Outstanding\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btn-Outstanding"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"F8 Outstanding\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Outstanding"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btn-Outstanding\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 4,
+    "first": 1790749211,
+    "last": 1790749450
+   },
+   "txtbillDate88": {
+    "tag": "input",
+    "type": "",
+    "id": "txtbillDate88",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-mat-calendar": "mat-datepicker-3"
+    },
+    "text": "30-09-2026",
+    "label": "",
+    "css": "input#txtbillDate88",
+    "xpath": "//*[@id=\"txtbillDate88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDate88"
+     },
+     {
+      "kind": "data",
+      "sel": "[data-mat-calendar=\"mat-datepicker-3\"]"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDate88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtLedgerName88": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtLedgerName88",
+    "name": "txtLedgerName88",
+    "fcn": "ledgerName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Party Name",
+    "css": "input#txtLedgerName88",
+    "xpath": "//*[@id=\"txtLedgerName88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtLedgerName88"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"ledgerName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtLedgerName88\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Party Name"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtLedgerName88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtentryNo88": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtentryNo88",
+    "name": "txtentryNo88",
+    "fcn": "entryNo",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "0000013",
+    "label": "Bill No.",
+    "css": "input#txtentryNo88",
+    "xpath": "//*[@id=\"txtentryNo88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtentryNo88"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"entryNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtentryNo88\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill No."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtentryNo88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtptmobile88": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptmobile88",
+    "name": "txtptmobile88",
+    "fcn": "patientMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptmobile88",
+    "xpath": "//*[@id=\"txtptmobile88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptmobile88"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptmobile88\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptmobile88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtptname88": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptname88",
+    "name": "txtptname88",
+    "fcn": "PatientName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptname88",
+    "xpath": "//*[@id=\"txtptname88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptname88"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"PatientName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptname88\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptname88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtpatientaddress88": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtpatientaddress88",
+    "name": "patientaddress88",
+    "fcn": "patientAddress",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Address",
+    "css": "input#txtpatientaddress88",
+    "xpath": "//*[@id=\"txtpatientaddress88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtpatientaddress88"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientAddress\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"patientaddress88\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Address"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtpatientaddress88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtdrmobile88": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrmobile88",
+    "name": "txtdrmobile88",
+    "fcn": "doctorMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrmobile88",
+    "xpath": "//*[@id=\"txtdrmobile88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrmobile88"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"doctorMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrmobile88\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrmobile88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtdrname88": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrname88",
+    "name": "txtdrname88",
+    "fcn": "DoctorName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrname88",
+    "xpath": "//*[@id=\"txtdrname88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrname88"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"DoctorName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrname88\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrname88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtmrname88": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtmrname88",
+    "name": "txtmrname88",
+    "fcn": "mrName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "MRmaster",
+    "css": "input#txtmrname88",
+    "xpath": "//*[@id=\"txtmrname88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtmrname88"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"mrName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtmrname88\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=MRmaster"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtmrname88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtStore88": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtStore88",
+    "name": "txtStore88",
+    "fcn": "tmp_StoreName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Store",
+    "css": "input#txtStore88",
+    "xpath": "//*[@id=\"txtStore88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtStore88"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"tmp_StoreName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtStore88\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Store"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtStore88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtSaleType88": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtSaleType88",
+    "name": "txtSaleType88",
+    "fcn": "billTypeName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Type",
+    "css": "input#txtSaleType88",
+    "xpath": "//*[@id=\"txtSaleType88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtSaleType88"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billTypeName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtSaleType88\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Type"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtSaleType88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtbillDiscountPercentage88": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage88",
+    "name": "txtbillDiscountPercentage88",
+    "fcn": "billDiscountInPercent",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage88",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage88"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage88\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtbillDiscountPercentage288": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage288",
+    "name": "txtbillDiscountPercentage88",
+    "fcn": "billDiscountInPercent2",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage288",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage288\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage288"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent2\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage88\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage288\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtbillDiscountAmount88": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountAmount88",
+    "name": "txtbillDiscountAmount88",
+    "fcn": "billDiscountInAmount",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Disc. Amt.",
+    "css": "input#txtbillDiscountAmount88",
+    "xpath": "//*[@id=\"txtbillDiscountAmount88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountAmount88"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInAmount\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountAmount88\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Disc. Amt."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountAmount88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "btnSave88": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnSave88",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "F10 / End Save",
+    "label": "Save",
+    "css": "button#btnSave88",
+    "xpath": "//*[@id=\"btnSave88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnSave88"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"F10 / End Save\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnSave88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "btnDraft88": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnDraft88",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Save As Draft",
+    "label": "Save As Draft",
+    "css": "button#btnDraft88",
+    "xpath": "//*[@id=\"btnDraft88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnDraft88"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Save As Draft\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save As Draft"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnDraft88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "btnEsc88": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnEsc88",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Esc Close",
+    "label": "Close",
+    "css": "button#btnEsc88",
+    "xpath": "//*[@id=\"btnEsc88\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnEsc88"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Esc Close\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Close"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnEsc88\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790749292,
+    "last": 1790749292
+   },
+   "txtbillDate80": {
+    "tag": "input",
+    "type": "",
+    "id": "txtbillDate80",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-mat-calendar": "mat-datepicker-3"
+    },
+    "text": "30-09-2026",
+    "label": "",
+    "css": "input#txtbillDate80",
+    "xpath": "//*[@id=\"txtbillDate80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDate80"
+     },
+     {
+      "kind": "data",
+      "sel": "[data-mat-calendar=\"mat-datepicker-3\"]"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDate80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtLedgerName80": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtLedgerName80",
+    "name": "txtLedgerName80",
+    "fcn": "ledgerName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Party Name",
+    "css": "input#txtLedgerName80",
+    "xpath": "//*[@id=\"txtLedgerName80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtLedgerName80"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"ledgerName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtLedgerName80\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Party Name"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtLedgerName80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtentryNo80": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtentryNo80",
+    "name": "txtentryNo80",
+    "fcn": "entryNo",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "0000013",
+    "label": "Bill No.",
+    "css": "input#txtentryNo80",
+    "xpath": "//*[@id=\"txtentryNo80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtentryNo80"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"entryNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtentryNo80\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill No."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtentryNo80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtptmobile80": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptmobile80",
+    "name": "txtptmobile80",
+    "fcn": "patientMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptmobile80",
+    "xpath": "//*[@id=\"txtptmobile80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptmobile80"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptmobile80\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptmobile80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtptname80": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptname80",
+    "name": "txtptname80",
+    "fcn": "PatientName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptname80",
+    "xpath": "//*[@id=\"txtptname80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptname80"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"PatientName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptname80\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptname80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtpatientaddress80": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtpatientaddress80",
+    "name": "patientaddress80",
+    "fcn": "patientAddress",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Address",
+    "css": "input#txtpatientaddress80",
+    "xpath": "//*[@id=\"txtpatientaddress80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtpatientaddress80"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientAddress\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"patientaddress80\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Address"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtpatientaddress80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtdrmobile80": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrmobile80",
+    "name": "txtdrmobile80",
+    "fcn": "doctorMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrmobile80",
+    "xpath": "//*[@id=\"txtdrmobile80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrmobile80"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"doctorMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrmobile80\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrmobile80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtdrname80": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrname80",
+    "name": "txtdrname80",
+    "fcn": "DoctorName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrname80",
+    "xpath": "//*[@id=\"txtdrname80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrname80"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"DoctorName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrname80\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrname80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtmrname80": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtmrname80",
+    "name": "txtmrname80",
+    "fcn": "mrName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "MRmaster",
+    "css": "input#txtmrname80",
+    "xpath": "//*[@id=\"txtmrname80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtmrname80"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"mrName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtmrname80\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=MRmaster"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtmrname80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtStore80": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtStore80",
+    "name": "txtStore80",
+    "fcn": "tmp_StoreName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Store",
+    "css": "input#txtStore80",
+    "xpath": "//*[@id=\"txtStore80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtStore80"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"tmp_StoreName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtStore80\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Store"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtStore80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtSaleType80": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtSaleType80",
+    "name": "txtSaleType80",
+    "fcn": "billTypeName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Type",
+    "css": "input#txtSaleType80",
+    "xpath": "//*[@id=\"txtSaleType80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtSaleType80"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billTypeName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtSaleType80\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Type"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtSaleType80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtbillDiscountPercentage80": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage80",
+    "name": "txtbillDiscountPercentage80",
+    "fcn": "billDiscountInPercent",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage80",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage80"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage80\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtbillDiscountPercentage280": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage280",
+    "name": "txtbillDiscountPercentage80",
+    "fcn": "billDiscountInPercent2",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage280",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage280\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage280"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent2\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage80\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage280\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtbillDiscountAmount80": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountAmount80",
+    "name": "txtbillDiscountAmount80",
+    "fcn": "billDiscountInAmount",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Disc. Amt.",
+    "css": "input#txtbillDiscountAmount80",
+    "xpath": "//*[@id=\"txtbillDiscountAmount80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountAmount80"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInAmount\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountAmount80\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Disc. Amt."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountAmount80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "btnSave80": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnSave80",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "F10 / End Save",
+    "label": "Save",
+    "css": "button#btnSave80",
+    "xpath": "//*[@id=\"btnSave80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnSave80"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"F10 / End Save\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnSave80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "btnDraft80": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnDraft80",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Save As Draft",
+    "label": "Save As Draft",
+    "css": "button#btnDraft80",
+    "xpath": "//*[@id=\"btnDraft80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnDraft80"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Save As Draft\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save As Draft"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnDraft80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "btnEsc80": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnEsc80",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Esc Close",
+    "label": "Close",
+    "css": "button#btnEsc80",
+    "xpath": "//*[@id=\"btnEsc80\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnEsc80"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Esc Close\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Close"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnEsc80\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790749393,
+    "last": 1790749393
+   },
+   "txtbillDate69": {
+    "tag": "input",
+    "type": "",
+    "id": "txtbillDate69",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-mat-calendar": "mat-datepicker-3"
+    },
+    "text": "30-09-2026",
+    "label": "",
+    "css": "input#txtbillDate69",
+    "xpath": "//*[@id=\"txtbillDate69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDate69"
+     },
+     {
+      "kind": "data",
+      "sel": "[data-mat-calendar=\"mat-datepicker-3\"]"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDate69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtLedgerName69": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtLedgerName69",
+    "name": "txtLedgerName69",
+    "fcn": "ledgerName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Party Name",
+    "css": "input#txtLedgerName69",
+    "xpath": "//*[@id=\"txtLedgerName69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtLedgerName69"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"ledgerName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtLedgerName69\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Party Name"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtLedgerName69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtentryNo69": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtentryNo69",
+    "name": "txtentryNo69",
+    "fcn": "entryNo",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "0000013",
+    "label": "Bill No.",
+    "css": "input#txtentryNo69",
+    "xpath": "//*[@id=\"txtentryNo69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtentryNo69"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"entryNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtentryNo69\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill No."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtentryNo69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtptmobile69": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptmobile69",
+    "name": "txtptmobile69",
+    "fcn": "patientMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptmobile69",
+    "xpath": "//*[@id=\"txtptmobile69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptmobile69"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptmobile69\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptmobile69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtptname69": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptname69",
+    "name": "txtptname69",
+    "fcn": "PatientName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptname69",
+    "xpath": "//*[@id=\"txtptname69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptname69"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"PatientName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptname69\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptname69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtpatientaddress69": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtpatientaddress69",
+    "name": "patientaddress69",
+    "fcn": "patientAddress",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Address",
+    "css": "input#txtpatientaddress69",
+    "xpath": "//*[@id=\"txtpatientaddress69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtpatientaddress69"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientAddress\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"patientaddress69\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Address"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtpatientaddress69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtdrmobile69": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrmobile69",
+    "name": "txtdrmobile69",
+    "fcn": "doctorMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrmobile69",
+    "xpath": "//*[@id=\"txtdrmobile69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrmobile69"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"doctorMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrmobile69\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrmobile69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtdrname69": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrname69",
+    "name": "txtdrname69",
+    "fcn": "DoctorName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrname69",
+    "xpath": "//*[@id=\"txtdrname69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrname69"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"DoctorName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrname69\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrname69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtmrname69": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtmrname69",
+    "name": "txtmrname69",
+    "fcn": "mrName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "MRmaster",
+    "css": "input#txtmrname69",
+    "xpath": "//*[@id=\"txtmrname69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtmrname69"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"mrName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtmrname69\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=MRmaster"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtmrname69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtStore69": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtStore69",
+    "name": "txtStore69",
+    "fcn": "tmp_StoreName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Store",
+    "css": "input#txtStore69",
+    "xpath": "//*[@id=\"txtStore69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtStore69"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"tmp_StoreName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtStore69\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Store"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtStore69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtSaleType69": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtSaleType69",
+    "name": "txtSaleType69",
+    "fcn": "billTypeName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Type",
+    "css": "input#txtSaleType69",
+    "xpath": "//*[@id=\"txtSaleType69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtSaleType69"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billTypeName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtSaleType69\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Type"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtSaleType69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtbillDiscountPercentage69": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage69",
+    "name": "txtbillDiscountPercentage69",
+    "fcn": "billDiscountInPercent",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage69",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage69"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage69\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtbillDiscountPercentage269": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage269",
+    "name": "txtbillDiscountPercentage69",
+    "fcn": "billDiscountInPercent2",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage269",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage269\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage269"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent2\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage69\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage269\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtbillDiscountAmount69": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountAmount69",
+    "name": "txtbillDiscountAmount69",
+    "fcn": "billDiscountInAmount",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Disc. Amt.",
+    "css": "input#txtbillDiscountAmount69",
+    "xpath": "//*[@id=\"txtbillDiscountAmount69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountAmount69"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInAmount\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountAmount69\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Disc. Amt."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountAmount69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "btnSave69": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnSave69",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "F10 / End Save",
+    "label": "Save",
+    "css": "button#btnSave69",
+    "xpath": "//*[@id=\"btnSave69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnSave69"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"F10 / End Save\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnSave69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "btnDraft69": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnDraft69",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Save As Draft",
+    "label": "Save As Draft",
+    "css": "button#btnDraft69",
+    "xpath": "//*[@id=\"btnDraft69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnDraft69"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Save As Draft\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save As Draft"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnDraft69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "btnEsc69": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnEsc69",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Esc Close",
+    "label": "Close",
+    "css": "button#btnEsc69",
+    "xpath": "//*[@id=\"btnEsc69\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnEsc69"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Esc Close\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Close"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnEsc69\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1790749450,
+    "last": 1790749450
+   },
+   "txtbillDate34": {
+    "tag": "input",
+    "type": "",
+    "id": "txtbillDate34",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-mat-calendar": "mat-datepicker-4"
+    },
+    "text": "15-10-2026",
+    "label": "",
+    "css": "input#txtbillDate34",
+    "xpath": "//*[@id=\"txtbillDate34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDate34"
+     },
+     {
+      "kind": "data",
+      "sel": "[data-mat-calendar=\"mat-datepicker-4\"]"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDate34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtLedgerName34": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtLedgerName34",
+    "name": "txtLedgerName34",
+    "fcn": "ledgerName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Party Name",
+    "css": "input#txtLedgerName34",
+    "xpath": "//*[@id=\"txtLedgerName34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtLedgerName34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"ledgerName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtLedgerName34\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Party Name"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtLedgerName34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtentryNo34": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtentryNo34",
+    "name": "txtentryNo34",
+    "fcn": "entryNo",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Bill No.",
+    "css": "input#txtentryNo34",
+    "xpath": "//*[@id=\"txtentryNo34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtentryNo34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"entryNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtentryNo34\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill No."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtentryNo34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtptmobile34": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptmobile34",
+    "name": "txtptmobile34",
+    "fcn": "patientMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptmobile34",
+    "xpath": "//*[@id=\"txtptmobile34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptmobile34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptmobile34\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptmobile34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtptname34": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptname34",
+    "name": "txtptname34",
+    "fcn": "PatientName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptname34",
+    "xpath": "//*[@id=\"txtptname34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptname34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"PatientName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptname34\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptname34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtpatientaddress34": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtpatientaddress34",
+    "name": "patientaddress34",
+    "fcn": "patientAddress",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Address",
+    "css": "input#txtpatientaddress34",
+    "xpath": "//*[@id=\"txtpatientaddress34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtpatientaddress34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientAddress\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"patientaddress34\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Address"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtpatientaddress34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtdrmobile34": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrmobile34",
+    "name": "txtdrmobile34",
+    "fcn": "doctorMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrmobile34",
+    "xpath": "//*[@id=\"txtdrmobile34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrmobile34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"doctorMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrmobile34\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrmobile34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtdrname34": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrname34",
+    "name": "txtdrname34",
+    "fcn": "DoctorName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrname34",
+    "xpath": "//*[@id=\"txtdrname34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrname34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"DoctorName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrname34\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrname34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtmrname34": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtmrname34",
+    "name": "txtmrname34",
+    "fcn": "mrName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "MRmaster",
+    "css": "input#txtmrname34",
+    "xpath": "//*[@id=\"txtmrname34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtmrname34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"mrName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtmrname34\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=MRmaster"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtmrname34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtStore34": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtStore34",
+    "name": "txtStore34",
+    "fcn": "tmp_StoreName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Store",
+    "css": "input#txtStore34",
+    "xpath": "//*[@id=\"txtStore34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtStore34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"tmp_StoreName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtStore34\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Store"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtStore34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtSaleType34": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtSaleType34",
+    "name": "txtSaleType34",
+    "fcn": "billTypeName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Type",
+    "css": "input#txtSaleType34",
+    "xpath": "//*[@id=\"txtSaleType34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtSaleType34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billTypeName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtSaleType34\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Type"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtSaleType34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "isHomeDelivery34": {
+    "tag": "input",
+    "type": "checkbox",
+    "id": "isHomeDelivery34",
+    "name": "",
+    "fcn": "isHomeDelivery",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "on",
+    "label": "Home Delivery",
+    "css": "input#isHomeDelivery34",
+    "xpath": "//*[@id=\"isHomeDelivery34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#isHomeDelivery34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"isHomeDelivery\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Home Delivery"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"isHomeDelivery34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtDeliveryDate34": {
+    "tag": "input",
+    "type": "",
+    "id": "txtDeliveryDate34",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-mat-calendar": "mat-datepicker-3"
+    },
+    "text": "15-10-2026",
+    "label": "",
+    "css": "input#txtDeliveryDate34",
+    "xpath": "//*[@id=\"txtDeliveryDate34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtDeliveryDate34"
+     },
+     {
+      "kind": "data",
+      "sel": "[data-mat-calendar=\"mat-datepicker-3\"]"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtDeliveryDate34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "fromTime34": {
+    "tag": "input",
+    "type": "text",
+    "id": "fromTime34",
+    "name": "fromTime34",
+    "fcn": "fromTime",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "3:20 pm",
+    "label": "Time :",
+    "css": "input#fromTime34",
+    "xpath": "//*[@id=\"fromTime34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#fromTime34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"fromTime\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"fromTime34\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Time :"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"fromTime34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "toTime34": {
+    "tag": "input",
+    "type": "text",
+    "id": "toTime34",
+    "name": "toTime34",
+    "fcn": "toTime",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "4:20 pm",
+    "label": "Time :",
+    "css": "input#toTime34",
+    "xpath": "//*[@id=\"toTime34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#toTime34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"toTime\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"toTime34\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Time :"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"toTime34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "Billingrate": {
+    "tag": "select",
+    "type": "",
+    "id": "Billingrate",
+    "name": "",
+    "fcn": "BillingRateFormControl",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "cost costPerPcs M.R.P Purch.Rate S.Rate ",
+    "label": "Billing Rate:",
+    "css": "select#Billingrate",
+    "xpath": "//*[@id=\"Billingrate\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "select#Billingrate"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "select[formcontrolname=\"BillingRateFormControl\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Billing Rate:"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"Billingrate\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "select",
+    "seen": 3,
+    "first": 1792057805,
+    "last": 1792146517
+   },
+   "txtbillDiscountPercentage34": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage34",
+    "name": "txtbillDiscountPercentage34",
+    "fcn": "billDiscountInPercent",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage34",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage34\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtbillDiscountPercentage234": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage234",
+    "name": "txtbillDiscountPercentage34",
+    "fcn": "billDiscountInPercent2",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage234",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage234\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage234"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent2\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage34\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage234\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "txtbillDiscountAmount34": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountAmount34",
+    "name": "txtbillDiscountAmount34",
+    "fcn": "billDiscountInAmount",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Disc. Amt.",
+    "css": "input#txtbillDiscountAmount34",
+    "xpath": "//*[@id=\"txtbillDiscountAmount34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountAmount34"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInAmount\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountAmount34\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Disc. Amt."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountAmount34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "btnSave34": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnSave34",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "F10 / End Save",
+    "label": "Save",
+    "css": "button#btnSave34",
+    "xpath": "//*[@id=\"btnSave34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnSave34"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"F10 / End Save\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnSave34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "btnDraft34": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnDraft34",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Save As Draft",
+    "label": "Save As Draft",
+    "css": "button#btnDraft34",
+    "xpath": "//*[@id=\"btnDraft34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnDraft34"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Save As Draft\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save As Draft"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnDraft34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "btnEsc34": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnEsc34",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Esc Close",
+    "label": "Close",
+    "css": "button#btnEsc34",
+    "xpath": "//*[@id=\"btnEsc34\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnEsc34"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Esc Close\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Close"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnEsc34\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1792057805,
+    "last": 1792057805
+   },
+   "div > div:nth-of-type(2) > div:nth-of-type(3) > button": {
+    "tag": "button",
+    "type": "button",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-toggle": "dropdown"
+    },
+    "text": "",
+    "label": "0",
+    "css": "div > div:nth-of-type(2) > div:nth-of-type(3) > button",
+    "xpath": "/html/body/margerpapp-root/master-layout/div[1]/div[2]/main/transaction-container/div/div/my-tabs/my-tab/div/transaction-out-process/div/form/div[2]/div/div/div[2]/div[3]/button",
+    "fallbacks": [
+     {
+      "kind": "data",
+      "sel": "[data-toggle=\"dropdown\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=0"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[1]/div[2]/main/transaction-container/div/div/my-tabs/my-tab/div/transaction-out-process/div/form/div[2]/div/div/div[2]/div[3]/button"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 2,
+    "first": 1792057805,
+    "last": 1792058762
+   },
+   "netscheme": {
+    "tag": "button",
+    "type": "button",
+    "id": "netscheme",
+    "name": "netscheme",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Configure",
+    "label": "Net Scheme",
+    "css": "button#netscheme",
+    "xpath": "//*[@id=\"netscheme\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#netscheme"
+     },
+     {
+      "kind": "name",
+      "sel": "button[name=\"netscheme\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Configure\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Net Scheme"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"netscheme\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 3,
+    "first": 1792057805,
+    "last": 1792146517
+   },
+   "txtbillDate90": {
+    "tag": "input",
+    "type": "",
+    "id": "txtbillDate90",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-mat-calendar": "mat-datepicker-4"
+    },
+    "text": "15-10-2026",
+    "label": "",
+    "css": "input#txtbillDate90",
+    "xpath": "//*[@id=\"txtbillDate90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDate90"
+     },
+     {
+      "kind": "data",
+      "sel": "[data-mat-calendar=\"mat-datepicker-4\"]"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDate90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtLedgerName90": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtLedgerName90",
+    "name": "txtLedgerName90",
+    "fcn": "ledgerName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Party Name",
+    "css": "input#txtLedgerName90",
+    "xpath": "//*[@id=\"txtLedgerName90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtLedgerName90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"ledgerName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtLedgerName90\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Party Name"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtLedgerName90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtentryNo90": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtentryNo90",
+    "name": "txtentryNo90",
+    "fcn": "entryNo",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Bill No.",
+    "css": "input#txtentryNo90",
+    "xpath": "//*[@id=\"txtentryNo90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtentryNo90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"entryNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtentryNo90\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill No."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtentryNo90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtptmobile90": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptmobile90",
+    "name": "txtptmobile90",
+    "fcn": "patientMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptmobile90",
+    "xpath": "//*[@id=\"txtptmobile90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptmobile90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptmobile90\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptmobile90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtptname90": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptname90",
+    "name": "txtptname90",
+    "fcn": "PatientName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptname90",
+    "xpath": "//*[@id=\"txtptname90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptname90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"PatientName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptname90\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptname90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtpatientaddress90": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtpatientaddress90",
+    "name": "patientaddress90",
+    "fcn": "patientAddress",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Address",
+    "css": "input#txtpatientaddress90",
+    "xpath": "//*[@id=\"txtpatientaddress90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtpatientaddress90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientAddress\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"patientaddress90\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Address"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtpatientaddress90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtdrmobile90": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrmobile90",
+    "name": "txtdrmobile90",
+    "fcn": "doctorMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrmobile90",
+    "xpath": "//*[@id=\"txtdrmobile90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrmobile90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"doctorMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrmobile90\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrmobile90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtdrname90": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrname90",
+    "name": "txtdrname90",
+    "fcn": "DoctorName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrname90",
+    "xpath": "//*[@id=\"txtdrname90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrname90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"DoctorName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrname90\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrname90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtmrname90": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtmrname90",
+    "name": "txtmrname90",
+    "fcn": "mrName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "MRmaster",
+    "css": "input#txtmrname90",
+    "xpath": "//*[@id=\"txtmrname90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtmrname90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"mrName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtmrname90\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=MRmaster"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtmrname90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtStore90": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtStore90",
+    "name": "txtStore90",
+    "fcn": "tmp_StoreName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Store",
+    "css": "input#txtStore90",
+    "xpath": "//*[@id=\"txtStore90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtStore90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"tmp_StoreName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtStore90\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Store"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtStore90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtSaleType90": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtSaleType90",
+    "name": "txtSaleType90",
+    "fcn": "billTypeName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Type",
+    "css": "input#txtSaleType90",
+    "xpath": "//*[@id=\"txtSaleType90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtSaleType90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billTypeName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtSaleType90\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Type"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtSaleType90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "isHomeDelivery90": {
+    "tag": "input",
+    "type": "checkbox",
+    "id": "isHomeDelivery90",
+    "name": "",
+    "fcn": "isHomeDelivery",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "on",
+    "label": "Home Delivery",
+    "css": "input#isHomeDelivery90",
+    "xpath": "//*[@id=\"isHomeDelivery90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#isHomeDelivery90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"isHomeDelivery\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Home Delivery"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"isHomeDelivery90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtDeliveryDate90": {
+    "tag": "input",
+    "type": "",
+    "id": "txtDeliveryDate90",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-mat-calendar": "mat-datepicker-3"
+    },
+    "text": "15-10-2026",
+    "label": "",
+    "css": "input#txtDeliveryDate90",
+    "xpath": "//*[@id=\"txtDeliveryDate90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtDeliveryDate90"
+     },
+     {
+      "kind": "data",
+      "sel": "[data-mat-calendar=\"mat-datepicker-3\"]"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtDeliveryDate90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "fromTime90": {
+    "tag": "input",
+    "type": "text",
+    "id": "fromTime90",
+    "name": "fromTime90",
+    "fcn": "fromTime",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "3:35 pm",
+    "label": "Time :",
+    "css": "input#fromTime90",
+    "xpath": "//*[@id=\"fromTime90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#fromTime90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"fromTime\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"fromTime90\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Time :"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"fromTime90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "toTime90": {
+    "tag": "input",
+    "type": "text",
+    "id": "toTime90",
+    "name": "toTime90",
+    "fcn": "toTime",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "4:35 pm",
+    "label": "Time :",
+    "css": "input#toTime90",
+    "xpath": "//*[@id=\"toTime90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#toTime90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"toTime\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"toTime90\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Time :"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"toTime90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtbillDiscountPercentage90": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage90",
+    "name": "txtbillDiscountPercentage90",
+    "fcn": "billDiscountInPercent",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage90",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage90\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtbillDiscountPercentage290": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage290",
+    "name": "txtbillDiscountPercentage90",
+    "fcn": "billDiscountInPercent2",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage290",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage290\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage290"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent2\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage90\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage290\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtbillDiscountAmount90": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountAmount90",
+    "name": "txtbillDiscountAmount90",
+    "fcn": "billDiscountInAmount",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Disc. Amt.",
+    "css": "input#txtbillDiscountAmount90",
+    "xpath": "//*[@id=\"txtbillDiscountAmount90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountAmount90"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInAmount\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountAmount90\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Disc. Amt."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountAmount90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "btnSave90": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnSave90",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "F10 / End Save",
+    "label": "Save",
+    "css": "button#btnSave90",
+    "xpath": "//*[@id=\"btnSave90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnSave90"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"F10 / End Save\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnSave90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "btnDraft90": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnDraft90",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Save As Draft",
+    "label": "Save As Draft",
+    "css": "button#btnDraft90",
+    "xpath": "//*[@id=\"btnDraft90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnDraft90"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Save As Draft\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save As Draft"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnDraft90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "btnEsc90": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnEsc90",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Esc Close",
+    "label": "Close",
+    "css": "button#btnEsc90",
+    "xpath": "//*[@id=\"btnEsc90\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnEsc90"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Esc Close\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Close"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnEsc90\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1792058762,
+    "last": 1792058762
+   },
+   "txtbillDate16": {
+    "tag": "input",
+    "type": "",
+    "id": "txtbillDate16",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-mat-calendar": "mat-datepicker-4"
+    },
+    "text": "16-10-2026",
+    "label": "",
+    "css": "input#txtbillDate16",
+    "xpath": "//*[@id=\"txtbillDate16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDate16"
+     },
+     {
+      "kind": "data",
+      "sel": "[data-mat-calendar=\"mat-datepicker-4\"]"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDate16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "txtLedgerName16": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtLedgerName16",
+    "name": "txtLedgerName16",
+    "fcn": "ledgerName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Party Name",
+    "css": "input#txtLedgerName16",
+    "xpath": "//*[@id=\"txtLedgerName16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtLedgerName16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"ledgerName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtLedgerName16\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Party Name"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtLedgerName16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "txtentryNo16": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtentryNo16",
+    "name": "txtentryNo16",
+    "fcn": "entryNo",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Bill No.",
+    "css": "input#txtentryNo16",
+    "xpath": "//*[@id=\"txtentryNo16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtentryNo16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"entryNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtentryNo16\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill No."
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtentryNo16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "txtptmobile16": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptmobile16",
+    "name": "txtptmobile16",
+    "fcn": "patientMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptmobile16",
+    "xpath": "//*[@id=\"txtptmobile16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptmobile16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptmobile16\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptmobile16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "txtptname16": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtptname16",
+    "name": "txtptname16",
+    "fcn": "PatientName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Patient Mob./ID",
+    "css": "input#txtptname16",
+    "xpath": "//*[@id=\"txtptname16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtptname16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"PatientName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtptname16\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Patient Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtptname16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "txtpatientaddress16": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtpatientaddress16",
+    "name": "patientaddress16",
+    "fcn": "patientAddress",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Address",
+    "css": "input#txtpatientaddress16",
+    "xpath": "//*[@id=\"txtpatientaddress16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtpatientaddress16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"patientAddress\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"patientaddress16\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Address"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtpatientaddress16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "txtdrmobile16": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrmobile16",
+    "name": "txtdrmobile16",
+    "fcn": "doctorMobileNo",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrmobile16",
+    "xpath": "//*[@id=\"txtdrmobile16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrmobile16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"doctorMobileNo\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrmobile16\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrmobile16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "txtdrname16": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtdrname16",
+    "name": "txtdrname16",
+    "fcn": "DoctorName",
+    "placeholder": "Press SpaceBar",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Doctor Mob./ID",
+    "css": "input#txtdrname16",
+    "xpath": "//*[@id=\"txtdrname16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtdrname16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"DoctorName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtdrname16\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"Press SpaceBar\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Doctor Mob./ID"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtdrname16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "txtmrname16": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtmrname16",
+    "name": "txtmrname16",
+    "fcn": "mrName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "MRmaster",
+    "css": "input#txtmrname16",
+    "xpath": "//*[@id=\"txtmrname16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtmrname16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"mrName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtmrname16\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=MRmaster"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtmrname16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "txtSaleType16": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtSaleType16",
+    "name": "txtSaleType16",
+    "fcn": "billTypeName",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "",
+    "label": "Type",
+    "css": "input#txtSaleType16",
+    "xpath": "//*[@id=\"txtSaleType16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtSaleType16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billTypeName\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtSaleType16\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Type"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtSaleType16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "isHomeDelivery16": {
+    "tag": "input",
+    "type": "checkbox",
+    "id": "isHomeDelivery16",
+    "name": "",
+    "fcn": "isHomeDelivery",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "on",
+    "label": "Home Delivery",
+    "css": "input#isHomeDelivery16",
+    "xpath": "//*[@id=\"isHomeDelivery16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#isHomeDelivery16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"isHomeDelivery\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Home Delivery"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"isHomeDelivery16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "txtDeliveryDate16": {
+    "tag": "input",
+    "type": "",
+    "id": "txtDeliveryDate16",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-mat-calendar": "mat-datepicker-3"
+    },
+    "text": "16-10-2026",
+    "label": "",
+    "css": "input#txtDeliveryDate16",
+    "xpath": "//*[@id=\"txtDeliveryDate16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtDeliveryDate16"
+     },
+     {
+      "kind": "data",
+      "sel": "[data-mat-calendar=\"mat-datepicker-3\"]"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtDeliveryDate16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": true,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "fromTime16": {
+    "tag": "input",
+    "type": "text",
+    "id": "fromTime16",
+    "name": "fromTime16",
+    "fcn": "fromTime",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "3:58 pm",
+    "label": "Time :",
+    "css": "input#fromTime16",
+    "xpath": "//*[@id=\"fromTime16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#fromTime16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"fromTime\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"fromTime16\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Time :"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"fromTime16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "toTime16": {
+    "tag": "input",
+    "type": "text",
+    "id": "toTime16",
+    "name": "toTime16",
+    "fcn": "toTime",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "4:58 pm",
+    "label": "Time :",
+    "css": "input#toTime16",
+    "xpath": "//*[@id=\"toTime16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#toTime16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"toTime\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"toTime16\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Time :"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"toTime16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "txtbillDiscountPercentage16": {
+    "tag": "input",
+    "type": "text",
+    "id": "txtbillDiscountPercentage16",
+    "name": "txtbillDiscountPercentage16",
+    "fcn": "billDiscountInPercent",
+    "placeholder": "0.00",
+    "aria": "",
+    "data": {},
+    "text": "0.00",
+    "label": "Bill Discount",
+    "css": "input#txtbillDiscountPercentage16",
+    "xpath": "//*[@id=\"txtbillDiscountPercentage16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "input#txtbillDiscountPercentage16"
+     },
+     {
+      "kind": "formcontrolname",
+      "sel": "input[formcontrolname=\"billDiscountInPercent\"]"
+     },
+     {
+      "kind": "name",
+      "sel": "input[name=\"txtbillDiscountPercentage16\"]"
+     },
+     {
+      "kind": "placeholder",
+      "sel": "input[placeholder=\"0.00\"]"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Bill Discount"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"txtbillDiscountPercentage16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "type",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "btnSave16": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnSave16",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "F10 / End Save",
+    "label": "Save",
+    "css": "button#btnSave16",
+    "xpath": "//*[@id=\"btnSave16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnSave16"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"F10 / End Save\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnSave16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "div > div:nth-of-type(2) > div > button:nth-of-type(2)": {
+    "tag": "button",
+    "type": "button",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {
+     "data-toggle": "dropdown"
+    },
+    "text": "Toggle Dropdown",
+    "label": "Save",
+    "css": "div > div:nth-of-type(2) > div > button:nth-of-type(2)",
+    "xpath": "/html/body/margerpapp-root/master-layout/div[2]/div[2]/main/transaction-container/div/div/my-tabs/my-tab/div/transaction-out-process/div/form/div[2]/div/div/div[2]/div/button[2]",
+    "fallbacks": [
+     {
+      "kind": "data",
+      "sel": "[data-toggle=\"dropdown\"]"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Toggle Dropdown\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[2]/div[2]/main/transaction-container/div/div/my-tabs/my-tab/div/transaction-out-process/div/form/div[2]/div/div/div[2]/div/button[2]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "btnDraft16": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnDraft16",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Save As Draft",
+    "label": "Save As Draft",
+    "css": "button#btnDraft16",
+    "xpath": "//*[@id=\"btnDraft16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnDraft16"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Save As Draft\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Save As Draft"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnDraft16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "btnEsc16": {
+    "tag": "button",
+    "type": "button",
+    "id": "btnEsc16",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "Esc Close",
+    "label": "Close",
+    "css": "button#btnEsc16",
+    "xpath": "//*[@id=\"btnEsc16\"]",
+    "fallbacks": [
+     {
+      "kind": "id",
+      "sel": "button#btnEsc16"
+     },
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"Esc Close\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=Close"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=//*[@id=\"btnEsc16\"]"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   },
+   "div:nth-of-type(4) > div > div:nth-of-type(1) > button": {
+    "tag": "button",
+    "type": "button",
+    "id": "",
+    "name": "",
+    "fcn": "",
+    "placeholder": "",
+    "aria": "",
+    "data": {},
+    "text": "×",
+    "label": "×",
+    "css": "div:nth-of-type(4) > div > div:nth-of-type(1) > button",
+    "xpath": "/html/body/margerpapp-root/master-layout/div[4]/div/div[1]/button",
+    "fallbacks": [
+     {
+      "kind": "text",
+      "sel": "button:has-text(\"×\")"
+     },
+     {
+      "kind": "nearlabel",
+      "sel": "nearlabel=×"
+     },
+     {
+      "kind": "xpath",
+      "sel": "xpath=/html/body/margerpapp-root/master-layout/div[4]/div/div[1]/button"
+     }
+    ],
+    "in_view": true,
+    "danger": false,
+    "kind": "click",
+    "seen": 1,
+    "first": 1792146517,
+    "last": 1792146517
+   }
+  }
+ }
+}

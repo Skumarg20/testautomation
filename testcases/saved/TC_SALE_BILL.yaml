@@ -1,0 +1,16 @@
+- id: TC_SALE_BILL
+  module: sales
+  title: sale bill
+  priority: p2
+  tags: []
+  destructive: false
+  preconditions:
+  - Created by ajay | 2026-10-16 15:57
+  expected: []
+  steps:
+  - action: open_screen
+    target: sale_bill
+  - action: set_party
+    value: cash account
+  - action: add_barcode
+    value: '11110001'

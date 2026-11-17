@@ -1,0 +1,910 @@
+{
+ "saved_at": "2026-10-14 13:09",
+ "settings": [
+  {
+   "label": "FIFO in Sale",
+   "css": "select#ddl4338",
+   "was": "No"
+  },
+  {
+   "label": "Discount parameter wise",
+   "css": "select#ddl4339",
+   "was": "No"
+  },
+  {
+   "label": "Enable GST",
+   "css": "select#ddl6010",
+   "was": ""
+  },
+  {
+   "label": "Allow Modifications and Deletion in Sale",
+   "css": "select#ddl4374",
+   "was": "No"
+  },
+  {
+   "label": "Allow Modifications and Deletion in Purchase",
+   "css": "select#ddl4375",
+   "was": "No"
+  },
+  {
+   "label": "Allow Ledger Modification",
+   "css": "select#ddl4376",
+   "was": "No"
+  },
+  {
+   "label": "Free Quantity Required in Sale",
+   "css": "select#ddl3019",
+   "was": "No"
+  },
+  {
+   "label": "General Item required?",
+   "css": "select#ddl3030",
+   "was": "No"
+  },
+  {
+   "label": "Free Quantity Required in Sale",
+   "css": "select#ddl3050",
+   "was": "No"
+  },
+  {
+   "label": "Free Quantity Required in Sale",
+   "css": "select#ddl3071",
+   "was": "No"
+  },
+  {
+   "label": "General Item required?",
+   "css": "select#ddl3085",
+   "was": "No"
+  },
+  {
+   "label": "Ask Purchase Type at the time of Billing?",
+   "css": "select#ddl3094",
+   "was": "No"
+  },
+  {
+   "label": "105",
+   "css": "select#ddl3109",
+   "was": "No"
+  },
+  {
+   "label": "108",
+   "css": "select#ddl3114",
+   "was": "No"
+  },
+  {
+   "label": "120",
+   "css": "select#ddl3131",
+   "was": "No"
+  },
+  {
+   "label": "124",
+   "css": "select#ddl3137",
+   "was": "No"
+  },
+  {
+   "label": "137",
+   "css": "select#ddl3155",
+   "was": "No"
+  },
+  {
+   "label": "142",
+   "css": "select#ddl5094",
+   "was": "No"
+  },
+  {
+   "label": "144",
+   "css": "select#ddl4159",
+   "was": "No"
+  },
+  {
+   "label": "146",
+   "css": "select#ddl4358",
+   "was": "No"
+  },
+  {
+   "label": "147",
+   "css": "select#ddl4501",
+   "was": "No"
+  },
+  {
+   "label": "148",
+   "css": "select#ddl4502",
+   "was": "No"
+  },
+  {
+   "label": "149",
+   "css": "select#ddl4503",
+   "was": "No"
+  },
+  {
+   "label": "155",
+   "css": "select#ddl3166",
+   "was": "No"
+  },
+  {
+   "label": "162",
+   "css": "select#ddl3176",
+   "was": "No"
+  },
+  {
+   "label": "172",
+   "css": "select#ddl3187",
+   "was": "No"
+  },
+  {
+   "label": "179",
+   "css": "select#ddl3197",
+   "was": "No"
+  },
+  {
+   "label": "183",
+   "css": "select#ddl3202",
+   "was": "No"
+  },
+  {
+   "label": "195",
+   "css": "select#ddl3217",
+   "was": "No"
+  },
+  {
+   "label": "199",
+   "css": "select#ddl3302",
+   "was": "No"
+  },
+  {
+   "label": "211",
+   "css": "select#ddl3317",
+   "was": "No"
+  },
+  {
+   "label": "215",
+   "css": "select#ddl3322",
+   "was": "No"
+  },
+  {
+   "label": "227",
+   "css": "select#ddl3337",
+   "was": "No"
+  },
+  {
+   "label": "237",
+   "css": "select#ddl3347",
+   "was": "No"
+  },
+  {
+   "label": "243",
+   "css": "select#ddl3356",
+   "was": "No"
+  },
+  {
+   "label": "248",
+   "css": "select#ddl3362",
+   "was": "No"
+  },
+  {
+   "label": "258",
+   "css": "select#ddl3376",
+   "was": "No"
+  },
+  {
+   "label": "263",
+   "css": "select#ddl3382",
+   "was": "No"
+  },
+  {
+   "label": "273",
+   "css": "select#ddl3396",
+   "was": "No"
+  },
+  {
+   "label": "277",
+   "css": "select#ddl3401",
+   "was": "No"
+  },
+  {
+   "label": "287",
+   "css": "select#ddl3414",
+   "was": "No"
+  },
+  {
+   "label": "298",
+   "css": "select#ddl3426",
+   "was": "No"
+  },
+  {
+   "label": "304",
+   "css": "select#ddl3435",
+   "was": "No"
+  },
+  {
+   "label": "316",
+   "css": "select#ddl3447",
+   "was": "No"
+  },
+  {
+   "label": "317",
+   "css": "select#ddl3448",
+   "was": "No"
+  },
+  {
+   "label": "324",
+   "css": "select#ddl4359",
+   "was": "No"
+  },
+  {
+   "label": "326",
+   "css": "select#ddl4356",
+   "was": "No"
+  },
+  {
+   "label": "328",
+   "css": "select#ddl4365",
+   "was": "No"
+  },
+  {
+   "label": "329",
+   "css": "select#ddl4368",
+   "was": "No"
+  },
+  {
+   "label": "330",
+   "css": "select#ddl4391",
+   "was": "No"
+  },
+  {
+   "label": "331",
+   "css": "select#ddl4408",
+   "was": "No"
+  },
+  {
+   "label": "332",
+   "css": "select#ddl4409",
+   "was": "No"
+  },
+  {
+   "label": "333",
+   "css": "select#ddl4419",
+   "was": "No"
+  },
+  {
+   "label": "334",
+   "css": "select#ddl4427",
+   "was": "No"
+  },
+  {
+   "label": "339",
+   "css": "select#ddl4439",
+   "was": "No"
+  },
+  {
+   "label": "341",
+   "css": "select#ddl4444",
+   "was": "No"
+  },
+  {
+   "label": "344",
+   "css": "select#ddl4448",
+   "was": "No"
+  },
+  {
+   "label": "347",
+   "css": "select#ddl4452",
+   "was": "No"
+  },
+  {
+   "label": "348",
+   "css": "select#ddl4508",
+   "was": "No"
+  },
+  {
+   "label": "349",
+   "css": "select#ddl4516",
+   "was": "No"
+  },
+  {
+   "label": "350",
+   "css": "select#ddl4526",
+   "was": ""
+  },
+  {
+   "label": "351",
+   "css": "select#ddl4527",
+   "was": ""
+  },
+  {
+   "label": "352",
+   "css": "select#ddl4528",
+   "was": ""
+  },
+  {
+   "label": "353",
+   "css": "select#ddl4529",
+   "was": ""
+  },
+  {
+   "label": "354",
+   "css": "select#ddl4530",
+   "was": ""
+  },
+  {
+   "label": "355",
+   "css": "select#ddl4531",
+   "was": ""
+  },
+  {
+   "label": "358",
+   "css": "select#ddl4534",
+   "was": ""
+  },
+  {
+   "label": "360",
+   "css": "select#ddl4440",
+   "was": "No"
+  },
+  {
+   "label": "361",
+   "css": "select#ddl4536",
+   "was": "No"
+  },
+  {
+   "label": "366",
+   "css": "select#ddl4558",
+   "was": "No"
+  },
+  {
+   "label": "370",
+   "css": "select#ddl4565",
+   "was": "No"
+  },
+  {
+   "label": "371",
+   "css": "select#ddl4569",
+   "was": "No"
+  },
+  {
+   "label": "372",
+   "css": "select#ddl4573",
+   "was": "No"
+  },
+  {
+   "label": "373",
+   "css": "select#ddl4574",
+   "was": "No"
+  },
+  {
+   "label": "377",
+   "css": "select#ddl4582",
+   "was": "No"
+  },
+  {
+   "label": "378",
+   "css": "select#ddl4585",
+   "was": "No"
+  },
+  {
+   "label": "380",
+   "css": "select#ddl4587",
+   "was": "No"
+  },
+  {
+   "label": "382",
+   "css": "select#ddl4590",
+   "was": "No"
+  },
+  {
+   "label": "383",
+   "css": "select#ddl4594",
+   "was": "No"
+  },
+  {
+   "label": "385",
+   "css": "select#ddl4604",
+   "was": "No"
+  },
+  {
+   "label": "387",
+   "css": "select#ddl4310",
+   "was": "No"
+  },
+  {
+   "label": "390",
+   "css": "select#ddl4340",
+   "was": "No"
+  },
+  {
+   "label": "Billing rate greater then M.R.P on purchase",
+   "css": "select#ddl4163",
+   "was": "No"
+  },
+  {
+   "label": "Ask Additional field in Transaction",
+   "css": "select#ddl4509",
+   "was": "No"
+  },
+  {
+   "label": "Ledger Name Duplicate allowed?",
+   "css": "select#ddl202",
+   "was": "No"
+  },
+  {
+   "label": "Item merge in purchase",
+   "css": "select#ddl4341",
+   "was": "No"
+  },
+  {
+   "label": "Enable TDS",
+   "css": "select#ddl6012",
+   "was": "No"
+  },
+  {
+   "label": "Vat On MRP",
+   "css": "select#ddl4137",
+   "was": "No"
+  },
+  {
+   "label": "Is double entry required",
+   "css": "select#ddl3455",
+   "was": "No"
+  },
+  {
+   "label": "Set Unitwise Sales/Purchase rate?",
+   "css": "select#ddl603",
+   "was": "No"
+  },
+  {
+   "label": "Setup Approval Process",
+   "css": "select#ddl4399",
+   "was": "No"
+  },
+  {
+   "label": "(Rate will be asked per item)",
+   "css": "select#ddl4537",
+   "was": "No"
+  },
+  {
+   "label": "Party Wise Total",
+   "css": "select#ddl4451",
+   "was": "No"
+  },
+  {
+   "label": "Item Master",
+   "css": "select#ddl4510",
+   "was": "No"
+  },
+  {
+   "label": "One To Many & Many To One required?",
+   "css": "select#ddl4505",
+   "was": "No"
+  },
+  {
+   "label": "Item merge in sale",
+   "css": "select#ddl4342",
+   "was": "No"
+  },
+  {
+   "label": "Item Wise Tax Inclusive?",
+   "css": "select#ddl4138",
+   "was": "No"
+  },
+  {
+   "label": "Manage All Attachments",
+   "css": "select#ddl4405",
+   "was": "No"
+  },
+  {
+   "label": "(Rate will be asked per bill)",
+   "css": "select#ddl4453",
+   "was": "No"
+  },
+  {
+   "label": "Ledger Master",
+   "css": "select#ddl4511",
+   "was": "No"
+  },
+  {
+   "label": "Customer & Patient Master",
+   "css": "select#ddl4515",
+   "was": "No"
+  },
+  {
+   "label": "Maintain batch wise Inventory",
+   "css": "select#ddl6004",
+   "was": ""
+  },
+  {
+   "label": "Serial Wise Rate",
+   "css": "select#ddl4445",
+   "was": "No"
+  },
+  {
+   "label": "Multi branch management",
+   "css": "select#ddl321",
+   "was": "No"
+  },
+  {
+   "label": "Parameters wise Inventory",
+   "css": "select#ddl6005",
+   "was": "No"
+  },
+  {
+   "label": "Daily Cashbook",
+   "css": "select#ddl4421",
+   "was": "No"
+  },
+  {
+   "label": "Bill Direct print After Save",
+   "css": "select#ddl4105",
+   "was": "No"
+  },
+  {
+   "label": "Required Country of origin in Item Master",
+   "css": "select#ddl4442",
+   "was": "No"
+  },
+  {
+   "label": "Bundle Master",
+   "css": "select#ddl4566",
+   "was": "No"
+  },
+  {
+   "label": "Multi Series",
+   "css": "select#ddl470",
+   "was": "No"
+  },
+  {
+   "label": "GSTN Login Details",
+   "css": "select#ddl4380",
+   "was": "No"
+  },
+  {
+   "label": "Rate Generate",
+   "css": "select#ddl4355",
+   "was": "No"
+  },
+  {
+   "label": "Series required in purchase",
+   "css": "select#ddl4362",
+   "was": "No"
+  },
+  {
+   "label": "Transfer Data on and E-Business Code Required?",
+   "css": "select#ddl208",
+   "was": "No"
+  },
+  {
+   "label": "Route Master",
+   "css": "select#ddl379",
+   "was": "No"
+  },
+  {
+   "label": "Less By Multi Price-Customer/Supplier Wise",
+   "css": "select#ddl4394",
+   "was": "No"
+  },
+  {
+   "label": "TDS Round Off",
+   "css": "select#ddl4351",
+   "was": "No"
+  },
+  {
+   "label": "Showing Customer/Patient Wise Balance in Transaction",
+   "css": "select#ddl4382",
+   "was": "No"
+  },
+  {
+   "label": "Schemes/Offers/Discount",
+   "css": "select#ddl6008",
+   "was": ""
+  },
+  {
+   "label": "Show Taxable Amount",
+   "css": "select#ddl4363",
+   "was": "No"
+  },
+  {
+   "label": "Single Unit Column",
+   "css": "select#ddl611",
+   "was": "No"
+  },
+  {
+   "label": "PDC Management System",
+   "css": "select#ddl412",
+   "was": "No"
+  },
+  {
+   "label": "Party Wise Agency Discount",
+   "css": "select#ddl4140",
+   "was": "No"
+  },
+  {
+   "label": "Is Narration Mandatory in Accounting Transaction ?",
+   "css": "select#ddl4504",
+   "was": "No"
+  },
+  {
+   "label": "M.R Required In Sale Return",
+   "css": "select#ddl4518",
+   "was": "No"
+  },
+  {
+   "label": "M.R Required In Sale Challan",
+   "css": "select#ddl4519",
+   "was": "No"
+  },
+  {
+   "label": "M.R Required In Stock Issue",
+   "css": "select#ddl4520",
+   "was": "No"
+  },
+  {
+   "label": "Brk/Exp Entry",
+   "css": "select#ddl4522",
+   "was": "No"
+  },
+  {
+   "label": "Sale Difference In Credit Note",
+   "css": "select#ddl4523",
+   "was": "No"
+  },
+  {
+   "label": "Sale Difference In Debit Note",
+   "css": "select#ddl4524",
+   "was": "No"
+  },
+  {
+   "label": "Visibility of Un-assigned Menu",
+   "css": "select#ddl316",
+   "was": ""
+  },
+  {
+   "label": "Party Wise Special Discount",
+   "css": "select#ddl4141",
+   "was": "No"
+  },
+  {
+   "label": "Agency subgroup required?",
+   "css": "select#ddl7033",
+   "was": "No"
+  },
+  {
+   "label": "Discount Master",
+   "css": "select#ddl1023",
+   "was": ""
+  },
+  {
+   "label": "Net Scheme",
+   "css": "select#ddl4109",
+   "was": "No"
+  },
+  {
+   "label": "Ask Bill Remarks",
+   "css": "select#ddl4123",
+   "was": "No"
+  },
+  {
+   "label": "BRK/EXP Receive",
+   "css": "select#ddl511",
+   "was": "No"
+  },
+  {
+   "label": "Sales Promotions",
+   "css": "select#ddl4161",
+   "was": "No"
+  },
+  {
+   "label": "Transport Required",
+   "css": "select#ddl6017",
+   "was": "No"
+  },
+  {
+   "label": "Weighing Scale Required",
+   "css": "select#ddl4332",
+   "was": "No"
+  },
+  {
+   "label": "Ship To Address?",
+   "css": "select#ddl4155",
+   "was": "No"
+  },
+  {
+   "label": "Manage Patient/Customer Wise Outstanding",
+   "css": "select#ddl4128",
+   "was": "No"
+  },
+  {
+   "label": "Ledger Alias?",
+   "css": "select#ddl4186",
+   "was": "No"
+  },
+  {
+   "label": "Merge Batch Required?",
+   "css": "select#ddl4327",
+   "was": "No"
+  },
+  {
+   "label": "M.R Required In Receipt?",
+   "css": "select#ddl4403",
+   "was": "No"
+  },
+  {
+   "label": "Home Delivery",
+   "css": "select#ddl4131",
+   "was": "No"
+  },
+  {
+   "label": "Ledger List (Filter / Bottom Details)",
+   "css": "select#ddl4322",
+   "was": "No"
+  },
+  {
+   "label": "Ask Item Discount on Start Sale",
+   "css": "select#ddl4328",
+   "was": "No"
+  },
+  {
+   "label": "Customer Name",
+   "css": "select#ddl4154",
+   "was": "No"
+  },
+  {
+   "label": "Membership",
+   "css": "select#ddl4348",
+   "was": "No"
+  },
+  {
+   "label": "Parent Ledger Required",
+   "css": "select#ddl4596",
+   "was": "No"
+  },
+  {
+   "label": "Cash on party/ECommerce",
+   "css": "select#ddl4158",
+   "was": "No"
+  },
+  {
+   "label": "BRK/EXP Issue Challan",
+   "css": "select#ddl514",
+   "was": "No"
+  },
+  {
+   "label": "BRK/EXP Receive Challan",
+   "css": "select#ddl512",
+   "was": "No"
+  },
+  {
+   "label": "ASK ORIGINAL/DUPLICATE FOR PRINT",
+   "css": "select#ddl4175",
+   "was": "No"
+  },
+  {
+   "label": "IRD Setup",
+   "css": "select#ddl4199",
+   "was": "No"
+  },
+  {
+   "label": "Sale BackDate Billing",
+   "css": "select#ddl4200",
+   "was": "No"
+  },
+  {
+   "label": "Mode of Payment required in Purchase",
+   "css": "select#ddl4321",
+   "was": "No"
+  },
+  {
+   "label": "Purchase BackDate BIlling",
+   "css": "select#ddl4201",
+   "was": "No"
+  },
+  {
+   "label": "Ledger MC",
+   "css": "select#ddl4303",
+   "was": ""
+  },
+  {
+   "label": "Skip batch window (if batch < 2)",
+   "css": "select#ddl4308",
+   "was": "No"
+  },
+  {
+   "label": "Send Automatic Whatsapp After Transaction Save",
+   "css": "select#ddl4343",
+   "was": "No"
+  },
+  {
+   "label": "Show Printer List",
+   "css": "select#ddl4106",
+   "was": "No"
+  },
+  {
+   "label": "Sale Future Date Billing",
+   "css": "select#ddl4513",
+   "was": "No"
+  },
+  {
+   "label": "Purchase Future Date Billing",
+   "css": "select#ddl4514",
+   "was": "No"
+  },
+  {
+   "label": "Fetch detail On the basis of Barcode",
+   "css": "select#ddl4336",
+   "was": "No"
+  },
+  {
+   "label": "BarCode Generate",
+   "css": "select#ddl4381",
+   "was": "No"
+  },
+  {
+   "label": "Product Name Duplicate allowed?",
+   "css": "select#ddl1004",
+   "was": "No"
+  },
+  {
+   "label": "Display Agency Column?",
+   "css": "select#ddl1015",
+   "was": "No"
+  },
+  {
+   "label": "Minimum Margin Required in Party wise Special Rate?",
+   "css": "select#ddl2003",
+   "was": "No"
+  },
+  {
+   "label": "Volume Discount 1st?",
+   "css": "select#ddl2004",
+   "was": "No"
+  },
+  {
+   "label": "Volume Discount 1st?",
+   "css": "select#ddl2005",
+   "was": ""
+  },
+  {
+   "label": "Minimum Margin Required in Party Wise Agency Discount?",
+   "css": "select#ddl2006",
+   "was": ""
+  },
+  {
+   "label": "Volume Discount 1st?",
+   "css": "select#ddl2007",
+   "was": ""
+  },
+  {
+   "label": "Product Alias Required?",
+   "css": "select#ddl4180",
+   "was": "No"
+  },
+  {
+   "label": "COMMISSION DISPLAY ON SALE BILL",
+   "css": "select#ddl4190",
+   "was": "No"
+  },
+  {
+   "label": "Marg Pay Integration",
+   "css": "select#ddl4195",
+   "was": "No"
+  },
+  {
+   "label": "Last 5 details showing on right side party wise",
+   "css": "select#ddl4323",
+   "was": "No"
+  },
+  {
+   "label": "Rate Wise GST",
+   "css": "select#ddl4324",
+   "was": "No"
+  },
+  {
+   "label": "COMMISSION WILL APPLY ON PROFIT",
+   "css": "select#ddl4331",
+   "was": "No"
+  },
+  {
+   "label": "Configure Purchase Bill List",
+   "css": "select#ddl4593",
+   "was": "No"
+  }
+ ]
+}

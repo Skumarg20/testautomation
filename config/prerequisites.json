@@ -1,0 +1,129 @@
+{
+  "_readme": [
+    "MargBooks ki wo settings jinke bina kuch test chal hi nahi sakte.",
+    "",
+    "Ye file JAAN-BOOJH KAR JSON hai, code nahi. Naya field jodne ke liye",
+    "yahan ek entry likh do -- Python chhune ki zaroorat nahi. Tester khud",
+    "jod sakta hai, aur agla update use mitayega nahi.",
+    "",
+    "aliases: tester jo bhi likh sakta hai. 'discount one', 'disc 1',",
+    "'discount1' -- teeno se wahi setting milni chahiye.",
+    "",
+    "labels: screen par jo LIKHA dikhta hai. Yahi se setting pehchani jati hai.",
+    "affects: ise band karne se kya badal jayega -- report me yahi dikhta hai."
+  ],
+
+  "configurations": [
+    {
+      "name": "mode_of_payment",
+      "labels": ["Mode of Payment required in Sale", "Mode of Payment Required",
+                 "Mode of Payment"],
+      "aliases": ["mode of payment", "payment mode", "mop", "payment window"],
+      "affects": "A payment window opens when a sale bill is saved",
+      "enable": "Yes"
+    },
+    {
+      "name": "ask_party_retail",
+      "labels": ["Ask Party in Retail Billing"],
+      "aliases": ["ask party", "party in retail", "retail party", "counter party"],
+      "affects": "Whether the counter sale screen asks for a party",
+      "enable": "Ask"
+    },
+    {
+      "name": "ask_bill_discount",
+      "labels": ["Ask Bill Discount", "Bill Discount"],
+      "aliases": ["bill discount", "bill disc", "discount on bill"],
+      "affects": "Whether the Bill Discount field is shown",
+      "enable": "Yes"
+    },
+    {
+      "name": "ask_item_discount",
+      "labels": ["Ask Item Discount on Start Sale", "Ask Item Discount",
+                 "Item Discount"],
+      "aliases": ["item discount", "discount 1", "discount one", "disc 1",
+                  "discount1", "line discount"],
+      "affects": "Whether the item-wise Discount 1 column is shown",
+      "enable": "Yes"
+    },
+    {
+      "name": "second_discount",
+      "labels": ["Second Discount", "Discount 2", "Ask Second Discount"],
+      "aliases": ["discount 2", "discount two", "disc 2", "discount2",
+                  "second discount"],
+      "affects": "Whether the second discount column (Discount 2) is shown",
+      "enable": "Yes"
+    },
+    {
+      "name": "calculation_type",
+      "labels": ["Calculation Type in Sale", "Calculation Type"],
+      "aliases": ["calculation type", "inclusive", "exclusive", "tax on mrp"],
+      "affects": "Whether GST is added on top of the price or already included in it",
+      "kind": "choice",
+      "enable": "Inclusive"
+    },
+    {
+      "name": "negative_stock",
+      "labels": ["Stock Negative Allowed", "Negative Stock"],
+      "aliases": ["negative stock", "stock negative", "minus stock"],
+      "affects": "Whether you can sell more than the stock you have",
+      "enable": "Yes"
+    },
+    {
+      "name": "batch_required",
+      "labels": ["Batch Required", "Ask Batch", "Batch Wise"],
+      "aliases": ["batch", "batch number", "batch wise"],
+      "affects": "Whether the item grid has a Batch column",
+      "enable": "Yes"
+    },
+    {
+      "name": "expiry_required",
+      "labels": ["Expiry Required", "Ask Expiry", "Expiry Date"],
+      "aliases": ["expiry", "expiry date", "exp date"],
+      "affects": "Whether the item grid has an Expiry column",
+      "enable": "Yes"
+    },
+    {
+      "name": "mrp_required",
+      "labels": ["MRP Required", "Ask MRP", "M.R.P"],
+      "aliases": ["mrp", "m.r.p", "maximum retail price"],
+      "affects": "Whether the item grid has an MRP column",
+      "enable": "Yes"
+    },
+    {
+      "name": "barcode_required",
+      "labels": ["Barcode Required", "Ask Barcode", "Barcode"],
+      "aliases": ["barcode", "bar code", "scan code"],
+      "affects": "Whether the item grid has a Barcode column",
+      "enable": "Yes"
+    },
+    {
+      "name": "patient_doctor_mandatory",
+      "labels": ["Mandatory Patient and Doctor", "MandatoryPatientandDoctor",
+                 "Mandatory Patient"],
+      "aliases": ["patient", "doctor", "patient doctor", "patient name"],
+      "affects": "Whether Patient and Doctor must be filled in",
+      "enable": "Yes"
+    },
+    {
+      "name": "mr_mandatory",
+      "labels": ["MR Mandatory", "Mandatory MR", "MR Required"],
+      "aliases": ["mr", "medical representative", "mr name"],
+      "affects": "Whether MR must be filled in",
+      "enable": "Yes"
+    },
+    {
+      "name": "cursor_wait_item",
+      "labels": ["Cursor Wait on Item"],
+      "aliases": ["cursor on item", "cursor wait"],
+      "affects": "Where the cursor stops in the item grid",
+      "enable": "Yes"
+    },
+    {
+      "name": "cursor_additional_ledger",
+      "labels": ["Cursor wait on Additional Ledgers in Billing"],
+      "aliases": ["additional ledger", "freight", "other head"],
+      "affects": "Whether the cursor stops on Freight / Other Head",
+      "enable": "Yes"
+    }
+  ]
+}

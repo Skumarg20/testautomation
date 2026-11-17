@@ -1,0 +1,209 @@
+- id: TC_SRCH_001
+  module: masters
+  title: Item search - naam ka hissa daalne pe item milna chahiye
+  priority: p1
+  tags:
+  - smoke
+  - search
+  expected:
+  - Grid me sirf matching item rahe
+  steps:
+  - action: open_screen
+    target: item
+    note: Menu se item kholo (URL se nahi)
+  - action: assert_text
+    value: Item List
+  - action: fill
+    target: item.search
+    value: Sample
+  - action: sleep
+    value: '2'
+  - action: assert_text
+    value: Sample
+  preconditions:
+  - 'NOTE: poora naam ''Sample Item'' search karne par natija nahi aata, jabki ''Samp''
+    se aata hai. Ye MargBooks ka sambhavit bug hai -- test jaanbujh kar waisa hi rakha
+    hai taaki dikhta rahe.'
+- id: TC_SRCH_002
+  module: masters
+  title: Item search - aadha naam daalne pe bhi match aana chahiye
+  priority: p1
+  tags:
+  - search
+  expected:
+  - Partial text pe bhi result mile
+  steps:
+  - action: open_screen
+    target: item
+    note: Menu se item kholo (URL se nahi)
+  - action: fill
+    target: item.search
+    value: Samp
+  - action: sleep
+    value: 2
+  - action: assert_text
+    value: Sample
+- id: TC_SRCH_003
+  module: masters
+  title: Item search - jo cheez hai hi nahi uspe saaf empty state aaye, crash nahi
+  priority: p2
+  tags:
+  - search
+  - negative
+  expected:
+  - Koi row na dikhe
+  - Error/blank screen na aaye
+  steps:
+  - action: open_screen
+    target: item
+    note: Menu se item kholo (URL se nahi)
+  - action: fill
+    target: item.search
+    value: ZZQQXX_NOT_EXIST_9999
+  - action: sleep
+    value: 2
+  - action: assert_no_text
+    value: Sample Item
+  - action: assert_no_text
+    value: Error
+- id: TC_SRCH_004
+  module: masters
+  title: Item search - special characters se app crash nahi hona chahiye
+  priority: p2
+  tags:
+  - search
+  - negative
+  - security
+  expected:
+  - App normal rahe, koi JS error ya blank page na aaye
+  steps:
+  - action: open_screen
+    target: item
+    note: Menu se item kholo (URL se nahi)
+  - action: fill
+    target: item.search
+    value: '''<>%&*()_+'
+  - action: sleep
+    value: 2
+  - action: assert_text
+    value: Item List
+- id: TC_SRCH_005
+  module: masters
+  title: Item search - clear karne pe list wapas aani chahiye
+  priority: p1
+  tags:
+  - search
+  expected:
+  - Search khali karte hi saare items dobara dikhein
+  steps:
+  - action: open_screen
+    target: item
+    note: Menu se item kholo (URL se nahi)
+  - action: fill
+    target: item.search
+    value: ZZQQXX_NOT_EXIST_9999
+  - action: sleep
+    value: '2'
+  - action: assert_text
+    value: Not Found
+  - action: fill
+    target: item.search
+    value: ''
+  - action: sleep
+    value: '3'
+  - action: assert_text
+    value: Total no of items
+  preconditions:
+  - 'NOTE: poora naam ''Sample Item'' search karne par natija nahi aata, jabki ''Samp''
+    se aata hai. Ye MargBooks ka sambhavit bug hai -- test jaanbujh kar waisa hi rakha
+    hai taaki dikhta rahe.'
+- id: TC_SRCH_006
+  module: masters
+  title: Ledger search - naam se party dhoondhna
+  priority: p1
+  tags:
+  - smoke
+  - search
+  expected:
+  - Matching ledger grid me dikhe
+  steps:
+  - action: open_screen
+    target: party
+    note: Menu se party kholo (URL se nahi)
+  - action: assert_text
+    value: Ledger Master
+  - action: fill
+    target: party.search
+    value: Cash Account
+  - action: sleep
+    value: 2
+  - action: assert_text
+    value: Cash Account
+- id: TC_SRCH_007
+  module: masters
+  title: Ledger search - chhote-bade akshar se farak nahi padna chahiye
+  priority: p2
+  tags:
+  - search
+  expected:
+  - '''cash account'' aur ''CASH ACCOUNT'' dono same result dein'
+  steps:
+  - action: open_screen
+    target: party
+    note: Menu se party kholo (URL se nahi)
+  - action: fill
+    target: party.search
+    value: cash account
+  - action: sleep
+    value: 2
+  - action: assert_text
+    value: Cash
+- id: TC_SRCH_008
+  module: masters
+  title: Search By dropdown badalne pe wahi field search ho
+  priority: p2
+  tags:
+  - search
+  preconditions:
+  - Ledger Master pe 'Search By' dropdown hai (Name/Mobile/GSTIN...)
+  expected:
+  - Mobile pe search karne se naam nahi milna chahiye
+  steps:
+  - action: open_screen
+    target: party
+    note: Menu se party kholo (URL se nahi)
+  - action: select
+    target: party.search_by
+    value: Mobile
+  - action: fill
+    target: party.search
+    value: Cash Account
+  - action: sleep
+    value: '2'
+  - action: assert_text
+    value: Not Found
+    note: Mobile field me naam nahi milna chahiye
+- id: TC_SRCH_009
+  module: masters
+  title: Item search - poora naam daalne pe bhi item milna chahiye
+  priority: p2
+  tags:
+  - search
+  known_issue: true
+  preconditions:
+  - 'KNOWN ISSUE: ''Sample'' se item milta hai par ''Sample Item'' (poora naam) se
+    ''Not Found!'' aata hai. Ye MargBooks ka sambhavit bug hai. Test jaanbujh kar
+    rakha hai taaki theek hone par apne aap pass ho jaye.'
+  expected:
+  - Poora naam daalne pe bhi wahi item milna chahiye
+  steps:
+  - action: open_screen
+    target: item
+    note: Menu se item kholo (URL se nahi)
+  - action: fill
+    target: item.search
+    value: Sample Item
+  - action: sleep
+    value: '2'
+  - action: assert_no_text
+    value: Not Found

@@ -1,0 +1,95 @@
+==========================================================
+  SAHI FOLDER STRUCTURE
+==========================================================
+
+Sab kuch EK folder ke andar rehna chahiye. Koi .py file bahar khuli
+nahi honi chahiye (sirf conftest.py root me).
+
+D:\mb_agent\margbooks-qa-agent\        <-- YAHI project folder hai
+│
+├── ui.bat                 <-- ROZ YAHI CHALANA HAI
+├── doctor.bat  setup.bat  login.bat
+├── unit-tests.bat  browser-tests.bat  pom-check.bat
+├── check-screens.bat  window-check.bat  dump-forms.bat
+├── dump-one-screen.bat  search-probe.bat  grid-probe.bat
+├── test.bat  test-all.bat
+│
+├── .env                   <-- tumhara login (ye git me nahi jata)
+├── .env.example
+├── conftest.py            <-- root me SIRF yahi .py file
+├── pytest.ini  requirements.txt
+├── START-HERE.txt  FOLDER-STRUCTURE.txt  README.md
+│
+├── config\
+│     settings.py            saari settings ek jagah
+│     environments.json      UI se bane environment (git me nahi)
+│
+├── framework\             asli engine
+│     auth.py                login (3 step + company)
+│     browser.py             browser kholna, window fit
+│     base_page.py           click/fill/find
+│     safety.py              delete-guard, popup handling
+│     netguard.py            delete request block
+│     autolearn.py           locator khud seekhna
+│     net_wait.py            API ka intezaar
+│     screens.py             45 screens ka naksha
+│     nav.py                 menu navigation
+│     control_room.py        feature on/off padhna
+│     step_runner.py         YAML step chalana
+│     ... (doctor, dump, probe waghairah)
+│
+├── pages\                 Page Object Model
+│     item_page.py  party_page.py
+│     sale_bill_page.py  transaction_form.py  grid.py
+│
+├── ui\                    tester ka dashboard
+│     server.py  app.html  runner.py
+│     store.py  importer.py  nl.py  envs.py
+│
+├── locators\
+│     margbooks.yaml         har button/field ka pata
+│
+├── testcases\             TEST YAHAN REHTE HAIN
+│     01_auth.yaml
+│     02_masters.yaml
+│     03_sales.yaml
+│     04_inventory_purchase.yaml
+│     05_gst_reports.yaml
+│     06_search.yaml
+│     saved\                 UI se banaye test yahan aate hain
+│
+├── tests\                 framework KHUD theek hai ya nahi
+│     unit\                  browser ke bina (2 second)
+│     browser\               asli Chrome, MargBooks nahi
+│     test_yaml_suite.py     pytest se test chalane wala
+│
+└── artifacts\             har run ka natija
+      run_<date>_<time>\
+         report.html          browser me kholo
+         window.txt           window fit hui ya nahi
+         clicks.log           har click ka hisaab
+         events.log           browser ke andar ke click/key
+         learned_locators.txt jo locator khud seekhe gaye
+         *.png                fail hone pe screenshot
+
+----------------------------------------------------------
+GALAT KYA HAI
+
+Agar mb_agent me auth.py, browser.py, app.html jaisi files
+KHULI padi hain -- wo purani copies hain. Unhe delete kar do.
+Python unhe padhta hi nahi; wo sirf confusion banati hain.
+
+doctor.bat ab ye khud check karta hai aur bata dega.
+
+----------------------------------------------------------
+ZIP THEEK SE KAISE KHOLEIN
+
+1. zip unzip karo
+2. andar jao -- jab tak ui.bat aur framework\ SAAMNE na dikhein
+   (kabhi-kabhi ek aur folder ke andar hota hai)
+3. USI folder ko copy karke D:\mb_agent\ me rakho
+4. purane folder ke saath merge karna ho to: andar ki saari
+   files copy karke purane folder me paste -> Replace
+
+.env, .venv aur testcases\saved\ ko mat hatana --
+usme tumhara login aur testers ke banaye test hain.

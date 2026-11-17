@@ -1,0 +1,379 @@
+{
+  "_file": "menu_sequence",
+  "_readme": [
+    "MargBooks ka menu -- JIS KRAM ME app me dikhta hai.",
+    "",
+    "Ye kram ASLI DUMP se aaya hai (form_item.txt, form_item_create.txt),",
+    "andaze se nahi. Crawler isi kram me chalega -- DOM ka kram nahi dekhega,",
+    "kyunki wo Angular ke render par badalta rehta hai.",
+    "",
+    "Naya menu aaye to yahan ek entry jod do. Code chhune ki zaroorat nahi.",
+    "",
+    "skip: true  ->  jaan-boojh kar chhoda. Har chhode hue item ko WAJAH ke",
+    "saath likhna zaroori hai -- chupchaap chhodna sabse bura hai.",
+    "create: true -> is page par form kholkar uske field bhi nikaale jayenge. List ke element se koi test nahi banta -- jo banta hai wo form ke field se banta hai. Form BINA SAVE KIYE band kar diya jata hai.",
+    "formNames: form me jo naam LIKHA aata hai, agar wo menu ke naam se alag ho. MargBooks Ledger ko form me 'Party' kehta hai, Agency ko 'Company'. Iske bina crawler samajhta hai ki galat form khul gaya aur data chhod deta hai."
+  ],
+  "menus": [
+    {
+      "order": 1,
+      "name": "Dashboard",
+      "id": "menu-0-565546851",
+      "leaf": true
+    },
+    {
+      "order": 2,
+      "name": "Master",
+      "id": "menu495210260",
+      "submenus": [
+        {
+          "order": 1,
+          "name": "Accounts Master",
+          "children": [
+            {
+              "order": 1,
+              "name": "Ledger",
+              "screen": "party",
+              "create": true,
+              "formNames": [
+                "Party"
+              ]
+            },
+            {
+              "order": 2,
+              "name": "Group",
+              "screen": "group",
+              "create": true
+            },
+            {
+              "order": 3,
+              "name": "Sale",
+              "create": true
+            },
+            {
+              "order": 4,
+              "name": "Purchase",
+              "create": true
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "Inventory Master",
+          "children": [
+            {
+              "order": 1,
+              "name": "Item",
+              "screen": "item",
+              "create": true
+            },
+            {
+              "order": 2,
+              "name": "Store",
+              "screen": "store",
+              "create": true
+            },
+            {
+              "order": 3,
+              "name": "Agency",
+              "screen": "agency",
+              "create": true,
+              "formNames": [
+                "Company"
+              ]
+            },
+            {
+              "order": 4,
+              "name": "Salt",
+              "screen": "salt",
+              "create": true
+            },
+            {
+              "order": 5,
+              "name": "HSN/SAC",
+              "screen": "hsn",
+              "create": true
+            },
+            {
+              "order": 6,
+              "name": "Unit",
+              "screen": "unit",
+              "create": true
+            },
+            {
+              "order": 7,
+              "name": "Manufacturer",
+              "create": true
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "Rate Master",
+          "children": [
+            {
+              "order": 1,
+              "name": "Price List",
+              "screen": "price_list",
+              "create": true,
+              "formNames": [
+                "Item"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "Discount Master"
+        },
+        {
+          "order": 5,
+          "name": "Other Master"
+        },
+        {
+          "order": 6,
+          "name": "Opening Balance",
+          "children": [
+            {
+              "order": 1,
+              "name": "Stock",
+              "screen": "opening_stock",
+              "create": true,
+              "formNames": [
+                "Store"
+              ]
+            }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "Currency"
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "name": "Sale",
+      "id": "menu112725066",
+      "submenus": [
+        {
+          "order": 1,
+          "name": "Bill",
+          "create": true
+        },
+        {
+          "order": 2,
+          "name": "Challan",
+          "create": true
+        },
+        {
+          "order": 3,
+          "name": "POS"
+        },
+        {
+          "order": 4,
+          "name": "Quotation",
+          "create": true
+        },
+        {
+          "order": 5,
+          "name": "Counter Sale"
+        },
+        {
+          "order": 6,
+          "name": "Stock Issue",
+          "create": true
+        },
+        {
+          "order": 7,
+          "name": "Order",
+          "create": true
+        },
+        {
+          "order": 8,
+          "name": "Return",
+          "create": true
+        },
+        {
+          "order": 9,
+          "name": "Return Challan",
+          "create": true
+        },
+        {
+          "order": 10,
+          "name": "Draft"
+        },
+        {
+          "order": 11,
+          "name": "Price Diff. C/N",
+          "create": true
+        },
+        {
+          "order": 12,
+          "name": "Price Diff. D/N",
+          "create": true
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "name": "Purchase",
+      "id": "menu146058447",
+      "submenus": [
+        {
+          "order": 1,
+          "name": "Bill",
+          "create": true
+        },
+        {
+          "order": 2,
+          "name": "Challan",
+          "create": true
+        },
+        {
+          "order": 3,
+          "name": "Quotation",
+          "create": true
+        },
+        {
+          "order": 4,
+          "name": "Stock Receive",
+          "create": true
+        },
+        {
+          "order": 5,
+          "name": "Order",
+          "create": true
+        },
+        {
+          "order": 6,
+          "name": "Return",
+          "create": true
+        },
+        {
+          "order": 7,
+          "name": "Return Challan",
+          "create": true
+        },
+        {
+          "order": 8,
+          "name": "Brk/Exp Issue",
+          "create": true
+        },
+        {
+          "order": 9,
+          "name": "Price Diff. C/N",
+          "create": true
+        },
+        {
+          "order": 10,
+          "name": "Price Diff. D/N",
+          "create": true
+        },
+        {
+          "order": 11,
+          "name": "Purchase Draft"
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "name": "Accounting Trans.",
+      "id": "menu982295378",
+      "submenus": [
+        {
+          "order": 1,
+          "name": "Receipt",
+          "screen": "receipt",
+          "create": true
+        },
+        {
+          "order": 2,
+          "name": "Payment",
+          "screen": "payment",
+          "create": true
+        },
+        {
+          "order": 3,
+          "name": "Debit Note",
+          "screen": "debit_note",
+          "create": true
+        },
+        {
+          "order": 4,
+          "name": "Credit Note",
+          "screen": "credit_note",
+          "create": true
+        },
+        {
+          "order": 5,
+          "name": "Journal",
+          "screen": "journal",
+          "create": true
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "name": "Stock Management",
+      "id": "menu408290983025049",
+      "submenus": [
+        {
+          "order": 1,
+          "name": "Stock Transfer",
+          "screen": "stock_transfer",
+          "create": true
+        },
+        {
+          "order": 2,
+          "name": "Physical Stock",
+          "screen": "physical_stock",
+          "create": true
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "name": "Banking",
+      "id": "menu938595313"
+    },
+    {
+      "order": 8,
+      "name": "Report",
+      "id": "menu-8-900135011679959",
+      "leaf": true
+    },
+    {
+      "order": 9,
+      "name": "Other Products",
+      "id": "menu-9-944475617938641",
+      "leaf": true,
+      "skip": true,
+      "skip_reason": "MargBooks ke bahar le jata hai -- alag product ka page"
+    },
+    {
+      "order": 10,
+      "name": "CRM",
+      "id": "menu923850710"
+    },
+    {
+      "order": 11,
+      "name": "Utilities & Tools",
+      "id": "menu-12-409209958",
+      "leaf": true
+    },
+    {
+      "order": 12,
+      "name": "Online Store",
+      "id": "menu-14-944475617938651",
+      "leaf": true,
+      "skip": true,
+      "skip_reason": "Alag product hai, MargBooks ka hissa nahi"
+    }
+  ],
+  "control_room": {
+    "settings_icon": "a#aControlRoomSetting",
+    "card": "Control Room",
+    "note": "Settings page par HAR card ke saamne 'Configure' likha hota hai. Sirf Control Room wale card ka button dabana hai -- pehla mila wahi nahi."
+  }
+}

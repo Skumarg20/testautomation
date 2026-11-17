@@ -1,0 +1,89 @@
+# Sirf PHARMA trade ke test.
+#
+# Ye tab hi chalte hain jab form me patient/doctor/MR/batch hon. General ya
+# wholesale company pe ye apne aap SKIP ho jayenge -- kyunki wahan ye feature
+# hai hi nahi, aur uska fail hona bug nahi hoga.
+
+- id: TC_PHARMA_001
+  module: pharma
+  title: Pharma ke Sale Bill me patient aur doctor ke field hone chahiye
+  priority: p1
+  tags: [pharma, smoke]
+  preconditions:
+    - "Company chemist/pharma trade ki ho. Warna ye test skip hoga."
+  expected:
+    - "Patient Name, Doctor Name -- dono maujood hon"
+  steps:
+    - action: open_screen
+      target: sale_bill
+    - action: expect_trade
+      value: pharma
+      note: "General trade pe ye step skip ka kaaran ban jayega"
+    - action: expect_field
+      value: patient_name
+    - action: expect_field
+      value: doctor_name
+    - action: close_form
+
+- id: TC_PHARMA_002
+  module: pharma
+  title: Pharma ke grid me batch aur expiry ke column hone chahiye
+  priority: p1
+  tags: [pharma, inventory]
+  expected:
+    - "batchName aur expiryDate column dikhein"
+  steps:
+    - action: open_screen
+      target: sale_bill
+    - action: expect_trade
+      value: pharma
+    - action: expect_column
+      value: batchName
+    - action: close_form
+
+- id: TC_PHARMA_003
+  module: pharma
+  title: Batch chun kar item jodna
+  priority: p1
+  tags: [pharma]
+  destructive: true
+  preconditions:
+    - "Kisi item ki ek se zyada batch hon"
+    - "Item aur batch ka naam apne data ke hisaab se badal lo"
+  expected:
+    - "Chuni hui batch grid me dikhe"
+  steps:
+    - action: open_screen
+      target: sale_bill
+    - action: expect_trade
+      value: pharma
+    - action: set_party
+      value: "Cash Account"
+    - action: add_item
+      value: "Sample Item | 2"
+    - action: expect_lines
+      value: "1"
+    - action: close_form
+
+- id: TC_PHARMA_004
+  module: pharma
+  title: Expired batch pe app ko rokna ya chetavni deni chahiye
+  priority: p1
+  tags: [pharma, negative]
+  destructive: true
+  preconditions:
+    - "Ek item ki batch jiski expiry nikal chuki ho"
+    - "Ye pharma ka sabse zaroori niyam hai -- expired dawa nahi bikni chahiye"
+  expected:
+    - "Ya warning aaye, ya batch list me dikhe hi nahi"
+  steps:
+    - action: open_screen
+      target: sale_bill
+    - action: expect_trade
+      value: pharma
+    - action: set_party
+      value: "Cash Account"
+    - action: screenshot
+      value: "expired_batch_check"
+      note: "Jo bhi hua uska saboot"
+    - action: close_form

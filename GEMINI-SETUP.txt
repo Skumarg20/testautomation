@@ -1,0 +1,89 @@
+==========================================================
+  GEMINI (AI) CHALU KARNE KA TAREEKA
+==========================================================
+
+Ye OPTIONAL hai. AI ke bina bhi tool poora chalta hai.
+
+AI KYA KARTA HAI, KYA NAHI
+--------------------------
+KARTA HAI:
+  Saadhi bhasha ki wo line jo niyam-parser samajh na paye, use test steps
+  me badalta hai. Uske banaye step UI me ALAG RANG me dikhte hain, taaki
+  tum dekh kar maano. Chupchaap kuch save nahi hota.
+
+NAHI KARTA:
+  Test CHALANA. Wo poori tarah niyam-aadharit hai.
+  Kyunki test ka matlab hi ye hai ki wo har baar bilkul EK JAISA chale.
+  Agar aaj AI ek step banaye aur kal doosra, to test bekaar ho jate hain.
+
+KYA BHEJA JATA HAI:
+  Sirf page ke field ke naam (jaise "Item Name", "txtMRP").
+  Password, GSTIN, party ka data -- kuch nahi jata.
+
+----------------------------------------------------------
+KEY LENE KE 4 KADAM
+----------------------------------------------------------
+
+1. Browser me kholo:   https://aistudio.google.com/apikey
+
+2. Kisi bhi Google account se sign in karo.
+   (Company wala ho ya personal -- dono chalega)
+
+3. "Create API key" ka button dabao.
+   Project poochhe to koi bhi chun lo, ya naya bana lo.
+
+4. Jo key mile use COPY karo. Wo "AIza" se shuru hoti hai
+   aur lambi hoti hai.
+
+----------------------------------------------------------
+TOOL ME DAALNE KE 3 KADAM
+----------------------------------------------------------
+
+1. ui.bat chalao
+2. upar "Settings" tab -> "AI helper" wala box
+3. key paste karo aur "Save and test" dabao
+
+   Model ka dropdown chhedne ki zaroorat nahi -- "pick automatically"
+   rehne do. Agent Google se poochh kar abhi chal raha model khud chun
+   lega. Model ke naam badalte rehte hain (ek purana naam hat gaya tha
+   aur 404 aane laga tha), isliye code me naam likhe hi nahi jate.
+
+   Alag model chahiye to "Refresh models" dabao -- live list aa jayegi.
+
+Turant jaanch ho jayegi:
+   "Working -- gemini replied."     <- ho gaya
+   "Gemini ki free-tier limit ..."  <- aaj ki limit khatam, kal chalega
+   "AI key galat ya band hai"       <- key dobara copy karo
+
+Key config/ai.json me jati hai. Wo file git me nahi jati.
+
+----------------------------------------------------------
+FREE TIER KI SEEMA
+----------------------------------------------------------
+
+Google roz kuch requests muft deta hai. Hamare kaam me AI sirf tab
+chalta hai jab koi NAYA test likha jaye, aur wo bhi sirf un lines ke
+liye jo niyam-parser na samjhe. Test chalane me AI bilkul nahi lagta.
+
+Isliye 7 tester ke roz ke kaam me limit aam taur par nahi lagti.
+Lag jaye to sirf "naya test likhna" ruk jayega -- purane test chalte
+rahenge, kyunki unme AI hai hi nahi.
+
+----------------------------------------------------------
+BINA AI KE KYA HOTA HAI
+----------------------------------------------------------
+
+Niyam-parser phir bhi chalta hai. Wo ye sab samajhta hai:
+
+    Sale bill kholo
+    Party set karo "Cash Account"
+    Add barcode "80000111 | 2"
+    1 line honi chahiye
+    Bill band karo
+
+    Open item list
+    Type "Sample" in search
+    Should see "Sample"
+
+Jo line wo na samjhe, wo alag se dikha di jaati hai -- wajah aur
+milte-julte naam ke saath. Us par ANDAZA kabhi nahi lagaya jata.

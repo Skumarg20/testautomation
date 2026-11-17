@@ -1,0 +1,76 @@
+- id: TC_PURCH_001
+  module: purchase
+  title: Purchase Bill ka form khulna chahiye
+  priority: p1
+  tags:
+  - smoke
+  expected:
+  - Purchase menu -> Bill ke + se form khule
+  - Party Name field dikhe
+  steps:
+  - action: open_screen
+    target: purchase_bill
+  - action: assert_text
+    value: Party Name
+  - action: close_form
+- id: TC_PURCH_002
+  module: purchase
+  title: Purchase Bill me party aur item jodna
+  priority: p1
+  tags:
+  - smoke
+  destructive: true
+  preconditions:
+  - Kam se kam ek item aur ek supplier ledger ho
+  expected:
+  - Grid me ek line bane
+  steps:
+  - action: open_screen
+    target: purchase_bill
+  - action: set_party
+    value: Cash Account
+  - action: add_item
+    value: Sample Item | 5
+  - action: expect_lines
+    value: '1'
+  - action: close_form
+- id: TC_INV_001
+  module: inventory
+  title: Stock se zyada bechne pe app kuch to kahe
+  priority: p1
+  tags:
+  - inventory
+  - negative
+  destructive: true
+  preconditions:
+  - Control Room me 'Stock Negative Allowed' ki setting is test ka natija badalti
+    hai
+  expected:
+  - Ya warning aaye, ya line na jude -- chupchaap 999999 accept na ho
+  steps:
+  - action: open_screen
+    target: sale_bill
+  - action: set_party
+    value: Cash Account
+  - action: add_item
+    value: Sample Item | 999999
+  - action: screenshot
+    value: negative_stock
+    note: Jo bhi hua uska saboot
+  - action: close_form
+- id: TC_INV_002
+  module: inventory
+  title: Item List me stock column dikhna chahiye
+  priority: p2
+  tags:
+  - inventory
+  expected:
+  - Grid me Stock column ho
+  steps:
+  - action: open_screen
+    target: item
+    note: Menu se item kholo (URL se nahi)
+  - action: assert_text
+    value: Stock
+  - action: assert_text
+    value: M.R.P

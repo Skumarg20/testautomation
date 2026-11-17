@@ -1,0 +1,295 @@
+==========================================================
+  MargBooks QA Agent
+==========================================================
+
+  Naya zip lagane ka tareeka: UPDATE-KAISE-KARE.txt me
+  Gemini (AI) chalu karna: GEMINI-SETUP.txt me
+  Folder ka sahi dhaancha: FOLDER-STRUCTURE.txt me
+  Kuch bhi shak ho to pehle doctor.bat chalao
+
+PEHLI BAAR:
+  1. setup.bat        libraries install (ek hi baar)
+                      NAYE FOLDER ME HAMESHA YAHI PEHLE.
+                      Bina iske baaki koi bat nahi chalegi -- wo saaf
+                      keh dengi ki pehle setup.bat chalao.
+  2. doctor.bat       sab theek hai ya nahi (browser nahi kholta)
+  3. login.bat        sirf login test
+
+ROZ KA KAAM:
+  ui.bat              <-- YAHI MAIN CHEEZ HAI
+                      Browser me khulta hai.
+
+                      Run tests  : module ke hisaab se list, chuno, Run dabao,
+                                   live dekho
+                      Run tab me har test par Edit/Copy hai:
+                                   - tumhara banaya test -> Edit (wahi update hoga)
+                                   - built-in test -> Copy (asli waisa hi rahega,
+                                     kyunki wo agle update me wapas aa jayega)
+                                   Tumhare test par delete (x) bhi hai.
+                      New test   : SAADHI BHASHA me likho, "Convert to steps"
+                                   dabao -- steps khud ban jayenge. Phir edit
+                                   karke Save.
+                      Import     : Excel/CSV se, ya Playwright RECORDING se.
+                                   (npx playwright codegen chala kar khud
+                                   kaam karo, script paste kar do -- steps
+                                   ban jayenge. JS aur Python dono chalti hai.)
+                      History    : kisne kab kya chalaya
+                      Left rail  : MargBooks ka poora sidebar. Kisi bhi item
+                                   pe click -> uske saare test chun jayenge.
+                      What it knows : Agent ne ab tak jitne field dekhe hain,
+                                   unka id/CSS/XPath aur unka aasan naam.
+                                   Ye har run me apne aap badhta hai.
+                      (purana) Menu map : Kisi bhi menu
+                                   item pe click karo -- uske saare test chun
+                                   jayenge aur Run tab khul jayega.
+                                   Saath me dikhta hai ki har menu item ke
+                                   peeche kaunsa page object hai.
+                      Settings   : URL + credentials. UAT, staging, prod --
+                                   jo chaho add karo aur switch karo. Yahin
+                                   "Allow writes" ka switch bhi hai; on karoge
+                                   to koi test skip nahi hoga.
+
+                      Naya test aise likha jata hai (ek line = ek kaam):
+                          Open item list
+                          Type "Sample Item" in search
+                          Wait 2 seconds
+                          Should see "Sample Item"
+
+                      Hinglish bhi chalta hai:
+                          Item list kholo
+                          Search me "Sample Item" likho
+                          "Sample Item" dikhna chahiye
+
+                      Jo line samajh na aaye uspe ANDAZA NAHI lagta -- wo
+                      alag se dikha di jati hai, wajah aur suggestion ke saath.
+
+BAAKI (zaroorat padne par):
+  unit-tests.bat      framework khud theek hai? (2 second, browser nahi)
+  browser-tests.bat   window fit, delete-guard (asli Chrome, MargBooks nahi)
+  pom-check.bat       page objects MargBooks pe chal rahe hain?
+  check-screens.bat   45 screens khulte hain ya nahi (~20 min)
+  window-check.bat    window screen me fit hai ya nahi (15 sec)
+  run-margbooks-crawler.bat
+                      POORA UI crawl. Login karke har menu -> submenu kholta
+                      hai (config/menu_sequence.json ke KRAM me), har page ke
+                      saare element nikaalta hai, aur crawler-output/ me
+                      likhta hai. ~15-20 min.
+                      Beech me ruk jaye to:
+                          run-margbooks-crawler.bat --resume
+
+                      MENU KI LIST AB SIDEBAR SE AATI HAI.
+                      Crawler MargBooks ka sidebar khud padhta hai -- har
+                      group, har page, "+" wale item, aur kitni bhi gehrai
+                      tak. config/menu_sequence.json ab sirf jaankari jodta
+                      hai: kaunsa menu chhodna hai (aur kyun), form ka doosra
+                      naam. Sidebar me jo chhupa hai wo SKIPPED dikhta hai,
+                      wajah ke saath. Config me jo menu sidebar me nahi mila
+                      wo bhi dikhta hai -- chupchaap nahi girta.
+                      Purani tarah sirf config list se chalana ho:
+                          python -m framework.run_crawler --no-discover
+                      Sidebar ka poora tree crawler-output\sidebar.json me.
+
+                      APP KA HOST: login ke baad company jis books<N>
+                      address par khule, crawler wahi use karta hai (.env ka
+                      MARGBOOKS_APP_URL galat ho tab bhi). Pehle ye alag hota
+                      tha to har page ke baad Sign In page aa jata tha.
+
+                      Ek khali crawl (0 page) pichhle achhe crawl ko nahi
+                      mitata -- naya data *.last-failed.json me jata hai.
+
+                      HAR PAGE PAR AB POORI KOSHISH HOTI HAI (collect):
+                        - div/span/icon jinpe click hota hai, <a> bina href,
+                          custom dropdown, iframe aur shadow DOM ke andar ke
+                          element bhi (row me clickables / customSelects).
+                        - ag-Grid ke SAARE column -- side me scroll karke
+                          (gridColumns). Sirf dekhta hai, click nahi karta.
+                        - Har tab aur band accordion ek-ek karke khulta hai;
+                          har element par likha hota hai ki kis tab me mila
+                          ("state": "tab:Tax Info"). Jo tab dusre page par le
+                          jaye, ya jis par Delete/Save/Print jaisa shabd ho,
+                          nahi dabta.
+                        - CREATE FORM me dropdown ke vikalp ek-ek badal kar
+                          dekhte hain ki kaunse naye field aate hain
+                          (conditional). Sirf form ki haalat badalti hai,
+                          kuch save nahi hota, aur dropdown purani value par
+                          wapas rakha jata hai. Header ke dropdown aur 8 se
+                          zyada vikalp wale nahi chhute.
+                        - Der se bane field pakadne ke liye page do baar padha
+                          jata hai.
+                      SHAK WALA PAGE "PASS" NAHI: Sign In page, "not
+                      authorized", ya bahut kam element wala page ab PARTIAL
+                      dikhta hai, flags ke saath (row me quality). Ek baar
+                      dobara koshish bhi hoti hai.
+                      Popup (party lookup, batch window jaise) jo kisi click
+                      ke baad khulte hain, abhi crawl me nahi aate.
+
+                      --enable ke saath bhi click-guard aur delete-request
+                      block poore crawl me ON rehte hain. Sirf "Control Room
+                      ki setting badalna" ka alag flag khulta hai.
+
+                      Chhupe hue field bhi chahiye (jo settings ke peeche
+                      hain, jaise "Item Disc 1"):
+                          run-margbooks-crawler.bat --enable
+
+                      Ye pehle Control Room jata hai aur HAR wo setting ON
+                      karta hai jiske dropdown me "Yes" ka vikalp hai --
+                      phir menu > submenu > page crawl karta hai.
+
+                      Purani haalat backup hoti hai:
+                          restore-settings.bat   se wapas
+
+                      Dhyaan: itni settings ON hone se har jagah mandatory
+                      field aur popup lag sakte hain. Crawl ke baad wapas
+                      kar dena, warna kal koi asli kaam karega aur socha
+                      kuch aur hoga.
+
+                      --enable-known  =  sirf 15 jaani-pehchani settings
+                      (chhota sweep, jab poora nahi chahiye)
+                      Har list ke saath uska CREATE FORM bhi kholta hai
+                      (pehle list ka Create/F2, phir submenu ka "+")
+
+                      Jis menu ke saamne "+" NAHI hai (jaise Group), uska
+                      form list ke Create button se khulta hai -- padosi ka
+                      "+" nahi uthaya jata. Aur form khulne ke baad jaancha
+                      jata hai ki wo SAHI module ka hi hai. -- kyunki
+                      asli kaam form me hota hai, list me nahi. Form BINA
+                      SAVE KIYE band kar diya jata hai.
+
+                      Ye kuch BADALTA nahi -- sirf padhta hai. "Allow writes"
+                      ON ho tab bhi crawl ke liye band kar diya jata hai.
+
+  scan-code.bat       MargBooks ke SOURCE CODE se saare field/route nikaalta
+                      hai (locators/metadata.json). Browser sirf un screens
+                      ko dekh paata hai jahan pahunch sake -- source SAB
+                      jaanta hai. Ek baar chala do.
+  control-room.bat    Control Room ki SAARI settings padh kar yaad rakhta hai.
+                      Ek baar chala do -- phir har test ko pata rehta hai ki
+                      kaunsa feature is company me chaalu hai. Band feature
+                      wale test FAIL nahi, SKIP honge (saaf wajah ke saath).
+  dump-forms.bat      naye form ka naksha (jab UI badle)
+  search-probe.bat    search par screen pe kya hota hai
+  test.bat            pytest se smoke suite
+
+TEST CASES:
+  testcases/01_auth.yaml     char login ke case -- ye bundled hain, kyunki
+                             login ke bina kuch nahi chalta
+  testcases/saved/           tumhare aur testers ke banaye case yahan aate hain
+  testcases/_examples/       namoone (.example) -- tool inhe load nahi karta.
+                             Dekhne ke liye ki test kaise likha jata hai.
+                             Use karna ho to .example hata do aur andar ke
+                             item/barcode/party apne data ke hisaab se badlo.
+
+  Library JAAN-BOOJH KAR khali hai. Mere likhe case mere andaze the
+  ("Sample Item", "80000111") -- tumhare case tumhare asli data par honge.
+
+REPORT:
+  artifacts\run_<date>_<time>\
+     report.html          browser me kholo
+     window.txt           window fit hui ya nahi
+     clicks.log           har click ka hisaab
+     events.log           browser ke andar ke saare click/key
+     delete_attempts.log  delete popup kab-kab aaya
+
+.env ME KYA BHARNA HAI:
+  value ke SAATH comment mat likhna.
+    THEEK :  BROWSER_MAXIMIZE=true
+    GALAT :  BROWSER_MAXIMIZE=true   <- kuch bhi
+
+  MARGBOOKS_LOGIN_URL   https://accounts.margbooks.com
+  MARGBOOKS_APP_URL     login ke baad address bar wala domain
+  MARGBOOKS_USER        email/mobile
+  MARGBOOKS_PASS        password
+  MARGBOOKS_COMPANY     Organisation List me se EXACT naam
+  ALLOW_DESTRUCTIVE     false  <- demo account pe hi true
+
+SAB KUCH UI SE:
+  ui.bat chalao -> "Tools" tab. Jitne kaam pehle batch file se hote the,
+  wahi wahan se chalte hain -- crawler, Control Room, source scan, doctor,
+  login, settings wapas. Output chalte hue dikhta hai aur khatam hone par
+  screen par hi rehta hai.
+
+  Har kaam ke saath likha hai: kya karta hai, kitni der lagegi, aur data
+  badalta hai ya sirf padhta hai. Jo badalte hain wo alag nishaan ke saath
+  dikhte hain.
+
+  Batch files abhi bhi hain -- jise command line pasand ho wo unhe use
+  kare. Dono ek hi kaam karti hain.
+
+LOCATOR DHOONDHNE KA KRAM (upar se neeche):
+  1. locators/margbooks.yaml        haath se likhe -- sabse pakke
+  2. locators_registry.json         agent ne browser me khud dekhe
+                                    (har element ke kai raaste)
+  3. locators/metadata.json         SOURCE CODE se nikaale (scan-code.bat)
+  4. autolearn (niyam)              page pe shabd milaakar
+  5. AI (agar key ho)               SABSE AAKHIR me
+  Upar wale teen har baar bilkul ek jaisa natija dete hain aur muft hain.
+  AI dono nahi deta -- isliye wo pehla nahi, aakhri hai.
+  AI ka bataya locator pehle JAANCHA jata hai, phir registry me jata hai --
+  taaki agli baar AI ki zaroorat hi na pade.
+
+MENU SE HI NAVIGATION:
+  Koi test seedha URL par nahi jata. Sab menu se jate hain, jaise asli user.
+  URL se jaane par page reload hota hai aur menu ka toota rasta kabhi pakda
+  hi nahi jata.
+
+KAUNSA FIELD MILA, KITNE BHAROSE SE:
+  Test save karne se PEHLE dikh jata hai ki har field asli element se juda
+  ya nahi -- 0 se 100% ke saath.
+      90-100%  pakka
+      75-89%   theek
+      75 se kam -> "nahi mila" + milte-julte naam, koi andaza NAHI
+  Sabse khatarnak cheez chupchaap galat field chun lena hai: test chalega,
+  hara dikhega, aur galat cheez jaanchta rahega.
+
+SETTINGS KI LIST CODE ME NAHI HAI:
+  config/prerequisites.json -- naya field jodne ke liye bas ek entry likho.
+  Python chhune ki zaroorat nahi, aur agla update use mitayega nahi.
+  aliases likh do ("discount one", "disc 1") to tester kuch bhi likhe,
+  sahi setting mil jayegi.
+
+LOGS:
+  logs/scanner.log     source scan
+  logs/ai.log          Gemini
+  logs/execution.log   har test ka natija
+  logs/execution_history.json   har test ka aakhri natija -- server band
+                                hone par bhi rehta hai
+
+AGENT KHUD KYA SEEKHTA HAI:
+  - Scan se PEHLE page ke poora load hone ka intezaar karta hai: API shaant
+    ho, loader hat jaye, aur DOM badalna band ho. MargBooks dheere load hota
+    hai -- pehle jaldi scan ho jata tha aur aadhe field chhoot jate the.
+  - Control Room ki settings pehle run me hi padh leta hai. Poora MargBooks
+    unhi par tika hai (Mode of Payment ON ho to save par ek aur window,
+    Ask Bill Discount OFF ho to wo field hi nahi).
+  - Har screen khulte hi uske SAARE field record ho jate hain --
+    id, CSS, XPath, aur paas ka label (jaise "Item Name").
+    Ye locators/catalogue.json me jama hota rehta hai.
+  - Agli baar koi bhi field maanga jaye to catalogue se mil jata hai --
+    chahe uska locator kabhi likha hi na gaya ho.
+  - Isliye jitna zyada test chalega, agent utna hi behtar hota jayega.
+
+AI (optional, Gemini free tier) -- poora tareeka GEMINI-SETUP.txt me:
+  - Sirf test LIKHNE me madad karta hai: jo line niyam-parser na samjhe,
+    use steps me badalta hai. Uske banaye step UI me alag rang me dikhte
+    hain, taaki tester dekh kar maane.
+  - Test CHALANA poori tarah niyam-aadharit hai. AI wahan nahi hai, kyunki
+    test ka matlab hi ye hai ki wo har baar bilkul ek jaisa chale.
+  - Key ab UI se hi daal sakte ho: ui.bat -> Settings -> AI helper
+    (aistudio.google.com/apikey se free key lo)
+
+KHUD SAMBHALNE WALI CHEEZEIN:
+  - Locator na mile to tool KHUD dhoondh kar seekh leta hai aur file me
+    likh deta hai (artifacts me learned_locators.txt bhi banti hai).
+    Bharosa kam ho to jaan-boojh kar nahi seekhta -- galat locator chupke se
+    save hone se behtar hai test fail ho jaye.
+  - Search ke baad fixed sleep nahi -- server ka jawab aane tak rukta hai.
+  - Screen pehle se khuli ho to page dobara load nahi hota.
+  - Control Room me koi feature OFF ho (jaise Mode of Payment) to us test ko
+    FAIL nahi, SKIP likha jata hai -- kyunki app theek hai, setting band hai.
+  - Session tut jaye (logout/timeout) to agla test se pehle dobara login.
+
+SURAKSHA (Allow writes OFF hone par):
+  - data likhne wale test skip ho jate hain
+  - delete/remove ki HTTP request server tak jaati hi nahi
+  - "delete karein?" popup apne aap No dabata hai
+  - har click se pehle jaanch: kahin delete button to nahi

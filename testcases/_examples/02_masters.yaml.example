@@ -1,0 +1,173 @@
+- id: TC_ITEM_001
+  module: masters
+  title: Naya item banana - zaroori fields ke saath save ho jaye
+  priority: p1
+  tags:
+  - smoke
+  destructive: true
+  preconditions:
+  - Item create form Master > Inventory Master > Item > Create/F2 se khulta hai
+  expected:
+  - Item save ho jaye
+  - Item List me naye naam se mil jaye
+  steps:
+  - action: open_screen
+    target: item
+    note: Menu se item kholo (URL se nahi)
+  - action: click
+    target: item.new_btn
+    note: Create/F2
+  - action: sleep
+    value: '2'
+  - action: fill
+    target: item.name
+    value: '{{item_name}}'
+    save_as: created_item
+  - action: fill
+    target: item.mrp
+    value: '250'
+  - action: fill
+    target: item.sale_rate
+    value: '200'
+  - action: click
+    target: item.save_btn
+  - action: sleep
+    value: '3'
+  - action: open_screen
+    target: item
+    note: Menu se item kholo (URL se nahi)
+  - action: fill
+    target: item.search
+    value: '{ctx.created_item}'
+  - action: assert_text
+    value: '{ctx.created_item}'
+- id: TC_ITEM_002
+  module: masters
+  title: Item ka naam khali chhod ke save karne pe rukna chahiye
+  priority: p2
+  tags:
+  - negative
+  destructive: true
+  expected:
+  - Bina naam ke item save na ho
+  steps:
+  - action: open_screen
+    target: item
+    note: Menu se item kholo (URL se nahi)
+  - action: click
+    target: item.new_btn
+  - action: sleep
+    value: '2'
+  - action: fill
+    target: item.mrp
+    value: '100'
+  - action: click
+    target: item.save_btn
+  - action: sleep
+    value: '2'
+  - action: assert_no_text
+    value: saved successfully
+    note: Bina naam ke save nahi hona chahiye
+- id: TC_ITEM_003
+  module: masters
+  title: Item List khulti hai aur uske columns dikhte hain
+  priority: p1
+  tags:
+  - smoke
+  expected:
+  - Description, Stock, M.R.P columns dikhein
+  - Total count dikhe
+  steps:
+  - action: open_screen
+    target: item
+    note: Menu se item kholo (URL se nahi)
+  - action: assert_text
+    value: Item List
+  - action: assert_text
+    value: Description
+  - action: assert_text
+    value: Total no of items
+- id: TC_PARTY_001
+  module: masters
+  title: Nayi party (ledger) banana
+  priority: p1
+  tags:
+  - smoke
+  destructive: true
+  preconditions:
+  - Ledger create form Master > Accounts Master > Ledger > Create/F2 se
+  expected:
+  - Ledger save ho jaye
+  - List me naye naam se mile
+  steps:
+  - action: open_screen
+    target: party
+    note: Menu se party kholo (URL se nahi)
+  - action: click
+    target: party.new_btn
+  - action: sleep
+    value: '2'
+  - action: fill
+    target: party.name
+    value: '{{party_name}}'
+    save_as: created_party
+  - action: click
+    target: party.save_btn
+  - action: sleep
+    value: '3'
+  - action: open_screen
+    target: party
+    note: Menu se party kholo (URL se nahi)
+  - action: fill
+    target: party.search
+    value: '{ctx.created_party}'
+  - action: assert_text
+    value: '{ctx.created_party}'
+- id: TC_PARTY_002
+  module: masters
+  title: Galat GSTIN (14 character) reject hona chahiye
+  priority: p1
+  tags:
+  - negative
+  - gst
+  destructive: true
+  expected:
+  - GSTIN 15 character ka hota hai -- 14 wala save na ho
+  steps:
+  - action: open_screen
+    target: party
+    note: Menu se party kholo (URL se nahi)
+  - action: click
+    target: party.new_btn
+  - action: sleep
+    value: '2'
+  - action: fill
+    target: party.name
+    value: '{{party_name}}'
+  - action: fill
+    target: party.gstin
+    value: '{{invalid_gstin}}'
+  - action: click
+    target: party.save_btn
+  - action: sleep
+    value: '2'
+  - action: assert_no_text
+    value: saved successfully
+- id: TC_PARTY_003
+  module: masters
+  title: Ledger Master khulta hai aur uske columns dikhte hain
+  priority: p1
+  tags:
+  - smoke
+  expected:
+  - Ledger Name, Station, Balance columns dikhein
+  steps:
+  - action: open_screen
+    target: party
+    note: Menu se party kholo (URL se nahi)
+  - action: assert_text
+    value: Ledger Master
+  - action: assert_text
+    value: Ledger Name
+  - action: assert_text
+    value: Total No of Ledgers

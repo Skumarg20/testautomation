@@ -1,0 +1,272 @@
+login:
+  username:
+  - input#userid
+  - input[name="username"]
+  - placeholder=Email address or mobile number
+  submit:
+  - button#SIGNin
+  - exact_text=SIGN IN
+  - button[type="submit"]
+  password:
+  - input[type="password"]
+  - label=Password
+  continue:
+  - exact_text=CONTINUE
+  - role=button:CONTINUE
+  - button[type="submit"]
+  - button#SIGNin
+  back:
+  - exact_text=Back
+  otp:
+  - exact_text=Login With OTP
+  - placeholder=Enter OTP
+  set_pin_link:
+  - exact_text=Set My PIN
+  org_heading:
+  - exact_text=Organisation List
+  org_search:
+  - input[placeholder="Search here.."]
+  - input[type="search"]
+  error_msg:
+  - .invalid-feedback
+  - .error-message
+  - role=alert
+nav:
+  global_search:
+  - input[name="SearchBox"][placeholder="Type to search"]
+  dashboard:
+  - a.menulink:has-text("Dashboard")
+  - a#menu-0-565546851
+  master:
+  - a.dropdown-toggle:has-text("Master")
+  - a#menu495210260
+  sale:
+  - a.dropdown-toggle:has-text("Sale")
+  - a#menu112725066
+  purchase:
+  - a.dropdown-toggle:has-text("Purchase")
+  - a#menu146058447
+  accounting:
+  - a.dropdown-toggle:has-text("Accounting Trans.")
+  - a#menu982295378
+  stock:
+  - a.dropdown-toggle:has-text("Stock Management")
+  - a#menu408290983025049
+  banking:
+  - a.dropdown-toggle:has-text("Banking")
+  - a#menu938595313
+  report:
+  - a.menulink:has-text("Report")
+  - a#menu-8-900135011679959
+  crm:
+  - a.dropdown-toggle:has-text("CRM")
+  - a#menu923850710
+  utilities:
+  - a.menulink:has-text("Utilities & Tools")
+  - a#menu-12-409209958
+  company_header:
+  - a#dropdownMenuLink
+  settings:
+  - a#aControlRoomSetting
+  shortcut:
+  - a#aShortCutSetting
+  history:
+  - a#openRecentHistory
+  profile:
+  - a#dropdownMenuButton
+  - a.pro-pic
+  logout:
+  - a#LogoutOnly
+  - a:has-text("Logout")
+  - exact_text=Logout
+item:
+  heading:
+  - h1.mhead:has-text("Item List")
+  new_btn:
+  - button.blue-btn:has-text("Create/F2")
+  - exact_text=Create/F2
+  search:
+  - input#searchItems
+  search_by:
+  - select#mrgSearchBox
+  store:
+  - select#fromStore
+  total_count:
+  - '*:has-text("Total no of items")'
+  grid:
+  - table
+  first_row:
+  - table tbody tr:first-child
+  row_edit:
+  - button.mksBtn.edit
+  row_delete:
+  - button.mksBtn.del
+  f4_ledger:
+  - button#btnLedger
+  f6_oldrates:
+  - button#btnOldRates
+  f7_subs:
+  - button#btnSubstitute
+  f8_salt:
+  - button#btnSalt
+  f9_company:
+  - button#btnAgency
+  avail_stock:
+  - button#btnStock
+  shortage:
+  - button#btnShortQty
+  name:
+  - input[id^="txtitemname"]
+  - input[id^="txtdescription"]
+  - input[formcontrolname="description"]
+  - input[formcontrolname="itemName"]
+  - nearlabel=Description
+  - nearlabel=Item Name
+  hsn:
+  - input[formcontrolname="hsn"]
+  - nearlabel=HSN/SAC
+  mrp:
+  - input[formcontrolname="mrp"]
+  - input[id^="txtmrp"]
+  - nearlabel=M.R.P
+  - nearlabel=MRP
+  sale_rate:
+  - input[formcontrolname="saleRate"]
+  - input[id^="txtsalerate"]
+  - nearlabel=S.Rate
+  save_btn:
+  - button[id^="btnSave"]
+  - exact_text=Save
+  - button:has-text("Save")
+  success_toast:
+  - .toast-success
+  - .Toastify__toast--success
+  - .alert-success
+  igst:
+  - nearlabel=IGST %
+  - nearlabel=IGST
+  cgst:
+  - nearlabel=CGST %
+  sgst:
+  - nearlabel=SGST %
+  purchase_rate:
+  - nearlabel=Pur. Rate
+  - input[formcontrolname="purchaseRate"]
+  unit:
+  - nearlabel=Unit
+  - select[formcontrolname="unit"]
+party:
+  heading:
+  - h1.mhead:has-text("Ledger Master")
+  new_btn:
+  - button.blue-btn:has-text("Create/F2")
+  - exact_text=Create/F2
+  search:
+  - input#SearchBox
+  search_by:
+  - select#mrgSearchBox
+  total_count:
+  - label:has-text("Total No of Ledgers")
+  grid:
+  - table
+  first_row:
+  - table tbody tr:first-child
+  row_edit:
+  - button.mksBtn.edit
+  f4_ledger:
+  - button#btn-Ledger
+  f8_outstanding:
+  - button#btn-Outstanding
+  name:
+  - input[id^="txtlegername"]
+  - input[formcontrolname="ledgerName"]
+  - nearlabel=Ledger Name
+  - nearlabel=Party Name
+  gstin:
+  - input[formcontrolname="gstin"]
+  - nearlabel=GSTIN
+  state:
+  - nearlabel=State
+  - select[formcontrolname="state"]
+  mobile:
+  - input[formcontrolname="mobile"]
+  - input[id^="txtmobile"]
+  - nearlabel=Mobile
+  save_btn:
+  - button[id^="btnSave"]
+  - exact_text=Save
+  - button:has-text("Save")
+  gstin_error:
+  - .invalid-feedback
+  - .field-error
+  address:
+  - input[formcontrolname="address"]
+  - nearlabel=Address
+sale:
+  party:
+  - input[id^="txtLedgerName"]
+  - label=Party Name
+  bill_no:
+  - input[id^="txtentryNo"]
+  date:
+  - input[id^="txtbillDate"]
+  address:
+  - input[id^="txtpatientaddress"]
+  patient_mobile:
+  - input[id^="txtptmobile"]
+  patient_name:
+  - input[id^="txtptname"]
+  doctor_mobile:
+  - input[id^="txtdrmobile"]
+  doctor_name:
+  - input[id^="txtdrname"]
+  bill_discount:
+  - input[id^="txtbillDiscountPercentage"]
+  product_cell:
+  - input[id^="txt-itemLinkID"]
+  - table tbody tr:first-child td:first-child
+  save_btn:
+  - button[id^="btnSave"]
+  draft_btn:
+  - button[id^="btnDraft"]
+  close_btn:
+  - button[id^="btnEsc"]
+  last_deal:
+  - button#lastDeal
+  success_toast:
+  - .toast-success
+  - .Toastify__toast--success
+  qty_cell:
+  - input[id^="txt-qty"]
+  - table tbody tr:first-child td:nth-child(6)
+  mrp_cell:
+  - input[id^="txt-mrp"]
+  - table tbody tr:first-child td:nth-child(7)
+  amount_cell:
+  - table tbody tr:first-child td:nth-child(8)
+  cgst_value:
+  - xpath=//*[contains(text(),'CGST')]/following::td[1]
+  sgst_value:
+  - xpath=//*[contains(text(),'SGST')]/following::td[1]
+  invoice_value:
+  - xpath=//*[contains(text(),'Invoice Value')]
+report:
+  from_date:
+  - label=From
+  - input[name="fromDate"]
+  to_date:
+  - label=To
+  - input[name="toDate"]
+  generate:
+  - role=button:Generate
+  - role=button:Show
+  grid:
+  - table
+t:
+  party: []
+  profile:
+  - a#dropdownMenuButton
+  save_btn:
+  - button#btnSave27
+  delete: []
+  askpartyinretailbilling: []

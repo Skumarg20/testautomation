@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test Studio – MargBooks no-code automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Kalam:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rail:#141A2E; --rail2:#222A44; --canvas:#F2F4F8; --paper:#FFFFFF; --line:#E1E5EE; --line2:#EEF1F6;
+  --ink:#2A48C9; --ink-d:#1E37A3; --ink-l:#EEF2FF;
+  --ok:#14874A; --ok-l:#E8F6EE; --bad:#D23A3A; --bad-l:#FDEEEE; --warn:#B7791F; --warn-l:#FFF6E2; --ai:#6D45E6; --ai-l:#F3EFFE; --rec:#E5484D;
+  --text:#1B2232; --muted:#667089;
+  --ui:'Manrope','Segoe UI',Roboto,Arial,sans-serif; --mono:'JetBrains Mono',Consolas,monospace; --hand:'Kalam','Segoe Print',cursive;
+  --r:10px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:var(--ui);font-size:14px;line-height:1.45;color:var(--text);background:var(--canvas);display:flex;min-height:100vh}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid #7C96F5;outline-offset:2px}
+[hidden]{display:none!important}
+
+/* rail */
+.rail{width:78px;flex:none;background:var(--rail);display:flex;flex-direction:column;align-items:center;padding:12px 6px;gap:2px;position:sticky;top:0;height:100vh}
+.logo{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,#4F6BF0,#7A4FF0);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px}
+.nav{width:66px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px;border-radius:10px;border:0;background:none;color:#A9B3CC;font-size:11px;font-weight:600;cursor:pointer;position:relative}
+.nav svg{width:21px;height:21px}
+.nav:hover{background:var(--rail2);color:#fff}
+.nav.on{background:var(--rail2);color:#fff}
+.nav.on::before{content:"";position:absolute;left:-6px;top:10px;bottom:10px;width:3px;border-radius:3px;background:#7C96F5}
+.nav.rec svg{color:#FF7A7E}
+.rail .who{margin-top:auto;width:66px}
+.rail .who select{width:100%;background:var(--rail2);border:1px solid #333D5C;color:#fff;border-radius:8px;padding:4px;font-size:11px}
+
+/* page */
+main{flex:1;min-width:0;padding:16px 20px 32px}
+.view{display:none}.view.on{display:block}
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.ph h1{font-size:20px;font-weight:800;margin:0;letter-spacing:-.01em}
+.ph p{margin:0;color:var(--muted);font-size:13px}
+.ph .sp{flex:1}
+.env{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:12px;color:var(--muted)}
+.env i{width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.card h2{font-size:14px;font-weight:700;margin:0 0 8px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.grow{flex:1}
+.btn{border:1px solid #CDD4E2;background:#fff;border-radius:8px;padding:6px 12px;cursor:pointer;font-weight:600;font-size:13px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.btn:hover{background:#F6F8FC}
+.btn.p{background:var(--ink);border-color:var(--ink);color:#fff}.btn.p:hover{background:var(--ink-d)}
+.btn.g{background:var(--ok);border-color:var(--ok);color:#fff}.btn.g:hover{background:#0F6E3B}
+.btn.r{background:var(--rec);border-color:var(--rec);color:#fff}.btn.r:hover{background:#C93338}
+.btn.a{background:var(--ai);border-color:var(--ai);color:#fff}.btn.a:hover{background:#5935C9}
+.btn.q{border-color:transparent;background:transparent;color:var(--ink);padding:4px 8px}
+.btn.lg{padding:10px 18px;font-size:14px;border-radius:10px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.inp{border:1px solid #CDD4E2;border-radius:8px;padding:6px 10px;background:#fff;width:100%;font-size:13.5px}
+label.f{display:block;font-weight:700;font-size:12px;color:#3D4660;margin:10px 0 4px}
+.hint{font-size:12px;color:var(--muted)}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;border:1px solid transparent;white-space:nowrap}
+.t-ok{color:var(--ok);background:var(--ok-l);border-color:#BFE3CD}.t-bad{color:var(--bad);background:var(--bad-l);border-color:#F3C6C6}
+.t-warn{color:var(--warn);background:var(--warn-l);border-color:#EED7A2}.t-ai{color:var(--ai);background:var(--ai-l);border-color:#DCD0FA}
+.t-mute{color:#55607A;background:#F1F3F8;border-color:#DEE3EC}.t-ink{color:var(--ink);background:var(--ink-l);border-color:#D3DCFB}
+table.tb{width:100%;border-collapse:collapse;font-size:13px}
+.tb th{text-align:left;font-weight:700;font-size:12px;color:#55607A;border-bottom:1px solid var(--line);padding:7px 8px;background:#FAFBFD}
+.tb td{border-bottom:1px solid var(--line2);padding:7px 8px;vertical-align:top}
+.tb tr.click{cursor:pointer}.tb tr.click:hover td{background:#F7F9FD}
+code,.mono{font-family:var(--mono);font-size:12px}
+#toast{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:6px;z-index:90}
+.toast{background:#141A2E;color:#fff;border-radius:9px;padding:9px 12px;max-width:420px;font-size:13px;box-shadow:0 8px 24px rgba(15,25,45,.25)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
+.kpi b{font-size:20px;font-weight:800;display:block;letter-spacing:-.01em}
+.kpi span{color:var(--muted);font-size:12px}
+
+/* home */
+.starts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.start{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;text-align:left;display:flex;gap:12px;align-items:flex-start}
+.start:hover{border-color:#AFC0F5;box-shadow:0 2px 0 #E4EAFD}
+.start .ic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:none}
+.start .ic svg{width:19px;height:19px}
+.start b{display:block;font-size:14px}
+.start span{color:var(--muted);font-size:12px}
+.start.hero{border-color:#F6B9BB;background:linear-gradient(180deg,#FFF7F7,#fff)}
+
+/* notebook editor */
+.ed-top{display:grid;grid-template-columns:minmax(0,2fr) 180px auto;gap:8px;align-items:end;margin-bottom:10px}
+.ed-wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:12px;align-items:start}
+.copy{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.copy-head{display:flex;justify-content:space-between;padding:7px 12px 6px 70px;border-bottom:2px solid #F4C7C7;font-size:12px;color:var(--muted)}
+.sheet{position:relative;display:grid;grid-template-columns:58px minmax(0,1fr) 200px}
+.sheet::before{content:"";position:absolute;left:58px;top:0;bottom:0;border-left:2px solid #EFA9A9}
+.marks{padding:8px 0}
+.mark{height:30px;display:flex;align-items:center;justify-content:flex-end;gap:5px;padding-right:8px;font-family:var(--hand);font-size:20px;line-height:1}
+.mark .n{font-family:var(--ui);font-size:11px;color:#A6AEC0}
+.mark .ok{color:var(--ok)}.mark .bad{color:var(--bad)}.mark .ai{color:var(--ai);font-family:var(--ui);font-size:10px;font-weight:800}.mark .note{color:#A6AEC0;font-family:var(--ui);font-size:13px}
+.lines{position:relative}
+#src{display:block;width:100%;border:0;resize:none;outline:none;padding:8px 10px 8px 12px;font-family:var(--ui);font-size:15px;line-height:30px;color:#1E3A9A;
+  background:repeating-linear-gradient(to bottom,transparent 0,transparent 29px,#E3EAF5 29px,#E3EAF5 30px);background-position:0 8px;min-height:380px;overflow:hidden;white-space:pre}
+.cur-line{position:absolute;left:0;right:0;height:30px;background:rgba(42,72,201,.06);pointer-events:none}
+.notes{padding:8px 0 8px 8px;border-left:1px dashed var(--line)}
+.note-l{height:30px;display:flex;align-items:center;font-size:12px;color:#647A6C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.note-l.bad{color:var(--bad);font-weight:600}.note-l.ai{color:var(--ai)}
+.ed-bar{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.understood{border-left:3px solid var(--ok);padding:8px 10px;background:var(--ok-l);border-radius:6px;font-size:13px}
+.understood.bad{border-color:var(--bad);background:var(--bad-l)}.understood.ai{border-color:var(--ai);background:var(--ai-l)}
+.understood dl{display:grid;grid-template-columns:62px 1fr;gap:2px 8px;margin:6px 0 0}
+.understood dt{color:var(--muted)}.understood dd{margin:0;word-break:break-word}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{border:1px solid #D3DCFB;background:var(--ink-l);color:var(--ink);border-radius:999px;padding:2px 9px;cursor:pointer;font-size:12px;font-weight:600}
+.chip:hover{background:#E0E7FE}
+.chip.fix{border-color:#F3C6C6;background:#fff;color:var(--bad)}
+.side .card+.card{margin-top:10px}
+
+/* step editor */
+.w-head{display:grid;grid-template-columns:minmax(0,1.6fr) 140px 150px 230px auto;gap:10px;align-items:end;margin-bottom:12px;padding:10px 14px 12px}
+.w-head label.f{margin-top:0}
+.w-grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:12px;align-items:start}
+.steps-head{display:flex;align-items:baseline;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.slist{list-style:none;margin:0;padding:0}
+.srow{display:grid;grid-template-columns:22px 24px minmax(0,1fr) auto;gap:8px;align-items:start;padding:7px 12px 8px 10px;border-bottom:1px solid var(--line2);border-left:3px solid transparent;position:relative}
+.srow.ok{border-left-color:#8DD3AA}
+.srow.bad{background:#FFF5F5;border-left-color:var(--bad)}
+.sn{color:#A6AEC0;font-size:11px;padding-top:8px;text-align:right}
+.sst{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:5px;background:#EEF1F6;color:#98A2B3}
+.ok .sst{background:var(--ok);color:#fff}.bad .sst{background:var(--bad);color:#fff}
+.sin{width:100%;border:1px solid transparent;border-radius:7px;padding:5px 8px;font-size:15px;font-weight:600;color:#1E2A55;background:transparent}
+.bad .sin{color:#B42323;text-decoration:underline wavy #F19A9A;text-underline-offset:4px}
+.sin:hover{border-color:var(--line)}
+.sin:focus{outline:none;border-color:#9DB0F3;background:#fff;box-shadow:0 0 0 3px #E8EDFD;text-decoration:none}
+.smeta{font-size:12.5px;color:#55607A;padding:3px 8px 0;display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;min-height:6px}
+.smeta code{background:#F1F4FA;border:1px solid #E3E8F2;border-radius:4px;padding:0 5px;color:var(--ink);font-size:11.5px}
+.smeta .val{background:#FFF4D6;border-radius:4px;padding:0 6px;color:#7A5300;font-weight:700}
+.smeta .crumb{color:#3D4660;font-weight:600}
+.serr{color:var(--bad);font-weight:700;width:100%}
+.serr span{color:#8D4A4A;font-weight:500}
+.aisug{width:100%;margin-top:3px;background:var(--ai-l);border:1px solid #DCD0FA;border-radius:8px;padding:5px 8px;color:#4B2BB0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.aisug.pend{color:#7C6BB8}
+.aisug.no{background:#F6F4FB;color:#6B6290}
+.locsug{width:100%;margin-top:3px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.sact{display:flex;gap:1px;opacity:0;padding-top:5px}
+.srow:hover .sact,.srow:focus-within .sact{opacity:1}
+.ib{border:0;background:none;cursor:pointer;color:#8A93A8;border-radius:6px;width:24px;height:24px}
+.ib:hover{background:#EEF1F6;color:var(--text)}.ib.del:hover{color:var(--bad)}
+.btn.sm{padding:2px 9px;font-size:12px;border-radius:6px}
+.ac{position:absolute;left:62px;right:84px;top:42px;z-index:20;background:#fff;border:1px solid #D3DCFB;border-radius:8px;box-shadow:0 10px 24px rgba(20,30,60,.14);padding:4px}
+.ac div{padding:5px 8px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;color:#33405F}
+.ac div.on,.ac div:hover{background:var(--ink-l);color:var(--ink)}
+.ac div small{color:var(--muted);font-weight:500;margin-left:6px}
+.addstep{display:block;width:100%;text-align:left;border:0;background:none;padding:9px 14px 9px 66px;color:var(--ink);font-weight:700;cursor:pointer;border-bottom:1px solid var(--line)}
+.addstep:hover{background:#F7F9FD}
+.steps-foot{display:flex;gap:8px;align-items:center;padding:10px 14px;flex-wrap:wrap}
+.el-scr{font-weight:800;font-size:12px;margin:10px 0 3px;color:#3D4660}
+.el-scr:first-child{margin-top:0}
+.el-row{display:flex;justify-content:space-between;gap:6px;font-size:12.5px;padding:4px 0;border-bottom:1px dashed var(--line2)}
+.el-row code{color:var(--ink);font-size:11px}
+.el-row .st-n{color:var(--muted);font-size:11px;white-space:nowrap}
+.el-miss{color:var(--bad);font-weight:700}
+
+/* free-text writer */
+.wr-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:12px;align-items:start}
+.ted{display:grid;grid-template-columns:46px minmax(0,1fr)}
+.tgut{background:#FAFBFD;border-right:1px solid var(--line);padding:10px 0;font-size:11px;color:#A6AEC0;user-select:none}
+.tgut div{height:28px;display:flex;align-items:center;justify-content:flex-end;gap:5px;padding-right:7px}
+.tgut i{font-style:normal;font-weight:800;font-size:12px}
+.tgut .ok i{color:var(--ok)}.tgut .bad i{color:var(--bad)}.tgut .bad{color:var(--bad)}
+.tarea{position:relative;overflow-x:auto}
+.tbands{position:absolute;left:0;right:0;top:10px;pointer-events:none}
+.tbands div{height:28px;border-left:3px solid transparent}
+.tbands .bad{background:#FDECEC;border-left-color:var(--bad)}
+.tbands .cur{background:#EEF2FF}.tbands .bad.cur{background:#FBDCDC}
+#tsrc{position:relative;display:block;width:100%;border:0;outline:none;resize:none;background:transparent;padding:10px 12px;font-family:var(--mono);font-size:13.5px;line-height:28px;color:#1E2A55;white-space:pre;overflow:hidden;min-height:244px}
+.ins{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:8px 12px;border-top:1px solid var(--line)}
+.check-body{max-height:560px;overflow:auto}
+.ck{padding:7px 12px 8px;border-bottom:1px solid var(--line2);border-left:3px solid transparent;cursor:pointer}
+.ck.ok{border-left-color:#8DD3AA}.ck.bad{background:#FFF5F5;border-left-color:var(--bad)}.ck.cur{box-shadow:inset 0 0 0 2px #C9D5FB}
+.ckh{display:flex;gap:8px;align-items:center}
+.ckh .sst{margin-top:0;width:18px;height:18px;font-size:10px;flex:none}
+.ckh b{font-family:var(--mono);font-size:12.5px;font-weight:500;color:#1E2A55;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ckn{color:#A6AEC0;font-size:11px;width:16px;text-align:right;flex:none}
+.ck .smeta{padding-left:50px}
+.ck.ok .sst{background:var(--ok);color:#fff}.ck.bad .sst{background:var(--bad);color:#fff}
+#writeSlot #pipe{margin-top:14px}
+.stalebox{background:var(--warn-l);border:1px solid #EED7A2;border-radius:8px;padding:7px 10px;font-size:12.5px;color:#6B4E00;display:flex;gap:8px;align-items:center;margin-bottom:8px}
+
+/* record */
+.stepper{display:flex;gap:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px;margin-bottom:12px}
+.st{flex:1;display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;color:var(--muted);font-weight:700;font-size:13px}
+.st i{width:22px;height:22px;border-radius:50%;border:2px solid #CBD2E1;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:11px}
+.st.now{background:var(--ink-l);color:var(--ink)}.st.now i{border-color:var(--ink);background:var(--ink);color:#fff}
+.st.done{color:var(--ok)}.st.done i{border-color:var(--ok);background:var(--ok);color:#fff}
+.rec-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:12px;align-items:start}
+.status{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:#F7F8FC;border:1px solid var(--line)}
+.status .dot{width:12px;height:12px;border-radius:50%;background:#C3CAD9;flex:none}
+.status.live{background:#FFF4F4;border-color:#F6C3C5}.status.live .dot{background:var(--rec);animation:pulse 1.2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.status b{display:block;font-size:14px}
+.feed{list-style:none;margin:10px 0 0;padding:0;max-height:300px;overflow:auto}
+.feed li{display:grid;grid-template-columns:20px 1fr auto;gap:6px;padding:5px 2px;border-bottom:1px solid var(--line2);font-size:13px}
+.feed .k{color:var(--muted);font-size:11px}
+.code{background:#0F1424;border-radius:12px;overflow:hidden;border:1px solid #0F1424}
+.code-head{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#161D33;color:#C9D1E8;font-size:12px}
+.code-head b{color:#fff;font-family:var(--mono);font-weight:500}
+.code-body{display:grid;grid-template-columns:40px minmax(0,1fr);max-height:480px;overflow:auto}
+.gut{padding:10px 6px;text-align:right;color:#4E5878;font-family:var(--mono);font-size:12px;line-height:20px;user-select:none}
+.gut div.flag{color:#FFB020;font-weight:700}.gut div.fixed{color:#38C27A}
+#code{border:0;outline:none;resize:none;background:transparent;color:#DCE3F7;font-family:var(--mono);font-size:12px;line-height:20px;padding:10px;white-space:pre;overflow-x:auto;overflow-y:hidden;min-height:300px;width:100%}
+.find{border:1px solid var(--line);border-radius:10px;padding:10px;margin-top:8px;background:#fff}
+.find.applied{opacity:.65;background:#F7FBF8}
+.find .hd{display:flex;gap:6px;align-items:center;font-weight:700;font-size:13px}
+.diff{font-family:var(--mono);font-size:11.5px;margin:6px 0;border-radius:6px;overflow:hidden;border:1px solid var(--line2)}
+.diff div{padding:2px 8px;white-space:pre-wrap;word-break:break-all}
+.diff .m{background:#FDECEC;color:#8D2323}.diff .p{background:#E8F6EE;color:#155C36}
+.meter{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.rsteps{list-style:none;margin:8px 0 0;padding:0;max-height:300px;overflow:auto}
+.rsteps li{display:grid;grid-template-columns:18px 1fr auto;gap:6px;padding:5px 2px;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:11.5px}
+.rsteps li.ok .i{color:var(--ok)}.rsteps li.bad .i{color:var(--bad)}.rsteps li.now{background:var(--ink-l)}
+.errbox{border:1px solid #F3C6C6;background:var(--bad-l);border-radius:10px;padding:10px;margin-top:10px;font-size:13px}
+.errbox pre{margin:6px 0 0;font-family:var(--mono);font-size:11.5px;white-space:pre-wrap;color:#8D2323}
+.savebox{border:1px solid #BFE3CD;background:linear-gradient(180deg,#F3FBF6,#fff);border-radius:12px;padding:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+
+/* run */
+.mods{display:flex;flex-wrap:wrap;gap:6px}
+.mod{display:inline-flex;align-items:center;gap:6px;border:1px solid #CDD4E2;background:#fff;border-radius:999px;padding:5px 12px;font-weight:700;font-size:13px;cursor:pointer}
+.mod b{font-size:11px;color:var(--muted);background:#F1F3F8;border-radius:99px;padding:0 6px}
+.mod:hover{border-color:#AFC0F5}
+.mod.on{background:var(--ink);border-color:var(--ink);color:#fff}.mod.on b{background:#ffffff33;color:#fff}
+.mod:disabled{opacity:.45;cursor:not-allowed}
+.tc-empty{border:1px dashed #CDD4E2;border-radius:10px;padding:16px;text-align:center;color:var(--muted);margin-top:10px}
+.run-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:12px;align-items:start}
+.tc{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:#fff;cursor:pointer;margin-bottom:6px}
+.tc input{width:16px;height:16px;margin-top:2px;accent-color:var(--ok)}
+.tc b{display:block;font-size:13px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.opt{display:flex;gap:6px;align-items:flex-start;font-size:13px}
+.opt input{margin-top:3px;accent-color:var(--ink)}
+.prog{height:6px;background:#E7EBF3;border-radius:99px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--ok);transition:width .2s}
+.screen{border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#F6F8FB;margin-top:10px}
+.screen .bar{height:22px;background:#2A6E6D;display:flex;align-items:center;gap:5px;padding:0 8px;color:#fff;font-size:11px}
+.screen .bar i{width:7px;height:7px;border-radius:50%;background:#ffffff70;display:inline-block}
+.screen .body{height:130px;position:relative;padding:10px 12px;font-size:12px;color:#445}
+.screen .recl{position:absolute;right:10px;top:6px;color:var(--rec);font-weight:800;font-size:11px}
+.fake{display:grid;grid-template-columns:80px 1fr 64px 1fr;gap:6px 8px;max-width:480px;margin-top:6px}
+.fake span{background:#fff;border:1px solid #CBD5E1;border-radius:3px;height:18px}
+.fake em{font-style:normal;color:#475569;font-size:11px}
+.steps{list-style:none;margin:8px 0 0;padding:0;max-height:260px;overflow:auto}
+.steps li{display:grid;grid-template-columns:20px 1fr auto;gap:6px;padding:5px 2px;border-bottom:1px solid var(--line2);font-size:13px}
+.steps li.ok .ic{color:var(--ok)}.steps li.bad .ic{color:var(--bad)}.steps li.now{background:var(--ink-l)}
+.fail{border:1px solid #F3C6C6;background:var(--bad-l);border-radius:10px;padding:12px;margin-top:12px}
+.fail h3{margin:0 0 6px;color:var(--bad);font-size:14px}
+
+/* report drawer */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(640px,96vw);background:#fff;box-shadow:-10px 0 30px rgba(15,25,45,.2);z-index:60;display:flex;flex-direction:column}
+.drawer header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+.drawer .in{padding:12px 16px;overflow:auto}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.thumb{border:1px solid var(--line);border-radius:6px;height:56px;background:linear-gradient(#2A6E6D 0 9px,#F6F8FB 9px);font-size:10.5px;padding:12px 5px 3px;color:#445;overflow:hidden}
+.thumb.badt{outline:2px solid var(--bad)}
+.files{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.file{border:1px solid var(--line);border-radius:8px;padding:8px;font-size:12.5px}
+.file b{display:block}
+
+/* learn */
+.mem-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:12px}
+.walk{list-style:none;margin:6px 0 8px;padding:0;counter-reset:w}
+.walk li{counter-increment:w;display:grid;grid-template-columns:24px 1fr auto;gap:6px;align-items:center;padding:4px 0;font-size:13px}
+.walk li::before{content:counter(w);width:20px;height:20px;border-radius:50%;background:#E8ECF4;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.walk li.done::before{content:"✓";background:var(--ok);color:#fff}.walk li.doing::before{background:var(--ink);color:#fff}
+.log{background:#0F1424;color:#BFC8E0;border-radius:8px;padding:8px;font-family:var(--mono);font-size:11.5px;height:110px;overflow:auto;white-space:pre-wrap}
+.warnbox{background:var(--warn-l);border:1px solid #EED7A2;border-radius:8px;padding:8px 10px;font-size:12.5px;color:#6B4E00}
+.stab{display:inline-block;width:48px;height:6px;border-radius:9px;background:#E7EBF3;overflow:hidden;vertical-align:middle;margin-right:5px}
+.stab i{display:block;height:100%}
+.set-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pw{position:relative}.pw .btn{position:absolute;right:4px;top:3px}
+.modal-bg{position:fixed;inset:0;background:rgba(15,25,45,.45);display:flex;align-items:center;justify-content:center;z-index:80}
+.modal{background:#fff;border-radius:12px;padding:16px;width:min(620px,94vw);max-height:88vh;overflow:auto}
+.modal h3{margin:0 0 8px;font-size:16px}
+pre.cv{background:#0F1424;color:#DCE3F7;border-radius:8px;padding:10px;overflow:auto;font-family:var(--mono);font-size:11.5px;line-height:1.5;max-height:340px}
+
+@media (max-width:1150px){.wr-grid,.w-grid,.w-head{grid-template-columns:1fr}.ed-wrap,.rec-grid,.run-grid,.mem-grid,.set-grid{grid-template-columns:1fr}.starts,.kpis{grid-template-columns:1fr 1fr}.sheet{grid-template-columns:52px minmax(0,1fr)}.notes{display:none}}
+@media (max-width:640px){body{flex-direction:column}.rail{flex-direction:row;width:auto;height:auto;position:static;overflow:auto}.rail .who,.logo{display:none}.starts,.kpis{grid-template-columns:1fr}.stepper{flex-wrap:wrap}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav class="rail" aria-label="Main">
+  <div class="logo" title="Test Studio">TS</div>
+  <button class="nav on" data-v="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 11l9-7 9 7v9H5v-9"/></svg>Home</button>
+  <button class="nav rec" data-v="record"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>Record</button>
+  <button class="nav" data-v="write"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg>Write</button>
+  <button class="nav" data-v="run"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M7 4l13 8-13 8z"/></svg>Run</button>
+  <button class="nav" data-v="report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 3h9l4 4v14H6z"/><path d="M9 13l2 2 4-4"/></svg>Reports</button>
+  <button class="nav" data-v="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3a6 6 0 00-6 6c0 2 1 3 2 4v3h8v-3c1-1 2-2 2-4a6 6 0 00-6-6z"/><path d="M9 20h6"/></svg>Learn app</button>
+  <button class="nav" data-v="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Settings</button>
+  <div class="who"><select id="who" aria-label="You are"></select></div>
+</nav>
+
+<main>
+<!-- HOME -->
+<section class="view on" id="v-home">
+  <div class="ph"><div><h1 id="hello">Hello</h1><p>Write or record a test without coding. Every line is checked as you type.</p></div><span class="sp"></span><span class="env" id="envPill"><i></i></span></div>
+  <div class="starts">
+    <button class="start hero" data-go="record"><span class="ic" style="background:#FFE8E9;color:var(--rec)"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg></span><span><b>Record automation case</b><span>Test the app by hand; the script writes itself</span></span></button>
+    <button class="start" data-go="write"><span class="ic" style="background:var(--ink-l);color:var(--ink)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></span><span><b>Write in plain English</b><span>One line per step, ✓ or ✗ as you type</span></span></button>
+    <button class="start" data-go="run"><span class="ic" style="background:var(--ok-l);color:var(--ok)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span><span><b>Run tests</b><span>Video, screenshots and report included</span></span></button>
+    <button class="start" data-go="report"><span class="ic" style="background:var(--warn-l);color:var(--warn)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l4 4v14H6z"/></svg></span><span><b>See reports</b><span>What passed, what failed and why</span></span></button>
+  </div>
+  <div class="kpis" id="kpis"></div>
+  <div class="card"><div class="row"><div class="grow"><h2 style="margin:0">App memory</h2><span class="hint" id="memLine"></span></div><button class="btn" data-go="learn">Learn the app again</button></div></div>
+</section>
+
+<!-- RECORD -->
+<section class="view" id="v-record">
+  <div class="ph"><div><h1>Record automation case</h1><p>Enter the start URL, click Record, test the screen by hand in the window that opens, then click Stop. The script appears here.</p></div><span class="sp"></span><span class="hint" id="recTok"></span></div>
+  <div id="recSlot">
+    <div id="pipe">
+      <div class="stepper" id="stepper"></div>
+      <div class="rec-grid" id="pipeGrid">
+        <div><div class="card" id="recPanel"></div></div>
+        <div>
+          <div class="code" id="codeBox" hidden>
+            <div class="code-head"><b id="codeFile">recorded.spec.ts</b><span id="codeInfo"></span><span class="grow"></span><button class="btn q" id="btnCopy" style="color:#C9D1E8">Copy</button></div>
+            <div class="code-body"><div class="gut" id="gut"></div><textarea id="code" spellcheck="false" aria-label="Script"></textarea></div>
+          </div>
+          <div class="card" id="codeEmpty"><h2>Script will appear here</h2><p class="hint" style="margin:0">Playwright codegen watches every click and key press and writes the script. You can edit it before verifying.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITE -->
+<section class="view" id="v-write">
+  <div class="ph"><div><h1>Write a test case</h1><p>Write the case in your own words – one step per line, values in "quotes". Every line is checked as you type.</p></div><span class="sp"></span><span id="wTok"></span></div>
+  <div class="card w-head">
+    <div><label class="f" for="tName">Test case name</label><input id="tName" class="inp" placeholder="e.g. Sale bill with discount"></div>
+    <div><label class="f" for="tMod">Module</label><select id="tMod" class="inp"></select></div>
+    <div><label class="f">Written by</label><div class="inp" id="tAuthor" style="background:#F6F8FB"></div></div>
+    <div><label class="f" for="tPick">Open</label><select id="tPick" class="inp"></select></div>
+    <button class="btn" id="btnNew">+ New case</button>
+  </div>
+  <div class="wr-grid">
+    <div class="card" style="padding:0">
+      <div class="steps-head"><b>Test steps</b><span class="hint">One step per line · values in "quotes"</span><span class="grow"></span><span id="score"></span></div>
+      <div class="ted"><div class="tgut" id="tgut" aria-hidden="true"></div><div class="tarea"><div class="tbands" id="tbands"></div><textarea id="tsrc" spellcheck="false" aria-label="Test steps, one per line"></textarea></div></div>
+      <div class="ins"><span class="hint">Insert:</span><span id="palette" class="chips"></span></div>
+      <div class="steps-foot"><span class="tag t-ai" id="aiUse"></span><span class="grow"></span><button class="btn" id="btnSave">Save draft</button><button class="btn p lg" id="btnGen">Generate code</button></div>
+    </div>
+    <div class="card" style="padding:0">
+      <div class="steps-head"><b>Live check</b><span class="hint">What each line maps to in the app</span></div>
+      <div class="check-body" id="tcheck"></div>
+    </div>
+  </div>
+  <div id="writeSlot"></div>
+</section>
+
+<!-- RUN -->
+<section class="view" id="v-run">
+  <div class="ph"><div><h1>Run tests</h1><p>Pick tests and press Run. Each step gets a screenshot; the whole run is recorded on video.</p></div><span class="sp"></span><span class="env" id="envPill2"><i></i></span></div>
+  <div class="run-grid">
+    <div class="card">
+      <h2>Which module do you want to run?</h2>
+      <div class="mods" id="modPick" role="radiogroup" aria-label="Module"></div>
+      <div class="row" id="tcHead" hidden style="margin:12px 0 6px"><h2 class="grow" style="margin:0" id="tcTitle"></h2><label class="opt"><input type="checkbox" id="tcAll"> Select all</label></div>
+      <div id="tcList"></div>
+      <h2 style="margin-top:12px">Include</h2>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" checked id="oVideo"> Video recording</label>
+        <label class="opt"><input type="checkbox" checked id="oShot"> Screenshot per step</label>
+        <label class="opt"><input type="checkbox" checked id="oTrace"> Bug pack (trace + replay file)</label>
+        <label class="opt"><input type="checkbox" id="oStop"> Stop at first failure</label>
+      </div>
+      <div class="row" style="margin-top:12px"><button class="btn g lg" id="btnRun">▶ Run</button></div>
+    </div>
+    <div class="card">
+      <div class="row"><h2 class="grow" id="runTitle" style="margin:0">Nothing running</h2><span id="runTime" class="hint"></span></div>
+      <div class="prog" style="margin-top:8px"><i id="prog"></i></div>
+      <div class="screen"><div class="bar"><i></i><i></i><i></i><span id="scrUrl">books5.margbooks.com</span></div>
+        <div class="body"><span class="recl" id="recl" hidden>● REC</span><b id="scrTitle">—</b>
+          <div class="fake"><em>Party Name</em><span></span><em>Bill No.</em><span></span><em>Product</em><span></span><em>Qty</em><span></span><em>Rate</em><span></span><em>Disc 1.%</em><span></span></div></div></div>
+      <ul class="steps" id="runSteps"></ul>
+      <div class="fail" id="failBox" hidden></div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORTS -->
+<section class="view" id="v-report">
+  <div class="ph"><div><h1>Reports</h1><p>Every run: who wrote the test, how many steps passed, and where it stopped.</p></div></div>
+  <div class="kpis" id="rkpis"></div>
+  <div class="card" style="padding:0"><table class="tb" id="runTable"><thead><tr><th>Run</th><th>Test</th><th>Module</th><th>Written by</th><th>When</th><th>Steps</th><th>Result</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<!-- LEARN -->
+<section class="view" id="v-learn">
+  <div class="ph"><div><h1>Learn the app</h1><p>The tool walks through the app once and remembers how to find every screen and field. Recorded and written tests are checked against this memory.</p></div></div>
+  <div class="mem-grid">
+    <div class="card">
+      <h2>Walk the app</h2>
+      <div class="warnbox">Changes Control Room settings. Run on a <b>test company</b> only. A backup is taken first.</div>
+      <ol class="walk" id="walk">
+        <li data-k="login">Log in<span class="hint"></span></li><li data-k="trade">Detect business type<span class="hint"></span></li><li data-k="backup">Back up settings<span class="hint"></span></li>
+        <li data-k="cr">Turn on all trade settings<span class="hint"></span></li><li data-k="menu">Enable all menus<span class="hint"></span></li><li data-k="crawl">Open each menu, record fields<span class="hint"></span></li>
+      </ol>
+      <div class="row"><button class="btn g" id="btnLearn">Start learning</button><button class="btn" id="btnRestore">Restore settings</button></div>
+      <div class="log" id="learnLog" style="margin-top:8px"></div>
+    </div>
+    <div class="card">
+      <h2>Read the source code</h2>
+      <p class="hint" style="margin-top:0">Stable IDs come from code: formControlName, id, API fields.</p>
+      <label class="f" for="pWeb">Web (Angular) folder</label><input id="pWeb" class="inp mono" placeholder="e.g. D:\MargbooksProject\newmarg-webangular20">
+      <label class="f" for="pApi">API (.NET) folder</label><input id="pApi" class="inp mono" placeholder="e.g. D:\MargbooksProject\margbookscoreapi">
+      <div class="row" style="margin-top:8px"><button class="btn p" id="btnCode">Read code</button><span class="hint" id="codeRes"></span></div>
+      <div class="log" id="codeLog" style="margin-top:8px"></div>
+    </div>
+  </div>
+  <div class="card" style="padding:0">
+    <div class="row" style="padding:10px 12px"><h2 class="grow" style="margin:0">Remembered fields</h2>
+      <select id="mScreen" class="inp" style="width:170px" aria-label="Screen"></select><input id="mFind" class="inp" style="width:200px" placeholder="Find a field…" aria-label="Find field"></div>
+    <table class="tb" id="memTable"><thead><tr><th>Screen</th><th>Field</th><th>Locator</th><th>Stability</th><th>Other names</th></tr></thead><tbody></tbody></table>
+  </div>
+</section>
+
+<!-- SETTINGS -->
+<section class="view" id="v-settings">
+  <div class="ph"><div><h1>Settings</h1><p>Fill once. The password is stored encrypted on this computer and never written into a test file.</p></div></div>
+  <div class="set-grid">
+    <div class="card">
+      <h2>App under test</h2>
+      <label class="f" for="sUrl">URL</label><input id="sUrl" class="inp" placeholder="https://books5.margbooks.com">
+      <label class="f" for="sUser">User ID</label><input id="sUser" class="inp" autocomplete="off">
+      <label class="f" for="sPass">Password</label><div class="pw"><input id="sPass" class="inp" type="password" autocomplete="new-password"><button class="btn q" id="btnEye" type="button">Show</button></div>
+      <label class="f" for="sComp">Company</label><input id="sComp" class="inp">
+      <label class="f" for="sTrade">Business type</label><select id="sTrade" class="inp"></select>
+      <label class="opt" style="margin-top:8px"><input type="checkbox" id="sTestCo"> This is a <b>test company</b> (needed for Learn the app)</label>
+      <label class="opt"><input type="checkbox" id="sWrites"> Allow tests that create or change data</label>
+      <div class="row" style="margin-top:10px"><button class="btn p" id="btnSaveSet">Save</button><button class="btn" id="btnTestLogin">Test login</button></div>
+    </div>
+    <div class="card">
+      <h2>Bulk data rules</h2>
+      <p class="hint" style="margin-top:0">Used for lines like “Create 500 sale bills with 50 items each”.</p>
+      <label class="opt"><input type="checkbox" id="bParty"> Party: random, Sundry Debtors only</label>
+      <label class="opt"><input type="checkbox" id="bItem"> Item: random, in-stock only</label>
+      <label class="opt"><input type="checkbox" id="bBatch"> Batch: earliest expiry first (FEFO)</label>
+      <label class="opt"><input type="checkbox" id="bQty"> Qty: random 1–10</label>
+      <label class="opt"><input type="checkbox" id="bShot"> Screenshot after every bill</label>
+      <h2 style="margin-top:14px">Recorder</h2>
+      <label class="f" for="sCg">Codegen command</label><input id="sCg" class="inp mono">
+      <label class="f" for="sOut">Save recorded tests to</label><input id="sOut" class="inp mono">
+    </div>
+    <div class="card">
+      <h2>AI usage</h2>
+      <label class="f" for="sAiMode">When to use AI</label><select id="sAiMode" class="inp"><option value="local_first">Only when local checks can't decide (fewest tokens)</option><option value="always">Double-check every script</option><option value="never">Never</option></select>
+      <label class="f" for="sBudget">Monthly token limit</label><input id="sBudget" class="inp" inputmode="numeric">
+      <label class="f" for="sFix">Auto-fix attempts on failure</label><select id="sFix" class="inp"><option value="3">3</option><option value="2">2</option><option value="1">1</option><option value="0">0 – ask me</option></select>
+      <ol class="hint" style="padding-left:18px;margin:10px 0 0;line-height:1.6">
+        <li>Local rules + app memory first – 0 tokens.</li>
+        <li>Cached answers for the same snippet – 0 tokens.</li>
+        <li>AI gets only the flagged lines, the error and the matching memory entries (~300 tokens).</li>
+        <li>AI answers are accepted only if every locator exists in app memory.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="drawer" class="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="drTitle"><header><h3 id="drTitle" style="margin:0;font-size:15px"></h3><button class="btn" id="drClose">Close</button></header><div class="in" id="drBody"></div></div>
+<div class="modal-bg" id="modal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle"><h3 id="mTitle"></h3><div id="mBody"></div><div class="row" style="justify-content:flex-end;margin-top:12px" id="mFoot"></div></div></div>
+<div id="toast" aria-live="polite"></div>
+<script>
+'use strict';
+/* =====================================================================
+   Test Studio – real UI. Every screen talks to the local agent
+   (ui_studio/server.py). See ui_studio/API.md for the endpoints.
+   Nothing in this file is sample data.
+   ===================================================================== */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const low = s => String(s).toLowerCase().replace(/[.!?]+$/, '').replace(/\s+/g, ' ').trim();
+const wait = ms => new Promise(r => setTimeout(r, ms));
+const enc = encodeURIComponent;
+function toast(m) { const t = document.createElement('div'); t.className = 'toast'; t.textContent = m; $('#toast').prepend(t); setTimeout(() => t.remove(), 4500); }
+function modal(title, html, btns) {
+  $('#mTitle').textContent = title; $('#mBody').innerHTML = html;
+  $('#mFoot').innerHTML = btns.map((b, i) => `<button class="btn ${b.cls || ''}" data-i="${i}">${esc(b.label)}</button>`).join('');
+  $('#modal').hidden = false;
+  $$('#mFoot button').forEach(el => { el.onclick = () => { $('#modal').hidden = true; btns[+el.dataset.i].fn?.(); }; });
+  $('#mFoot button:last-child').focus();
+}
+
+/* ---------- server calls ---------- */
+async function api(path, body) {
+  const opt = body === undefined ? {} : { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) };
+  let r, d;
+  try { r = await fetch(path, opt); } catch (e) { throw new Error('Cannot reach the Test Studio agent. Is it still running?'); }
+  try { d = await r.json(); } catch (e) { d = { error: 'The agent sent an unreadable reply (' + r.status + ').' }; }
+  if (!r.ok || (d && d.error)) throw new Error((d && d.error) || ('Error ' + r.status));
+  return d;
+}
+/* poll fn every ms until it returns false; gives back a stop function */
+function poller(fn, ms = 700) {
+  let on = true, errs = 0;
+  (async () => {
+    while (on) {
+      try { if ((await fn()) === false) { on = false; break; } errs = 0; }
+      catch (e) { if (++errs >= 6) { on = false; toast(e.message); break; } }
+      await wait(ms);
+    }
+  })();
+  return () => { on = false; };
+}
+function download(kind, id) {
+  const a = document.createElement('a'); a.href = `/api/download?kind=${enc(kind)}&id=${enc(id)}`; a.download = '';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+/* ---------- shared state ---------- */
+let ST = { env: {}, modules: [], users: [], ai: {}, memory: {}, kpis: {} };
+let me = ''; try { me = localStorage.getItem('ts_me') || ''; } catch (e) { /* storage blocked */ }
+let TESTS = [];
+const meName = () => me || 'Tester';
+async function refreshState() {
+  try { ST = await api('/api/state'); } catch (e) { toast(e.message); return; }
+  const users = (ST.users || []).slice(); if (me && !users.includes(me)) users.push(me);
+  if (!me && users.length) me = users[0];
+  $('#who').innerHTML = (users.length ? users : ['Tester']).map(u => `<option ${u === me ? 'selected' : ''}>${esc(u)}</option>`).join('');
+  $('#aiUse').textContent = aiLine();
+  $('#envPill').innerHTML = `<i></i>${esc(envText())}`; $('#envPill2').innerHTML = `<i></i>${esc(envText())} · Chrome`;
+}
+const aiLine = () => `AI this month: ${(ST.ai?.used || 0).toLocaleString('en-IN')} tokens`;
+function envText() { const e = ST.env || {}; return `${String(e.app_url || 'no URL set').replace(/^https?:\/\//, '')} · ${String(e.company || 'no company').split(' (')[0]}`; }
+const allModules = (extra = []) => { const m = new Set([...(ST.modules || []), ...TESTS.map(t => t.module).filter(Boolean), ...extra.filter(Boolean)]); return m.size ? [...m] : ['General']; };
+async function loadTests() { try { TESTS = (await api('/api/tests')).tests || []; } catch (e) { toast(e.message); } return TESTS; }
+
+/* ---------- navigation & home ---------- */
+function go(v) {
+  if (v === 'record') { if (rec.src !== 'record' || rec.stage === 'saved') resetRec('record'); mountPipe('record'); }
+  if (v === 'write') { if (rec.src !== 'written') resetRec('written'); mountPipe('write'); }
+  $$('.view').forEach(s => s.classList.toggle('on', s.id === 'v-' + v));
+  $$('.nav').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+  ({ home: renderHome, write: renderEditor, run: renderRunList, report: renderReport, learn: renderMemory, record: renderRecord, settings: loadSettings })[v]?.();
+  window.scrollTo(0, 0);
+}
+async function renderHome() {
+  await Promise.all([refreshState(), loadTests()]);
+  $('#hello').textContent = `Hello${me ? ' ' + me.split(' ')[0] : ''}, what are we testing today?`;
+  const k = ST.kpis || {}, lim = ST.ai?.limit || 0;
+  $('#kpis').innerHTML = [[k.tests ?? 0, `tests by ${k.testers ?? 0} testers`], [k.runs ?? 0, 'runs'], [k.pass_rate == null ? '—' : k.pass_rate + '%', 'pass rate'], [(ST.ai?.used || 0).toLocaleString('en-IN'), `AI tokens this month${lim ? ' / ' + lim.toLocaleString('en-IN') : ''}`]]
+    .map(([b, s]) => `<div class="kpi"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('');
+  const m = ST.memory || {};
+  $('#memLine').textContent = m.fields ? `Last learned ${m.learned_on || 'earlier'} · ${m.screens} screens, ${m.fields} fields · trade ${m.trade || 'not detected'}` : 'App memory is empty – open Learn app';
+}
+
+/* ---------- write: free text, checked line by line by the agent ---------- */
+let cur = null, parsed = [], aiSug = {}, aiTimer = null, checkTimer = null, checkSeq = 0, usedAI = new Set(), palette = [];
+const LH = 28;
+const newCase = () => ({ id: null, name: '', module: allModules()[0], author: meName(), lines: [''] });
+const KIND = { login: 'Log in', open: 'Open screen', pick: 'Select', search: 'Search', item: 'Add item', fill: 'Type value', click: 'Click', verify: 'Check', wait: 'Wait', bulk: 'Bulk bills' };
+const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+async function renderEditor() {
+  if (!cur) cur = newCase();
+  $('#tMod').innerHTML = allModules([cur.module]).map(m => `<option ${m === cur.module ? 'selected' : ''}>${esc(m)}</option>`).join('');
+  $('#tName').value = cur.name || ''; $('#tAuthor').textContent = (cur.author || meName()) + (cur.id ? ' · ' + cur.id : ' · new');
+  $('#tsrc').value = (cur.lines || ['']).join('\n'); refresh(true); renderRecord(); $('#aiUse').textContent = aiLine();
+  await loadTests();
+  $('#tPick').innerHTML = '<option value="">Open a saved case…</option>' + TESTS.filter(t => t.lines).map(t => `<option value="${esc(t.id)}">${esc(t.id)} · ${esc(t.name)} (${esc(t.author)})</option>`).join('');
+  $('#tMod').innerHTML = allModules([cur.module]).map(m => `<option ${m === cur.module ? 'selected' : ''}>${esc(m)}</option>`).join('');
+}
+function metaHtml(p, i, line) {
+  if (p.status === 'empty') return '';
+  if (p.status === 'note') return '<span class="hint">Note – not run</span>';
+  if (p.status === 'ok') {
+    const taught = p.learned ? ' <span class="tag t-ai">taught word</span>' : '', ai = usedAI.has(low(line)) ? ' <span class="tag t-ai">from AI</span>' : '';
+    if (p.kind === 'login') return `<span class="crumb">Login page</span> › <b>User ID</b>, <b>Password</b>, <b>Login</b> <span class="hint">values from Settings</span>${ai}`;
+    if (p.kind === 'open') return `<span class="crumb">Screen</span> › <b>${esc(p.screen)}</b> <code>${esc(p.route || '')}</code>${ai}`;
+    if (p.kind === 'verify') return `<span class="crumb">${esc(p.screen || 'Page')}</span> › text <b>“${esc(p.what)}”</b> <span class="tag t-mute">Check</span>${ai}`;
+    if (p.kind === 'wait') return `<span class="tag t-mute">Wait ${esc(p.secs)} s</span>`;
+    if (p.kind === 'bulk') return `<span class="crumb">${esc(p.screen || 'Sale Bill')}</span> × <b>${esc(p.count)}</b> bills · <b>${esc(p.items)}</b> items each · random <span class="tag t-mute">Bulk</span>`;
+    const f = p.field || { name: '?', sel: '' };
+    let h = `<span class="crumb">${esc(p.screen)}</span> › <b>${esc(f.name)}</b> <code>${esc(f.sel)}</code> <span class="tag t-mute">${esc(KIND[p.kind] || p.kind)}</span>${p.value !== undefined && p.value !== null ? ` <span class="val">${esc(p.value)}${p.qty && !(p.extras && p.extras.length) ? ' × ' + esc(p.qty) : ''}</span>` : ''}`;
+    if (p.extras && p.extras.length) h += p.extras.map(x => ` · <b>${esc(x.field.name)}</b> <code>${esc(x.field.sel)}</code> <span class="val">${esc(x.value)}</span>`).join('');
+    return h + taught + ai;
+  }
+  let h = `<div class="serr">✗ ${esc(p.note)} <span>– ${esc(p.why || '')}</span></div>`;
+  const local = [];
+  (p.fixes || []).forEach(f => { local.push(p.term ? line.replace(new RegExp(reEsc(p.term), 'i'), f) : f); });
+  (p.sugg || []).forEach(s => local.push(s));
+  if (local.length) h += `<div class="locsug"><span class="hint">Suggestion (0 tokens):</span>${local.map(l => `<button class="chip" data-use="${i}" data-text="${esc(l)}">${esc(l)}</button>`).join('')}${p.term && (p.fixes || []).length ? p.fixes.map(f => `<button class="chip fix" data-teach="${i}" data-field="${esc(f)}" title="Remember this word for everyone">Teach “${esc(p.term)}” = ${esc(f)}</button>`).join('') : ''}</div>`;
+  else {
+    const s = aiSug[low(line)];
+    h += !s ? '<div class="aisug pend">✦ AI will suggest a fix when you stop typing…</div>'
+      : s.pending ? '<div class="aisug pend">✦ Asking AI (only this line + matching field names)…</div>'
+      : s.ok ? `<div class="aisug">✦ AI suggests <b>${esc(s.rewrite)}</b><button class="btn a sm" data-ai="${i}" data-text="${esc(s.rewrite)}">Use</button><span class="hint">${s.cached ? 'cached · 0 tokens' : esc(s.tokens) + ' tokens'} · checked against app memory</span></div>`
+      : `<div class="aisug no">✦ ${esc(s.msg || 'AI could not map this line.')}</div>`;
+  }
+  return h;
+}
+const caretLine = () => { const ta = $('#tsrc'); return ta.value.slice(0, ta.selectionStart).split('\n').length - 1; };
+function drawLines() {
+  const ta = $('#tsrc'), lines = ta.value.split('\n');
+  const P = lines.map((l, i) => (l.trim() && parsed[i]) ? parsed[i] : { status: 'empty' });
+  const ci = document.activeElement === ta ? caretLine() : -1;
+  $('#tgut').innerHTML = P.map((p, i) => `<div class="${p.status}">${i + 1}<i>${p.status === 'ok' ? '✓' : p.status === 'bad' ? '✗' : p.status === 'note' ? '#' : ''}</i></div>`).join('');
+  $('#tbands').innerHTML = P.map((p, i) => `<div class="${p.status}${i === ci ? ' cur' : ''}"></div>`).join('');
+  $('#tcheck').innerHTML = P.map((p, i) => p.status === 'empty' ? '' : `<div class="ck ${p.status}${i === ci ? ' cur' : ''}" data-line="${i}"><div class="ckh"><span class="ckn">${i + 1}</span><span class="sst">${p.status === 'ok' ? '✓' : p.status === 'bad' ? '✗' : '#'}</span><b>${esc(lines[i].trim())}</b></div><div class="smeta">${metaHtml(p, i, lines[i])}</div></div>`).join('')
+    || '<p class="hint" style="padding:12px;margin:0">Start typing on the left, for example: <code>create sale bill</code></p>';
+  const bad = P.filter(p => p.status === 'bad').length, good = P.filter(p => p.status === 'ok').length;
+  $('#score').innerHTML = bad ? `<span class="tag t-bad">${bad} line${bad > 1 ? 's' : ''} to fix</span> <span class="tag t-ok">${good} OK</span>` : good ? `<span class="tag t-ok">All ${good} lines mapped</span>` : '';
+  $('#btnGen').disabled = !!bad || !good; $('#btnGen').title = bad ? 'Fix the red lines first' : '';
+  $('#palette').innerHTML = palette.map(c => `<button class="chip" data-add="${esc(c)}">${esc(c)}</button>`).join('');
+}
+function refresh(now) {
+  const ta = $('#tsrc'), lines = ta.value.split('\n'); cur.lines = lines;
+  ta.style.height = (Math.max(lines.length + 1, 8) * LH + 20) + 'px';
+  drawLines();
+  if (rec.src === 'written' && rec.genFrom) { const st = rec.genFrom !== lines.join('\n'); if (st !== !!rec.stale) { rec.stale = st; renderRecord(); } }
+  clearTimeout(checkTimer); clearTimeout(aiTimer); checkTimer = setTimeout(runCheck, now ? 0 : 250);
+}
+async function runCheck() {
+  const lines = cur.lines.slice(), seq = ++checkSeq; let r;
+  try { r = await api('/api/write/check', { lines }); } catch (e) { if (seq === checkSeq) toast(e.message); return; }
+  if (seq !== checkSeq) return;
+  parsed = r.results || []; palette = r.palette || []; drawLines();
+  clearTimeout(aiTimer);
+  aiTimer = setTimeout(() => {
+    parsed.forEach((p, i) => {
+      if (p.status !== 'bad' || (p.fixes || []).length || (p.sugg || []).length || !lines[i] || !lines[i].trim()) return;
+      const k = low(lines[i]); if (aiSug[k]) return;
+      aiSug[k] = { pending: true }; drawLines(); askAI(lines[i], p.screen || r.screen, k);
+    });
+  }, 1000);
+}
+async function askAI(line, screen, k) {
+  try { aiSug[k] = await api('/api/write/ai', { line, screen: screen || '' }); }
+  catch (e) { aiSug[k] = { ok: false, msg: e.message }; }
+  drawLines(); api('/api/state').then(s => { ST.ai = s.ai; $('#aiUse').textContent = aiLine(); }).catch(() => { });
+}
+function useLine(i, text) { const ta = $('#tsrc'), ls = ta.value.split('\n'); ls[i] = text; ta.value = ls.join('\n'); refresh(true); }
+function addLine(text) { const ta = $('#tsrc'); const v = ta.value.replace(/\s+$/, ''); ta.value = (v ? v + '\n' : '') + text; refresh(true); ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); }
+function syncCur() { cur.name = $('#tName').value; cur.module = $('#tMod').value; cur.lines = $('#tsrc').value.split('\n'); }
+async function saveTest() {
+  syncCur(); const lines = cur.lines.filter(l => l.trim());
+  if (!cur.name.trim()) { toast('Give the test case a name.'); $('#tName').focus(); return; }
+  try {
+    const r = await api('/api/tests/save-draft', { id: cur.id, name: cur.name.trim(), module: cur.module, author: cur.author || meName(), lines });
+    cur.id = r.id; $('#tAuthor').textContent = (cur.author || meName()) + ' · ' + cur.id; toast(`Draft ${cur.id} saved.`);
+    await loadTests(); $('#tPick').innerHTML = '<option value="">Open a saved case…</option>' + TESTS.filter(t => t.lines).map(t => `<option value="${esc(t.id)}">${esc(t.id)} · ${esc(t.name)} (${esc(t.author)})</option>`).join('');
+  } catch (e) { toast(e.message); }
+}
+async function generate() {
+  syncCur(); const lines = cur.lines.filter(l => l.trim());
+  if (parsed.some((p, i) => p.status === 'bad' && (cur.lines[i] || '').trim())) { toast('Fix the red lines first.'); return; }
+  let r; try { r = await api('/api/write/generate', { name: cur.name.trim() || 'Untitled case', module: cur.module, author: cur.author || meName(), lines }); } catch (e) { toast(e.message); return; }
+  resetRec('written'); rec.stage = 'recorded'; rec.genFrom = cur.lines.join('\n'); rec.fed = r.actions || 0;
+  setCode(r.code); renderRecord();
+  $('#pipe').scrollIntoView({ behavior: 'smooth', block: 'start' }); toast(`Code generated from ${r.actions ?? lines.length} actions.`);
+}
+
+/* =====================================================================
+   RECORD / WRITE PIPELINE:  script -> Verify -> Replay (+AI fix) -> Save
+   ===================================================================== */
+const SRC = {
+  record: { steps: [['record', 'Record'], ['review', 'Verify'], ['replay', 'Replay'], ['save', 'Save']], first: 'record', file: 'recorded.spec.ts' },
+  written: { steps: [['write', 'Write'], ['generate', 'Generate'], ['review', 'Verify'], ['replay', 'Replay'], ['save', 'Save']], first: 'write', file: 'written.spec.ts' }
+};
+const newRec = src => ({ src, stage: 'idle', code: '', fed: 0, actions: [], next: 0, session: null, findings: [], applied: new Set(), skipped: new Set(), tok: { local: 0, ai: 0 }, attempt: 1, max: 0, aiFixes: 0, clock: null, stopPoll: null, t0: 0, fixedLines: new Set(), err: null, steps: [], job: null, giveUp: false, saved: null, genFrom: '', stale: false, startUrl: rec?.startUrl || '', busy: false });
+let rec = null; rec = newRec('record');
+function resetRec(src) {
+  clearInterval(rec.clock); rec.stopPoll?.();
+  if (rec.stage === 'recording' && rec.session) api('/api/record/stop', { session: rec.session }).catch(() => { });
+  rec = newRec(src);
+}
+function stepOf() { const s = rec.stage; if (s === 'idle' || s === 'recording') return SRC[rec.src].first; return { recorded: 'review', reviewing: 'review', reviewed: 'review', replaying: 'replay', failed: 'replay', fixing: 'replay', passed: 'save', saved: 'done' }[s]; }
+function mountPipe(where) { const slot = where === 'write' ? $('#writeSlot') : $('#recSlot'); if ($('#pipe').parentNode !== slot) slot.appendChild($('#pipe')); }
+function setCode(c) { rec.code = c; $('#code').value = c; drawGutter(); }
+function drawGutter() {
+  const ls = rec.code.split('\n'), flags = new Set();
+  if (['reviewed', 'failed', 'passed'].includes(rec.stage)) rec.findings.filter(f => !rec.applied.has(f.id)).forEach(f => (f.old || []).forEach(o => { const i = ls.indexOf(o); if (i >= 0) flags.add(i); }));
+  if (rec.err && rec.err.lineText) { const i = ls.findIndex(l => l.includes(rec.err.lineText)); if (i >= 0) flags.add(i); }
+  $('#gut').innerHTML = ls.map((l, i) => `<div class="${flags.has(i) ? 'flag' : [...rec.fixedLines].some(f => l.trim() === f) ? 'fixed' : ''}">${flags.has(i) ? '!' : i + 1}</div>`).join('');
+  $('#code').style.height = (ls.length * 20 + 24) + 'px';
+  $('#codeInfo').textContent = `${ls.filter(l => l.trim().startsWith('await')).length} actions`;
+  $('#codeFile').textContent = SRC[rec.src].file;
+  $('#code').readOnly = ['recording', 'reviewing', 'replaying', 'fixing'].includes(rec.stage);
+}
+function tokLine() { const h = rec.stage === 'idle' ? '' : `<span class="tag t-ok">Local checks: ${rec.tok.local} rules · 0 tokens</span> <span class="tag t-ai">AI: ${rec.tok.ai} tokens</span>`; $('#recTok').innerHTML = rec.src === 'record' ? h : ''; $('#wTok').innerHTML = rec.src === 'written' ? h : ''; }
+const defaultStart = () => ((ST.env?.app_url || '').replace(/\/+$/, '') || ST.env?.login_url || '').trim();
+const guessName = () => { const m = rec.code.match(/test\('([^']+)'/); return m && m[1] !== 'test' ? m[1] : ''; };
+function renderRecord() {
+  const S_ = SRC[rec.src], order = S_.steps.map(s => s[0]).concat('done'), ni = order.indexOf(stepOf());
+  $('#stepper').innerHTML = S_.steps.map(([k, label], i) => `<div class="st${i < ni ? ' done' : i === ni ? ' now' : ''}"><i>${i < ni ? '✓' : i + 1}</i>${esc(label)}</div>`).join('');
+  $('#pipe').hidden = rec.src === 'written' && rec.stage === 'idle';
+  $('#codeBox').hidden = rec.stage === 'idle'; $('#codeEmpty').hidden = rec.stage !== 'idle';
+  tokLine(); const P = $('#recPanel'); let h = '';
+  const stale = rec.src === 'written' && rec.stale && ['recorded', 'reviewed', 'failed', 'passed'].includes(rec.stage) ? `<div class="stalebox">The steps changed after the code was generated.<span class="grow"></span><button class="btn sm" id="btnRegen">Generate again</button></div>` : '';
+  if (rec.stage === 'idle') {
+    const u = rec.startUrl || defaultStart();
+    h = `<div class="status"><span class="dot"></span><div><b>Ready to record</b><span class="hint">A browser window opens at this URL. Test the screen as you normally do.</span></div></div>
+    <label class="f" for="rStart">Start URL (login page)</label><input id="rStart" class="inp mono" value="${esc(u)}" placeholder="https://books5.margbooks.com/login">
+    <label class="opt" style="margin-top:8px"><input type="checkbox" id="rReuse"> I am already logged in – reuse the saved login session</label>
+    <div class="row" style="margin-top:12px"><button class="btn r lg" id="btnRec">● Record automation case</button></div>
+    <p class="hint" style="margin:10px 0 0">The agent starts Playwright codegen at this address and watches the script it writes.</p>`;
+  }
+  else if (rec.stage === 'recording') h = `<div class="status live"><span class="dot"></span><div><b>Recording… <span id="recClock">0:00</span></b><span class="hint">Codegen is watching the browser window at ${esc(rec.startUrl)}. Click Stop when your test is done.</span></div></div>
+    <ul class="feed" id="feed">${rec.actions.map((t, i) => `<li><span class="k">${i + 1}</span><span>${esc(t)}</span><span class="hint">✓</span></li>`).join('')}</ul>
+    <div class="row" style="margin-top:10px"><button class="btn lg" id="btnStop" ${rec.fed < 1 || rec.busy ? 'disabled' : ''}>■ Stop recording</button></div>`;
+  else if (rec.stage === 'recorded') h = stale + (rec.src === 'record'
+    ? `<div class="status"><span class="dot" style="background:var(--ok)"></span><div><b>Recording stopped – ${rec.fed} actions captured</b><span class="hint">The script is on the right. You may edit it.</span></div></div>`
+    : `<div class="status"><span class="dot" style="background:var(--ok)"></span><div><b>Code generated – ${rec.code.split('\n').filter(l => l.trim().startsWith('await')).length} actions</b><span class="hint">Every locator comes from app memory. You may edit the code on the right.</span></div></div>`)
+    + `<div class="row" style="margin-top:12px"><button class="btn p lg" id="btnReview">Verify script</button>${rec.src === 'record' ? '<button class="btn" id="btnAgain">Record again</button>' : '<button class="btn" id="btnEditSteps">Edit steps</button>'}</div>
+    <p class="hint" style="margin:10px 0 0">Verify checks the script against app memory and project rules first (free). AI is asked only about what those can't decide.</p>`;
+  else if (rec.stage === 'reviewing') h = `<div class="status"><span class="dot" style="background:var(--ink)"></span><div><b>Verifying script…</b><span class="hint" id="revMsg">Checking app memory and project rules</span></div></div>`;
+  else if (rec.stage === 'reviewed') {
+    const open = rec.findings.filter(f => !rec.applied.has(f.id)), local = rec.findings.filter(f => f.src !== 'AI').length;
+    h = stale + `<div class="row"><div class="grow"><b>${rec.findings.length ? rec.findings.length + ' suggestions' : 'No problems found ✓'}</b> <span class="hint">· ${local} from local checks (0 tokens) · ${rec.findings.length - local} from AI</span></div>${open.length ? '<button class="btn" id="btnAll">Confirm all</button>' : ''}<button class="btn g" id="btnReplay">▶ Replay</button></div>`
+      + rec.findings.map(f => { const done = rec.applied.has(f.id); return `<div class="find ${done ? 'applied' : ''}"><div class="hd"><span class="tag ${f.sev === 'Must fix' ? 't-bad' : f.sev === 'Should fix' ? 't-warn' : 't-mute'}">${esc(f.sev)}</span>${esc(f.title)}<span class="grow"></span><span class="tag ${f.src === 'AI' ? 't-ai' : 't-mute'}">${esc(f.src)}${f.tokens ? ' · ' + esc(f.tokens) + ' tok' : ''}</span></div>
+        <div class="hint" style="margin-top:4px">${esc(f.why)}</div><div class="diff">${(f.old || []).map(l => `<div class="m">- ${esc(String(l).trim())}</div>`).join('')}${(f.neu || []).map(l => `<div class="p">+ ${esc(String(l).trim())}</div>`).join('')}</div>
+        ${done ? (rec.skipped.has(f.id) ? '<span class="tag t-mute">Skipped</span>' : '<span class="tag t-ok">Applied ✓</span>') : `<button class="btn" data-apply="${esc(f.id)}">Confirm change</button> <button class="btn q" data-skip="${esc(f.id)}">Skip</button>`}</div>`; }).join('');
+  }
+  else if (['replaying', 'failed', 'fixing'].includes(rec.stage)) {
+    const live = rec.stage === 'replaying';
+    h = `<div class="status ${live ? 'live' : ''}"><span class="dot" style="${live ? '' : 'background:' + (rec.stage === 'failed' ? 'var(--bad)' : 'var(--ai)')}"></span><div><b>${live ? `Replaying (attempt ${rec.attempt})…` : rec.stage === 'failed' ? 'Replay failed' : `AI is fixing (attempt ${rec.attempt} of ${rec.max})…`}</b><span class="hint">${live ? 'Running the script in a fresh browser.' : rec.stage === 'fixing' ? 'Sent only: the error, 3 lines around it and matching fields from app memory.' : ''}</span></div></div>
+      <ul class="rsteps" id="rsteps">${rec.steps.length ? rec.steps.map(s => `<li class="${s.status === 'ok' ? 'ok' : s.status === 'bad' ? 'bad' : s.status === 'doing' ? 'now' : ''}"><span class="i">${s.status === 'ok' ? '✓' : s.status === 'bad' ? '✗' : s.status === 'skip' ? '–' : '·'}</span><span>${esc(String(s.text).replace(/^await\s+/, ''))}</span><span class="hint">${s.status === 'skip' ? 'skipped' : s.secs != null && s.status !== 'todo' ? esc(s.secs) + 's' : ''}</span></li>`).join('') : '<li><span class="i">·</span><span>Starting the browser…</span><span class="hint"></span></li>'}</ul>
+      ${rec.err ? `<div class="errbox"><b>${esc(rec.err.plain || 'The replay stopped')}</b><pre>${esc(rec.err.err || '')}</pre>${rec.err.fixText ? `<div style="margin-top:6px;color:var(--ai)"><b>AI fix:</b> ${esc(rec.err.fixText)}</div>` : ''}${rec.stage === 'failed' && rec.giveUp ? `<div class="row" style="margin-top:8px"><button class="btn" id="btnPackRec">Bug pack for developer</button><button class="btn p" id="btnRetry">Try replay again</button></div>` : ''}</div>` : ''}`;
+  }
+  else if (rec.stage === 'passed') {
+    const nm = rec.src === 'written' ? (cur?.name || '') : guessName(), md = rec.src === 'written' ? (cur?.module || '') : '';
+    const ds = rec.src === 'written' ? (cur?.lines || []).filter(l => l.trim()).join(' → ') : '';
+    h = stale + `<div class="savebox"><div class="row"><b class="grow" style="font-size:15px;color:var(--ok)">Replay passed ✓</b><span class="hint">attempt ${rec.attempt} · ${rec.aiFixes} AI fix</span></div>
+      <p class="hint" style="margin:4px 0 6px">Tell us what this test is so others can find it.</p>
+      <div class="two"><div><label class="f" for="svMod">Module *</label><select id="svMod" class="inp"><option value="">Choose…</option>${allModules([md]).map(m => `<option ${m === md ? 'selected' : ''}>${esc(m)}</option>`).join('')}</select></div>
+      <div><label class="f" for="svPri">Priority</label><select id="svPri" class="inp"><option>High</option><option selected>Medium</option><option>Low</option></select></div></div>
+      <label class="f" for="svName">Test case *</label><input id="svName" class="inp" value="${esc(nm)}">
+      <label class="f" for="svDesc">Description</label><textarea id="svDesc" class="inp" rows="3" placeholder="What does this test prove?">${esc(ds)}</textarea>
+      <label class="f" for="svBy">Written by *</label><input id="svBy" class="inp" list="usersList" value="${esc(me)}" placeholder="Type your name"><datalist id="usersList">${(ST.users || []).map(u => `<option value="${esc(u)}"></option>`).join('')}</datalist>
+      <div class="hint" id="svErr" style="color:var(--bad)"></div>
+      <div class="row" style="margin-top:10px"><button class="btn g lg" id="btnSaveRec">Save test case</button></div></div>`;
+  }
+  else if (rec.stage === 'saved') { const t = rec.saved || {};
+    h = `<div class="savebox"><b style="color:var(--ok);font-size:15px">${esc(t.id)} saved ✓</b><p style="margin:6px 0">${esc(t.name)} · ${esc(t.module)} · by ${esc(t.author)}</p><p class="hint" style="margin:0 0 10px">Script: <code>${esc(t.spec || '')}</code><br>Steps: <code>${esc(t.yaml || '')}</code></p>
+      <div class="row">${rec.src === 'record' ? '<button class="btn r" id="btnAgain">● Record another</button>' : '<button class="btn p" id="btnWriteNew">+ Write another case</button>'}<button class="btn" id="btnRunSaved">▶ Run it</button><button class="btn" data-go2="report">See reports</button></div></div>`; }
+  P.innerHTML = h; drawGutter();
+}
+
+/* --- record --- */
+async function startRec() {
+  const u = ($('#rStart')?.value || '').trim();
+  if (!/^https?:\/\/\S+\.\S+/.test(u)) { toast('Enter a valid start URL, e.g. https://books5.margbooks.com/login'); $('#rStart')?.focus(); return; }
+  const reuse = !!$('#rReuse')?.checked; let r;
+  try { r = await api('/api/record/start', { url: u, reuse_login: reuse }); } catch (e) { toast(e.message); return; }
+  resetRec('record'); rec.startUrl = u; rec.session = r.session; rec.stage = 'recording'; rec.t0 = Date.now();
+  setCode(''); renderRecord(); toast('Codegen started – a Chromium window opened at ' + u);
+  const mine = rec;
+  rec.clock = setInterval(() => { const s = Math.floor((Date.now() - mine.t0) / 1000), c = $('#recClock'); if (c) c.textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; }, 500);
+  rec.stopPoll = poller(async () => {
+    if (rec !== mine || mine.stage !== 'recording') return false;
+    const d = await api(`/api/record/feed?session=${enc(mine.session)}&since=${mine.next}`);
+    if (rec !== mine) return false;
+    (d.actions || []).forEach(a => mine.actions.push(a.text)); mine.next = d.next ?? mine.next; mine.fed = mine.actions.length;
+    const f = $('#feed'); if (f) { f.innerHTML = mine.actions.map((t, i) => `<li><span class="k">${i + 1}</span><span>${esc(t)}</span><span class="hint">✓</span></li>`).join(''); f.scrollTop = 1e6; }
+    if (mine.fed >= 1 && $('#btnStop') && !mine.busy) $('#btnStop').disabled = false;
+    if (d.state === 'failed') { toast(d.message || 'The recorder stopped unexpectedly.'); mine.session = null; resetRec('record'); renderRecord(); return false; }
+    if (d.state === 'stopped') { await finishRec(); return false; }
+  }, 700);
+}
+async function finishRec() {
+  const mine = rec; if (mine.busy) return; mine.busy = true; clearInterval(mine.clock);
+  let r; try { r = await api('/api/record/stop', { session: mine.session }); } catch (e) { mine.busy = false; toast(e.message); renderRecord(); return; }
+  if (rec !== mine) return;
+  mine.stopPoll?.(); mine.busy = false; mine.fed = r.actions ?? mine.fed; mine.stage = 'recorded'; setCode(r.code || ''); renderRecord(); toast(`Recording stopped – ${mine.fed} actions.`);
+}
+function stopRec() { if ($('#btnStop')) $('#btnStop').disabled = true; rec.busy = false; finishRec(); }
+
+/* --- verify --- */
+async function review() {
+  rec.code = $('#code').value; rec.stage = 'reviewing'; renderRecord();
+  const mine = rec; let r;
+  try { r = await api('/api/verify', { code: rec.code, src: rec.src === 'record' ? 'record' : 'written' }); } catch (e) { toast(e.message); mine.stage = 'recorded'; renderRecord(); return; }
+  if (rec !== mine) return;
+  mine.findings = r.findings || []; mine.tok = r.tokens || { local: 0, ai: 0 }; mine.applied = new Set(); mine.skipped = new Set(); mine.stage = 'reviewed'; renderRecord();
+  api('/api/state').then(s => { ST.ai = s.ai; }).catch(() => { });
+}
+async function applyFindings(ids) {
+  ids = ids.filter(id => !rec.applied.has(id)); if (!ids.length) return;
+  const before = $('#code').value; let r;
+  try { r = await api('/api/verify/apply', { code: before, ids }); } catch (e) { toast(e.message); return; }
+  if (r.code === before) toast('That line was already changed.');
+  else { const old = before.split('\n'); setCode(r.code); r.code.split('\n').forEach(l => { if (l.trim() && !old.includes(l)) rec.fixedLines.add(l.trim()); }); }
+  ids.forEach(id => rec.applied.add(id)); renderRecord();
+}
+
+/* --- replay with AI auto-fix (the agent loops; the UI follows the job) --- */
+async function startReplay(retry) {
+  rec.code = $('#code').value; rec.stage = 'replaying'; rec.err = null; rec.giveUp = false; rec.steps = []; rec.attempt = 1; renderRecord();
+  const mine = rec; let r;
+  try {
+    r = retry && mine.job ? await api('/api/replay/retry', { job: mine.job })
+      : await api('/api/replay', { code: mine.code, name: (rec.src === 'written' ? cur?.name : guessName()) || 'Untitled case', module: (rec.src === 'written' ? cur?.module : '') || 'General', author: meName() });
+  } catch (e) { toast(e.message); mine.stage = 'reviewed'; if (!mine.findings.length) mine.stage = 'recorded'; renderRecord(); return; }
+  mine.job = r.job; let still = 0, last = '';
+  mine.stopPoll = poller(async () => {
+    if (rec !== mine) return false;
+    const d = await api('/api/replay/status?job=' + enc(mine.job)); if (rec !== mine) return false;
+    mine.attempt = d.attempt || 1; mine.max = d.max ?? mine.max; mine.aiFixes = d.aiFixes || 0; mine.steps = d.steps || []; mine.err = d.err || null; mine.giveUp = !!d.giveUp; mine.tok = d.tokens || mine.tok;
+    if (d.code && d.code !== mine.code) { mine.code = d.code; $('#code').value = d.code; }
+    (d.fixedLines || []).forEach(l => mine.fixedLines.add(String(l).trim()));
+    const ns = { queued: 'replaying', running: 'replaying', fixing: 'fixing', passed: 'passed', failed: 'failed' }[d.state] || 'replaying';
+    const sig = JSON.stringify([ns, mine.steps, mine.err, mine.attempt, mine.giveUp]);
+    if (sig !== last) { last = sig; mine.stage = ns; renderRecord(); }
+    if (d.state === 'passed') { toast('Replay passed ✓'); api('/api/state').then(s => { ST.ai = s.ai; }).catch(() => { }); return false; }
+    if (d.state === 'failed') { still++; if (mine.giveUp || still > 5 || (mine.max || 0) === 0) { mine.giveUp = true; mine.stage = 'failed'; renderRecord(); return false; } } else still = 0;
+  }, 700);
+}
+async function saveRecorded() {
+  const mod = $('#svMod').value, name = $('#svName').value.trim(), by = $('#svBy').value.trim(), e = [];
+  if (!mod) e.push('Choose a module.'); if (!name) e.push('Give the test case a name.'); if (!by) e.push('Write your name.');
+  if (e.length) { $('#svErr').textContent = e.join(' '); (!mod ? $('#svMod') : !name ? $('#svName') : $('#svBy')).focus(); return; }
+  const body = { code: $('#code').value, name, module: mod, priority: $('#svPri').value, description: $('#svDesc').value, author: by, source: rec.src === 'written' ? 'written' : 'record' };
+  if (rec.src === 'written') body.lines = (cur?.lines || []).filter(l => l.trim());
+  let r; try { r = await api('/api/save', body); } catch (er) { $('#svErr').textContent = er.message; return; }
+  me = by; try { localStorage.setItem('ts_me', me); } catch (er) { /* ignore */ }
+  rec.saved = { id: r.id, name, module: mod, author: by, spec: r.spec, yaml: r.yaml }; rec.stage = 'saved';
+  if (rec.src === 'written' && cur) { cur.id = r.id; cur.author = by; cur.name = name; cur.module = mod; }
+  renderRecord(); toast(`${r.id} saved · written by ${by}.`); refreshState();
+}
+
+/* ---------- run ---------- */
+let running = false, runMod = null;
+async function renderRunList() {
+  await Promise.all([refreshState(), loadTests()]);
+  const mods = allModules().map(m => [m, TESTS.filter(t => t.module === m).length]);
+  $('#modPick').innerHTML = `<button class="mod ${runMod === '*' ? 'on' : ''}" data-mod="*" role="radio" aria-checked="${runMod === '*'}">All modules <b>${TESTS.length}</b></button>` + mods.map(([m, n]) => `<button class="mod ${runMod === m ? 'on' : ''}" data-mod="${esc(m)}" role="radio" aria-checked="${runMod === m}" ${n ? '' : 'disabled'}>${esc(m)} <b>${n}</b></button>`).join('');
+  if (!TESTS.length) { $('#tcHead').hidden = true; $('#tcList').innerHTML = '<div class="tc-empty">No test cases yet. Record or write one first, then come back here.</div>'; updRunBtn(); return; }
+  if (!runMod) { $('#tcHead').hidden = true; $('#tcList').innerHTML = '<div class="tc-empty">Pick a module above to see its test cases.</div>'; updRunBtn(); return; }
+  const list = TESTS.filter(t => runMod === '*' || t.module === runMod);
+  $('#tcHead').hidden = false; $('#tcTitle').textContent = `${runMod === '*' ? 'All' : runMod} test cases (${list.length})`;
+  $('#tcList').innerHTML = list.map(t => { const bad = t.bad || 0;
+    return `<label class="tc"><input type="checkbox" value="${esc(t.id)}" ${bad ? 'disabled' : 'checked'}><span><b>${esc(t.id)} · ${esc(t.name)}</b><span class="hint">${esc(t.module || '')} · by ${esc(t.author || '—')} · ${t.type === 'recorded' ? '<span class="tag t-ink">recorded</span>' : t.type === 'builtin' ? '<span class="tag t-mute">built-in</span> ' + esc(t.steps) + ' steps' : esc(t.steps) + ' steps'} ${bad ? '<span class="tag t-bad">' + esc(bad) + ' line(s) to fix</span>' : ''}</span></span></label>`; }).join('') || '<div class="tc-empty">No test cases in this module yet.</div>';
+  updRunBtn();
+}
+function updRunBtn() {
+  const all = $$('#tcList input:not(:disabled)'), on = all.filter(i => i.checked).length;
+  $('#tcAll').checked = !!all.length && on === all.length; $('#tcAll').indeterminate = on > 0 && on < all.length;
+  $('#btnRun').disabled = !on || running; $('#btnRun').textContent = on ? `▶ Run ${on} test${on > 1 ? 's' : ''}` : '▶ Run';
+}
+function renderRun(d, withVideo) {
+  const c = d.current;
+  $('#runTitle').textContent = d.state === 'queued' ? 'Waiting in the queue…' : c ? `${c.id} · ${c.name}` : 'Running…';
+  $('#runTime').textContent = d.seconds != null ? Number(d.seconds).toFixed(1) + ' s' : '';
+  const st = d.steps || [];
+  $('#runSteps').innerHTML = st.map(s => `<li class="${s.status === 'ok' ? 'ok' : s.status === 'bad' ? 'bad' : s.status === 'doing' ? 'now' : ''}"><span class="ic">${s.status === 'ok' ? '✓' : s.status === 'bad' ? '✗' : s.status === 'skip' ? '–' : '·'}</span><span>${esc(s.text)}</span><span class="hint">${s.status === 'skip' ? 'skipped' : s.secs != null && s.status !== 'todo' ? esc(s.secs) + 's' : ''}</span></li>`).join('');
+  const now = $('#runSteps li.now'); if (now) now.scrollIntoView({ block: 'nearest' });
+  const total = d.total || 1, doneSteps = st.filter(s => ['ok', 'bad', 'skip'].includes(s.status)).length;
+  $('#prog').style.width = Math.min(100, ((d.done || 0) + (st.length ? doneSteps / st.length : 0)) / total * 100) + '%';
+  $('#scrTitle').textContent = c ? c.name : '—'; $('#scrUrl').textContent = String(ST.env?.app_url || '').replace(/^https?:\/\//, '') || '—';
+  $('#recl').hidden = !(withVideo && d.state === 'running');
+}
+async function runTests(ids) {
+  if (running) return; if (!ids.length) { toast('Pick at least one test.'); return; }
+  const body = { ids, video: $('#oVideo').checked, shots: $('#oShot').checked, bugpack: $('#oTrace').checked, stop_first: $('#oStop').checked };
+  let r; try { r = await api('/api/run', body); } catch (e) { toast(e.message); return; }
+  running = true; $('#btnRun').disabled = true; $('#failBox').hidden = true; go('run');
+  $('#runSteps').innerHTML = ''; $('#prog').style.width = '0%';
+  await new Promise(res => {
+    poller(async () => {
+      const d = await api('/api/run?id=' + enc(r.run_id)); renderRun(d, body.video);
+      if (d.state === 'queued' || d.state === 'running') return;
+      running = false; $('#recl').hidden = true; $('#runTitle').textContent = d.state === 'error' ? 'Run stopped' : 'Run finished'; updRunBtn();
+      finishRun(d, r.run_id).then(res); return false;
+    }, 700);
+  });
+}
+async function finishRun(d, rid) {
+  const bad = (d.results || []).filter(x => x.result === 'Fail');
+  if (d.state === 'error') {
+    $('#failBox').hidden = false;
+    $('#failBox').innerHTML = `<h3>${esc(d.title || 'The run stopped')}</h3><pre style="white-space:pre-wrap;font-size:11.5px;margin:6px 0 0">${esc(String(d.log || '').slice(-500))}</pre>`;
+    return;
+  }
+  if (!bad.length) { toast(d.state === 'error' ? 'The run stopped with an error.' : 'All tests passed ✓'); return; }
+  let rowId = rid; try { const rs = (await api('/api/runs')).runs || []; const m = rs.find(x => x.test === bad[0].test); if (m) rowId = m.id; } catch (e) { /* keep run id */ }
+  const f = bad[0]; $('#failBox').hidden = false;
+  $('#failBox').innerHTML = `<h3>${esc(f.test)} failed${f.failAt != null ? ' at step ' + (f.failAt + 1) : ''}</h3><div><b>What happened:</b> ${esc(f.err || 'The test stopped.')}</div>
+    <div class="row" style="margin-top:8px"><button class="btn" data-dl="recorder" data-id="${esc(f.test)}">Chrome Recorder file</button><button class="btn" data-pack="${esc(rowId)}">Bug pack for developer</button><button class="btn p" data-open="${esc(rowId)}">Full report</button></div>`;
+}
+
+/* ---------- reports ---------- */
+async function renderReport() {
+  let d; try { d = await api('/api/runs'); } catch (e) { toast(e.message); return; }
+  const k = d.kpis || {};
+  $('#rkpis').innerHTML = [[k.runs ?? 0, 'runs'], [k.passed ?? 0, 'passed'], [k.failed ?? 0, 'failed'], [k.testers ?? 0, 'testers']].map(([b, s]) => `<div class="kpi"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('');
+  const rs = d.runs || [];
+  $('#runTable tbody').innerHTML = rs.map(r => `<tr class="click" data-open="${esc(r.id)}"><td>${esc(r.id)}</td><td>${esc(r.test)} · ${esc(r.name)}</td><td>${esc(r.module || '')}</td><td>${esc(r.author || '')}</td><td>${esc(r.at)}</td><td>${esc(r.passed)}/${esc(r.total)}</td><td><span class="tag ${r.result === 'Pass' ? 't-ok' : r.result === 'Fail' ? 't-bad' : 't-mute'}">${esc(r.result)}</span></td></tr>`).join('')
+    || '<tr><td colspan="7" class="hint">No runs yet. Pick tests on the Run screen and press Run.</td></tr>';
+}
+async function openRun(id) {
+  let d; try { d = await api('/api/runs/detail?id=' + enc(id)); } catch (e) { toast(e.message); return; }
+  const r = d.run || {}, st = d.steps || [], f = d.files || {}, shots = f.screens || [];
+  const dis = (ok, label, kind, tid, note) => `<button class="btn q" ${ok ? `data-dl="${kind}" data-id="${esc(tid)}"` : 'disabled'} ${ok ? '' : 'title="Not recorded in this run"'}>${ok ? 'Download' : 'Not available'}</button>`;
+  $('#drTitle').textContent = `${r.id} · ${r.test} ${r.name}`;
+  $('#drBody').innerHTML = `<p class="hint" style="margin-top:0">Module <b>${esc(r.module || '-')}</b> · written by <b>${esc(r.author || '-')}</b> · run ${esc(r.at)} · <span class="tag ${r.result === 'Pass' ? 't-ok' : 't-bad'}">${esc(r.result)}</span>${r.aiFixes ? ` · <span class="tag t-ai">${esc(r.aiFixes)} AI fix</span>` : ''}</p>
+    ${r.err ? `<div class="understood bad" style="margin-bottom:10px"><b>Stopped${r.failAt != null ? ' at step ' + (r.failAt + 1) : ''}</b><div>${esc(r.err)}</div></div>` : ''}
+    <h3 style="font-size:13px">Steps</h3><ul class="steps">${st.map(s => `<li class="${s.status === 'Pass' ? 'ok' : s.status === 'Fail' ? 'bad' : ''}"><span class="ic">${s.status === 'Pass' ? '✓' : s.status === 'Fail' ? '✗' : '–'}</span><span>${esc(s.text)}</span><span class="hint">${s.status === 'Skip' ? 'skipped' : ''}</span></li>`).join('') || '<li><span></span><span class="hint">No step details were kept for this run.</span></li>'}</ul>
+    <h3 style="font-size:13px;margin-top:12px">Screenshots</h3>${shots.length ? `<div class="thumbs">${shots.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener"><div class="thumb">${esc(String(s.name).slice(0, 34))}</div></a>`).join('')}</div>` : '<p class="hint" style="margin:0">No screenshots were taken in this run.</p>'}
+    <h3 style="font-size:13px;margin-top:12px">Files</h3><div class="files">
+      <div class="file"><b>Video · run.webm</b><span class="hint">Whole run</span><br>${dis(f.video, '', 'video', r.id)}</div>
+      <div class="file"><b>Chrome Recorder · recorder.json</b><span class="hint">DevTools → Recorder → Import → Replay</span><br>${dis(true, '', 'recorder', r.test)}</div>
+      <div class="file"><b>Playwright trace · trace.zip</b><span class="hint">DOM, network, console per step</span><br>${dis(f.trace, '', 'trace', r.id)}</div>
+      <div class="file"><b>Script · test.spec.ts</b><span class="hint">Code for developers</span><br>${dis(true, '', 'spec', r.test)}</div></div>
+    <div class="row" style="margin-top:12px"><button class="btn p" data-dl="report" data-id="${esc(r.id)}">Download report (HTML)</button><button class="btn" data-pack="${esc(r.id)}">Bug pack for developer</button></div>`;
+  $('#drawer').hidden = false; $('#drClose').focus();
+}
+
+/* ---------- learn the app ---------- */
+let memTimer = null;
+async function renderMemory() {
+  const sc = $('#mScreen'), keep = sc.value, q = $('#mFind').value.trim(); let r;
+  try { r = await api(`/api/memory?screen=${enc(keep)}&q=${enc(q)}`); } catch (e) { toast(e.message); return; }
+  sc.innerHTML = '<option value="">All screens</option>' + (r.screens || []).map(n => `<option ${n === keep ? 'selected' : ''}>${esc(n)}</option>`).join('');
+  const rows = (r.rows || []).map(fd => { const c = fd.stab >= 90 ? '#14874A' : fd.stab >= 82 ? '#B7791F' : '#D23A3A', l = fd.loc || {};
+    return `<tr><td>${esc(fd.screen)}</td><td><b>${esc(fd.field)}</b></td><td><code>${esc(l.primary || '')}</code>${l.xpath ? `<br><code class="hint">${esc(l.xpath)}</code>` : ''}</td><td><span class="stab"><i style="width:${Math.max(0, Math.min(100, +fd.stab || 0))}%;background:${c}"></i></span>${esc(fd.stab)}%</td><td>${(fd.aliases || []).slice(0, 4).map(esc).join(', ')}${(fd.taught || []).map(a => ` <span class="tag t-ai">${esc(a)}</span>`).join('')}</td></tr>`; });
+  $('#memTable tbody').innerHTML = rows.join('') || `<tr><td colspan="5" class="hint">${!r.total && !q && !keep ? 'App memory is empty – click Start learning.' : 'Nothing found.'}</td></tr>`;
+}
+function followLearn(job, btn, onDone) {
+  let since = 0; const log = $('#learnLog'); btn.disabled = true;
+  return poller(async () => {
+    const d = await api(`/api/learn/status?job=${enc(job)}&since=${since}`);
+    if (d.log) { log.textContent += d.log; log.scrollTop = 1e6; } since = d.next ?? since;
+    (d.steps || []).forEach(s => { const li = $(`#walk li[data-k="${s.k}"]`); if (!li) return; li.className = s.state === 'done' ? 'done' : s.state === 'doing' ? 'doing' : ''; li.querySelector('.hint').textContent = s.hint || ''; });
+    if (d.state === 'running') return;
+    btn.disabled = false; toast(d.state === 'done' ? 'Finished.' : 'It stopped with a problem – see the log.'); onDone?.(); renderMemory(); refreshState(); return false;
+  }, 700);
+}
+async function learn() {
+  $('#learnLog').textContent = ''; $$('#walk li').forEach(li => { li.className = ''; li.querySelector('.hint').textContent = ''; });
+  try { const r = await api('/api/learn/start', {}); followLearn(r.job, $('#btnLearn')); } catch (e) { toast(e.message); }
+}
+
+/* ---------- settings ---------- */
+let SET = {};
+const numOnly = s => parseInt(String(s).replace(/[^\d]/g, ''), 10) || 0;
+async function loadSettings() {
+  try { SET = await api('/api/settings'); } catch (e) { toast(e.message); return; }
+  $('#sUrl').value = SET.url || ''; $('#sUser').value = SET.user || ''; $('#sComp').value = SET.company || '';
+  $('#sPass').value = ''; $('#sPass').type = 'password'; $('#btnEye').textContent = 'Show'; $('#sPass').placeholder = SET.has_password ? '•••• saved' : '';
+  $('#sTrade').innerHTML = (SET.trade_options || []).map(o => { const v = typeof o === 'object' ? o.value : o, l = typeof o === 'object' ? o.label : o; return `<option value="${esc(v)}" ${v === SET.trade_mode ? 'selected' : ''}>${esc(l)}</option>`; }).join('');
+  const b = SET.bulk || {}; $('#bParty').checked = !!b.party; $('#bItem').checked = !!b.item; $('#bBatch').checked = !!b.batch; $('#bQty').checked = !!b.qty; $('#bShot').checked = !!b.shot;
+  $('#sCg').value = SET.codegen_cmd || ''; $('#sOut').value = SET.out_dir || '';
+  $('#sAiMode').value = SET.ai_mode || 'local_first'; $('#sBudget').value = (SET.token_limit || 0).toLocaleString('en-IN'); $('#sFix').value = String(SET.fix_attempts ?? 3);
+  $('#sTestCo').checked = !!SET.test_company; $('#sWrites').checked = !!SET.allow_writes;
+}
+async function saveSettings() {
+  const body = { url: $('#sUrl').value.trim(), login_url: SET.login_url, user: $('#sUser').value.trim(), company: $('#sComp').value.trim(), trade_mode: $('#sTrade').value,
+    bulk: { party: $('#bParty').checked, item: $('#bItem').checked, batch: $('#bBatch').checked, qty: $('#bQty').checked, shot: $('#bShot').checked },
+    codegen_cmd: $('#sCg').value.trim(), out_dir: $('#sOut').value.trim(), ai_mode: $('#sAiMode').value, token_limit: numOnly($('#sBudget').value), fix_attempts: parseInt($('#sFix').value, 10) || 0,
+    allow_writes: $('#sWrites').checked, test_company: $('#sTestCo').checked };
+  if ($('#sPass').value) body.password = $('#sPass').value;
+  try { await api('/api/settings', body); toast('Settings saved.'); await loadSettings(); refreshState(); } catch (e) { toast(e.message); }
+}
+
+/* ---------- bindings ---------- */
+function newBlankCase() { cur = newCase(); parsed = []; resetRec('written'); renderEditor(); $('#tName').focus(); }
+function boot() {
+  $('#who').onchange = e => { me = e.target.value; try { localStorage.setItem('ts_me', me); } catch (er) { /* ignore */ } if (cur && !cur.id) cur.author = me; renderHome(); toast(`You are now ${me}.`); };
+  $$('.nav').forEach(b => b.onclick = () => go(b.dataset.v));
+  $$('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+  const TA = $('#tsrc');
+  TA.addEventListener('input', () => { if (!cur) cur = newCase(); refresh(); });
+  ['click', 'keyup'].forEach(ev => TA.addEventListener(ev, () => { const i = caretLine(); $$('#tbands div').forEach((d, k) => d.classList.toggle('cur', k === i)); $$('#tcheck .ck').forEach(d => d.classList.toggle('cur', +d.dataset.line === i)); $(`#tcheck .ck[data-line="${i}"]`)?.scrollIntoView({ block: 'nearest' }); }));
+  TA.addEventListener('keydown', e => { if (e.key === 'Tab') { e.preventDefault(); const s = TA.selectionStart; TA.setRangeText('  ', s, TA.selectionEnd, 'end'); refresh(); } });
+  $('#tcheck').addEventListener('click', async e => {
+    const b = e.target.closest('button');
+    if (b) { const d = b.dataset;
+      if (d.use !== undefined) { useLine(+d.use, d.text); toast('Line fixed.'); }
+      else if (d.ai !== undefined) { usedAI.add(low(d.text)); useLine(+d.ai, d.text); toast('AI suggestion used – checked against app memory ✓'); }
+      else if (d.teach !== undefined) { const p = parsed[+d.teach]; try { await api('/api/write/teach', { term: p.term, screen: p.screen, field: d.field }); toast(`“${p.term}” now means ${d.field} for everyone.`); runCheck(); } catch (er) { toast(er.message); } }
+      return; }
+    const ck = e.target.closest('.ck'); if (ck) { const i = +ck.dataset.line, ls = TA.value.split('\n'); const pos = ls.slice(0, i + 1).join('\n').length; TA.focus(); TA.setSelectionRange(pos, pos); TA.dispatchEvent(new Event('click')); }
+  });
+  $('#palette').addEventListener('click', e => { const c = e.target.closest('[data-add]'); if (c) { if (!cur) cur = newCase(); addLine(c.dataset.add); } });
+  $('#tName').addEventListener('input', () => { if (cur) syncCur(); }); $('#tMod').addEventListener('change', () => { if (cur) syncCur(); });
+  $('#tPick').onchange = async e => {
+    const id = e.target.value; if (!id) return;
+    try { const d = await api('/api/tests/open?id=' + enc(id)); if (!(d.lines || []).length) { toast('This case was recorded, so it has no written lines to edit.'); e.target.value = ''; return; }
+      cur = { id: d.id, name: d.name, module: d.module, author: d.author, lines: d.lines }; parsed = []; resetRec('written'); renderEditor(); } catch (er) { toast(er.message); }
+  };
+  $('#btnNew').onclick = newBlankCase;
+  $('#btnSave').onclick = () => saveTest();
+  $('#btnGen').onclick = generate;
+  $('#btnRun').onclick = () => runTests($$('#tcList input:checked').map(i => i.value));
+  $('#modPick').addEventListener('click', e => { const b = e.target.closest('[data-mod]'); if (b && !b.disabled) { runMod = b.dataset.mod; renderRunList(); } });
+  $('#tcList').addEventListener('change', updRunBtn);
+  $('#tcAll').addEventListener('change', e => { $$('#tcList input:not(:disabled)').forEach(i => { i.checked = e.target.checked; }); updRunBtn(); });
+  // record + pipeline
+  $('#recPanel').addEventListener('click', e => {
+    const id = e.target.closest('button')?.id;
+    if (id === 'btnRec') startRec();
+    else if (id === 'btnAgain') { resetRec('record'); renderRecord(); }
+    else if (id === 'btnStop') stopRec();
+    else if (id === 'btnReview') review();
+    else if (id === 'btnAll') applyFindings(rec.findings.map(f => f.id));
+    else if (id === 'btnReplay') { const must = rec.findings.filter(f => f.sev === 'Must fix' && !rec.applied.has(f.id)).length;
+      if (must) modal('Replay without fixes?', `<p>${must} “Must fix” suggestion(s) are not applied. The replay may fail; AI will then try to fix it.</p>`, [{ label: 'Go back' }, { label: 'Replay anyway', cls: 'g', fn: () => startReplay(false) }]); else startReplay(false); }
+    else if (id === 'btnRetry') startReplay(true);
+    else if (id === 'btnPackRec') { if (rec.job) { download('bugpack', rec.job); toast('Bug pack downloading.'); } }
+    else if (id === 'btnSaveRec') saveRecorded();
+    else if (id === 'btnRunSaved') runTests([rec.saved.id]);
+    else if (id === 'btnRegen') generate();
+    else if (id === 'btnEditSteps') { $('#tsrc').focus(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    else if (id === 'btnWriteNew') { newBlankCase(); window.scrollTo(0, 0); }
+    const ap = e.target.closest('[data-apply]'); if (ap) applyFindings([ap.dataset.apply]);
+    const sk = e.target.closest('[data-skip]'); if (sk) { rec.applied.add(sk.dataset.skip); rec.skipped.add(sk.dataset.skip); renderRecord(); }
+    const g2 = e.target.closest('[data-go2]'); if (g2) go(g2.dataset.go2);
+  });
+  $('#code').addEventListener('input', () => { rec.code = $('#code').value; drawGutter(); });
+  $('#recPanel').addEventListener('input', e => { if (e.target.id === 'rStart') rec.startUrl = e.target.value.trim(); });
+  $('#btnCopy').onclick = () => { navigator.clipboard?.writeText($('#code').value); toast('Script copied.'); };
+  document.addEventListener('click', e => {
+    const o = e.target.closest('[data-open]'); if (o) { openRun(o.dataset.open); return; }
+    const d = e.target.closest('[data-dl]'); if (d && !d.disabled) { download(d.dataset.dl, d.dataset.id); return; }
+    const p = e.target.closest('[data-pack]'); if (p) { download('bugpack', p.dataset.pack); toast('Bug pack downloading.'); }
+  });
+  $('#drClose').onclick = () => { $('#drawer').hidden = true; };
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { $('#drawer').hidden = true; $('#modal').hidden = true; } });
+  $('#btnLearn').onclick = () => modal('Start learning?', '<p>This logs in, <b>backs up Control Room settings</b>, turns settings and menus on, then opens every screen. Use a <b>test company</b> only.</p>', [{ label: 'Cancel' }, { label: 'Start learning', cls: 'g', fn: learn }]);
+  $('#btnRestore').onclick = () => modal('Restore settings?', '<p>The Control Room settings saved before learning will be put back.</p>', [{ label: 'Cancel' }, { label: 'Restore', cls: 'p', fn: async () => { $('#learnLog').textContent = ''; try { const r = await api('/api/learn/restore', {}); followLearn(r.job, $('#btnRestore')); } catch (e) { toast(e.message); } } }]);
+  $('#btnCode').onclick = async () => {
+    const btn = $('#btnCode'); btn.disabled = true; $('#codeLog').textContent = 'Reading…';
+    try { const r = await api('/api/code/read', { web: $('#pWeb').value.trim(), api: $('#pApi').value.trim() }); $('#codeLog').textContent = r.message || ''; $('#codeRes').textContent = r.ok ? `${r.elements ?? 0} fields · ${r.routes ?? 0} routes` : 'Not read'; if (r.ok) { renderMemory(); refreshState(); } }
+    catch (e) { $('#codeLog').textContent = e.message; $('#codeRes').textContent = 'Not read'; } btn.disabled = false;
+  };
+  $('#mScreen').onchange = renderMemory; $('#mFind').oninput = () => { clearTimeout(memTimer); memTimer = setTimeout(renderMemory, 250); };
+  $('#btnEye').onclick = () => { const p = $('#sPass'); p.type = p.type === 'password' ? 'text' : 'password'; $('#btnEye').textContent = p.type === 'password' ? 'Show' : 'Hide'; };
+  $('#btnSaveSet').onclick = saveSettings;
+  $('#btnTestLogin').onclick = async () => {
+    const b = $('#btnTestLogin'); b.disabled = true; b.textContent = 'Testing…';
+    try { const r = await api('/api/settings/test-login', {}); toast(r.message || (r.ok ? 'Logged in.' : 'Login failed.')); } catch (e) { toast(e.message); }
+    b.disabled = false; b.textContent = 'Test login';
+  };
+  renderHome();
+}
+document.addEventListener('DOMContentLoaded', boot);
+</script>
+</body>
+</html>

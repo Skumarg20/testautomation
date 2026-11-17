@@ -1,0 +1,88 @@
+# Retail Billing / Counter Sale.
+#
+# Iska rasta Control Room ki ek setting se poori tarah badal jata hai:
+#     "Ask Party in Retail Billing" = Ask        -> party poochta hai
+#                                   = Don't Ask  -> Cash Account apne aap
+#
+# Chemist trade me aksar "Don't Ask" hota hai -- counter par har grahak ka
+# ledger nahi banaya jata. Isliye yahan koi fixed script nahi hai: form
+# khulne par pehle DEKHTE hain party ka kya haal hai, phir aage badhte hain.
+# Ek hi test dono settings pe chalta hai.
+
+- id: TC_RETAIL_001
+  module: retail
+  title: Counter Sale ka form khulta hai
+  priority: p1
+  tags: [smoke, retail]
+  expected:
+    - "Bill No. aur Date dono maujood hon"
+    - "Item ka grid dikhe"
+  steps:
+    - action: open_screen
+      target: counter_sale
+    - action: expect_field
+      value: bill_no
+    - action: expect_column
+      value: Product
+    - action: close_form
+
+- id: TC_RETAIL_002
+  module: retail
+  title: Party ka haal form dekh kar pata chalta hai
+  priority: p1
+  tags: [retail]
+  preconditions:
+    - "Ye test setting ka naam maan kar nahi chalta -- form dekh kar chalta hai"
+  expected:
+    - "Party ya to pehle se bhari ho, ya poochi jaye, ya bilkul na ho"
+    - "Teeno soorat me test aage badh sake"
+  steps:
+    - action: open_screen
+      target: counter_sale
+    - action: ensure_party
+      value: "Cash Account"
+      note: "Pehle se bhari ho to chhedta nahi -- wahi asli vyavhaar hai"
+    - action: close_form
+
+- id: TC_RETAIL_003
+  module: retail
+  title: Counter par ek item ka bill banna chahiye
+  priority: p1
+  tags: [retail, smoke]
+  destructive: true
+  preconditions:
+    - "Barcode 80000111 wala item maujood ho -- apne data ke hisaab se badal lo"
+    - "Batch wali trade me batch apne aap chuni jayegi, warna wo kadam chhod diya jayega"
+  expected:
+    - "Grid me ek line bane"
+    - "Bina save kiye form band ho jaye"
+  steps:
+    - action: open_screen
+      target: counter_sale
+    - action: retail_bill
+      value: "80000111 | 2"
+      patient: "QA Patient"
+      doctor: "QA Doctor"
+      note: "Patient/Doctor sirf pharma me bharenge, general me apne aap chhod denge"
+    - action: expect_lines
+      value: "1"
+
+- id: TC_RETAIL_004
+  module: retail
+  title: Don't Ask wali setting me party poochi nahi jani chahiye
+  priority: p2
+  tags: [retail, control_room]
+  known_issue: false
+  preconditions:
+    - "Ye test SIRF tab lagu hai jab Control Room me
+       'Ask Party in Retail Billing' = Don't Ask ho.
+       Ask hone par ye apne aap SKIP ho jayega -- kyunki tab party ka poocha
+       jana sahi vyavhaar hai, bug nahi."
+  expected:
+    - "Party ka field ya to ho hi nahi, ya pehle se bhara ho"
+  steps:
+    - action: open_screen
+      target: counter_sale
+    - action: expect_party_state
+      value: "not_asked"
+    - action: close_form

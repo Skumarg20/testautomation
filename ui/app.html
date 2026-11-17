@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MargBooks QA</title>
+<style>
+/* ============================================================
+   Dispensary instrument panel.
+   Subject: pharma billing. Materials from that world -- prescription
+   pads, batch labels, and the thermal receipt tape at every chemist's
+   counter. The run tape is the one thing this page is remembered by:
+   a test run IS a sequence printed over time, so we print it.
+   ============================================================ */
+:root{
+  --ink:#101826; --rail:#16202f; --rail-2:#1e2b3d;
+  --paper:#f6f8fa; --card:#fff; --line:#e3e7ed; --line-2:#eef1f5;
+  --text:#18222f; --muted:#5f6b7c; --faint:#8b97a6;
+  --dispense:#0d7a6b; --dispense-2:#e3f1ee;
+  --pass:#1a7f4f; --pass-bg:#e6f4ec;
+  --fail:#b32d20; --fail-bg:#fceceb;
+  --amber:#a06a00; --amber-bg:#fbf1dc;
+  --violet:#6b4fc4; --violet-bg:#efebfb;
+  --mono:'JetBrains Mono','Cascadia Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+  --rail-w:236px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:var(--paper);color:var(--text);font-family:var(--sans);
+  font-size:14px;line-height:1.55;display:flex;flex-direction:column;
+  -webkit-font-smoothing:antialiased;
+}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+a{color:var(--dispense)}
+::selection{background:var(--dispense-2)}
+:focus-visible{outline:2px solid var(--dispense);outline-offset:2px}
+
+/* ---------- top ---------- */
+.top{display:flex;align-items:center;gap:14px;height:54px;padding:0 18px;
+  background:var(--ink);color:#e9eef4;flex:none}
+.mark{display:flex;align-items:baseline;gap:7px;font-weight:680;letter-spacing:-.3px}
+.mark em{font-style:normal;color:#54c9b6}
+.mark span{font-size:11px;color:#7d8b9c}
+.top nav{display:flex;gap:1px;margin-left:10px}
+.top nav button{color:#9aa9ba;padding:8px 13px;border-radius:7px;font-size:13.5px}
+.top nav button:hover{color:#fff;background:#212e40}
+.top nav button[aria-current]{background:#2b3a4f;color:#fff}
+.meta{margin-left:auto;display:flex;align-items:center;gap:14px;
+  font-size:12px;color:#8fa0b2}
+.meta b{color:#dfe7ef;font-weight:500}
+.more{position:relative;display:inline-block}
+.moremenu{position:absolute;top:calc(100% + 6px);left:0;z-index:40;min-width:270px;
+  background:#fff;border:1px solid var(--line);border-radius:9px;padding:6px;
+  box-shadow:0 12px 32px rgba(16,24,38,.22)}
+.top nav .moremenu button{display:block;width:100%;text-align:left;color:var(--text);
+  padding:9px 11px;border-radius:6px;font-size:13.5px}
+.top nav .moremenu button:hover{background:var(--line-2);color:var(--text)}
+.top nav .moremenu button small{display:block;color:var(--muted);font-size:11.5px;margin-top:1px}
+.howto{display:flex;gap:10px;align-items:stretch;margin-bottom:12px}
+.howto .st{flex:1;display:flex;gap:10px;align-items:flex-start;background:#fff;
+  border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+.howto .st b.n{flex:none;width:24px;height:24px;border-radius:99px;background:var(--dispense);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px}
+.howto .st span{font-size:13px;color:var(--muted)}
+.howto .st span strong{display:block;color:var(--text);font-size:14px}
+.howto .gone{flex:none;align-self:flex-start;color:var(--faint)}
+@media(max-width:900px){.howto{flex-direction:column}}
+.verdict{border-radius:9px;padding:11px 13px;margin:12px 0 10px;font-size:14px;
+  border:1px solid var(--line)}
+.verdict b{display:block;font-size:15px;margin-bottom:2px}
+.verdict.good{background:var(--pass-bg);border-color:#c5e3d2}
+.verdict.good b{color:var(--pass)}
+.verdict.bad{background:var(--fail-bg);border-color:#f0cdc9}
+.verdict.bad b{color:var(--fail)}
+.verdict.meh{background:var(--amber-bg);border-color:#ecdcb4}
+.verdict.meh b{color:var(--amber)}
+.legend{font-size:12px;color:var(--muted);margin:2px 0 10px}
+.legend b{color:var(--text);font-weight:600}
+.step-no{display:inline-flex;width:22px;height:22px;border-radius:99px;background:var(--dispense);
+  color:#fff;align-items:center;justify-content:center;font-size:12px;margin-right:7px;
+  font-weight:600}
+.adv{background:var(--amber-bg);border:1px solid #ecdcb4;border-radius:9px;
+  padding:10px 12px;margin-bottom:12px;font-size:13px}
+.pill{padding:3px 9px;border-radius:99px;font-size:10px;letter-spacing:.4px}
+.pill.ro{background:#123028;color:#6fd8c3}
+.pill.rw{background:#3a1d18;color:#ff9f8e}
+.pill.ai{background:#241c3d;color:#b3a0f0}
+
+/* ---------- shell ---------- */
+.shell{flex:1;display:flex;min-height:0}
+.rail{width:var(--rail-w);flex:none;background:var(--rail);color:#b9c6d4;
+  overflow:auto;padding:10px 0 20px}
+.rail h3{display:flex;align-items:center;gap:8px;margin:12px 12px 6px;
+  font-size:11.5px;font-weight:600;color:#7e8ea0;
+  font-weight:600}
+.rail h3 button{color:#7f8fa2;font-size:10px;padding:2px 6px;border-radius:4px;
+  letter-spacing:.3px}
+.rail h3 button:hover{background:var(--rail-2);color:#dfe7ef}
+.rail h3 .sp{margin-left:auto}
+.caret{width:13px;flex:none;color:#7f8fa2;font-size:9px;line-height:1;
+  transition:transform .15s;text-align:center}
+.mnode.open > .caret{transform:rotate(90deg)}
+.kids{overflow:hidden}
+.kids.shut{display:none}
+.mnode{display:flex;align-items:center;gap:7px;padding:4px 12px 4px 0;
+  font-size:12.5px;border-left:2px solid transparent}
+.mnode .lbl{flex:1;padding:3px 7px;border-radius:5px;cursor:pointer;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mnode .lbl:hover{background:var(--rail-2);color:#fff}
+.mnode.grp{color:#e7edf3;font-weight:600;margin-top:4px}
+.mnode.grp .lbl{cursor:default}
+.mnode.grp .lbl:hover{background:none;color:#e7edf3}
+.mnode.on{border-left-color:#54c9b6;background:#1b2838}
+.mnode.on .lbl{color:#fff}
+.mcount{font-variant-numeric:tabular-nums;font-size:11px;background:#26364a;color:#9fb0c2;
+  border-radius:99px;padding:1px 6px;flex:none}
+.mnode.on .mcount{background:#54c9b6;color:#0d2620}
+.mplus{font-size:12px;color:#5e7086;flex:none}
+
+main{flex:1;min-width:0;overflow:auto;padding:14px}
+.wrap{max-width:1480px;margin:0 auto}
+/* List ko zyada jagah: test ke naam lambe hote hain aur do line me
+   toot jate the. Daayan panel sirf output dikhata hai. */
+.cols{display:grid;grid-template-columns:minmax(340px,1.2fr) minmax(360px,1fr);
+  align-items:start;
+  gap:13px;align-items:start}
+@media(max-width:1080px){.cols{grid-template-columns:1fr}
+  .rail{width:190px}}
+
+/* ---------- card ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:9px;
+  overflow:hidden}
+.card > header{display:flex;align-items:center;gap:9px;padding:9px 12px;
+  border-bottom:1px solid var(--line);background:#fbfcfd}
+.card > header h2{margin:0;font-size:11px;font-weight:650;letter-spacing:.6px;
+  color:var(--muted)}
+.card > header .sp{margin-left:auto}
+.body{padding:12px}
+.scroll{overflow:auto;max-height:calc(100vh - 268px)}
+
+/* ---------- controls ---------- */
+.btn{border:1px solid var(--line);background:#fff;border-radius:7px;
+  padding:6px 12px;font-size:12.5px;font-weight:500;transition:.12s}
+.btn:hover{border-color:#c3ccd7;background:#f8fafb}
+.btn.go{background:var(--dispense);border-color:var(--dispense);color:#fff}
+.btn.go:hover{background:#0a6356}
+.btn.go:disabled{background:#a9c4bf;border-color:#a9c4bf;cursor:not-allowed}
+.btn.q{border-color:transparent;color:var(--muted)}
+.btn.q:hover{background:var(--line-2);color:var(--text)}
+.btn.sm{padding:3px 9px;font-size:11.5px;border-radius:6px}
+input[type=text],input[type=search],input[type=password],select,textarea{
+  border:1px solid var(--line);border-radius:7px;padding:7px 9px;width:100%;
+  background:#fff}
+textarea{resize:vertical;font-size:13.5px;line-height:1.65}
+.fld{display:block;margin-bottom:10px}
+.fld > i{display:block;font-style:normal;font-size:11px;color:var(--muted);
+  margin-bottom:4px}
+.row{display:flex;gap:9px;align-items:center}
+.note{font-size:11.5px;color:var(--muted)}
+.hide{display:none !important}
+code{font-family:var(--mono);font-size:11.5px;background:var(--line-2);
+  padding:1px 4px;border-radius:4px}
+
+/* ---------- test list ---------- */
+.bar{display:flex;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line)}
+.bar input{flex:1}
+.grp-head{display:flex;gap:8px;align-items:center;padding:6px 12px;
+  background:#f4f7f9;border-bottom:1px solid var(--line-2);position:sticky;top:0;
+  font-size:11px;font-weight:600;
+  color:var(--muted);z-index:1}
+.grp-head b{margin-left:auto;background:#e4eaef;border-radius:99px;padding:0 7px;
+  font-weight:500}
+.tc{display:grid;grid-template-columns:20px 1fr auto;gap:9px;padding:8px 12px;
+  border-bottom:1px solid var(--line-2);align-items:start;cursor:pointer}
+.tc:hover{background:#f9fbfc}
+.tc.on{background:var(--dispense-2)}
+.tc input{margin-top:3px}
+.tc .id{font-family:var(--mono);font-size:10px;color:var(--faint)}
+.tc .ti{font-weight:500;margin:1px 0 3px}
+.tags{display:flex;gap:4px;flex-wrap:wrap}
+.tag{font-size:11.5px;padding:2px 8px;border-radius:99px;background:var(--line-2);
+  color:var(--muted)}
+.tag.w{background:var(--amber-bg);color:var(--amber)}
+.tag.v{background:var(--violet-bg);color:var(--violet)}
+.tag.t{background:var(--dispense-2);color:var(--dispense)}
+
+/* ---------- SIGNATURE: receipt tape ----------
+   Har chemist ke counter pe thermal printer hota hai. Test run bhi
+   waisa hi hai -- ek ke baad ek line, waqt ke saath. Isliye use
+   waise hi print karte hain, perforated kinare ke saath. */
+.tape-wrap{position:relative;border-radius:8px;overflow:hidden;background:#0c1219}
+.tape-wrap::before,.tape-wrap::after{content:'';position:absolute;left:0;right:0;
+  height:6px;z-index:2;
+  background:radial-gradient(circle at 4px 0,transparent 3.5px,#0c1219 3.6px);
+  background-size:9px 6px}
+.tape-wrap::before{top:0}
+.tape-wrap::after{bottom:0;transform:rotate(180deg)}
+.tape{font-family:var(--mono);font-size:11.5px;line-height:1.7;color:#c3d0dc;
+  padding:14px 0;min-height:260px;max-height:min(60vh,560px);overflow:auto;
+  scroll-behavior:smooth}
+.tl{display:grid;grid-template-columns:3px 1fr;gap:10px;padding:0 12px 0 0}
+.tl i{display:block;height:100%}
+.tl span{white-space:pre-wrap;word-break:break-word}
+.tl.head span{color:#fff;font-weight:600;margin-top:8px;
+  border-bottom:1px dashed #2b3a4b;padding-bottom:2px}
+.tl.head i{background:#41556b}
+.tl.pass i{background:#31a86b} .tl.pass span{color:#7fdba8}
+.tl.fail i{background:#e0574a} .tl.fail span{color:#ffa79a}
+.tl.skip i,.tl.warn i{background:#cf9a2a} .tl.skip span,.tl.warn span{color:#ffd991}
+.tl.ai i{background:#8b74e8} .tl.ai span{color:#c3b4f5}
+.blink{display:inline-block;width:7px;height:13px;background:#54c9b6;
+  vertical-align:-2px;animation:bl 1s steps(2) infinite}
+@keyframes bl{0%,50%{opacity:1}51%,100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.blink{animation:none}}
+
+.now{display:flex;gap:10px;align-items:center;padding:9px 12px;
+  border-bottom:1px solid var(--line);background:#fbfcfd}
+.now .id{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.track{flex:1;min-width:70px;height:3px;background:var(--line-2);border-radius:2px;
+  overflow:hidden}
+.track i{display:block;height:100%;background:var(--dispense);transition:width .3s}
+
+/* ---------- results ---------- */
+.tally{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:12px 0 10px}
+.tally div{text-align:center;padding:8px 4px;border-radius:8px;border:1px solid var(--line)}
+.tally b{display:block;font-size:22px;font-weight:660;line-height:1.05;
+  font-variant-numeric:tabular-nums}
+.tally small{font-size:9.5px;color:var(--muted);letter-spacing:.6px}
+.tally .p{background:var(--pass-bg);border-color:#c5e3d2} .tally .p b{color:var(--pass)}
+.tally .f{background:var(--fail-bg);border-color:#f0cdc9} .tally .f b{color:var(--fail)}
+.tally .s{background:var(--amber-bg);border-color:#ecdcb4} .tally .s b{color:var(--amber)}
+.tally .k{background:var(--violet-bg);border-color:#d8cef5} .tally .k b{color:var(--violet)}
+details.res{border:1px solid var(--line);border-radius:8px;margin-bottom:7px;
+  overflow:hidden}
+details.res summary{display:flex;gap:9px;align-items:center;padding:8px 11px;
+  cursor:pointer;list-style:none}
+details.res summary::-webkit-details-marker{display:none}
+.dot{width:8px;height:8px;border-radius:99px;flex:none}
+.res.passed .dot{background:var(--pass)} .res.passed summary{background:var(--pass-bg)}
+.res.failed .dot{background:var(--fail)} .res.failed summary{background:var(--fail-bg)}
+.res.skipped .dot{background:var(--amber)} .res.skipped summary{background:var(--amber-bg)}
+.res.known_issue .dot{background:var(--violet)}
+.res.known_issue summary{background:var(--violet-bg)}
+.res .secs{margin-left:auto;font-variant-numeric:tabular-nums;font-size:12px;color:var(--muted)}
+.res pre{margin:0;padding:10px 12px;background:#fbfcfd;border-top:1px solid var(--line-2);
+  font-family:var(--mono);font-size:11px;white-space:pre-wrap;word-break:break-word;
+  max-height:280px;overflow:auto}
+
+/* ---------- steps builder ---------- */
+.steps{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.srow{display:grid;grid-template-columns:22px minmax(96px,1.05fr) minmax(96px,1.1fr) minmax(110px,1.35fr) 24px;
+  gap:6px;
+  padding:6px 8px;border-bottom:1px solid var(--line-2);align-items:center}
+.srow:last-child{border-bottom:0}
+.srow.ai{background:var(--violet-bg)}
+.srow .n{font-variant-numeric:tabular-nums;font-size:12px;color:var(--faint);text-align:right}
+.srow .x{color:var(--faint);font-size:16px;line-height:1}
+.srow .x:hover{color:var(--fail)}
+.shead{background:#fbfcfd;font-size:11.5px;font-weight:600;
+  color:var(--muted)}
+
+/* ---------- modal ---------- */
+.tool{border:1px solid var(--line);border-radius:9px;padding:11px 12px;
+  margin-bottom:9px}
+.tool:hover{border-color:var(--line-2)}
+.tool .th{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.tool .th b{font-size:13px}
+.tool .opt{display:flex;gap:8px;align-items:flex-start;margin-top:7px;
+  padding:7px 9px;border-radius:7px;background:#fbfcfd}
+.tool .opt input{width:auto;flex:none;margin-top:2px}
+.tool .opt.hot{background:var(--amber-bg)}
+.tool .row{margin-top:9px}
+/* toolgrp -- ".grp" NAHI.
+   ".grp" pehle se rail ke menu node par laga hai (.mnode.grp). Usi naam
+   ki nayi class banane se rail ke saare naam BADE AKSHAR me ho gaye the
+   ("Master" -> "MASTER"), aur do purane test toot gaye. CSS me naam ki
+   takkar aise hi chupke se hoti hai. */
+.toolgrp{font-size:11px;font-weight:650;letter-spacing:.05em;
+  color:var(--faint);margin:16px 0 9px}
+.toolgrp:first-child{margin-top:0}
+
+.scrim{position:fixed;inset:0;z-index:50;display:flex;align-items:center;
+  justify-content:center;padding:20px;
+  background:rgba(16,24,38,.55);backdrop-filter:blur(3px)}
+.scrim[hidden]{display:none}
+.dlg{background:var(--card);border-radius:11px;width:min(560px,100%);
+  max-height:calc(100vh - 40px);display:flex;flex-direction:column;
+  box-shadow:0 18px 50px rgba(16,24,38,.28);
+  animation:pop .14s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(6px) scale(.99)}}
+@media(prefers-reduced-motion:reduce){.dlg{animation:none}}
+.dlg > header{display:flex;align-items:center;gap:10px;padding:13px 16px;
+  border-bottom:1px solid var(--line)}
+.dlg > header h2{margin:0;font-size:14px;font-weight:650}
+.dlg > header .x{margin-left:auto;color:var(--faint);font-size:20px;
+  line-height:1;padding:2px 6px;border-radius:6px}
+.dlg > header .x:hover{background:var(--line-2);color:var(--text)}
+.dlg .content{padding:16px;overflow:auto}
+.dlg > footer{display:flex;gap:9px;align-items:center;padding:12px 16px;
+  border-top:1px solid var(--line);background:#fbfcfd}
+.dlg > footer .sp{margin-left:auto}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:10px 11px;
+  border:1px solid var(--line);border-radius:8px;margin-bottom:4px}
+.chk input{width:auto;margin-top:2px;flex:none}
+.chk.hot{background:var(--amber-bg);border-color:#ecdcb4}
+.chk b{color:var(--text)}
+
+.empty{padding:30px 16px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--text);font-size:14px;margin-bottom:4px}
+/* Alert box. Naam '.notice' hai, '.warn' nahi -- kyunki '.warn' tape ki
+   line ke liye pehle se use ho raha hai aur uska amber background tape par
+   chadh jata tha. Do alag cheezon ka ek naam nahi hona chahiye. */
+.notice{background:var(--amber-bg);border:1px solid #ecdcb4;border-radius:8px;
+  padding:10px 12px;margin-bottom:10px;font-size:12px}
+.notice b{color:var(--amber)}
+.notice ul{margin:6px 0 0;padding-left:18px}
+.notice li{margin-bottom:5px}
+table.mini{width:100%;border-collapse:collapse;font-size:12px}
+table.mini th,table.mini td{text-align:left;padding:5px 8px;
+  border-bottom:1px solid var(--line-2);vertical-align:top}
+table.mini th{font-size:11.5px;font-weight:600;color:var(--muted);
+  letter-spacing:.5px}
+/* machine ka likha data -- selector, id. Yahan monospace jaankari
+   deta hai: "ye tumhari bhasha nahi, machine ki hai". */
+table.mini td.machine{font-family:var(--mono);font-size:12px;
+  color:var(--muted);word-break:break-all}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="mark">Marg<em>Books</em> Tester</div>
+  <nav id="tabs">
+    <button data-tab="run" aria-current="true">Run tests</button>
+    <button data-tab="new">Write a test</button>
+    <button data-tab="hist">Past results</button>
+    <button data-tab="env">Settings</button>
+    <span class="more" id="moreWrap">
+      <button id="moreBtn" aria-haspopup="true" aria-expanded="false">More &#9662;</button>
+      <div class="moremenu hide" id="moreMenu" role="menu">
+        <button data-tab="imp" role="menuitem">Import tests<small>From Excel, CSV or a recording</small></button>
+        <button data-tab="cat" role="menuitem">What the tool has learned<small>Screens, fields and company settings</small></button>
+        <button data-tab="tools" role="menuitem">Maintenance<small>For whoever set this tool up</small></button>
+      </div>
+    </span>
+  </nav>
+  <div class="meta" id="meta"></div>
+</div>
+
+<div class="shell">
+  <aside class="rail" id="rail"></aside>
+  <main><div class="wrap">
+
+  <!-- ============ RUN ============ -->
+  <section id="tab-run">
+    <div class="howto" id="howto">
+      <div class="st"><b class="n">1</b><span><strong>Choose tests</strong>
+        Tick the tests you want, or pick an area on the left.</span></div>
+      <div class="st"><b class="n">2</b><span><strong>Press Run</strong>
+        The tool opens MargBooks and does the clicking for you.</span></div>
+      <div class="st"><b class="n">3</b><span><strong>Read the result</strong>
+        Green means it worked. Red means something needs a look.</span>
+        <button class="btn q sm gone" id="howtoHide" title="Hide this guide">&times;</button></div>
+    </div>
+    <div class="cols">
+      <div class="card">
+        <header><h2 id="listTitle">All tests</h2><span class="sp"></span>
+          <span class="note" id="selCount">0 selected</span>
+          <button class="btn q sm" id="selAll">All</button>
+          <button class="btn q sm" id="selNone">None</button></header>
+        <div class="bar">
+          <input type="search" id="q" placeholder="Search tests by name">
+        </div>
+        <div class="scroll" id="tlist"></div>
+        <header style="border-top:1px solid var(--line);border-bottom:0">
+          <button class="btn go" id="runBtn" disabled>Run</button>
+          <span class="note" id="runHint">Pick a menu item on the left, or select tests</span>
+        </header>
+      </div>
+
+      <div class="card" style="position:sticky;top:12px">
+        <header><h2>What is happening</h2><span class="sp"></span>
+          <span class="note" id="runId"></span></header>
+        <div class="now hide" id="now">
+          <span class="id" id="nowId"></span>
+          <strong id="nowDoing" style="font-weight:500"></strong>
+          <div class="track"><i id="nowBar" style="width:0"></i></div>
+          <span class="id" id="nowStep"></span>
+        </div>
+        <div class="body">
+          <div id="verdict" class="verdict hide"></div>
+          <div id="tally" class="tally hide">
+            <div class="p"><b id="nPass">0</b><small>Passed</small></div>
+            <div class="f"><b id="nFail">0</b><small>Failed</small></div>
+            <div class="s"><b id="nSkip">0</b><small>Skipped</small></div>
+            <div class="k"><b id="nKnown">0</b><small>Known problem</small></div>
+          </div>
+          <p class="legend hide" id="legend"><b>Skipped</b> = the test does not apply to this
+            company, so it was not tried. <b>Known problem</b> = a fault in MargBooks that
+            is already noted.</p>
+          <div class="tape-wrap"><div class="tape" id="tape">
+            <div class="tl"><i></i><span style="color:#5d7086">
+Nothing running.
+
+Tick the tests you want on the left,
+then press Run. Each step shows up here as it happens.</span></div>
+          </div></div>
+          <div id="results"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEW TEST ============ -->
+  <section id="tab-new" class="hide">
+    <div class="cols">
+      <div class="card">
+        <header><h2 id="newTitle">Write a test</h2><span class="sp"></span>
+          <button class="btn q sm hide" id="cancelEdit">Cancel edit</button></header>
+        <div class="body">
+          <div id="editBanner" class="notice hide" style="margin-bottom:12px"></div>
+          <label class="fld"><i><span class="step-no">1</span>Write what the test should do, one action per line, in your own words</i>
+            <textarea id="nPlain" rows="7" spellcheck="false"
+placeholder="Open Sale Bill&#10;Set party to &quot;Cash Account&quot;&#10;Add barcode &quot;80000111&quot; with quantity 2&#10;There should be one line&#10;Close the bill"></textarea></label>
+          <div class="row" style="margin-bottom:10px">
+            <button class="btn go" id="convBtn">Turn into steps</button>
+            <button class="btn q sm" id="exBtn">Show an example</button>
+            <span class="note" id="convMsg"></span>
+          </div>
+          <div id="convIssues"></div>
+          <hr style="border:0;border-top:1px solid var(--line);margin:14px 0">
+          <p class="note" style="margin:0 0 8px"><span class="step-no">2</span>
+            Check the steps on the right. Change anything that looks wrong.</p>
+          <p class="note" style="margin:0 0 10px"><span class="step-no">3</span>
+            Give the test a name and save it.</p>
+          <label class="fld"><i>Test name</i>
+            <input type="text" id="nName" placeholder="Sale bill with one item"></label>
+          <label class="fld"><i>What should happen? (optional)</i>
+            <textarea id="nDesc" rows="2" style="font-family:var(--sans);font-size:13px"
+              placeholder="Adding an item should create one line in the grid"></textarea></label>
+          <div class="row">
+            <label class="fld" style="flex:1"><i>Which part of MargBooks?</i>
+              <select id="nMod">
+                <option value="masters">Items and ledgers</option>
+                <option value="sales">Sale</option>
+                <option value="purchase">Purchase</option>
+                <option value="inventory">Stock</option>
+                <option value="pharma">Pharma (patient, doctor, batch)</option>
+                <option value="gst">GST</option>
+                <option value="reports">Reports</option>
+                <option value="auth">Sign-in</option>
+                <option value="general">Something else</option>
+              </select></label>
+            <label class="fld" style="flex:1"><i>Your name</i>
+              <input type="text" id="nWho" placeholder="so we know who wrote it"></label>
+          </div>
+          <div class="row">
+            <button class="btn go" id="saveBtn">Save test</button>
+            <span class="note" id="saveMsg"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <header><h2>Steps the tool will follow</h2><span class="sp"></span>
+          <button class="btn sm" id="addStep">Add step</button></header>
+        <div class="body">
+          <div class="steps" id="steps">
+            <div class="srow shead"><span></span><span>What to do</span>
+              <span>On which screen or field</span><span>What to type or expect</span><span></span></div>
+          </div>
+          <p class="note" style="margin-top:8px">
+            Press <b>Turn into steps</b> and this table fills itself. Edit a row
+            only if something is wrong. Rows tinted purple were worked out by
+            AI &mdash; check those first.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IMPORT ============ -->
+  <section id="tab-imp" class="hide">
+    <div class="cols">
+      <div class="card">
+        <header><h2>From an Excel or CSV sheet</h2><span class="sp"></span>
+          <a class="btn sm" href="/api/template.csv" download>Blank sheet</a></header>
+        <div class="body">
+          <p class="note" style="margin-top:0">
+            Columns: <b>Test Name, Description, Module, Action, Screen/Field,
+            Value, Expected</b>. One step per row; a new test starts wherever
+            Test Name is filled in again.
+          </p>
+          <label class="fld"><i>Pick a file (.csv or .xlsx)</i>
+            <input type="file" id="impFile" accept=".csv,.xlsx"></label>
+          <label class="fld"><i>Or paste rows here</i>
+            <textarea id="impText" rows="7"
+placeholder="Test Name,Description,Module,Action,Screen/Field,Value,Expected"></textarea></label>
+          <div class="row">
+            <button class="btn go" id="impBtn">Read it</button>
+            <input type="text" id="impWho" placeholder="your name" style="width:150px">
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:13px">
+        <header><h2>From a recording of your own clicks</h2></header>
+        <div class="body">
+          <p class="note" style="margin-top:0">
+            Record yourself using MargBooks, then paste the script here.
+            Recording captures the real path you take — the same menus, the
+            same popups, in the same order. Nothing is guessed.
+          </p>
+          <p class="note" style="margin:0 0 10px">
+            Run <code>npx playwright codegen https://books5.margbooks.com</code>,
+            do the steps, then copy what it wrote. JavaScript or Python both work.
+          </p>
+          <label class="fld"><i>Paste the recorded script</i>
+            <textarea id="cgScript" rows="7" spellcheck="false"
+placeholder="await page.goto('https://books5.margbooks.com/item-master/list');&#10;await page.getByRole('button', { name: 'Create/F2' }).click();"></textarea></label>
+          <div class="row">
+            <input type="text" id="cgName" placeholder="Test name">
+            <button class="btn go" id="cgBtn">Convert</button>
+          </div>
+          <p class="note" id="cgMsg" style="margin:8px 0 0"></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <header><h2>Review, then save</h2><span class="sp"></span>
+          <button class="btn go sm hide" id="impSave">Save all</button></header>
+        <div class="body" id="impOut">
+          <div class="empty"><b>Nothing loaded</b>Pick a file or paste rows, then Read it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATALOGUE ============ -->
+  <section id="tab-cat" class="hide">
+    <div class="adv"><b>You do not need this page for everyday testing.</b> It shows what the tool
+      has learned about MargBooks, and lets whoever set it up refresh that knowledge.</div>
+    <div class="cols">
+      <div class="card">
+        <header><h2>Screens the tool has visited</h2><span class="sp"></span>
+          <span class="note" id="catStats"></span></header>
+        <div class="scroll" id="catScreens"></div>
+      </div>
+      <div class="card" style="margin-bottom:13px">
+        <header><h2>Read the MargBooks source code (optional)</h2><span class="sp"></span>
+          <span class="note" id="scanState"></span></header>
+        <div class="body">
+          <p class="note" style="margin-top:0">
+            The agent learns field names by opening screens in a browser — but
+            that only covers screens it can reach. The source code knows every
+            screen, including ones behind permissions or rare popups. Point it
+            at the MargBooks frontend folder and it reads ids, labels and routes
+            straight from the files.
+          </p>
+          <div class="row" style="margin-bottom:8px">
+            <input type="text" id="scanPath"
+              placeholder="D:\margbooks-frontend  (the folder with src\)">
+            <button class="btn go" id="scanBtn">Scan</button>
+          </div>
+          <p class="note" style="margin:0">
+            <code>node_modules</code>, <code>dist</code>, <code>build</code> and
+            <code>.git</code> are skipped. Each scan adds to what is already
+            known — nothing is thrown away.
+          </p>
+          <div id="scanOut" style="margin-top:10px"></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:13px">
+        <header><h2>Company settings that change MargBooks</h2><span class="sp"></span>
+          <span class="note" id="crState"></span></header>
+        <div class="body">
+          <p class="note" style="margin-top:0">
+            MargBooks changes shape with these. Mode of Payment on adds a window
+            at save; Ask Bill Discount off removes the field entirely. A test
+            that needs a setting which is off is skipped with that reason —
+            not marked failed, because the app is fine.
+          </p>
+          <div id="crList"></div>
+          <div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
+            <div class="row" style="margin-bottom:8px">
+              <input type="search" id="crSearch"
+                placeholder="Search all settings — e.g. discount, batch, stock">
+              <span class="note" id="crCount"></span>
+            </div>
+            <div id="crAll" class="scroll" style="max-height:300px"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <header><h2 id="catTitle">Fields on a screen</h2></header>
+        <div class="body">
+          <p class="note" style="margin-top:0">
+            Every time the agent opens a screen it records each field — its id,
+            CSS and XPath — along with the label printed next to it. That label
+            is what you type when writing a test, so nobody has to hunt for an
+            id again.
+          </p>
+          <div id="catFields"><div class="empty"><b>Pick a screen</b>Its fields show up here.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TOOLS ============ -->
+<section id="tab-tools" class="hide">
+  <div class="adv"><b>These jobs are for whoever set this tool up.</b> You do not need them to run or
+    write tests. Jobs marked <b>changes data</b> change the MargBooks company &mdash; ask before using them.</div>
+  <div class="cols">
+    <div class="card">
+      <header><h2>Maintenance jobs</h2><span class="sp"></span>
+        <span class="note" id="toolState"></span></header>
+      <div class="body" id="toolList"></div>
+    </div>
+
+    <div class="card" style="position:sticky;top:12px;align-self:start">
+      <header><h2 id="jobTitle">Output</h2><span class="sp"></span>
+        <button class="btn q sm hide" id="jobStop">Stop</button></header>
+      <div class="body">
+        <pre id="jobLog" style="margin:0;padding:12px;background:#0c1219;
+          color:#c3d0dc;border-radius:8px;font-family:var(--mono);
+          font-size:11.5px;line-height:1.55;white-space:pre-wrap;
+          min-height:520px;max-height:74vh;overflow:auto">Pick a job on the left.
+
+Whatever the job prints will appear here, and it stays on screen when the job finishes.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HISTORY ============ -->
+  <section id="tab-hist" class="hide">
+    <div class="card">
+      <header><h2>Past results</h2><span class="sp"></span>
+        <button class="btn q sm" id="histRef">Refresh</button></header>
+      <div class="body" id="histBody"></div>
+    </div>
+  </section>
+
+  <!-- ============ SETTINGS ============ -->
+<section id="tab-env" class="hide">
+  <div class="cols">
+    <div class="card">
+      <header><h2>Where to test</h2><span class="sp"></span>
+        <button class="btn sm" id="envNew">Add environment</button></header>
+      <div class="body">
+        <p class="note" style="margin-top:0">Each box below is one MargBooks company the tool can
+          sign in to. The one marked <b>in use</b> is where tests run. Turn <b>writes</b>
+          on only for a demo or practice company &mdash; tests will then create and change real data.</p>
+        <div id="envList"></div>
+        <p class="note" id="buildNote" style="margin:10px 0 0"></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <header><h2>AI helper (optional)</h2><span class="sp"></span>
+        <span class="note" id="aiState"></span></header>
+      <div class="body">
+        <p class="note" style="margin-top:0">
+          Optional. The agent turns plain language into steps using rules
+          first — that part is free and gives the same result every time.
+          AI only handles the lines the rules can't read, and you always see
+          what it produced before saving.
+        </p>
+        <ol class="note" style="margin:0 0 12px;padding-left:18px;line-height:1.9">
+          <li>Open <a href="https://aistudio.google.com/apikey" target="_blank"
+              rel="noopener">aistudio.google.com/apikey</a></li>
+          <li>Sign in with any Google account</li>
+          <li>Press <b>Create API key</b> — pick any project</li>
+          <li>Copy the key (starts with <code>AIza</code>) and paste it below</li>
+        </ol>
+        <label class="fld"><i>Gemini API key</i>
+          <input type="password" id="aiKey" placeholder="AIza…"></label>
+        <label class="fld"><i>Model — leave as is; the agent picks a working one</i>
+          <select id="aiModel"><option value="">pick automatically</option></select></label>
+        <div class="row">
+          <button class="btn go" id="aiSave">Save and test</button>
+          <button class="btn q sm" id="aiModels">Refresh models</button>
+          <button class="btn q sm" id="aiTest">Test again</button>
+        </div>
+        <p class="note" id="aiMsg" style="margin:8px 0 0"></p>
+        <p class="note" style="margin-top:12px">
+          Stored in <code>config/ai.json</code>, git-ignored. Only field
+          names from the page are ever sent — no password, no party data.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  </div></main>
+</div>
+
+<div class="scrim" id="codeScrim" hidden>
+  <div class="dlg" role="dialog" aria-modal="true" style="width:min(760px,100%)">
+    <header><h2 id="codeTitle">Test code</h2>
+      <button class="x" id="codeClose" aria-label="Close">&times;</button></header>
+    <div class="content">
+      <p class="note" style="margin:0 0 10px">
+        This is the test written out as a Playwright script, so you can read
+        what each step does. Runs still go through the YAML — that path has the
+        safety guards, the Control Room checks and the self-healing; a plain
+        script would not.
+      </p>
+      <pre id="codeBody" style="margin:0;padding:12px;background:#0c1219;
+        color:#c3d0dc;border-radius:8px;font-family:var(--mono);font-size:11.5px;
+        white-space:pre-wrap;max-height:52vh;overflow:auto"></pre>
+    </div>
+    <footer><span class="sp"></span>
+      <button class="btn" id="codeCopy">Copy</button>
+      <button class="btn go" id="codeDone">Close</button></footer>
+  </div>
+</div>
+
+<div class="scrim" id="delScrim" hidden>
+  <div class="dlg" role="dialog" aria-modal="true" style="width:min(430px,100%)">
+    <header><h2>Delete this test?</h2>
+      <button class="x" id="delClose" aria-label="Close">&times;</button></header>
+    <div class="content">
+      <p style="margin:0 0 10px" id="delWhat"></p>
+      <p class="note" style="margin:0">
+        The YAML file is removed from <code>testcases/saved/</code>.
+        Past run history keeps it — only the test itself goes.
+      </p>
+    </div>
+    <footer>
+      <span class="note" id="delMsg"></span>
+      <span class="sp"></span>
+      <button class="btn" id="delCancel">Keep it</button>
+      <button class="btn" id="delGo"
+        style="background:var(--fail);border-color:var(--fail);color:#fff">
+        Delete</button>
+    </footer>
+  </div>
+</div>
+
+<div class="scrim" id="envScrim" hidden>
+  <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="envDlgTitle">
+    <header>
+      <h2 id="envDlgTitle">Add environment</h2>
+      <button class="x" id="envClose" aria-label="Close">&times;</button>
+    </header>
+    <div class="content">
+      <p class="note" style="margin:0 0 12px">
+        Point the agent at any MargBooks instance — production, UAT, staging —
+        and switch without touching a file.
+      </p>
+      <label class="fld"><i>Name</i>
+        <input type="text" id="eName" placeholder="uat" autocomplete="off"></label>
+      <label class="fld"><i>Sign-in URL</i>
+        <input type="text" id="eLogin" placeholder="https://accounts.margbooks.com"></label>
+      <label class="fld"><i>App URL — what the address bar shows after sign-in</i>
+        <input type="text" id="eApp" placeholder="https://uat.margbooks.com"></label>
+      <div class="row">
+        <label class="fld" style="flex:1"><i>User (email or mobile)</i>
+          <input type="text" id="eUser" autocomplete="off"></label>
+        <label class="fld" style="flex:1"><i id="ePassLabel">Password</i>
+          <input type="password" id="ePass" autocomplete="new-password"></label>
+      </div>
+      <label class="fld"><i>Company — exact name from the Organisation list</i>
+        <input type="text" id="eCo" autocomplete="off"></label>
+
+      <label class="chk" id="eWritesBox">
+        <input type="checkbox" id="eWrites">
+        <span><b>Allow writes</b> — run tests that create, edit or save data.<br>
+          <span class="note">Off: those tests are skipped and delete requests
+          are blocked.</span>
+          <span class="note" id="eWritesWarn" style="color:var(--amber)"></span>
+        </span></label>
+      <p class="note hide" id="eWritesChange"
+         style="color:var(--amber);margin:0 0 4px 2px"></p>
+
+      <p class="note" style="margin-top:12px">
+        Passwords sit in <code>config/environments.json</code> in plain text,
+        same as <code>.env</code>. That file is git-ignored. Don't put a
+        production password here on a shared machine.
+      </p>
+    </div>
+    <footer>
+      <span class="note" id="envMsg"></span>
+      <span class="sp"></span>
+      <button class="btn" id="envCancel">Cancel</button>
+      <button class="btn go" id="envSave">Save</button>
+    </footer>
+  </div>
+</div>
+
+<datalist id="dlTargets"></datalist>
+<datalist id="dlActions"></datalist>
+
+<script>
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const api = async (u, o) => (await fetch(u, o)).json();
+const post = (u, b) => api(u, {method:'POST',
+  headers:{'Content-Type':'application/json'}, body: JSON.stringify(b)});
+const esc = s => String(s ?? '').replace(/[&<>"]/g,
+  c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+let TESTS = [], META = {}, MENU = null, SEL = new Set(), POLL = null, PICKED = null;
+
+/* ---------- tabs ---------- */
+const TABS = ['run','new','imp','cat','tools','hist','env'];
+/* "More" menu: Import, What the tool has learned, Maintenance */
+function closeMore(){ $('#moreMenu').classList.add('hide');
+  $('#moreBtn').setAttribute('aria-expanded','false'); }
+$('#moreBtn').onclick = e => {
+  e.stopPropagation();
+  const open = $('#moreMenu').classList.toggle('hide') === false;
+  $('#moreBtn').setAttribute('aria-expanded', open ? 'true' : 'false');
+};
+document.addEventListener('click', e => { if (!e.target.closest('#moreWrap')) closeMore(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMore(); });
+
+$$('#tabs [data-tab]').forEach(b => b.onclick = () => {
+  $$('#tabs button').forEach(x => x.removeAttribute('aria-current'));
+  b.setAttribute('aria-current','true');
+  // A page from the More menu: light up "More" so people know where they are
+  if (b.closest('#moreMenu')) $('#moreBtn').setAttribute('aria-current','true');
+  closeMore();
+  TABS.forEach(t => $('#tab-'+t).classList.toggle('hide', t !== b.dataset.tab));
+  // MargBooks ka menu sirf test list chunne ke kaam ka hai. Tools aur
+  // Settings par wo sirf jagah ghera karta hai.
+  $('#rail').classList.toggle('hide',
+    ['tools','env','hist','new','imp'].includes(b.dataset.tab));
+  if (b.dataset.tab === 'hist') loadRuns();
+  if (b.dataset.tab === 'env'){ loadEnvs(); loadAI(); }
+  if (b.dataset.tab === 'cat'){ loadCatalogue(); loadScan(); }
+  if (b.dataset.tab === 'tools') loadTools();
+});
+const goTab = name => $$('#tabs [data-tab]').find(b => b.dataset.tab === name).click();
+
+/* ---------- boot ---------- */
+async function boot(){
+  META = await api('/api/meta');
+  const ai = META.ai || {};
+  // Plain status instead of build / env / provider jargon.
+  $('#meta').innerHTML =
+    `<span>Testing: <b>${esc(META.company||'no company chosen')}</b></span>` +
+    (META.allow_destructive
+      ? '<span class="pill rw" title="Tests are allowed to create and change data in this company">CAN CHANGE DATA</span>'
+      : '<span class="pill ro" title="Tests only look. Nothing is created or changed">SAFE: LOOK ONLY</span>');
+  const bn = $('#buildNote');
+  if (bn) bn.textContent = `Tool version ${META.build || '?'} · environment: ${META.env || '—'}`
+    + (ai.active ? ` · AI helper: ${ai.active}` : '');
+
+  $('#dlTargets').innerHTML =
+    [...(META.screens||[]), ...(META.fields||[])]
+      .map(t => `<option value="${esc(t)}">`).join('');
+  $('#dlActions').innerHTML =
+    (META.actions||[]).map(a => `<option value="${esc(a)}">`).join('');
+
+  await loadTests();
+  await loadMenu();
+  if (!$$('#steps .srow:not(.shead)').length){ addStep(); addStep(); }
+}
+
+/* ---------- menu rail ---------- */
+/* Sidebar me 50+ item hain. Sab ek saath khule rehne se dhoondhna mushkil
+   ho jata hai, isliye group band rehte hain aur zaroorat par khulte hain.
+   Jo group me abhi kuch chuna hai, wo apne aap khul jata hai. */
+let OPEN = null;   // null = abhi tay nahi hua
+
+async function loadMenu(){
+  MENU = await api('/api/menu');
+  if (OPEN === null){
+    // Pehli baar: jin menu me TEST hain wo khule, khali wale band.
+    // Pehle sirf Master aur Sale khulte the, aur Item do parat andar
+    // chhupa reh jata tha -- tester ko do baar kholna padta tha.
+    OPEN = new Set();
+    (function walk(ns){ ns.forEach(n => {
+      if (n.children?.length){
+        if (countOf(n) > 0) OPEN.add(n.id);
+        walk(n.children);
+      }
+    }); })(MENU.tree);
+  }
+  drawRail();
+}
+
+function menuLabel(id){
+  let found = '';
+  (function walk(nodes, trail){
+    nodes.forEach(n => {
+      const path = trail.concat(n.label);
+      if (n.id === id) found = path.join(' > ');
+      if (n.children) walk(n.children, path);
+    });
+  })(MENU.tree, []);
+  return found;
+}
+
+function countOf(n){
+  return (MENU.counts[n.id]||0) + (n.children||[]).reduce(function s(a,k){
+    return a + (MENU.counts[k.id]||0) + (k.children||[]).reduce(s,0); },0);
+}
+
+function drawRail(){
+  const draw = (nodes, depth) => nodes.map(n => {
+    const kids = n.children || [];
+    const c = countOf(n);
+    const pick = n.screen || n.create;
+    const open = OPEN.has(n.id);
+    const pad = 8 + depth*11;
+
+    if (kids.length){
+      return `<div class="mnode grp ${open?'open':''}" data-id="${esc(n.id)}"
+                   style="padding-left:${pad}px">
+          <span class="caret" data-toggle="${esc(n.id)}">&#9654;</span>
+          <span class="lbl" data-toggle="${esc(n.id)}">${esc(n.label)}</span>
+          ${c?`<span class="mcount">${c}</span>`:''}
+        </div>
+        <div class="kids ${open?'':'shut'}" data-kids="${esc(n.id)}">
+          ${draw(kids, depth+1)}</div>`;
+    }
+    return `<div class="mnode ${PICKED===n.id?'on':''}" data-id="${esc(n.id)}"
+                 style="padding-left:${pad+13}px">
+        <span class="lbl" ${pick?`data-pick="${esc(n.id)}"`:''}>${esc(n.label)}</span>
+        ${n.create?'<span class="mplus">+</span>':''}
+        ${c?`<span class="mcount">${c}</span>`:''}
+      </div>`;
+  }).join('');
+
+  $('#rail').innerHTML =
+    `<h3>Areas<span class="sp"></span>
+       <button id="expAll">Expand all</button>
+       <button id="colAll">Collapse</button></h3>
+     <div class="mnode ${PICKED?'':'on'}" data-id="">
+       <span class="lbl" data-pick="" style="padding-left:13px">All tests</span>
+       <span class="mcount">${TESTS.length}</span></div>` +
+    draw(MENU.tree, 0);
+
+  $$('#rail [data-toggle]').forEach(el => el.onclick = () => {
+    const id = el.dataset.toggle;
+    OPEN.has(id) ? OPEN.delete(id) : OPEN.add(id);
+    drawRail();
+  });
+
+  $$('#rail [data-pick]').forEach(el => el.onclick = () => {
+    PICKED = el.dataset.pick || null;
+    SEL.clear();
+    if (PICKED) TESTS.forEach(t => { if (t.menu_id === PICKED) SEL.add(t.id); });
+    // Naam MENU se lo, tests se nahi.
+    //
+    // Pehle ye pehle matching test ka menu uthata tha. Jis menu item par
+    // koi test na ho -- aur khali library me wo har item hai -- wahan
+    // heading "Selected" aa jati thi. Tester ne "Item" dabaya aur upar
+    // "Selected" likha aaya: kuch pata hi nahi chalta.
+    $('#listTitle').textContent = PICKED ? (menuLabel(PICKED) || 'Selected')
+                                         : 'All tests';
+    goTab('run'); drawRail(); drawTests();
+  });
+
+  $('#expAll').onclick = () => { allGroups().forEach(id => OPEN.add(id)); drawRail(); };
+  $('#colAll').onclick = () => { OPEN.clear(); drawRail(); };
+}
+
+function allGroups(){
+  const out = [];
+  (function walk(ns){ ns.forEach(n => {
+    if (n.children?.length){ out.push(n.id); walk(n.children); } }); })(MENU.tree);
+  return out;
+}
+
+/* ---------- test list ---------- */
+async function loadTests(){
+  TESTS = (await api('/api/tests')).tests;
+  drawTests();
+}
+function drawTests(){
+  const q = $('#q').value.toLowerCase();
+  const rows = TESTS.filter(t =>
+    (!PICKED || t.menu_id === PICKED) &&
+    (!q || (t.id+' '+t.title).toLowerCase().includes(q)));
+
+  const groups = {};
+  rows.forEach(t => {
+    const k = (t.menu && !t.menu.startsWith('(')) ? t.menu : 'General tests';
+    (groups[k] = groups[k] || []).push(t);
+  });
+
+  const card = t => `
+    <label class="tc ${SEL.has(t.id)?'on':''}">
+      <input type="checkbox" data-id="${esc(t.id)}" ${SEL.has(t.id)?'checked':''}>
+      <div>
+        <div class="ti" title="${esc(t.id)}">${esc(t.title)}</div>
+        <div class="tags">
+          ${t.destructive?'<span class="tag w" title="This test creates or changes data in MargBooks">Changes data</span>':''}
+          ${t.breaks_session?'<span class="tag w" title="This test logs out, so it runs last">Logs you out</span>':''}
+          ${t.draft?'<span class="tag w" title="Not ready to run yet">Not ready</span>':''}
+          ${t.known_issue?'<span class="tag v" title="A MargBooks fault that is already known">Known problem</span>':''}
+          ${t.last ? `<span class="tag" style="color:${
+            t.last.outcome==='passed' ? 'var(--pass)'
+            : t.last.outcome==='failed' ? 'var(--fail)' : 'var(--amber)'
+          };background:transparent;border:1px solid currentColor"
+          title="Last run ${esc(t.last.at)} · ${t.last.seconds}s">${
+            t.last.outcome==='passed' ? 'Passed last time'
+            : t.last.outcome==='failed' ? 'Failed last time'
+            : t.last.outcome==='known_issue' ? 'Known problem'
+            : 'Skipped last time'}</span>` : '<span class="tag">Not run yet</span>'}
+          <span class="tag" title="Number of small actions in this test">${t.steps} steps</span>
+        </div>
+      </div>
+      <span class="row" style="gap:4px">
+        <button class="btn q xs" data-code-test="${esc(t.id)}"
+          title="Read this test as a script (for the curious)">View script</button>
+        <button class="btn q sm" data-edit-test="${esc(t.id)}"
+          title="${t.editable ? 'Change this test' : 'Built-in tests cannot be changed. This makes your own copy.'}"
+          >${t.editable ? 'Edit' : 'Copy to edit'}</button>
+        ${t.editable
+          ? `<button class="btn q sm" data-del-test="${esc(t.id)}"
+               title="Delete this test">&times;</button>`
+          : ''}
+      </span>
+    </label>`;
+
+  const oneGroup = Object.keys(groups).length === 1;
+  $('#tlist').innerHTML = rows.length
+    ? Object.keys(groups).sort().map(g =>
+        // Menu se chuna ho to heading upar panel me hi likhi hai --
+        // usse dobara dikhana sirf jagah khata hai.
+        ((PICKED && oneGroup) ? ''
+          : `<div class="grp-head">${esc(g)}<b>${groups[g].length}</b></div>`)
+        + groups[g].map(card).join('')).join('')
+    : `<div class="empty"><b>No tests here yet</b>
+         ${PICKED ? 'Nobody has written a test for this part of MargBooks yet. Open <b>Write a test</b> to add the first one.'
+                  : 'Nothing matches your search. Clear it, or open <b>Write a test</b> to add one.'}</div>`;
+
+  $$('#tlist input').forEach(c => c.onchange = () => {
+    c.checked ? SEL.add(c.dataset.id) : SEL.delete(c.dataset.id);
+    drawTests();
+  });
+
+  // Card ek <label> hai, isliye uske andar button dabane se checkbox bhi
+  // toggle ho jata. Isliye button ka click yahin rok dete hain.
+  $$('#tlist [data-edit-test]').forEach(b => b.onclick = e => {
+    e.preventDefault(); e.stopPropagation();
+    editTest(b.dataset.editTest);
+  });
+  $$('#tlist [data-code-test]').forEach(b => b.onclick = e => {
+    e.preventDefault(); e.stopPropagation();
+    showCode(b.dataset.codeTest);
+  });
+  $$('#tlist [data-del-test]').forEach(b => b.onclick = e => {
+    e.preventDefault(); e.stopPropagation();
+    askDelete(b.dataset.delTest);
+  });
+  $('#selCount').textContent = SEL.size + ' selected';
+  $('#runBtn').disabled = !SEL.size;
+  $('#runBtn').textContent = SEL.size ? `Run ${SEL.size} test${SEL.size>1?'s':''}` : 'Run';
+  $('#runHint').textContent = SEL.size
+    ? 'They run one after another. A browser window will open.'
+    : 'Tick the tests you want, or pick an area on the left';
+}
+$('#q').oninput = drawTests;
+$('#selAll').onclick = () => {
+  const q = $('#q').value.toLowerCase();
+  TESTS.filter(t => (!PICKED || t.menu_id===PICKED) &&
+    (!q || (t.id+' '+t.title).toLowerCase().includes(q)))
+    .forEach(t => SEL.add(t.id));
+  drawTests();
+};
+$('#selNone').onclick = () => { SEL.clear(); drawTests(); };
+
+/* ---------- run ---------- */
+$('#runBtn').onclick = async () => {
+  const r = await post('/api/run', {ids:[...SEL], who: $('#nWho').value || ''});
+  if (r.error) return alert(r.error);
+  $('#runId').textContent = 'run ' + r.run_id;
+  $('#tape').innerHTML = '';
+  $('#results').innerHTML = '';
+  $('#tally').classList.add('hide');
+  $('#verdict').classList.add('hide');
+  $('#legend').classList.add('hide');
+  $('#runBtn').disabled = true;
+  clearInterval(POLL);
+  POLL = setInterval(() => poll(r.run_id), 900);
+  poll(r.run_id);
+};
+
+async function poll(rid){
+  const r = await api('/api/run?id='+rid);
+  if (r.error) return;
+
+  const tape = $('#tape');
+  const atEnd = tape.scrollHeight - tape.scrollTop - tape.clientHeight < 40;
+  tape.innerHTML = (r.log||[]).map(l =>
+      `<div class="tl ${esc(l.kind)}"><i></i><span>${esc(l.text)}</span></div>`).join('')
+    + (r.status === 'running'
+       ? '<div class="tl"><i></i><span><span class="blink"></span></span></div>' : '');
+  if (atEnd) tape.scrollTop = tape.scrollHeight;
+
+  const c = r.current;
+  $('#now').classList.toggle('hide', !c);
+  if (c){
+    $('#nowId').textContent = c.id;
+    $('#nowDoing').textContent = c.doing || c.title;
+    $('#nowStep').textContent = `${c.step}/${c.total}`;
+    $('#nowBar').style.width = (c.total ? c.step/c.total*100 : 0) + '%';
+  }
+  if (r.results?.length) drawResults(r.results);
+
+  if (r.status === 'done' || r.status === 'error'){
+    clearInterval(POLL);
+    $('#runBtn').disabled = !SEL.size;
+  }
+}
+
+function drawResults(rs){
+  const n = o => rs.filter(x => x.outcome === o).length;
+  $('#tally').classList.remove('hide');
+  $('#nPass').textContent  = n('passed');
+  $('#nFail').textContent  = n('failed');
+  $('#nSkip').textContent  = n('skipped');
+  $('#nKnown').textContent = n('known_issue');
+
+  // One plain sentence first: did it go well or not?
+  const total = rs.length, bad = n('failed'), good = n('passed'), skip = n('skipped');
+  const v = $('#verdict');
+  v.classList.remove('hide','good','bad','meh');
+  if (bad){
+    v.classList.add('bad');
+    v.innerHTML = `<b>${bad} of ${total} test${total>1?'s':''} need${bad>1?'':'s'} a look</b>`
+      + `Open the red ones below to see which step went wrong.`;
+  } else if (good === total){
+    v.classList.add('good');
+    v.innerHTML = `<b>All ${total} test${total>1?'s':''} passed</b>Everything worked as expected.`;
+  } else {
+    v.classList.add('meh');
+    v.innerHTML = `<b>No failures</b>${good} passed, ${skip} skipped because they do not apply here.`;
+  }
+  $('#legend').classList.toggle('hide', !(skip || n('known_issue')));
+
+  const word = o => ({passed:'Passed', failed:'Failed', skipped:'Skipped',
+                      known_issue:'Known problem'}[o] || o);
+  $('#results').innerHTML = rs.map(r => `
+    <details class="res ${esc(r.outcome)}" ${r.outcome==='failed'?'open':''}>
+      <summary><span class="dot"></span>
+        <span style="font-weight:500">${esc(r.title)}</span>
+        <span class="note">${word(r.outcome)}</span>
+        <span class="secs">${r.seconds ? r.seconds+'s' : ''}</span></summary>
+      <pre>${esc(((r.steps||[]).join('\n') + (r.error ? '\n\n'+r.error : ''))
+               || r.reason || 'No more details')}</pre>
+    </details>`).join('');
+}
+
+/* ---------- plain language -> steps ---------- */
+$('#exBtn').onclick = () => { $('#nPlain').value = (META.examples||[]).join('\n'); };
+
+$('#convBtn').onclick = async () => {
+  const text = $('#nPlain').value.trim();
+  if (!text) return alert('Write what the test should do, one action per line.');
+  $('#convMsg').textContent = 'Working…';
+  const r = await post('/api/parse', {text, ai:true});
+
+  $$('#steps .srow:not(.shead)').forEach(n => n.remove());
+  (r.steps||[]).forEach(addStep);
+  if (!(r.steps||[]).length) addStep();
+
+  if (r.module) $('#nMod').value = r.module;
+  // Naam apne aap NAHI bharte. Pehli line se naam banane par
+  // "Sale bill kholo" jaisa naam ban jata tha, jo library me bekaar dikhta.
+  // Naam tester hi likhega -- wahi jaanta hai test kya check kar raha hai.
+
+  const m = $('#convMsg');
+  m.style.color = r.issues?.length ? 'var(--amber)' : 'var(--pass)';
+  m.textContent = `${(r.steps||[]).length} step(s)`
+    + (r.ai_used ? ` · ${r.ai_count} from AI` : '')
+    + (r.issues?.length ? ` · ${r.issues.length} line(s) need a look` : '');
+
+  $('#convIssues').innerHTML = mappingHtml(r.mapping)
+    + (r.ai_note ? `<div class="notice"><b>AI didn't run</b><br>${esc(r.ai_note)}</div>` : '')
+    + (r.issues?.length ? `<div class="notice">
+        <b>These lines weren't turned into steps</b>
+        <ul>${r.issues.map(i => `<li><code>${esc(i.text)}</code><br>
+          ${esc(i.why)} <i>${esc(i.hint||'')}</i></li>`).join('')}</ul>
+        <div class="note" style="margin-top:6px">Nothing was guessed for these.
+          Rewrite the line, or add the step by hand.</div></div>` : '');
+};
+
+/* ---------- tools: jo pehle batch file se chalte the ---------- */
+let JOB = null, JOB_SEEN = 0, JOB_TIMER = null;
+
+async function loadTools(){
+  const d = await api('/api/tools');
+  const groups = [...new Set(d.tools.map(t => t.group))];
+
+  $('#toolList').innerHTML = groups.map(g => `
+    <div class="toolgrp">${esc(g)}</div>
+    ${d.tools.filter(t => t.group === g).map(t => `
+      <div class="tool" data-tool="${esc(t.id)}">
+        <div class="th">
+          <b>${esc(t.name)}</b>
+          <span class="note">${esc(t.mins)}</span>
+          ${t.risk === 'writes'
+            ? '<span class="tag w">changes data</span>'
+            : '<span class="tag t">read only</span>'}
+        </div>
+        <div class="note">${esc(t.what)}</div>
+
+        ${(t.options||[]).map((o,i) => `
+          <label class="opt ${o.risk === 'writes' ? 'hot' : ''}">
+            <input type="checkbox" data-opt="${esc(t.id)}" value="${esc(o.flag)}">
+            <span><b>${esc(o.label)}</b>
+              ${o.note ? `<br><span class="note">${esc(o.note)}</span>` : ''}
+            </span></label>`).join('')}
+
+        ${(t.args||[]).map(a => `
+          <label class="fld" style="margin-top:8px">
+            <i>${esc(a.label)}${a.note ? ' — ' + esc(a.note) : ''}</i>
+            <input type="text" data-arg="${esc(t.id)}"
+              data-flag="${esc(a.flag||'')}"
+              value="${esc(a.default||'')}"></label>`).join('')}
+
+        <div class="row">
+          <button class="btn go sm" data-run="${esc(t.id)}">Run</button>
+        </div>
+      </div>`).join('')}`).join('');
+
+  $$('#toolList [data-run]').forEach(b => b.onclick = () => runTool(b.dataset.run));
+  $('#toolState').textContent = d.jobs && d.jobs.length
+    ? `${d.jobs.length} job this session` : '';
+}
+
+async function runTool(id){
+  const flags = $$(`[data-opt="${id}"]`).filter(c => c.checked).map(c => c.value);
+  const args = [];
+  $$(`[data-arg="${id}"]`).forEach(inp => {
+    const v = inp.value.trim();
+    if (!v) return;
+    if (inp.dataset.flag) args.push(inp.dataset.flag);
+    args.push(v);
+  });
+
+  const r = await post('/api/tools/run', {id, flags, args});
+  if (r.error){
+    // Ek waqt me ek hi kaam -- do browser ek saath dono ko gira dete hain
+    $('#jobLog').textContent = r.error;
+    return;
+  }
+  JOB = r.job; JOB_SEEN = 0;
+  $('#jobTitle').textContent = r.name;
+  $('#jobLog').textContent = '';
+  $('#jobStop').classList.remove('hide');
+  goTab('tools');
+  pollJob();
+}
+
+async function pollJob(){
+  if (!JOB) return;
+  const d = await api(`/api/tools/log?job=${JOB}&since=${JOB_SEEN}`);
+  if (d.error) return;
+
+  if (d.lines.length){
+    const box = $('#jobLog');
+    // Neeche hi rehna chahiye jab tak user ne khud upar scroll na kiya ho
+    const stick = box.scrollTop + box.clientHeight >= box.scrollHeight - 40;
+    box.textContent += d.lines.join('\n') + '\n';
+    JOB_SEEN = d.total;
+    if (stick) box.scrollTop = box.scrollHeight;
+  }
+
+  $('#jobTitle').textContent = `${d.name} — ${d.status} (${d.seconds}s)`;
+
+  if (d.status === 'running'){
+    JOB_TIMER = setTimeout(pollJob, 900);
+    return;
+  }
+  $('#jobStop').classList.add('hide');
+  $('#jobLog').textContent +=
+    `\n${'-'.repeat(46)}\n` +
+    (d.status === 'done' ? 'Finished cleanly.'
+     : d.status === 'stopped' ? 'Stopped by you.'
+     : `Finished with problems (exit ${d.code}).`) +
+    `  ${d.seconds}s\n`;
+  $('#jobLog').scrollTop = $('#jobLog').scrollHeight;
+  JOB = null;
+  loadTools();
+  boot();
+}
+
+$('#jobStop').onclick = async () => {
+  if (!JOB) return;
+  await post('/api/tools/stop', {job: JOB});
+};
+
+/* ---------- source scanner ---------- */
+async function loadScan(){
+  const d = await api('/api/scan');
+  $('#scanState').textContent = d.scanned_at
+    ? `${d.elements} fields · ${d.routes} routes` : 'not scanned yet';
+  $('#scanState').style.color = d.scanned_at ? 'var(--pass)' : 'var(--muted)';
+  if (d.source && !$('#scanPath').value) $('#scanPath').value = d.source;
+  if (d.scanned_at)
+    $('#scanOut').innerHTML =
+      `<p class="note">Last scan ${esc(d.scanned_at)} — ${d.elements} fields
+       from ${esc(d.source)}</p>`;
+}
+
+$('#scanBtn').onclick = async () => {
+  const path = $('#scanPath').value.trim();
+  if (!path) return alert('Type the folder path first.');
+  $('#scanOut').innerHTML = '<p class="note">Reading files…</p>';
+  const r = await post('/api/scan', {path});
+  if (r.error){
+    $('#scanOut').innerHTML = `<div class="notice"><b>Could not scan</b><br>
+      ${esc(r.error)}</div>`;
+    return;
+  }
+  $('#scanOut').innerHTML = `
+    <table class="mini">
+      <tr><td class="note">Files read</td><td class="machine">${r.files_read}</td></tr>
+      <tr><td class="note">Fields found</td><td class="machine">${r.elements}
+        (${r.new} new)</td></tr>
+      <tr><td class="note">Routes</td><td class="machine">${r.routes}</td></tr>
+      <tr><td class="note">Took</td><td class="machine">${r.seconds}s</td></tr>
+    </table>`;
+  await loadScan();
+};
+
+/* ---------- Playwright recording ---------- */
+$('#cgBtn').onclick = async () => {
+  const script = $('#cgScript').value.trim();
+  if (!script) return alert('Paste the recorded script first.');
+  const r = await post('/api/codegen',
+    {script, name: $('#cgName').value || 'Recorded test'});
+  if (r.error){ $('#cgMsg').style.color='var(--fail)';
+                $('#cgMsg').textContent = r.error; return; }
+
+  IMPORTED = [{name: r.name, description: r.description,
+               module: r.module, steps: r.steps}];
+  $('#impSave').classList.toggle('hide', !r.steps.length);
+  $('#cgMsg').style.color = r.unknown.length ? 'var(--amber)' : 'var(--pass)';
+  $('#cgMsg').textContent =
+    `${r.stats.converted} step(s) from ${r.stats.lines_with_actions} lines`
+    + (r.unknown.length ? ` · ${r.unknown.length} line(s) not understood` : '');
+
+  $('#impOut').innerHTML =
+    (r.unknown.length ? `<div class="notice">
+      <b>These lines were not turned into steps</b>
+      <ul>${r.unknown.map(u => `<li><code>${esc(u.text)}</code><br>
+        ${esc(u.why)} <i>${esc(u.hint)}</i></li>`).join('')}</ul>
+      <div class="note" style="margin-top:6px">Nothing was guessed for these.</div>
+      </div>` : '')
+    + `<details class="res" open><summary style="background:#fbfcfd">
+        <span style="font-weight:600">${esc(r.name)}</span>
+        <span class="tag t">${esc(r.module)}</span>
+        <span class="secs">${r.steps.length} steps</span></summary>
+        <table class="mini">
+          <tr><th>#</th><th>Action</th><th>Where</th><th>Value</th></tr>
+          ${r.steps.map((s,i) => `<tr><td>${i+1}</td><td class="machine">${esc(s.action)}</td>
+            <td class="machine">${esc(s.target||'')}</td>
+            <td>${esc(s.value||'')}</td></tr>`).join('')}
+        </table></details>`;
+};
+
+/* ---------- view code ---------- */
+async function showCode(id){
+  const d = await api('/api/spec?id=' + encodeURIComponent(id));
+  if (d.error) return alert(d.error);
+  $('#codeTitle').textContent = d.id + ' — code';
+  $('#codeBody').textContent = d.code;
+  $('#codeScrim').hidden = false;
+}
+function closeCode(){ $('#codeScrim').hidden = true; }
+$('#codeClose').onclick = closeCode;
+$('#codeDone').onclick  = closeCode;
+$('#codeScrim').onclick = e => { if (e.target === $('#codeScrim')) closeCode(); };
+$('#codeCopy').onclick = async () => {
+  try {
+    await navigator.clipboard.writeText($('#codeBody').textContent);
+    $('#codeCopy').textContent = 'Copied';
+    setTimeout(() => $('#codeCopy').textContent = 'Copy', 1400);
+  } catch (e) { alert('Select the text and copy it manually.'); }
+};
+
+/* ---------- test edit / delete ---------- */
+let EDIT_ID = null;
+
+async function editTest(id){
+  const d = await api('/api/test?id=' + encodeURIComponent(id));
+  if (d.error) return alert(d.error);
+
+  $$('#steps .srow:not(.shead)').forEach(n => n.remove());
+  (d.steps || []).forEach(addStep);
+  if (!(d.steps || []).length) addStep();
+
+  $('#nPlain').value = '';
+  $('#nName').value  = d.editable ? d.title : d.title + ' (copy)';
+  $('#nDesc').value  = d.description || '';
+  $('#nMod').value   = d.module || 'general';
+  $('#nWho').value   = d.author || $('#nWho').value;
+
+  // Built-in test overwrite nahi karte. Wo agle update me wapas aa jayega
+  // aur badlav chup-chaap ud jayega. Isliye uski COPY banti hai.
+  EDIT_ID = d.editable ? d.id : null;
+
+  $('#newTitle').textContent = d.editable ? 'Editing ' + d.id : 'Copy of ' + d.id;
+  $('#cancelEdit').classList.remove('hide');
+  $('#editBanner').classList.remove('hide');
+  $('#editBanner').innerHTML = d.editable
+    ? `<b>Editing ${esc(d.id)}</b><br>Saving replaces it.`
+    : `<b>${esc(d.id)} is a built-in test</b><br>
+       It can't be changed here — saving creates your own copy, and the
+       original stays as it is. That way updates never wipe your work.`;
+  // Edit ke waqt upar wala box bhram paida karta tha -- "naya test likho"
+  // wala placeholder dikhta rehta hai. Saaf likh dete hain ki wo optional
+  // hai aur use karne se neeche ke steps BADAL jayenge.
+  $('#nPlain').placeholder =
+    'Steps are loaded on the right — edit them there.\n\n'
+    + 'Type here only if you want to rewrite the whole test; '
+    + 'turning it into steps replaces what is on the right.';
+  $('#saveBtn').textContent = d.editable ? 'Update test' : 'Save as new test';
+
+  $('#saveMsg').textContent = '';
+  goTab('new');
+  window.scrollTo(0, 0);
+}
+
+const PLAIN_PLACEHOLDER =
+  'Open Sale Bill\nSet party to "Cash Account"\n'
+  + 'Add barcode "80000111" with quantity 2\nThere should be one line\nClose the bill';
+
+function clearEdit(){
+  EDIT_ID = null;
+  $('#nPlain').placeholder = PLAIN_PLACEHOLDER;
+  $('#saveBtn').textContent = 'Save test';
+  $('#newTitle').textContent = 'Write a test';
+  $('#cancelEdit').classList.add('hide');
+  $('#editBanner').classList.add('hide');
+  ['nName','nDesc','nPlain'].forEach(i => $('#' + i).value = '');
+  $$('#steps .srow:not(.shead)').forEach(n => n.remove());
+  addStep(); addStep();
+  $('#saveMsg').textContent = '';
+  $('#convMsg').textContent = '';
+  $('#convIssues').innerHTML = '';
+}
+$('#cancelEdit').onclick = clearEdit;
+
+/* delete */
+let DEL_ID = null;
+function askDelete(id){
+  DEL_ID = id;
+  const t = TESTS.find(x => x.id === id);
+  $('#delWhat').innerHTML =
+    `<b>${esc(id)}</b><br>${esc(t ? t.title : '')}`;
+  $('#delMsg').textContent = '';
+  $('#delScrim').hidden = false;
+}
+function closeDelete(){ $('#delScrim').hidden = true; DEL_ID = null; }
+$('#delClose').onclick  = closeDelete;
+$('#delCancel').onclick = closeDelete;
+$('#delScrim').onclick  = e => { if (e.target === $('#delScrim')) closeDelete(); };
+$('#delGo').onclick = async () => {
+  const r = await post('/api/delete', {id: DEL_ID});
+  if (r.error){
+    $('#delMsg').style.color = 'var(--fail)';
+    $('#delMsg').textContent = r.error;
+    return;
+  }
+  if (EDIT_ID === DEL_ID) clearEdit();
+  SEL.delete(DEL_ID);
+  closeDelete();
+  await loadTests(); await loadMenu();
+};
+
+/* ---------- kaunsa field mila, kitne bharose se ---------- */
+/* Sabse khatarnak cheez jo ye tool kar sakta hai: chupchaap galat field
+   chun lena. Test chalega, hara dikhega, aur galat cheez jaanchta rahega.
+   Isliye har mapping ka bharosa SAVE SE PEHLE dikhaya jata hai. */
+function mappingHtml(m){
+  if (!m || !m.mappings || !m.mappings.length) return '';
+
+  const pill = x => {
+    const pct = Math.round(x.confidence * 100);
+    const col = x.level === 'pakka' ? 'var(--pass)'
+              : x.level === 'theek' ? 'var(--amber)' : 'var(--fail)';
+    return `<span class="tag" style="color:${col};background:transparent;
+      border:1px solid ${col}">${pct}%</span>`;
+  };
+
+  const weak = m.unresolved || [];
+  const head = weak.length
+    ? `<div class="notice"><b>${weak.length} field could not be matched
+         confidently</b><br>
+        Nothing was guessed for these. Pick the right one, or the test will
+        fail on that step.
+        <ul>${weak.map(u => `<li><code>${esc(u.requested)}</code>
+          ${u.alternatives && u.alternatives.length
+            ? '— did you mean: ' + u.alternatives.map(esc).join(', ')
+            : '— no close match anywhere'}</li>`).join('')}</ul></div>`
+    : '';
+
+  return head + `<details class="res" ${weak.length ? 'open' : ''}>
+    <summary style="background:#fbfcfd">
+      <span style="font-weight:600">Field matching</span>
+      <span class="secs">lowest ${Math.round((m.lowest || 0) * 100)}%</span>
+    </summary>
+    <table class="mini">
+      <tr><th>Step</th><th>You wrote</th><th>Matched</th>
+          <th>Confidence</th><th>Selector</th></tr>
+      ${m.mappings.map(x => `<tr>
+        <td class="machine">${x.step}</td>
+        <td>${esc(x.requested)}</td>
+        <td>${x.matched ? esc(x.matched) : '<i>not found</i>'}</td>
+        <td>${pill(x)} <span class="note">${esc(x.source)}</span></td>
+        <td class="machine" style="max-width:190px;overflow:hidden;
+            text-overflow:ellipsis">${esc(x.selector || '—')}</td>
+      </tr>`).join('')}
+    </table></details>`;
+}
+
+/* ---------- steps builder ---------- */
+function addStep(step){
+  const d = document.createElement('div');
+  d.className = 'srow' + (step?.from_ai ? ' ai' : '');
+  d.innerHTML = `<span class="n"></span>
+    <input list="dlActions" class="a" placeholder="what to do" spellcheck="false"
+      value="${esc(step?.action||'')}" title="${esc(step?.note||'')}">
+    <input list="dlTargets" class="t" placeholder="screen or field"
+      value="${esc(step?.target||'')}">
+    <input class="v" placeholder="text to type" value="${esc(step?.value||'')}">
+    <button class="x" title="remove">×</button>`;
+  d.querySelector('.x').onclick = () => { d.remove(); renum(); };
+  $('#steps').appendChild(d); renum();
+}
+function renum(){
+  $$('#steps .srow:not(.shead)').forEach((r,i) =>
+    r.querySelector('.n').textContent = i+1);
+}
+$('#addStep').onclick = () => addStep();
+
+$('#saveBtn').onclick = async () => {
+  const steps = $$('#steps .srow:not(.shead)').map(r => {
+    const o = {action: r.querySelector('.a').value.trim()};
+    const t = r.querySelector('.t').value.trim();
+    const v = r.querySelector('.v').value.trim();
+    if (t) o.target = t;
+    if (v) o.value  = v;
+    return o;
+  }).filter(s => s.action);
+
+  const res = await post('/api/save', {
+    id: EDIT_ID || undefined,
+    name: $('#nName').value, description: $('#nDesc').value,
+    module: $('#nMod').value, author: $('#nWho').value, steps});
+  const m = $('#saveMsg');
+  if (res.error){ m.style.color='var(--fail)'; m.textContent=res.error; return; }
+  m.style.color='var(--pass)';
+  m.textContent = EDIT_ID ? `${res.id} updated.` : `Saved as ${res.id}.`;
+  const wasEditing = EDIT_ID;
+  clearEdit();
+  if (wasEditing) $('#saveMsg').textContent = `${res.id} updated.`;
+  else $('#saveMsg').textContent = `Saved as ${res.id}.`;
+  $('#saveMsg').style.color = 'var(--pass)';
+  await loadTests(); await loadMenu();
+};
+
+/* ---------- import ---------- */
+let IMPORTED = [];
+$('#impBtn').onclick = async () => {
+  const f = $('#impFile').files[0], text = $('#impText').value.trim();
+  let res;
+  if (f && f.name.endsWith('.xlsx'))
+    res = await fetch('/api/import', {method:'POST', body: await f.arrayBuffer()})
+            .then(r => r.json());
+  else if (f)    res = await post('/api/import', {csv: await f.text()});
+  else if (text) res = await post('/api/import', {csv: text});
+  else return alert('Pick a file or paste rows first.');
+
+  if (res.error) return alert(res.error);
+  IMPORTED = res.tests || [];
+  $('#impSave').classList.toggle('hide', !IMPORTED.length);
+  $('#impOut').innerHTML =
+    (res.warnings?.length ? `<div class="notice">
+        <b>${res.warnings.length} thing${res.warnings.length>1?'s':''} to check</b>
+        <ul>${res.warnings.map(w => `<li>${esc(w)}</li>`).join('')}</ul></div>` : '')
+    + (IMPORTED.length ? IMPORTED.map(t => `
+        <details class="res" open><summary style="background:#fbfcfd">
+          <span style="font-weight:600">${esc(t.name)}</span>
+          <span class="secs">${t.steps.length} steps</span></summary>
+          <table class="mini">
+            <tr><th>#</th><th>Action</th><th>Where</th><th>Value</th></tr>
+            ${t.steps.map((s,i) => `<tr><td>${i+1}</td><td class="machine">${esc(s.action)}</td>
+              <td class="machine">${esc(s.target||'')}</td><td>${esc(s.value||'')}</td></tr>`).join('')}
+          </table></details>`).join('')
+      : `<div class="empty"><b>No tests found</b>Are Test Name and Action filled in?</div>`);
+};
+$('#impSave').onclick = async () => {
+  const res = await post('/api/import/save',
+    {tests: IMPORTED, author: $('#impWho').value});
+  alert(`${res.saved.length} test(s) saved`
+    + (res.errors.length ? `\n\nProblems:\n${res.errors.join('\n')}` : ''));
+  await loadTests(); await loadMenu();
+};
+
+/* ---------- catalogue ---------- */
+async function loadControlRoom(){
+  const d = await api('/api/control-room');
+  $('#crState').textContent = d.read_at ? `read ${d.read_at}` : 'not read yet';
+  $('#crState').style.color = d.read_at ? 'var(--pass)' : 'var(--muted)';
+
+  const known = Object.entries(d.settings || {});
+  if (!known.length){
+    $('#crList').innerHTML = `<div class="empty"><b>Not read yet</b>
+      Run <code>control-room.bat</code> once, or just start any run —
+      the agent reads it the first time.</div>`;
+    return;
+  }
+  const badge = v => v.kind === 'choice'
+    ? '<span class="tag t">SET</span>'
+    : v.on === true
+    ? '<span class="tag" style="background:var(--pass-bg);color:var(--pass)">ON</span>'
+    : v.on === false
+    ? '<span class="tag w">OFF</span>'
+    : '<span class="tag">?</span>';
+  $('#crList').innerHTML = `<table class="mini">
+    <tr><th>Setting</th><th>Value</th><th>What it changes</th></tr>
+    ${known.map(([k,v]) => `<tr>
+      <td>${badge(v)} ${esc(v.label||k)}</td>
+      <td class="machine">${esc(v.value)}</td>
+      <td class="note">${esc(v.affects||'')}</td></tr>`).join('')}
+  </table>`;
+
+  // 544 settings ki list bina search ke bekaar padi rehti hai
+  CR_RAW = d.raw || [];
+  drawCrAll();
+}
+
+let CR_RAW = [];
+function drawCrAll(){
+  const q = ($('#crSearch')?.value || '').toLowerCase();
+  const rows = CR_RAW.filter(r =>
+    !q || (r.label + ' ' + r.value).toLowerCase().includes(q));
+  $('#crCount').textContent = `${rows.length} of ${CR_RAW.length}`;
+  $('#crAll').innerHTML = rows.length ? `<table class="mini">
+    ${rows.slice(0, 400).map(r => `<tr>
+      <td>${esc(r.label)}</td>
+      <td class="machine" style="white-space:nowrap">${esc(r.value)}</td>
+      <td class="note">${esc((r.options||[]).slice(0,4).join(' / '))}</td>
+    </tr>`).join('')}</table>`
+    : `<div class="empty" style="padding:16px"><b>Nothing matches</b>
+         Try a different word.</div>`;
+}
+document.addEventListener('input', e => {
+  if (e.target && e.target.id === 'crSearch') drawCrAll();
+});
+
+async function loadCatalogue(){
+  loadControlRoom();
+  const d = await api('/api/catalogue');
+  $('#catStats').textContent =
+    `${d.elements||0} fields across ${d.screens||0} screens`;
+  const per = d.per_screen || {};
+  const keys = Object.keys(per).sort((a,b) => per[b]-per[a]);
+  $('#catScreens').innerHTML = keys.length ? keys.map(s => `
+      <label class="tc" data-screen="${esc(s)}" style="grid-template-columns:1fr auto">
+        <div><div class="ti">${esc(s)}</div>
+          <div class="tags"><span class="tag">${per[s]} fields</span></div></div>
+        <span class="id">open</span></label>`).join('')
+    : `<div class="empty"><b>Nothing learned yet</b>
+         Run any test — the agent records every field it sees.</div>`;
+  $$('#catScreens [data-screen]').forEach(el => el.onclick = async () => {
+    const s = el.dataset.screen;
+    const r = await api('/api/catalogue?screen=' + encodeURIComponent(s));
+    $('#catTitle').textContent = 'Fields on ' + s;
+    $('#catFields').innerHTML = `<table class="mini">
+      <tr><th>What you call it</th><th>Kind</th><th>CSS</th><th>XPath</th></tr>
+      ${r.elements.map(e => `<tr>
+        <td>${e.danger ? '<span class="tag w">delete</span> ' : ''}
+            ${esc(e.label || e.placeholder || e.key)}</td>
+        <td class="machine">${esc(e.kind)}</td>
+        <td class="machine">${esc(e.css)}</td>
+        <td class="machine" style="max-width:220px;overflow:hidden;text-overflow:ellipsis">
+          ${esc(e.xpath)}</td></tr>`).join('')}</table>`;
+  });
+}
+
+/* ---------- history ---------- */
+async function loadRuns(){
+  // Pehle disk se -- server restart ke baad bhi itihaas rehna chahiye.
+  // Memory wale run sirf abhi chal rahe session ke hote hain.
+  const saved = await api('/api/logs?kind=execution');
+  const hist = (saved.history && saved.history.recent) || [];
+  const live = (await api('/api/runs')).runs || [];
+  const rs = live.length ? live : [];
+
+  if (hist.length){
+    $('#histBody').innerHTML = `<table class="mini">
+      <tr><th>Run</th><th>When</th><th>Tests</th><th>Result</th><th>Who</th></tr>
+      ${hist.map(r => `<tr><td class="machine">${esc(r.id)}</td>
+        <td>${esc(r.at)}</td><td>${r.tests}</td>
+        <td><span style="color:var(--pass)">${r.passed} passed</span> ·
+            <span style="color:var(--fail)">${r.failed} failed</span> ·
+            <span style="color:var(--amber)">${r.skipped} skipped</span></td>
+        <td>${esc(r.who || '—')}</td></tr>`).join('')}</table>
+      <p class="note" style="margin-top:9px">Kept in
+        <code>logs/execution_history.json</code> — survives a restart.</p>`;
+    return;
+  }
+  $('#histBody').innerHTML = rs.length ? `<table class="mini">
+    <tr><th>Run</th><th>When</th><th>Tests</th><th>Result</th><th>Who</th></tr>
+    ${rs.map(r => { const n = o => (r.results||[]).filter(x=>x.outcome===o).length;
+      return `<tr><td class="machine">${esc(r.id)}</td>
+        <td>${r.started ? new Date(r.started*1000).toLocaleString('en-IN') : '—'}</td>
+        <td>${(r.cases||[]).length}</td>
+        <td><span style="color:var(--pass)">${n('passed')} passed</span> ·
+            <span style="color:var(--fail)">${n('failed')} failed</span> ·
+            <span style="color:var(--amber)">${n('skipped')} skipped</span></td>
+        <td>${esc(r.who||'—')}</td></tr>`; }).join('')}</table>`
+    : `<div class="empty"><b>No runs yet</b>Head to Run and start one.</div>`;
+}
+$('#histRef').onclick = loadRuns;
+
+/* ---------- AI ---------- */
+async function loadAI(){
+  const a = await api('/api/ai');
+  $('#aiState').textContent = a.active
+    ? `${a.active} · ${a.model||''}` : 'not set up';
+  $('#aiState').style.color = a.active ? 'var(--pass)' : 'var(--muted)';
+  if (a.model && !$('#aiModel').querySelector(`option[value="${a.model}"]`)){
+    const o = document.createElement('option');
+    o.value = a.model; o.textContent = a.model + ' (in use)';
+    $('#aiModel').appendChild(o);
+  }
+  if (a.model) $('#aiModel').value = a.model;
+}
+
+async function refreshModels(){
+  const key = $('#aiKey').value.trim();
+  $('#aiMsg').style.color = 'var(--muted)';
+  $('#aiMsg').textContent = 'Asking Google…';
+  const r = await post('/api/ai/models', key ? {key} : {});
+  if (r.error || !r.models.length){
+    $('#aiMsg').style.color = 'var(--fail)';
+    $('#aiMsg').textContent = r.error || 'No models came back.';
+    return;
+  }
+  // Live list hi sach hai -- naam code me likhna galat nikla tha
+  $('#aiModel').innerHTML = '<option value="">pick automatically</option>' +
+    r.models.map(m => `<option value="${esc(m)}">${esc(m)}${
+      m === r.best ? ' — recommended' : ''}</option>`).join('');
+  $('#aiModel').value = r.best || '';
+  $('#aiMsg').style.color = 'var(--pass)';
+  $('#aiMsg').textContent = `${r.models.length} models available.`;
+}
+$('#aiModels').onclick = refreshModels;
+async function showAI(r){
+  const m = $('#aiMsg');
+  if (r.ok){
+    m.style.color = 'var(--pass)';
+    m.textContent = `Working — ${r.provider} · ${r.model||''}`
+      + (r.note ? ` (${r.note})` : '');
+  } else {
+    m.style.color = 'var(--fail)';
+    m.textContent = r.why || r.error || 'Could not reach the AI.';
+  }
+  await loadAI(); await boot();
+}
+$('#aiSave').onclick = async () => {
+  const key = $('#aiKey').value.trim();
+  if (!key) return alert('Paste the key first.');
+  $('#aiMsg').style.color = 'var(--muted)';
+  $('#aiMsg').textContent = 'Checking…';
+  showAI(await post('/api/ai/save',
+    {provider:'gemini', key, model: $('#aiModel').value}));
+  $('#aiKey').value = '';
+};
+$('#aiTest').onclick = async () => {
+  $('#aiMsg').textContent = 'Checking…';
+  showAI(await post('/api/ai/test', {}));
+};
+
+/* ---------- environments ---------- */
+let ENVS = [];
+
+async function loadEnvs(){
+  const d = await api('/api/envs');
+  ENVS = d.envs;
+  $('#envList').innerHTML = ENVS.map(e => `
+    <div class="card" style="margin-bottom:9px;border-radius:8px">
+      <header style="background:${e.active ? 'var(--pass-bg)' : '#fbfcfd'}">
+        <span class="dot" style="background:${e.active?'var(--pass)':'var(--line)'}"></span>
+        <span style="font-weight:650">${esc(e.name)}</span>
+        ${e.active?'<span class="tag t">in use</span>':''}
+        <span class="sp"></span>
+        <label class="row" style="gap:5px;cursor:pointer;font-size:11.5px"
+               title="Run tests that create, edit or save data">
+          <input type="checkbox" data-writes="${esc(e.name)}"
+            ${e.allow_writes?'checked':''} style="width:auto">
+          <span style="${e.allow_writes?'color:var(--amber);font-weight:600':'color:var(--muted)'}"
+            >writes ${e.allow_writes?'on':'off'}</span>
+        </label>
+        ${e.active?'':`<button class="btn sm" data-use="${esc(e.name)}">Use this</button>`}
+        <button class="btn q sm" data-edit="${esc(e.name)}">Edit</button>
+      </header>
+      <div class="body" style="padding:9px 12px">
+        <table class="mini">
+          <tr><td class="note">App</td><td class="machine">${esc(e.app_url||'—')}</td></tr>
+          <tr><td class="note">Sign-in</td><td class="machine">${esc(e.login_url||'—')}</td></tr>
+          <tr><td class="note">User</td><td class="machine">${esc(e.user||'—')}</td></tr>
+          <tr><td class="note">Password</td><td class="machine">${
+            e.has_password ? 'set' : '<span style="color:var(--fail)">NOT SET</span>'}</td></tr>
+          <tr><td class="note">Company</td><td class="machine">${esc(e.company||'—')}</td></tr>
+        </table>
+      </div>
+    </div>`).join('');
+
+  // Sirf writes on/off karne ke liye poora modal kholna zyada hai --
+  // ye sabse zyada badli jaane wali setting hai.
+  $$('#envList [data-writes]').forEach(c => c.onchange = async () => {
+    await post('/api/env/writes', {name: c.dataset.writes, on: c.checked});
+    await loadEnvs(); await boot();
+  });
+
+  $$('#envList [data-use]').forEach(b => b.onclick = async () => {
+    await post('/api/env/use', {name: b.dataset.use});
+    await loadEnvs(); await boot();
+  });
+  $$('#envList [data-edit]').forEach(b => b.onclick = () =>
+    openEnvDialog(ENVS.find(x => x.name === b.dataset.edit)));
+}
+
+/* ---------- modal ---------- */
+let EDITING = null;
+
+function openEnvDialog(env){
+  EDITING = env || null;
+  $('#envDlgTitle').textContent = env ? `Edit ${env.name}` : 'Add environment';
+  $('#envMsg').textContent = '';
+
+  $('#eName').value  = env?.name || '';
+  $('#eLogin').value = env?.login_url || 'https://accounts.margbooks.com';
+  $('#eApp').value   = env?.app_url || '';
+  $('#eUser').value  = env?.user || '';
+  $('#eCo').value    = env?.company || '';
+  $('#ePass').value  = '';
+
+  // Password kabhi wapas nahi bheja jata (server use bhejta hi nahi).
+  // Isliye edit me khali dikhta hai -- par uska matlab "hata do" nahi,
+  // "jo hai wahi rehne do" hai. Ye label me saaf likha hai.
+  $('#ePassLabel').textContent = env
+    ? (env.has_password ? 'Password — blank keeps the saved one' : 'Password — not set yet')
+    : 'Password';
+  $('#ePass').placeholder = env?.has_password ? '••••••••  (unchanged)' : '';
+
+  // Writes DEFAULT ON -- naye environment me bhi, edit me bhi.
+  //
+  // Wajah: writes OFF hone par data likhne wale test SKIP ho jate hain, aur
+  // suite adhoori chalti hai. Roz ka kaam yahi hai, isliye default ON.
+  //
+  // Par ek khatra hai: koi sirf URL theek karne Edit kholega, Save dabayega,
+  // aur writes bina jaane ON ho jayenge. Isliye jab saved value OFF ho aur
+  // hum use ON dikha rahe hon, to SAAF likh dete hain ki Save karne se ye
+  // badal jayega. Chup-chaap badalna hi galat hai.
+  const wasOff = env && !env.allow_writes;
+  $('#eWrites').checked = true;
+  $('#eWritesChange').textContent = wasOff
+    ? `Right now "${env.name}" has writes OFF. Saving turns them ON — `
+      + `untick the box to keep it as it is.`
+    : '';
+  $('#eWritesChange').classList.toggle('hide', !wasOff);
+  syncWritesWarning();
+
+  $('#envScrim').hidden = false;
+  setTimeout(() => $('#eName').focus(), 40);
+}
+
+function closeEnvDialog(){
+  $('#envScrim').hidden = true;
+  EDITING = null;
+}
+
+function syncWritesWarning(){
+  const on = $('#eWrites').checked;
+  $('#eWritesBox').classList.toggle('hot', on);
+  // Writes ON matlab test asli data banayenge/badlenge. Ye chhupana nahi
+  // chahiye -- isliye jab tak ON hai, chetavni dikhti rehti hai.
+  $('#eWritesWarn').textContent = on
+    ? ' Tests will create and change real data here — use a demo or UAT company.'
+    : '';
+}
+$('#eWrites').onchange = syncWritesWarning;
+
+$('#envNew').onclick    = () => openEnvDialog(null);
+$('#envClose').onclick  = closeEnvDialog;
+$('#envCancel').onclick = closeEnvDialog;
+$('#envScrim').onclick  = e => { if (e.target === $('#envScrim')) closeEnvDialog(); };
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (!$('#envScrim').hidden) closeEnvDialog();
+  if (!$('#delScrim').hidden) closeDelete();
+  if (!$('#codeScrim').hidden) closeCode();
+});
+
+$('#envSave').onclick = async () => {
+  const r = await post('/api/env/save', {
+    name: $('#eName').value, login_url: $('#eLogin').value,
+    app_url: $('#eApp').value, user: $('#eUser').value,
+    password: $('#ePass').value, company: $('#eCo').value,
+    allow_writes: $('#eWrites').checked});
+  if (r.error){
+    $('#envMsg').style.color = 'var(--fail)';
+    $('#envMsg').textContent = r.error;
+    return;
+  }
+  closeEnvDialog();
+  await loadEnvs(); await boot();
+};
+
+/* First-visit guide. Hidden for good once dismissed. */
+try { if (localStorage.getItem('howtoHidden') === '1') $('#howto').classList.add('hide'); }
+catch (e) { /* private window: just show it */ }
+$('#howtoHide').onclick = () => {
+  $('#howto').classList.add('hide');
+  try { localStorage.setItem('howtoHidden', '1'); } catch (e) { /* ignore */ }
+};
+
+boot();
+</script>
+</body>
+</html>

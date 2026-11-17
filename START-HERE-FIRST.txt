@@ -1,0 +1,130 @@
+==========================================================
+  MargBooks QA Agent
+  Start here
+==========================================================
+
+You are inside the right folder. You should see ui.bat,
+setup.bat and a framework\ folder next to this file.
+
+----------------------------------------------------------
+  FIRST TIME -- three steps
+----------------------------------------------------------
+
+STEP 1   Double-click  setup.bat
+
+         Takes 5-8 minutes. Installs Python and the
+         libraries. Only needed once.
+
+         Notepad opens at the end. Fill in:
+
+             MARGBOOKS_LOGIN_URL=https://accounts.margbooks.com
+             MARGBOOKS_APP_URL=https://books6.margbooks.com
+             MARGBOOKS_USER=your.email@margerp.net
+             MARGBOOKS_PASS=your password
+             MARGBOOKS_COMPANY=CHEMIST AUTOMATION (AGENT)
+             ALLOW_DESTRUCTIVE=false
+
+         Ctrl+S, close Notepad.
+
+         Careful: no comment after a value.
+             RIGHT :  ALLOW_DESTRUCTIVE=false
+             WRONG :  ALLOW_DESTRUCTIVE=false   <- anything
+
+
+STEP 2   Double-click  doctor.bat
+
+         No browser opens. It only checks things.
+         Every line should say [ OK ].
+
+         The build number at the top should read
+             2026.09.06-c3e9b8f5
+         If it does not, the files were not replaced.
+
+
+STEP 3   Double-click  ui.bat
+
+         Your browser opens at http://localhost:8777
+         You work from here from now on.
+
+----------------------------------------------------------
+  THE SEVEN TABS
+----------------------------------------------------------
+
+Run          Pick tests on the left, tick them, press Run.
+             Each step prints on the right as it happens.
+
+New test     Describe a test in plain English, one action
+             per line. Press "Turn into steps", check what
+             came out, then save.
+
+Import       Tests from Excel or CSV, or paste a recording
+             made with Playwright codegen.
+
+What it      Every field the agent has learned, and your
+knows        company's Control Room settings.
+
+Tools        Everything that used to be a .bat file: the
+             crawler, Control Room, source scan, health
+             check. Output shows as it runs.
+
+History      Past runs. Survives a restart.
+
+Settings     Sign-in details, which MargBooks to point at,
+             and the optional AI key.
+
+----------------------------------------------------------
+  FIRST REAL JOB
+----------------------------------------------------------
+
+Before writing tests, let the agent learn your screens.
+
+  1. Settings tab -> Edit your environment
+        -> tick "Allow writes" -> Save
+
+  2. Tools tab -> Full UI crawl
+        -> tick "Turn every setting on first"
+        -> Run.   About 40 minutes.
+
+  3. When it finishes:
+        Tools tab -> Restore settings
+
+     Do not skip step 3. The crawl turns settings on so
+     hidden fields become visible. Left on, the company
+     behaves differently for everyone else tomorrow.
+
+----------------------------------------------------------
+  WHAT IS SAFE
+----------------------------------------------------------
+
+Delete is blocked everywhere, at four separate layers,
+even when "Allow writes" is on.
+
+"Allow writes" off  ->  tests that create or change data
+                        are skipped, not failed.
+
+In the Tools tab, only the jobs marked "changes data"
+touch your company. Everything else just reads.
+
+----------------------------------------------------------
+  WHEN THE NEXT VERSION ARRIVES
+----------------------------------------------------------
+
+Keep these, replace the rest:
+
+    .env                 your sign-in details
+    .venv                the libraries (big folder)
+    testcases\saved\     tests you and the team wrote
+    config\              settings and AI key
+    locators\            what the agent has learned
+    crawler-output\      the screen map from the crawl
+
+Without them it still works. You just run setup and the
+crawl again.
+
+----------------------------------------------------------
+  OTHER FILES HERE
+----------------------------------------------------------
+  START-HERE.txt          what each command does
+  GEMINI-SETUP.txt        turning the AI helper on
+  FOLDER-STRUCTURE.txt    what each folder holds
+  README.md               the technical detail

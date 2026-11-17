@@ -1,0 +1,81 @@
+- id: TC_GST_001
+  module: gst
+  title: GSTR-1 report current month ke liye generate ho
+  priority: p1
+  tags:
+  - smoke
+  - gst
+  - reports
+  expected:
+  - Report grid render ho
+  - B2B / B2C sections dikhein
+  steps:
+  - action: open_screen
+    target: dashboard
+    note: Menu se dashboard kholo (URL se nahi)
+  - action: note
+    note: GSTR-1 ka real URL confirm karna hai
+  - action: click
+    target: report.generate
+  - action: assert_visible
+    target: report.grid
+  - action: assert_text
+    value: B2B
+  draft: true
+  preconditions:
+  - 'DRAFT: GSTR-1 screen ka naksha abhi nahi bana. dump-one-screen.bat se ''report''
+    dump karke locators bharni hain, tab ye test chalega.'
+- id: TC_GST_002
+  module: gst
+  title: GSTR-1 ka B2B total us period ke GSTIN-wale sale invoices se match kare
+  priority: p1
+  tags:
+  - gst
+  - reports
+  - reconciliation
+  expected:
+  - Report ka B2B taxable value = sale register ka GSTIN-party total
+  steps:
+  - action: note
+    note: Ye reconciliation case hai -- sale register aur GSTR-1 dono se figure nikaal
+      ke compare karo
+  - action: open_screen
+    target: dashboard
+    note: Menu se dashboard kholo (URL se nahi)
+  - action: note
+    note: GSTR-1 ka real URL confirm karna hai
+  - action: click
+    target: report.generate
+  - action: assert_visible
+    target: report.grid
+  draft: true
+  preconditions:
+  - 'DRAFT: GSTR-1 screen ka naksha abhi nahi bana. dump-one-screen.bat se ''report''
+    dump karke locators bharni hain, tab ye test chalega.'
+- id: TC_GST_003
+  module: gst
+  title: Future date range dene pe empty state aana chahiye, crash nahi
+  priority: p3
+  tags:
+  - negative
+  - reports
+  steps:
+  - action: open_screen
+    target: dashboard
+    note: Menu se dashboard kholo (URL se nahi)
+  - action: note
+    note: GSTR-1 ka real URL confirm karna hai
+  - action: fill
+    target: report.from_date
+    value: 01/01/2099
+  - action: fill
+    target: report.to_date
+    value: 31/01/2099
+  - action: click
+    target: report.generate
+  - action: assert_no_text
+    value: Error
+  draft: true
+  preconditions:
+  - 'DRAFT: GSTR-1 screen ka naksha abhi nahi bana. dump-one-screen.bat se ''report''
+    dump karke locators bharni hain, tab ye test chalega.'

@@ -1,0 +1,160 @@
+# Sale Bill ke test.
+#
+# SABSE ZAROORI BAAT: Sale Bill har trade me ALAG hota hai.
+#   Pharma    -> Patient, Doctor, MR, Batch, Expiry
+#   General   -> Customer Name
+#   Wholesale -> sirf Ledger
+#
+# Isliye yahan fixed script nahi likhi. 'fill_header' pehle FORM PADHTA hai
+# aur sirf wahi field bharta hai jo us trade me maujood hain. Jo nahi hai use
+# chhodna galti nahi -- us trade me wo field hota hi nahi.
+#
+# Isi wajah se pehle saare sale test red the: main pharma ka fixed flow har
+# jagah chala raha tha.
+
+- id: TC_SALE_001
+  module: sales
+  title: Sale Bill khulta hai aur uske zaroori field maujood hain
+  priority: p1
+  tags: [smoke]
+  expected:
+    - "Party Name, Bill No., Date -- teeno har trade me hone chahiye"
+    - "Grid me Product column ho"
+  steps:
+    - action: open_screen
+      target: sale_bill
+    - action: expect_field
+      value: party
+    - action: expect_field
+      value: bill_no
+    - action: expect_field
+      value: date
+    - action: expect_column
+      value: Product
+    - action: close_form
+
+- id: TC_SALE_002
+  module: sales
+  title: Party chunne pe naam field me bhar jana chahiye
+  priority: p1
+  tags: [smoke]
+  destructive: true
+  preconditions:
+    - "'Cash Account' ledger maujood ho (MargBooks default)"
+    - "Party lookup Space dabane se khulta hai, type karne se nahi"
+  expected:
+    - "Lookup popup khule, naam chune, field bhar jaye"
+  steps:
+    - action: open_screen
+      target: sale_bill
+    - action: set_party
+      value: "Cash Account"
+    - action: close_form
+
+- id: TC_SALE_003
+  module: sales
+  title: Header ke saare field bharna - jo bhi is trade me maujood hain
+  priority: p1
+  tags: [smoke]
+  destructive: true
+  preconditions:
+    - "Pharma me patient/doctor/MR bharenge, general me customer, wholesale me kuch nahi"
+    - "Jo field nahi hai wo apne aap chhod diya jayega"
+  expected:
+    - "Bina kisi error ke header bhar jaye, chahe koi bhi trade ho"
+  steps:
+    - action: open_screen
+      target: sale_bill
+    - action: fill_header
+      value: "Cash Account | patient=QA Patient | doctor=QA Doctor"
+      note: "Log me dikhega ki kaunse field bhare aur kaunse chhode"
+    - action: close_form
+
+- id: TC_SALE_004
+  module: sales
+  title: Barcode se item jodne pe grid me ek line banni chahiye
+  priority: p1
+  tags: [smoke]
+  destructive: true
+  preconditions:
+    - "Barcode 80000111 wala item maujood ho -- apne data ke hisaab se badal lo"
+    - "Barcode naam se zyada bharosemand hai: na spelling ki dikkat, na aadha naam"
+  expected:
+    - "Grid me 1 line bane"
+  steps:
+    - action: open_screen
+      target: sale_bill
+    - action: set_party
+      value: "Cash Account"
+    - action: add_barcode
+      value: "80000111 | 2"
+    - action: expect_lines
+      value: "1"
+    - action: close_form
+
+- id: TC_SALE_005
+  module: sales
+  title: Do item jodne pe do line banni chahiye
+  priority: p1
+  tags: [regression]
+  destructive: true
+  preconditions:
+    - "Do alag barcode maujood hon"
+  expected:
+    - "Har item apni line me jaye, ek doosre pe na chadhe"
+  steps:
+    - action: open_screen
+      target: sale_bill
+    - action: set_party
+      value: "Cash Account"
+    - action: add_barcode
+      value: "80000111 | 2"
+    - action: add_barcode
+      value: "80000112 | 3"
+    - action: expect_lines
+      value: "2"
+    - action: close_form
+
+- id: TC_SALE_006
+  module: sales
+  title: Intra-state sale pe CGST aur SGST dono lagne chahiye
+  priority: p1
+  tags: [gst, calculation]
+  destructive: true
+  preconditions:
+    - "Party ka state company jaisa ho, aur item pe GST rate set ho"
+  expected:
+    - "CGST aur SGST dono dikhein, IGST nahi"
+  steps:
+    - action: open_screen
+      target: sale_bill
+    - action: set_party
+      value: "Cash Account"
+    - action: add_barcode
+      value: "80000111 | 1"
+    - action: assert_text
+      value: "CGST"
+    - action: assert_text
+      value: "SGST"
+    - action: close_form
+
+- id: TC_SALE_007
+  module: sales
+  title: Bill discount lagane pe discount ki line dikhni chahiye
+  priority: p2
+  tags: [calculation]
+  destructive: true
+  expected:
+    - "Total Disc. ki line update ho"
+  steps:
+    - action: open_screen
+      target: sale_bill
+    - action: set_party
+      value: "Cash Account"
+    - action: add_barcode
+      value: "80000111 | 10"
+    - action: set_bill_discount
+      value: "10"
+    - action: assert_text
+      value: "Total Disc"
+    - action: close_form

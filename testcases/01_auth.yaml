@@ -1,0 +1,137 @@
+# Sign-in tests.
+#
+# These four ship with the agent because nothing else can run until
+# sign-in works. They also check your setup: if these pass, the
+# details under Settings are right.
+#
+# Three of them sign out on purpose, so the runner puts them near the
+# end of a run -- otherwise they would cut short the tests after them.
+
+- id: TC_AUTH_001
+  module: auth
+  title: Signing in with valid credentials should reach the dashboard
+  priority: p1
+  tags:
+  - smoke
+  preconditions:
+  - The demo account is active
+  - Sign-in details are filled in under Settings
+  expected:
+  - The dashboard loads
+  - The company name appears in the header
+  steps:
+  - action: open_screen
+    target: dashboard
+    note: Menu se dashboard kholo (URL se nahi)
+  - action: assert_text
+    value: Dashboard
+- id: TC_AUTH_002
+  module: auth
+  title: An unregistered email should not get past the sign-in page
+  priority: p1
+  tags:
+  - breaks_session
+  - negative
+  - smoke
+  expected:
+  - It stops on the Sign In page
+  - It never reaches the password screen
+  steps:
+  - &id001
+    action: click
+    target: nav.profile
+    note: Profile icon
+  - &id002
+    action: click
+    target: nav.logout
+    note: Logout
+  - &id003
+    action: wait_text
+    value: Sign In
+    timeout_ms: 20000
+  - action: fill
+    target: login.username
+    value: '{{unregistered_user}}'
+  - action: click
+    target: login.submit
+  - action: sleep
+    value: '3'
+  - action: assert_no_text
+    value: Books From
+    note: Andar nahi ghusna chahiye
+  - action: assert_text
+    value: Sign In
+    note: Sign In page pe hi rehna chahiye
+  preconditions:
+  - This uses an address on the .invalid domain, so no account can exist for it. Nothing needs
+    to be set up.
+  - This test signs out. The runner puts it near the end so it does not cut short the tests
+    that follow.
+- id: TC_AUTH_003
+  module: auth
+  title: Submitting the sign-in form empty should be refused
+  priority: p2
+  tags:
+  - breaks_session
+  - negative
+  steps:
+  - action: click
+    target: nav.profile
+  - action: click
+    target: nav.logout
+  - action: wait_text
+    value: Sign In
+    timeout_ms: 20000
+  - action: click
+    target: login.submit
+    note: Khali form submit
+  - action: sleep
+    value: '2'
+  - action: assert_text
+    value: Sign In
+    note: Sign In page pe hi rehna chahiye
+  - action: assert_no_text
+    value: Books From
+  preconditions:
+  - This test signs out through profile > Logout. The runner puts it near the end for that
+    reason.
+  expected:
+  - An empty form does not go through
+  - It stays on the Sign In page
+- id: TC_AUTH_004
+  module: auth
+  title: A real user with the wrong password should not get in
+  priority: p1
+  tags:
+  - smoke
+  - negative
+  - breaks_session
+  preconditions:
+  - This uses the real user from Settings, who is registered, but with a deliberately wrong
+    password.
+  - This test signs out. The runner puts it near the end.
+  expected:
+  - The password screen appears, since the user is registered
+  - The wrong password does not let them in
+  steps:
+  - *id001
+  - *id002
+  - *id003
+  - action: fill
+    target: login.username
+    value: '{{config_user}}'
+  - action: click
+    target: login.submit
+  - action: assert_visible
+    target: login.password
+    note: User register hai, isliye password screen aani chahiye
+  - action: fill
+    target: login.password
+    value: definitely-wrong-pw-9x7z
+  - action: click
+    target: login.continue
+  - action: sleep
+    value: '3'
+  - action: assert_no_text
+    value: Books From
+    note: Galat password se andar nahi ghusna chahiye
