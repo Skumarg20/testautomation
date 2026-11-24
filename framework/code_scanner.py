@@ -193,9 +193,9 @@ def scan(path: str | Path, max_files: int = 6000,
     try:
         root = root.resolve(strict=True)
     except (OSError, RuntimeError) as e:
-        raise FileNotFoundError(f"'{path}' tak pahunch nahi paye: {e}") from e
+        raise FileNotFoundError(f"Folder {path} was not found.") from e
     if not root.exists():
-        raise FileNotFoundError(f"'{root}' naam ka koi folder nahi hai")
+        raise FileNotFoundError(f"Folder {root} was not found.")
     if root.is_file():
         root = root.parent
 
@@ -210,8 +210,8 @@ def scan(path: str | Path, max_files: int = 6000,
             ("users", "windows", "program files", "program files (x86)")
             or str(root) in ("/home", "/root")):
         raise FileNotFoundError(
-            f"'{root}' bahut bada hai. MargBooks ke project ka folder do "
-            f"(jisme src\\ ya app\\ ho).")
+            f"{root} is too big to read (a whole drive or a user folder). Give the MargBooks project "
+            f"folder (the one with src\\ or app\\ in it).")
 
     t0 = time.time()
     files = _walk(root, max_files)

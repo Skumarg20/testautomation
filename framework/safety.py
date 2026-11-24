@@ -459,15 +459,18 @@ TOAST_JS = r"""
   if (window.__mbToastHook) return;
   window.__mbToastHook = true;
   window.__mbToasts = [];
-  const seen = new Set();
+  // every time a message appears is kept (with its time), also when the same text comes again later:
+  // a test checks a toast that the app shows for ~3 s, which may be gone by the time the check runs.
+  const last = new WeakMap();
   const grab = () => {
     document.querySelectorAll(
       '.toast, [class*="toast"], .alert, [class*="snack"], [class*="notify"]'
     ).forEach(e => {
       const t = (e.innerText||'').replace(/\s+/g,' ').trim();
-      if (t && t.length < 200 && !seen.has(t)) {
-        seen.add(t);
+      if (t && t.length < 200 && last.get(e) !== t) {
+        last.set(e, t);
         window.__mbToasts.push({t, at: Date.now()});
+        if (window.__mbToasts.length > 300) window.__mbToasts.splice(0, 100);
       }
     });
   };
@@ -600,8 +603,16 @@ def safe_clear(el, page=None):
     """
     el.evaluate("""
       (e) => {
-        const setter = Object.getOwnPropertyDescriptor(
-          window.HTMLInputElement.prototype, 'value').set;
+        // A wrapper (div/span with the same id) may hold the real input: clear that one.
+        if (!/^(INPUT|TEXTAREA|SELECT)$/.test(e.tagName)) {
+          const inner = e.querySelector('input, textarea');
+          if (!inner) return;
+          e = inner;
+        }
+        const proto = e.tagName === 'TEXTAREA' ? window.HTMLTextAreaElement.prototype
+                    : e.tagName === 'SELECT' ? window.HTMLSelectElement.prototype
+                    : window.HTMLInputElement.prototype;
+        const setter = Object.getOwnPropertyDescriptor(proto, 'value').set;
         setter.call(e, '');                       // Angular ko dikhe
         e.dispatchEvent(new Event('input',  {bubbles: true}));
         e.dispatchEvent(new Event('change', {bubbles: true}));

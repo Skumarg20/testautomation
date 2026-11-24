@@ -70,10 +70,14 @@ def as_dicts() -> list[dict]:
     return sorted(out, key=lambda x: (x["module"], x["id"]))
 
 
+PRIORITY = {"high": "p1", "medium": "p2", "low": "p3", "p1": "p1", "p2": "p2", "p3": "p3"}
+
+
 def save(name: str, description: str, module: str, steps: list[dict],
          author: str = "", tags: list[str] | None = None,
-         destructive: bool = False, case_id: str | None = None) -> dict:
-    """Naya test save karo (ya purana update karo)."""
+         destructive: bool = False, case_id: str | None = None, created: str | None = None,
+         priority: str = "p2") -> dict:
+    """Naya test save karo (ya purana update karo). priority: p1/p2/p3 or High/Medium/Low."""
     if not name.strip():
         raise ValueError("Test name is required")
     if not steps:
@@ -84,11 +88,11 @@ def save(name: str, description: str, module: str, steps: list[dict],
         "id": cid,
         "module": module or "general",
         "title": name.strip(),
-        "priority": "p2",
+        "priority": PRIORITY.get(str(priority or "").strip().lower(), "p2"),
         "tags": tags or [],
         "destructive": destructive,
         "preconditions": [f"Created by {author or 'unknown'} | "
-                          f"{time.strftime('%Y-%m-%d %H:%M')}"],
+                          f"{created or time.strftime('%Y-%m-%d %H:%M')}"],
         "expected": [description.strip()] if description.strip() else [],
         "steps": steps,
     }

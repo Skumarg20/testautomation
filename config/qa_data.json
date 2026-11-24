@@ -1,0 +1,13 @@
+{
+  "_about": "Records tests share in each QA company, with the stock they should keep. When a test finds one missing, framework/test_data.py tops it up (Manual Sale Return) and runs the test again once. min = below this it is topped up; target = what it is topped up to. Targets are the stock the cases were verified with (QA Garment setup 2026-11-19).",
+  "QA Garment": [
+    {"name": "11110001", "kind": "variant", "item": "QA_Shirt", "barcode": "11110001", "note": "Black/S (QA-SH1)", "min": 1, "target": 2, "return_setting": "341"},
+    {"name": "11110002", "kind": "variant", "item": "QA_Shirt", "barcode": "11110002", "note": "Red/M (QA-SH1)", "min": 1, "target": 2, "return_setting": "341"},
+    {"name": "11110003", "kind": "variant", "item": "QA_Shirt", "barcode": "11110003", "note": "Blue/L (QA-SH1)", "min": 1, "target": 3, "return_setting": "341"},
+    {"name": "11110004", "kind": "variant", "item": "QA_Shirt", "barcode": "11110004", "note": "White/XL (QA-SH1)", "min": 1, "target": 4, "return_setting": "341"},
+    {"name": "11110005", "kind": "variant", "item": "QA_Shirt", "barcode": "11110005", "note": "Black/S (QA-SH2)", "min": 5, "target": 20, "return_setting": "341"},
+    {"name": "11110006", "kind": "variant", "item": "QA_Shirt", "barcode": "11110006", "note": "Red/M (QA-SH2)", "min": 3, "target": 10, "return_setting": "341"},
+    {"name": "11110007", "kind": "variant", "item": "QA_Shirt", "barcode": "11110007", "note": "Blue/L (QA-SH2)", "min": 3, "target": 10, "return_setting": "341"},
+    {"name": "11110008", "kind": "variant", "item": "QA_Shirt", "barcode": "11110008", "note": "White/XL (QA-SH2)", "min": 3, "target": 10, "return_setting": "341"}
+  ]
+}

@@ -17,3 +17,18 @@ config/studio.db
 config/studio_settings.json
 __pycache__/
 *.pyc
+
+# Python test scripts from ai-projects (e2e_scripts/): run output and saved logins
+e2e_scripts/results/
+e2e_scripts/test-results/
+e2e_scripts/.auth/
+
+# Machine / environment specific (never in the repository)
+e2e_scripts/.env
+config/studio.db-wal
+config/studio.db-shm
+config/qa_company_ids.json
+kb.env
+
+# Local backups made by deployackup.bat
+backups/

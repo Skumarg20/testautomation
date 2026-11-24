@@ -86,9 +86,17 @@ def config_user() -> str:
     return settings.USER
 
 
+def config_password() -> str:
+    """The runner's own MargBooks password (a login test types it). Never written in a test: the test holds
+    {{config_password}} and this fills it in only when the step runs."""
+    from config.settings import settings
+    return settings.PASSWORD
+
+
 def resolve(token: str):
     """YAML me `{{item_name}}` jaise placeholders resolve karta hai."""
     mapping = {
+        "config_password": config_password,
         "item_name": item_name, "party_name": party_name, "batch_no": batch_no,
         "hsn": hsn, "gstin": gstin, "invalid_gstin": invalid_gstin,
         "mobile": mobile, "qty": qty, "rate": rate, "gst_rate": gst_rate,

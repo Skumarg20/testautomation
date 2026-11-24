@@ -110,9 +110,16 @@ def _load_taught() -> dict:
 
 
 def teach(term: str, screen: str, field: str) -> None:
+    if not all(isinstance(x, str) for x in (term, screen, field)):
+        raise ValueError("term, screen and field must be text")
     term = norm(term)
     if not term or not screen or not field:
         raise ValueError("term, screen and field are required")
+    scr = build()["screens"].get(screen)
+    if not scr:
+        raise ValueError(f"App memory has no screen called “{screen}”.")
+    if not any(f["name"] == field for f in scr["fields"]):
+        raise ValueError(f"The screen “{screen}” has no field called “{field}” in app memory.")
     with _lock:
         d = _load_taught()
         d[f"{screen}::{term}"] = {"screen": screen, "field": field, "term": term,
@@ -120,6 +127,22 @@ def teach(term: str, screen: str, field: str) -> None:
         ALIASES_FILE.parent.mkdir(parents=True, exist_ok=True)
         ALIASES_FILE.write_text(json.dumps(d, indent=1, ensure_ascii=False), encoding="utf-8")
         _cache["stamp"] = None
+
+
+def untaught(term: str, screen: str) -> bool:
+    """Remove a word that was taught wrongly. True when it was there."""
+    if not isinstance(term, str) or not isinstance(screen, str):
+        raise ValueError("term and screen must be text")
+    key = f"{screen}::{norm(term)}"
+    with _lock:
+        d = _load_taught()
+        if key not in d:
+            return False
+        d.pop(key)
+        ALIASES_FILE.parent.mkdir(parents=True, exist_ok=True)
+        ALIASES_FILE.write_text(json.dumps(d, indent=1, ensure_ascii=False), encoding="utf-8")
+        _cache["stamp"] = None
+    return True
 
 
 def taught() -> dict:

@@ -1,0 +1,1372 @@
+new_id,module,source_pack,source_id,title
+TC_ABHA_001,abha,abha-health-flows.md,AB-01,Chemist company with field 4426 set: open sale bill
+TC_ABHA_002,abha,abha-health-flows.md,AB-02,"Chemist company with 4426 blank: open sale bill, patient master, add patient"
+TC_ABHA_003,abha,abha-health-flows.md,AB-03,Pharma distributor (bustype 13) or retail/grocery company
+TC_ABHA_004,abha,abha-health-flows.md,AB-04,Digital menu when ABHA setting is off and Digital has no other child
+TC_ABHA_005,abha,abha-health-flows.md,AB-05,Direct URL /abha/patient/registration as a non-chemist / 4426-off user
+TC_ABHA_006,abha,abha-health-flows.md,AB-06,Open /abha/patient/registration (chemist)
+TC_ABHA_007,abha,abha-health-flows.md,AB-07,Registration: press Submit with Aadhaar boxes empty
+TC_ABHA_008,abha,abha-health-flows.md,AB-08,Registration: type letters / 5th digit in an Aadhaar box
+TC_ABHA_009,abha,abha-health-flows.md,AB-09,Registration: show/hide toggle on Aadhaar
+TC_ABHA_010,abha,abha-health-flows.md,AB-10,Fill 12 fake digits: consent popup opens
+TC_ABHA_011,abha,abha-health-flows.md,AB-11,"Consent popup: untick any checkbox, confirm"
+TC_ABHA_012,abha,abha-health-flows.md,AB-12,"Consent popup: all ticked, blank name, confirm"
+TC_ABHA_013,abha,abha-health-flows.md,AB-13,Consent popup: Close
+TC_ABHA_014,abha,abha-health-flows.md,AB-14,Consent confirmed with a fake Aadhaar
+TC_ABHA_015,abha,abha-health-flows.md,AB-15,After OTP sent: Submit with empty Correspondence Mobile / OTP / Captcha
+TC_ABHA_016,abha,abha-health-flows.md,AB-16,After OTP sent: wrong captcha
+TC_ABHA_017,abha,abha-health-flows.md,AB-17,OTP field and resend
+TC_ABHA_018,abha,abha-health-flows.md,AB-18,Full enrolment: Aadhaar > consent > OTP > mobile > choose ABHA address > card
+TC_ABHA_019,abha,abha-health-flows.md,AB-19,ABHA address rule (create-address popup)
+TC_ABHA_020,abha,abha-health-flows.md,AB-20,ABHA address already taken
+TC_ABHA_021,abha,abha-health-flows.md,AB-21,Open /abha/patient/card/download
+TC_ABHA_022,abha,abha-health-flows.md,AB-22,"Download, Mobile mode: Send OTP with empty mobile"
+TC_ABHA_023,abha,abha-health-flows.md,AB-23,"Download, ABHA No. mode: Send OTP with a part empty"
+TC_ABHA_024,abha,abha-health-flows.md,AB-24,"Download, ABHA Address / Aadhaar mode empty"
+TC_ABHA_025,abha,abha-health-flows.md,AB-25,"Download: field filled, captcha empty then wrong"
+TC_ABHA_026,abha,abha-health-flows.md,AB-26,Download: OTP submit with empty OTP
+TC_ABHA_027,abha,abha-health-flows.md,AB-27,Download: unregistered ABHA address / Aadhaar
+TC_ABHA_028,abha,abha-health-flows.md,AB-28,Close/x on standalone screens
+TC_ABHA_029,abha,abha-health-flows.md,AB-29,Patient master grid (chemist + 4426)
+TC_ABHA_030,abha,abha-health-flows.md,AB-30,Add patient (chemist + 4426)
+TC_ABHA_031,abha,abha-health-flows.md,AB-31,"""Save & Check Abha Id"" with a fake patient"
+TC_ABHA_032,abha,abha-health-flows.md,AB-32,Sale bill ABHA button > selection popup
+TC_ABHA_033,abha,abha-health-flows.md,AB-33,Select ABHA Address for a patient with linked ABHA rows
+TC_ABHA_034,abha,abha-health-flows.md,AB-34,Save and print a bill with ABHA selected
+TC_ABHA_035,abha,abha-health-flows.md,AB-35,Patient History option from sale bill
+TC_ABHA_036,abha,abha-health-flows.md,AB-36,GetPatientAbhaDetails with a patient linkid of company B while logged into company A
+TC_ABHA_037,abha,abha-health-flows.md,AB-37,SaveAbhadetails with body complinkid of another company
+TC_ABHA_038,abha,abha-health-flows.md,AB-38,SaveAbhadetails missing ActionType / username
+TC_ABHA_039,abha,abha-health-flows.md,AB-39,"Upload ABHA bills (Pending / Bulk with date range), Incentive Claim, HFR/DHIS registration, software"
+TC_RPT_001,reports,accounting-reports.md,AR-01,"Own party with opening balance 1500 Dr; Trial Balance, Expand All"
+TC_RPT_002,reports,accounting-reports.md,AR-02,Trial Balance grand totals
+TC_RPT_003,reports,accounting-reports.md,AR-03,"Own journal today: Dr own Indirect Expenses ledger 250, Cr own Indirect Incomes ledger 250; Day Book"
+TC_RPT_004,reports,accounting-reports.md,AR-04,"Same journal; Profit & Loss, Expand All"
+TC_RPT_005,reports,accounting-reports.md,AR-05,Delete the journal; Day Book again
+TC_RPT_006,reports,accounting-reports.md,AR-06,Trial Balance with opening balance off (Configuration)
+TC_RPT_007,reports,accounting-reports.md,AR-07,Date filter From = To = voucher date / day after
+TC_RPT_008,reports,accounting-reports.md,AR-08,Export Excel/PDF of each report
+TC_RPT_009,reports,accounting-reports.md,AR-09,P&L net result equals Balance Sheet profit/loss line
+TC_RPT_010,reports,accounting-reports.md,AR-10,Report API with company A token and company B id
+TC_RPT_011,reports,accounting-reports.md,AR-11,"User without ""Day Book"" right"
+TC_AUTH_005,auth,auth.md,AU-01,Account signs in with correct user id and password (two-step)
+TC_AUTH_006,auth,auth.md,AU-01b,Login stores the session
+TC_AUTH_007,auth,auth.md,AU-02,"Correct user id, wrong password"
+TC_AUTH_008,auth,auth.md,AU-02b,"Step 1 with empty user id, click SIGN IN"
+TC_AUTH_009,auth,auth.md,AU-02c,Step 1 with unknown user id
+TC_AUTH_010,auth,auth.md,AU-02d,"Step 2 with empty password, click CONTINUE"
+TC_AUTH_011,auth,auth.md,AU-02e,Repeated wrong passwords (lockout / captcha threshold)
+TC_AUTH_012,auth,auth.md,AU-03,Unauthenticated user opens /dashboard or /sale directly
+TC_AUTH_013,auth,auth.md,AU-03b,"""Expired session"": app state removed (LoggedInUserInfo key deleted) then a protected route is opened"
+TC_AUTH_014,auth,auth.md,AU-03c,Unauthenticated /user-company
+TC_AUTH_015,auth,auth.md,AU-04,Limited (non-admin) account opens a restricted page
+TC_AUTH_016,auth,auth.md,AU-05,Logout from the profile menu
+TC_AUTH_017,auth,auth.md,AU-05b,"After logout use browser Back, then open /dashboard"
+TC_AUTH_018,auth,auth.md,AU-06,Field limits on login
+TC_AUTH_019,auth,auth.md,AU-07,Unknown route when logged in
+TC_AUTH_020,auth,auth.md,AU-08,Password and other credentials in the URL
+TC_AUTH_021,auth,auth.md,AU-09,"Other login paths: ""Login With OTP"", ""Set My PIN"", ""Forgot Password"", ""Sign Up"""
+TC_AUTH_022,auth,auth.md,RB-01,Super admin sees the full menu
+TC_AUTH_023,auth,auth.md,RB-02,"Super admin opens admin-type pages by direct URL: /mstr/usermaster, /mstr/margsetup-controlroom, /co"
+TC_AUTH_024,auth,auth.md,RB-03,Operator account opens /mstr/usermaster directly
+TC_AUTH_025,auth,auth.md,RB-04,Accountant account: menu items hidden / read-only
+TC_AUTH_026,auth,auth.md,RB-05,Role rights in the session
+TC_AUTH_027,auth,auth.md,RB-06,A URL not in the user's menu
+TC_AUTH_028,auth,auth.md,RB-07,Roles named in the PRD: Super Admin / Admin / Operator / Manager
+TC_AUTH_029,auth,auth.md,CO-01,After login the active company and FY are shown in the header
+TC_AUTH_030,auth,auth.md,CO-02,Profile menu shows company details
+TC_AUTH_031,auth,auth.md,CO-03,Switch opens the company list
+TC_AUTH_032,auth,auth.md,CO-04,Select another company and return to dashboard
+TC_AUTH_033,auth,auth.md,CO-05,Financial-year switch
+TC_AUTH_034,auth,auth.md,CO-06,FY boundary (31-03 / 01-04)
+TC_AUTH_035,auth,auth.md,CO-07,Tenancy: company A session must not read company B data
+TC_AUTH_036,auth,auth.md,CO-08,Delete button on the company row
+TC_AUTH_037,auth,auth.md,CO-09,Account mapped to exactly one company skips the company list
+TC_AUTH_038,auth,auth.md,AU-10,Login with registered mobile number or e-mail plus password
+TC_AUTH_039,auth,auth.md,AU-11,"Login with a 4 or 6 digit PIN (""Set My PIN"" on the login page)"
+TC_AUTH_040,auth,auth.md,AU-12,"First-time device registration from Sign In > ""Device Registration"""
+TC_AUTH_041,auth,auth.md,AU-13,"Forgot Password: registered e-mail, captcha, ""Get Mail"", reset link, new password"
+TC_AUTH_042,auth,auth.md,AU-14,"Sign Up with mobile, e-mail, password, then OTP, then ""Create Company"""
+TC_AUTH_043,auth,auth.md,AU-15,Account deactivated for non-usage
+TC_AUTH_044,auth,auth.md,AU-16,"Mobile app shows ""invalid user id or password"" while the same credentials work on web"
+TC_AUTH_045,auth,auth.md,AU-17,Session timeout / screen lock follows the Control Room auto-logout setting
+TC_AUTH_046,auth,auth.md,CO-10,User with 2 companies logs in and only the demo company is available
+TC_BANK_001,banking,bank-entry-reconciliation.md,BK-01,Create a Payment voucher with Payment Mode = a bank ledger: Accounting Transactions > Payment > Crea
+TC_BANK_002,banking,bank-entry-reconciliation.md,BK-02,"Create a Receipt voucher by cheque: Accounting Transactions > Receipt, enter cheque details"
+TC_BANK_003,banking,bank-entry-reconciliation.md,BK-03,"Contra: withdraw Rs 40,000 cash from bank. Accounting Transactions > Contra > Create, date, type Cr,"
+TC_BANK_004,banking,bank-entry-reconciliation.md,BK-04,"Contra variants: deposit cash into bank, bank-to-bank transfer, cash to petty cash"
+TC_BANK_005,banking,bank-entry-reconciliation.md,BK-05,Contra appears in the Contra Book (Report > Books of Account > Contra)
+TC_BANK_006,banking,bank-entry-reconciliation.md,BK-06,"Create a cheque book: date, Bank, Cheque From 00001, Cheque To 000050, Save"
+TC_BANK_007,banking,bank-entry-reconciliation.md,BK-07,Payment by bank with a cheque number from the cheque book; earlier payments were made before the boo
+TC_BANK_008,banking,bank-entry-reconciliation.md,BK-08,Enter a cheque number in a Payment that was already used in a Receipt in a previous year
+TC_BANK_009,banking,bank-entry-reconciliation.md,BK-09,"Cheque number inside a series already used (series 951-1000, numbers 962-964 shown as available)"
+TC_BANK_010,banking,bank-entry-reconciliation.md,BK-10,"Two Receipt vouchers with the same voucher number (double submit, refresh mid-save)"
+TC_BANK_011,banking,bank-entry-reconciliation.md,BK-11,Journal and Payment for bank charges debiting a bank-charges ledger
+TC_BANK_012,banking,bank-entry-reconciliation.md,BK-12,"Save a bank Payment/Receipt/Contra with required fields empty (bank, party, amount, date)"
+TC_BANK_013,banking,bank-entry-reconciliation.md,BK-13,"Amount: 0, 0.01, negative, very large, 3 decimals"
+TC_BANK_014,banking,bank-entry-reconciliation.md,BK-14,"Voucher date backdated, future, 31-03 / 01-04 financial-year boundary"
+TC_BANK_015,banking,bank-entry-reconciliation.md,BK-15,Modify or delete a bank voucher that is already cleared in reconciliation
+TC_BANK_016,banking,bank-entry-reconciliation.md,BK-16,"Post-dated cheque (PDC) receive, then deposit the cheque into the bank"
+TC_BANK_017,banking,bank-entry-reconciliation.md,BK-17,"Open Bank Reconciliation (Banking > Bank Reconciliation), select a bank, select a reconciliation dat"
+TC_BANK_018,banking,bank-entry-reconciliation.md,BK-18,"In the list, enter a clearing (closing) date on a cheque (example 21-07-2021)"
+TC_BANK_019,banking,bank-entry-reconciliation.md,BK-19,"""Set Clear All"" for cheques of one slip number"
+TC_BANK_020,banking,bank-entry-reconciliation.md,BK-20,A remark can be entered while clearing
+TC_BANK_021,banking,bank-entry-reconciliation.md,BK-21,"Press the ""Cleared Entry"" shortcut"
+TC_BANK_022,banking,bank-entry-reconciliation.md,BK-22,"Press the ""Un-cleared Entry"" shortcut"
+TC_BANK_023,banking,bank-entry-reconciliation.md,BK-23,"Un-clear a cheque cleared by mistake by removing the date from ""Clearing Date"""
+TC_BANK_024,banking,bank-entry-reconciliation.md,BK-24,"Contra between two banks (bank A and bank B), reconcile bank B for the month the contra was posted"
+TC_BANK_025,banking,bank-entry-reconciliation.md,BK-25,Reconcile an old financial year (clearing date calendar shows no old dates); open a range of an old 
+TC_BANK_026,banking,bank-entry-reconciliation.md,BK-26,Type the clearing date manually (date range 01-06-2026 to 30-06-2026)
+TC_BANK_027,banking,bank-entry-reconciliation.md,BK-27,Select a date range and no entries appear although vouchers exist in that range
+TC_BANK_028,banking,bank-entry-reconciliation.md,BK-28,Open the Cleared Entry view
+TC_BANK_029,banking,bank-entry-reconciliation.md,BK-29,Clearing date earlier than the voucher date
+TC_BANK_030,banking,bank-entry-reconciliation.md,BK-30,Clearing date outside the current financial year or in the future
+TC_BANK_031,banking,bank-entry-reconciliation.md,BK-31,Reconciled balance reconciles: uncleared cheques + bank statement balance = ledger balance; cleared 
+TC_BANK_032,banking,bank-entry-reconciliation.md,BK-32,"Dishonoured cheque, direct deposit, standing-order payment or income, bank charges found on the stat"
+TC_BANK_033,banking,bank-entry-reconciliation.md,BK-33,"Import a bank statement from Excel into reconciliation, then press Back"
+TC_BANK_034,banking,bank-entry-reconciliation.md,BK-34,Bank Auto Reconciliation UI
+TC_BANK_035,banking,bank-entry-reconciliation.md,BK-35,"Online Banking > Bank Reconciliation (ICICI), and Banking > Online Statement with a date range"
+TC_BANK_036,banking,bank-entry-reconciliation.md,BK-36,Limited user (no Banking rights) opens Bank Reconciliation or bank vouchers by direct URL
+TC_BANK_037,banking,bank-entry-reconciliation.md,BK-37,"Tenancy: bank, cheques and clearings of company A must not show in company B"
+TC_BANK_038,banking,bank-entry-reconciliation.md,BK-38,"Double click on Save / Clear, or refresh mid-save of a clearing date"
+TC_BANK_039,banking,bank-entry-reconciliation.md,BK-39,"Reconcile bank with 0 uncleared entries in range, and a range with a very large number of entries"
+TC_INV_001,inventory,barcode-generation-scanning.md,BC-01,Type a barcode in Create Item > Barcode and save the item
+TC_INV_002,inventory,barcode-generation-scanning.md,BC-02,Numbering Style = Automatic: open Create Item
+TC_INV_003,inventory,barcode-generation-scanning.md,BC-03,Barcode field length and case
+TC_INV_004,inventory,barcode-generation-scanning.md,BC-04,Duplicate allowed = No: save a second item with an existing barcode
+TC_INV_005,inventory,barcode-generation-scanning.md,BC-05,Duplicate allowed = Yes: second item with the same barcode
+TC_INV_006,inventory,barcode-generation-scanning.md,BC-06,"Delete an item, then reuse its barcode on a new item (duplicates not allowed)"
+TC_INV_007,inventory,barcode-generation-scanning.md,BC-07,Edit an item and keep its own barcode
+TC_INV_008,inventory,barcode-generation-scanning.md,BC-08,Scan (type + Enter) the item's barcode in a sale bill
+TC_INV_009,inventory,barcode-generation-scanning.md,BC-09,Scan an unknown barcode in a sale bill
+TC_INV_010,inventory,barcode-generation-scanning.md,BC-10,Scan the barcode of an item with no stock
+TC_INV_011,inventory,barcode-generation-scanning.md,BC-11,"Print Barcode, Item Wise, select item, Ok, Print"
+TC_INV_012,inventory,barcode-generation-scanning.md,BC-12,Print with no item chosen
+TC_INV_013,inventory,barcode-generation-scanning.md,BC-13,Barcode icon in the Item List row
+TC_INV_014,inventory,barcode-generation-scanning.md,BC-14,Control Room barcode settings are tenant-wide
+TC_INV_015,inventory,barcode-generation-scanning.md,BC-15,"Batch-wise barcodes generated on purchase/opening stock, picked by scan"
+TC_ACC_001,accounting,cash-transfer-day-closure.md,CT-01,"Deposit cash in bank: Cr cash ledger, Dr bank ledger, same amount; saves"
+TC_ACC_002,accounting,cash-transfer-day-closure.md,CT-02,"The saved contra moves both ledger balances (cash down, bank up by the amount)"
+TC_ACC_003,accounting,cash-transfer-day-closure.md,CT-03,Day Book for today lists both lines of the contra with voucher type Contra
+TC_ACC_004,accounting,cash-transfer-day-closure.md,CT-04,The contra appears in the Contra Voucher List of today
+TC_ACC_005,accounting,cash-transfer-day-closure.md,CT-05,Modify the amount; balances follow the new amount
+TC_ACC_006,accounting,cash-transfer-day-closure.md,CT-06,Delete the voucher; both balances return to their values before
+TC_ACC_007,accounting,cash-transfer-day-closure.md,CT-07,Bank leg with instrument type Cheque and no cheque number is refused
+TC_ACC_008,accounting,cash-transfer-day-closure.md,CT-08,Unequal Dr and Cr totals are refused
+TC_ACC_009,accounting,cash-transfer-day-closure.md,CT-09,Zero amount is refused
+TC_ACC_010,accounting,cash-transfer-day-closure.md,CT-10,A non cash/bank ledger is not offered / refused in contra
+TC_ACC_011,accounting,cash-transfer-day-closure.md,CT-11,"Dashboard ""Cash Balance"" reflects cash ledgers"
+TC_ACC_012,accounting,cash-transfer-day-closure.md,DC-01,"Control Room ""Daily Cashbook"" = Yes enables the module (admin only)"
+TC_ACC_013,accounting,cash-transfer-day-closure.md,DC-02,"Operator: Sale > Bill > Start Billing (type ""Sure"") before billing"
+TC_ACC_014,accounting,cash-transfer-day-closure.md,DC-03,"Daily Cashbook > Open/Close Daily Cashday > Stop Billing: day's transactions, note count, Next"
+TC_ACC_015,accounting,cash-transfer-day-closure.md,DC-04,"Cash Transfer tick: amount pre-filled from denominations, editable; ""Transfer amount to"" admin; Subm"
+TC_ACC_016,accounting,cash-transfer-day-closure.md,DC-05,Admin approves the day closure with remarks
+TC_ACC_017,accounting,cash-transfer-day-closure.md,DC-06,"Close Billing/Day report: users, net cash, opening cash, cash sale, expenses, net cash"
+TC_ACC_018,accounting,cash-transfer-day-closure.md,DC-07,"Cash difference above ""Cash Difference Limit in Cash Deposit"" is refused"
+TC_ACC_019,accounting,cash-transfer-day-closure.md,DC-08,"Daily Cashbook in a future date (Jira: ""Daily Cashbook allowed in Future date"")"
+TC_ACC_020,accounting,cash-transfer-day-closure.md,DC-09,Deleting a cash transfer voucher of Cash Management (Jira MB-039035)
+TC_ACC_021,accounting,cash-transfer-day-closure.md,DC-10,Admin cannot transfer received cash to bank at the last step (support ticket)
+TC_SALE_001,sales,chemist-sale-bill.md,CR-01,Master barcode adds the item and quantity
+TC_SALE_002,sales,chemist-sale-bill.md,CR-02,Batch barcode adds the item in Batch-wise mode
+TC_SALE_003,sales,chemist-sale-bill.md,CR-03,Batch barcode in Master-wise mode
+TC_SALE_004,sales,chemist-sale-bill.md,CR-04,Multiple-barcode setting
+TC_SALE_005,sales,chemist-sale-bill.md,CR-05,Multi-batch item shows the batch window and a batch can be picked
+TC_SALE_006,sales,chemist-sale-bill.md,CR-06,Near-expiry (NE) batch can be selected
+TC_SALE_007,sales,chemist-sale-bill.md,CR-07,"Expired (EXP) batch shows the ""Expired"" warning"
+TC_SALE_008,sales,chemist-sale-bill.md,CR-08,Save a bill by barcode / item code / description / mixed
+TC_SALE_009,sales,chemist-sale-bill.md,CR-09,Save a back-dated bill when back billing is on
+TC_SALE_010,sales,chemist-sale-bill.md,CR-10,Save a future-dated bill when future billing is on
+TC_SALE_011,sales,chemist-sale-bill.md,CR-11,Future or back date typed while that billing is off
+TC_SALE_012,sales,chemist-sale-bill.md,CR-12,Zero quantity
+TC_SALE_013,sales,chemist-sale-bill.md,CR-13,Negative quantity
+TC_SALE_014,sales,chemist-sale-bill.md,GS-01,"Invoice amount, Exclusive and Inclusive GST, with item/volume discounts"
+TC_SALE_015,sales,chemist-sale-bill.md,GS-02,"Invoice amount with bill discount 1 / 2 / both / amount, both GST types"
+TC_SALE_016,sales,chemist-sale-bill.md,MO-01..05,"Modify saved bill: replace item, quantity, rate, discounts, batch"
+TC_SALE_017,sales,chemist-sale-bill.md,LD-01..03,"Ledger master discount 1, 2, both appear on a new bill"
+TC_SALE_018,sales,chemist-sale-bill.md,LD-04..08,"Ledger special discount 1, 2, volume, all appear on a new bill"
+TC_SALE_019,sales,chemist-sale-bill.md,RV-01..08,Item rate A to H is the billed rate when set as default
+TC_SALE_020,sales,chemist-sale-bill.md,DB-01,Database repair completes
+TC_CRM_001,crm,crm-module.md,CRM-01,Super admin sees a CRM group in the sidebar with its entries
+TC_CRM_002,crm,crm-module.md,CRM-02,Each CRM entry opens its screen without the not-authorized page
+TC_CRM_003,crm,crm-module.md,HD-01,Home Delivery lists sale bills with a status column and Assign To
+TC_CRM_004,crm,crm-module.md,HD-02,"Update Status on an own bill: Pending -> Delivered, saved with ""Record saved successfully"""
+TC_CRM_005,crm,crm-module.md,HD-04,The Delivered status filter can be chosen
+TC_CRM_006,crm,crm-module.md,HD-03,Assign To with no bill ticked is refused
+TC_CRM_007,crm,crm-module.md,PA-01,Pending Approvals opens with a status filter
+TC_CRM_008,crm,crm-module.md,PA-03,The All status filter can be chosen and a count is shown
+TC_CRM_009,crm,crm-module.md,PA-02,An own purchase order sent for approval is listed and can be approved
+TC_CRM_010,crm,crm-module.md,PR-01,Prescription Reminder report opens (chemist)
+TC_CRM_011,crm,crm-module.md,PR-02,"Jira: ""prescription reminder object reference error"""
+TC_CRM_012,crm,crm-module.md,PR-03,Support: saved prescription not showing in reminder list
+TC_CRM_013,crm,crm-module.md,LY-01,"Loyalty setup is saved the first time (""Record Saved Successfully."")"
+TC_CRM_014,crm,crm-module.md,LY-02,"Changed points are updated (""Record Updated Successfully."") and shown on reopen"
+TC_CRM_015,crm,crm-module.md,LY-03,"Update with Rs. emptied is refused: ""Please Enter The Required Details!"""
+TC_CRM_016,crm,crm-module.md,LY-04,After a refused update the stored Rs. is unchanged
+TC_CRM_017,crm,crm-module.md,LY-05,"Esc Close asks ""Are you sure you want to close?"""
+TC_CRM_018,crm,crm-module.md,LY-06,Delete the setup
+TC_DASH_001,dashboard,dashboard.md,DB-01,"The dashboard shows the three summary cards Net Sale, Net Purchase, Gross Profit, each with ""₹curren"
+TC_DASH_002,dashboard,dashboard.md,DB-02,"The tile sections Fund Summary, Outstanding, Business, New Added, Stock, Pending are shown with thei"
+TC_DASH_003,dashboard,dashboard.md,DB-03,The period picker offers predefined ranges and a custom range. Exact option list UNVERIFIED in KB.
+TC_DASH_004,dashboard,dashboard.md,DB-04,Choosing a period relabels the picker and reloads the figures for that period.
+TC_DASH_005,dashboard,dashboard.md,DB-05,The chosen period is remembered after a reload. UNVERIFIED (seen live).
+TC_DASH_006,dashboard,dashboard.md,DB-06,"Refresh Dashboard recalculates and moves ""Last Sync"" to now. UNVERIFIED (seen live: the first paint "
+TC_DASH_007,dashboard,dashboard.md,DB-07,"Net Sale opens the Sale Register, Net Purchase the Purchase Register, Gross Profit the Gross Profit/"
+TC_DASH_008,dashboard,dashboard.md,DB-08,The Shortcut Keys panel opens from the header and lists HOME/DASHBOARD Alt+H; Alt+H returns to the d
+TC_DASH_009,dashboard,dashboard.md,DB-09,"An item created today is counted in New Added > Items for Today, and the count drops when it is dele"
+TC_DASH_010,dashboard,dashboard.md,DB-10,"The ""from"" (previous) figure of each card for This Month equals the current figure for Previous Mont"
+TC_DASH_011,dashboard,dashboard.md,DB-11,Each card's percentage equals (current - previous) / previous x 100 (derived; UNVERIFIED rounding).
+TC_DASH_012,dashboard,dashboard.md,DB-12,"Net Sale equals the Sale Register total for the same range (MB-024396, #0bf8d367, #58aa7aec). NEEDS "
+TC_DASH_013,dashboard,dashboard.md,DB-13,"A custom date typed in the app's dd-mm-yyyy format keeps that date (MB-024396 ""date filter is not wo"
+TC_DASH_014,dashboard,dashboard.md,DB-14,A custom range whose From is after To is refused. UNVERIFIED expected behaviour.
+TC_DASH_015,dashboard,dashboard.md,DB-15,A custom range outside the books year is refused (min/max attributes 2026-04-01..2027-03-31 seen liv
+TC_DASH_016,dashboard,dashboard.md,DB-16,Clicking a Fund Summary / Outstanding tile drills into the report. UNVERIFIED (KB silent).
+TC_DASH_017,dashboard,dashboard.md,DB-17,"Previous period equals 0: percentage shows 0.000%, not a division error (seen live)."
+TC_DASH_018,dashboard,dashboard.md,DB-18,A limited-rights user sees only permitted tiles (role rights). Not covered: no limited user on the Q
+TC_DASH_019,dashboard,dashboard.md,DB-19,"Financial year switch from the dashboard. Owned by J-company-switch, not repeated here."
+TC_UTIL_001,utilities,data-sync-offline.md,DS-01,"Logged in on the dashboard, go offline"
+TC_UTIL_002,utilities,data-sync-offline.md,DS-02,"From DS-01, go back online without reloading"
+TC_UTIL_003,utilities,data-sync-offline.md,DS-03,Offline on any screen in the layout
+TC_UTIL_004,utilities,data-sync-offline.md,DS-04,"Offline, try to click Save on an open sale bill"
+TC_UTIL_005,utilities,data-sync-offline.md,DS-05,"Offline, save the sale bill with the keyboard (F10 or the screen's save key), since the overlay does"
+TC_UTIL_006,utilities,data-sync-offline.md,DS-06,"From DS-05, reconnect and reload /error"
+TC_UTIL_007,utilities,data-sync-offline.md,DS-07,"After DS-05/06, log in again and search for the bill"
+TC_UTIL_008,utilities,data-sync-offline.md,DS-08,"Network drops mid-save: abort the save response with page.route after the request is sent, then reco"
+TC_UTIL_009,utilities,data-sync-offline.md,DS-09,"Offline: open the help-portal link or the Pharma helpline from the header with the keyboard, or with"
+TC_UTIL_010,utilities,data-sync-offline.md,DS-10,"Offline on Sale list: Email, Upload Bills, WhatsApp"
+TC_UTIL_011,utilities,data-sync-offline.md,DS-11,Offline: WhatsApp send from a saved bill
+TC_UTIL_012,utilities,data-sync-offline.md,DS-12,Offline: fetch ledger details by GSTIN in Account Master
+TC_UTIL_013,utilities,data-sync-offline.md,DS-13,"Throttle the link so navigator.connection.downlink < 2 (CDP Network.emulateNetworkConditions), profi"
+TC_UTIL_014,utilities,data-sync-offline.md,DS-14,Open /other/datasyncreport by direct URL (web)
+TC_UTIL_015,utilities,data-sync-offline.md,DS-15,"Look for ""DataSync Details"" in the menu (Other Tools)"
+TC_UTIL_016,utilities,data-sync-offline.md,DS-16,"On DS-14, read the status strip for the QA company"
+TC_UTIL_017,utilities,data-sync-offline.md,DS-17,"Offline on DS-14, click Enable Data Sync or Cancel"
+TC_UTIL_018,utilities,data-sync-offline.md,DS-18,"On a **throwaway** company with no request, click Enable Data Sync"
+TC_UTIL_019,utilities,data-sync-offline.md,DS-19,"Throwaway company, pending request, click Cancel → confirm"
+TC_UTIL_020,utilities,data-sync-offline.md,DS-20,"Company whose request is approved (1): open Sale from the menu, and press F10/F3/Del on a bill"
+TC_UTIL_021,utilities,data-sync-offline.md,DS-21,"Two companies on one login, only A has a request: open DS-14 in A then switch to B"
+TC_UTIL_022,utilities,data-sync-offline.md,DS-22,Limited user opens /other/datasyncreport by URL
+TC_UTIL_023,utilities,data-sync-offline.md,DS-23,Open /datasync in the web app (public route)
+TC_UTIL_024,utilities,data-sync-offline.md,DS-24,Open /error directly while logged in
+TC_UTIL_025,utilities,data-sync-offline.md,DS-25,Reload the app while offline
+TC_UTIL_026,utilities,data-sync-offline.md,DS-26,"Offline on the login page, submit login"
+TC_UTIL_027,utilities,data-sync-offline.md,DS-27,"Dashboard ""Last Sync : date \"
+TC_UTIL_028,utilities,data-sync-offline.md,DS-30,"EXE: /datasync ""Online Data Sync From Server"" with E-mail, Password, Branch Code → Submit → OTP"
+TC_UTIL_029,utilities,data-sync-offline.md,DS-31,POST OfflineOnline/UservalidateforO2DM with blank branch code
+TC_UTIL_030,utilities,data-sync-offline.md,DS-32,EXE: Data Sync Details grid
+TC_UTIL_031,utilities,data-sync-offline.md,DS-33,EXE: Upload (menu) while online
+TC_UTIL_032,utilities,data-sync-offline.md,DS-34,EXE: Upload while offline
+TC_UTIL_033,utilities,data-sync-offline.md,DS-35,GET pushpull?type=3
+TC_UTIL_034,utilities,data-sync-offline.md,DS-36,"Bill saved in EXE on date D, uploaded"
+TC_UTIL_035,utilities,data-sync-offline.md,DS-37,EXE upload to a server company with its own Control Room and Bill Format
+TC_UTIL_036,utilities,data-sync-offline.md,DS-38,"Delete bills in EXE, sync"
+TC_UTIL_037,utilities,data-sync-offline.md,DS-39,"Licence expires on the server, EXE syncs"
+TC_UTIL_038,utilities,data-sync-offline.md,DS-40,EXE offline for 15 vs 16 consecutive days
+TC_UTIL_039,utilities,data-sync-offline.md,DS-41,EXE local API stopped
+TC_UTIL_040,utilities,data-sync-offline.md,DS-42,EXE signup or login without internet
+TC_UTIL_041,utilities,data-sync-offline.md,DS-43,Item created at HO; purchase at branch
+TC_UTIL_042,utilities,data-sync-offline.md,DS-44,POST OfflineOnline/SyncRequestsave with complinkid 0; with dbinfolinkid 0
+TC_UTIL_043,utilities,data-sync-offline.md,DS-45,SyncRequestsave twice with the same status
+TC_UTIL_044,utilities,data-sync-offline.md,DS-46,SyncRequeststatus for a company with no request
+TC_UTIL_045,utilities,data-sync-offline.md,DS-47,"EXE: restore server data, open Control Room, bill after migration"
+TC_UTIL_046,utilities,data-sync-offline.md,DS-48,"Control Room > search 'Speed' > 'Show Internet Speed' on, then off (restore the original value in te"
+TC_UTIL_047,utilities,data-sync-offline.md,DS-49,EXE: sign up with no internet
+TC_ACC_022,accounting,document-catalogue.md,CON-001,Create contra with balanced Cr and Dr entries
+TC_ACC_023,accounting,document-catalogue.md,CON-002,Create contra and store for future use
+TC_ACC_024,accounting,document-catalogue.md,CON-003,Create contra with zero credit amount
+TC_ACC_025,accounting,document-catalogue.md,CON-004,Create contra without debit account
+TC_ACC_026,accounting,document-catalogue.md,CON-005,Create contra with mismatched credit and debit amounts
+TC_ACC_027,accounting,document-catalogue.md,CON-006,Create contra without account name
+TC_ACC_028,accounting,document-catalogue.md,CN-001,Create credit note with balanced Cr and Dr entries
+TC_ACC_029,accounting,document-catalogue.md,CN-002,Create credit note and store for future use
+TC_ACC_030,accounting,document-catalogue.md,CN-003,Create credit note with zero credit amount
+TC_ACC_031,accounting,document-catalogue.md,CN-004,Create credit note without debit account
+TC_ACC_032,accounting,document-catalogue.md,CN-005,Create credit note with mismatched credit and debit amounts
+TC_ACC_033,accounting,document-catalogue.md,CN-006,Create credit note without account name
+TC_ACC_034,accounting,document-catalogue.md,DN-001,Create debit note with balanced Dr and Cr entries
+TC_ACC_035,accounting,document-catalogue.md,DN-002,Create debit note and store for future use
+TC_ACC_036,accounting,document-catalogue.md,DN-003,Create debit note with zero debit amount
+TC_ACC_037,accounting,document-catalogue.md,DN-004,Create debit note without credit account
+TC_ACC_038,accounting,document-catalogue.md,DN-005,Create debit note with mismatched debit and credit amounts
+TC_ACC_039,accounting,document-catalogue.md,DN-006,Create debit note without account name
+TC_ACC_040,accounting,document-catalogue.md,JN-001,Create journal with balanced Cr and Dr entries
+TC_ACC_041,accounting,document-catalogue.md,JN-002,Create journal and store for future use
+TC_ACC_042,accounting,document-catalogue.md,JN-003,Create journal with zero credit amount
+TC_ACC_043,accounting,document-catalogue.md,JN-004,Create journal without debit account
+TC_ACC_044,accounting,document-catalogue.md,JN-005,Create journal with mismatched credit and debit amounts
+TC_ACC_045,accounting,document-catalogue.md,JN-006,Create journal without account name
+TC_ACC_046,accounting,document-catalogue.md,PM-001,Create payment with valid account and amount - delete after
+TC_ACC_047,accounting,document-catalogue.md,PM-002,Create payment with short amount - store for reuse
+TC_ACC_048,accounting,document-catalogue.md,PM-003,Create payment without account name - missing account validation
+TC_ACC_049,accounting,document-catalogue.md,PM-004,Create payment with invalid past entry date - date validation
+TC_ACC_050,accounting,document-catalogue.md,PM-005,Create payment with zero amount - amount validation
+TC_ACC_051,accounting,document-catalogue.md,RC-001,Create receipt with valid account and amount - delete after
+TC_ACC_052,accounting,document-catalogue.md,RC-002,Create receipt with short amount - store for reuse
+TC_ACC_053,accounting,document-catalogue.md,RC-003,Create receipt without account name - missing account validation
+TC_ACC_054,accounting,document-catalogue.md,RC-004,Create receipt with invalid past entry date - date validation
+TC_ACC_055,accounting,document-catalogue.md,RC-005,Create receipt with zero amount - amount validation
+TC_ACC_056,accounting,document-catalogue.md,PB-005,Create purchase bill with direct entry and store order
+TC_ACC_057,accounting,document-catalogue.md,PB-006,Create purchase bill without product name
+TC_ACC_058,accounting,document-catalogue.md,PB-007,Create purchase bill with invalid date
+TC_ACC_059,accounting,document-catalogue.md,PB-008,Create purchase bill with 0 qty
+TC_ACC_060,accounting,document-catalogue.md,PR-001,Verify purchase return with valid data using bill number
+TC_ACC_061,accounting,document-catalogue.md,PR-002,Verify purchase return with manual product selection (store return)
+TC_ACC_062,accounting,document-catalogue.md,PR-003,Verify purchase return with manual product selection (delete return)
+TC_ACC_063,accounting,document-catalogue.md,PR-004,Verify purchase return without vendor name
+TC_ACC_064,accounting,document-catalogue.md,PR-005,Verify purchase return with invalid date (past financial year)
+TC_ACC_065,accounting,document-catalogue.md,PR-006,Verify purchase return without product details
+TC_ACC_066,accounting,document-catalogue.md,PR-007,Verify purchase return without qty or with 0 qty
+TC_GST_001,gst,e-invoice.md,EI-01,Open E-Invoice Summary
+TC_GST_002,gst,e-invoice.md,EI-02,This Year + All + B2B + CDNR
+TC_GST_003,gst,e-invoice.md,EI-03,Status Pending
+TC_GST_004,gst,e-invoice.md,EI-04,Status Uploaded / Cancelled
+TC_GST_005,gst,e-invoice.md,EI-05,Submit with B2B and CDNR unticked
+TC_GST_006,gst,e-invoice.md,EI-06,Period filter: This Year fills 01-04-2026..31-03-2027 and Custom enables dates
+TC_GST_007,gst,e-invoice.md,EI-07,Listed amounts equal the GSTR-1 B2B row for Sept 2026 (444.00 / 124.32 / 568.00)
+TC_GST_008,gst,e-invoice.md,EI-08,Bill to an unregistered party (no GSTIN) is not listed under B2B
+TC_GST_009,gst,e-invoice.md,EI-09,E-Invoice configuration password field masks the value
+TC_GST_010,gst,e-invoice.md,EI-10,"Generate IRN for a pending bill; IRN, Ack No, Ack Date shown; status Uploaded"
+TC_GST_011,gst,e-invoice.md,EI-11,"Generate for an invalid bill shows the IRP error list (invalid GSTIN, address required, tax mismatch"
+TC_GST_012,gst,e-invoice.md,EI-12,"Generate again for an uploaded bill: ""Duplicate IRN""; Get IRN recovers details"
+TC_GST_013,gst,e-invoice.md,EI-13,Cancel an IRN within 24 h with a reason
+TC_GST_014,gst,e-invoice.md,EI-14,"Save a sale bill: ""Want to generate E-invoice ?"" prompt; No keeps the bill pending"
+TC_GST_015,gst,e-invoice.md,EI-15,Export button downloads the list
+TC_GST_016,gst,e-invoice.md,EI-16,"Ticking a pending bill reveals Generate and Get IRN; nothing ticked, no actions"
+TC_UTIL_048,utilities,email-sms-whatsapp-setup.md,EM-01,Open Control Room > Email Settings
+TC_UTIL_049,utilities,email-sms-whatsapp-setup.md,EM-02,Select a transaction type (Sale Bill)
+TC_UTIL_050,utilities,email-sms-whatsapp-setup.md,EM-03,"Clone a template, give a QA- name, save"
+TC_UTIL_051,utilities,email-sms-whatsapp-setup.md,EM-04,Edit the cloned template subject
+TC_UTIL_052,utilities,email-sms-whatsapp-setup.md,EM-05,Delete the cloned template
+TC_UTIL_053,utilities,email-sms-whatsapp-setup.md,EM-06,Save a clone with an empty template name / subject
+TC_UTIL_054,utilities,email-sms-whatsapp-setup.md,EM-07,CC / BCC with an invalid email
+TC_UTIL_055,utilities,email-sms-whatsapp-setup.md,EM-08,Close a dirty clone without saving
+TC_UTIL_056,utilities,email-sms-whatsapp-setup.md,EM-09,"Add New Email Sender dialog: fill invalid / valid, Cancel"
+TC_UTIL_057,utilities,email-sms-whatsapp-setup.md,SM-01,Open Control Room > SMS settings
+TC_UTIL_058,utilities,email-sms-whatsapp-setup.md,SM-02,Preview a template
+TC_UTIL_059,utilities,email-sms-whatsapp-setup.md,SM-03,"Clone a template with a QA- name, save, delete"
+TC_UTIL_060,utilities,email-sms-whatsapp-setup.md,SM-04,Save a clone with empty name
+TC_UTIL_061,utilities,email-sms-whatsapp-setup.md,SM-05,On/off switch
+TC_UTIL_062,utilities,email-sms-whatsapp-setup.md,WA-01,Open Control Room > Transaction SMS
+TC_UTIL_063,utilities,email-sms-whatsapp-setup.md,WA-02,Pick a transaction type (Sale)
+TC_UTIL_064,utilities,email-sms-whatsapp-setup.md,WA-03,Test-number field with invalid mobile
+TC_UTIL_065,utilities,email-sms-whatsapp-setup.md,WA-04,Close without saving
+TC_UTIL_066,utilities,email-sms-whatsapp-setup.md,WA-05,"""Send via Personal Whatsapp"" QR popup"
+TC_GST_017,gst,gst-report.md,GR-01,Open GSTR-1 for 01-09-2026..30-09-2026
+TC_GST_018,gst,gst-report.md,GR-02,Excel export for GR-01 downloads and parses
+TC_GST_019,gst,gst-report.md,GR-03,Export totals equal screen: sum of tax columns = Tax Amount; Taxable + Tax vs Invoice Amount
+TC_GST_020,gst,gst-report.md,GR-04,Change period with Alt+D to 01-10-2026..31-10-2026
+TC_GST_021,gst,gst-report.md,GR-05,GSTR-3B opens and offers JSON
+TC_GST_022,gst,gst-report.md,GR-06,"IFF dialog Monthly/Quarterly, Excel and JSON options"
+TC_GST_023,gst,gst-report.md,GR-07,PDF export
+TC_GST_024,gst,gst-report.md,GR-08,"GSTR-1 JSON (""GSTR1 Returns"") is valid JSON with b2b, hsn sections and totals equal to the screen"
+TC_GST_025,gst,gst-report.md,GR-09,"Create a sale (SI-01) in the period, GSTR-1 B2B rows increase by 1 voucher, taxable +300, IGST/CGST/"
+TC_GST_026,gst,gst-report.md,GR-10,"Party without GSTIN (B2C) lands in B2C Large/Small, not B2B"
+TC_GST_027,gst,gst-report.md,GR-11,Empty period (no bills)
+TC_GST_028,gst,gst-report.md,GR-12,"Period boundaries: 01-09-2026 and 30-09-2026 inclusive, bill on 30-09 included, 01-10 excluded"
+TC_GST_029,gst,gst-report.md,GR-13,"Period spanning FY end (To after 31-03-2027), or before 01-04-2026"
+TC_GST_030,gst,gst-report.md,GR-14,From later than To in Date Filter
+TC_GST_031,gst,gst-report.md,GR-15,Invalid date text in #fromDateFilter
+TC_GST_032,gst,gst-report.md,GR-16,Credit/Debit note rows after a sale return
+TC_GST_033,gst,gst-report.md,GR-17,Edit/delete a bill in the period then the report
+TC_GST_034,gst,gst-report.md,GR-18,Role without report rights opens the URL
+TC_GST_035,gst,gst-report.md,GR-19,Another company data absent
+TC_GST_036,gst,gst-report.md,GR-20,GSTR-2 and GSTR-3B ITC reconcile with purchase bills (cross-ref J05)
+TC_INV_016,inventory,inventory.md,IN-01,Create an item with only the mandatory fields (red asterisk): Master > Inventory Master > Item > Cre
+TC_INV_017,inventory,inventory.md,IN-02,"After IN-01 answer Yes, enter opening quantity, Save"
+TC_INV_018,inventory,inventory.md,IN-03,"Create an item with Packing, Unit 1st, Unit in Decimal, HSN/SAC and Tax Category set"
+TC_INV_019,inventory,inventory.md,IN-04,Save an item with the mandatory fields empty (Product name blank)
+TC_INV_020,inventory,inventory.md,IN-05,Create a second item with a name that already exists
+TC_INV_021,inventory,inventory.md,IN-06,"Unit in Decimal = No, then enter a fractional quantity (1.5) in a sale/stock entry"
+TC_INV_022,inventory,inventory.md,IN-07,"Unit in Decimal = Yes with odd decimals (0.001, 999999.999, 0, negative)"
+TC_INV_023,inventory,inventory.md,IN-08,"Item name length limit, special characters, unicode, leading/trailing spaces"
+TC_INV_024,inventory,inventory.md,IN-09,Service item: choose Product = Service
+TC_INV_025,inventory,inventory.md,IN-10,Search the item list by name; by item code prefix of 1 or 2 characters
+TC_INV_026,inventory,inventory.md,IN-11,Change an item from Goods to Service when it has stock or transactions
+TC_INV_027,inventory,inventory.md,IN-12,Delete an item that has transactions (dependents)
+TC_INV_028,inventory,inventory.md,IN-13,Open Store List from the Inventory Master dropdown
+TC_INV_029,inventory,inventory.md,IN-14,"Stock Transfer option is disabled until enabled in Settings > Control Room > Configure > search ""Tra"
+TC_INV_030,inventory,inventory.md,IN-15,"Store transfer: Stock Management > Store Transfer (+), select source store, Stock Type, load items, "
+TC_INV_031,inventory,inventory.md,IN-16,Store transfer reconciles
+TC_INV_032,inventory,inventory.md,IN-17,"Store transfer with quantity greater than available stock, and with 0 stock"
+TC_INV_033,inventory,inventory.md,IN-18,"Breakage/Expiry flow: transfer damaged or expired stock to the Scrap Store, then create a Breakage/E"
+TC_INV_034,inventory,inventory.md,IN-19,Physical Stock entry where physical 40 and software stock 20
+TC_INV_035,inventory,inventory.md,IN-20,Physical Stock with physical lower than software stock (write-off)
+TC_INV_036,inventory,inventory.md,IN-21,Modify and delete a Physical Stock entry
+TC_INV_037,inventory,inventory.md,IN-22,Delete an item from a passed Physical entry when stock is negative
+TC_INV_038,inventory,inventory.md,IN-23,"Negative stock NOT allowed (Control Room > Stock Negative), sell more than available (e.g. stock 10,"
+TC_INV_039,inventory,inventory.md,IN-24,"Negative stock allowed, sell more than available"
+TC_INV_040,inventory,inventory.md,IN-25,"Batch-wise item: stock 12 in 3 batches, purchase-breakage entry takes 8 from batch 1, then the quant"
+TC_INV_041,inventory,inventory.md,IN-26,Sale reduces stock; purchase increases stock
+TC_INV_042,inventory,inventory.md,IN-27,Edit or cancel a sale after posting: stock is restored
+TC_INV_043,inventory,inventory.md,IN-28,"Refresh Item Stock Balance: Master > Inventory Master > Item, open an item, refresh balances"
+TC_INV_044,inventory,inventory.md,IN-29,Item stock in item list vs stock report vs store/batch totals
+TC_INV_045,inventory,inventory.md,IN-30,Financial-year boundary: closing stock carried as next year's opening stock
+TC_INV_046,inventory,inventory.md,IN-31,Items and stock of company A are not visible in company B
+TC_INV_047,inventory,inventory.md,IN-32,Limited user without Stock Management rights opens Store Transfer / Physical Stock by direct URL
+TC_INV_048,inventory,inventory.md,IN-33,Branch Transfer from head office to branch (Master > Branch Master > Branch Transfer > Create)
+TC_INV_049,inventory,inventory.md,IN-34,Excel import of Physical Stock
+TC_INV_050,inventory,inventory.md,IN-35,"Double submit and refresh mid-save on item create, store transfer and Physical Stock"
+TC_MSTR_001,masters,item-master-crud.md,IM-01,Open Master > Inventory Master > Item
+TC_MSTR_002,masters,item-master-crud.md,IM-02,"Create an item with only the mandatory fields (Product, Unit 1st, HSN/SAC, Tax Category, Company) an"
+TC_MSTR_003,masters,item-master-crud.md,IM-03,"After IM-02 answer Yes to the opening-stock prompt, enter a quantity and Save"
+TC_MSTR_004,masters,item-master-crud.md,IM-03b,After IM-02 answer No (or dismiss) to the opening-stock prompt
+TC_MSTR_005,masters,item-master-crud.md,IM-04,"Create an item with a tax category of each rate slab (e.g. 5%, 18%, 28%)"
+TC_MSTR_006,masters,item-master-crud.md,IM-04b,Tax Category pre-filled on a new Create Item form
+TC_MSTR_007,masters,item-master-crud.md,IM-04c,Exempt / nil-rated / 0% tax category on an item
+TC_MSTR_008,masters,item-master-crud.md,IM-05,"Create an item with Unit in Decimal = Yes, then = No"
+TC_MSTR_009,masters,item-master-crud.md,IM-06,"Pick HSN/SAC by SpaceBar from the HSN List, or type a new HSN code"
+TC_MSTR_010,masters,item-master-crud.md,IM-07,"Enter prices (M.R.P, Purchase Rate, Cost, Sale Rate) and save"
+TC_MSTR_011,masters,item-master-crud.md,IM-08,Create a new Company (brand) inline from the Company field and use it on the item
+TC_MSTR_012,masters,item-master-crud.md,IM-09,"Edit an item: select row, press F3, change HSN/SAC, click Update"
+TC_MSTR_013,masters,item-master-crud.md,IM-09b,"Edit an item name, packing, unit or prices and Update"
+TC_MSTR_014,masters,item-master-crud.md,IM-10,Change the Tax Category on an existing item
+TC_MSTR_015,masters,item-master-crud.md,IM-11,Delete an item that has no transactions
+TC_MSTR_016,masters,item-master-crud.md,IM-12,Delete an item that has transactions
+TC_MSTR_017,masters,item-master-crud.md,IM-12b,Delete an item with zero stock but with no transactions vs stock > 0
+TC_MSTR_018,masters,item-master-crud.md,IM-13,Save with Product empty
+TC_MSTR_019,masters,item-master-crud.md,IM-13b,"Save with each other mandatory field empty in turn: Unit 1st, HSN/SAC, Tax Category, Company"
+TC_MSTR_020,masters,item-master-crud.md,IM-13c,Save an item with no unit selected (regression)
+TC_MSTR_021,masters,item-master-crud.md,IM-14,Create an item whose Product name already exists (default setting)
+TC_MSTR_022,masters,item-master-crud.md,IM-14b,"Set ""Product Name Duplicate Allowed?"" = Yes (Create Item > Settings icon, ESC to save) then create a"
+TC_MSTR_023,masters,item-master-crud.md,IM-14c,"Duplicates allowed: same Product Name, one with packing and one with blank packing"
+TC_MSTR_024,masters,item-master-crud.md,IM-14d,"Duplicates allowed, same name but different item code still shows a duplicate error"
+TC_MSTR_025,masters,item-master-crud.md,IM-14e,"Settings change ""Product Name Duplicate Allowed?"" is tenant-wide"
+TC_MSTR_026,masters,item-master-crud.md,IM-15,Product name max length
+TC_MSTR_027,masters,item-master-crud.md,IM-15b,"Special characters and unicode in Product name (&, /, ', "", Hindi text)"
+TC_MSTR_028,masters,item-master-crud.md,IM-15c,Leading/trailing spaces and mixed case in Product name vs duplicate check
+TC_MSTR_029,masters,item-master-crud.md,IM-15d,"M.R.P / rates: zero, negative, very large, more than 2 decimals"
+TC_MSTR_030,masters,item-master-crud.md,IM-15e,"Sale Rate above M.R.P, or Purchase Rate above Sale Rate"
+TC_MSTR_031,masters,item-master-crud.md,IM-16,Double click Save / refresh during save
+TC_MSTR_032,masters,item-master-crud.md,IM-17,"Control: ""HSN/SAC Required?"" = Yes/No in Create Item > Settings (and Rename of the label)"
+TC_MSTR_033,masters,item-master-crud.md,IM-18,Search / filter the Item List by the new item name
+TC_MSTR_034,masters,item-master-crud.md,IM-19,Visibility = Hide on an item
+TC_MSTR_035,masters,item-master-crud.md,IM-19b,Billing prohibited = No/Yes on an item
+TC_MSTR_036,masters,item-master-crud.md,IM-20,New item (with its tax category) is selectable in a sale bill and the GST rate applied equals the it
+TC_MSTR_037,masters,item-master-crud.md,IM-21,Bulk update of GST rate HSN-wise (Utilities & Tools > Ease of GST) changes the rate shown on items w
+TC_MSTR_038,masters,item-master-crud.md,IM-22,Remove a duplicate item via Utilities & Tools > Non Working Data > Delete > Duplicate Item
+TC_MSTR_039,masters,item-master-crud.md,IM-23,"Operator / limited user opens Item master (create, edit, delete)"
+TC_MSTR_040,masters,item-master-crud.md,IM-24,Item created in company A must not appear in company B's Item List
+TC_MSTR_041,masters,item-master-crud.md,IM-25,Item create/list/update/delete via API
+TC_MSTR_042,masters,item-master-crud.md,IM-26,Item created in a previous financial year / opening stock in a new FY
+TC_MSTR_043,masters,item-master-crud.md,IM-27,Multi Deletion of unused items and brands
+TC_MSTR_044,masters,ledger-master-crud.md,AG-01,Open Master > Accounts Master > Group
+TC_MSTR_045,masters,ledger-master-crud.md,AG-02,"Create a group: Group Name, Under Group (a parent such as Bank Accounts or Indirect Expenses), Prohi"
+TC_MSTR_046,masters,ledger-master-crud.md,AG-03,"Modify a group: Edit icon, change it, Update"
+TC_MSTR_047,masters,ledger-master-crud.md,AG-04,Save a group without a name
+TC_MSTR_048,masters,ledger-master-crud.md,AG-05,Save a group without an Under Group
+TC_MSTR_049,masters,ledger-master-crud.md,AG-06,Create a group whose name already exists in the company
+TC_MSTR_050,masters,ledger-master-crud.md,AG-07,Duplicate name differing only in letter case
+TC_MSTR_051,masters,ledger-master-crud.md,AG-08,Create a group with the name of a predefined group (e.g. Sundry Debtors)
+TC_MSTR_052,masters,ledger-master-crud.md,AG-09,Delete a predefined group
+TC_MSTR_053,masters,ledger-master-crud.md,AG-10,Delete a group that a ledger uses
+TC_MSTR_054,masters,ledger-master-crud.md,AG-11,Delete a user group with no ledgers
+TC_MSTR_055,masters,ledger-master-crud.md,AG-12,"Prohibited = Yes on a group, then pick one of its ledgers in a bill"
+TC_MSTR_056,masters,ledger-master-crud.md,AG-13,"Group name: long, special characters (& / ( ) .), leading/trailing spaces"
+TC_MSTR_057,masters,ledger-master-crud.md,AG-14,Rename a group used by ledgers
+TC_MSTR_058,masters,ledger-master-crud.md,AG-15,"Create / read / update / delete a group by API (POST AccountGroup/Save, GET AccountGroup/GetById, PU"
+TC_MSTR_059,masters,ledger-master-crud.md,AG-16,A group created in company A is absent in company B
+TC_MSTR_060,masters,ledger-master-crud.md,AG-17,"Jira ""Account Group Fixed ID duplicate issue"""
+TC_MSTR_061,masters,ledger-master-crud.md,GL-01,"Create a ledger under Indirect Expenses (or a user group under it): name + account group, Save"
+TC_MSTR_062,masters,ledger-master-crud.md,GL-02,"The Create Ledger form for a non-party group shows General Info only: Ledger Name, Account Group, GS"
+TC_MSTR_063,masters,ledger-master-crud.md,GL-03,"Modify a non-party ledger (change GST Applicable or the account group), Update"
+TC_MSTR_064,masters,ledger-master-crud.md,GL-04,Delete a non-party ledger with no transactions
+TC_MSTR_065,masters,ledger-master-crud.md,GL-05,Delete a non-party ledger that has transactions
+TC_MSTR_066,masters,ledger-master-crud.md,GL-06,"Ledger name duplicate when ""Ledger Name Duplicate allowed ?"" = No"
+TC_MSTR_067,masters,ledger-master-crud.md,GL-07,Move a ledger to another account group
+TC_RPT_012,reports,ledger-report.md,LR-01,Open Report > Combined Report > Accounts Report > Ledger
+TC_RPT_013,reports,ledger-report.md,LR-02,Open Master > Account Master > Ledger
+TC_RPT_014,reports,ledger-report.md,LR-03,"Create a sales invoice for a new party (own data), open that party's ledger report for the invoice d"
+TC_RPT_015,reports,ledger-report.md,LR-04,Ledger closing balance after one sale and one receipt for a new party
+TC_RPT_016,reports,ledger-report.md,LR-05,Ledger total debit and credit equal the sum of the visible rows
+TC_RPT_017,reports,ledger-report.md,LR-06,"Party created with an opening balance in Master > Opening Balance > Ledger, report for the full FY"
+TC_RPT_018,reports,ledger-report.md,LR-07,"Date filter: set From/To via Date field or Alt+D, click OK"
+TC_RPT_019,reports,ledger-report.md,LR-08,Date range starts the day after an entry
+TC_RPT_020,reports,ledger-report.md,LR-09,Range equals one day equal to the entry date (From = To)
+TC_RPT_021,reports,ledger-report.md,LR-10,FY boundary: entries on 31-03 and 01-04 across two FYs
+TC_RPT_022,reports,ledger-report.md,LR-11,Advanced Filter (Alt+F) opens
+TC_RPT_023,reports,ledger-report.md,LR-12,All-ledger report filtered by Account Group (for example Sundry Debtors)
+TC_RPT_024,reports,ledger-report.md,LR-13,"All-ledger report filtered by Ledger Category, Country, Station"
+TC_RPT_025,reports,ledger-report.md,LR-14,"Setting ""Show Debit/Credit Entries"" = Dr only / Cr only / All"
+TC_RPT_026,reports,ledger-report.md,LR-15,"Setting ""Show Voucher Number"" on vs off"
+TC_RPT_027,reports,ledger-report.md,LR-16,"Setting ""Show Ledger Name"" on vs off, ""Load Challan"" on vs off"
+TC_RPT_028,reports,ledger-report.md,LR-17,Export ledger report as Excel
+TC_RPT_029,reports,ledger-report.md,LR-18,Export as PDF with Configure > Current View
+TC_RPT_030,reports,ledger-report.md,LR-19,Export as CSV and Word
+TC_RPT_031,reports,ledger-report.md,LR-20,Print icon
+TC_RPT_032,reports,ledger-report.md,LR-21,Share via WhatsApp / Email / Drive icons are present
+TC_RPT_033,reports,ledger-report.md,LR-22,Reconcile with Trial Balance: ledger closing balance equals its Trial Balance figure for the same da
+TC_RPT_034,reports,ledger-report.md,LR-23,Reconcile with the sale invoice: invoice grand total equals the ledger debit for that party
+TC_RPT_035,reports,ledger-report.md,LR-24,Reconcile with GST: tax ledgers (output CGST/SGST/IGST) show the invoice tax split
+TC_RPT_036,reports,ledger-report.md,LR-25,"Edit a posted invoice amount, reopen ledger"
+TC_RPT_037,reports,ledger-report.md,LR-26,"Cancel/delete the invoice, reopen ledger"
+TC_RPT_038,reports,ledger-report.md,LR-27,Ledger with no transactions in range
+TC_RPT_039,reports,ledger-report.md,LR-28,Odd paise: invoice with total ending in .5 paise rounding
+TC_RPT_040,reports,ledger-report.md,LR-29,"Very large amount (for example 9,99,99,999.99)"
+TC_RPT_041,reports,ledger-report.md,LR-30,Ledger name with unicode / special characters / long name
+TC_RPT_042,reports,ledger-report.md,LR-31,"Search for a ledger that does not exist in ""Ledger Master"""
+TC_RPT_043,reports,ledger-report.md,LR-32,Limited user (no report right) opens the ledger report by menu and by direct URL
+TC_RPT_044,reports,ledger-report.md,LR-33,Company A ledger entries never appear in company B's ledger report (same party name in both)
+TC_RPT_045,reports,ledger-report.md,LR-34,API: request ledger data with company A token and company B company id
+TC_RPT_046,reports,ledger-report.md,LR-35,Refresh the report mid-load / open the same ledger twice quickly
+TC_RPT_047,reports,ledger-report.md,LR-36,Ledger API figures equal the UI figures for the same party and range
+TC_RPT_048,reports,ledger-report.md,LR-37,Mobile app Ledger Book (More > Reports > Ledger)
+TC_SALE_021,sales,manual-sale-purchase.md,AJ-045,Negative stock allowed
+TC_SALE_022,sales,manual-sale-purchase.md,AJ-046,Negative stock not allowed
+TC_SALE_023,sales,manual-sale-purchase.md,AJ-049,Negative quantity
+TC_SALE_024,sales,manual-sale-purchase.md,AJ-058,Multi store
+TC_SALE_025,sales,manual-sale-purchase.md,AJ-068,Batch stock validation
+TC_SALE_026,sales,manual-sale-purchase.md,AJ-069,Batch-wise stock deduction
+TC_SALE_027,sales,manual-sale-purchase.md,AJ-109,Modify saved bill quantity
+TC_SALE_028,sales,manual-sale-purchase.md,AJ-112,Modify saved bill batch
+TC_SALE_029,sales,manual-sale-purchase.md,AJ-114,Delete bill stock reversal
+TC_SALE_030,sales,manual-sale-purchase.md,AJ-123,Multi-store wrong stock
+TC_SALE_031,sales,manual-sale-purchase.md,AJ-124,Store change after item
+TC_SALE_032,sales,manual-sale-purchase.md,AJ-125,Store-wise stock deduction
+TC_SALE_033,sales,manual-sale-purchase.md,AJ-151,Backdated billing
+TC_SALE_034,sales,manual-sale-purchase.md,AJ-169,Zero-stock warning setting
+TC_SALE_035,sales,manual-sale-purchase.md,AJ-170,Negative-stock warning setting
+TC_SALE_036,sales,manual-sale-purchase.md,AJ-171,Negative-stock warning OFF
+TC_SALE_037,sales,manual-sale-purchase.md,AJ-180,Stock + multi-unit + batch
+TC_SALE_038,sales,manual-sale-purchase.md,AJ-181,Stock + promotion
+TC_SALE_039,sales,manual-sale-purchase.md,AJ-182,Modification + promotion
+TC_SALE_040,sales,manual-sale-purchase.md,AJ-191,stock negative allowed to yes
+TC_SALE_041,sales,manual-sale-purchase.md,AJ-192,stock negative allowed to no
+TC_SALE_042,sales,manual-sale-purchase.md,AJ-224,indicate negative stock-yes
+TC_SALE_043,sales,manual-sale-purchase.md,AJ-225,indicate negative stock-no
+TC_SALE_044,sales,manual-sale-purchase.md,ST-001,Create Sale Challan
+TC_SALE_045,sales,manual-sale-purchase.md,ST-002,Modify Sale Challan (increase qty)
+TC_SALE_046,sales,manual-sale-purchase.md,ST-003,Modify Sale Challan (change batch)
+TC_SALE_047,sales,manual-sale-purchase.md,ST-004,Delete Sale Challan
+TC_SALE_048,sales,manual-sale-purchase.md,ST-005,Convert Challan to Bill
+TC_SALE_049,sales,manual-sale-purchase.md,ST-006,Create Sale Bill directly
+TC_SALE_050,sales,manual-sale-purchase.md,ST-008,Delete Sale Bill
+TC_SALE_051,sales,manual-sale-purchase.md,ST-009,Sale Return entry
+TC_SALE_052,sales,manual-sale-purchase.md,ST-010,Sale Return Challan
+TC_SALE_053,sales,manual-sale-purchase.md,ST-011,Delete Sale Return
+TC_SALE_054,sales,manual-sale-purchase.md,ST-012,Add new batch during sale
+TC_SALE_055,sales,manual-sale-purchase.md,ST-013,Sell entire stock of a batch
+TC_SALE_056,sales,manual-sale-purchase.md,ST-014,Try selling with zero stock
+TC_SALE_057,sales,manual-sale-purchase.md,ST-015,Stock Issue entry
+TC_SALE_058,sales,manual-sale-purchase.md,ST-016,Delete Stock Issue entry
+TC_SALE_059,sales,manual-sale-purchase.md,ST-017,Sale Bill with future date
+TC_SALE_060,sales,manual-sale-purchase.md,ST-018,Sale Bill with backdate
+TC_SALE_061,sales,manual-sale-purchase.md,ST-019,Multiple batch usage
+TC_SALE_062,sales,manual-sale-purchase.md,ST-020,Check stock impact in Item Register
+TC_SALE_063,sales,manual-sale-purchase.md,ST-021,Batch-wise movement check
+TC_SALE_064,sales,manual-sale-purchase.md,ST-022,Partial Sale Return
+TC_SALE_065,sales,manual-sale-purchase.md,ST-023,Cancel challan before bill conversion
+TC_SALE_066,sales,manual-sale-purchase.md,ST-024,Convert Bill back to Challan
+TC_SALE_067,sales,manual-sale-purchase.md,ST-025,Change item in saved bill
+TC_SALE_068,sales,manual-sale-purchase.md,ST-026,Verify zero stock batch visibility
+TC_SALE_069,sales,manual-sale-purchase.md,ST-027,Delete Partial converted challan
+TC_SALE_070,sales,manual-sale-purchase.md,ST-029,Sell item with duplicate batch name
+TC_SALE_071,sales,manual-sale-purchase.md,ST-030,Create return for item not in stock
+TC_SALE_072,sales,manual-sale-purchase.md,ST-032,Create Stock Issue and Sale both
+TC_SALE_073,sales,manual-sale-purchase.md,ST-034,Auto batch selection impact
+TC_SALE_074,sales,manual-sale-purchase.md,ST-035,Sell item with negative stock allowed
+TC_SALE_075,sales,manual-sale-purchase.md,SC-019,If stock negative is off make store user should not able to enter stock greater then available stock
+TC_SALE_076,sales,manual-sale-purchase.md,SC-024,"While Creating a bill for any party, check if any existing sale order, challan, quotation are loadin"
+TC_SALE_077,sales,manual-sale-purchase.md,SC-026,If sale rate is more than M.R.P make sure user should not able sell stock
+TC_SALE_078,sales,manual-sale-purchase.md,SC-031,Check Real time stock updatation
+TC_SALE_079,sales,manual-sale-purchase.md,SC-035,Check whole convert process quotation to order to challan to bill. Also check all discounts and valu
+TC_SALE_080,sales,manual-sale-purchase.md,SC-046,Real Time Stock Calculation Check After Load Prescription and Last Bill Record etc.
+TC_SALE_081,sales,manual-sale-purchase.md,SC-080,Negative Cases Checks in Transactions Times.With Item Wise Negative Conditions Also
+TC_SALE_082,sales,manual-sale-purchase.md,SC-091,"check stock on item list, batch list , item register"
+TC_PUR_001,purchase,manual-sale-purchase.md,PC-007,after selecting party
+TC_PUR_002,purchase,manual-sale-purchase.md,PC-008,"If user select any Order ,Challan"
+TC_PUR_003,purchase,manual-sale-purchase.md,PC-009,"If Item selected from Order,Challan Window then pertucular Item loaded in transaction grid"
+TC_PUR_004,purchase,manual-sale-purchase.md,PC-047,After Bill Save
+TC_SALE_083,sales,manual-sale-purchase.md,AJ-013,Discount calculation
+TC_SALE_084,sales,manual-sale-purchase.md,AJ-016,Bill discount
+TC_SALE_085,sales,manual-sale-purchase.md,AJ-017,Bill discount2
+TC_SALE_086,sales,manual-sale-purchase.md,AJ-018,Bill discount amount
+TC_SALE_087,sales,manual-sale-purchase.md,AJ-034,Change discounts
+TC_SALE_088,sales,manual-sale-purchase.md,AJ-051,Sale promotion
+TC_SALE_089,sales,manual-sale-purchase.md,AJ-098,Discount percentage
+TC_SALE_090,sales,manual-sale-purchase.md,AJ-099,Multiple discounts
+TC_SALE_091,sales,manual-sale-purchase.md,AJ-100,Discount greater than amount
+TC_SALE_092,sales,manual-sale-purchase.md,AJ-101,Bill discount + item discount
+TC_SALE_093,sales,manual-sale-purchase.md,AJ-102,Discount after quantity change
+TC_SALE_094,sales,manual-sale-purchase.md,AJ-103,Discount after rate change
+TC_SALE_095,sales,manual-sale-purchase.md,AJ-111,Modify saved bill discount
+TC_SALE_096,sales,manual-sale-purchase.md,AJ-131,Sale promotion not applicable
+TC_SALE_097,sales,manual-sale-purchase.md,AJ-132,Sale promotion quantity slab
+TC_SALE_098,sales,manual-sale-purchase.md,AJ-133,Sale promotion modification
+TC_SALE_099,sales,manual-sale-purchase.md,AJ-134,Sale promotion removal
+TC_SALE_100,sales,manual-sale-purchase.md,AJ-135,Net scheme boundary value
+TC_SALE_101,sales,manual-sale-purchase.md,AJ-136,Net scheme below threshold
+TC_SALE_102,sales,manual-sale-purchase.md,AJ-137,Net scheme above threshold
+TC_SALE_103,sales,manual-sale-purchase.md,AJ-138,Last deal no history
+TC_SALE_104,sales,manual-sale-purchase.md,AJ-139,Last deal party-wise
+TC_SALE_105,sales,manual-sale-purchase.md,AJ-210,net scheme -allowed
+TC_SALE_106,sales,manual-sale-purchase.md,AJ-211,net scheme -not allowed
+TC_SALE_107,sales,manual-sale-purchase.md,AJ-213,bill -item discount config- vol disc in lumpsum
+TC_SALE_108,sales,manual-sale-purchase.md,AJ-214,bill -item discount config- vol disc in percentage
+TC_SALE_109,sales,manual-sale-purchase.md,AJ-215,bill-item discount config- vol disc in perunit
+TC_SALE_110,sales,manual-sale-purchase.md,AJ-217,amount cal in bill-rate*qty
+TC_SALE_111,sales,manual-sale-purchase.md,AJ-218,amount cal in bill-rate*qty-discount
+TC_SALE_112,sales,manual-sale-purchase.md,SC-020,"Check for Volume discount(Lumpsum, percentage ,perunit) if it's calculation is correct or not, accor"
+TC_SALE_113,sales,manual-sale-purchase.md,SC-021,Verify if bill discount percentage and Amount both is working properly or not
+TC_SALE_114,sales,manual-sale-purchase.md,SC-023,"If the scheme is applicable on any product check if it is working fine (Item, Bill Value , Combo Off"
+TC_SALE_115,sales,manual-sale-purchase.md,SC-039,After Applying Multiple Discounts(Special Dis-Party Wise Agency Dis-Agency Wise Dis-Item Wise Dis).C
+TC_SALE_116,sales,manual-sale-purchase.md,SC-042,Check last deal is loading properly or not
+TC_SALE_117,sales,manual-sale-purchase.md,SC-059,Check if the Last Deal in sales settings (Itemwise/No) is functioning properly
+TC_SALE_118,sales,manual-sale-purchase.md,SC-060,Check net Scheme after (enabling /disabling) if it is working properly or not
+TC_SALE_119,sales,manual-sale-purchase.md,SC-061,Check the amount calculation on billing (Rate * Quantity / Rate * Quantity - Discount / Net Amount) 
+TC_SALE_120,sales,manual-sale-purchase.md,SC-076,Verify Update Changed Discount under all the given conditions
+TC_SALE_121,sales,manual-sale-purchase.md,SC-079,"Check Lot Rate Calculation, Ensure that it is working fine"
+TC_SALE_122,sales,manual-sale-purchase.md,SC-086,Check Reverse Scheme Calculations
+TC_SALE_123,sales,manual-sale-purchase.md,SC-087,"Check Free Deal in Item Master Check All Conditions All Scheme,Whole scheme,All Scheme And No Scheme"
+TC_SALE_124,sales,manual-sale-purchase.md,SC-089,Check Free deal if Given In Decimals Amount Calculations
+TC_SALE_125,sales,manual-sale-purchase.md,SC-090,Check Lot Rate Calculations
+TC_PUR_005,purchase,manual-sale-purchase.md,PC-028,After entring Purchase Rate
+TC_SALE_126,sales,manual-sale-purchase.md,AJ-002,Create new sale bill with single item
+TC_SALE_127,sales,manual-sale-purchase.md,AJ-003,Create new sale bill with multiple items
+TC_SALE_128,sales,manual-sale-purchase.md,AJ-014,GST Calculation (Inclusive calculation)
+TC_SALE_129,sales,manual-sale-purchase.md,AJ-015,GST Calculation (Exclusive calculation)
+TC_SALE_130,sales,manual-sale-purchase.md,AJ-048,Zero quantity
+TC_SALE_131,sales,manual-sale-purchase.md,AJ-073,Customer change after item entry
+TC_SALE_132,sales,manual-sale-purchase.md,AJ-074,Sale type change
+TC_SALE_133,sales,manual-sale-purchase.md,AJ-075,Taxable + exempt items
+TC_SALE_134,sales,manual-sale-purchase.md,AJ-076,Taxable + nil-rated items
+TC_SALE_135,sales,manual-sale-purchase.md,AJ-091,Taxable + non-GST items
+TC_SALE_136,sales,manual-sale-purchase.md,AJ-092,CGST + SGST calculation
+TC_SALE_137,sales,manual-sale-purchase.md,AJ-093,IGST calculation
+TC_SALE_138,sales,manual-sale-purchase.md,AJ-094,GST rate change
+TC_SALE_139,sales,manual-sale-purchase.md,AJ-095,GST exemption
+TC_SALE_140,sales,manual-sale-purchase.md,AJ-096,Round-off calculation
+TC_SALE_141,sales,manual-sale-purchase.md,AJ-097,Round-off setting ON/OFF
+TC_SALE_142,sales,manual-sale-purchase.md,AJ-108,Modify saved bill
+TC_SALE_143,sales,manual-sale-purchase.md,AJ-110,Modify saved bill rate
+TC_SALE_144,sales,manual-sale-purchase.md,AJ-129,Additional charge tax
+TC_SALE_145,sales,manual-sale-purchase.md,AJ-174,Inclusive + discount
+TC_SALE_146,sales,manual-sale-purchase.md,AJ-175,Exclusive + discount
+TC_SALE_147,sales,manual-sale-purchase.md,AJ-176,Inclusive + bill discount
+TC_SALE_148,sales,manual-sale-purchase.md,AJ-177,Exclusive + bill discount
+TC_SALE_149,sales,manual-sale-purchase.md,AJ-178,GST + additional charges
+TC_SALE_150,sales,manual-sale-purchase.md,AJ-179,GST + round-off
+TC_SALE_151,sales,manual-sale-purchase.md,AJ-188,Select inclusive
+TC_SALE_152,sales,manual-sale-purchase.md,AJ-189,Seelct exclusive
+TC_SALE_153,sales,manual-sale-purchase.md,SC-022,"Check tax information CGST and SGST And Central Case IGST, CESS it's calculation is correct or not,"
+TC_SALE_154,sales,manual-sale-purchase.md,SC-027,Verify the invoice value to check whether the total is correct and if the tax has been added properl
+TC_SALE_155,sales,manual-sale-purchase.md,SC-028,"After creating sale bill , click on save as draft(Make sure enable the settings for draft) and check"
+TC_SALE_156,sales,manual-sale-purchase.md,SC-044,Check if the bill created by the user is saved in the database successfully
+TC_SALE_157,sales,manual-sale-purchase.md,SC-056,Calcualtion type in sale in settings(Exclusive/Inclusive) are working properly or not
+TC_SALE_158,sales,manual-sale-purchase.md,SC-081,Check Cess Calculatons In Cess Percentage And Cess Amount Both Cases.
+TC_SALE_159,sales,manual-sale-purchase.md,SC-085,Counter Sale Billing Process Check Covered Counter Sale Real Time and Counter Sale To Bill Loading P
+TC_PUR_006,purchase,manual-sale-purchase.md,PC-041,After Mode Of Pament OR GST Summary
+TC_SALE_160,sales,manual-sale-purchase.md,AJ-005,Sale bill without customer
+TC_SALE_161,sales,manual-sale-purchase.md,AJ-020,Modify bill by changing item
+TC_SALE_162,sales,manual-sale-purchase.md,AJ-021,Modify bill by changing quantity
+TC_SALE_163,sales,manual-sale-purchase.md,AJ-022,Modify bill by deleting item
+TC_SALE_164,sales,manual-sale-purchase.md,AJ-024,Change item
+TC_SALE_165,sales,manual-sale-purchase.md,AJ-025,Change quantity
+TC_SALE_166,sales,manual-sale-purchase.md,AJ-029,Duplicate barcode
+TC_SALE_167,sales,manual-sale-purchase.md,AJ-030,Save bill
+TC_SALE_168,sales,manual-sale-purchase.md,AJ-036,Delete bill
+TC_SALE_169,sales,manual-sale-purchase.md,AJ-062,Save bill with blank rate
+TC_SALE_170,sales,manual-sale-purchase.md,AJ-063,Save bill with zero rate
+TC_SALE_171,sales,manual-sale-purchase.md,AJ-064,Blank quantity
+TC_SALE_172,sales,manual-sale-purchase.md,AJ-065,Duplicate item in bill
+TC_SALE_173,sales,manual-sale-purchase.md,AJ-072,Customer credit limit
+TC_SALE_174,sales,manual-sale-purchase.md,AJ-104,Delete all items
+TC_SALE_175,sales,manual-sale-purchase.md,AJ-105,Delete first item
+TC_SALE_176,sales,manual-sale-purchase.md,AJ-106,Delete middle item
+TC_SALE_177,sales,manual-sale-purchase.md,AJ-107,Delete last item
+TC_SALE_178,sales,manual-sale-purchase.md,AJ-113,Cancel modified bill
+TC_SALE_179,sales,manual-sale-purchase.md,AJ-146,Escape/cancel bill
+TC_SALE_180,sales,manual-sale-purchase.md,AJ-147,Bill number generation
+TC_SALE_181,sales,manual-sale-purchase.md,AJ-148,Bill number after deletion
+TC_SALE_182,sales,manual-sale-purchase.md,AJ-149,Duplicate bill number
+TC_SALE_183,sales,manual-sale-purchase.md,AJ-152,Backdated billing not allowed
+TC_SALE_184,sales,manual-sale-purchase.md,AJ-168,Duplicate save
+TC_SALE_185,sales,manual-sale-purchase.md,AJ-223,indicate billing rate is 0
+TC_SALE_186,sales,manual-sale-purchase.md,SC-002,Click on create button and check grid is properly initialized
+TC_SALE_187,sales,manual-sale-purchase.md,SC-075,Verify Update Changed Rate (Price List / Ask/ w/o Price List)
+TC_SALE_188,sales,manual-sale-purchase.md,SC-092,"check item and bill dscount add, modify, remove"
+TC_PUR_007,purchase,manual-sale-purchase.md,PC-002,Click On Plus + F2 Button
+TC_SALE_189,sales,manual-sale-purchase.md,AJ-006,Select item
+TC_SALE_190,sales,manual-sale-purchase.md,AJ-007,Select item
+TC_SALE_191,sales,manual-sale-purchase.md,AJ-008,Quantity validation
+TC_SALE_192,sales,manual-sale-purchase.md,AJ-084,Item inactive
+TC_SALE_193,sales,manual-sale-purchase.md,AJ-085,Party inactive
+TC_SALE_194,sales,manual-sale-purchase.md,AJ-172,Zero-rate warning setting
+TC_SALE_195,sales,manual-sale-purchase.md,AJ-173,Zero-rate warning OFF
+TC_SALE_196,sales,manual-sale-purchase.md,AJ-197,ask party in retail billing-ask
+TC_SALE_197,sales,manual-sale-purchase.md,AJ-198,ask party in retail billing-don’t ask
+TC_SALE_198,sales,manual-sale-purchase.md,AJ-199,ask party in retail billing-ask on spacebar
+TC_SALE_199,sales,manual-sale-purchase.md,AJ-220,ask sale type at time of billing -yes
+TC_SALE_200,sales,manual-sale-purchase.md,AJ-221,ask sale type at time of billing -no
+TC_SALE_201,sales,manual-sale-purchase.md,SC-004,Check bill date should be managed by setting
+TC_SALE_202,sales,manual-sale-purchase.md,SC-006,Check when enter on bill date focus should be on multi-series window if enable else on ledger list
+TC_SALE_203,sales,manual-sale-purchase.md,SC-030,Check User not able to sell item in Loss.(if warning disable)
+TC_SALE_204,sales,manual-sale-purchase.md,SC-045,Last Bill Setting Checks According Ledger Wise
+TC_SALE_205,sales,manual-sale-purchase.md,SC-047,Check all the settings in Sale bill working properly
+TC_SALE_206,sales,manual-sale-purchase.md,SC-049,"After logging in/logging out, check that the settings remain the same."
+TC_SALE_207,sales,manual-sale-purchase.md,SC-057,Check Ask Party in Retail Billing (Ask/Don’t Ask/Ask on SpaceBar) ensure that they are working under
+TC_SALE_208,sales,manual-sale-purchase.md,SC-062,Verify the functioning of Ask Bill No. under all conditions
+TC_SALE_209,sales,manual-sale-purchase.md,SC-063,Verify the functioning of Ask Sale Type at the time of Billing under all conditions
+TC_SALE_210,sales,manual-sale-purchase.md,SC-064,Check Ask Net Rate (Ask always/ Ask on * key/No) under all these conditions
+TC_SALE_211,sales,manual-sale-purchase.md,SC-065,Check Ask Order No. and Order Date if they are working properly or not
+TC_SALE_212,sales,manual-sale-purchase.md,SC-067,"Verify the 'MR Required' setting after enabling or disabling it, and ensure it is working properly"
+TC_SALE_213,sales,manual-sale-purchase.md,SC-068,Pick MR from(Loop/Master/Direct )verify all these settings
+TC_SALE_214,sales,manual-sale-purchase.md,SC-069,"Check if ""Indicate if Item Repeated in Bill"" under all the given (Indicate/Ask Forcefully/No) condit"
+TC_SALE_215,sales,manual-sale-purchase.md,SC-078,Verify Default Billing Rate setting ensure that it is working properly under all the conditions
+TC_PUR_008,purchase,manual-sale-purchase.md,PC-013,On Item cell
+TC_PUR_009,purchase,manual-sale-purchase.md,PC-022,after entering unit
+TC_SALE_216,sales,manual-sale-purchase.md,AJ-011,Rate auto pick batchwise
+TC_SALE_217,sales,manual-sale-purchase.md,AJ-027,Batch selection
+TC_SALE_218,sales,manual-sale-purchase.md,AJ-028,Expiry validation
+TC_SALE_219,sales,manual-sale-purchase.md,AJ-066,Duplicate batch in bill
+TC_SALE_220,sales,manual-sale-purchase.md,AJ-067,Different batch same item
+TC_SALE_221,sales,manual-sale-purchase.md,AJ-070,Expired batch with allowed setting
+TC_SALE_222,sales,manual-sale-purchase.md,AJ-071,Near-expiry batch
+TC_SALE_223,sales,manual-sale-purchase.md,AJ-140,Last deal batch-wise
+TC_SALE_224,sales,manual-sale-purchase.md,AJ-201,last deal in sale-batchwise
+TC_SALE_225,sales,manual-sale-purchase.md,AJ-202,last deal in sale-itemwise
+TC_SALE_226,sales,manual-sale-purchase.md,ST-007,Modify Sale Bill (change batch)
+TC_SALE_227,sales,manual-sale-purchase.md,ST-033,Save sale with invalid batch name
+TC_SALE_228,sales,manual-sale-purchase.md,SC-015,After selecting item the focus navigate to batch column(if enable) else on expiry(if enable) else on
+TC_SALE_229,sales,manual-sale-purchase.md,SC-016,If batch enable focus will move to batch window and will select batch
+TC_SALE_230,sales,manual-sale-purchase.md,SC-017,After batch selection focus will navigate to quantity column
+TC_SALE_231,sales,manual-sale-purchase.md,SC-025,After Selecting any item in bill check that sale rate picks automatically. Check Both Case Item Wise
+TC_SALE_232,sales,manual-sale-purchase.md,SC-029,Check User not able to sell Prohbited and expiry item
+TC_SALE_233,sales,manual-sale-purchase.md,SC-033,Check Rate Picking (itemwise/Batch Wise)
+TC_SALE_234,sales,manual-sale-purchase.md,SC-037,Verify Barcode Scanning While billing Master wise & Batch wise Barcode with parameter trade
+TC_SALE_235,sales,manual-sale-purchase.md,SC-066,Check the configuration of Expiry & MFG4 to ensure they are working properly.
+TC_SALE_236,sales,manual-sale-purchase.md,SC-071,Verify Batch window index on(Expiry/MFG Date/ FIFO Date/ Batch Name) under all these conditons
+TC_SALE_237,sales,manual-sale-purchase.md,SC-074,Check Free Deal from(Master/Batch/Manual/Lot/Lot& Free) under these conditions
+TC_SALE_238,sales,manual-sale-purchase.md,SC-095,"check rate from master, batch, parameter(manual and barcode)"
+TC_PUR_010,purchase,manual-sale-purchase.md,PC-014,After selecting Item
+TC_PUR_011,purchase,manual-sale-purchase.md,PC-015,After Entering batch name
+TC_PUR_012,purchase,manual-sale-purchase.md,PC-033,After Discount
+TC_PUR_013,purchase,manual-sale-purchase.md,PC-039,After Batch
+TC_SALE_239,sales,manual-sale-purchase.md,AJ-010,Rate auto pick itemwise
+TC_SALE_240,sales,manual-sale-purchase.md,AJ-047,Decimal allowed
+TC_SALE_241,sales,manual-sale-purchase.md,AJ-150,Date validation
+TC_SALE_242,sales,manual-sale-purchase.md,SC-005,Check back date bill conditions
+TC_SALE_243,sales,manual-sale-purchase.md,SC-009,Check pagination is working on party window
+TC_SALE_244,sales,manual-sale-purchase.md,SC-010,Check search party is working fine and make sure api call should be limited
+TC_SALE_245,sales,manual-sale-purchase.md,SC-032,Check Real time Ledger Balance update
+TC_SALE_246,sales,manual-sale-purchase.md,SC-036,"Verify Invoice templates(Thermal,Full page,Pharma,chemist billing, general, landscape, Dmp half page"
+TC_SALE_247,sales,manual-sale-purchase.md,SC-038,While Selecting party name and product name check search bar is functioning properly
+TC_SALE_248,sales,manual-sale-purchase.md,SC-043,Check that no API is called redundantly.
+TC_SALE_249,sales,manual-sale-purchase.md,SC-050,Verify if the custom filter is working properly
+TC_SALE_250,sales,manual-sale-purchase.md,SC-053,Check Bulk action button if its functionality working properly or not
+TC_SALE_251,sales,manual-sale-purchase.md,SC-054,Verify action column buttons if they are working properly or not
+TC_SALE_252,sales,manual-sale-purchase.md,SC-055,Check all the calculations and disocunts on E-way bill
+TC_SALE_253,sales,manual-sale-purchase.md,SC-058,Check Cursor Wait on (All/Qty) are working properly
+TC_SALE_254,sales,manual-sale-purchase.md,SC-070,Check if Billing Rate is Zero is working properly
+TC_SALE_255,sales,manual-sale-purchase.md,SC-072,Verify Free Quantity Required in Sale functioning Properly
+TC_SALE_256,sales,manual-sale-purchase.md,SC-073,Verify Free Quantity Required in Decimal working under all the required conditions
+TC_SALE_257,sales,manual-sale-purchase.md,SC-077,"Check the configuration of Minimum level crossed, ensure that it is working properly"
+TC_SALE_258,sales,manual-sale-purchase.md,SC-082,"Check Multi Series Billing All Cases Include Group Wise,Agency Wise etc."
+TC_SALE_259,sales,manual-sale-purchase.md,SC-084,"Check Agency Wise Billing,Salt Wise Billing ,Substitute Wise Billing And Category Wise Billing in Tr"
+TC_SALE_260,sales,manual-sale-purchase.md,SC-088,Check * Key Net Rate Calculations
+TC_SALE_261,sales,manual-sale-purchase.md,SC-094,check loss indication window
+TC_SALE_262,sales,manual-sale-purchase.md,AJ-032,Print bill
+TC_SALE_263,sales,manual-sale-purchase.md,AJ-053,Share on whatsapp
+TC_SALE_264,sales,manual-sale-purchase.md,AJ-054,Share on email
+TC_SALE_265,sales,manual-sale-purchase.md,AJ-055,Share on SMS
+TC_SALE_266,sales,manual-sale-purchase.md,AJ-056,Share in bulk
+TC_SALE_267,sales,manual-sale-purchase.md,AJ-153,Print after modification
+TC_SALE_268,sales,manual-sale-purchase.md,AJ-154,Reprint bill
+TC_SALE_269,sales,manual-sale-purchase.md,AJ-155,Print multiple bills
+TC_SALE_270,sales,manual-sale-purchase.md,AJ-156,WhatsApp without mobile
+TC_SALE_271,sales,manual-sale-purchase.md,AJ-157,Email without email ID
+TC_SALE_272,sales,manual-sale-purchase.md,AJ-158,SMS without mobile
+TC_SALE_273,sales,manual-sale-purchase.md,AJ-159,Share modified bill
+TC_SALE_274,sales,manual-sale-purchase.md,AJ-160,Bulk share selected bills
+TC_SALE_275,sales,manual-sale-purchase.md,AJ-161,Bulk share all bills
+TC_SALE_276,sales,manual-sale-purchase.md,ST-031,Print stock report after transactions
+TC_SALE_277,sales,manual-sale-purchase.md,SC-051,"Check if the upload, print, email, WhatsApp, and export buttons are functioning properly"
+TC_SALE_278,sales,manual-sale-purchase.md,SC-052,Check printout and print after modification details
+TC_PUR_014,purchase,manual-sale-purchase.md,PC-051,Extras
+TC_SALE_279,sales,manual-sale-purchase.md,AJ-038,Mode of payment
+TC_SALE_280,sales,manual-sale-purchase.md,AJ-039,Mode of payment
+TC_SALE_281,sales,manual-sale-purchase.md,AJ-040,Mode of payment
+TC_SALE_282,sales,manual-sale-purchase.md,AJ-041,add and remove ledger from mode of payment window
+TC_SALE_283,sales,manual-sale-purchase.md,AJ-115,Delete bill with payment
+TC_SALE_284,sales,manual-sale-purchase.md,AJ-116,Delete bill with partial payment
+TC_SALE_285,sales,manual-sale-purchase.md,AJ-117,MOP multiple ledgers
+TC_SALE_286,sales,manual-sale-purchase.md,AJ-118,MOP amount mismatch
+TC_SALE_287,sales,manual-sale-purchase.md,AJ-119,MOP zero payment
+TC_SALE_288,sales,manual-sale-purchase.md,AJ-120,MOP payment modification
+TC_SALE_289,sales,manual-sale-purchase.md,AJ-121,MOP cash + bank payment
+TC_SALE_290,sales,manual-sale-purchase.md,AJ-122,MOP ledger inactive
+TC_SALE_291,sales,manual-sale-purchase.md,AJ-183,Modification + MOP
+TC_SALE_292,sales,manual-sale-purchase.md,AJ-184,Delete + MOP
+TC_SALE_293,sales,manual-sale-purchase.md,AJ-194,mode of payment required
+TC_SALE_294,sales,manual-sale-purchase.md,AJ-195,mode of payment not required
+TC_SALE_295,sales,manual-sale-purchase.md,SC-034,Check Mode of Payments with multiple modes
+TC_SALE_296,sales,manual-sale-purchase.md,AJ-145,Keyboard navigation
+TC_SALE_297,sales,manual-sale-purchase.md,SC-003,Check focus should be on bill date
+TC_SALE_298,sales,manual-sale-purchase.md,SC-008,When party window is open make sure focus on search box and last selected party
+TC_SALE_299,sales,manual-sale-purchase.md,SC-012,After party selection focus navigate to product
+TC_SALE_300,sales,manual-sale-purchase.md,SC-013,After that item list window will pop up and focus should be on search box at item list
+TC_SALE_301,sales,manual-sale-purchase.md,SC-014,and focus on last selected item
+TC_SALE_302,sales,manual-sale-purchase.md,SC-048,Check F8 voucher posting
+TC_SALE_303,sales,manual-sale-purchase.md,SC-083,Check Profit Calculations in Tab Keys And Alt+F10 Keys.Check Both Profit in Rs And Percentage.
+TC_SALE_304,sales,manual-sale-purchase.md,SC-093,check alt+f10 profit window
+TC_PUR_015,purchase,manual-sale-purchase.md,PC-003,Focus gone to bill date
+TC_PUR_016,purchase,manual-sale-purchase.md,PC-005,after enter on bill date
+TC_PUR_017,purchase,manual-sale-purchase.md,PC-012,"If Order , Chalan Is not selected"
+TC_PUR_018,purchase,manual-sale-purchase.md,PC-025,After entring Free
+TC_SALE_305,sales,manual-sale-purchase.md,AJ-141,Patient doctor mandatory
+TC_SALE_306,sales,manual-sale-purchase.md,AJ-142,Patient doctor optional
+TC_SALE_307,sales,manual-sale-purchase.md,AJ-143,Patient doctor at start
+TC_SALE_308,sales,manual-sale-purchase.md,AJ-144,Patient doctor at save
+TC_SALE_309,sales,manual-sale-purchase.md,AJ-204,pat-doc must-yes
+TC_SALE_310,sales,manual-sale-purchase.md,AJ-205,pat-doc must-no
+TC_SALE_311,sales,manual-sale-purchase.md,AJ-207,pat- doc at -start
+TC_SALE_312,sales,manual-sale-purchase.md,AJ-208,pat- doc at -save
+TC_SALE_313,sales,manual-sale-purchase.md,SC-041,Check for Pending prescription list(Chemist)
+TC_SALE_314,sales,manual-sale-purchase.md,AJ-042,Multi unit quantity validation
+TC_SALE_315,sales,manual-sale-purchase.md,AJ-043,Multi unit amount validation
+TC_SALE_316,sales,manual-sale-purchase.md,SC-007,Before Open party select window make sure bill no data and store data should be populated
+TC_SALE_317,sales,manual-sale-purchase.md,SC-011,After party selection the focus should be on select store(if multi-store) else on product
+TC_SALE_318,sales,manual-sale-purchase.md,SC-018,If multi-unit is enable first focus will move to unit 2 column after that unit1 column (Control Room
+TC_SALE_319,sales,manual-sale-purchase.md,SC-040,Check if each branch of the store is billing correctly
+TC_PUR_019,purchase,manual-sale-purchase.md,PC-016,If user Enabled Multi unit in purchase
+TC_SALE_320,sales,manual-sale-purchase.md,AJ-162,Authorization/permission
+TC_SALE_321,sales,manual-sale-purchase.md,AJ-163,Delete permission
+TC_SALE_322,sales,manual-sale-purchase.md,AJ-164,Modify permission
+TC_SALE_323,sales,manual-sale-purchase.md,AJ-165,Rate permission
+TC_SALE_324,sales,manual-sale-purchase.md,AJ-166,Discount permission
+TC_SALE_325,sales,manual-sale-purchase.md,AJ-167,Concurrent billing
+TC_SALE_326,sales,manual-sale-purchase.md,AJ-059,Additional ledger
+TC_SALE_327,sales,manual-sale-purchase.md,AJ-126,Additional charges percentage
+TC_SALE_328,sales,manual-sale-purchase.md,AJ-127,Additional charges amount
+TC_SALE_329,sales,manual-sale-purchase.md,AJ-128,Multiple additional charges
+TC_SALE_330,sales,manual-sale-purchase.md,AJ-130,Remove additional charge
+TC_MFG_001,manufacturing,manufacturing-module.md,MF-01,"Control Room > Configure > search ""BOM"" > ""Bill Of Material(BOM)"" = Yes > Esc > Save > OK"
+TC_MFG_002,manufacturing,manufacturing-module.md,MF-02,"Material Master > Create (F2): BOM Name, Item to Produce FG, Qty 1, raw RM-A 2 and RM-B 1, Save"
+TC_MFG_003,manufacturing,manufacturing-module.md,MF-03,BOM list after MF-02
+TC_MFG_004,manufacturing,manufacturing-module.md,MF-04,Material Master with a by-product (qty 1) and an Additional Cost ledger (for example Assembly Charge
+TC_MFG_005,manufacturing,manufacturing-module.md,MF-05,"Save with BOM Name blank, or Item to Produce blank, or Qty blank"
+TC_MFG_006,manufacturing,manufacturing-module.md,MF-06,"BOM Name of 3 characters, 4 characters, 50 characters, 51 characters; unicode and special characters"
+TC_MFG_007,manufacturing,manufacturing-module.md,MF-07,"Second BOM whose name equals an existing one, differing only by case or spaces"
+TC_MFG_008,manufacturing,manufacturing-module.md,MF-08,Second BOM for the same finished item FG
+TC_MFG_009,manufacturing,manufacturing-module.md,MF-09,Save with no raw-material row
+TC_MFG_010,manufacturing,manufacturing-module.md,MF-10,"Enter a quantity on a raw row with no item, then a raw qty of 0 or negative"
+TC_MFG_011,manufacturing,manufacturing-module.md,MF-11,Raw-material picker: choose a Service item; choose FG itself; choose RM-A a second time
+TC_MFG_012,manufacturing,manufacturing-module.md,MF-12,Additional Cost ledger row with amount 0
+TC_MFG_013,manufacturing,manufacturing-module.md,MF-13,"Finished item with conversion > 1 (for example 10), Qty not a multiple of it"
+TC_MFG_014,manufacturing,manufacturing-module.md,MF-14,"Material Issue (F2): party Production Department, RM-A 20 and RM-B 10, Save"
+TC_MFG_015,manufacturing,manufacturing-module.md,MF-15,Material Issue rows
+TC_MFG_016,manufacturing,manufacturing-module.md,MF-16,Material Issue party picker
+TC_MFG_017,manufacturing,manufacturing-module.md,MF-17,"Material Issue of RM-A 120 when stock is 100, with Negative Stock = No, then with Yes"
+TC_MFG_018,manufacturing,manufacturing-module.md,MF-18,"Material Receive (F2): party Production Department, today's date, FG qty 10"
+TC_MFG_019,manufacturing,manufacturing-module.md,MF-19,"Partial receive: after MF-14, receive FG 7"
+TC_MFG_020,manufacturing,manufacturing-module.md,MF-20,"Receive more than was issued: after MF-14, receive FG 11 (needs RM-A 22 > 20 pending)"
+TC_MFG_021,manufacturing,manufacturing-module.md,MF-21,"BOM Qty 2 (FG 2 = RM-A 4 + RM-B 2), receive FG 1"
+TC_MFG_022,manufacturing,manufacturing-module.md,MF-22,Material Receive with no Material Issue at all
+TC_MFG_023,manufacturing,manufacturing-module.md,MF-23,Delete a BOM that has no receives
+TC_MFG_024,manufacturing,manufacturing-module.md,MF-24,Delete a BOM after MF-18 (it has a receive)
+TC_MFG_025,manufacturing,manufacturing-module.md,MF-25,Edit a used BOM: delete a raw row; edit an unused BOM: change raw qty and Save
+TC_MFG_026,manufacturing,manufacturing-module.md,MF-26,"Modify, then delete, a saved Material Issue and a saved Material Receive"
+TC_MFG_027,manufacturing,manufacturing-module.md,MF-27,Costing report for FG
+TC_MFG_028,manufacturing,manufacturing-module.md,MF-28,"Production Planning ""From Current Stock"", FG, planned qty 10, View; then change the planned qty to 1"
+TC_MFG_029,manufacturing,manufacturing-module.md,MF-29,"Control Room ""One To Many & Many To One"" = Yes; item BIG with Conversion 1 and small items S1 (conv "
+TC_MFG_030,manufacturing,manufacturing-module.md,MF-30,"One to Many: Production Department, BIG (opening 80), add S1 x 5 and S5 x 5, Save"
+TC_MFG_031,manufacturing,manufacturing-module.md,MF-31,"Many to One: Production Department, BIG, add S1 x 5 and S5 x 1"
+TC_MFG_032,manufacturing,manufacturing-module.md,MF-32,"Same day: purchase BIG +10 at time T1, then One to Many at T2 > T1"
+TC_MFG_033,manufacturing,manufacturing-module.md,MF-33,Change Conversion on an item that has conversion transactions
+TC_MFG_034,manufacturing,manufacturing-module.md,MF-34,"Role without the ""MaterialIssue"" (Stock Management) right; direct URL /sale/matissue"
+TC_MFG_035,manufacturing,manufacturing-module.md,MF-35,"BOM created in company A, then switch to company B"
+TC_MFG_036,manufacturing,manufacturing-module.md,MF-36,Material Issue/Receive backdated before the FY start or future-dated
+TC_MFG_037,manufacturing,manufacturing-module.md,MF-37,"BMR Type master: Master > Inventory Master > BMR Type, create ""Powder"""
+TC_MSTR_068,masters,masters.md,MS-01,Open Master > Accounts Master > Ledger
+TC_MSTR_069,masters,masters.md,MS-02,"Create a customer ledger with only mandatory fields (name, account group Sundry Debtors, station if "
+TC_MSTR_070,masters,masters.md,MS-03,Create a supplier ledger with account group Sundry Creditors
+TC_MSTR_071,masters,masters.md,MS-04,"Create a ledger with full details: address, country, state, city, pincode, GSTIN, opening balance wi"
+TC_MSTR_072,masters,masters.md,MS-05,Create a ledger from the sale bill: Sale > Bill > Party Name > Select Party > Create
+TC_MSTR_073,masters,masters.md,MS-06,"Modify a ledger: Edit icon, change a field, Update"
+TC_MSTR_074,masters,masters.md,MS-07,Search the ledger list for a just-created ledger name
+TC_MSTR_075,masters,masters.md,MS-08,"GST verification while creating a ledger: enter GSTIN, use the verify action"
+TC_MSTR_076,masters,masters.md,MS-09,Save a ledger with the required name empty
+TC_MSTR_077,masters,masters.md,MS-10,Save a ledger without an account group
+TC_MSTR_078,masters,masters.md,MS-11,Station enabled: save a customer or supplier ledger without a station
+TC_MSTR_079,masters,masters.md,MS-12,"Save a ledger with an invalid GSTIN (14 chars, bad structure, wrong check character)"
+TC_MSTR_080,masters,masters.md,MS-13,GSTIN state code differs from the selected State
+TC_MSTR_081,masters,masters.md,MS-14,Create a second ledger with the same name as an existing one
+TC_MSTR_082,masters,masters.md,MS-15,Delete a ledger that has transactions
+TC_MSTR_083,masters,masters.md,MS-16,Delete a ledger that has no transactions
+TC_MSTR_084,masters,masters.md,MS-17,Delete a ledger that has a journal voucher in an older financial year
+TC_MSTR_085,masters,masters.md,MS-18,"Ledger name: very long, special characters (& ' / -), unicode, leading/trailing spaces"
+TC_MSTR_086,masters,masters.md,MS-19,"Mobile / pincode / credit days / opening balance: zero, negative, non-numeric, very large, odd paise"
+TC_MSTR_087,masters,masters.md,MS-20,"Double submit: press Save twice quickly, or refresh mid-save"
+TC_MSTR_088,masters,masters.md,MS-21,Edit a ledger that is already used on a posted bill (change name/group/GSTIN)
+TC_MSTR_089,masters,masters.md,MS-22,Opening balance on the ledger shows in the ledger report / trial balance
+TC_MSTR_090,masters,masters.md,MS-23,Limited user without Master rights opens Master > Ledger by menu and by URL
+TC_MSTR_091,masters,masters.md,MS-24,"Each trade account (chemist, pharma, retail, grocery) can create a ledger"
+TC_MSTR_092,masters,masters.md,MS-25,A ledger created in company A does not appear in company B's ledger list or party picker
+TC_MSTR_093,masters,masters.md,MS-26,Same ledger name in two companies
+TC_MSTR_094,masters,masters.md,MS-27,Create / read / update / delete a ledger through the ledger API with a company A token
+TC_MSTR_095,masters,masters.md,MS-28,"Ledger created via UI is returned by the API, and an API-created ledger shows in the UI list"
+TC_MSTR_096,masters,masters.md,IM-01,"Create an item: Master > Inventory Master > Item > Create/F2; Product name, Packing, Unit 1st, Unit "
+TC_MSTR_097,masters,masters.md,IM-02,"Save an item without HSN/SAC when ""HSN / SAC Required?"" is Yes in the Control Room"
+TC_MSTR_098,masters,masters.md,IM-03,"Create an HSN/SAC code: Master > Inventory Master > HSN / SAC > Create, code + name, Save"
+TC_MSTR_099,masters,masters.md,IM-04,"Unit in Decimal = No, then a decimal quantity on a bill"
+TC_MSTR_100,masters,masters.md,IM-05,Item with the same name as an existing item
+TC_MSTR_101,masters,masters.md,IM-06,Item created in company A absent from company B
+TC_MSTR_102,masters,masters.md,CU-01,"Enable the customer module, then create a customer: mobile, ID, name, gender, age, ledger, address, "
+TC_MSTR_103,masters,masters.md,CU-02,Create a customer from the sale bill without leaving the billing screen
+TC_MSTR_104,masters,masters.md,CU-03,Create a second customer with an existing mobile number
+TC_MSTR_105,masters,masters.md,CU-04,"Mobile number: 9, 10, 11 digits, letters"
+TC_MSTR_106,masters,masters.md,CU-05,"Customer linked to Cash Account for cash billing, or to a named ledger for credit billing"
+TC_COMP_001,company,multi-tenant.md,MT-01,"Switch from company A to company B (Profile > Switch, double-click the row)"
+TC_COMP_002,company,multi-tenant.md,MT-02,Session after the switch
+TC_COMP_003,company,multi-tenant.md,MT-03,"An item created in company A, searched by name in company B's Item List"
+TC_COMP_004,company,multi-tenant.md,MT-04,"The same item searched in company A, before and after a round trip through B"
+TC_COMP_005,company,multi-tenant.md,MT-05,Sale register / dashboard Net Sales right after a switch
+TC_COMP_006,company,multi-tenant.md,MT-06,API call with company A's session but company B's complinkid
+TC_COMP_007,company,multi-tenant.md,MT-07,Two sessions of one login in different companies at the same time
+TC_COMP_008,company,multi-tenant.md,MT-08,"Ledgers, vouchers and settings (Control Room) of A not visible in B"
+TC_UTIL_067,utilities,notifications-export.md,NE-01,Dashboard header shows the bell
+TC_UTIL_068,utilities,notifications-export.md,NE-02,Click the bell
+TC_UTIL_069,utilities,notifications-export.md,NE-03,Badge count equals the unread type 0/1 items from GET notification/NotificationList?isForDashboard=t
+TC_UTIL_070,utilities,notifications-export.md,NE-04,API returns more than 4 notifications
+TC_UTIL_071,utilities,notifications-export.md,NE-05,Unread vs read styling
+TC_UTIL_072,utilities,notifications-export.md,NE-06,A notification text longer than 150 characters
+TC_UTIL_073,utilities,notifications-export.md,NE-07,Opening the bell does not clear the count
+TC_UTIL_074,utilities,notifications-export.md,NE-08,Click one unread notification
+TC_UTIL_075,utilities,notifications-export.md,NE-09,Item with isLink == 1
+TC_UTIL_076,utilities,notifications-export.md,NE-10,API returns an empty list (route-mock the response)
+TC_UTIL_077,utilities,notifications-export.md,NE-11,Announcements tab
+TC_UTIL_078,utilities,notifications-export.md,NE-12,"Desktop notification toggle, then Cancel on the confirmation"
+TC_UTIL_079,utilities,notifications-export.md,NE-13,Description containing HTML (route-mock with <img onerror>)
+TC_UTIL_080,utilities,notifications-export.md,NE-14,SMS Notification report opens from Reports > Management Report > SMS Notification and by /support/sm
+TC_UTIL_081,utilities,notifications-export.md,NE-15,SMS Notification > Excel
+TC_UTIL_082,utilities,notifications-export.md,NE-16,SMS Notification > PDF
+TC_UTIL_083,utilities,notifications-export.md,NE-17,SMS Notification export header dates (non-Nepali calendar)
+TC_UTIL_084,utilities,notifications-export.md,NE-18,SMS Notification with no rows (new user or route-mock empty)
+TC_UTIL_085,utilities,notifications-export.md,NE-19,Export matches screen on one report with rows owned by the test (e.g. Ledger report of the test's ow
+TC_UTIL_086,utilities,notifications-export.md,NE-20,Receivable outstanding export does not contain ledgers outside the report
+TC_UTIL_087,utilities,notifications-export.md,NE-21,"Generic report export with no rows (period with no data, e.g. a future month)"
+TC_UTIL_088,utilities,notifications-export.md,NE-22,Double-click Excel or PDF within 1 s
+TC_UTIL_089,utilities,notifications-export.md,NE-23,PDF of a report whose rows contain non-Latin text (test-created ledger named in Hindi)
+TC_UTIL_090,utilities,notifications-export.md,NE-24,Multi-page PDF (ledger register over 1 page)
+TC_UTIL_091,utilities,notifications-export.md,NE-25,Print icon on a report
+TC_UTIL_092,utilities,notifications-export.md,NE-26,"Sale bill (test-created) > Print window > Preview, then Close"
+TC_UTIL_093,utilities,notifications-export.md,NE-27,"Report > Share > WhatsApp (GetMediaLink route-mocked to return a fake id), then Close the ""Share on "
+TC_UTIL_094,utilities,notifications-export.md,NE-28,Same with GetMediaLink route-mocked to return empty Data
+TC_UTIL_095,utilities,notifications-export.md,NE-29,Share via Email for a party without an email address
+TC_UTIL_096,utilities,notifications-export.md,NE-30,"WhatsApp or Email share actually delivered (Email Send, WhatsApp F10)"
+TC_UTIL_097,utilities,notifications-export.md,NE-31,"CRM > Prescription Reminder (/report/crm/prescription/cm-default, chemist company) opens"
+TC_UTIL_098,utilities,notifications-export.md,NE-32,Tick one row
+TC_UTIL_099,utilities,notifications-export.md,NE-33,Send SMS for a ticked test prescription (test patient with a test number)
+TC_UTIL_100,utilities,notifications-export.md,NE-34,Prescription saved by the test appears in the reminder list until a sale bill is made for it
+TC_UTIL_101,utilities,notifications-export.md,NE-35,"Report scheduler: open Create Schedule, Save with an empty name"
+TC_UTIL_102,utilities,notifications-export.md,NE-36,Scheduler with an invalid To or BCC email
+TC_UTIL_103,utilities,notifications-export.md,NE-37,Save a schedule that emails a report
+TC_UTIL_104,utilities,notifications-export.md,NE-38,"User without the CRM ""Prescription Reminder"" right opens /report/crm/prescription/cm-default directl"
+TC_UTIL_105,utilities,notifications-export.md,NE-39,User without the Export right on a report
+TC_UTIL_106,utilities,notifications-export.md,NE-40,GET notification/NotificationList with no auth token or tenant header
+TC_UTIL_107,utilities,notifications-export.md,NE-41,Logged-in non-admin opens /admin/support/create-notification
+TC_UTIL_108,utilities,notifications-export.md,NE-42,"Switch company A to B, open the SMS Notification report and the bell"
+TC_UTIL_109,utilities,notifications-export.md,NE-43,Export from company B after viewing company A
+TC_OS_001,online_store,online-store.md,OS-04,"Create own Online Store (Online Store tab, submit)"
+TC_OS_002,online_store,online-store.md,OS-05,"Create store with Store Name / Mobile / Email blank, or a malformed GSTIN"
+TC_OS_003,online_store,online-store.md,OS-06,"SaveOnlineStore fails (API status not ""200"")"
+TC_OS_004,online_store,online-store.md,OS-07,Marg Mart registration via the Marg Mart tab
+TC_OS_005,online_store,online-store.md,OS-11,Rate Selection drives the upload price
+TC_OS_006,online_store,online-store.md,OS-13,"Accept online Orders, Min. Order Amount, Delivery Charges, Add Taxes, Custom Charges are not shown"
+TC_OS_007,online_store,online-store.md,OS-14,Control Room opened from the order dashboard
+TC_OS_008,online_store,online-store.md,OS-20,Converted bill totals
+TC_OS_009,online_store,online-store.md,OS-21,Click Convert To Order on an already Converted order
+TC_OS_010,online_store,online-store.md,OS-22,"Temp-save, or save then resave the converted bill"
+TC_OS_011,online_store,online-store.md,OS-23,Convert when the fixed ledger 83 is missing
+TC_OS_012,online_store,online-store.md,OS-24,Converted bill keeps the customer's mobile number
+TC_OS_013,online_store,online-store.md,OS-25,Customer whose mobile number matches an existing ledger
+TC_OS_014,online_store,online-store.md,OS-26,"Seed orders with qty 1, a large qty, decimal qty and odd-paise price"
+TC_OS_015,online_store,online-store.md,OS-27,"Seed an order below the ""minimum order amount"" with accept-orders off"
+TC_OS_016,online_store,online-store.md,OS-29,StatusUpdationOfOnlineStore with an order linkid of another company
+TC_OS_017,online_store,online-store.md,OS-31,Upload n selected items
+TC_OS_018,online_store,online-store.md,OS-32,Unmap / hide uploaded items
+TC_OS_019,online_store,online-store.md,OS-33,Marg Mart Manage Item upload
+TC_OS_020,online_store,online-store.md,OS-34,Copy store link (own Online Store)
+TC_OS_021,online_store,online-store.md,OS-35,QR code (own Online Store)
+TC_OS_022,online_store,online-store.md,OS-36,Switch store mode button
+TC_OS_023,online_store,online-store.md,OS-37,Limited user without Online Store / Sale rights opens /other/onlinestore or /report/crm/E-Commerce/d
+TC_OS_024,online_store,online-store.md,OS-38,"Convert a multi-item order, delete one item line from the sale bill, then save"
+TC_MSTR_107,masters,opening-balance-entry.md,OB-01,"New party (own data), On Account, opening balance 1234.50 Dr, save"
+TC_MSTR_108,masters,opening-balance-entry.md,OB-02,Same with Cr
+TC_MSTR_109,masters,opening-balance-entry.md,OB-03,Change an existing (own) party's opening balance from the Opening Balance list (Edit/F3) to another 
+TC_MSTR_110,masters,opening-balance-entry.md,OB-04,Party with Bill By Bill and an opening balance
+TC_MSTR_111,masters,opening-balance-entry.md,OB-05,Opening balance shows in the Trial Balance (Opening Balance on)
+TC_MSTR_112,masters,opening-balance-entry.md,OB-06,KB says a change needs the previous financial year
+TC_MSTR_113,masters,opening-balance-entry.md,OB-07,Zero opening balance
+TC_MSTR_114,masters,opening-balance-entry.md,OB-08,Non-numeric text in the amount
+TC_MSTR_115,masters,opening-balance-entry.md,OB-09,Amount with more than 3 decimals
+TC_MSTR_116,masters,opening-balance-entry.md,OB-10,Delete own party with an opening balance only
+TC_MSTR_117,masters,opening-balance-entry.md,OB-11,Opening balance of company A not visible in company B
+TC_MSTR_118,masters,opening-balance-entry.md,OB-12,User without the Opening Balance right
+TC_ACC_067,accounting,outstanding-advance.md,OA-001,Simple Credit Sale
+TC_ACC_068,accounting,outstanding-advance.md,OA-002,Sale Bill Modify (Increase Amount)
+TC_ACC_069,accounting,outstanding-advance.md,OA-003,Sale Bill Modify (Decrease Amount)
+TC_ACC_070,accounting,outstanding-advance.md,OA-004,Bill Modify Below Already Adjusted Receipt
+TC_ACC_071,accounting,outstanding-advance.md,OA-005,Multiple Bills – Same Party
+TC_ACC_072,accounting,outstanding-advance.md,OA-006,Sale Bill Delete (No Adjustment)
+TC_ACC_073,accounting,outstanding-advance.md,OA-007,Sale Bill with Partial Receipt
+TC_ACC_074,accounting,outstanding-advance.md,OA-008,Sale Bill with Full Receipt
+TC_ACC_075,accounting,outstanding-advance.md,OA-009,Sale Bill with Excess Receipt
+TC_ACC_076,accounting,outstanding-advance.md,OA-010,Receipt Modify (Increase)
+TC_ACC_077,accounting,outstanding-advance.md,OA-011,Receipt Modify to Excess
+TC_ACC_078,accounting,outstanding-advance.md,OA-012,Receipt Delete After Partial Adjust
+TC_ACC_079,accounting,outstanding-advance.md,OA-013,Receipt Un-Adjust
+TC_ACC_080,accounting,outstanding-advance.md,OA-014,Receipt Without Bill (Advance)
+TC_ACC_081,accounting,outstanding-advance.md,OA-015,One Receipt Adjusted to Two Bills
+TC_ACC_082,accounting,outstanding-advance.md,OA-016,Sale Return – Partial
+TC_ACC_083,accounting,outstanding-advance.md,OA-017,Sale Return – Full
+TC_ACC_084,accounting,outstanding-advance.md,OA-018,Sale Return Greater Than Bill
+TC_ACC_085,accounting,outstanding-advance.md,OA-019,Sale Return After Full Receipt
+TC_ACC_086,accounting,outstanding-advance.md,OA-020,Sale Return + Partial Receipt
+TC_ACC_087,accounting,outstanding-advance.md,OA-021,Sale Return Modify (Increase Amount)
+TC_ACC_088,accounting,outstanding-advance.md,OA-022,Sale Return Modify (Decrease Amount)
+TC_ACC_089,accounting,outstanding-advance.md,OA-023,Sale Return Delete
+TC_ACC_090,accounting,outstanding-advance.md,OA-024,Sale Return Un-Adjust
+TC_ACC_091,accounting,outstanding-advance.md,OA-025,Multiple Sale Returns on One Bill
+TC_ACC_092,accounting,outstanding-advance.md,OA-026,Sale Return After Partial Receipt
+TC_ACC_093,accounting,outstanding-advance.md,OA-027,Sale Return After Partial Receipt (Excess Case)
+TC_ACC_094,accounting,outstanding-advance.md,OA-028,Sale Return Adjusted in Next Sale Bill
+TC_ACC_095,accounting,outstanding-advance.md,OA-029,Sale Return Delete After Receipt
+TC_ACC_096,accounting,outstanding-advance.md,OA-030,Sale Return Reference Change
+TC_ACC_097,accounting,outstanding-advance.md,OA-031,Receipt After Full Sale Return
+TC_ACC_098,accounting,outstanding-advance.md,OA-032,Receipt Modify After Sale Return
+TC_ACC_099,accounting,outstanding-advance.md,OA-033,Receipt Delete After Sale Return
+TC_ACC_100,accounting,outstanding-advance.md,OA-034,Receipt Un-Adjust After Sale Return
+TC_ACC_101,accounting,outstanding-advance.md,OA-035,Multiple Receipts + Sale Return
+TC_ACC_102,accounting,outstanding-advance.md,OA-036,Sale Return Before Any Receipt
+TC_ACC_103,accounting,outstanding-advance.md,OA-037,Receipt Before Sale Return
+TC_ACC_104,accounting,outstanding-advance.md,OA-038,Receipt + Sale Return Exactly Closing Bill
+TC_ACC_105,accounting,outstanding-advance.md,OA-039,Sale Return Over Multiple Adjustments
+TC_ACC_106,accounting,outstanding-advance.md,OA-040,Sale Return Fully Un-Adjusted Then Re-Adjusted
+TC_ACC_107,accounting,outstanding-advance.md,OA-041,Bill-Time Partial Payment
+TC_ACC_108,accounting,outstanding-advance.md,OA-042,Bill-Time Full Payment
+TC_ACC_109,accounting,outstanding-advance.md,OA-043,Bill-Time Excess Payment (Not Allowed)
+TC_ACC_110,accounting,outstanding-advance.md,OA-044,Modify Bill-Time Payment (Increase)
+TC_ACC_111,accounting,outstanding-advance.md,OA-045,Modify Bill-Time Payment (Decrease)
+TC_ACC_112,accounting,outstanding-advance.md,OA-046,Remove Bill-Time Payment
+TC_ACC_113,accounting,outstanding-advance.md,OA-047,Invoice Delete (Only Bill-Time Payment)
+TC_ACC_114,accounting,outstanding-advance.md,OA-048,Bill-Time Payment + Sale Return ⭐
+TC_ACC_115,accounting,outstanding-advance.md,OA-049,Bill-Time Payment + Partial Sale Return
+TC_ACC_116,accounting,outstanding-advance.md,OA-050,Bill-Time Payment + Receipt
+TC_ACC_117,accounting,outstanding-advance.md,OA-051,Bill-Time Payment + Receipt (Excess)
+TC_ACC_118,accounting,outstanding-advance.md,OA-052,Bill-Time Payment + Multiple Receipts
+TC_ACC_119,accounting,outstanding-advance.md,OA-053,Bill-Time Payment + Receipt Modify
+TC_ACC_120,accounting,outstanding-advance.md,OA-054,Bill-Time Payment + Receipt Delete
+TC_ACC_121,accounting,outstanding-advance.md,OA-055,Bill-Time Payment + Receipt Un-Adjust
+TC_ACC_122,accounting,outstanding-advance.md,OA-056,Bill-Time Payment + Sale Return + Receipt
+TC_ACC_123,accounting,outstanding-advance.md,OA-057,Bill-Time Payment + Sale Return (Excess) + Receipt
+TC_ACC_124,accounting,outstanding-advance.md,OA-058,Bill-Time Payment Modify After Sale Return
+TC_ACC_125,accounting,outstanding-advance.md,OA-059,Bill-Time Payment Removed After Sale Return
+TC_ACC_126,accounting,outstanding-advance.md,OA-060,Bill-Time Payment + Sale Return Delete
+TC_ACC_127,accounting,outstanding-advance.md,OA-061,Advance Receipt Creation
+TC_ACC_128,accounting,outstanding-advance.md,OA-062,Advance Adjusted to Single Bill
+TC_ACC_129,accounting,outstanding-advance.md,OA-063,Advance Adjusted to Multiple Bills
+TC_ACC_130,accounting,outstanding-advance.md,OA-064,Advance Partial Adjustment
+TC_ACC_131,accounting,outstanding-advance.md,OA-065,Advance Modify (Decrease Amount)
+TC_ACC_132,accounting,outstanding-advance.md,OA-066,Advance Modify (Increase Amount)
+TC_ACC_133,accounting,outstanding-advance.md,OA-067,Advance Delete (No Adjustment)
+TC_ACC_134,accounting,outstanding-advance.md,OA-068,Advance Used Then Bill Deleted
+TC_ACC_135,accounting,outstanding-advance.md,OA-069,Advance Adjusted Then Un-Adjusted
+TC_ACC_136,accounting,outstanding-advance.md,OA-070,Advance Adjusted to Wrong Bill Then Corrected
+TC_ACC_137,accounting,outstanding-advance.md,OA-071,Invoice Delete With Advance Adjusted
+TC_ACC_138,accounting,outstanding-advance.md,OA-072,Advance Un-Adjust Then Invoice Delete
+TC_ACC_139,accounting,outstanding-advance.md,OA-073,Invoice Delete With Partial Advance Adjusted
+TC_ACC_140,accounting,outstanding-advance.md,OA-074,Advance Un-Adjust Partial Then Invoice Delete
+TC_ACC_141,accounting,outstanding-advance.md,OA-075,Advance + Receipt Combined
+TC_ACC_142,accounting,outstanding-advance.md,OA-076,Advance + Sale Return Combined
+TC_ACC_143,accounting,outstanding-advance.md,OA-077,Advance Over-Adjustment Attempt
+TC_ACC_144,accounting,outstanding-advance.md,OA-078,Advance Adjust After Bill Modify
+TC_ACC_145,accounting,outstanding-advance.md,OA-079,Advance Adjust Then Receipt Modify
+TC_ACC_146,accounting,outstanding-advance.md,OA-080,Advance Un-Adjust After Multiple Uses
+TC_ACC_147,accounting,outstanding-advance.md,OA-081,Invoice Delete With Receipt Adjusted
+TC_ACC_148,accounting,outstanding-advance.md,OA-082,Receipt Un-Adjust Then Invoice Delete
+TC_ACC_149,accounting,outstanding-advance.md,OA-083,Invoice Delete With Sale Return Adjusted
+TC_ACC_150,accounting,outstanding-advance.md,OA-084,Sale Return Un-Adjust Then Invoice Delete
+TC_ACC_151,accounting,outstanding-advance.md,OA-085,Invoice Delete With Advance Adjusted
+TC_ACC_152,accounting,outstanding-advance.md,OA-086,Advance Un-Adjust Then Invoice Delete
+TC_ACC_153,accounting,outstanding-advance.md,OA-087,Delete Receipt After Partial Adjustment
+TC_ACC_154,accounting,outstanding-advance.md,OA-088,Delete Sale Return After Partial Adjustment
+TC_ACC_155,accounting,outstanding-advance.md,OA-089,Receipt + Sale Return Both Adjusted Then Receipt Deleted
+TC_ACC_156,accounting,outstanding-advance.md,OA-090,Receipt + Sale Return Both Adjusted Then Sale Return Deleted
+TC_ACC_157,accounting,outstanding-advance.md,OA-091,Receipt Un-Adjust After Partial Adjustment
+TC_ACC_158,accounting,outstanding-advance.md,OA-092,Sale Return Un-Adjust After Partial Adjustment
+TC_ACC_159,accounting,outstanding-advance.md,OA-093,Receipt Un-Adjust Then Adjust to Another Bill
+TC_ACC_160,accounting,outstanding-advance.md,OA-094,Sale Return Un-Adjust Then Adjust to Another Bill
+TC_ACC_161,accounting,outstanding-advance.md,OA-095,Advance + Receipt + Sale Return Mixed
+TC_ACC_162,accounting,outstanding-advance.md,OA-096,Receipt Created After Invoice Deleted
+TC_ACC_163,accounting,outstanding-advance.md,OA-097,Sale Return Created After Invoice Deleted
+TC_ACC_164,accounting,outstanding-advance.md,OA-098,Multiple Un-Adjust Order Stress Case
+TC_ACC_165,accounting,outstanding-advance.md,OA-099,Full Rollback Scenario
+TC_ACC_166,accounting,outstanding-advance.md,OA-100,MASTER END-TO-END CASE
+TC_AUTH_047,auth,password-reset-registration.md,FP-01,"Step 2 of login shows ""Forgot Password?"""
+TC_AUTH_048,auth,password-reset-registration.md,FP-02,Forgot-password page loads
+TC_AUTH_049,auth,password-reset-registration.md,FP-03,Opened from step 2 of login
+TC_AUTH_050,auth,password-reset-registration.md,FP-04,"Wrong captcha, click Next"
+TC_AUTH_051,auth,password-reset-registration.md,FP-05,"Empty Mobile /Email ID, click Next"
+TC_AUTH_052,auth,password-reset-registration.md,FP-06,"Unregistered dummy id (...@example.com) + correct captcha, click Next"
+TC_AUTH_053,auth,password-reset-registration.md,FP-07,Captcha refresh
+TC_AUTH_054,auth,password-reset-registration.md,FP-08,"""Go Back"""
+TC_AUTH_055,auth,password-reset-registration.md,FP-09,"Registered e-mail + captcha + ""Get Mail"", reset link, new password, ""Submit"", success, log in"
+TC_AUTH_056,auth,password-reset-registration.md,FP-10,Reset form: confirm password differs from new password
+TC_AUTH_057,auth,password-reset-registration.md,FP-11,New password length
+TC_AUTH_058,auth,password-reset-registration.md,FP-12,Jira/support: reset mail not received
+TC_AUTH_059,auth,password-reset-registration.md,RG-01,"""Sign Up"" link on the login page opens /registration"
+TC_AUTH_060,auth,password-reset-registration.md,RG-02,"Empty mobile, SEND OTP"
+TC_AUTH_061,auth,password-reset-registration.md,RG-03,"Short mobile (8 digits), SEND OTP"
+TC_AUTH_062,auth,password-reset-registration.md,RG-04,"Mobile field for India: maxlength 10, digits only (appInputMask, REGEX.number)"
+TC_AUTH_063,auth,password-reset-registration.md,RG-05,"Valid-format fake mobile + invalid referral code (e.g. ""jfdsjfhs"")"
+TC_AUTH_064,auth,password-reset-registration.md,RG-06,Referral code shorter than 3/4 characters
+TC_AUTH_065,auth,password-reset-registration.md,RG-07,Non-India country: e-mail field shown; invalid e-mail
+TC_AUTH_066,auth,password-reset-registration.md,RG-08,"Valid new mobile, SEND OTP, OTP, VERIFY OTP, ""Create Company"""
+TC_AUTH_067,auth,password-reset-registration.md,RG-09,Mobile already registered
+TC_AUTH_068,auth,password-reset-registration.md,RG-10,Jira: OTP window opens with no mobile entered
+TC_AUTH_069,auth,password-reset-registration.md,RG-11,"Jira: new sign-up with an unknown number shows ""Invalid username / Password"""
+TC_PUR_020,purchase,purchase-return-debit-note.md,PRD-01,"Return against a bill with a real supplier: Purchase > Return > Create, enter date, party, choose Bi"
+TC_PUR_021,purchase,purchase-return-debit-note.md,PRD-02,Return only part of a bill: lower the qty of one loaded line (e.g. return 1 of 5)
+TC_PUR_022,purchase,purchase-return-debit-note.md,PRD-03,Return qty greater than qty on the original bill
+TC_PUR_023,purchase,purchase-return-debit-note.md,PRD-04,Return qty greater than current stock on hand (stock already sold)
+TC_PUR_024,purchase,purchase-return-debit-note.md,PRD-05,Free quantity on the return line
+TC_PUR_025,purchase,purchase-return-debit-note.md,PRD-06,"Same item picked twice (two rows, qty 5 each) in one manual return"
+TC_PUR_026,purchase,purchase-return-debit-note.md,PRD-07,Minus (negative) qty entered in the next row of a purchase return
+TC_PUR_027,purchase,purchase-return-debit-note.md,PRD-08,"Return with a challan: Party selected, ""Pending Challans"" opens, pick a challan, Save, ""Pending Chal"
+TC_PUR_028,purchase,purchase-return-debit-note.md,PRD-09,"Bill-wise rate difference in a return (new rate per product, GST 18%, qty 10, rate 869)"
+TC_PUR_029,purchase,purchase-return-debit-note.md,PRD-10,F2 old/new GST rate update in purchase return debit note
+TC_PUR_030,purchase,purchase-return-debit-note.md,PRD-11,Double submit: press Save/End twice quickly
+TC_PUR_031,purchase,purchase-return-debit-note.md,PRD-12,Modify a saved return (change qty) then check stock
+TC_PUR_032,purchase,purchase-return-debit-note.md,PRD-13,Delete a return that was already adjusted in a payment or later documents
+TC_PUR_033,purchase,purchase-return-debit-note.md,PRD-14,Return dated before the original bill date
+TC_PUR_034,purchase,purchase-return-debit-note.md,PRD-15,Return dated in the future
+TC_PUR_035,purchase,purchase-return-debit-note.md,PRD-16,"GST: return of items at each slab (0, 5, 12, 18, 28), intra- vs inter-state supplier"
+TC_PUR_036,purchase,purchase-return-debit-note.md,PRD-17,"Large amounts and odd paise (rounding), qty with decimals"
+TC_PUR_037,purchase,purchase-return-debit-note.md,PRD-18,"Special characters, unicode and over-long text in party search, remarks, batch"
+TC_PUR_038,purchase,purchase-return-debit-note.md,PRD-19,"Print a saved purchase return: Purchase > Return, Enter on a bill, Print, pick format, Print"
+TC_PUR_039,purchase,purchase-return-debit-note.md,PRD-20,"Each trade account (chemist, pharma, retail, grocery) can open Purchase > Return"
+TC_PUR_040,purchase,purchase-return-debit-note.md,PRD-21,A limited user without Purchase rights opens the Return URL directly
+TC_PUR_041,purchase,purchase-return-debit-note.md,PRD-22,A return created in company A is absent from company B's Return list and stock
+TC_PUR_042,purchase,purchase-return-debit-note.md,PRD-23,"Return total reconciles across the return, the supplier ledger and the purchase/GST report"
+TC_PUR_043,purchase,purchase-return-debit-note.md,PRD-24,"Parameter-wise inventory return (trade accounts with parameters): ""Selecting Item"" step then Bill De"
+TC_PUR_044,purchase,purchase-return-debit-note.md,DNV-01,"Create a debit note against a real supplier for returned goods (KB example: Rs 15,000 returned to a "
+TC_PUR_045,purchase,purchase-return-debit-note.md,DNV-02,Debit-note list search by voucher number
+TC_PUR_046,purchase,purchase-return-debit-note.md,DNV-03,Debit Note Book report: Report > Combined Report > Books of Account > Debit Note
+TC_PUR_047,purchase,purchase-return-debit-note.md,DNV-04,"A voucher created in DNV-01 appears in the Debit Note Book for its period, with the same amount"
+TC_PUR_048,purchase,purchase-return-debit-note.md,DNV-05,"Modify a saved debit note (amount, narration)"
+TC_PUR_049,purchase,purchase-return-debit-note.md,DNV-06,Delete a saved debit note
+TC_PUR_050,purchase,purchase-return-debit-note.md,DNV-07,"Debit note with a real supplier: Dr supplier, Cr purchase-return or other ledger; supplier balance c"
+TC_PUR_051,purchase,purchase-return-debit-note.md,DNV-08,Debit note linked to an open purchase bill (bill adjustment window)
+TC_PUR_052,purchase,purchase-return-debit-note.md,DNV-09,"Amount boundaries: 0.01, very large (9,99,99,999.99), 3 decimals"
+TC_PUR_053,purchase,purchase-return-debit-note.md,DNV-10,"Voucher date: backdated within FY, before the FY start, future, 31-03 / 01-04 boundary"
+TC_PUR_054,purchase,purchase-return-debit-note.md,DNV-11,Duplicate voucher number entered manually
+TC_PUR_055,purchase,purchase-return-debit-note.md,DNV-12,Double click on Save / refresh mid-save
+TC_PUR_056,purchase,purchase-return-debit-note.md,DNV-13,"Narration: 255+ chars, special characters, Hindi unicode"
+TC_PUR_057,purchase,purchase-return-debit-note.md,DNV-14,Same ledger on both Dr and Cr
+TC_PUR_058,purchase,purchase-return-debit-note.md,DNV-15,Print a debit note voucher from the list
+TC_PUR_059,purchase,purchase-return-debit-note.md,DNV-16,Roles: who may create/modify/delete a debit note
+TC_PUR_060,purchase,purchase-return-debit-note.md,DNV-17,A debit note in company A is not visible in company B's list or book
+TC_PUR_061,purchase,purchase-return-debit-note.md,LNK-01,"A purchase return saved in J14a creates a ""Purchase Return Debit Note"" visible in the Purchase > Ret"
+TC_PUR_062,purchase,purchase-return-debit-note.md,LNK-02,Return amount equals the supplier ledger debit equals the GST report reduction
+TC_PUR_063,purchase,purchase-return-debit-note.md,LNK-03,Delete a purchase return and confirm the supplier ledger and stock both reverse
+TC_PUR_064,purchase,purchase-return-debit-note.md,LNK-04,Return and voucher both raised for the same goods (double reduction)
+TC_PUR_065,purchase,purchase.md,PU-01,"Intra-state registered supplier, Sample Item (5%) qty 10 x purchase rate 100, exclusive"
+TC_PUR_066,purchase,purchase.md,PU-02,"Inter-state registered supplier, Barcdoe (28%) qty 3 x 50"
+TC_PUR_067,purchase,purchase.md,PU-03,"Save purchase, then GSTR-2 / 3B ITC for the month rises by the CGST+SGST (or IGST)"
+TC_PUR_068,purchase,purchase.md,PU-04,"Saved bill appears in /purchase/purchasebook/bill with Invoice No., supplier, amount; supplier balan"
+TC_PUR_069,purchase,purchase.md,PU-05,Invoice No. (entryNo) and Invoice Date saved as entered
+TC_PUR_070,purchase,purchase.md,PU-06,"Odd paise base (333.33 x 5%, 250.10 x 5%, 0.50 x 5%)"
+TC_PUR_071,purchase,purchase.md,PU-07,BillValueAmount typed differs from computed total
+TC_PUR_072,purchase,purchase.md,PU-08,Qty 0 / negative / fractional / 13-digit maxlength
+TC_PUR_073,purchase,purchase.md,PU-09,"Invoice date earlier than entry date, in a previous FY, or future"
+TC_PUR_074,purchase,purchase.md,PU-10,Bill discount % and amount fields together with item discount
+TC_PUR_075,purchase,purchase.md,PU-11,Unregistered supplier (Mayur Sharma)
+TC_PUR_076,purchase,purchase.md,PU-12,Composition supplier or supplier with invalid GSTIN
+TC_PUR_077,purchase,purchase.md,PU-13,Save with no supplier / no item / no Invoice No.
+TC_PUR_078,purchase,purchase.md,PU-14,Same supplier + same Invoice No. twice
+TC_PUR_079,purchase,purchase.md,PU-15,"Edit or delete a saved purchase, ITC and payable follow"
+TC_PUR_080,purchase,purchase.md,PU-16,Save As Draft (#btnDraft80) then purchase draft menu
+TC_PUR_081,purchase,purchase.md,PU-17,Inclusive purchase: base = amount x 100/(100+slab)
+TC_PUR_082,purchase,purchase.md,PU-18,Operator/accountant create purchase
+TC_PUR_083,purchase,purchase.md,PU-19,Purchases from another company absent
+TC_PUR_084,purchase,purchase.md,PU-20,"Purchase tax in ledger ""GST input"" = GSTR-2/3B ITC = invoice tax"
+TC_INV_051,inventory,rack-warehouse-management.md,RW-S01,Open Master > Inventory Master > Store
+TC_INV_052,inventory,rack-warehouse-management.md,RW-S02,Create a store with a name (and code) and Save
+TC_INV_053,inventory,rack-warehouse-management.md,RW-S03,Save with Store Name empty
+TC_INV_054,inventory,rack-warehouse-management.md,RW-S04,Duplicate store name (same case / other case)
+TC_INV_055,inventory,rack-warehouse-management.md,RW-S05,"Store name equal to a predefined store (""Main Store"")"
+TC_INV_056,inventory,rack-warehouse-management.md,RW-S06,Duplicate store code
+TC_INV_057,inventory,rack-warehouse-management.md,RW-S07,Edit a store name
+TC_INV_058,inventory,rack-warehouse-management.md,RW-S08,Delete an unused store
+TC_INV_059,inventory,rack-warehouse-management.md,RW-S09,Delete a predefined store (Main Store)
+TC_INV_060,inventory,rack-warehouse-management.md,RW-S10,Delete a store that has stock / transactions
+TC_INV_061,inventory,rack-warehouse-management.md,RW-S11,Delete a store that still has a rack
+TC_INV_062,inventory,rack-warehouse-management.md,RW-R01,Open Rack List
+TC_INV_063,inventory,rack-warehouse-management.md,RW-R02,Create a rack under a store
+TC_INV_064,inventory,rack-warehouse-management.md,RW-R03,Save with Rack Name empty
+TC_INV_065,inventory,rack-warehouse-management.md,RW-R04,Save with no store
+TC_INV_066,inventory,rack-warehouse-management.md,RW-R05,Duplicate rack name in the same store (and other case)
+TC_INV_067,inventory,rack-warehouse-management.md,RW-R06,Same rack name in a different store
+TC_INV_068,inventory,rack-warehouse-management.md,RW-R07,Rack name longer than 30 characters
+TC_INV_069,inventory,rack-warehouse-management.md,RW-R08,Edit a rack: rename and move to another store
+TC_INV_070,inventory,rack-warehouse-management.md,RW-R09,Delete an unused rack
+TC_INV_071,inventory,rack-warehouse-management.md,RW-R10,Delete a rack set on an item
+TC_INV_072,inventory,rack-warehouse-management.md,RW-U01,"Create Item, pick the new rack in the Rack field, save"
+TC_INV_073,inventory,rack-warehouse-management.md,RW-U02,Item List shows the rack of the item
+TC_INV_074,inventory,rack-warehouse-management.md,RW-U03,"""Rack Required?"" No hides the Rack field"
+TC_INV_075,inventory,rack-warehouse-management.md,RW-U04,Update an item's rack
+TC_MSTR_119,masters,route-station-area-masters.md,RT-01,Create a route with a unique name
+TC_MSTR_120,masters,route-station-area-masters.md,RT-02,Rename a route via Edit
+TC_MSTR_121,masters,route-station-area-masters.md,RT-03,Rename a route that an area uses
+TC_MSTR_122,masters,route-station-area-masters.md,RT-04,Save a route with an empty name
+TC_MSTR_123,masters,route-station-area-masters.md,RT-05,Create a route whose name already exists (same case and other case)
+TC_MSTR_124,masters,route-station-area-masters.md,RT-06,Delete a route that an area uses
+TC_MSTR_125,masters,route-station-area-masters.md,RT-07,Delete an unused route
+TC_MSTR_126,masters,route-station-area-masters.md,RT-08,Route master disabled in settings: menu hides Route
+TC_MSTR_127,masters,route-station-area-masters.md,AR-01,Create an area under a route
+TC_MSTR_128,masters,route-station-area-masters.md,AR-02,Save an area without a route
+TC_MSTR_129,masters,route-station-area-masters.md,AR-03,Save an area with an empty name
+TC_MSTR_130,masters,route-station-area-masters.md,AR-04,Duplicate area name
+TC_MSTR_131,masters,route-station-area-masters.md,AR-05,Rename an area
+TC_MSTR_132,masters,route-station-area-masters.md,AR-06,Delete an area
+TC_MSTR_133,masters,route-station-area-masters.md,AR-07,Area name of 50+ characters
+TC_MSTR_134,masters,route-station-area-masters.md,AR-08,Area used on a customer / party then deleted
+TC_MSTR_135,masters,route-station-area-masters.md,ST-01,Create a station
+TC_MSTR_136,masters,route-station-area-masters.md,ST-02,Pick the new station on a customer ledger
+TC_MSTR_137,masters,route-station-area-masters.md,ST-03,Rename a station
+TC_MSTR_138,masters,route-station-area-masters.md,ST-04,Empty station name
+TC_MSTR_139,masters,route-station-area-masters.md,ST-05,Duplicate station name (same and other case)
+TC_MSTR_140,masters,route-station-area-masters.md,ST-06,Station name longer than 15 characters (UI allows 25)
+TC_MSTR_141,masters,route-station-area-masters.md,ST-07,Delete a station a ledger uses
+TC_MSTR_142,masters,route-station-area-masters.md,ST-08,Delete an unused station
+TC_SALE_331,sales,sales-invoice.md,SI-01,"Intra-state bill, party Ajay, Sample Item (5%) qty 3 x 100, exclusive"
+TC_SALE_332,sales,sales-invoice.md,SI-02,"Inter-state bill, party Arun Sharma, Sample Item qty 3"
+TC_SALE_333,sales,sales-invoice.md,SI-03,"Intra-state, Barcdoe (28%) qty 3 x 200"
+TC_SALE_334,sales,sales-invoice.md,SI-04,"Inter-state, Barcdoe qty 3"
+TC_SALE_335,sales,sales-invoice.md,SI-05,Save the bill (F10) then open it in the list /sale/salebook/bill
+TC_SALE_336,sales,sales-invoice.md,SI-06,"Saved bill shows in GSTR-1 for its month: Taxable Sales voucher count +1, taxable and tax columns +b"
+TC_SALE_337,sales,sales-invoice.md,SI-07,Rate 33.33 qty 1 at 5%
+TC_SALE_338,sales,sales-invoice.md,SI-08,Odd paise DIFF cases (5% on 0.50 and 250.10)
+TC_SALE_339,sales,sales-invoice.md,SI-09,Qty 0
+TC_SALE_340,sales,sales-invoice.md,SI-10,Qty negative (-2)
+TC_SALE_341,sales,sales-invoice.md,SI-11,"Qty above stock (Barcdoe stock 50, qty 51)"
+TC_SALE_342,sales,sales-invoice.md,SI-12,"Qty fractional (2.5) and very large (9999999999999, field maxlength 13)"
+TC_SALE_343,sales,sales-invoice.md,SI-13,Zero-rated line: no 0% item exists in the demo data
+TC_SALE_344,sales,sales-invoice.md,SI-14,"Bill date today, back date, future date (e.g. 05-10-2027 is outside books 01-04-2026..31-03-2027), d"
+TC_SALE_345,sales,sales-invoice.md,SI-15,Wrong barcode typed in the barcode cell
+TC_SALE_346,sales,sales-invoice.md,SI-16,Save with no party / no item
+TC_SALE_347,sales,sales-invoice.md,SI-17,"Party ledger form: GSTIN with bad format (e.g. 15 chars, wrong pattern)"
+TC_SALE_348,sales,sales-invoice.md,SI-18,Party ledger form: well-formed GSTIN with wrong check digit
+TC_SALE_349,sales,sales-invoice.md,SI-19,Sale to a party whose GSTIN is invalid (existing data)
+TC_SALE_350,sales,sales-invoice.md,SI-20,"Same bill number, double click on Save, Save twice"
+TC_SALE_351,sales,sales-invoice.md,SI-21,Refresh the browser mid-bill
+TC_SALE_352,sales,sales-invoice.md,SI-22,"Edit a saved bill, change quantity, totals recalc and GSTR-1 follows"
+TC_SALE_353,sales,sales-invoice.md,SI-23,Save As Draft (#btnDraft88) then Sale > Draft
+TC_SALE_354,sales,sales-invoice.md,SI-24,Item discount 1 / discount 2 / bill discount reduce the taxable base before tax
+TC_SALE_355,sales,sales-invoice.md,SI-25,"Calculation type Inclusive and Tax-on-MRP (Ctrl+R ""change calculation"")"
+TC_SALE_356,sales,sales-invoice.md,SI-26,Operator/admin/accountant can or cannot open Sale > Bill and save
+TC_SALE_357,sales,sales-invoice.md,SI-27,Bill created in another company never appears here
+TC_SALE_358,sales,sales-invoice.md,SI-28,"Invoice value in list, ledger balance of party, and GSTR-1 reconcile"
+TC_COMP_009,company,subscription-status.md,SS-01,Manage Subscription opens from the dashboard settings entry and lands on the current-plan view.
+TC_COMP_010,company,subscription-status.md,SS-02,"The current-plan view shows a plan name, a validity / expiry date and a status."
+TC_COMP_011,company,subscription-status.md,SS-03,The plan and validity shown on the manage page match the plan/validity shown elsewhere in the app (h
+TC_COMP_012,company,subscription-status.md,SS-04,"Payment History tab opens and lists past payments with date, amount and status columns. Column names"
+TC_COMP_013,company,subscription-status.md,SS-05,"Add On tab lists add-ons (users, GSTIN, ...) with unit prices; the Proceed / Make Payment button is "
+TC_COMP_014,company,subscription-status.md,SS-06,Plans / pricing view lists the editions with prices; a plan's Buy button exists. Never clicked.
+TC_COMP_015,company,subscription-status.md,SS-07,"Usage figures (users, GSTIN, e-invoice, SMS ...) are shown as used / total. UNVERIFIED format."
+TC_COMP_016,company,subscription-status.md,SS-08,Navigating back from the subscription screens returns to the dashboard.
+TC_COMP_017,company,subscription-status.md,SS-09,A plan within 15 days of expiry shows a renewal notice. Cannot be arranged on the QA tenant: NOT COV
+TC_COMP_018,company,subscription-status.md,SS-10,"An expired plan shows ""Trial Expired"" with Subscribe Now. NOT COVERED (cannot expire the shared tena"
+TC_COMP_019,company,subscription-status.md,SS-11,Add-on unit count zero or negative is refused before payment. UNVERIFIED; only if testable without c
+TC_COMP_020,company,subscription-status.md,SS-12,"Validity date is a real future date for an active plan, and the remaining-days figure (if shown) agr"
+TC_SUP_001,support,support-helpdesk.md,SH-01,Click the header **Help** button
+TC_SUP_002,support,support-helpdesk.md,SH-02,Help drawer contact block
+TC_SUP_003,support,support-helpdesk.md,SH-03,Click the copy button next to support@margbooks.com
+TC_SUP_004,support,support-helpdesk.md,SH-04,Help drawer → **Raise ticket**
+TC_SUP_005,support,support-helpdesk.md,SH-05,Go straight to /support/support-ticket while logged in
+TC_SUP_006,support,support-helpdesk.md,SH-06,Go to /support/support-ticket with no session
+TC_SUP_007,support,support-helpdesk.md,SH-07,Ticket list grid
+TC_SUP_008,support,support-helpdesk.md,SH-08,Focus a ticket row
+TC_SUP_009,support,support-helpdesk.md,SH-09,Double-click a ticket row
+TC_SUP_010,support,support-helpdesk.md,SH-10,"Click **Create/F2**, or press F2 on the list"
+TC_SUP_011,support,support-helpdesk.md,SH-11,Cascade: pick a Main Disposition
+TC_SUP_012,support,support-helpdesk.md,SH-12,"Cascade: pick a Sub Disposition, then a Problem Type"
+TC_SUP_013,support,support-helpdesk.md,SH-13,Main Disposition list content
+TC_SUP_014,support,support-helpdesk.md,SH-14,Click Save with all fields empty
+TC_SUP_015,support,support-helpdesk.md,SH-15,"Fill all three selects, leave Description empty, click Save"
+TC_SUP_016,support,support-helpdesk.md,SH-16,Type 1001 characters into Description
+TC_SUP_017,support,support-helpdesk.md,SH-17,"Type 4 or more characters of a common word into Description (e.g. ""gstr"")"
+TC_SUP_018,support,support-helpdesk.md,SH-18,Type 3 characters or fewer
+TC_SUP_019,support,support-helpdesk.md,SH-19,Type a description with regex characters (e.g. GST (sale) while suggestions return results
+TC_SUP_020,support,support-helpdesk.md,SH-20,Type Hindi or emoji in Description and save (stubbed)
+TC_SUP_021,support,support-helpdesk.md,SH-21,"Attach a file larger than 2 MB (2,097,153 bytes)"
+TC_SUP_022,support,support-helpdesk.md,SH-22,"Attach a file of exactly 2,097,152 bytes, and a small .png"
+TC_SUP_023,support,support-helpdesk.md,SH-23,Attach backup.mbk
+TC_SUP_024,support,support-helpdesk.md,SH-24,Attach a .pdf or .zip
+TC_SUP_025,support,support-helpdesk.md,SH-25,"Fill the form, then click Close (and separately press Esc)"
+TC_SUP_026,support,support-helpdesk.md,SH-26,"Complete a valid ticket with a .png attachment and click Save, with **/MargSupport/Save routed to {"""
+TC_SUP_027,support,support-helpdesk.md,SH-27,"Save with the stub returning {""status"":{""status"":""0""}}, and separately HTTP 417 ""Dbinfolinkid is zer"
+TC_SUP_028,support,support-helpdesk.md,SH-28,Double-click Save (or Save then F10) quickly
+TC_SUP_029,support,support-helpdesk.md,SH-29,Press F10 in a **new** Create Ticket modal
+TC_SUP_030,support,support-helpdesk.md,SH-30,Action → Edit on a ticket whose Status is not 'Pending'
+TC_SUP_031,support,support-helpdesk.md,SH-31,Action → Edit on a 'Pending' ticket
+TC_SUP_032,support,support-helpdesk.md,SH-32,Action → Delete on a non-'Pending' ticket
+TC_SUP_033,support,support-helpdesk.md,SH-33,"Action → Delete on a 'Pending' ticket → confirm, with **/MBSupportDeleteRecord stubbed to success"
+TC_SUP_034,support,support-helpdesk.md,SH-34,"A 'Closed' ticket shows ""Reopen"". Click it, type a message and send, with **/MBSupportUpdateStatus s"
+TC_SUP_035,support,support-helpdesk.md,SH-35,Search the list for a Ticket ID or a visible ProblemType text
+TC_SUP_036,support,support-helpdesk.md,SH-36,"Go offline (context.setOffline(true)), then open the list, and separately click Save"
+TC_SUP_037,support,support-helpdesk.md,SH-37,Switch to company B and reopen the list
+TC_SUP_038,support,support-helpdesk.md,SH-38,Help drawer → **Visit portal**
+TC_SUP_039,support,support-helpdesk.md,SH-39,Help drawer → **Chat Now**
+TC_SUP_040,support,support-helpdesk.md,SH-40,"A real ticket end to end: Save unstubbed, then a WhatsApp to 91<mobile> and an email arrive, and the"
+TC_SUP_041,support,support-helpdesk.md,SH-41,Remote Support button
+TC_UTIL_110,utilities,template-designer.md,TD-01,Open the template screen from Utilities & Tools; the Sale Bill template list shows the predefined
+TC_UTIL_111,utilities,template-designer.md,TD-02,"Create a custom template as a copy of a built-in one, named QA-<run_id>-...; it appears in the list."
+TC_UTIL_112,utilities,template-designer.md,TD-03,Edit the custom template: change a field (e.g. title text) and rename it; the list shows the new nam
+TC_UTIL_113,utilities,template-designer.md,TD-04,Print preview of an existing sale bill using the custom template shows the edited field. Print previ
+TC_UTIL_114,utilities,template-designer.md,TD-05,Delete the custom template with Yes in the confirmation; it is gone from the list.
+TC_UTIL_115,utilities,template-designer.md,TD-06,Saving a template with an empty name is refused. UNVERIFIED (name required implied by CheckDuplicate
+TC_UTIL_116,utilities,template-designer.md,TD-07,Saving a template with a name that already exists for the same report type is refused.
+TC_UTIL_117,utilities,template-designer.md,TD-08,Answering No to the delete confirmation keeps the template.
+TC_UTIL_118,utilities,template-designer.md,TD-09,Invoice Design asks for a password before opening Manage Template; a wrong password is refused.
+TC_UTIL_119,utilities,template-designer.md,TD-10,Set as Default is tenant-wide state: only exercised if the original default is restored and verified
+TC_UTIL_120,utilities,template-designer.md,TD-11,Name at max length / special characters. UNVERIFIED limits.
+TC_MSTR_143,masters,unit-uqc-hsn-rate-masters.md,UN-01,Open Master > Inventory Master > Unit
+TC_MSTR_144,masters,unit-uqc-hsn-rate-masters.md,UN-02,"Create a unit: Unit Name, UQC, Save"
+TC_MSTR_145,masters,unit-uqc-hsn-rate-masters.md,UN-03,Unit name length
+TC_MSTR_146,masters,unit-uqc-hsn-rate-masters.md,UN-04,Save without a unit name
+TC_MSTR_147,masters,unit-uqc-hsn-rate-masters.md,UN-05,Duplicate unit name in the company
+TC_MSTR_148,masters,unit-uqc-hsn-rate-masters.md,UN-06,"Modify a unit (Edit icon, change, Update)"
+TC_MSTR_149,masters,unit-uqc-hsn-rate-masters.md,UN-07,"Delete an unused user unit, confirm Yes"
+TC_MSTR_150,masters,unit-uqc-hsn-rate-masters.md,UN-08,Delete a unit selected in an item
+TC_MSTR_151,masters,unit-uqc-hsn-rate-masters.md,UN-09,Delete a predefined unit
+TC_MSTR_152,masters,unit-uqc-hsn-rate-masters.md,UN-10,New unit offered in item master Unit 1st lookup
+TC_MSTR_153,masters,unit-uqc-hsn-rate-masters.md,UN-11,GSTR-1 HSN summary shows the wrong UQC (PCS) when billed in strip/box
+TC_MSTR_154,masters,unit-uqc-hsn-rate-masters.md,HS-01,Open Master > Inventory Master > HSN / SAC
+TC_MSTR_155,masters,unit-uqc-hsn-rate-masters.md,HS-02,"Create: HSN/SAC Code + HSN/SAC Name, Save"
+TC_MSTR_156,masters,unit-uqc-hsn-rate-masters.md,HS-03,Code length
+TC_MSTR_157,masters,unit-uqc-hsn-rate-masters.md,HS-04,Save without a code
+TC_MSTR_158,masters,unit-uqc-hsn-rate-masters.md,HS-05,Non-numeric / invalid code
+TC_MSTR_159,masters,unit-uqc-hsn-rate-masters.md,HS-06,Duplicate code
+TC_MSTR_160,masters,unit-uqc-hsn-rate-masters.md,HS-07,"Modify a code (Edit, change, Update)"
+TC_MSTR_161,masters,unit-uqc-hsn-rate-masters.md,HS-08,"Delete an unused code with Yes on ""Are you sure you want to delete the selected Record?"""
+TC_MSTR_162,masters,unit-uqc-hsn-rate-masters.md,HS-09,Delete a code set on an item
+TC_MSTR_163,masters,unit-uqc-hsn-rate-masters.md,HS-10,New code offered in the item master HSN/SAC lookup
+TC_MSTR_164,masters,unit-uqc-hsn-rate-masters.md,HS-11,"HSN GST rate fields (cgst, sgst, igst, cess) on the HSN form"
+TC_MSTR_165,masters,unit-uqc-hsn-rate-masters.md,HS-12,Changing GST rate HSN-wise (Utilities > Ease of GST)
+TC_MSTR_166,masters,unit-uqc-hsn-rate-masters.md,HS-13,"Control Room renames the ""HSN / SAC"" field"
+TC_USER_001,users,user-role-management.md,UR-01,"Create a role with a name, description and one right (Dashboard > Net Sale, Full)"
+TC_USER_002,users,user-role-management.md,UR-02,Reopen a new role
+TC_USER_003,users,user-role-management.md,UR-03,"Tick ""Full"" for one screen (Master > Ledger Master)"
+TC_USER_004,users,user-role-management.md,UR-04,"Edit a role: change description, grant Ledger Master Full, ""Update"""
+TC_USER_005,users,user-role-management.md,UR-05,Delete a role made by the test
+TC_USER_006,users,user-role-management.md,UR-06,Save a role with no name
+TC_USER_007,users,user-role-management.md,UR-07,"Delete a predefined role (Admin, Operator, Manager)"
+TC_USER_008,users,user-role-management.md,UR-08,Edit a predefined role
+TC_USER_009,users,user-role-management.md,UR-09,Click the Edit (or Delete) icon of a custom role that is not the grid's selected row
+TC_USER_010,users,user-role-management.md,UR-10,"""Invite User"" when the plan's user limit is reached"
+TC_USER_011,users,user-role-management.md,UR-11,Create a second role with the same name
+TC_USER_012,users,user-role-management.md,UR-12,Invite a user with a role and company
+TC_USER_013,users,user-role-management.md,UR-13,"Edit a user's role, deactivate (Status ""De-Active"") and delete a user"
+TC_USER_014,users,user-role-management.md,UR-14,A user with a limited role signs in and opens a page outside the role
+TC_USER_015,users,user-role-management.md,UR-15,A role created in one company is offered in another company
+TC_USER_016,users,user-role-management.md,UR-16,Role name length limit and special characters

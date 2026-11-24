@@ -1,0 +1,18 @@
+- id: TC_012
+  module: auth
+  title: login
+  priority: p3
+  tags:
+  - studio
+  - priority-low
+  destructive: false
+  preconditions:
+  - Created by QA Tester 4 | 2026-11-24 09:45
+  expected: []
+  steps:
+  - action: open_screen
+    target: dashboard
+    note: await page.goto('https://books6.margbooks.com/');
+  - action: note
+    value: Log in (the runner signs in before every test)
+    note: await login(page);

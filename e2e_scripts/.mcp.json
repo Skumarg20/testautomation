@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@0.0.83"
+      ]
+    },
+    "code-kb": {
+      "command": "python3",
+      "args": [
+        ".claude/mcp/kb_mcp.py"
+      ]
+    }
+  }
+}

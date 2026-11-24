@@ -1,0 +1,43 @@
+- id: TC_007
+  module: masters
+  title: TC_COTH_135 Header shows Pur. Import, Ticket, Help, Settings, Notification,
+    Shortcut, History icons and the books year
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by overnight-agent | 2026-11-18 03:16
+  expected: []
+  steps:
+  - action: open_screen
+    target: dashboard
+    note: Open Dashboard
+  - action: sleep
+    value: '2'
+    note: Wait 2 seconds
+  - action: assert_text
+    value: Books From
+    note: Verify "Books From"
+  - action: assert_text
+    value: Pur. Import
+    note: Verify "Pur. Import"
+  - action: assert_text
+    value: Ticket
+    note: Verify "Ticket"
+  - action: assert_text
+    value: Help
+    note: Verify "Help"
+  - action: assert_text
+    value: Settings
+    note: Verify "Settings"
+  - action: assert_text
+    value: Notification
+    note: Verify "Notification"
+  - action: assert_text
+    value: Shortcut
+    note: Verify "Shortcut"
+  - action: assert_text
+    value: History
+    note: Verify "History"

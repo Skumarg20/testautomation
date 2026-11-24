@@ -1,0 +1,24 @@
+- id: TC_002
+  module: purchase
+  title: TC_CPUR_002 Purchase > Bill (+) quick-create opens the entry window directly
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by overnight-agent | 2026-11-18 03:16
+  expected: []
+  steps:
+  - action: open_screen
+    target: purchase_bill
+    note: Open Purchase Bill
+  - action: sleep
+    value: '2'
+    note: Wait 2 seconds
+  - action: assert_text
+    value: Party Name
+    note: Verify "Party Name"
+  - action: assert_text
+    value: Invoice No
+    note: Verify "Invoice No"

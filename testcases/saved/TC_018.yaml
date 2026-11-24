@@ -1,0 +1,19 @@
+- id: TC_018
+  module: general
+  title: QA4 R2 dbl 201427
+  priority: p2
+  tags:
+  - studio
+  - priority-medium
+  destructive: false
+  preconditions:
+  - Created by QA Tester 4 | 2026-11-23 20:14
+  expected:
+  - Log in → Open Sale Bill
+  steps:
+  - action: note
+    value: Log in (the runner signs in before every test)
+    note: Log in
+  - action: open_screen
+    target: sale_bill
+    note: Open Sale Bill

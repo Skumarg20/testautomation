@@ -1,0 +1,36 @@
+- id: TC_011
+  module: purchase
+  title: TC_CPUR_081 Purchase Bill list shows Invoice No., date, party, user and amount
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by overnight-agent | 2026-11-18 03:16
+  expected: []
+  steps:
+  - action: open_screen
+    target: purchase_list
+    note: Open Purchase Bill List
+  - action: sleep
+    value: '2'
+    note: Wait 2 seconds
+  - action: assert_text
+    value: Purchase Bill List
+    note: Verify "Purchase Bill List"
+  - action: assert_text
+    value: Invoice No
+    note: Verify "Invoice No"
+  - action: assert_text
+    value: Date
+    note: Verify "Date"
+  - action: assert_text
+    value: Party
+    note: Verify "Party"
+  - action: assert_text
+    value: Status
+    note: Verify "Status"
+  - action: assert_text
+    value: Amount
+    note: Verify "Amount"

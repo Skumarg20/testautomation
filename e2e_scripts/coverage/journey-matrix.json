@@ -1,0 +1,729 @@
+{
+  "version": 3,
+  "journeys": [
+    {
+      "id": "auth",
+      "ref": "J01",
+      "name": "Login and trade-account sessions",
+      "priority": "P0",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 2,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/auth/test_login.py"
+      ]
+    },
+    {
+      "id": "role-based-access",
+      "ref": "J02",
+      "name": "Role-based access (admin/operator/accountant)",
+      "priority": "P0",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 4,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/auth/test_roles.py"
+      ]
+    },
+    {
+      "id": "company-financial-year",
+      "ref": "J03",
+      "name": "Company select / financial-year switch",
+      "priority": "P0",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 4,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/company/test_company_switch.py"
+      ]
+    },
+    {
+      "id": "sale-bill-creation",
+      "ref": "J04",
+      "name": "Chemist sale bill: barcodes, batches, save, dates",
+      "priority": "P0",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 4,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/chemist/sale_bill/test_creation.py"
+      ]
+    },
+    {
+      "id": "purchase-itc",
+      "ref": "J05",
+      "name": "Purchase entry and ITC",
+      "priority": "P0",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 5,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/purchase/test_bill.py",
+        "tests/journeys/purchase/test_challan.py",
+        "tests/journeys/purchase/test_order.py",
+        "tests/journeys/purchase/test_purchase_itc.py",
+        "tests/journeys/purchase/test_purchase_open_questions.py",
+        "tests/journeys/purchase/test_return.py"
+      ]
+    },
+    {
+      "id": "gst-reports",
+      "ref": "J06",
+      "name": "GSTR / GST report generation and export",
+      "priority": "P0",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 5,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/gst/test_gst_open_questions.py",
+        "tests/journeys/gst/test_gst_report_export.py"
+      ]
+    },
+    {
+      "id": "masters",
+      "ref": "J07",
+      "name": "Customer/vendor master CRUD",
+      "priority": "P1",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 9,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/masters/test_party_ledger.py"
+      ]
+    },
+    {
+      "id": "item-master-crud",
+      "ref": "J08",
+      "name": "Item master CRUD (HSN, tax category, unit)",
+      "priority": "P1",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 9,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/inventory/test_item_create.py",
+        "tests/journeys/inventory/test_item_validation_and_edit.py"
+      ]
+    },
+    {
+      "id": "sale-bill-modification",
+      "ref": "J09",
+      "name": "Modify a saved sale bill",
+      "priority": "P1",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 9,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/chemist/sale_bill/test_modification.py"
+      ]
+    },
+    {
+      "id": "payments-ledger",
+      "ref": "J10",
+      "name": "Payment recording and ledger reconciliation",
+      "priority": "P1",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 10,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/accounting/test_contra.py",
+        "tests/journeys/accounting/test_credit_note.py",
+        "tests/journeys/accounting/test_debit_note.py",
+        "tests/journeys/accounting/test_journal.py",
+        "tests/journeys/accounting/test_payment.py",
+        "tests/journeys/accounting/test_receipt.py"
+      ]
+    },
+    {
+      "id": "bank-entry-reconciliation",
+      "ref": "J11",
+      "name": "Bank entry & reconciliation",
+      "priority": "P1",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 10,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/banking/test_bank_reconciliation.py"
+      ]
+    },
+    {
+      "id": "ledger-report",
+      "ref": "J12",
+      "name": "Ledger report matches transactions",
+      "priority": "P1",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 10,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/reports/test_ledger_report.py"
+      ]
+    },
+    {
+      "id": "inventory",
+      "ref": "J13",
+      "name": "Inventory stock movement",
+      "priority": "P1",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 11,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/stock/test_stock_movement.py"
+      ]
+    },
+    {
+      "id": "purchase-return-debit-note",
+      "ref": "J14",
+      "name": "Purchase return / debit note",
+      "priority": "P1",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 11,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/returns/test_debit_note_voucher.py",
+        "tests/journeys/returns/test_purchase_return.py"
+      ]
+    },
+    {
+      "id": "user-role-management",
+      "ref": "J15",
+      "name": "User & role management",
+      "priority": "P1",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "yes",
+      "targetDay": 11,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/admin/test_role_management.py",
+        "tests/journeys/admin/test_user_management.py"
+      ]
+    },
+    {
+      "id": "multi-tenant",
+      "ref": "J16",
+      "name": "Multi-company switching and isolation",
+      "priority": "P1",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "stretch",
+      "targetDay": 13,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/company/test_multi_company.py"
+      ]
+    },
+    {
+      "id": "ledger-master-crud",
+      "ref": "J17",
+      "name": "Account group / ledger master CRUD",
+      "priority": "P1",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "stretch",
+      "targetDay": 13,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/masters/test_account_group.py",
+        "tests/journeys/masters/test_general_ledger.py"
+      ]
+    },
+    {
+      "id": "opening-balance-entry",
+      "ref": "J18",
+      "name": "Opening balance entry",
+      "priority": "P1",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "stretch",
+      "targetDay": 14,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/accounting/test_opening_balance.py"
+      ]
+    },
+    {
+      "id": "accounting-reports",
+      "ref": "J19",
+      "name": "Trial balance / P&L / day book reports",
+      "priority": "P1",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "stretch",
+      "targetDay": 14,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/accounting/test_accounting_reports.py"
+      ]
+    },
+    {
+      "id": "e-invoice",
+      "ref": "J20",
+      "name": "E-invoice generation & error list",
+      "priority": "P1",
+      "layers": [
+        "e2e",
+        "api"
+      ],
+      "in30Plan": "stretch",
+      "targetDay": 14,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/gst/test_e_invoice.py"
+      ]
+    },
+    {
+      "id": "notifications-export",
+      "ref": "J21",
+      "name": "Notifications, reminders, export/print",
+      "priority": "P2",
+      "layers": [
+        "visual",
+        "api"
+      ],
+      "in30Plan": "stretch",
+      "targetDay": 14,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/notifications_export/test_notification_bell.py",
+        "tests/journeys/notifications_export/test_sms_notification_report.py",
+        "tests/journeys/notifications_export/test_report_export_share.py",
+        "tests/journeys/notifications_export/test_reminders.py",
+        "tests/journeys/notifications_export/test_permissions.py",
+        "tests/journeys/notifications_export/test_export_fidelity.py",
+        "tests/journeys/notifications_export/test_sale_bill_print.py",
+        "tests/journeys/notifications_export/test_report_share_delivery.py",
+        "tests/journeys/notifications_export/test_prescription_sms.py",
+        "tests/journeys/notifications_export/test_tenancy.py"
+      ]
+    },
+    {
+      "id": "dashboard",
+      "ref": "J22",
+      "name": "Dashboard widgets and summary tiles",
+      "priority": "P2",
+      "layers": [
+        "visual",
+        "e2e"
+      ],
+      "in30Plan": "stretch",
+      "targetDay": 14,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/dashboard/test_dashboard_figures.py",
+        "tests/journeys/dashboard/test_dashboard_layout.py",
+        "tests/journeys/dashboard/test_dashboard_navigation.py",
+        "tests/journeys/dashboard/test_dashboard_period.py"
+      ]
+    },
+    {
+      "id": "rate-validation",
+      "ref": "J23",
+      "name": "Item rates A to H billed correctly",
+      "priority": "P2",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "no",
+      "targetDay": 15,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/chemist/sale_bill/test_rate_validation.py"
+      ]
+    },
+    {
+      "id": "ledger-discounts",
+      "ref": "J24",
+      "name": "Ledger master and special discounts on a bill",
+      "priority": "P2",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "no",
+      "targetDay": 15,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/chemist/sale_bill/test_ledger_discounts.py"
+      ]
+    },
+    {
+      "id": "route-station-area-masters",
+      "ref": "J25",
+      "name": "Route / station / area masters",
+      "priority": "P2",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "no",
+      "targetDay": 15,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/other_masters/test_route.py",
+        "tests/journeys/other_masters/test_area.py",
+        "tests/journeys/other_masters/test_station.py"
+      ]
+    },
+    {
+      "id": "unit-uqc-hsn-rate-masters",
+      "ref": "J26",
+      "name": "Unit / UQC / HSN rate masters",
+      "priority": "P2",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "no",
+      "targetDay": 15,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/unit_hsn/test_unit_master.py",
+        "tests/journeys/unit_hsn/test_hsn_master.py",
+        "tests/journeys/unit_hsn/test_item_usage.py"
+      ]
+    },
+    {
+      "id": "barcode-generation-scanning",
+      "ref": "J27",
+      "name": "Barcode generation / scanning",
+      "priority": "P2",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "no",
+      "targetDay": 15,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/barcode/test_item_barcode.py",
+        "tests/journeys/barcode/test_barcode_scanning.py",
+        "tests/journeys/barcode/test_barcode_printing.py"
+      ]
+    },
+    {
+      "id": "rack-warehouse-management",
+      "ref": "J28",
+      "name": "Rack / warehouse management",
+      "priority": "P2",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "no",
+      "targetDay": 15,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/racks/test_store_master.py",
+        "tests/journeys/racks/test_rack_master.py",
+        "tests/journeys/racks/test_rack_on_item.py"
+      ]
+    },
+    {
+      "id": "cash-transfer-day-closure",
+      "ref": "J29",
+      "name": "Cash transfer & day closure",
+      "priority": "P2",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "no",
+      "targetDay": 15,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/cash_transfer/test_cash_transfer.py",
+        "tests/journeys/cash_transfer/test_day_closure.py"
+      ]
+    },
+    {
+      "id": "email-sms-whatsapp-setup",
+      "ref": "J30",
+      "name": "Email / SMS / WhatsApp setup",
+      "priority": "P2",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "no",
+      "targetDay": 15,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/communication_setup/test_email_settings.py",
+        "tests/journeys/communication_setup/test_sms_settings.py",
+        "tests/journeys/communication_setup/test_transaction_messages.py"
+      ]
+    },
+    {
+      "id": "database-repair",
+      "ref": "J31",
+      "name": "Database repair utility",
+      "priority": "P2",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "no",
+      "targetDay": 15,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/chemist/database/test_database_repair.py"
+      ]
+    },
+    {
+      "id": "template-designer",
+      "ref": "J32",
+      "name": "Template designer / print templates",
+      "priority": "P2",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "no",
+      "targetDay": 15,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/print_templates/test_custom_template.py",
+        "tests/journeys/print_templates/test_template_name_rules.py"
+      ]
+    },
+    {
+      "id": "password-reset-registration",
+      "ref": "J33",
+      "name": "Forgot password / reset / registration",
+      "priority": "P2",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "no",
+      "targetDay": 15,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/password_reset_registration/test_forgot_password.py",
+        "tests/journeys/password_reset_registration/test_registration_form.py"
+      ]
+    },
+    {
+      "id": "subscription-status",
+      "ref": "J34",
+      "name": "Subscription / pricing / payment status",
+      "priority": "P2",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "no",
+      "targetDay": 15,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/subscription/test_subscription_navigation.py",
+        "tests/journeys/subscription/test_current_plan.py",
+        "tests/journeys/subscription/test_plan_pricing.py",
+        "tests/journeys/subscription/test_add_on_order.py",
+        "tests/journeys/subscription/test_payment_history.py"
+      ]
+    },
+    {
+      "id": "data-sync-offline",
+      "ref": "J35",
+      "name": "Data sync / offline (Electron app)",
+      "priority": "P3",
+      "layers": [
+        "manual"
+      ],
+      "in30Plan": "phase2",
+      "targetDay": null,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/data_sync/test_connection_loss.py",
+        "tests/journeys/data_sync/test_data_sync_screen.py",
+        "tests/journeys/data_sync/test_forced_logout.py",
+        "tests/journeys/data_sync/test_internet_speed.py",
+        "tests/journeys/data_sync/test_lost_saves.py",
+        "tests/journeys/data_sync/test_offline_guards.py",
+        "tests/journeys/data_sync/test_offline_start.py",
+        "tests/journeys/data_sync/test_request_states.py",
+        "tests/journeys/data_sync/test_throwaway_requests.py",
+        "tests/api/data_sync/test_sync_request_api.py"
+      ]
+    },
+    {
+      "id": "crm-module",
+      "ref": "J36",
+      "name": "CRM module",
+      "priority": "P3",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "phase2",
+      "targetDay": null,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/crm/test_crm_menu.py",
+        "tests/journeys/crm/test_pending_approvals.py",
+        "tests/journeys/crm/test_home_delivery.py",
+        "tests/journeys/crm/test_loyalty_setup.py"
+      ]
+    },
+    {
+      "id": "online-store",
+      "ref": "J37",
+      "name": "Online store setting & orders",
+      "priority": "P3",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "phase2",
+      "targetDay": null,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/online_store/test_conversion_rules.py",
+        "tests/journeys/online_store/test_order_conversion.py",
+        "tests/journeys/online_store/test_order_dashboard.py",
+        "tests/journeys/online_store/test_order_figures.py",
+        "tests/journeys/online_store/test_store_access.py",
+        "tests/journeys/online_store/test_store_catalogue.py",
+        "tests/journeys/online_store/test_store_creation.py",
+        "tests/journeys/online_store/test_store_entry.py",
+        "tests/journeys/online_store/test_store_setting.py",
+        "tests/journeys/online_store/test_store_tenancy.py"
+      ]
+    },
+    {
+      "id": "gst-calculation",
+      "ref": "J38",
+      "name": "GST and bill-discount invoice amounts",
+      "priority": "P3",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "phase2",
+      "targetDay": null,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/chemist/sale_bill/test_gst_and_bill_discount.py"
+      ]
+    },
+    {
+      "id": "abha-health-flows",
+      "ref": "J39",
+      "name": "ABHA / health flows",
+      "priority": "P3",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "phase2",
+      "targetDay": null,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/abha/test_card_download.py",
+        "tests/journeys/abha/test_card_download_stubbed.py",
+        "tests/journeys/abha/test_consent.py",
+        "tests/journeys/abha/test_digital_menu.py",
+        "tests/journeys/abha/test_direct_url.py",
+        "tests/journeys/abha/test_enrolment_stubbed.py",
+        "tests/journeys/abha/test_patient_abha_status.py",
+        "tests/journeys/abha/test_patient_master.py",
+        "tests/journeys/abha/test_registration.py",
+        "tests/journeys/abha/test_registration_otp_stubbed.py",
+        "tests/journeys/abha/test_sale_bill_abha.py",
+        "tests/journeys/abha/test_sale_bill_abha_link.py",
+        "tests/api/abha/test_patient_abha_details_api.py"
+      ]
+    },
+    {
+      "id": "manufacturing-module",
+      "ref": "J40",
+      "name": "Manufacturing module",
+      "priority": "P3",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "phase2",
+      "targetDay": null,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/manufacturing/test_bom_master.py",
+        "tests/journeys/manufacturing/test_bom_stock.py",
+        "tests/journeys/manufacturing/test_conversion.py",
+        "tests/journeys/manufacturing/test_switches.py",
+        "tests/journeys/manufacturing/test_bom_validation.py",
+        "tests/journeys/manufacturing/test_bom_more.py",
+        "tests/journeys/manufacturing/test_bom_vouchers.py",
+        "tests/journeys/manufacturing/test_bom_reports.py",
+        "tests/journeys/manufacturing/test_conversion_more.py",
+        "tests/journeys/manufacturing/test_access.py"
+      ]
+    },
+    {
+      "id": "support-helpdesk",
+      "ref": "J41",
+      "name": "Support / helpdesk",
+      "priority": "P3",
+      "layers": [
+        "e2e"
+      ],
+      "in30Plan": "phase2",
+      "targetDay": null,
+      "status": "generated",
+      "specs": [
+        "tests/journeys/support/test_attachment.py",
+        "tests/journeys/support/test_chat_now.py",
+        "tests/journeys/support/test_create_ticket.py",
+        "tests/journeys/support/test_help_drawer.py",
+        "tests/journeys/support/test_ticket_end_to_end_stubbed.py",
+        "tests/journeys/support/test_ticket_list.py",
+        "tests/journeys/support/test_ticket_tenancy.py",
+        "tests/journeys/support/test_ticket_writes_stubbed.py"
+      ]
+    }
+  ]
+}

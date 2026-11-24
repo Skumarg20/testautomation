@@ -1,0 +1,40 @@
+- id: TC_010
+  module: masters
+  title: TC_CMAS_130 Rate Master > Price List opens the item rate grid with its function
+    keys
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by overnight-agent | 2026-11-18 03:16
+  expected: []
+  steps:
+  - action: open_screen
+    target: price_list
+    note: Open Price List
+  - action: sleep
+    value: '2'
+    note: Wait 2 seconds
+  - action: assert_text
+    value: F4
+    note: Verify "F4"
+  - action: assert_text
+    value: F6
+    note: Verify "F6"
+  - action: assert_text
+    value: F7
+    note: Verify "F7"
+  - action: assert_text
+    value: F8
+    note: Verify "F8"
+  - action: assert_text
+    value: F9
+    note: Verify "F9"
+  - action: assert_text
+    value: Create/F2
+    note: Verify "Create/F2"
+  - action: assert_text
+    value: Available Stock
+    note: Verify "Available Stock"

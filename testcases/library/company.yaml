@@ -1,0 +1,364 @@
+- id: TC_COMP_001
+  module: company
+  title: Switch from company A to company B (Profile > Switch, double-click the row)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/multi-tenant.md MT-01 (KB-SW; LIVE)'
+  expected:
+  - Dashboard opens; header shows "NEW COMPANY 01-09"
+  steps: []
+- id: TC_COMP_002
+  module: company
+  title: Session after the switch
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/multi-tenant.md MT-02 (LIVE)'
+  expected:
+  - LoggedInUserInfo.SelectedCompany.compname is company B; checkedLinkId changes
+  steps: []
+- id: TC_COMP_003
+  module: company
+  title: An item created in company A, searched by name in company B's Item List
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/multi-tenant.md MT-03 (LIVE (isolation rule from the brief; no KB value))'
+  expected:
+  - Not found
+  steps: []
+- id: TC_COMP_004
+  module: company
+  title: The same item searched in company A, before and after a round trip through B
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/multi-tenant.md MT-04 (LIVE)'
+  expected:
+  - Found
+  steps: []
+- id: TC_COMP_005
+  module: company
+  title: Sale register / dashboard Net Sales right after a switch
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/multi-tenant.md MT-05 (JIRA-30329)'
+  expected:
+  - 'Shows company B''s figures, not A''s (regression of JIRA-30329). UNVERIFIED: needs known sales in both companies'
+  steps: []
+- id: TC_COMP_006
+  module: company
+  title: API call with company A's session but company B's complinkid
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/multi-tenant.md MT-06 (specs/company-switch.md P-CO-06)'
+  expected:
+  - 'UNVERIFIED (J03 Q8): expected denial not defined'
+  steps: []
+- id: TC_COMP_007
+  module: company
+  title: Two sessions of one login in different companies at the same time
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/multi-tenant.md MT-07 (none)'
+  expected:
+  - 'UNVERIFIED (J03 Q12): whether one session''s switch changes the other''s company'
+  steps: []
+- id: TC_COMP_008
+  module: company
+  title: Ledgers, vouchers and settings (Control Room) of A not visible in B
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/multi-tenant.md MT-08 (none)'
+  expected:
+  - 'UNVERIFIED: only items were checked'
+  steps: []
+- id: TC_COMP_009
+  module: company
+  title: Manage Subscription opens from the dashboard settings entry and lands on the current-plan view.
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/subscription-status.md SS-01'
+  expected: []
+  steps: []
+- id: TC_COMP_010
+  module: company
+  title: The current-plan view shows a plan name, a validity / expiry date and a status.
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/subscription-status.md SS-02'
+  expected: []
+  steps: []
+- id: TC_COMP_011
+  module: company
+  title: The plan and validity shown on the manage page match the plan/validity shown elsewhere in the app (header,
+    profile or settings). Where...
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/subscription-status.md SS-03'
+  - 'Scenario: The plan and validity shown on the manage page match the plan/validity shown elsewhere in the app
+    (header, profile or settings). Where they are shown is UNVERIFIED until probed.'
+  expected: []
+  steps: []
+- id: TC_COMP_012
+  module: company
+  title: Payment History tab opens and lists past payments with date, amount and status columns. Column names UNVERIFIED.
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/subscription-status.md SS-04'
+  expected: []
+  steps: []
+- id: TC_COMP_013
+  module: company
+  title: Add On tab lists add-ons (users, GSTIN, ...) with unit prices; the Proceed / Make Payment button is visible
+    but never clicked.
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/subscription-status.md SS-05'
+  expected: []
+  steps: []
+- id: TC_COMP_014
+  module: company
+  title: Plans / pricing view lists the editions with prices; a plan's Buy button exists. Never clicked.
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/subscription-status.md SS-06'
+  expected: []
+  steps: []
+- id: TC_COMP_015
+  module: company
+  title: Usage figures (users, GSTIN, e-invoice, SMS ...) are shown as used / total. UNVERIFIED format.
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/subscription-status.md SS-07'
+  expected:
+  - Add-ons Stats show each add-on (Users, Invoice, Organisation, GSTIN, WhatsApp...) as two figures a/b under a
+    donut; the second figure is the used count (Users 29/2 with 2 users)
+  steps:
+  - action: use_company
+    value: QA GST Computer Hardware
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 3
+  - action: click
+    target: '#aControlRoomSetting'
+    note: Settings (Dashboard Setting)
+  - action: wait_text
+    value: Dashboard Setting
+  - action: click
+    target: xpath=//*[normalize-space(text())="Manage subscription and plan"]/following::button[normalize-space()="Configure"][1]
+    inside_modal: true
+    note: Manage subscription and plan > Configure
+  - action: wait_text
+    value: Add-ons Stats
+  - action: sleep
+    value: 3
+  - action: assert_visible
+    target: xpath=//*[normalize-space()="Users"]/following::*[contains(normalize-space(text()),"/")][1]
+    note: 'Add-ons Stats: Users shows two figures ''a/b'''
+  - action: assert_visible
+    target: xpath=//*[normalize-space()="Invoice"]/following::*[contains(normalize-space(text()),"/")][1]
+    note: 'Add-ons Stats: Invoice shows two figures ''a/b'''
+  - action: assert_visible
+    target: xpath=//*[normalize-space()="Organisation"]/following::*[contains(normalize-space(text()),"/")][1]
+    note: 'Add-ons Stats: Organisation shows two figures ''a/b'''
+  - action: assert_visible
+    target: xpath=//*[normalize-space()="GSTIN"]/following::*[contains(normalize-space(text()),"/")][1]
+    note: 'Add-ons Stats: GSTIN shows two figures ''a/b'''
+  - action: screenshot
+    value: TC_COMP_015
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  verification:
+    status: corrected
+    company: QA GST Computer Hardware
+    date: '2026-11-19'
+    run:
+      passed: 15
+      total: 15
+    evidence:
+    - artifacts/run_2026-11-18_23-25-22/TC_COMP_015.png
+    kb:
+    - onedrive:SUBSCRIPTION/Subscription & Plan_v1.2.docx#1.4
+    notes: 'Settings > Manage subscription and plan > Configure (My Current Plan, Enterprise): Add-ons Stats show
+      each add-on as two figures ''a/b'': Users 29/2, Invoice 1949413/468, Organisation 1/34, GSTIN 20/0, WhatsApp
+      Credits 1931/69. The order is not used/total: with 2 users the Users figure reads 29/2, so the first number
+      is what is left and the second what is used (the design doc shows a donut with the total in the centre and
+      a two-number label). The steps check that the figures are there, not their values.'
+- id: TC_COMP_016
+  module: company
+  title: Navigating back from the subscription screens returns to the dashboard.
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/subscription-status.md SS-08'
+  expected: []
+  steps: []
+- id: TC_COMP_017
+  module: company
+  title: 'A plan within 15 days of expiry shows a renewal notice. Cannot be arranged on the QA tenant: NOT COVERED
+    unless the tenant is in that...'
+  priority: p3
+  tags:
+  - imported
+  - not_covered
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/subscription-status.md SS-09'
+  - 'Scenario: A plan within 15 days of expiry shows a renewal notice. Cannot be arranged on the QA tenant: NOT
+    COVERED unless the tenant is in that window.'
+  expected: []
+  steps: []
+- id: TC_COMP_018
+  module: company
+  title: An expired plan shows "Trial Expired" with Subscribe Now. NOT COVERED (cannot expire the shared tenant).
+  priority: p3
+  tags:
+  - imported
+  - not_covered
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/subscription-status.md SS-10'
+  expected: []
+  steps: []
+- id: TC_COMP_019
+  module: company
+  title: Add-on unit count zero or negative is refused before payment. UNVERIFIED; only if testable without creating
+    an order.
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/subscription-status.md SS-11'
+  expected: []
+  steps: []
+- id: TC_COMP_020
+  module: company
+  title: 'Validity date is a real future date for an active plan, and the remaining-days figure (if shown) agrees
+    with it (derived, #a6986394).'
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/subscription-status.md SS-12'
+  expected: []
+  steps: []

@@ -1,0 +1,28 @@
+- id: TC_020
+  module: masters
+  title: QA5 record r2 - Utilities shows Data Backup
+  priority: p2
+  tags:
+  - studio
+  - priority-medium
+  destructive: false
+  preconditions:
+  - Created by QA Tester 5 | 2026-11-23 20:22
+  expected:
+  - QA release retest r2 of Record paste flow (qa5). Safe to delete.
+  steps:
+  - action: open_screen
+    target: dashboard
+    note: await page.goto('https://books6.margbooks.com/');
+  - action: note
+    value: Log in (the runner signs in before every test)
+    note: await login(page);
+  - action: sleep
+    value: '2'
+    note: await page.waitForTimeout(2000);
+  - action: open_screen
+    target: utilities
+    note: await page.goto('https://books6.margbooks.com/mb/utillity-menu');
+  - action: assert_text
+    value: Data Backup
+    note: await expect(page.getByText('Data Backup')).toBeVisible();

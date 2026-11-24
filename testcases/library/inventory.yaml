@@ -1,0 +1,1593 @@
+- id: TC_INV_001
+  module: inventory
+  title: Type a barcode in Create Item > Barcode and save the item
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-01 (KB onedrive_processed_data.csv#c9b99382)'
+  expected:
+  - Saved; the barcode is shown again when the item is opened with Edit/F3
+  steps: []
+- id: TC_INV_002
+  module: inventory
+  title: 'Numbering Style = Automatic: open Create Item'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-02 (KB onedrive_processed_data.csv#c9b99382,
+    careportal_enriched_v5.csv#23a4c042)'
+  expected:
+  - Barcode pre-filled from the pattern and disabled; the next item gets the next number
+  steps: []
+- id: TC_INV_003
+  module: inventory
+  title: Barcode field length and case
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-03 (n/a)'
+  expected:
+  - 'UNVERIFIED in KB (planner: read maxlength and text transform live)'
+  steps: []
+- id: TC_INV_004
+  module: inventory
+  title: 'Duplicate allowed = No: save a second item with an existing barcode'
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-04 (KB careportal_enriched_v5.csv#a66633af,
+    jira_vectordb.csv#dc86e645, #ae69d094)'
+  expected:
+  - Save refused with a duplicate message; message text UNVERIFIED ("Duplicate Barcode Not Allowed" per MB-035359;
+    MB-038597 wants the item name)
+  steps: []
+- id: TC_INV_005
+  module: inventory
+  title: 'Duplicate allowed = Yes: second item with the same barcode'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-05 (KB careportal_enriched_v5.csv#4427f5a5)'
+  expected:
+  - Saved
+  steps: []
+- id: TC_INV_006
+  module: inventory
+  title: Delete an item, then reuse its barcode on a new item (duplicates not allowed)
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-06 (KB jira_vectordb.csv#dc86e645)'
+  expected:
+  - Allowed (MB-035359 says it is wrongly refused)
+  steps: []
+- id: TC_INV_007
+  module: inventory
+  title: Edit an item and keep its own barcode
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-07 (KB jira_vectordb.csv#082139c2)'
+  expected:
+  - No "Duplicate barcode" error (MB-031744)
+  steps: []
+- id: TC_INV_008
+  module: inventory
+  title: Scan (type + Enter) the item's barcode in a sale bill
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-08 (KB careportal_enriched_v5.csv#23a4c042
+    (Default Value Pick), tickets)'
+  expected:
+  - The item is loaded on the line
+  steps: []
+- id: TC_INV_009
+  module: inventory
+  title: Scan an unknown barcode in a sale bill
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-09 (KB onedrive_processed_data.csv#d3f205c6,
+    support_tickets_vectordb.csv#3a696d8f)'
+  expected:
+  - Alert "Barcode Not Available" (already covered by sale-bill-creation test_unknown_barcode_raises_an_alert) or
+    the create-new-barcode question
+  steps: []
+- id: TC_INV_010
+  module: inventory
+  title: Scan the barcode of an item with no stock
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-10 (KB support_tickets_vectordb.csv#6b9aa689)'
+  expected:
+  - 'UNVERIFIED: "stock not available" or loaded with negative stock, depends on settings'
+  steps: []
+- id: TC_INV_011
+  module: inventory
+  title: Print Barcode, Item Wise, select item, Ok, Print
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-11 (KB careportal_enriched_v5.csv#9639900d)'
+  expected:
+  - Grid lists the item, barcode and qty; Print opens a "Select Format" window. Never confirm a printer
+  steps: []
+- id: TC_INV_012
+  module: inventory
+  title: Print with no item chosen
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-12 (n/a)'
+  expected:
+  - Refused (message UNVERIFIED in KB)
+  steps: []
+- id: TC_INV_013
+  module: inventory
+  title: Barcode icon in the Item List row
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-13 (n/a)'
+  expected:
+  - Opens Barcode Printing for that item (UNVERIFIED in KB)
+  steps: []
+- id: TC_INV_014
+  module: inventory
+  title: Control Room barcode settings are tenant-wide
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-14 (e2e/CLAUDE.md rule 0)'
+  expected:
+  - Any test that changes one restores it; xdist_group("chemist-tenant")
+  steps: []
+- id: TC_INV_015
+  module: inventory
+  title: Batch-wise barcodes generated on purchase/opening stock, picked by scan
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/barcode-generation-scanning.md BC-15 (KB careportal_enriched_v5.csv#0b1d00a3)'
+  expected:
+  - Out of scope here (needs stock, items become undeletable)
+  steps: []
+- id: TC_INV_016
+  module: inventory
+  title: 'Create an item with only the mandatory fields (red asterisk): Master > Inventory Master > Item > Create
+    (F2), enter Product name, Save'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-01 (KB careportal_enriched_v5.csv#2ad671cf, #7e11d1c2)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Item is saved. A confirmation asks whether to add the item's opening stock
+  steps: []
+- id: TC_INV_017
+  module: inventory
+  title: After IN-01 answer Yes, enter opening quantity, Save
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-02 (KB careportal_enriched_v5.csv#2ad671cf)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Opening stock saved; item balance equals the entered quantity (exact display UNVERIFIED)
+  steps: []
+- id: TC_INV_018
+  module: inventory
+  title: Create an item with Packing, Unit 1st, Unit in Decimal, HSN/SAC and Tax Category set
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-03 (KB careportal_enriched_v5.csv#7e11d1c2)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Item saved. Tax Category decides the GST rate applied to the item. Specific rate for a category UNVERIFIED
+  steps:
+  - action: use_company
+    value: QA GST Computer Hardware
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+i
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create/F2
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 3
+  - action: fill
+    target: '#txtProduct'
+    value: QA_Itm018_TMP
+    note: Product
+  - action: fill
+    target: '#txtPacking'
+    value: 1x10
+    note: Packing 1x10
+  - action: click
+    target: '#unit'
+    note: Unit 1st
+  - action: sleep
+    value: 1
+  - action: press
+    value: P
+    note: PCS
+  - action: press
+    value: C
+  - action: press
+    value: S
+  - action: sleep
+    value: 2
+  - action: press
+    value: Enter
+  - action: sleep
+    value: 1
+  - action: assert_value
+    target: '#unit'
+    value: PCS
+  - action: select
+    target: '#deciaml'
+    value: 'Yes'
+    note: Unit in Decimal = Yes
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#hsn'
+    note: HSN/SAC
+  - action: sleep
+    value: 1
+  - action: assert_visible
+    target: '#hsn:focus'
+    note: Cursor on HSN/SAC
+  - action: press
+    value: Space
+    note: HSN list
+  - action: sleep
+    value: 2
+  - action: press
+    value: Enter
+    note: Take 12345678
+  - action: sleep
+    value: 1.5
+  - action: assert_value
+    target: '#hsn'
+    value: '12345678'
+  - action: press
+    value: G
+    note: 'Tax Category: GST Sale - 12%'
+  - action: press
+    value: S
+  - action: press
+    value: T
+  - action: press
+    value: ' '
+  - action: press
+    value: S
+  - action: press
+    value: a
+  - action: press
+    value: l
+  - action: press
+    value: e
+  - action: press
+    value: ' '
+  - action: press
+    value: '-'
+  - action: press
+    value: ' '
+  - action: press
+    value: '1'
+  - action: press
+    value: '2'
+  - action: sleep
+    value: 2
+  - action: press
+    value: Enter
+  - action: sleep
+    value: 1.5
+  - action: assert_value
+    target: '#taxxCategory'
+    value: GST Sale - 12%
+  - action: assert_visible
+    target: '#txtcompName:focus'
+    note: Cursor on Company
+  - action: press
+    value: O
+    note: 'Company: Others'
+  - action: press
+    value: t
+  - action: press
+    value: h
+  - action: sleep
+    value: 2
+  - action: press
+    value: Enter
+  - action: sleep
+    value: 1.5
+  - action: assert_value
+    target: '#txtcompName'
+    value: Others
+    note: 'Company: Others'
+  - action: click
+    target: xpath=//button[contains(normalize-space(.),"Save")]
+    note: F10 Save
+  - action: wait_text
+    value: Do you want to add item Opening
+    note: 'Saved: asks whether to add opening stock'
+  - action: screenshot
+    value: TC_INV_018
+  - action: click
+    target: '#btnNo'
+    inside_modal: true
+    note: No opening stock
+  - action: sleep
+    value: 3
+  - action: press
+    value: Alt+i
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: sleep
+    value: 2
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_Itm018
+    note: Search
+  - action: sleep
+    value: 3
+  - action: assert_visible
+    target: xpath=//div[@role="row"][.//div[@col-id="Product"][normalize-space()="QA_Itm018_TMP"]][.//div[@col-id="packing"][normalize-space()="1x10"]]
+    note: Item appears in the Item List with packing 1x10
+  - action: click
+    target: xpath=//div[@role="row"][.//div[@col-id="Product"][normalize-space()="QA_Itm018_TMP"]]
+    note: Click the row
+    always: true
+  - action: click
+    target: xpath=//div[@role="row"][.//div[@col-id="Product"][normalize-space()="QA_Itm018_TMP"]]//button[starts-with(@id,"Griddeletetbtn")]
+    note: Delete it (clean-up so the case can run again)
+    always: true
+  - action: wait_text
+    value: Are you sure you want to delete the selected Record?
+    always: true
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    always: true
+  - action: sleep
+    value: 3
+    always: true
+  - action: assert_not_visible
+    target: xpath=//div[@role="row"][.//div[@col-id="Product"][normalize-space()="QA_Itm018_TMP"]]
+    always: true
+  - action: press
+    value: Alt+h
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  verification:
+    status: verified
+    company: QA GST Computer Hardware
+    date: '2026-11-19'
+    run:
+      passed: 73
+      total: 73
+    evidence:
+    - ''
+    kb:
+    - careportal_enriched_v5.csv#7e11d1c2
+    notes: 'Create Item QA_Itm018_TMP with Packing 1x10, Unit PCS, Unit in Decimal = Yes, HSN/SAC 12345678, Tax
+      Category GST Sale - 12% (the category carries the 12% rate), Company Others -> F10: ''Do you want to add item
+      Opening'' -> No; the item is listed with packing 1x10. The steps delete the item at the end (always: true).'
+- id: TC_INV_019
+  module: inventory
+  title: Save an item with the mandatory fields empty (Product name blank)
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-04 (KB careportal_enriched_v5.csv#7e11d1c2 (mandatory fields
+    exist); message UNVERIFIED)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Save is refused. Message text UNVERIFIED (Q1)
+  steps: []
+- id: TC_INV_020
+  module: inventory
+  title: Create a second item with a name that already exists
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-05 (UNVERIFIED)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - 'UNVERIFIED: whether duplicates are blocked, warned or allowed (Q2). No KB page or citable code'
+  steps: []
+- id: TC_INV_021
+  module: inventory
+  title: Unit in Decimal = No, then enter a fractional quantity (1.5) in a sale/stock entry
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-06 (KB careportal_enriched_v5.csv#7e11d1c2 ("allow or restrict
+    decimal quantities"); error text UNVERIFIED)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Decimal quantity is restricted when the flag is No
+  steps: []
+- id: TC_INV_022
+  module: inventory
+  title: Unit in Decimal = Yes with odd decimals (0.001, 999999.999, 0, negative)
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-07 (UNVERIFIED)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - 'UNVERIFIED: precision and maximum are not in the KB (Q3)'
+  steps: []
+- id: TC_INV_023
+  module: inventory
+  title: Item name length limit, special characters, unicode, leading/trailing spaces
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-08 (UNVERIFIED)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - UNVERIFIED (Q4)
+  steps: []
+- id: TC_INV_024
+  module: inventory
+  title: 'Service item: choose Product = Service'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-09 (KB onedrive_processed_data.csv#26fecc0a)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - 'Fields enabled: Unit 1st, HSN/SAC, Tax Category, Posting Ledger (default No), M.R.P, P. Rate, Cost, S. Rate.
+    Posting Ledger Yes opens the Ledger Master popup. Service items sit under 4 account groups: Direct Expenses,
+    Indirect Expenses, Direct Incomes, Indirect Incomes'
+  steps:
+  - action: use_company
+    value: QA GST Automobile
+  - action: press
+    value: Alt+I
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create item
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 4
+  - action: select
+    target: '#typeofSupply'
+    value: Service
+    note: 'Product type: Service'
+  - action: sleep
+    value: 1.5
+  - action: assert_enabled
+    target: '#unit'
+    note: Unit enabled
+  - action: assert_enabled
+    target: '#hsn'
+    note: HSN/SAC enabled
+  - action: assert_enabled
+    target: '#taxxCategory'
+    note: Tax Category enabled
+  - action: assert_enabled
+    target: '#PostingLedger'
+    note: Posting Ledger enabled
+  - action: assert_enabled
+    target: '#txtmrp'
+    note: M.R.P enabled
+  - action: assert_enabled
+    target: '#txtprate'
+    note: Purchase Rate enabled
+  - action: assert_enabled
+    target: '#txtcost'
+    note: Cost enabled
+  - action: assert_enabled
+    target: '#txtratea'
+    note: Sale Rate enabled
+  - action: assert_value
+    target: '#PostingLedger'
+    value: 'No'
+    note: Posting Ledger defaults to No
+  - action: assert_disabled
+    target: '#txtPacking'
+    note: Packing disabled for a service
+  - action: select
+    target: '#PostingLedger'
+    value: 'Yes'
+    note: Posting Ledger = Yes
+  - action: wait_text
+    value: Select Ledger
+    note: Ledger list popup opens
+  - action: screenshot
+    value: TC_INV_024
+  - action: press
+    value: Escape
+  - action: sleep
+    value: 1
+  - action: press
+    value: Escape
+  verification:
+    status: verified
+    company: QA GST Automobile
+    date: '2026-11-19'
+    run:
+      passed: 24
+      total: 24
+    evidence:
+    - artifacts/verify/shots/8812_TC_INV_024.png
+    kb:
+    - onedrive_processed_data.csv#26fecc0a
+    notes: 'Create Item, Product type Service: Unit, HSN/SAC, Tax Category, Posting Ledger (default No), M.R.P,
+      Purchase Rate, Cost, Sale Rate are enabled; Packing, Unit in Decimal and goods-only fields are disabled. Posting
+      Ledger = Yes opens a ''Select Ledger'' list (Create/F2 available; expense/income ledgers such as Freight -
+      Inward, Round Off). The 4 account groups for service ledgers were not checked one by one. Not saved.'
+- id: TC_INV_025
+  module: inventory
+  title: Search the item list by name; by item code prefix of 1 or 2 characters
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-10 (KB support_tickets_vectordb.csv#8d821d26 (reported defect,
+    unconfirmed))'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Name search works. A ticket reports 1 to 2 character code searches return nothing (2023); expected value UNVERIFIED
+  steps: []
+- id: TC_INV_026
+  module: inventory
+  title: Change an item from Goods to Service when it has stock or transactions
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-11 (KB support_tickets_vectordb.csv#8d821d26 (value UNVERIFIED))'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - UNVERIFIED (Q5). A ticket asks for a bulk change of 1206 items, implying a restriction exists
+  steps: []
+- id: TC_INV_027
+  module: inventory
+  title: Delete an item that has transactions (dependents)
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-12 (UNVERIFIED)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - 'UNVERIFIED (Q6). Destructive: use only on items the test created'
+  steps: []
+- id: TC_INV_028
+  module: inventory
+  title: Open Store List from the Inventory Master dropdown
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-13 (KB onedrive_processed_data.csv#775209c4)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - 'List with columns Store Name and Action (edit, delete), a Search box and a Create/F2 button. Sample stores
+    seen in a doc screenshot: Main Store, Raw Material, Scrap Store, Testing Store, Under Production'
+  steps: []
+- id: TC_INV_029
+  module: inventory
+  title: Stock Transfer option is disabled until enabled in Settings > Control Room > Configure > search "Transfer"
+    > Stock Transfer = Yes, Save,...
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-14 (KB careportal_enriched_v5.csv#60246283)'
+  - 'Group: J13 Inventory stock movement'
+  - 'Scenario: Stock Transfer option is disabled until enabled in Settings > Control Room > Configure > search "Transfer"
+    > Stock Transfer = Yes, Save, OK on the refresh alert'
+  expected:
+  - 'After enabling and refreshing, the Stock Transfer option is available. Changes a tenant-wide setting: group
+    chemist-tenant, restore afterwards'
+  steps: []
+- id: TC_INV_030
+  module: inventory
+  title: 'Store transfer: Stock Management > Store Transfer (+), select source store, Stock Type, load items, Save'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-15 (KB careportal_enriched_v5.csv#15f0e143, #b82d4382, #f82639fc)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - 'Stock moves from the source store to the target store. Stock Type options: Only Expired, Near Expiry, Exclude
+    Expiry, All Stock, Manual (Manual: press Enter to pick items)'
+  steps: []
+- id: TC_INV_031
+  module: inventory
+  title: Store transfer reconciles
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-16 (UNVERIFIED (reasoned from KB careportal_enriched_v5.csv#f82639fc))'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Source store quantity falls and target store quantity rises by the same quantity; company total is unchanged.
+    The reconciliation itself is a reasoned expectation, not stated in the KB
+  steps: []
+- id: TC_INV_032
+  module: inventory
+  title: Store transfer with quantity greater than available stock, and with 0 stock
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-17 (KB support_tickets_vectordb.csv#3f12a27d, #028e820f (defects,
+    no expected value))'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - 'UNVERIFIED. KB has only reported defects: negative-quantity validation "not working" in Stock Transfer, and
+    a transfer from Main to VIP store with 0 stock "not saving" (2023). Expected value needs a decision (Q7)'
+  steps: []
+- id: TC_INV_033
+  module: inventory
+  title: 'Breakage/Expiry flow: transfer damaged or expired stock to the Scrap Store, then create a Breakage/Expiry
+    Issue'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-18 (KB careportal_enriched_v5.csv#1cb3a8c8)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Document records the stock as unusable and a settlement to the supplier. Later steps UNVERIFIED
+  steps: []
+- id: TC_INV_034
+  module: inventory
+  title: Physical Stock entry where physical 40 and software stock 20
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-19 (KB careportal_enriched_v5.csv#8924fff3)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Entry brings the software stock to match physical stock (40). Example from the KB
+  steps: []
+- id: TC_INV_035
+  module: inventory
+  title: Physical Stock with physical lower than software stock (write-off)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-20 (KB onedrive_processed_data.csv#2417d85e, #7f54caa4)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - 'Software stock is reduced to physical. Reasons listed: write-offs, stock-takes, donations, data entry errors'
+  steps: []
+- id: TC_INV_036
+  module: inventory
+  title: Modify and delete a Physical Stock entry
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-21 (KB careportal_enriched_v5.csv#8924fff3 (headings only);
+    results UNVERIFIED)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Both are documented procedures; the resulting stock and message text UNVERIFIED
+  steps: []
+- id: TC_INV_037
+  module: inventory
+  title: Delete an item from a passed Physical entry when stock is negative
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-22 (KB jira_vectordb.csv#fd27232e)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - A Jira task changed the logic to allow it. Current behaviour UNVERIFIED
+  steps: []
+- id: TC_INV_038
+  module: inventory
+  title: Negative stock NOT allowed (Control Room > Stock Negative), sell more than available (e.g. stock 10, sell
+    11)
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-23 (KB careportal_enriched_v5.csv#117b8963 (setting), jira_vectordb.csv#c5e4abdb,
+    support_tickets_vectordb.csv#863fe3d8)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Sale is blocked or alerted. Message text UNVERIFIED. Tickets MB-037485 and one POS ticket report no alert and
+    bill created in spite of the setting (possible defect)
+  steps: []
+- id: TC_INV_039
+  module: inventory
+  title: Negative stock allowed, sell more than available
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-24 (KB careportal_enriched_v5.csv#117b8963)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - 'Sale bill is created and stock balance shows negative: "sale of products even when inventory shows a negative
+    balance"'
+  steps: []
+- id: TC_INV_040
+  module: inventory
+  title: 'Batch-wise item: stock 12 in 3 batches, purchase-breakage entry takes 8 from batch 1, then the quantity
+    for batch 2'
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-25 (KB support_tickets_vectordb.csv#29b9e7f4 (defect; expected
+    value derived from the item having 12 stock))'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Stock must not show negative while entering. A ticket reports it does
+  steps: []
+- id: TC_INV_041
+  module: inventory
+  title: Sale reduces stock; purchase increases stock
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-26 (UNVERIFIED)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Item balance changes by the billed quantity. Cross-journey with J05/J07; reasoned, no KB statement of the exact
+    display
+  steps: []
+- id: TC_INV_042
+  module: inventory
+  title: 'Edit or cancel a sale after posting: stock is restored'
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-27 (KB jira_vectordb.csv#f69aa0fa (defect report))'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - UNVERIFIED (Q8). One Jira task reports counter-sale stock going negative by the sold quantity even when stock
+    exists
+  steps: []
+- id: TC_INV_043
+  module: inventory
+  title: 'Refresh Item Stock Balance: Master > Inventory Master > Item, open an item, refresh balances'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-28 (KB careportal_enriched_v5.csv#340f277e)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Stock and account balances are recalculated and mismatches between entries and stock status are resolved
+  steps: []
+- id: TC_INV_044
+  module: inventory
+  title: Item stock in item list vs stock report vs store/batch totals
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-29 (KB onedrive_processed_data.csv#7cc09a55 (table structure
+    only))'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Totals reconcile. Batch table holds opening qty, stock-in, stock-out and balance per batch/store/date (columns
+    link by batchlinkid, financialyearlinkid, complinkid). The reconciliation rule itself UNVERIFIED
+  steps: []
+- id: TC_INV_045
+  module: inventory
+  title: 'Financial-year boundary: closing stock carried as next year''s opening stock'
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-30 (KB onedrive_processed_data.csv#7cc09a55 (key only))'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - UNVERIFIED (Q9). Batch table is keyed by financialyearlinkid
+  steps: []
+- id: TC_INV_046
+  module: inventory
+  title: Items and stock of company A are not visible in company B
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-31 (KB onedrive_processed_data.csv#7cc09a55 (key only))'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - UNVERIFIED live. Data are keyed by complinkid. Needs a second company with items (see J03 CO-07)
+  steps: []
+- id: TC_INV_047
+  module: inventory
+  title: Limited user without Stock Management rights opens Store Transfer / Physical Stock by direct URL
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-32 (UNVERIFIED)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - 'UNVERIFIED: no limited account exists (see scenarios/auth.md RB-03)'
+  steps: []
+- id: TC_INV_048
+  module: inventory
+  title: Branch Transfer from head office to branch (Master > Branch Master > Branch Transfer > Create)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-33 (KB careportal_enriched_v5.csv#c43eac03)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - Stock Issues are generated for local branches and Sale Bills for out-of-state branches. Needs a branch setup;
+    out of scope for P1
+  steps: []
+- id: TC_INV_049
+  module: inventory
+  title: Excel import of Physical Stock
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-34 (KB support_tickets_vectordb.csv#4b61666a)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - 'A ticket says the import left no change in inventory (2023). Expected: stock changes. Out of scope (file upload,
+    defect only)'
+  steps: []
+- id: TC_INV_050
+  module: inventory
+  title: Double submit and refresh mid-save on item create, store transfer and Physical Stock
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/inventory.md IN-35 (UNVERIFIED)'
+  - 'Group: J13 Inventory stock movement'
+  expected:
+  - 'UNVERIFIED: duplicate protection is unknown (Q10)'
+  steps: []
+- id: TC_INV_051
+  module: inventory
+  title: Open Master > Inventory Master > Store
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-S01 (KB careportal_enriched_v5.csv#d31a6331)'
+  - 'Group: Store (warehouse) master'
+  expected:
+  - '"Store List" with predefined stores (Main Store at least)'
+  steps: []
+- id: TC_INV_052
+  module: inventory
+  title: Create a store with a name (and code) and Save
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-S02 (KB #ce432d17)'
+  - 'Group: Store (warehouse) master'
+  expected:
+  - Saved; listed in Store List
+  steps: []
+- id: TC_INV_053
+  module: inventory
+  title: Save with Store Name empty
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-S03 (UNVERIFIED)'
+  - 'Group: Store (warehouse) master'
+  expected:
+  - Not saved. Message UNVERIFIED
+  steps: []
+- id: TC_INV_054
+  module: inventory
+  title: Duplicate store name (same case / other case)
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-S04 (UNVERIFIED)'
+  - 'Group: Store (warehouse) master'
+  expected:
+  - Refused. Message and case rule UNVERIFIED
+  steps: []
+- id: TC_INV_055
+  module: inventory
+  title: Store name equal to a predefined store ("Main Store")
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-S05 (UNVERIFIED)'
+  - 'Group: Store (warehouse) master'
+  expected:
+  - Refused as duplicate. UNVERIFIED
+  steps: []
+- id: TC_INV_056
+  module: inventory
+  title: Duplicate store code
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-S06 (CODE #8f9ca90d (field exists))'
+  - 'Group: Store (warehouse) master'
+  expected:
+  - UNVERIFIED (is the code unique?)
+  steps: []
+- id: TC_INV_057
+  module: inventory
+  title: Edit a store name
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-S07 (KB #ce432d17)'
+  - 'Group: Store (warehouse) master'
+  expected:
+  - '"Modify Store"; new name listed'
+  steps: []
+- id: TC_INV_058
+  module: inventory
+  title: Delete an unused store
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-S08 (KB #846d048f)'
+  - 'Group: Store (warehouse) master'
+  expected:
+  - Confirmation; store gone from the list
+  steps: []
+- id: TC_INV_059
+  module: inventory
+  title: Delete a predefined store (Main Store)
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-S09 (KB #846d048f)'
+  - 'Group: Store (warehouse) master'
+  expected:
+  - Refused
+  steps: []
+- id: TC_INV_060
+  module: inventory
+  title: Delete a store that has stock / transactions
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-S10 (KB #846d048f; Jira MB-035757)'
+  - 'Group: Store (warehouse) master'
+  expected:
+  - Refused until stock is transferred out
+  steps: []
+- id: TC_INV_061
+  module: inventory
+  title: Delete a store that still has a rack
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-S11 (UNVERIFIED)'
+  - 'Group: Store (warehouse) master'
+  expected:
+  - UNVERIFIED (refused, or racks orphaned?)
+  steps: []
+- id: TC_INV_062
+  module: inventory
+  title: Open Rack List
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-R01 (KB #2f2ecf2f)'
+  - 'Group: Rack master'
+  expected:
+  - Grid Rack / Store / Action
+  steps: []
+- id: TC_INV_063
+  module: inventory
+  title: Create a rack under a store
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-R02 (KB #2f2ecf2f)'
+  - 'Group: Rack master'
+  expected:
+  - Saved; listed with its store
+  steps: []
+- id: TC_INV_064
+  module: inventory
+  title: Save with Rack Name empty
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-R03 (UNVERIFIED)'
+  - 'Group: Rack master'
+  expected:
+  - Not saved. Message UNVERIFIED
+  steps: []
+- id: TC_INV_065
+  module: inventory
+  title: Save with no store
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-R04 (CODE #1252e47c (storelinkid))'
+  - 'Group: Rack master'
+  expected:
+  - UNVERIFIED (required, or defaults to Main Store?)
+  steps: []
+- id: TC_INV_066
+  module: inventory
+  title: Duplicate rack name in the same store (and other case)
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-R05 (UNVERIFIED)'
+  - 'Group: Rack master'
+  expected:
+  - UNVERIFIED
+  steps: []
+- id: TC_INV_067
+  module: inventory
+  title: Same rack name in a different store
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-R06 (CODE #7f412684)'
+  - 'Group: Rack master'
+  expected:
+  - UNVERIFIED; racks belong to a store (Rack/List by store)
+  steps: []
+- id: TC_INV_068
+  module: inventory
+  title: Rack name longer than 30 characters
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-R07 (CODE #aa4af1f9)'
+  - 'Group: Rack master'
+  expected:
+  - Cut or refused; DB column is 30
+  steps: []
+- id: TC_INV_069
+  module: inventory
+  title: 'Edit a rack: rename and move to another store'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-R08 (KB #eb4e77fe)'
+  - 'Group: Rack master'
+  expected:
+  - '"Modify Rack"; list shows new name and store'
+  steps: []
+- id: TC_INV_070
+  module: inventory
+  title: Delete an unused rack
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-R09 (KB #eb4e77fe)'
+  - 'Group: Rack master'
+  expected:
+  - Confirmation Yes; rack gone
+  steps: []
+- id: TC_INV_071
+  module: inventory
+  title: Delete a rack set on an item
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-R10 (KB #eb4e77fe)'
+  - 'Group: Rack master'
+  expected:
+  - Refused
+  steps: []
+- id: TC_INV_072
+  module: inventory
+  title: Create Item, pick the new rack in the Rack field, save
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-U01 (KB #f1e382b2)'
+  - 'Group: Usage: rack on the item'
+  expected:
+  - Item saved; reopening shows the rack
+  steps: []
+- id: TC_INV_073
+  module: inventory
+  title: Item List shows the rack of the item
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-U02 (Jira #46a639b9)'
+  - 'Group: Usage: rack on the item'
+  expected:
+  - UNVERIFIED (is there a rack column?)
+  steps: []
+- id: TC_INV_074
+  module: inventory
+  title: '"Rack Required?" No hides the Rack field'
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-U03 (KB #f59f4e07)'
+  - 'Group: Usage: rack on the item'
+  expected:
+  - Tenant-wide setting; not changed by the suite
+  steps: []
+- id: TC_INV_075
+  module: inventory
+  title: Update an item's rack
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/rack-warehouse-management.md RW-U04 (Jira #1fbe6514)'
+  - 'Group: Usage: rack on the item'
+  expected:
+  - Saves without hanging (MB-038596)
+  steps: []

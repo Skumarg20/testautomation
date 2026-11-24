@@ -1,0 +1,378 @@
+- id: TC_DASH_001
+  module: dashboard
+  title: The dashboard shows the three summary cards Net Sale, Net Purchase, Gross Profit, each with "₹current from
+    ₹previous" and a change...
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-01'
+  - 'Scenario: The dashboard shows the three summary cards Net Sale, Net Purchase, Gross Profit, each with "₹current
+    from ₹previous" and a change percentage.'
+  expected: []
+  steps: []
+- id: TC_DASH_002
+  module: dashboard
+  title: The tile sections Fund Summary, Outstanding, Business, New Added, Stock, Pending are shown with their tiles.
+    Tile names (Bank Balance,...
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-02'
+  - 'Scenario: The tile sections Fund Summary, Outstanding, Business, New Added, Stock, Pending are shown with their
+    tiles. Tile names (Bank Balance, Cash Balance, Current/Overdue Receivable, ...) UNVERIFIED in KB, seen live.'
+  expected: []
+  steps: []
+- id: TC_DASH_003
+  module: dashboard
+  title: The period picker offers predefined ranges and a custom range. Exact option list UNVERIFIED in KB.
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-03'
+  expected: []
+  steps: []
+- id: TC_DASH_004
+  module: dashboard
+  title: Choosing a period relabels the picker and reloads the figures for that period.
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-04'
+  expected: []
+  steps: []
+- id: TC_DASH_005
+  module: dashboard
+  title: The chosen period is remembered after a reload. UNVERIFIED (seen live).
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-05'
+  expected: []
+  steps: []
+- id: TC_DASH_006
+  module: dashboard
+  title: 'Refresh Dashboard recalculates and moves "Last Sync" to now. UNVERIFIED (seen live: the first paint shows
+    the figures of the last sync).'
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-06'
+  expected: []
+  steps: []
+- id: TC_DASH_007
+  module: dashboard
+  title: Net Sale opens the Sale Register, Net Purchase the Purchase Register, Gross Profit the Gross Profit/Loss
+    report (#2 "reports reachable...
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-07'
+  - 'Scenario: Net Sale opens the Sale Register, Net Purchase the Purchase Register, Gross Profit the Gross Profit/Loss
+    report (#2 "reports reachable from the Dashboard" onedrive_processed_data.csv#dcc783a9).'
+  expected: []
+  steps: []
+- id: TC_DASH_008
+  module: dashboard
+  title: The Shortcut Keys panel opens from the header and lists HOME/DASHBOARD Alt+H; Alt+H returns to the dashboard
+    from another screen.
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-08'
+  expected: []
+  steps: []
+- id: TC_DASH_009
+  module: dashboard
+  title: An item created today is counted in New Added > Items for Today, and the count drops when it is deleted.
+    Exact count semantics UNVERIFIED.
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-09'
+  expected: []
+  steps: []
+- id: TC_DASH_010
+  module: dashboard
+  title: The "from" (previous) figure of each card for This Month equals the current figure for Previous Month.
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-10'
+  expected: []
+  steps: []
+- id: TC_DASH_011
+  module: dashboard
+  title: Each card's percentage equals (current - previous) / previous x 100 (derived; UNVERIFIED rounding).
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-11'
+  expected: []
+  steps: []
+- id: TC_DASH_012
+  module: dashboard
+  title: 'Net Sale equals the Sale Register total for the same range (MB-024396, #0bf8d367, #58aa7aec). NEEDS DECISION:
+    Net Sale is net of GST,...'
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-12'
+  - 'Scenario: Net Sale equals the Sale Register total for the same range (MB-024396, #0bf8d367, #58aa7aec). NEEDS
+    DECISION: Net Sale is net of GST, the register includes it (see spec).'
+  expected:
+  - After Refresh Dashboard, Net Sale (Last 30 Days) equals the Sales - Register(All) net (Credit - Debit) for the
+    same period; both are without GST (taxable value)
+  steps:
+  - action: use_company
+    value: QA GST Billing General
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 4
+  - action: click
+    target: xpath=//*[@role="tab" or contains(@class,"nav-link")][normalize-space()="Dashboard"]
+    note: Dashboard tab
+  - action: sleep
+    value: 4
+  - action: click
+    target: xpath=//button[@title="Refresh Dashboard"]
+    note: Refresh Dashboard (otherwise it shows the last sync)
+  - action: sleep
+    value: 15
+  - action: assert_text
+    value: 'Last Sync : {today}'
+    note: Synced today
+  - action: assert_visible
+    target: xpath=//*[normalize-space()="Last 30 Days"]
+    note: 'Range: Last 30 Days'
+  - action: read_value
+    target: xpath=//div[contains(@class,"nd-chart")][.//div[contains(@class,"title")][normalize-space(text())="Net
+      Sale"]]//h4
+    save_as: ns
+    note: 'Net Sale: ₹<value> from ₹<previous period>'
+  - action: screenshot
+    value: TC_DASH_012_dash
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 3
+  - action: hover
+    target: '#lft-dropdown'
+    note: Mouse over the side menu
+  - action: sleep
+    value: 1
+  - action: fill
+    target: input[placeholder="Type to search"]
+    value: Register
+    note: 'Menu search: Register'
+    inside_modal: true
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//p[normalize-space()="Inventory Report / Sales Reports / Sales - Register(All)"]
+    note: Open Inventory Report / Sales Reports / Sales - Register(All)
+    inside_modal: true
+  - action: wait_text
+    value: Monthly Balance
+  - action: sleep
+    value: 3
+  - action: assert_visible
+    target: xpath=//div[@role="row"][.//div[@col-id="Month"][normalize-space()="October"]]//div[@col-id="Credit"][normalize-space()=""]
+    note: No October sales (so Last 30 Days = November here)
+  - action: assert_visible
+    target: xpath=//div[@role="row"][.//div[@col-id="Month"][normalize-space()="November"]]//div[@col-id="Monthly"][starts-with(translate(normalize-space(.),",",""),
+      concat(substring-before(substring-after("{ctx.ns}","₹")," from"), " "))]
+    note: Register November net (taxable, without GST) = dashboard Net Sale
+  - action: screenshot
+    value: TC_DASH_012
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  verification:
+    status: verified
+    company: QA GST Billing General
+    date: '2026-11-20'
+    run:
+      passed: 25
+      total: 25
+    evidence:
+    - artifacts/run_2026-11-19_22-52-08/TC_DASH_012.png
+    kb:
+    - support:MB-24396
+    notes: 'The dashboard shows stale figures until ''Refresh Dashboard'' is clicked (Last Sync was 16-10-2026,
+      Net Sale 0.00); after refresh: Net Sale 103049.99 (Last 30 Days). Inventory Report > Sales Reports > Sales
+      - Register(All): November Credit 1,03,049.99, Monthly 1,03,049.99 Cr, October empty. Both are the taxable
+      value without GST (B2B 2400.00 + B2C 599.99 + exempt 100050.00 = GSTR-1 HSN total), so the ''NEEDS DECISION''
+      note (register includes GST) does not apply: this register is the sales account, net of GST. The steps compare
+      the read Net Sale with November and assert October is empty (the 30-day window here).'
+- id: TC_DASH_013
+  module: dashboard
+  title: A custom date typed in the app's dd-mm-yyyy format keeps that date (MB-024396 "date filter is not working").
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-13'
+  expected: []
+  steps: []
+- id: TC_DASH_014
+  module: dashboard
+  title: A custom range whose From is after To is refused. UNVERIFIED expected behaviour.
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-14'
+  expected: []
+  steps: []
+- id: TC_DASH_015
+  module: dashboard
+  title: A custom range outside the books year is refused (min/max attributes 2026-04-01..2027-03-31 seen live).
+    UNVERIFIED.
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-15'
+  expected: []
+  steps: []
+- id: TC_DASH_016
+  module: dashboard
+  title: Clicking a Fund Summary / Outstanding tile drills into the report. UNVERIFIED (KB silent).
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-16'
+  expected: []
+  steps: []
+- id: TC_DASH_017
+  module: dashboard
+  title: 'Previous period equals 0: percentage shows 0.000%, not a division error (seen live).'
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-17'
+  expected: []
+  steps: []
+- id: TC_DASH_018
+  module: dashboard
+  title: 'A limited-rights user sees only permitted tiles (role rights). Not covered: no limited user on the QA
+    login.'
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-18'
+  expected: []
+  steps: []
+- id: TC_DASH_019
+  module: dashboard
+  title: Financial year switch from the dashboard. Owned by J-company-switch, not repeated here.
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/dashboard.md DB-19'
+  expected: []
+  steps: []

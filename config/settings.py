@@ -186,9 +186,15 @@ def _apply_active_environment(path=None):
         put("LOGIN_URL", env["login_url"].rstrip("/"))
     if env.get("app_url"):
         put("BASE_URL", env["app_url"].rstrip("/"))
-    if env.get("user"):
+    # A Test Studio server run uses the MargBooks login of the QA who started it (set in this process's
+    # environment by ui_studio.worker), not the shared one in environments.json.
+    own = os.environ.get("STUDIO_RUN_CREDS") == "1"
+    if own:
+        put("USER", os.environ.get("MARGBOOKS_USER", ""))
+        put("PASSWORD", os.environ.get("MARGBOOKS_PASS", ""))
+    if env.get("user") and not own:
         put("USER", env["user"])
-    if env.get("password"):
+    if env.get("password") and not own:
         put("PASSWORD", env["password"])
     if env.get("company"):
         put("COMPANY", env["company"])

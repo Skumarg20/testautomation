@@ -11,8 +11,8 @@ login:
   - input[type="password"]
   - label=Password
   continue:
-  - exact_text=CONTINUE
   - role=button:CONTINUE
+  - exact_text=CONTINUE
   - button[type="submit"]
   - button#SIGNin
   back:
@@ -262,11 +262,3 @@ report:
   - role=button:Show
   grid:
   - table
-t:
-  party: []
-  profile:
-  - a#dropdownMenuButton
-  save_btn:
-  - button#btnSave27
-  delete: []
-  askpartyinretailbilling: []

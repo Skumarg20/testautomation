@@ -1,7 +1,7 @@
 {
- "read_at": "2026-10-14 13:09",
- "url": "https://books4.margbooks.com/mstr/margsetup-controlroom",
- "total": 544,
+ "read_at": "2026-11-20 18:45",
+ "url": "https://books6.margbooks.com/mstr/margsetup-controlroom",
+ "total": 548,
  "settings": {
   "mode_of_payment": {
    "label": "Mode of Payment required in Sale",
@@ -13,7 +13,7 @@
     "No",
     "Yes"
    ],
-   "affects": "Sale Bill save karte waqt payment window khulti hai"
+   "affects": "A payment window opens when a sale bill is saved"
   },
   "ask_party_retail": {
    "label": "Ask Party in Retail Billing",
@@ -26,7 +26,7 @@
     "Ask",
     "Ask on Spacebar"
    ],
-   "affects": "Retail billing me party poochta hai ya nahi"
+   "affects": "Whether the counter sale screen asks for a party"
   },
   "ask_item_discount": {
    "label": "Ask Item Discount on Start Sale",
@@ -38,11 +38,11 @@
     "No",
     "Yes"
    ],
-   "affects": "Item wise discount ka column (Discount 1) dikhta hai ya nahi"
+   "affects": "Whether the item-wise Discount 1 column is shown"
   },
   "second_discount": {
    "label": "Volume Discount 2nd?",
-   "value": "Lumpsum",
+   "value": "No",
    "on": null,
    "kind": "choice",
    "css": "select#ddl4152",
@@ -52,11 +52,11 @@
     "Lumpsum",
     "Percentage"
    ],
-   "affects": "Doosra discount ka column (Discount 2)"
+   "affects": "Whether the second discount column (Discount 2) is shown"
   },
   "calculation_type": {
    "label": "Calculation Type in Sale",
-   "value": "Inclusive",
+   "value": "Exclusive",
    "on": null,
    "kind": "choice",
    "css": "select#ddl3022",
@@ -65,7 +65,7 @@
     "Exclusive",
     "Tax on MRP(inc.)"
    ],
-   "affects": "GST inclusive hai ya exclusive"
+   "affects": "Whether GST is added on top of the price or already included in it"
   },
   "batch_required": {
    "label": "Merge Batch Required?",
@@ -77,7 +77,7 @@
     "No",
     "Yes"
    ],
-   "affects": "Item grid me Batch ka column"
+   "affects": "Whether the item grid has a Batch column"
   },
   "mrp_required": {
    "label": "Billing rate greater then M.R.P on purchase",
@@ -89,11 +89,11 @@
     "No",
     "Yes"
    ],
-   "affects": "Item grid me MRP ka column"
+   "affects": "Whether the item grid has an MRP column"
   },
   "barcode_required": {
    "label": "Barcode Required",
-   "value": "Batch wise",
+   "value": "No",
    "on": null,
    "kind": "choice",
    "css": "select#ddl474",
@@ -104,11 +104,11 @@
     "Serial wise",
     "No"
    ],
-   "affects": "Item grid me Barcode ka column"
+   "affects": "Whether the item grid has a Barcode column"
   },
   "mr_mandatory": {
    "label": "M.R Required In Sale?",
-   "value": "Yes",
+   "value": "No",
    "on": null,
    "kind": "choice",
    "css": "select#ddl5093",
@@ -116,7 +116,7 @@
     "No",
     "Yes"
    ],
-   "affects": "MR bharna zaroori hai ya nahi"
+   "affects": "Whether MR must be filled in"
   },
   "cursor_wait_item": {
    "label": "Cursor wait on",
@@ -128,7 +128,7 @@
     "All",
     "Quantity"
    ],
-   "affects": "Item grid me cursor kahan rukta hai"
+   "affects": "Where the cursor stops in the item grid"
   },
   "cursor_additional_ledger": {
    "label": "Cursor wait on",
@@ -140,7 +140,7 @@
     "All",
     "Quantity"
    ],
-   "affects": "Freight/Other Head par cursor rukta hai ya nahi"
+   "affects": "Whether the cursor stops on Freight / Other Head"
   }
  },
  "raw": [
@@ -335,7 +335,7 @@
    "css": "select#ddl3002",
    "id": "ddl3002",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -360,7 +360,7 @@
    "css": "select#ddl3005",
    "id": "ddl3005",
    "kind": "choice",
-   "value": "Rate * Quantity - Discount",
+   "value": "Rate * Quantity",
    "options": [
     "Rate * Quantity",
     "Rate * Quantity - Discount",
@@ -437,7 +437,7 @@
    "css": "select#ddl3019",
    "id": "ddl3019",
    "kind": "choice",
-   "value": "No",
+   "value": "Yes",
    "options": [
     "No",
     "Yes"
@@ -475,7 +475,7 @@
    "css": "select#ddl3022",
    "id": "ddl3022",
    "kind": "choice",
-   "value": "Inclusive",
+   "value": "Exclusive",
    "options": [
     "Inclusive",
     "Exclusive",
@@ -501,7 +501,7 @@
    "css": "select#ddl3025",
    "id": "ddl3025",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -526,7 +526,7 @@
    "css": "select#ddl3028",
    "id": "ddl3028",
    "kind": "choice",
-   "value": "Rate * Quantity - Discount",
+   "value": "Rate * Quantity",
    "options": [
     "Rate * Quantity",
     "Rate * Quantity - Discount",
@@ -654,7 +654,7 @@
    "css": "select#ddl3048",
    "id": "ddl3048",
    "kind": "choice",
-   "value": "No",
+   "value": "Ask",
    "options": [
     "No",
     "Price List",
@@ -668,7 +668,7 @@
    "css": "select#ddl3049",
    "id": "ddl3049",
    "kind": "choice",
-   "value": "No",
+   "value": "Ask",
    "options": [
     "No",
     "Product Special",
@@ -682,7 +682,7 @@
    "css": "select#ddl3050",
    "id": "ddl3050",
    "kind": "choice",
-   "value": "No",
+   "value": "Yes",
    "options": [
     "No",
     "Yes"
@@ -720,7 +720,7 @@
    "css": "select#ddl3053",
    "id": "ddl3053",
    "kind": "choice",
-   "value": "Inclusive",
+   "value": "Exclusive",
    "options": [
     "Inclusive",
     "Exclusive",
@@ -772,7 +772,7 @@
    "css": "select#ddl3058",
    "id": "ddl3058",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -849,7 +849,7 @@
    "css": "select#ddl3067",
    "id": "ddl3067",
    "kind": "choice",
-   "value": "Rate * Quantity - Discount",
+   "value": "Rate * Quantity",
    "options": [
     "Rate * Quantity",
     "Rate * Quantity - Discount",
@@ -874,7 +874,7 @@
    "css": "select#ddl3069",
    "id": "ddl3069",
    "kind": "choice",
-   "value": "No",
+   "value": "Ask",
    "options": [
     "No",
     "Price List",
@@ -888,7 +888,7 @@
    "css": "select#ddl3070",
    "id": "ddl3070",
    "kind": "choice",
-   "value": "No",
+   "value": "Ask",
    "options": [
     "No",
     "Product Special",
@@ -902,7 +902,7 @@
    "css": "select#ddl3071",
    "id": "ddl3071",
    "kind": "choice",
-   "value": "No",
+   "value": "Yes",
    "options": [
     "No",
     "Yes"
@@ -1030,7 +1030,7 @@
    "css": "select#ddl3090",
    "id": "ddl3090",
    "kind": "choice",
-   "value": "Inclusive",
+   "value": "Exclusive",
    "options": [
     "Inclusive",
     "Exclusive",
@@ -1069,7 +1069,7 @@
    "css": "select#ddl5093",
    "id": "ddl5093",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -1077,7 +1077,7 @@
    "hidden": false
   },
   {
-   "label": "Patient & Doctor Name Y-must N-not necessary",
+   "label": "Customer Y-must N-not necessary ?",
    "css": "select#ddl5096",
    "id": "ddl5096",
    "kind": "choice",
@@ -1093,7 +1093,7 @@
    "css": "select#ddl4113",
    "id": "ddl4113",
    "kind": "choice",
-   "value": "M.R.P.",
+   "value": "A-Rate",
    "options": [
     "Cost",
     "Extra+Cost",
@@ -1709,7 +1709,7 @@
    "css": "select#ddl4174",
    "id": "ddl4174",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -1769,7 +1769,7 @@
    "css": "select#ddl3161",
    "id": "ddl3161",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -1819,7 +1819,7 @@
    "css": "select#ddl3166",
    "id": "ddl3166",
    "kind": "choice",
-   "value": "No",
+   "value": "Yes",
    "options": [
     "No",
     "Yes"
@@ -1971,7 +1971,7 @@
    "css": "select#ddl3182",
    "id": "ddl3182",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -2021,7 +2021,7 @@
    "css": "select#ddl3187",
    "id": "ddl3187",
    "kind": "choice",
-   "value": "No",
+   "value": "Yes",
    "options": [
     "No",
     "Yes"
@@ -2199,7 +2199,7 @@
    "css": "select#ddl3206",
    "id": "ddl3206",
    "kind": "choice",
-   "value": "Rate * Quantity - Discount",
+   "value": "Rate * Quantity",
    "options": [
     "Rate * Quantity",
     "Rate * Quantity - Discount",
@@ -2377,7 +2377,7 @@
    "css": "select#ddl3306",
    "id": "ddl3306",
    "kind": "choice",
-   "value": "Rate * Quantity - Discount",
+   "value": "Rate * Quantity",
    "options": [
     "Rate * Quantity",
     "Rate * Quantity - Discount",
@@ -2555,7 +2555,7 @@
    "css": "select#ddl3326",
    "id": "ddl3326",
    "kind": "choice",
-   "value": "Rate * Quantity - Discount",
+   "value": "Rate * Quantity",
    "options": [
     "Rate * Quantity",
     "Rate * Quantity - Discount",
@@ -2708,7 +2708,7 @@
    "css": "select#ddl3342",
    "id": "ddl3342",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -2758,7 +2758,7 @@
    "css": "select#ddl3347",
    "id": "ddl3347",
    "kind": "choice",
-   "value": "No",
+   "value": "Yes",
    "options": [
     "No",
     "Yes"
@@ -2911,7 +2911,7 @@
    "css": "select#ddl3365",
    "id": "ddl3365",
    "kind": "choice",
-   "value": "Rate * Quantity - Discount",
+   "value": "Rate * Quantity",
    "options": [
     "Rate * Quantity",
     "Rate * Quantity - Discount",
@@ -3077,7 +3077,7 @@
    "css": "select#ddl3385",
    "id": "ddl3385",
    "kind": "choice",
-   "value": "Rate * Quantity - Discount",
+   "value": "Rate * Quantity",
    "options": [
     "Rate * Quantity",
     "Rate * Quantity - Discount",
@@ -3357,7 +3357,7 @@
    "css": "select#ddl3418",
    "id": "ddl3418",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -3382,7 +3382,7 @@
    "css": "select#ddl3422",
    "id": "ddl3422",
    "kind": "choice",
-   "value": "Rate * Quantity - Discount",
+   "value": "Rate * Quantity",
    "options": [
     "Rate * Quantity",
     "Rate * Quantity - Discount",
@@ -3407,7 +3407,7 @@
    "css": "select#ddl3424",
    "id": "ddl3424",
    "kind": "choice",
-   "value": "No",
+   "value": "Ask",
    "options": [
     "No",
     "Price List",
@@ -3421,7 +3421,7 @@
    "css": "select#ddl3425",
    "id": "ddl3425",
    "kind": "choice",
-   "value": "No",
+   "value": "Ask",
    "options": [
     "No",
     "Price List",
@@ -3435,7 +3435,7 @@
    "css": "select#ddl3426",
    "id": "ddl3426",
    "kind": "choice",
-   "value": "No",
+   "value": "Yes",
    "options": [
     "No",
     "Yes"
@@ -3550,7 +3550,7 @@
    "css": "select#ddl3439",
    "id": "ddl3439",
    "kind": "choice",
-   "value": "Cash",
+   "value": "Ask Party",
    "options": [
     "Ask Party",
     "Cash"
@@ -3562,7 +3562,7 @@
    "css": "select#ddl3440",
    "id": "ddl3440",
    "kind": "choice",
-   "value": "M.R.P.",
+   "value": "A-Rate",
    "options": [
     "Cost",
     "Extra+Cost",
@@ -3832,7 +3832,7 @@
    "css": "select#ddl4436",
    "id": "ddl4436",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -3844,7 +3844,7 @@
    "css": "select#ddl4437",
    "id": "ddl4437",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -3964,7 +3964,7 @@
    "css": "select#ddl4516",
    "id": "ddl4516",
    "kind": "choice",
-   "value": "No",
+   "value": "",
    "options": [
     "No",
     "Yes"
@@ -4184,7 +4184,7 @@
    "css": "select#ddl4559",
    "id": "ddl4559",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -4365,6 +4365,18 @@
   },
   {
    "label": "386",
+   "css": "select#ddl4605",
+   "id": "ddl4605",
+   "kind": "choice",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ],
+   "hidden": false
+  },
+  {
+   "label": "387",
    "css": "select#ddl201",
    "id": "ddl201",
    "kind": "choice",
@@ -4378,7 +4390,7 @@
    "hidden": false
   },
   {
-   "label": "387",
+   "label": "388",
    "css": "select#ddl4310",
    "id": "ddl4310",
    "kind": "choice",
@@ -4390,7 +4402,7 @@
    "hidden": false
   },
   {
-   "label": "389",
+   "label": "390",
    "css": "select#ddl4095",
    "id": "ddl4095",
    "kind": "choice",
@@ -4402,7 +4414,7 @@
    "hidden": false
   },
   {
-   "label": "390",
+   "label": "391",
    "css": "select#ddl4340",
    "id": "ddl4340",
    "kind": "choice",
@@ -4508,7 +4520,10 @@
     "2",
     "3",
     "4",
-    "5"
+    "5",
+    "6",
+    "7",
+    "8"
    ],
    "hidden": false
   },
@@ -4566,7 +4581,7 @@
    "css": "select#ddl1022",
    "id": "ddl1022",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -4753,7 +4768,7 @@
    "css": "select#ddl10005",
    "id": "ddl10005",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -4809,6 +4824,18 @@
    "hidden": false
   },
   {
+   "label": "Short Amount Required",
+   "css": "select#ddl4607",
+   "id": "ddl4607",
+   "kind": "choice",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ],
+   "hidden": false
+  },
+  {
    "label": "Set default purchase & sales unit?",
    "css": "select#ddl604",
    "id": "ddl604",
@@ -4845,7 +4872,10 @@
     "2",
     "3",
     "4",
-    "5"
+    "5",
+    "6",
+    "7",
+    "8"
    ],
    "hidden": false
   },
@@ -4914,7 +4944,7 @@
    "css": "select#ddl1018",
    "id": "ddl1018",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -5044,7 +5074,7 @@
    "css": "select#ddl383",
    "id": "ddl383",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -5072,7 +5102,19 @@
    "options": [
     "Main Store",
     "Scrap Store",
-    "Godown"
+    "QA_Store_2"
+   ],
+   "hidden": false
+  },
+  {
+   "label": "Purchase Rate Display on Parameter Window in Sale",
+   "css": "select#ddl4606",
+   "id": "ddl4606",
+   "kind": "choice",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
    ],
    "hidden": false
   },
@@ -5105,7 +5147,7 @@
    "css": "select#ddl4103",
    "id": "ddl4103",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -5136,7 +5178,10 @@
     "2",
     "3",
     "4",
-    "5"
+    "5",
+    "6",
+    "7",
+    "8"
    ],
    "hidden": false
   },
@@ -5157,7 +5202,7 @@
    "css": "select#ddl382",
    "id": "ddl382",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -5249,7 +5294,7 @@
    "css": "select#ddl384",
    "id": "ddl384",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -5273,7 +5318,7 @@
    "css": "select#ddl453",
    "id": "ddl453",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -5297,7 +5342,7 @@
    "css": "select#ddl608",
    "id": "ddl608",
    "kind": "choice",
-   "value": "Unit1",
+   "value": "Unit2",
    "options": [
     "Unit1",
     "Unit2"
@@ -5316,7 +5361,10 @@
     "2",
     "3",
     "4",
-    "5"
+    "5",
+    "6",
+    "7",
+    "8"
    ],
    "hidden": false
   },
@@ -5359,6 +5407,18 @@
    "hidden": false
   },
   {
+   "label": "Cost Centre Management",
+   "css": "select#ddl411",
+   "id": "ddl411",
+   "kind": "choice",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ],
+   "hidden": false
+  },
+  {
    "label": "Multi Series",
    "css": "select#ddl470",
    "id": "ddl470",
@@ -5375,7 +5435,7 @@
    "css": "select#ddl4187",
    "id": "ddl4187",
    "kind": "choice",
-   "value": "With Image",
+   "value": "Without Image",
    "options": [
     "With Image",
     "Without Image"
@@ -5440,7 +5500,10 @@
     "2",
     "3",
     "4",
-    "5"
+    "5",
+    "6",
+    "7",
+    "8"
    ],
    "hidden": false
   },
@@ -5546,7 +5609,7 @@
    "css": "select#ddl610",
    "id": "ddl610",
    "kind": "choice",
-   "value": "Both",
+   "value": "Unit 1",
    "options": [
     "Unit 1",
     "Both"
@@ -5565,7 +5628,10 @@
     "2",
     "3",
     "4",
-    "5"
+    "5",
+    "6",
+    "7",
+    "8"
    ],
    "hidden": false
   },
@@ -5613,7 +5679,7 @@
    "css": "select#ddl56",
    "id": "ddl56",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -5736,7 +5802,7 @@
    "css": "select#ddl412",
    "id": "ddl412",
    "kind": "choice",
-   "value": "No",
+   "value": "Yes",
    "options": [
     "No",
     "Yes"
@@ -5748,7 +5814,7 @@
    "css": "select#ddl6014",
    "id": "ddl6014",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -5892,7 +5958,7 @@
    "css": "select#ddl4141",
    "id": "ddl4141",
    "kind": "choice",
-   "value": "No",
+   "value": "Yes",
    "options": [
     "No",
     "Yes"
@@ -5900,7 +5966,7 @@
    "hidden": false
   },
   {
-   "label": "Ask patient start and save ?",
+   "label": "Ask customer start and save ?",
    "css": "select#ddl472",
    "id": "ddl472",
    "kind": "choice",
@@ -5990,7 +6056,7 @@
    "css": "select#ddl4093",
    "id": "ddl4093",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -6050,7 +6116,7 @@
    "css": "select#ddl6016",
    "id": "ddl6016",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -6062,7 +6128,7 @@
    "css": "select#ddl4317",
    "id": "ddl4317",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -6074,7 +6140,7 @@
    "css": "select#ddl511",
    "id": "ddl511",
    "kind": "choice",
-   "value": "No",
+   "value": "Yes",
    "options": [
     "No",
     "Yes"
@@ -6086,7 +6152,7 @@
    "css": "select#ddl4161",
    "id": "ddl4161",
    "kind": "choice",
-   "value": "No",
+   "value": "Yes",
    "options": [
     "No",
     "Yes"
@@ -6135,7 +6201,7 @@
    "css": "select#ddl4165",
    "id": "ddl4165",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -6267,7 +6333,7 @@
    "css": "select#ddl508",
    "id": "ddl508",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -6315,7 +6381,7 @@
    "css": "select#ddl510",
    "id": "ddl510",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -6447,7 +6513,7 @@
    "css": "select#ddl4200",
    "id": "ddl4200",
    "kind": "choice",
-   "value": "No",
+   "value": "Yes",
    "options": [
     "No",
     "Yes"
@@ -6591,7 +6657,7 @@
    "css": "select#ddl474",
    "id": "ddl474",
    "kind": "choice",
-   "value": "Batch wise",
+   "value": "No",
    "options": [
     "Master wise",
     "Batch wise",
@@ -6658,9 +6724,6 @@
    "value": "Description",
    "options": [
     "Description",
-    "Barcode",
-    "Itemcode",
-    "Print Name",
     "Any Where",
     "Top Sale",
     "Item Smart Search"
@@ -6672,7 +6735,7 @@
    "css": "select#ddl1002",
    "id": "ddl1002",
    "kind": "choice",
-   "value": "Report & Transaction",
+   "value": "No",
    "options": [
     "No",
     "Only Transaction",
@@ -6686,7 +6749,7 @@
    "css": "select#ddl1003",
    "id": "ddl1003",
    "kind": "choice",
-   "value": "Auto",
+   "value": "Self",
    "options": [
     "Auto",
     "Self"
@@ -6710,7 +6773,7 @@
    "css": "select#ddl1006",
    "id": "ddl1006",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -6734,7 +6797,7 @@
    "css": "select#ddl1009",
    "id": "ddl1009",
    "kind": "choice",
-   "value": "Yes",
+   "value": "No",
    "options": [
     "No",
     "Yes"
@@ -6760,7 +6823,7 @@
    "css": "select#ddl1014",
    "id": "ddl1014",
    "kind": "choice",
-   "value": "perUnit",
+   "value": "No",
    "options": [
     "perUnit",
     "No",
@@ -6883,7 +6946,7 @@
    "css": "select#ddl4152",
    "id": "ddl4152",
    "kind": "choice",
-   "value": "Lumpsum",
+   "value": "No",
    "options": [
     "perUnit",
     "No",

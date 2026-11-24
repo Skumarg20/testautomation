@@ -76,6 +76,9 @@ SKIP_LINE = re.compile(
 
 
 LOCATOR_CALL = re.compile(rf"\.locator\(\s*{_S}\s*\)")
+UNIQUE_ROLE = re.compile(r"get_?[bB]y_?[rR]ole\(\s*['\"](dialog|alertdialog)['\"]\s*\)")
+ROLE_FILTER = re.compile(
+    rf"get_?[bB]y_?[rR]ole\(\s*{_S}\s*\)\s*\.filter\(\s*(?:\{{\s*hasText\s*:|has_text\s*=)\s*{_S}")
 
 
 def _locator_from(line: str) -> str | None:
@@ -90,9 +93,20 @@ def _locator_from(line: str) -> str | None:
     m = LOCATOR_CALL.search(line)
     if m:
         return m.group(1)
+    # getByRole('button').filter({ hasText: '×' }) -- a popup's close (×) button has no name
+    m = ROLE_FILTER.search(line)
+    if m:
+        role, text = m.group(1), m.group(2).replace('"', '\\"')
+        tag = {"button": "button, ", "link": "a, "}.get(role, "")
+        return f'css=:is({tag}[role="{role}"]):has-text("{text}")'
     m = BY_ROLE.search(line)
     if m:
         return f"role={m.group(1)}:{m.group(2)}"
+    # getByRole('dialog') -- a popup has no name, but there is only one open at a time.
+    # (A bare textbox/button is NOT taken: it could be any of many on the page.)
+    m = UNIQUE_ROLE.search(line)
+    if m:
+        return f"role={m.group(1)}"
     m = BY_LABEL.search(line)
     if m:
         return f"nearlabel={m.group(1)}"
@@ -208,6 +222,10 @@ def _one(line: str) -> dict | None:
     # locator('x').fill('y') / getByRole(...).click() --
     # locator alag call me hai, action alag me
     if loc:
+        # locator('#ddlStatus').selectOption('Active') -- value in the only argument
+        m = re.search(rf"\.(?:selectOption|select_option)\(\s*{_S}\s*\)", line)
+        if m:
+            return {"action": "select", "target": loc, "value": m.group(1)}
         if ".click(" in line:
             return {"action": "click", "target": loc}
         m = re.search(rf"\.fill\(\s*{_S}", line)

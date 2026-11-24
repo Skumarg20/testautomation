@@ -43,6 +43,8 @@ Tests: `tests/unit/test_studio.py` (43, no browser), `tests/browser/test_studio_
 |---|---|
 | Home: 4 start cards, KPIs, app-memory line, env pill | `app.html`; `GET /api/state` (`get_state`) |
 | Record: start URL, *reuse saved login*, **Record automation case**, live action feed, **Stop**, editable code | `recorder.py`; `/api/record/start`, `/feed`, `/stop` |
+| Feedback: *Report a problem* on the Run fail box, Reports drawer, a test case, a failed replay, a Verify suggestion, a ✗ line in Write, the login cards, and the global Feedback screen (admin: status + reply; QA: own). Live feedback on a test = ⚠ known issue | `feedback.py`; `/api/feedback`, `/api/feedback/update` (admin), `/api/feedback/known` |
+| Login tests: tick *This test checks the login screen* (Record or Paste). The recorded login steps stay (wrong password, unknown user...); the script gets a `// studio: login test` line; the run starts with `sign_out` (this browser only) and the login page. A known password / user id becomes `process.env.MB_PASS!` / `MB_USER!` (`{{config_password}}` / `{{config_user}}` at run time). Saved with tags `login-test`, `breaks_session` | `script.is_login_test`, `recorder.redact_login_test`, step `sign_out` |
 | Verify script, Confirm change / Skip / Confirm all | `verify.py`; `/api/verify`, `/api/verify/apply` |
 | Replay, attempt counter, error box, **AI fix**, Try again, Bug pack | `executor.py` (`start_replay`, `ai_fix`, `diagnose`); `/api/replay`, `/status`, `/retry` |
 | Save form (Module*, Priority, Test case*, Description, Written by*) | `tests.save`; `/api/save` → `testcases/saved/TC_nnn.yaml` + `<out dir>/<module>/tc-nnn-<slug>.spec.ts` |

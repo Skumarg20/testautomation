@@ -1,0 +1,21 @@
+- id: TC_013
+  module: sales
+  title: QA4 written smoke 191010
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by QA Tester 4 | 2026-11-23 19:12
+  expected: []
+  steps:
+  - action: note
+    value: Log in (the runner signs in before every test)
+    note: Log in
+  - action: open_screen
+    target: sale_bill
+    note: Open Sale Bill
+  - action: assert_text
+    value: Sale
+    note: Verify "Sale"

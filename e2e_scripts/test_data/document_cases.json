@@ -1,0 +1,2107 @@
+[
+  {
+    "id": "RC-001",
+    "module": "accounting",
+    "sheet": "receipt",
+    "type": "POSITIVE",
+    "description": "Create receipt with valid account and amount - delete after",
+    "active": true,
+    "inputs": {
+      "account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "amount": "5000",
+      "narration": "Test receipt narration",
+      "delete_receipt": "Y"
+    },
+    "line_items": []
+  },
+  {
+    "id": "RC-002",
+    "module": "accounting",
+    "sheet": "receipt",
+    "type": "POSITIVE",
+    "description": "Create receipt with short amount - store for reuse",
+    "active": true,
+    "inputs": {
+      "account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "amount": "10000",
+      "short_amount": "500",
+      "narration": "Receipt with short amount",
+      "delete_receipt": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "RC-003",
+    "module": "accounting",
+    "sheet": "receipt",
+    "type": "NEGATIVE",
+    "description": "Create receipt without account name - missing account validation",
+    "active": true,
+    "inputs": {
+      "entry_date": "today",
+      "amount": "5000",
+      "delete_receipt": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "RC-004",
+    "module": "accounting",
+    "sheet": "receipt",
+    "type": "NEGATIVE",
+    "description": "Create receipt with invalid past entry date - date validation",
+    "active": true,
+    "inputs": {
+      "account_name": "Additional Charges On Free Items",
+      "entry_date": "20250101",
+      "amount": "5000",
+      "delete_receipt": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "RC-005",
+    "module": "accounting",
+    "sheet": "receipt",
+    "type": "NEGATIVE",
+    "description": "Create receipt with zero amount - amount validation",
+    "active": true,
+    "inputs": {
+      "account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "amount": "0",
+      "delete_receipt": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "PM-001",
+    "module": "accounting",
+    "sheet": "payment",
+    "type": "POSITIVE",
+    "description": "Create payment with valid account and amount - delete after",
+    "active": true,
+    "inputs": {
+      "account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "amount": "5000",
+      "narration": "Test payment narration",
+      "delete_payment": "Y"
+    },
+    "line_items": []
+  },
+  {
+    "id": "PM-002",
+    "module": "accounting",
+    "sheet": "payment",
+    "type": "POSITIVE",
+    "description": "Create payment with short amount - store for reuse",
+    "active": true,
+    "inputs": {
+      "account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "amount": "10000",
+      "short_amount": "500",
+      "narration": "Payment with short amount",
+      "delete_payment": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "PM-003",
+    "module": "accounting",
+    "sheet": "payment",
+    "type": "NEGATIVE",
+    "description": "Create payment without account name - missing account validation",
+    "active": true,
+    "inputs": {
+      "entry_date": "today",
+      "amount": "5000",
+      "delete_payment": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "PM-004",
+    "module": "accounting",
+    "sheet": "payment",
+    "type": "NEGATIVE",
+    "description": "Create payment with invalid past entry date - date validation",
+    "active": true,
+    "inputs": {
+      "account_name": "Additional Charges On Free Items",
+      "entry_date": "20250101",
+      "amount": "5000",
+      "delete_payment": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "PM-005",
+    "module": "accounting",
+    "sheet": "payment",
+    "type": "NEGATIVE",
+    "description": "Create payment with zero amount - amount validation",
+    "active": true,
+    "inputs": {
+      "account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "amount": "0",
+      "delete_payment": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "DN-001",
+    "module": "accounting",
+    "sheet": "debit-note",
+    "type": "POSITIVE",
+    "description": "Create debit note with balanced Dr and Cr entries",
+    "active": true,
+    "inputs": {
+      "dr_account_name": "Cash Account",
+      "cr_account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "debit_amount": "500",
+      "credit_amount": "500",
+      "narration": "Test debit note balanced",
+      "delete_debit_note": "Y"
+    },
+    "line_items": []
+  },
+  {
+    "id": "DN-002",
+    "module": "accounting",
+    "sheet": "debit-note",
+    "type": "POSITIVE",
+    "description": "Create debit note and store for future use",
+    "active": true,
+    "inputs": {
+      "dr_account_name": "Cash Account",
+      "cr_account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "debit_amount": "1000",
+      "credit_amount": "1000",
+      "narration": "Stored debit note",
+      "delete_debit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "DN-003",
+    "module": "accounting",
+    "sheet": "debit-note",
+    "type": "NEGATIVE",
+    "description": "Create debit note with zero debit amount",
+    "active": true,
+    "inputs": {
+      "dr_account_name": "Cash Account",
+      "cr_account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "debit_amount": "0",
+      "credit_amount": "100",
+      "delete_debit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "DN-004",
+    "module": "accounting",
+    "sheet": "debit-note",
+    "type": "NEGATIVE",
+    "description": "Create debit note without credit account",
+    "active": true,
+    "inputs": {
+      "dr_account_name": "Cash Account",
+      "entry_date": "today",
+      "debit_amount": "100",
+      "credit_amount": "0",
+      "delete_debit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "DN-005",
+    "module": "accounting",
+    "sheet": "debit-note",
+    "type": "NEGATIVE",
+    "description": "Create debit note with mismatched debit and credit amounts",
+    "active": true,
+    "inputs": {
+      "dr_account_name": "Cash Account",
+      "cr_account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "debit_amount": "500",
+      "credit_amount": "300",
+      "delete_debit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "DN-006",
+    "module": "accounting",
+    "sheet": "debit-note",
+    "type": "NEGATIVE",
+    "description": "Create debit note without account name",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "entry_date": "today",
+      "debit_amount": "501",
+      "credit_amount": "501",
+      "delete_debit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "CN-001",
+    "module": "accounting",
+    "sheet": "credit-note",
+    "type": "POSITIVE",
+    "description": "Create credit note with balanced Cr and Dr entries",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "dr_account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "credit_amount": "500",
+      "debit_amount": "500",
+      "narration": "Test credit note balanced",
+      "delete_credit_note": "Y"
+    },
+    "line_items": []
+  },
+  {
+    "id": "CN-002",
+    "module": "accounting",
+    "sheet": "credit-note",
+    "type": "POSITIVE",
+    "description": "Create credit note and store for future use",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "dr_account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "credit_amount": "1000",
+      "debit_amount": "1000",
+      "narration": "Stored credit note",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "CN-003",
+    "module": "accounting",
+    "sheet": "credit-note",
+    "type": "NEGATIVE",
+    "description": "Create credit note with zero credit amount",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "entry_date": "today",
+      "credit_amount": "0",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "CN-004",
+    "module": "accounting",
+    "sheet": "credit-note",
+    "type": "NEGATIVE",
+    "description": "Create credit note without debit account",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "entry_date": "today",
+      "credit_amount": "100",
+      "debit_amount": "0",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "CN-005",
+    "module": "accounting",
+    "sheet": "credit-note",
+    "type": "NEGATIVE",
+    "description": "Create credit note with mismatched credit and debit amounts",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "dr_account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "credit_amount": "500",
+      "debit_amount": "300",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "CN-006",
+    "module": "accounting",
+    "sheet": "credit-note",
+    "type": "NEGATIVE",
+    "description": "Create credit note without account name",
+    "active": true,
+    "inputs": {
+      "dr_account_name": "Cash Account",
+      "entry_date": "today",
+      "credit_amount": "501",
+      "debit_amount": "501",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "CON-001",
+    "module": "accounting",
+    "sheet": "contra",
+    "type": "POSITIVE",
+    "description": "Create contra with balanced Cr and Dr entries",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "dr_account_name": "Contra 001",
+      "entry_date": "today",
+      "credit_amount": "500",
+      "debit_amount": "500",
+      "narration": "Test credit note balanced",
+      "delete_credit_note": "Y"
+    },
+    "line_items": []
+  },
+  {
+    "id": "CON-002",
+    "module": "accounting",
+    "sheet": "contra",
+    "type": "POSITIVE",
+    "description": "Create contra and store for future use",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "dr_account_name": "Contra 001",
+      "entry_date": "today",
+      "credit_amount": "1000",
+      "debit_amount": "1000",
+      "narration": "Stored credit note",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "CON-003",
+    "module": "accounting",
+    "sheet": "contra",
+    "type": "NEGATIVE",
+    "description": "Create contra with zero credit amount",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "entry_date": "today",
+      "credit_amount": "0",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "CON-004",
+    "module": "accounting",
+    "sheet": "contra",
+    "type": "NEGATIVE",
+    "description": "Create contra without debit account",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "entry_date": "today",
+      "credit_amount": "100",
+      "debit_amount": "0",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "CON-005",
+    "module": "accounting",
+    "sheet": "contra",
+    "type": "NEGATIVE",
+    "description": "Create contra with mismatched credit and debit amounts",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "dr_account_name": "Contra 001",
+      "entry_date": "today",
+      "credit_amount": "500",
+      "debit_amount": "300",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "CON-006",
+    "module": "accounting",
+    "sheet": "contra",
+    "type": "NEGATIVE",
+    "description": "Create contra without account name",
+    "active": true,
+    "inputs": {
+      "dr_account_name": "Cash Account",
+      "entry_date": "today",
+      "credit_amount": "501",
+      "debit_amount": "501",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "JN-001",
+    "module": "accounting",
+    "sheet": "journal",
+    "type": "POSITIVE",
+    "description": "Create journal with balanced Cr and Dr entries",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "dr_account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "credit_amount": "500",
+      "debit_amount": "500",
+      "narration": "Test credit note balanced",
+      "delete_credit_note": "Y"
+    },
+    "line_items": []
+  },
+  {
+    "id": "JN-002",
+    "module": "accounting",
+    "sheet": "journal",
+    "type": "POSITIVE",
+    "description": "Create journal and store for future use",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "dr_account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "credit_amount": "1000",
+      "debit_amount": "1000",
+      "narration": "Stored credit note",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "JN-003",
+    "module": "accounting",
+    "sheet": "journal",
+    "type": "NEGATIVE",
+    "description": "Create journal with zero credit amount",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "entry_date": "today",
+      "credit_amount": "0",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "JN-004",
+    "module": "accounting",
+    "sheet": "journal",
+    "type": "NEGATIVE",
+    "description": "Create journal without debit account",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "entry_date": "today",
+      "credit_amount": "100",
+      "debit_amount": "0",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "JN-005",
+    "module": "accounting",
+    "sheet": "journal",
+    "type": "NEGATIVE",
+    "description": "Create journal with mismatched credit and debit amounts",
+    "active": true,
+    "inputs": {
+      "cr_account_name": "Cash Account",
+      "dr_account_name": "Additional Charges On Free Items",
+      "entry_date": "today",
+      "credit_amount": "500",
+      "debit_amount": "300",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "JN-006",
+    "module": "accounting",
+    "sheet": "journal",
+    "type": "NEGATIVE",
+    "description": "Create journal without account name",
+    "active": true,
+    "inputs": {
+      "dr_account_name": "Cash Account",
+      "entry_date": "today",
+      "credit_amount": "501",
+      "debit_amount": "501",
+      "delete_credit_note": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_001",
+    "module": "authentication",
+    "sheet": "register",
+    "type": "Positive",
+    "description": "Valid sign-up functionality with valid data",
+    "active": false,
+    "inputs": {
+      "mobile": "9081091011"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_002",
+    "module": "authentication",
+    "sheet": "register",
+    "type": "Negative",
+    "description": "Valid sign-up functionality  with invalid data",
+    "active": false,
+    "inputs": {
+      "mobile": "9081091111",
+      "referral_code": "jfdsjfhs"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_003",
+    "module": "authentication",
+    "sheet": "register",
+    "type": "Negative",
+    "description": "Valid sign-up functionality with invalid data",
+    "active": false,
+    "inputs": {
+      "mobile": "90810910",
+      "referral_code": "jfdsjfhs"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_001",
+    "module": "authentication",
+    "sheet": "login",
+    "type": "Positive",
+    "description": "Valid login functionality with valid data",
+    "active": true,
+    "inputs": {},
+    "line_items": []
+  },
+  {
+    "id": "TC_002",
+    "module": "authentication",
+    "sheet": "login",
+    "type": "Negative",
+    "description": "Valid login functionality with invalid data",
+    "active": true,
+    "inputs": {},
+    "line_items": []
+  },
+  {
+    "id": "TC_003",
+    "module": "authentication",
+    "sheet": "login",
+    "type": "Negative",
+    "description": "Valid login functionality with invalid data",
+    "active": true,
+    "inputs": {},
+    "line_items": []
+  },
+  {
+    "id": "TC_PM_001",
+    "module": "purchase",
+    "sheet": "order",
+    "type": "POSITIVE",
+    "description": "Create PO and delete",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "close_order": "N",
+      "delete_order": "Y"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_001",
+        "tc_id": "TC_PM_001, TC_PM_002, TC_PM_003, TC_PM_004, PB-005",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "exp_date": "46478",
+        "product_qty": "100",
+        "product_free": "50",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_PM_002",
+    "module": "purchase",
+    "sheet": "order",
+    "type": "POSITIVE",
+    "description": "Create PO with direct entry; convert to bill",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "bill_discount": "10",
+      "convert_bill": "Y",
+      "close_order": "N",
+      "delete_order": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_001",
+        "tc_id": "TC_PM_001, TC_PM_002, TC_PM_003, TC_PM_004, PB-005",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "exp_date": "46478",
+        "product_qty": "100",
+        "product_free": "50",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_PM_003",
+    "module": "purchase",
+    "sheet": "order",
+    "type": "POSITIVE",
+    "description": "Create PO with direct entry; close order",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "close_order": "Y",
+      "delete_order": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_001",
+        "tc_id": "TC_PM_001, TC_PM_002, TC_PM_003, TC_PM_004, PB-005",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "exp_date": "46478",
+        "product_qty": "100",
+        "product_free": "50",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_PM_004",
+    "module": "purchase",
+    "sheet": "order",
+    "type": "POSITIVE",
+    "description": "Create PO with valid data; store order",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "close_order": "N",
+      "delete_order": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_001",
+        "tc_id": "TC_PM_001, TC_PM_002, TC_PM_003, TC_PM_004, PB-005",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "exp_date": "46478",
+        "product_qty": "100",
+        "product_free": "50",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_PM_005",
+    "module": "purchase",
+    "sheet": "order",
+    "type": "NEGATIVE",
+    "description": "Create PO with past/invalid date",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "46128",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "close_order": "N",
+      "delete_order": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_PM_006",
+    "module": "purchase",
+    "sheet": "order",
+    "type": "NEGATIVE",
+    "description": "Create PO without product name",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "close_order": "N",
+      "delete_order": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_PM_007",
+    "module": "purchase",
+    "sheet": "order",
+    "type": "NEGATIVE",
+    "description": "Create PO with zero quantity",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "close_order": "N",
+      "delete_order": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_002",
+        "tc_id": "TC_PM_007, PB-008",
+        "product_name": "44646015",
+        "product_qty": "0",
+        "product_rate": "200"
+      }
+    ]
+  },
+  {
+    "id": "TC_PM_001",
+    "module": "purchase",
+    "sheet": "challan",
+    "type": "POSITIVE",
+    "description": "Create purchase challan and delete the challan",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "delete_challan": "Y"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_001",
+        "tc_id": "TC_PM_001, TC_PM_002, TC_PM_003, TC_PM_004, PB-005",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "exp_date": "46478",
+        "product_qty": "100",
+        "product_free": "50",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_PM_002",
+    "module": "purchase",
+    "sheet": "challan",
+    "type": "POSITIVE",
+    "description": "Create purchase challan from order and delete the challan",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "order_number": "order number",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "delete_challan": "Y"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_001",
+        "tc_id": "TC_PM_001, TC_PM_002, TC_PM_003, TC_PM_004, PB-005",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "exp_date": "46478",
+        "product_qty": "100",
+        "product_free": "50",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_PM_003",
+    "module": "purchase",
+    "sheet": "challan",
+    "type": "POSITIVE",
+    "description": "Create purchase challan with valid data and store challan",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "delete_challan": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_001",
+        "tc_id": "TC_PM_001, TC_PM_002, TC_PM_003, TC_PM_004, PB-005",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "exp_date": "46478",
+        "product_qty": "100",
+        "product_free": "50",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_PM_005",
+    "module": "purchase",
+    "sheet": "challan",
+    "type": "NEGATIVE",
+    "description": "Create purchase challan with past/invalid date",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "46128",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "delete_challan": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_PM_006",
+    "module": "purchase",
+    "sheet": "challan",
+    "type": "NEGATIVE",
+    "description": "Create PO without product name",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "delete_challan": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_PM_007",
+    "module": "purchase",
+    "sheet": "challan",
+    "type": "NEGATIVE",
+    "description": "Create PO with zero quantity",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "delete_challan": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_002",
+        "tc_id": "TC_PM_007, PB-008",
+        "product_name": "44646015",
+        "product_qty": "0",
+        "product_rate": "200"
+      }
+    ]
+  },
+  {
+    "id": "TC_PM_001",
+    "module": "purchase",
+    "sheet": "bill",
+    "type": "POSITIVE",
+    "description": "Create purchase bill and delete",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "invoice_date": "today",
+      "delete_bill": "Y",
+      "convert_challan": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_001",
+        "tc_id": "TC_PM_001, TC_PM_002, TC_PM_003, TC_PM_004, PB-005",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "exp_date": "46478",
+        "product_qty": "100",
+        "product_free": "50",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_PM_002",
+    "module": "purchase",
+    "sheet": "bill",
+    "type": "POSITIVE",
+    "description": "Create purchase bill from order",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "invoice_date": "today",
+      "order_number": "order number",
+      "delete_bill": "Y",
+      "convert_challan": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_001",
+        "tc_id": "TC_PM_001, TC_PM_002, TC_PM_003, TC_PM_004, PB-005",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "exp_date": "46478",
+        "product_qty": "100",
+        "product_free": "50",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_PM_003",
+    "module": "purchase",
+    "sheet": "bill",
+    "type": "POSITIVE",
+    "description": "Create purchase bill and convert back to challan",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "invoice_date": "today",
+      "challan_number": "challan number",
+      "delete_bill": "N",
+      "convert_challan": "Y"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_001",
+        "tc_id": "TC_PM_001, TC_PM_002, TC_PM_003, TC_PM_004, PB-005",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "exp_date": "46478",
+        "product_qty": "100",
+        "product_free": "50",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_PM_004",
+    "module": "purchase",
+    "sheet": "bill",
+    "type": "POSITIVE",
+    "description": "Create purchase bill from challan and delete it",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "invoice_date": "today",
+      "challan_number": "challan number",
+      "delete_bill": "Y",
+      "convert_challan": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_001",
+        "tc_id": "TC_PM_001, TC_PM_002, TC_PM_003, TC_PM_004, PB-005",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "exp_date": "46478",
+        "product_qty": "100",
+        "product_free": "50",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "PB-005",
+    "module": "purchase",
+    "sheet": "bill",
+    "type": "POSITIVE",
+    "description": "Create purchase bill with direct entry and store order",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "invoice_date": "today",
+      "delete_bill": "N",
+      "convert_challan": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_001",
+        "tc_id": "TC_PM_001, TC_PM_002, TC_PM_003, TC_PM_004, PB-005",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "exp_date": "46478",
+        "product_qty": "100",
+        "product_free": "50",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "PB-006",
+    "module": "purchase",
+    "sheet": "bill",
+    "type": "NEGATIVE",
+    "description": "Create purchase bill without product name",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "invoice_date": "today",
+      "delete_bill": "N",
+      "convert_challan": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "PB-007",
+    "module": "purchase",
+    "sheet": "bill",
+    "type": "NEGATIVE",
+    "description": "Create purchase bill with invalid date",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "46122",
+      "invoice_date": "today",
+      "delete_bill": "N",
+      "convert_challan": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "PB-008",
+    "module": "purchase",
+    "sheet": "bill",
+    "type": "NEGATIVE",
+    "description": "Create purchase bill with 0 qty",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "invoice_date": "today",
+      "delete_bill": "N",
+      "convert_challan": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PM_002",
+        "tc_id": "TC_PM_007, PB-008",
+        "product_name": "44646015",
+        "product_qty": "0",
+        "product_rate": "200"
+      }
+    ]
+  },
+  {
+    "id": "PR-001",
+    "module": "purchase",
+    "sheet": "return",
+    "type": "POSITIVE",
+    "description": "Verify purchase return with valid data using bill number",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "return_type": "Single",
+      "bill_number": "bill number",
+      "bill_discount": "10",
+      "delete_return": "Y"
+    },
+    "line_items": []
+  },
+  {
+    "id": "PR-002",
+    "module": "purchase",
+    "sheet": "return",
+    "type": "POSITIVE",
+    "description": "Verify purchase return with manual product selection (store return)",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "return_type": "Manual",
+      "bill_discount": "10",
+      "delete_return": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PR_001",
+        "tc_id": "PR-002, PR-003",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "PR-003",
+    "module": "purchase",
+    "sheet": "return",
+    "type": "POSITIVE",
+    "description": "Verify purchase return with manual product selection (delete return)",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "return_type": "Manual",
+      "bill_discount": "10",
+      "delete_return": "Y"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PR_001",
+        "tc_id": "PR-002, PR-003",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "PR-004",
+    "module": "purchase",
+    "sheet": "return",
+    "type": "NEGATIVE",
+    "description": "Verify purchase return without vendor name",
+    "active": true,
+    "inputs": {
+      "date": "today",
+      "return_type": "Manual",
+      "delete_return": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "PR-005",
+    "module": "purchase",
+    "sheet": "return",
+    "type": "NEGATIVE",
+    "description": "Verify purchase return with invalid date (past financial year)",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "46128",
+      "return_type": "Manual",
+      "delete_return": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "PR-006",
+    "module": "purchase",
+    "sheet": "return",
+    "type": "NEGATIVE",
+    "description": "Verify purchase return without product details",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "return_type": "Manual",
+      "delete_return": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PR_002",
+        "tc_id": "PR-006"
+      }
+    ]
+  },
+  {
+    "id": "PR-007",
+    "module": "purchase",
+    "sheet": "return",
+    "type": "NEGATIVE",
+    "description": "Verify purchase return without qty or with 0 qty",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "return_type": "Manual",
+      "delete_return": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_PR_003",
+        "tc_id": "PR-007",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "0",
+        "product_rate": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_001",
+    "module": "sales",
+    "sheet": "order",
+    "type": "Positive",
+    "description": "Verify sale order with valid data and delete order",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "close_order": "N",
+      "delete_order": "Y"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_002",
+    "module": "sales",
+    "sheet": "order",
+    "type": "Positive",
+    "description": "Verify sales order with valid data and convert to bill",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "convert_bill": "Y",
+      "close_order": "N",
+      "delete_order": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_003",
+    "module": "sales",
+    "sheet": "order",
+    "type": "Positive",
+    "description": "Verify sales order with valid data and close order",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "close_order": "Y",
+      "delete_order": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_004",
+    "module": "sales",
+    "sheet": "order",
+    "type": "Positive",
+    "description": "Verify sales order with valid data and store order",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "close_order": "N",
+      "delete_order": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_005",
+    "module": "sales",
+    "sheet": "order",
+    "type": "Negative",
+    "description": "Verify sales order without product details",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "close_order": "N",
+      "delete_order": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_SM_006",
+    "module": "sales",
+    "sheet": "order",
+    "type": "Negative",
+    "description": "Verify sales order with invalid data (future or past)",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "46128",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "close_order": "N",
+      "delete_order": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_SM_007",
+    "module": "sales",
+    "sheet": "order",
+    "type": "Negative",
+    "description": "Verify sales order without patient and doctor",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "address": "Coimbatore",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "close_order": "N",
+      "delete_order": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_SM_008",
+    "module": "sales",
+    "sheet": "order",
+    "type": "Negative",
+    "description": "Verify sales order without qty or with 0 qty",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "11",
+      "convert_bill": "N",
+      "close_order": "N",
+      "delete_order": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_002",
+        "tc_id": "TC_SM_008",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "0",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_001",
+    "module": "sales",
+    "sheet": "challan",
+    "type": "Positive",
+    "description": "Verify sale challan with valid data and delete challan",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "delete_order": "Y"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_002",
+    "module": "sales",
+    "sheet": "challan",
+    "type": "Positive",
+    "description": "Verify sale challan with valid data using order and delete challan",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_name": "CASH Doctor",
+      "order_number": "order number",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "delete_order": "Y"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_003",
+    "module": "sales",
+    "sheet": "challan",
+    "type": "Positive",
+    "description": "Verify sale challan with valid data and convert to bill",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "convert_bill": "Y",
+      "delete_order": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_004",
+    "module": "sales",
+    "sheet": "challan",
+    "type": "Positive",
+    "description": "Verify sale challan with valid data and store challan",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "delete_order": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_005",
+    "module": "sales",
+    "sheet": "challan",
+    "type": "Negative",
+    "description": "Verify sale challan without product details",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "delete_order": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_SM_006",
+    "module": "sales",
+    "sheet": "challan",
+    "type": "Negative",
+    "description": "Verify sale challan with invalid data (future or past)",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "46128",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "delete_order": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_SM_007",
+    "module": "sales",
+    "sheet": "challan",
+    "type": "Negative",
+    "description": "Verify sale challan without patient and doctor",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "address": "Coimbatore",
+      "bill_discount": "10",
+      "convert_bill": "N",
+      "delete_order": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_SM_008",
+    "module": "sales",
+    "sheet": "challan",
+    "type": "Negative",
+    "description": "Verify sale challan without qty or with 0 qty",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "11",
+      "convert_bill": "N",
+      "delete_order": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_002",
+        "tc_id": "TC_SM_008",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "0",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_001",
+    "module": "sales",
+    "sheet": "bill",
+    "type": "Positive",
+    "description": "Verify sale bill with valid data and delete bill",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "delete_bill": "Y",
+      "convert_challan": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_002",
+    "module": "sales",
+    "sheet": "bill",
+    "type": "Positive",
+    "description": "Verify sale bill with valid data using order and delete bill",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_name": "CASH Doctor",
+      "order_number": "order number",
+      "bill_discount": "10",
+      "delete_bill": "Y",
+      "convert_challan": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_003",
+    "module": "sales",
+    "sheet": "bill",
+    "type": "Positive",
+    "description": "Verify sale bill with valid data using challan and convert back to challan",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "challan_number": "challan number",
+      "bill_discount": "10",
+      "delete_bill": "N",
+      "convert_challan": "Y"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_004",
+    "module": "sales",
+    "sheet": "bill",
+    "type": "Positive",
+    "description": "Verify sale bill with valid data using challan and store bill",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "challan_number": "challan number",
+      "bill_discount": "10",
+      "delete_bill": "Y",
+      "convert_challan": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_005",
+    "module": "sales",
+    "sheet": "bill",
+    "type": "Negative",
+    "description": "Verify sale bill without product details",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "delete_bill": "N",
+      "convert_challan": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_SM_006",
+    "module": "sales",
+    "sheet": "bill",
+    "type": "Negative",
+    "description": "Verify sale bill with invalid data (future or past)",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "46128",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "delete_bill": "N",
+      "convert_challan": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_SM_007",
+    "module": "sales",
+    "sheet": "bill",
+    "type": "Negative",
+    "description": "Verify sale bill without patient and doctor",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "address": "Coimbatore",
+      "bill_discount": "10",
+      "delete_bill": "N",
+      "convert_challan": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_SM_008",
+    "module": "sales",
+    "sheet": "bill",
+    "type": "Negative",
+    "description": "Verify sale bill without qty or with 0 qty",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "delete_bill": "N",
+      "convert_challan": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_002",
+        "tc_id": "TC_SM_008",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "0",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_009",
+    "module": "sales",
+    "sheet": "bill",
+    "type": "Positive",
+    "description": "Verify sale bill with valid data",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "11",
+      "delete_bill": "N",
+      "convert_challan": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_001",
+    "module": "sales",
+    "sheet": "return",
+    "type": "Positive",
+    "description": "Verify sale return with valid data using bill number",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "return_type": "Single",
+      "bill_number": "bill number",
+      "date": "today",
+      "bill_discount": "10",
+      "delete_return": "Y"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_002",
+    "module": "sales",
+    "sheet": "return",
+    "type": "Positive",
+    "description": "Verify sale return with valid data (manual product selection)",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "return_type": "Manual",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "delete_return": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SM_003",
+    "module": "sales",
+    "sheet": "return",
+    "type": "Positive",
+    "description": "Verify sale return with valid data (manual product selection)",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "return_type": "Manual",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "delete_return": "Y"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_001",
+        "tc_id": "TC_SM_001, TC_SM_002, TC_SM_003, TC_SM_004, TC_SM_009",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "1",
+        "product_price": "100"
+      }
+    ]
+  },
+  {
+    "id": "TC_SR_004",
+    "module": "sales",
+    "sheet": "return",
+    "type": "Negative",
+    "description": "Verify sale return without product details",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "return_type": "Manual",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "delete_return": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_SM_005",
+    "module": "sales",
+    "sheet": "return",
+    "type": "Negative",
+    "description": "Verify sale return with invalid date (future or past)",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "return_type": "Manual",
+      "date": "46128",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "delete_return": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_SM_006",
+    "module": "sales",
+    "sheet": "return",
+    "type": "Negative",
+    "description": "Verify sale return without patient and doctor",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "return_type": "Manual",
+      "date": "today",
+      "address": "Coimbatore",
+      "bill_discount": "10",
+      "delete_return": "N"
+    },
+    "line_items": []
+  },
+  {
+    "id": "TC_SR_007",
+    "module": "sales",
+    "sheet": "return",
+    "type": "Negative",
+    "description": "Verify sale return without qty or with 0 qty",
+    "active": true,
+    "inputs": {
+      "party_name": "Cash Account",
+      "return_type": "Manual",
+      "date": "today",
+      "patient_mobile": "9999999999",
+      "patient_name": "CASH Patient",
+      "address": "Coimbatore",
+      "doctor_mobile": "8888888888",
+      "doctor_name": "CASH Doctor",
+      "bill_discount": "10",
+      "delete_return": "N"
+    },
+    "line_items": [
+      {
+        "td_id": "TD_SO_003",
+        "tc_id": "TC_SR_007",
+        "product_name": "44646015",
+        "batch": "1231231123",
+        "product_qty": "0",
+        "product_price": "100"
+      }
+    ]
+  }
+]

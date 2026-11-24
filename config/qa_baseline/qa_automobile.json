@@ -1,0 +1,5293 @@
+{
+ "company": "QA Automobile",
+ "captured_at": "2026-11-20 18:39",
+ "settings": [
+  {
+   "css": "select#ddl4338",
+   "label": "FIFO in Sale",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl200",
+   "label": "Ledger Default Search By?",
+   "value": "Name",
+   "options": [
+    "Name",
+    "Code",
+    "Mobile",
+    "D.L. No.",
+    "Address",
+    "GSTIN",
+    "Search In All"
+   ]
+  },
+  {
+   "css": "select#ddl4094",
+   "label": "Pick item from barcode",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4339",
+   "label": "Discount parameter wise",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl6010",
+   "label": "Enable GST",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4135",
+   "label": "Type Of Device",
+   "value": "EPF",
+   "options": [
+    "EPF",
+    "ESD",
+    "ETR"
+   ]
+  },
+  {
+   "css": "select#ddl7031",
+   "label": "Responsible person details",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4120",
+   "label": "Upload Data For QRC Code",
+   "value": "HSN Wise",
+   "options": [
+    "HSN Wise",
+    "Item Wise"
+   ]
+  },
+  {
+   "css": "select#ddl4121",
+   "label": "Alert to generate E-Invoice",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4326",
+   "label": "Centerilized Patient",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4373",
+   "label": "Allow to modify Rate and Discount in Sale",
+   "value": "Not Allow",
+   "options": [
+    "Allow",
+    "Not Allow"
+   ]
+  },
+  {
+   "css": "select#ddl4374",
+   "label": "Allow Modifications and Deletion in Sale",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4375",
+   "label": "Allow Modifications and Deletion in Purchase",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4376",
+   "label": "Allow Ledger Modification",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4377",
+   "label": "Operator Showing Report",
+   "value": "All",
+   "options": [
+    "All",
+    "Own"
+   ]
+  },
+  {
+   "css": "select#ddl3002",
+   "label": "Ask Sale Type at the time of Billing?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3003",
+   "label": "Ask Net Rate",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3005",
+   "label": "Amount Calculation on Billing",
+   "value": "Rate * Quantity",
+   "options": [
+    "Rate * Quantity",
+    "Rate * Quantity - Discount",
+    "Net Amount"
+   ]
+  },
+  {
+   "css": "select#ddl3008",
+   "label": "Pick M.R. From",
+   "value": "Loop",
+   "options": [
+    "Master",
+    "Direct",
+    "Loop"
+   ]
+  },
+  {
+   "css": "select#ddl3014",
+   "label": "Indicate if Item Repeated in Bill",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3015",
+   "label": "Indicate if Billing Rate is Zero",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3017",
+   "label": "Ask Party in Retail Billing",
+   "value": "Ask",
+   "options": [
+    "Don't Ask",
+    "Ask",
+    "Ask on Spacebar"
+   ]
+  },
+  {
+   "css": "select#ddl3018",
+   "label": "Cursor wait on",
+   "value": "Quantity",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3019",
+   "label": "Free Quantity Required in Sale",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3020",
+   "label": "Free Quantity Required in Decimal",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3021",
+   "label": "Sale",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3022",
+   "label": "Calculation Type in Sale",
+   "value": "Exclusive",
+   "options": [
+    "Inclusive",
+    "Exclusive",
+    "Tax on MRP(inc.)"
+   ]
+  },
+  {
+   "css": "select#ddl3023",
+   "label": "Ask Bill No.",
+   "value": "No",
+   "options": [
+    "OnLeftArrowKey",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3025",
+   "label": "Ask Sale Type at the time of Billing?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3026",
+   "label": "Ask Net Rate",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3028",
+   "label": "Amount Calculation on Billing",
+   "value": "Rate * Quantity",
+   "options": [
+    "Rate * Quantity",
+    "Rate * Quantity - Discount",
+    "Net Amount"
+   ]
+  },
+  {
+   "css": "select#ddl3030",
+   "label": "General Item required?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3031",
+   "label": "Pick M.R. From",
+   "value": "Loop",
+   "options": [
+    "Master",
+    "Direct",
+    "Loop"
+   ]
+  },
+  {
+   "css": "select#ddl3039",
+   "label": "Show Bill wise Margin in",
+   "value": "Amount",
+   "options": [
+    "Percentage",
+    "Amount",
+    "Both(% and amount)"
+   ]
+  },
+  {
+   "css": "select#ddl3040",
+   "label": "Batch or Item wise Last Deal in Sale",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3042",
+   "label": "Indicate if Item Repeated in Bill",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3043",
+   "label": "Indicate if Billing Rate is Zero",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3045",
+   "label": "Rates Pick from Item Master or Batch",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise"
+   ]
+  },
+  {
+   "css": "select#ddl3046",
+   "label": "Batch Window Index on",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3047",
+   "label": "Cursor wait on",
+   "value": "Quantity",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3048",
+   "label": "Update Changed Rate",
+   "value": "No",
+   "options": [
+    "No",
+    "Price List",
+    "Ask",
+    "Ask w/o Price List"
+   ]
+  },
+  {
+   "css": "select#ddl3049",
+   "label": "Update Changed Discount",
+   "value": "No",
+   "options": [
+    "No",
+    "Product Special",
+    "Ask",
+    "Ask w/o Agency Discount"
+   ]
+  },
+  {
+   "css": "select#ddl3050",
+   "label": "Free Quantity Required in Sale",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3051",
+   "label": "Free Quantity Required in Decimal",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3052",
+   "label": "Sale",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3053",
+   "label": "Calculation Type in Sale",
+   "value": "Exclusive",
+   "options": [
+    "Inclusive",
+    "Exclusive",
+    "Tax on MRP(inc.)"
+   ]
+  },
+  {
+   "css": "select#ddl3054",
+   "label": "Ask Party in Retail Billing",
+   "value": "Ask",
+   "options": [
+    "Don't Ask",
+    "Ask",
+    "Ask on Spacebar"
+   ]
+  },
+  {
+   "css": "select#ddl3055",
+   "label": "Ask Bill No.",
+   "value": "No",
+   "options": [
+    "OnLeftArrowKey",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3056",
+   "label": "Load Pending Orders",
+   "value": "Automatic",
+   "options": [
+    "Automatic",
+    "Selection",
+    "Not Required"
+   ]
+  },
+  {
+   "css": "select#ddl3058",
+   "label": "Ask Sale Type at the time of Billing?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3059",
+   "label": "Ask Bill No.",
+   "value": "No",
+   "options": [
+    "OnLeftArrowKey",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3060",
+   "label": "Ask Net Rate",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3061",
+   "label": "Pick M.R. From",
+   "value": "Loop",
+   "options": [
+    "Master",
+    "Direct",
+    "Loop"
+   ]
+  },
+  {
+   "css": "select#ddl3063",
+   "label": "Load Pending Challan",
+   "value": "Selection",
+   "options": [
+    "Automatic",
+    "Selection",
+    "Not Required"
+   ]
+  },
+  {
+   "css": "select#ddl3066",
+   "label": "Rates Pick from Item Master or Batch",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3067",
+   "label": "Amount Calculation on Billing",
+   "value": "Rate * Quantity",
+   "options": [
+    "Rate * Quantity",
+    "Rate * Quantity - Discount",
+    "Net Amount"
+   ]
+  },
+  {
+   "css": "select#ddl3068",
+   "label": "Cursor wait on",
+   "value": "Quantity",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3069",
+   "label": "Update Changed Rate",
+   "value": "No",
+   "options": [
+    "No",
+    "Price List",
+    "Ask",
+    "Ask w/o Price List"
+   ]
+  },
+  {
+   "css": "select#ddl3070",
+   "label": "Update Changed Discount",
+   "value": "No",
+   "options": [
+    "No",
+    "Product Special",
+    "Ask",
+    "Ask w/o Agency Discount"
+   ]
+  },
+  {
+   "css": "select#ddl3071",
+   "label": "Free Quantity Required in Sale",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3072",
+   "label": "Free Quantity Required in Decimal",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3077",
+   "label": "Batch or Item wise Last Deal in Sale",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3079",
+   "label": "Indicate if Item Repeated in Bill",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3080",
+   "label": "Indicate if Billing Rate is Zero",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3081",
+   "label": "Show Bill wise Margin in",
+   "value": "Amount",
+   "options": [
+    "Percentage",
+    "Amount",
+    "Both(% and amount)"
+   ]
+  },
+  {
+   "css": "select#ddl3083",
+   "label": "Mode of Payment required in Sale",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3085",
+   "label": "General Item required?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3088",
+   "label": "Batch Window Index on",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3089",
+   "label": "Sale",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3090",
+   "label": "Calculation Type in Sale",
+   "value": "Exclusive",
+   "options": [
+    "Inclusive",
+    "Exclusive",
+    "Tax on MRP(inc.)"
+   ]
+  },
+  {
+   "css": "select#ddl3091",
+   "label": "Ask Party in Retail Billing",
+   "value": "Ask",
+   "options": [
+    "Don't Ask",
+    "Ask",
+    "Ask on Spacebar"
+   ]
+  },
+  {
+   "css": "select#ddl3092",
+   "label": "Load Pending Orders",
+   "value": "Automatic",
+   "options": [
+    "Automatic",
+    "Selection",
+    "Not Required"
+   ]
+  },
+  {
+   "css": "select#ddl5093",
+   "label": "M.R Required In Sale?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl5096",
+   "label": "Customer Y-must N-not necessary ?",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4113",
+   "label": "Default Billing Rate",
+   "value": "A-Rate",
+   "options": [
+    "Cost",
+    "Extra+Cost",
+    "M.R.P.",
+    "Purchase Rate",
+    "A-Rate",
+    "B-Rate",
+    "C-Rate",
+    "D-Rate",
+    "E-Rate",
+    "F-Rate",
+    "G-Rate",
+    "H-Rate"
+   ]
+  },
+  {
+   "css": "select#ddl3094",
+   "label": "Ask Purchase Type at the time of Billing?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3095",
+   "label": "Ask Net Rate",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3098",
+   "label": "Cursor wait on",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3099",
+   "label": "Free Quantity Required in Purchase",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3100",
+   "label": "100",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3103",
+   "label": "101",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3104",
+   "label": "102",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3106",
+   "label": "103",
+   "value": "No",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3107",
+   "label": "104",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3109",
+   "label": "105",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3111",
+   "label": "106",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3112",
+   "label": "107",
+   "value": "Exclusive",
+   "options": [
+    "Inclusive",
+    "Exclusive",
+    "Tax on MRP(inc.)"
+   ]
+  },
+  {
+   "css": "select#ddl3114",
+   "label": "108",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3115",
+   "label": "109",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3118",
+   "label": "111",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3119",
+   "label": "112",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3120",
+   "label": "113",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3123",
+   "label": "114",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3124",
+   "label": "115",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3125",
+   "label": "116",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3127",
+   "label": "117",
+   "value": "No",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3128",
+   "label": "118",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3129",
+   "label": "119",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3131",
+   "label": "120",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3133",
+   "label": "121",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3134",
+   "label": "122",
+   "value": "Exclusive",
+   "options": [
+    "Inclusive",
+    "Exclusive",
+    "Tax on MRP(inc.)"
+   ]
+  },
+  {
+   "css": "select#ddl3135",
+   "label": "123",
+   "value": "Automatic",
+   "options": [
+    "Automatic",
+    "Selection",
+    "Not Required"
+   ]
+  },
+  {
+   "css": "select#ddl3137",
+   "label": "124",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3138",
+   "label": "125",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3140",
+   "label": "127",
+   "value": "Selection",
+   "options": [
+    "Automatic",
+    "Selection",
+    "Not Required"
+   ]
+  },
+  {
+   "css": "select#ddl3142",
+   "label": "128",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3143",
+   "label": "129",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3144",
+   "label": "130",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3147",
+   "label": "131",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3148",
+   "label": "132",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3149",
+   "label": "133",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3150",
+   "label": "134",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3152",
+   "label": "135",
+   "value": "No",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3153",
+   "label": "136",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3155",
+   "label": "137",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3157",
+   "label": "138",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3158",
+   "label": "139",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3159",
+   "label": "140",
+   "value": "Exclusive",
+   "options": [
+    "Inclusive",
+    "Exclusive",
+    "Tax on MRP(inc.)"
+   ]
+  },
+  {
+   "css": "select#ddl3999",
+   "label": "141",
+   "value": "Automatic",
+   "options": [
+    "Automatic",
+    "Selection",
+    "Not Required"
+   ]
+  },
+  {
+   "css": "select#ddl5094",
+   "label": "142",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4000",
+   "label": "143",
+   "value": "Auto",
+   "options": [
+    "Auto",
+    "Upper",
+    "Lower",
+    "None"
+   ]
+  },
+  {
+   "css": "select#ddl4159",
+   "label": "144",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4174",
+   "label": "145",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4358",
+   "label": "146",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4501",
+   "label": "147",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4502",
+   "label": "148",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4503",
+   "label": "149",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3161",
+   "label": "150",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3162",
+   "label": "151",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3163",
+   "label": "152",
+   "value": "Loop",
+   "options": [
+    "Master",
+    "Direct",
+    "Loop"
+   ]
+  },
+  {
+   "css": "select#ddl3165",
+   "label": "154",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3166",
+   "label": "155",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3167",
+   "label": "156",
+   "value": "Master",
+   "options": [
+    "All Scheme",
+    "Master"
+   ]
+  },
+  {
+   "css": "select#ddl3168",
+   "label": "157",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3170",
+   "label": "158",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3171",
+   "label": "159",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3172",
+   "label": "160",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3173",
+   "label": "161",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3176",
+   "label": "162",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3177",
+   "label": "163",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3178",
+   "label": "164",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3179",
+   "label": "165",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3180",
+   "label": "166",
+   "value": "Ask",
+   "options": [
+    "Don't Ask",
+    "Ask",
+    "Ask on Spacebar"
+   ]
+  },
+  {
+   "css": "select#ddl3182",
+   "label": "167",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3183",
+   "label": "168",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3184",
+   "label": "169",
+   "value": "Loop",
+   "options": [
+    "Master",
+    "Direct",
+    "Loop"
+   ]
+  },
+  {
+   "css": "select#ddl3186",
+   "label": "171",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3187",
+   "label": "172",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3188",
+   "label": "173",
+   "value": "Master",
+   "options": [
+    "All Scheme",
+    "Master"
+   ]
+  },
+  {
+   "css": "select#ddl3189",
+   "label": "174",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3191",
+   "label": "175",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3192",
+   "label": "176",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3193",
+   "label": "177",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3194",
+   "label": "178",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3197",
+   "label": "179",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3198",
+   "label": "180",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3199",
+   "label": "181",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3200",
+   "label": "182",
+   "value": "Ask",
+   "options": [
+    "Don't Ask",
+    "Ask",
+    "Ask on Spacebar"
+   ]
+  },
+  {
+   "css": "select#ddl3202",
+   "label": "183",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3203",
+   "label": "184",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3204",
+   "label": "185",
+   "value": "Loop",
+   "options": [
+    "Master",
+    "Direct",
+    "Loop"
+   ]
+  },
+  {
+   "css": "select#ddl3206",
+   "label": "187",
+   "value": "Rate * Quantity",
+   "options": [
+    "Rate * Quantity",
+    "Rate * Quantity - Discount",
+    "Net Amount"
+   ]
+  },
+  {
+   "css": "select#ddl3207",
+   "label": "188",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3208",
+   "label": "189",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3209",
+   "label": "190",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3211",
+   "label": "191",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3212",
+   "label": "192",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3213",
+   "label": "193",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3214",
+   "label": "194",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3217",
+   "label": "195",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3218",
+   "label": "196",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3219",
+   "label": "197",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3302",
+   "label": "199",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3303",
+   "label": "200",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3304",
+   "label": "201",
+   "value": "Loop",
+   "options": [
+    "Master",
+    "Direct",
+    "Loop"
+   ]
+  },
+  {
+   "css": "select#ddl3306",
+   "label": "203",
+   "value": "Rate * Quantity",
+   "options": [
+    "Rate * Quantity",
+    "Rate * Quantity - Discount",
+    "Net Amount"
+   ]
+  },
+  {
+   "css": "select#ddl3307",
+   "label": "204",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3308",
+   "label": "205",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3309",
+   "label": "206",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3311",
+   "label": "207",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3312",
+   "label": "208",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3313",
+   "label": "209",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3314",
+   "label": "210",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3317",
+   "label": "211",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3318",
+   "label": "212",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3319",
+   "label": "213",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3322",
+   "label": "215",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3323",
+   "label": "216",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3324",
+   "label": "217",
+   "value": "Loop",
+   "options": [
+    "Master",
+    "Direct",
+    "Loop"
+   ]
+  },
+  {
+   "css": "select#ddl3326",
+   "label": "219",
+   "value": "Rate * Quantity",
+   "options": [
+    "Rate * Quantity",
+    "Rate * Quantity - Discount",
+    "Net Amount"
+   ]
+  },
+  {
+   "css": "select#ddl3327",
+   "label": "220",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3328",
+   "label": "221",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3329",
+   "label": "222",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3331",
+   "label": "223",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3332",
+   "label": "224",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3333",
+   "label": "225",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3334",
+   "label": "226",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3337",
+   "label": "227",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3338",
+   "label": "228",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3339",
+   "label": "229",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3990",
+   "label": "231",
+   "value": "Ask",
+   "options": [
+    "Don't Ask",
+    "Ask",
+    "Ask on Spacebar"
+   ]
+  },
+  {
+   "css": "select#ddl3342",
+   "label": "232",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3343",
+   "label": "233",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3344",
+   "label": "234",
+   "value": "Loop",
+   "options": [
+    "Master",
+    "Direct",
+    "Loop"
+   ]
+  },
+  {
+   "css": "select#ddl3346",
+   "label": "236",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3347",
+   "label": "237",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3348",
+   "label": "238",
+   "value": "Master",
+   "options": [
+    "All Scheme",
+    "Master"
+   ]
+  },
+  {
+   "css": "select#ddl3349",
+   "label": "239",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3351",
+   "label": "240",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3352",
+   "label": "241",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3353",
+   "label": "242",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3356",
+   "label": "243",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3357",
+   "label": "244",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3358",
+   "label": "245",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3360",
+   "label": "247",
+   "value": "Ask",
+   "options": [
+    "Don't Ask",
+    "Ask",
+    "Ask on Spacebar"
+   ]
+  },
+  {
+   "css": "select#ddl3362",
+   "label": "248",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3363",
+   "label": "249",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3365",
+   "label": "251",
+   "value": "Rate * Quantity",
+   "options": [
+    "Rate * Quantity",
+    "Rate * Quantity - Discount",
+    "Net Amount"
+   ]
+  },
+  {
+   "css": "select#ddl3366",
+   "label": "252",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3367",
+   "label": "253",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3369",
+   "label": "254",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3371",
+   "label": "255",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3372",
+   "label": "256",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3373",
+   "label": "257",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3376",
+   "label": "258",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3377",
+   "label": "259",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3378",
+   "label": "260",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3380",
+   "label": "262",
+   "value": "Ask",
+   "options": [
+    "Don't Ask",
+    "Ask",
+    "Ask on Spacebar"
+   ]
+  },
+  {
+   "css": "select#ddl3382",
+   "label": "263",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3383",
+   "label": "264",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3385",
+   "label": "266",
+   "value": "Rate * Quantity",
+   "options": [
+    "Rate * Quantity",
+    "Rate * Quantity - Discount",
+    "Net Amount"
+   ]
+  },
+  {
+   "css": "select#ddl3386",
+   "label": "267",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3387",
+   "label": "268",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3389",
+   "label": "269",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3391",
+   "label": "270",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3392",
+   "label": "271",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3393",
+   "label": "272",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3396",
+   "label": "273",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3397",
+   "label": "274",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3398",
+   "label": "275",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3401",
+   "label": "277",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3402",
+   "label": "278",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3404",
+   "label": "280",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3405",
+   "label": "281",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3406",
+   "label": "282",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3408",
+   "label": "283",
+   "value": "No",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3409",
+   "label": "284",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3410",
+   "label": "285",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3411",
+   "label": "286",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3414",
+   "label": "287",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3415",
+   "label": "288",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3416",
+   "label": "289",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3418",
+   "label": "290",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3419",
+   "label": "291",
+   "value": "Ask on * Key",
+   "options": [
+    "Ask always",
+    "Ask on * Key",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3422",
+   "label": "294",
+   "value": "Rate * Quantity",
+   "options": [
+    "Rate * Quantity",
+    "Rate * Quantity - Discount",
+    "Net Amount"
+   ]
+  },
+  {
+   "css": "select#ddl3423",
+   "label": "295",
+   "value": "All",
+   "options": [
+    "All",
+    "Quantity"
+   ]
+  },
+  {
+   "css": "select#ddl3424",
+   "label": "296",
+   "value": "No",
+   "options": [
+    "No",
+    "Price List",
+    "Ask",
+    "Ask w/o Price List"
+   ]
+  },
+  {
+   "css": "select#ddl3425",
+   "label": "297",
+   "value": "No",
+   "options": [
+    "No",
+    "Price List",
+    "Ask",
+    "Ask w/o Price List"
+   ]
+  },
+  {
+   "css": "select#ddl3426",
+   "label": "298",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3427",
+   "label": "299",
+   "value": "Always",
+   "options": [
+    "Always",
+    "If In Master",
+    "As Per Master"
+   ]
+  },
+  {
+   "css": "select#ddl3430",
+   "label": "301",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3431",
+   "label": "302",
+   "value": "No",
+   "options": [
+    "Indicate",
+    "Ask Forcefully",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3432",
+   "label": "303",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3435",
+   "label": "304",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3436",
+   "label": "305",
+   "value": "FIFO Date",
+   "options": [
+    "Expiry",
+    "MFG Date",
+    "FIFO Date",
+    "Batch Name"
+   ]
+  },
+  {
+   "css": "select#ddl3437",
+   "label": "306",
+   "value": "Wait on Tab",
+   "options": [
+    "Wait on Tab",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3438",
+   "label": "307",
+   "value": "No",
+   "options": [
+    "OnLeftArrowKey",
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3439",
+   "label": "308",
+   "value": "Ask Party",
+   "options": [
+    "Ask Party",
+    "Cash"
+   ]
+  },
+  {
+   "css": "select#ddl3440",
+   "label": "309",
+   "value": "A-Rate",
+   "options": [
+    "Cost",
+    "Extra+Cost",
+    "M.R.P.",
+    "Purchase Rate",
+    "A-Rate",
+    "B-Rate",
+    "C-Rate",
+    "D-Rate",
+    "E-Rate",
+    "F-Rate",
+    "G-Rate",
+    "H-Rate"
+   ]
+  },
+  {
+   "css": "select#ddl3442",
+   "label": "311",
+   "value": "ItemWise",
+   "options": [
+    "Batchwise",
+    "ItemWise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3444",
+   "label": "313",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3445",
+   "label": "314",
+   "value": "No",
+   "options": [
+    "Indicate On Item and Bill",
+    "Indicate On Item",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl3447",
+   "label": "316",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3448",
+   "label": "317",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4124",
+   "label": "318",
+   "value": "No",
+   "options": [
+    "Yes",
+    "No",
+    "Alert"
+   ]
+  },
+  {
+   "css": "select#ddl801",
+   "label": "321",
+   "value": "7",
+   "options": [
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12"
+   ]
+  },
+  {
+   "css": "select#ddl4353",
+   "label": "322",
+   "value": "No",
+   "options": [
+    "No",
+    "Rate",
+    "Discount",
+    "Both"
+   ]
+  },
+  {
+   "css": "select#ddl4354",
+   "label": "323",
+   "value": "No",
+   "options": [
+    "No",
+    "Rate",
+    "Discount",
+    "Both"
+   ]
+  },
+  {
+   "css": "select#ddl4359",
+   "label": "324",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4360",
+   "label": "325",
+   "value": "Alphabetical",
+   "options": [
+    "Alphabetical",
+    "Item Code",
+    "Agency",
+    "Category",
+    "Rack",
+    "Salt",
+    "Store",
+    "Tax Category"
+   ]
+  },
+  {
+   "css": "select#ddl4356",
+   "label": "326",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4365",
+   "label": "328",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4368",
+   "label": "329",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4391",
+   "label": "330",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4408",
+   "label": "331",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4409",
+   "label": "332",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4419",
+   "label": "333",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4427",
+   "label": "334",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4436",
+   "label": "336",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4437",
+   "label": "337",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4438",
+   "label": "338",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4439",
+   "label": "339",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4443",
+   "label": "340",
+   "value": "Cost Value",
+   "options": [
+    "Cost Value",
+    "Sale Value"
+   ]
+  },
+  {
+   "css": "select#ddl4444",
+   "label": "341",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4446",
+   "label": "342",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4448",
+   "label": "344",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4449",
+   "label": "346",
+   "value": "Centralized",
+   "options": [
+    "Centralized",
+    "Decentralized"
+   ]
+  },
+  {
+   "css": "select#ddl4452",
+   "label": "347",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4508",
+   "label": "348",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4516",
+   "label": "349",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4526",
+   "label": "350",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4527",
+   "label": "351",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4528",
+   "label": "352",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4529",
+   "label": "353",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4530",
+   "label": "354",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4531",
+   "label": "355",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4532",
+   "label": "356",
+   "value": "All",
+   "options": [
+    "All",
+    "Fully Paid",
+    "Partial Paid",
+    "Full & Partial Both"
+   ]
+  },
+  {
+   "css": "select#ddl4533",
+   "label": "357",
+   "value": "Checked",
+   "options": [
+    "Checked",
+    "UnChecked"
+   ]
+  },
+  {
+   "css": "select#ddl4534",
+   "label": "358",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4539",
+   "label": "359",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4440",
+   "label": "360",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4536",
+   "label": "361",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4540",
+   "label": "362",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4541",
+   "label": "363",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4552",
+   "label": "364",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4554",
+   "label": "365",
+   "value": "Others",
+   "options": [
+    "Others",
+    "Retailer",
+    "Stockist",
+    "Distributors"
+   ]
+  },
+  {
+   "css": "select#ddl4558",
+   "label": "366",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4559",
+   "label": "367",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4564",
+   "label": "369",
+   "value": "f8",
+   "options": [
+    "f8",
+    "always",
+    "f8",
+    "always",
+    "f8",
+    "always"
+   ]
+  },
+  {
+   "css": "select#ddl4565",
+   "label": "370",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4569",
+   "label": "371",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4573",
+   "label": "372",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4574",
+   "label": "373",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4576",
+   "label": "375",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4582",
+   "label": "377",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4585",
+   "label": "378",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4587",
+   "label": "380",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4589",
+   "label": "381",
+   "value": "Self",
+   "options": [
+    "Auto",
+    "Self"
+   ]
+  },
+  {
+   "css": "select#ddl4590",
+   "label": "382",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4594",
+   "label": "383",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4595",
+   "label": "384",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4604",
+   "label": "385",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4605",
+   "label": "386",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl201",
+   "label": "387",
+   "value": "No",
+   "options": [
+    "No",
+    "Only Transaction",
+    "Report & Transaction",
+    "Item code"
+   ]
+  },
+  {
+   "css": "select#ddl4310",
+   "label": "388",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4095",
+   "label": "390",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4340",
+   "label": "391",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl7016",
+   "label": "Applicable for Local",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4116",
+   "label": "Default Billing Rate In Store Transfer",
+   "value": "Purchase Rate",
+   "options": [
+    "Cost",
+    "Extra+Cost",
+    "M.R.P.",
+    "Purchase Rate",
+    "A-Rate",
+    "B-Rate",
+    "C-Rate",
+    "D-Rate",
+    "E-Rate",
+    "F-Rate",
+    "G-Rate",
+    "H-Rate"
+   ]
+  },
+  {
+   "css": "select#ddl3449",
+   "label": "Short Amount Limit Required",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3450",
+   "label": "Short Amount Limit Required",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4163",
+   "label": "Billing rate greater then M.R.P on purchase",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4319",
+   "label": "Rate In Unit in Purchase?",
+   "value": "Unit2",
+   "options": [
+    "Unit1",
+    "Unit2",
+    "Ask"
+   ]
+  },
+  {
+   "css": "select#ddl802",
+   "label": "Decimal for M.R.P.",
+   "value": "2",
+   "options": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8"
+   ]
+  },
+  {
+   "css": "select#ddl4361",
+   "label": "Sort Order",
+   "value": "Ascending",
+   "options": [
+    "Ascending",
+    "Decending"
+   ]
+  },
+  {
+   "css": "select#ddl4509",
+   "label": "Ask Additional field in Transaction",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl202",
+   "label": "Ledger Name Duplicate allowed?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl303",
+   "label": "Date Format",
+   "value": "dd/mm/yyyy (02/04/2019)",
+   "options": [
+    "dd/mm/yyyy (02/04/2019)",
+    "yyyy/mm/dd (2019/04/02)",
+    "mm/dd/yyyy (04/02/2019)"
+   ]
+  },
+  {
+   "css": "select#ddl1022",
+   "label": "Category Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4096",
+   "label": "Pick rate from barcode",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4341",
+   "label": "Item merge in purchase",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl6012",
+   "label": "Enable TDS",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4137",
+   "label": "Vat On MRP",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl3455",
+   "label": "Is double entry required",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl603",
+   "label": "Set Unitwise Sales/Purchase rate?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4320",
+   "label": "First Wait In Unit in Purchase",
+   "value": "Unit2",
+   "options": [
+    "Unit1",
+    "Unit2"
+   ]
+  },
+  {
+   "css": "select#ddl803",
+   "label": "Digits for Purchase Rate",
+   "value": "7",
+   "options": [
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12"
+   ]
+  },
+  {
+   "css": "select#ddl4399",
+   "label": "Setup Approval Process",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4537",
+   "label": "(Rate will be asked per item)",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4451",
+   "label": "Party Wise Total",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4510",
+   "label": "Item Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4505",
+   "label": "One To Many & Many To One required?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl304",
+   "label": "Separator",
+   "value": "/",
+   "options": [
+    "/",
+    "-"
+   ]
+  },
+  {
+   "css": "select#ddl10005",
+   "label": "Salt Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4342",
+   "label": "Item merge in sale",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl6013",
+   "label": "Enable TCS",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4138",
+   "label": "Item Wise Tax Inclusive?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl7018",
+   "label": "If bill amount > Rs 50,000.00",
+   "value": "Alert",
+   "options": [
+    "Alert",
+    "Don't Alert"
+   ]
+  },
+  {
+   "css": "select#ddl4607",
+   "label": "Short Amount Required",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl604",
+   "label": "Set default purchase & sales unit?",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4406",
+   "label": "Show Purchase costing in unit",
+   "value": "Unit2",
+   "options": [
+    "Unit1",
+    "Unit2",
+    "Ask"
+   ]
+  },
+  {
+   "css": "select#ddl804",
+   "label": "Decimal for Purchase Rate",
+   "value": "2",
+   "options": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8"
+   ]
+  },
+  {
+   "css": "select#ddl4405",
+   "label": "Manage All Attachments",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4453",
+   "label": "(Rate will be asked per bill)",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4511",
+   "label": "Ledger Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4515",
+   "label": "Customer & Patient Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl320",
+   "label": "Cheque book management",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl1018",
+   "label": "Rack Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl6004",
+   "label": "Maintain batch wise Inventory",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4098",
+   "label": "Default Ledger",
+   "value": "Cash",
+   "options": [
+    "Cash",
+    "Ask"
+   ]
+  },
+  {
+   "css": "select#ddl4445",
+   "label": "Serial Wise Rate",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl7014",
+   "label": "E-way Bill",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4370",
+   "label": "TDS calculate on",
+   "value": "Taxable Value",
+   "options": [
+    "Taxable Value",
+    "Bill Value"
+   ]
+  },
+  {
+   "css": "select#ddl605",
+   "label": "Calculate volume discount in",
+   "value": "1st Unit",
+   "options": [
+    "1st Unit",
+    "2nd Unit",
+    "3rd Unit",
+    "4th Unit",
+    "5th Unit"
+   ]
+  },
+  {
+   "css": "select#ddl805",
+   "label": "Digits for Cost",
+   "value": "7",
+   "options": [
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12"
+   ]
+  },
+  {
+   "css": "select#ddl204",
+   "label": "D.L. No. Required?",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl321",
+   "label": "Multi branch management",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl383",
+   "label": "Doctor Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl6005",
+   "label": "Parameters wise Inventory",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4099",
+   "label": "Default Store",
+   "value": "Main Store",
+   "options": [
+    "Main Store",
+    "Scrap Store"
+   ]
+  },
+  {
+   "css": "select#ddl4606",
+   "label": "Purchase Rate Display on Parameter Window in Sale",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4117",
+   "label": "E-Invoice",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4369",
+   "label": "TCS calculate on",
+   "value": "Taxable Value",
+   "options": [
+    "Taxable Value",
+    "Bill Value"
+   ]
+  },
+  {
+   "css": "select#ddl4103",
+   "label": "Counter Sale",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl606",
+   "label": "Stock report unit",
+   "value": "Default",
+   "options": [
+    "Default",
+    "Multicolumn"
+   ]
+  },
+  {
+   "css": "select#ddl806",
+   "label": "Decimal for Cost",
+   "value": "2",
+   "options": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8"
+   ]
+  },
+  {
+   "css": "select#ddl410",
+   "label": "Multi Currency",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl382",
+   "label": "Patient Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4100",
+   "label": "Billing type",
+   "value": "Tax Inclusive",
+   "options": [
+    "Tax Inclusive",
+    "Tax Exclusive"
+   ]
+  },
+  {
+   "css": "select#ddl4134",
+   "label": "Tax",
+   "value": "GST",
+   "options": [
+    "VAT",
+    "GST"
+   ]
+  },
+  {
+   "css": "select#ddl4104",
+   "label": "Lot Rate Calculation",
+   "value": "F7 Key",
+   "options": [
+    "F7 Key",
+    "Always",
+    "Not Applicable"
+   ]
+  },
+  {
+   "css": "select#ddl607",
+   "label": "Enter conversion factor at billing",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl807",
+   "label": "Digits for Sale Rate",
+   "value": "7",
+   "options": [
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12"
+   ]
+  },
+  {
+   "css": "select#ddl206",
+   "label": "Narco/Sch-H Item Billing Required?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl384",
+   "label": "Prescription Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4421",
+   "label": "Daily Cashbook",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl453",
+   "label": "Multi Unit Required In Sale",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4105",
+   "label": "Bill Direct print After Save",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl608",
+   "label": "Rate in Unit in Sale?",
+   "value": "Unit2",
+   "options": [
+    "Unit1",
+    "Unit2"
+   ]
+  },
+  {
+   "css": "select#ddl808",
+   "label": "Decimal for Sale Rate",
+   "value": "2",
+   "options": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8"
+   ]
+  },
+  {
+   "css": "select#ddl4396",
+   "label": "Filter Item Based on",
+   "value": "Agency Wise",
+   "options": [
+    "Category Wise",
+    "Agency Wise",
+    "Rack Wise",
+    "Salt Wise"
+   ]
+  },
+  {
+   "css": "select#ddl4442",
+   "label": "Required Country of origin in Item Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4566",
+   "label": "Bundle Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl411",
+   "label": "Cost Centre Management",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl470",
+   "label": "Multi Series",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4187",
+   "label": "Default Screen",
+   "value": "Without Image",
+   "options": [
+    "With Image",
+    "Without Image"
+   ]
+  },
+  {
+   "css": "select#ddl4380",
+   "label": "GSTN Login Details",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4350",
+   "label": "Type of Dedcutor",
+   "value": "Centeral Goverment",
+   "options": [
+    "Centeral Goverment",
+    "State Goverment",
+    "Statutory body(Centeral Goverment)",
+    "Statutory body(State Goverment)",
+    "Statutory body(State Goverment)",
+    "Autonomous body(Centeral Goverment)",
+    "Autonomous body(State Goverment)",
+    "Local body(Centeral Goverment)",
+    "Local body(State Goverment)",
+    "Company",
+    "Branch/Division of Company",
+    "Association of Person (AOP)"
+   ]
+  },
+  {
+   "css": "select#ddl609",
+   "label": "First Wait in Unit",
+   "value": "Unit 1",
+   "options": [
+    "Unit 1",
+    "Unit 2"
+   ]
+  },
+  {
+   "css": "select#ddl809",
+   "label": "Decimal for Amount",
+   "value": "2",
+   "options": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8"
+   ]
+  },
+  {
+   "css": "select#ddl4355",
+   "label": "Rate Generate",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4362",
+   "label": "Series required in purchase",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl208",
+   "label": "Transfer Data on and E-Business Code Required?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4366",
+   "label": "Multi unit in POS",
+   "value": "Unit2",
+   "options": [
+    "Unit1",
+    "Unit2"
+   ]
+  },
+  {
+   "css": "select#ddl379",
+   "label": "Route Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4394",
+   "label": "Less By Multi Price-Customer/Supplier Wise",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4441",
+   "label": "Batch Wise Selection in POS",
+   "value": "No",
+   "options": [
+    "FIFO",
+    "No",
+    "Ask"
+   ]
+  },
+  {
+   "css": "select#ddl4351",
+   "label": "TDS Round Off",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl610",
+   "label": "Stock show in Unit",
+   "value": "Unit 1",
+   "options": [
+    "Unit 1",
+    "Both"
+   ]
+  },
+  {
+   "css": "select#ddl4162",
+   "label": "Decimal All.",
+   "value": "2",
+   "options": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8"
+   ]
+  },
+  {
+   "css": "select#ddl4382",
+   "label": "Showing Customer/Patient Wise Balance in Transaction",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4430",
+   "label": "Commison calcuated on the basis",
+   "value": "Rate*Qty-Disc.1",
+   "options": [
+    "Rate*Qty-Disc.1",
+    "Rate*Qty-Disc.",
+    "Rate*Qty"
+   ]
+  },
+  {
+   "css": "select#ddl4431",
+   "label": "Item wise M.R",
+   "value": "No",
+   "options": [
+    "Sale",
+    "Purchase",
+    "Both",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl56",
+   "label": "M.R.Master",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl6008",
+   "label": "Schemes/Offers/Discount",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4363",
+   "label": "Show Taxable Amount",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl611",
+   "label": "Single Unit Column",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4198",
+   "label": "Decimal for Quanity",
+   "value": "2",
+   "options": [
+    "2",
+    "3"
+   ]
+  },
+  {
+   "css": "select#ddl312",
+   "label": "Auto Software logout",
+   "value": "Never",
+   "options": [
+    "Never",
+    "After 5 Mins",
+    "After 15 Mins",
+    "After 10 Mins",
+    "Custom"
+   ]
+  },
+  {
+   "css": "select#ddl1020",
+   "label": "Agency Master",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4194",
+   "label": "Re-Order Level Management",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl501",
+   "label": "Sale Order",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4429",
+   "label": "Ask M.R at the time of Bill",
+   "value": "Start",
+   "options": [
+    "Start",
+    "Save"
+   ]
+  },
+  {
+   "css": "select#ddl412",
+   "label": "PDC Management System",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl6014",
+   "label": "Barcode Management",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl504",
+   "label": "Purchase Order",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4140",
+   "label": "Party Wise Agency Discount",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4066",
+   "label": "Collaborative Commerce",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4504",
+   "label": "Is Narration Mandatory in Accounting Transaction ?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4518",
+   "label": "M.R Required In Sale Return",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4519",
+   "label": "M.R Required In Sale Challan",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4520",
+   "label": "M.R Required In Stock Issue",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4522",
+   "label": "Brk/Exp Entry",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4523",
+   "label": "Sale Difference In Credit Note",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4524",
+   "label": "Sale Difference In Debit Note",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl316",
+   "label": "Visibility of Un-assigned Menu",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4141",
+   "label": "Party Wise Special Discount",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl472",
+   "label": "Ask customer start and save ?",
+   "value": "Save",
+   "options": [
+    "Start",
+    "Save"
+   ]
+  },
+  {
+   "css": "select#ddl507",
+   "label": "Sale Return",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4142",
+   "label": "Price List",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl7033",
+   "label": "Agency subgroup required?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl509",
+   "label": "Purchase Return",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl5097",
+   "label": "Round off Required in Sale?",
+   "value": "Auto",
+   "options": [
+    "Auto",
+    "Upper",
+    "Lower",
+    "None"
+   ]
+  },
+  {
+   "css": "select#ddl1023",
+   "label": "Discount Master",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4093",
+   "label": "POS?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4109",
+   "label": "Net Scheme",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl6006",
+   "label": "Multi Store",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl513",
+   "label": "BRK/EXP Issue",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4123",
+   "label": "Ask Bill Remarks",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl6016",
+   "label": "Manufacturer Required",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4317",
+   "label": "Multi Unit Required In Purchase",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl511",
+   "label": "BRK/EXP Receive",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4161",
+   "label": "Sales Promotions",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4122",
+   "label": "Amount Format",
+   "value": "Indian Format",
+   "options": [
+    "Indian Format",
+    "Million Format",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl6017",
+   "label": "Transport Required",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4332",
+   "label": "Weighing Scale Required",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4165",
+   "label": "Loyalty Management",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4155",
+   "label": "Ship To Address?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl502",
+   "label": "Sale Challan",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4173",
+   "label": "Sale Quotation",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4128",
+   "label": "Manage Patient/Customer Wise Outstanding",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4186",
+   "label": "Ledger Alias?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl505",
+   "label": "Purchase Challan",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4327",
+   "label": "Merge Batch Required?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4403",
+   "label": "M.R Required In Receipt?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4131",
+   "label": "Home Delivery",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4322",
+   "label": "Ledger List (Filter / Bottom Details)",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl508",
+   "label": "Sale Return Challan",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4328",
+   "label": "Ask Item Discount on Start Sale",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4154",
+   "label": "Customer Name",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4348",
+   "label": "Membership",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl510",
+   "label": "Purchase Return Challan",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4596",
+   "label": "Parent Ledger Required",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4158",
+   "label": "Cash on party/ECommerce",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl514",
+   "label": "BRK/EXP Issue Challan",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4170",
+   "label": "Display Item Details",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl512",
+   "label": "BRK/EXP Receive Challan",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4175",
+   "label": "ASK ORIGINAL/DUPLICATE FOR PRINT",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4191",
+   "label": "DOCTOR COMMISSION",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl516",
+   "label": "Stock Issue",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl515",
+   "label": "Stock Recieve",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4199",
+   "label": "IRD Setup",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4200",
+   "label": "Sale BackDate Billing",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4321",
+   "label": "Mode of Payment required in Purchase",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4129",
+   "label": "Stock Transfer",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4201",
+   "label": "Purchase BackDate BIlling",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4130",
+   "label": "Physical Stock",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4303",
+   "label": "Ledger MC",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4308",
+   "label": "Skip batch window (if batch < 2)",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4309",
+   "label": "Format",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4343",
+   "label": "Send Automatic Whatsapp After Transaction Save",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4106",
+   "label": "Show Printer List",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4513",
+   "label": "Sale Future Date Billing",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4514",
+   "label": "Purchase Future Date Billing",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl474",
+   "label": "Barcode Required",
+   "value": "No",
+   "options": [
+    "Master wise",
+    "Batch wise",
+    "Multiple",
+    "Parameter wise",
+    "Serial wise",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl4107",
+   "label": "Barcode Numbering Style",
+   "value": "Automatic",
+   "options": [
+    "Automatic",
+    "Manual"
+   ]
+  },
+  {
+   "css": "select#ddl475",
+   "label": "Free Deal from",
+   "value": "Master",
+   "options": [
+    "Master",
+    "Batch",
+    "Manual"
+   ]
+  },
+  {
+   "css": "select#ddl4336",
+   "label": "Fetch detail On the basis of Barcode",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4381",
+   "label": "BarCode Generate",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl1001",
+   "label": "Item Default Search By?",
+   "value": "Description",
+   "options": [
+    "Description",
+    "Any Where",
+    "Top Sale",
+    "Item Smart Search"
+   ]
+  },
+  {
+   "css": "select#ddl1002",
+   "label": "Item Code Required?",
+   "value": "No",
+   "options": [
+    "No",
+    "Only Transaction",
+    "Report & Transaction",
+    "Item code"
+   ]
+  },
+  {
+   "css": "select#ddl1003",
+   "label": "Item Code Generation:",
+   "value": "Self",
+   "options": [
+    "Auto",
+    "Self"
+   ]
+  },
+  {
+   "css": "select#ddl1004",
+   "label": "Product Name Duplicate allowed?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl1006",
+   "label": "Barcode Duplicate allowed?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl1008",
+   "label": "Packing Required?",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl1009",
+   "label": "Print Name Required?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl1013",
+   "label": "Item Discount Applicable?",
+   "value": "Both",
+   "options": [
+    "Both",
+    "Purchase",
+    "Sale",
+    "No"
+   ]
+  },
+  {
+   "css": "select#ddl1014",
+   "label": "Volume Discount 1st?",
+   "value": "No",
+   "options": [
+    "perUnit",
+    "No",
+    "Lumpsum",
+    "Percentage"
+   ]
+  },
+  {
+   "css": "select#ddl1015",
+   "label": "Display Agency Column?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl1026",
+   "label": "HSN/SAC Required?",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl2003",
+   "label": "Minimum Margin Required in Party wise Special Rate?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl2004",
+   "label": "Volume Discount 1st?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl2005",
+   "label": "Volume Discount 1st?",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl2006",
+   "label": "Minimum Margin Required in Party Wise Agency Discount?",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl2007",
+   "label": "Volume Discount 1st?",
+   "value": "",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl2012",
+   "label": "Transport Required?",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4126",
+   "label": "Item remarks required",
+   "value": "No",
+   "options": [
+    "No",
+    "Ask",
+    "Ask On F2"
+   ]
+  },
+  {
+   "css": "select#ddl4152",
+   "label": "Volume Discount 2nd?",
+   "value": "No",
+   "options": [
+    "perUnit",
+    "No",
+    "Lumpsum",
+    "Percentage"
+   ]
+  },
+  {
+   "css": "select#ddl4172",
+   "label": "Station Required?",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4180",
+   "label": "Product Alias Required?",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4190",
+   "label": "COMMISSION DISPLAY ON SALE BILL",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4193",
+   "label": "Show Internet Speed",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4195",
+   "label": "Marg Pay Integration",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4323",
+   "label": "Last 5 details showing on right side party wise",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4324",
+   "label": "Rate Wise GST",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4331",
+   "label": "COMMISSION WILL APPLY ON PROFIT",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4334",
+   "label": "Item Opening",
+   "value": "Yes",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  },
+  {
+   "css": "select#ddl4593",
+   "label": "Configure Purchase Bill List",
+   "value": "No",
+   "options": [
+    "No",
+    "Yes"
+   ]
+  }
+ ]
+}

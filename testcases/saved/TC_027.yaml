@@ -1,0 +1,18 @@
+- id: TC_027
+  module: sales
+  title: QA4 R4 ghost 221159
+  priority: p2
+  tags:
+  - studio
+  - priority-medium
+  destructive: false
+  preconditions:
+  - Created by QA Tester 4 | 2026-11-23 22:13
+  expected: []
+  steps:
+  - action: note
+    value: Log in (the runner signs in before every test)
+    note: await login(page);
+  - action: open_screen
+    target: sale_bill
+    note: await openScreen(page, 'sale_bill');

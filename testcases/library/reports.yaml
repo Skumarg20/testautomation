@@ -1,0 +1,1170 @@
+- id: TC_RPT_001
+  module: reports
+  title: Own party with opening balance 1500 Dr; Trial Balance, Expand All
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/accounting-reports.md AR-01 (KB #7973b72d; LIVE)'
+  - 'Group: J19 Accounting reports'
+  expected:
+  - 'Party row: Debit 1500.00, Credit empty'
+  steps: []
+- id: TC_RPT_002
+  module: reports
+  title: Trial Balance grand totals
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/accounting-reports.md AR-02 (KB #665e010c (difference concept); LIVE)'
+  - 'Group: J19 Accounting reports'
+  expected:
+  - Debit total = Credit total
+  steps: []
+- id: TC_RPT_003
+  module: reports
+  title: 'Own journal today: Dr own Indirect Expenses ledger 250, Cr own Indirect Incomes ledger 250; Day Book'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/accounting-reports.md AR-03 (KB #0b03a9b1; LIVE)'
+  - 'Group: J19 Accounting reports'
+  expected:
+  - Two lines, same voucher number, type "Journal", 250 Dr / 250 Cr
+  steps: []
+- id: TC_RPT_004
+  module: reports
+  title: Same journal; Profit & Loss, Expand All
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/accounting-reports.md AR-04 (KB #ba1945b8; LIVE)'
+  - 'Group: J19 Accounting reports'
+  expected:
+  - Own expense ledger 250.00 on the expense side, own income ledger 250.00 on the income side
+  steps: []
+- id: TC_RPT_005
+  module: reports
+  title: Delete the journal; Day Book again
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/accounting-reports.md AR-05 (UNVERIFIED)'
+  - 'Group: J19 Accounting reports'
+  expected:
+  - Lines gone. UNVERIFIED (not asserted; cleanup only)
+  steps: []
+- id: TC_RPT_006
+  module: reports
+  title: Trial Balance with opening balance off (Configuration)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/accounting-reports.md AR-06 (KB #95b3de8a)'
+  - 'Group: J19 Accounting reports'
+  expected:
+  - 'Own party opening not shown. Not automated: tenant-wide setting, other tests read the report in parallel'
+  steps: []
+- id: TC_RPT_007
+  module: reports
+  title: Date filter From = To = voucher date / day after
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/accounting-reports.md AR-07 (UNVERIFIED)'
+  - 'Group: J19 Accounting reports'
+  expected:
+  - Included / excluded. UNVERIFIED
+  steps: []
+- id: TC_RPT_008
+  module: reports
+  title: Export Excel/PDF of each report
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/accounting-reports.md AR-08 (KB #ba1945b8, #6b961b40)'
+  - 'Group: J19 Accounting reports'
+  expected:
+  - File downloads, figures match screen. UNVERIFIED
+  steps: []
+- id: TC_RPT_009
+  module: reports
+  title: P&L net result equals Balance Sheet profit/loss line
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/accounting-reports.md AR-09 (UNVERIFIED)'
+  - 'Group: J19 Accounting reports'
+  expected:
+  - UNVERIFIED
+  steps: []
+- id: TC_RPT_010
+  module: reports
+  title: Report API with company A token and company B id
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/accounting-reports.md AR-10 (CODE (endpoints only))'
+  - 'Group: J19 Accounting reports'
+  expected:
+  - Rejected or empty. UNVERIFIED
+  steps: []
+- id: TC_RPT_011
+  module: reports
+  title: User without "Day Book" right
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/accounting-reports.md AR-11 (KB #44a76d11)'
+  - 'Group: J19 Accounting reports'
+  expected:
+  - Denied. Rights are assigned per role (KB)
+  steps: []
+- id: TC_RPT_012
+  module: reports
+  title: Open Report > Combined Report > Accounts Report > Ledger
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-01 (KB careportal_enriched_v5.csv#19614629)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - '"Ledger Master" window appears; selecting a ledger and pressing Enter shows its detailed report'
+  steps: []
+- id: TC_RPT_013
+  module: reports
+  title: Open Master > Account Master > Ledger
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-02 (KB careportal_enriched_v5.csv#d596ad1b)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - '"Ledger Master" window lists all ledgers with their balances'
+  steps: []
+- id: TC_RPT_014
+  module: reports
+  title: Create a sales invoice for a new party (own data), open that party's ledger report for the invoice date
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-03 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - 'Ledger shows one entry for the invoice on the debit side with the invoice total. Exact column names, Dr/Cr
+    placement and amount: UNVERIFIED (no KB value; confirm live)'
+  steps: []
+- id: TC_RPT_015
+  module: reports
+  title: Ledger closing balance after one sale and one receipt for a new party
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-04 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Closing balance = opening + debits - credits. Formula is accounting convention, not cited; displayed sign and
+    Dr/Cr label UNVERIFIED
+  steps: []
+- id: TC_RPT_016
+  module: reports
+  title: Ledger total debit and credit equal the sum of the visible rows
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-05 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Totals equal sums of listed rows (edge checklist "totals reconcile"). Footer layout UNVERIFIED
+  steps: []
+- id: TC_RPT_017
+  module: reports
+  title: Party created with an opening balance in Master > Opening Balance > Ledger, report for the full FY
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-06 (KB careportal_enriched_v5.csv#41450cdc (where it
+    is set only))'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Opening balance appears as the first line / opening figure. Presentation UNVERIFIED
+  steps: []
+- id: TC_RPT_018
+  module: reports
+  title: 'Date filter: set From/To via Date field or Alt+D, click OK'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-07 (KB careportal_enriched_v5.csv#19614629)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Report shows only entries in the range; "Date Filter" window appears
+  steps: []
+- id: TC_RPT_019
+  module: reports
+  title: Date range starts the day after an entry
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-08 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - 'Entry excluded; opening figure for the range includes it. Whether the report carries a brought-forward line:
+    UNVERIFIED'
+  steps: []
+- id: TC_RPT_020
+  module: reports
+  title: Range equals one day equal to the entry date (From = To)
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-09 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Entry included. Inclusive-boundary rule UNVERIFIED
+  steps: []
+- id: TC_RPT_021
+  module: reports
+  title: 'FY boundary: entries on 31-03 and 01-04 across two FYs'
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-10 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Each FY report shows only its own entries; opening of the new FY carries the closing of the old. Carry-forward
+    rule UNVERIFIED
+  steps: []
+- id: TC_RPT_022
+  module: reports
+  title: Advanced Filter (Alt+F) opens
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-11 (KB careportal_enriched_v5.csv#19614629)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - '"Advanced Filter" window appears with selectable criteria; criteria list truncated in KB'
+  steps: []
+- id: TC_RPT_023
+  module: reports
+  title: All-ledger report filtered by Account Group (for example Sundry Debtors)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-12 (KB careportal_enriched_v5.csv#a746b97e)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Only ledgers of the chosen group are listed
+  steps: []
+- id: TC_RPT_024
+  module: reports
+  title: All-ledger report filtered by Ledger Category, Country, Station
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-13 (KB careportal_enriched_v5.csv#a746b97e)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Only matching ledgers listed
+  steps: []
+- id: TC_RPT_025
+  module: reports
+  title: Setting "Show Debit/Credit Entries" = Dr only / Cr only / All
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-14 (KB careportal_enriched_v5.csv#ae5bd4cb)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Report lists only debit rows / only credit rows / all rows respectively
+  steps: []
+- id: TC_RPT_026
+  module: reports
+  title: Setting "Show Voucher Number" on vs off
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-15 (KB careportal_enriched_v5.csv#ae5bd4cb)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Voucher number column present vs absent. Exact option labels UNVERIFIED
+  steps: []
+- id: TC_RPT_027
+  module: reports
+  title: Setting "Show Ledger Name" on vs off, "Load Challan" on vs off
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-16 (KB careportal_enriched_v5.csv#ae5bd4cb)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Ledger name / challan details displayed or hidden per option
+  steps: []
+- id: TC_RPT_028
+  module: reports
+  title: Export ledger report as Excel
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-17 (KB careportal_enriched_v5.csv#b541ba40; match rule
+    from edge checklist)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - File generated for the selected party; its rows and closing balance match the screen
+  steps: []
+- id: TC_RPT_029
+  module: reports
+  title: Export as PDF with Configure > Current View
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-18 (KB careportal_enriched_v5.csv#306f9a59)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - PDF reflects the current on-screen view (filters, range)
+  steps: []
+- id: TC_RPT_030
+  module: reports
+  title: Export as CSV and Word
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-19 (KB careportal_enriched_v5.csv#b541ba40)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Formats offered in the Export window
+  steps: []
+- id: TC_RPT_031
+  module: reports
+  title: Print icon
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-20 (KB careportal_enriched_v5.csv#b541ba40)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Print preview/dialog opens. Behaviour in headless browser UNVERIFIED
+  steps: []
+- id: TC_RPT_032
+  module: reports
+  title: Share via WhatsApp / Email / Drive icons are present
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-21 (KB careportal_enriched_v5.csv#d596ad1b)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Three share options shown. Delivery not automatable (external services); presence check only
+  steps: []
+- id: TC_RPT_033
+  module: reports
+  title: 'Reconcile with Trial Balance: ledger closing balance equals its Trial Balance figure for the same date
+    range with Opening Balance on'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-22 (KB careportal_enriched_v5.csv#fba17458, #7973b72d
+    (drill-down exists); equality rule from edge checklist)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Same amount and Dr/Cr side
+  steps: []
+- id: TC_RPT_034
+  module: reports
+  title: 'Reconcile with the sale invoice: invoice grand total equals the ledger debit for that party'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-23 (edge checklist "totals reconcile"; value UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Equal to the paisa (use Decimal). Invoice screen total is covered by J05
+  steps: []
+- id: TC_RPT_035
+  module: reports
+  title: 'Reconcile with GST: tax ledgers (output CGST/SGST/IGST) show the invoice tax split'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-24 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - CGST+SGST for intra-state, IGST for inter-state. Ledger names UNVERIFIED
+  steps:
+  - action: use_company
+    value: QA GST Mobile Trade
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+L
+    note: Ledger list (Alt+L)
+  - action: wait_text
+    value: Ledger Master
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: CGST Output
+    note: Search CGST Output
+  - action: sleep
+    value: 2.5
+  - action: read_value
+    target: xpath=//div[contains(@class,"ag-row")][.//div[@col-id="LedgerName"][normalize-space()="CGST Output"]]//div[@col-id="0"]
+    save_as: c0
+    note: Remember CGST Output balance
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: SGST Output
+    note: Search SGST Output
+  - action: sleep
+    value: 2.5
+  - action: read_value
+    target: xpath=//div[contains(@class,"ag-row")][.//div[@col-id="LedgerName"][normalize-space()="SGST Output"]]//div[@col-id="0"]
+    save_as: g0
+    note: Remember SGST Output balance
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: IGST Output
+    note: Search IGST Output
+  - action: sleep
+    value: 2.5
+  - action: read_value
+    target: xpath=//div[contains(@class,"ag-row")][.//div[@col-id="LedgerName"][normalize-space()="IGST Output"]]//div[@col-id="0"]
+    save_as: i0
+    note: Remember IGST Output balance
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+N
+    note: New sale bill (Alt+N)
+  - action: wait_text
+    value: Select Party
+    note: Party list opens
+  - action: click
+    target: xpath=//ngb-modal-window//div[@col-id][normalize-space()="QA_Party_Debtor"]
+    inside_modal: true
+    note: Pick QA_Party_Debtor
+  - action: press
+    value: Enter
+  - action: assert_value
+    target: '[formcontrolname="ledgerName"]'
+    value: QA_Party_Debtor
+  - action: sleep
+    value: 4
+    note: Wait for the cursor to reach the first product cell
+  - action: press
+    value: Q
+    note: Type QA_Item_GST12 (opens the item list)
+  - action: press
+    value: A
+  - action: press
+    value: _
+  - action: press
+    value: I
+  - action: press
+    value: t
+  - action: press
+    value: e
+  - action: press
+    value: m
+  - action: press
+    value: _
+  - action: press
+    value: G
+  - action: press
+    value: S
+  - action: press
+    value: T
+  - action: press
+    value: '1'
+  - action: press
+    value: '2'
+  - action: sleep
+    value: 1.5
+  - action: assert_visible
+    target: xpath=//ngb-modal-window//div[@row-index="0"]//div[@col-id][normalize-space()="QA_Item_GST12"]
+    note: 'List filtered: the item is the first row'
+  - action: press
+    value: Enter
+    note: Take the item
+  - action: sleep
+    value: 3
+  - action: assert_visible
+    target: '#txt-quantity-0'
+    note: Cursor on Qty
+  - action: press
+    value: Control+A
+  - action: press
+    value: '1'
+    note: Qty 1
+  - action: press
+    value: Enter
+  - action: sleep
+    value: 1
+  - action: press
+    value: Enter
+    note: Rate
+  - action: sleep
+    value: 1
+  - action: press
+    value: Enter
+    note: 'Disc %: next line'
+  - action: sleep
+    value: 1.5
+  - action: assert_visible
+    target: xpath=//div[normalize-space()="CGST"]/following-sibling::div[1][normalize-space(translate(.," "," "))="6.00"]
+    note: 'Local bill: CGST 6.00'
+  - action: assert_visible
+    target: xpath=//div[normalize-space()="SGST"]/following-sibling::div[1][normalize-space(translate(.," "," "))="6.00"]
+    note: 'Tax Info: SGST 6.00'
+  - action: assert_visible
+    target: 'xpath=//div[contains(@class,"bill-value-text")][normalize-space(translate(.," "," "))="Invoice Value
+      : 112.00"]'
+    note: Invoice Value 112.00
+  - action: press
+    value: F10
+    note: Save
+  - action: wait_text
+    value: Select Format
+    note: 'Saved: print window'
+  - action: press
+    value: Escape
+  - action: wait_text
+    value: Select Party
+    note: A new bill opens
+  - action: press
+    value: Escape
+    note: Close the party list of the new bill
+  - action: sleep
+    value: 1.5
+  - action: click
+    target: xpath=//button[starts-with(@id,"btnEsc")]
+    note: Esc Close the empty bill that opened after the save
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+    note: Exit without saving? -> Yes (when asked)
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+N
+    note: New sale bill (Alt+N)
+  - action: wait_text
+    value: Select Party
+    note: Party list opens
+  - action: click
+    target: xpath=//ngb-modal-window//div[@col-id][normalize-space()="QA_Party_Interstate"]
+    inside_modal: true
+    note: Pick QA_Party_Interstate
+  - action: press
+    value: Enter
+  - action: assert_value
+    target: '[formcontrolname="ledgerName"]'
+    value: QA_Party_Interstate
+  - action: sleep
+    value: 4
+    note: Wait for the cursor to reach the first product cell
+  - action: press
+    value: Q
+    note: Type QA_Item_GST12 (opens the item list)
+  - action: press
+    value: A
+  - action: press
+    value: _
+  - action: press
+    value: I
+  - action: press
+    value: t
+  - action: press
+    value: e
+  - action: press
+    value: m
+  - action: press
+    value: _
+  - action: press
+    value: G
+  - action: press
+    value: S
+  - action: press
+    value: T
+  - action: press
+    value: '1'
+  - action: press
+    value: '2'
+  - action: sleep
+    value: 1.5
+  - action: assert_visible
+    target: xpath=//ngb-modal-window//div[@row-index="0"]//div[@col-id][normalize-space()="QA_Item_GST12"]
+    note: 'List filtered: the item is the first row'
+  - action: press
+    value: Enter
+    note: Take the item
+  - action: sleep
+    value: 3
+  - action: assert_visible
+    target: '#txt-quantity-0'
+    note: Cursor on Qty
+  - action: press
+    value: Control+A
+  - action: press
+    value: '1'
+    note: Qty 1
+  - action: press
+    value: Enter
+  - action: sleep
+    value: 1
+  - action: press
+    value: Enter
+    note: Rate
+  - action: sleep
+    value: 1
+  - action: press
+    value: Enter
+    note: 'Disc %: next line'
+  - action: sleep
+    value: 1.5
+  - action: assert_visible
+    target: xpath=//div[normalize-space()="IGST"]/following-sibling::div[1][normalize-space(translate(.," "," "))="12.00"]
+    note: 'Inter-state bill: IGST 12.00'
+  - action: assert_visible
+    target: 'xpath=//div[contains(@class,"bill-value-text")][normalize-space(translate(.," "," "))="Invoice Value
+      : 112.00"]'
+    note: Invoice Value 112.00
+  - action: press
+    value: F10
+    note: Save
+  - action: wait_text
+    value: Select Format
+    note: 'Saved: print window'
+  - action: press
+    value: Escape
+  - action: wait_text
+    value: Select Party
+    note: A new bill opens
+  - action: press
+    value: Escape
+    note: Close the party list of the new bill
+  - action: sleep
+    value: 1.5
+  - action: click
+    target: xpath=//button[starts-with(@id,"btnEsc")]
+    note: Esc Close the empty bill that opened after the save
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+    note: Exit without saving? -> Yes (when asked)
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+L
+    note: Ledger list (Alt+L)
+  - action: wait_text
+    value: Ledger Master
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: CGST Output
+    note: Search CGST Output
+  - action: sleep
+    value: 2.5
+  - action: assert_visible
+    target: xpath=//div[contains(@class,"ag-row")][.//div[@col-id="LedgerName"][normalize-space()="CGST Output"]]//div[@col-id="0"][translate(normalize-space(translate(.," ","
+      ")),",","")="{ctx.c0+6}"][contains(.,"Cr")]
+    note: CGST Output up by 6 (Cr)
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: SGST Output
+    note: Search SGST Output
+  - action: sleep
+    value: 2.5
+  - action: assert_visible
+    target: xpath=//div[contains(@class,"ag-row")][.//div[@col-id="LedgerName"][normalize-space()="SGST Output"]]//div[@col-id="0"][translate(normalize-space(translate(.," ","
+      ")),",","")="{ctx.g0+6}"][contains(.,"Cr")]
+    note: SGST Output up by 6 (Cr)
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: IGST Output
+    note: Search IGST Output
+  - action: sleep
+    value: 2.5
+  - action: assert_visible
+    target: xpath=//div[contains(@class,"ag-row")][.//div[@col-id="LedgerName"][normalize-space()="IGST Output"]]//div[@col-id="0"][translate(normalize-space(translate(.," ","
+      ")),",","")="{ctx.i0+12}"][contains(.,"Cr")]
+    note: IGST Output up by 12 (Cr)
+  - action: screenshot
+    value: TC_RPT_035
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  verification:
+    status: verified
+    company: QA GST Mobile Trade
+    date: '2026-11-19'
+    run:
+      passed: 121
+      total: 121
+    evidence:
+    - artifacts/verify/shots/8812_TC_RPT_035.png
+    kb:
+    - e2e_scripts:ledger-report.md LR-24
+    - codekb:sales-purchase/08 E9
+    notes: 'One full run: balances of CGST Output, SGST Output, IGST Output read first; a local bill (QA_Party_Debtor,
+      QA_Item_GST12 1 x 100: CGST 6 + SGST 6, 112.00) and an inter-state bill (QA_Party_Interstate, same item: IGST
+      12, 112.00) saved; the Ledger list then shows CGST Output +6.00 Cr, SGST Output +6.00 Cr, IGST Output +12.00
+      Cr. Ledger names: CGST Output / SGST Output / IGST Output. Note: read_value + {ctx.x+N} needs a non-empty
+      starting balance (a ledger with no balance reads '''' and the step fails); the first run failed for that reason
+      on IGST Output, which then had a balance.'
+- id: TC_RPT_036
+  module: reports
+  title: Edit a posted invoice amount, reopen ledger
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-25 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Ledger reflects the new amount, no duplicate row
+  steps: []
+- id: TC_RPT_037
+  module: reports
+  title: Cancel/delete the invoice, reopen ledger
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-26 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - 'Entry removed or reversed. Which of the two: UNVERIFIED'
+  steps: []
+- id: TC_RPT_038
+  module: reports
+  title: Ledger with no transactions in range
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-27 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Empty state or only opening figure; no error. Wording UNVERIFIED
+  steps: []
+- id: TC_RPT_039
+  module: reports
+  title: 'Odd paise: invoice with total ending in .5 paise rounding'
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-28 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Ledger shows the rounded invoice total and a round-off line if the app posts one. Round-off ledger behaviour
+    UNVERIFIED
+  steps: []
+- id: TC_RPT_040
+  module: reports
+  title: Very large amount (for example 9,99,99,999.99)
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-29 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Displayed without truncation, Indian digit grouping assumed. UNVERIFIED
+  steps: []
+- id: TC_RPT_041
+  module: reports
+  title: Ledger name with unicode / special characters / long name
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-30 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Name searchable in "Ledger Master" and printed intact. Max length UNVERIFIED
+  steps: []
+- id: TC_RPT_042
+  module: reports
+  title: Search for a ledger that does not exist in "Ledger Master"
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-31 (UNVERIFIED (behaviour implied by KB search step,
+    #19614629))'
+  - 'Group: J12 Ledger report'
+  expected:
+  - No result; no report opens
+  steps: []
+- id: TC_RPT_043
+  module: reports
+  title: Limited user (no report right) opens the ledger report by menu and by direct URL
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-32 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Denied or redirect. Rule UNVERIFIED; no limited account known to exist (see auth pack Q3)
+  steps: []
+- id: TC_RPT_044
+  module: reports
+  title: Company A ledger entries never appear in company B's ledger report (same party name in both)
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-33 (edge checklist; value UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Company B report shows only company B entries
+  steps: []
+- id: TC_RPT_045
+  module: reports
+  title: 'API: request ledger data with company A token and company B company id'
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-34 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Rejected or empty. Endpoint name UNVERIFIED (ask_codebase unavailable)
+  steps: []
+- id: TC_RPT_046
+  module: reports
+  title: Refresh the report mid-load / open the same ledger twice quickly
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-35 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Same figures, no doubled rows
+  steps: []
+- id: TC_RPT_047
+  module: reports
+  title: Ledger API figures equal the UI figures for the same party and range
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-36 (UNVERIFIED)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Equal totals and row count. Endpoint and payload UNVERIFIED
+  steps: []
+- id: TC_RPT_048
+  module: reports
+  title: Mobile app Ledger Book (More > Reports > Ledger)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-report.md LR-37 (KB careportal_enriched_v5.csv#ab22e1bc)'
+  - 'Group: J12 Ledger report'
+  expected:
+  - Out of scope for the web suite; recorded only
+  steps: []

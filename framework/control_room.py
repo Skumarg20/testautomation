@@ -23,6 +23,7 @@ config/control_room.json me rakh leta hai. Uske baad:
 from __future__ import annotations
 
 import json
+import os
 import re
 import time
 
@@ -191,6 +192,9 @@ def load() -> dict:
 
 
 def save(data: dict):
+    import os
+    if os.environ.get("MB_NO_CAPTURE"):      # parallel sessions (tools/live_session): no shared-file writes
+        return
     FILE.parent.mkdir(parents=True, exist_ok=True)
     FILE.write_text(json.dumps(data, indent=1, ensure_ascii=False),
                     encoding="utf-8")
@@ -327,6 +331,14 @@ def open_control_room(bp: BasePage, verbose: bool = False) -> bool:
     deta tha aur User Privilege khul jata tha.
     """
     page = bp.page
+    # Already open with its rows (an earlier ensure/read left it open)? Use it: the Settings icon toggles the
+    # panel, so clicking it again closed it and the next scan read no rows (TC_CSAL_003: "Close labels: []").
+    try:
+        raw = page.evaluate(SCAN_JS)
+        if len([r for r in raw.get("settings", []) if not r.get("hidden")]) > 50:
+            return True
+    except Exception:  # noqa: BLE001
+        pass
     safety.dismiss_modal(page)
 
     # 1. Settings
@@ -336,8 +348,23 @@ def open_control_room(bp: BasePage, verbose: bool = False) -> bool:
         try:
             safety.guarded_click(page.locator("a#aControlRoomSetting").first,
                                  "nav.settings", timeout=4000)
-        except Exception as e:  # noqa: BLE001
-            raise ControlRoomNotOpen(f"Settings ka icon nahi mila: {e}") from e
+        except Exception:  # noqa: BLE001
+            # Seen in Studio runs (TC_GARM_092, TC_SALE_044): the icon is on screen but Playwright cannot find
+            # it any more after a long run (its view of the page went stale). Loading the dashboard again
+            # gives a fresh page; then the icon is found at once.
+            try:
+                try:                                    # what the page itself sees (for the run log)
+                    seen = page.evaluate("() => { const e = document.getElementById('aControlRoomSetting'); "
+                                         "return e ? (e.offsetParent ? 'visible' : 'hidden') : 'missing'; }")
+                    print(f"  [control_room] Settings icon not found by Playwright; in the page it is {seen}. "
+                          f"Reloading the dashboard.")
+                except Exception:  # noqa: BLE001
+                    pass
+                bp.goto(f"{settings.BASE_URL}/dashboard", check_auth=False)
+                page.wait_for_timeout(3000)
+                safety.guarded_click(page.locator("a#aControlRoomSetting").first, "nav.settings", timeout=15000)
+            except Exception as e:  # noqa: BLE001
+                raise ControlRoomNotOpen(f"Settings ka icon nahi mila: {e}") from e
     wait_ready(page, timeout_ms=15000, verbose=verbose)
 
     # 2. Control Room wale card ka Configure
@@ -537,6 +564,14 @@ def _set_control(bp: BasePage, css: str, want: str) -> dict:
         if info["now"].lower() == str(want).lower():
             return {"ok": True, "changed": False, "now": info["now"]}
         loc.select_option(label=want)
+        # Some Control Room rows only mark the form dirty on a real user-like change: make sure Angular sees
+        # it (seen: Net Scheme / Batch Window Index on reverted when only select_option was used).
+        try:
+            loc.dispatch_event("input")
+            loc.dispatch_event("change")
+            loc.press("Tab")
+        except Exception:  # noqa: BLE001
+            pass
         bp.settle()
         return {"ok": True, "changed": True, "now": want}
 
@@ -663,7 +698,16 @@ def _save_setting(bp: BasePage, verbose: bool = False) -> dict:
         pass
 
     # 2. Save -- popup ke ANDAR hai, isliye inside_modal
-    for label in ("Save", "Yes", "Save Changes", "Update"):
+    # The "Save Changes ?" alert's Save is #btnYes inside div.modal-new (get_by_role does not see it).
+    try:
+        yb = page.locator("div.modal-new #btnYes, .modal.show #btnYes").first
+        if yb.count() and yb.is_visible(timeout=1500):
+            safety.guarded_click(yb, "controlroom.save:#btnYes", inside_modal=True, timeout=6000)
+            wait_ready(page, timeout_ms=20000)
+            steps["save"] = True
+    except Exception:  # noqa: BLE001
+        pass
+    for label in (() if steps["save"] else ("Save", "Yes", "Save Changes", "Update")):
         try:
             b = page.get_by_role("button", name=label, exact=False).first
             if not b.count():
@@ -695,6 +739,16 @@ def _save_setting(bp: BasePage, verbose: bool = False) -> dict:
                 break
         except Exception:  # noqa: BLE001
             continue
+
+    # An "OK" alert does not always reload the app; reload so the read-back sees what the server saved.
+    if steps["save"]:
+        try:
+            page.reload(wait_until="domcontentloaded")
+            steps["reload"] = True
+        except Exception:  # noqa: BLE001
+            pass
+    if not steps["save"]:
+        steps["note"] = "no Save button after Esc: the app did not see the change (nothing was sent)"
 
     # Reload ke baad app poora dobara banta hai -- uska intezaar zaroori hai,
     # warna agla kadam khali page par chalega
@@ -1008,3 +1062,252 @@ def report(path) -> str | None:
                      + (f"   ({'/'.join(r['options'][:4])})" if r.get("options") else ""))
     path.write_text("\n".join(lines), encoding="utf-8")
     return str(path)
+
+
+# ------------------------------------------------------------ any setting, by its label
+
+def _rows_live(bp: BasePage) -> list[dict]:
+    # Right after a settings save the app reloads; the panel can open before its rows are drawn and the scan
+    # then sees none ("No Control Room setting labelled 'M.R.Master'. Close labels: []", TC_SALE_212).
+    # Wait for the rows instead of reading an empty panel.
+    rows: list[dict] = []
+    for attempt in range(8):
+        wait_ready(bp.page, timeout_ms=20000)
+        raw = bp.page.evaluate(SCAN_JS)
+        rows = [r for r in raw.get("settings", []) if not r.get("hidden")]
+        if len(rows) > 50:
+            return rows
+        bp.page.wait_for_timeout(1500)
+        if attempt == 4 and not rows:
+            # a half-closed panel (rows hidden) still "looks like" the Control Room: start again from the dashboard
+            try:
+                safety.force_close_modal(bp.page)
+                bp.goto(f"{settings.BASE_URL}/dashboard", check_auth=False)
+                bp.page.wait_for_timeout(2500)
+            except Exception:  # noqa: BLE001
+                pass
+            open_control_room(bp)
+    return rows
+
+
+def _pick_row(rows: list[dict], label: str, nth: int | None = None) -> dict:
+    # "Control Room > Sale BackDate Billing" (a path written in the case): the setting is the last part
+    label = re.sub(r"^.*>\s*", "", str(label)) if ">" in str(label) else label
+    want = _norm_label(label)
+    if not want:
+        raise ControlRoomNotOpen(f"empty setting label {label!r}")
+    hits = [r for r in rows if _norm_label(r.get("label", "")) == want]
+    if not hits:
+        hits = [r for r in rows if want in _norm_label(r.get("label", ""))]
+    if not hits:
+        words = {w for w in re.findall(r"[a-z0-9]+", label.lower()) if len(w) > 3}
+        near = sorted({r["label"] for r in rows if words & set(re.findall(r"[a-z0-9]+", r["label"].lower()))})[:8]
+        raise ControlRoomNotOpen(f"No Control Room setting labelled {label!r}. Close labels: {near}")
+    if len(hits) > 1 and nth is None:
+        raise ControlRoomNotOpen(
+            f"{len(hits)} settings match {label!r}: " + "; ".join(f"{r['label']} [{r['css']}]" for r in hits[:6])
+            + ". Use the exact label, or 'Label #2' for the second one.")
+    return hits[(nth or 1) - 1]
+
+
+# Settings the app cannot turn back once changed (the company's data is converted): never changed by a test run.
+ONE_WAY = ("pos?", "pos", "multi unit required in sale", "multi unit required in purchase", "multi unit")
+
+
+def _is_one_way(label: str) -> bool:
+    n = _norm_label(label).rstrip("?").strip()
+    return any(n == _norm_label(x).rstrip("?").strip() for x in ONE_WAY)
+
+
+def _split_nth(label: str) -> tuple[str, int | None]:
+    m = re.match(r"(.+?)\s*#(\d+)$", label.strip())
+    return (m.group(1), int(m.group(2))) if m else (label.strip(), None)
+
+
+def read_setting(bp: BasePage, label: str) -> dict:
+    """Current value of one Control Room setting, read live (nothing changed)."""
+    if (cp := _config_path(label)):
+        try:
+            return read_config_setting(bp, *cp)
+        except ControlRoomNotOpen as e:
+            if "with a Configure button" not in str(e):
+                raise
+    lab, nth = _split_nth(label)
+    if not open_control_room(bp):
+        raise ControlRoomNotOpen("Control Room khul nahi paya")
+    try:
+        r = _pick_row(_rows_live(bp), lab, nth)
+    finally:
+        safety.force_close_modal(bp.page)
+    return {"label": r["label"], "value": r.get("value", ""), "options": r.get("options", []), "css": r["css"]}
+
+
+def set_setting(bp: BasePage, label: str, want: str) -> dict:
+    """
+    Set ANY Control Room setting by its label (548 of them, not just the KNOWN list), save, reload, read back.
+    Only in a QA test company (framework.qa_company): settings are company data.
+    """
+    from framework import qa_company
+    qa_company.require_test_company(bp.page, f"change setting {label!r}")
+    if (cp := _config_path(label)):          # "Loss Indication > Net Loss ...?": a field in a row's Configure window
+        try:
+            return set_config_setting(bp, *cp, want)
+        except ControlRoomNotOpen as e:
+            if "with a Configure button" not in str(e):
+                raise
+    lab, nth = _split_nth(label)
+    if not open_control_room(bp):
+        raise ControlRoomNotOpen("Control Room khul nahi paya")
+    r = _pick_row(_rows_live(bp), lab, nth)
+    before = r.get("value", "")
+    if str(before).strip().lower() == str(want).strip().lower():
+        safety.force_close_modal(bp.page)
+        return {"label": r["label"], "changed": False, "value": before}
+    if _is_one_way(r["label"]) and not os.environ.get("ALLOW_ONE_WAY_SETTINGS"):
+        safety.force_close_modal(bp.page)
+        raise SettingLocked(f"{r['label']!r} cannot be turned back once changed (it converts the company's data), "
+                            f"so the tool does not change it ({before!r} -> {want!r}). Set it by hand in a QA company "
+                            f"made for it, or run with ALLOW_ONE_WAY_SETTINGS=1 after agreeing to it.")
+    res = _set_control(bp, r["css"], want)
+    if not res.get("ok"):
+        safety.force_close_modal(bp.page)
+        raise ControlRoomNotOpen(f"{r['label']!r} could not be set to {want!r}: {res.get('why')}")
+    msgs_before = len(safety.get_toasts(bp.page))
+    saved = _save_setting(bp) if res.get("changed", True) else {"save": True}
+    toasts = [t.get("text", t) if isinstance(t, dict) else t for t in safety.get_toasts(bp.page)[msgs_before:]]
+    if not open_control_room(bp):
+        raise ControlRoomNotOpen("Control Room did not reopen to check the saved value")
+    try:
+        now = next((x.get("value", "") for x in _rows_live(bp) if x["css"] == r["css"]), None)
+    finally:
+        safety.force_close_modal(bp.page)
+    CHANGED.append({"feature": r["label"], "from": before, "to": now, "label": r["label"]})
+    if str(now).strip().lower() != str(want).strip().lower():
+        raise ControlRoomNotOpen(f"{r['label']!r}: asked {want!r}, after save it is {now!r}. App said: {toasts[:3]}. "
+                                 f"Save flow: {saved}")
+    return {"label": r["label"], "changed": True, "from": before, "value": now}
+
+
+# ---------- settings behind a row's own Configure button ----------
+# Some Control Room rows have no value of their own but a "Configure" button that opens a small window with the
+# real settings, e.g.  Loss Indication -> "Net Loss and Margin Loss Indication Required?" (Indicate / Forcefully).
+# Cases write them as a path:  "Loss Indication > Net Loss and Margin Loss Indication Required?"  (TC_SALE_203).
+
+CONFIG_FIELDS_JS = r"""() => {
+  const m = [...document.querySelectorAll('ngb-modal-window, .modal.show')].filter(e => e.getClientRects().length).pop();
+  if (!m) return null;
+  const title = ((m.querySelector('.modal-title, .modal-header, h4, h5') || {}).innerText || '').trim();
+  const out = [];
+  [...m.querySelectorAll('select, input[type=checkbox]')].filter(e => e.getClientRects().length).forEach((e, i) => {
+    let r = e, label = '';
+    for (let k = 0; k < 5 && r.parentElement; k++) {
+      r = r.parentElement;
+      label = (r.innerText || '').replace(e.innerText || '', '').trim();
+      if (label) break;
+    }
+    if (!e.id) e.setAttribute('data-mbcfg', String(i));
+    out.push({css: e.id ? '#' + e.id : `[data-mbcfg="${i}"]`, tag: e.tagName.toLowerCase(), label: label.split('\n')[0].trim(),
+              value: e.tagName === 'SELECT' ? ((e.options[e.selectedIndex] || {}).text || '') : (e.checked ? 'Yes' : 'No'),
+              options: e.tagName === 'SELECT' ? [...e.options].map(o => o.text) : ['No', 'Yes']});
+  });
+  return {title, fields: out};
+}"""
+
+
+def _config_path(label: str) -> tuple[str, str] | None:
+    """'Control Room > Loss Indication (Configure) > Net Loss ...?' -> ('Loss Indication', 'Net Loss ...?')."""
+    parts = [re.sub(r"\(\s*configure\s*\)", "", p, flags=re.I).strip() for p in str(label).split(">")]
+    parts = [p for p in parts if p and p.lower() != "control room"]
+    return (parts[-2], parts[-1]) if len(parts) >= 2 else None
+
+
+def _open_row_configure(bp: BasePage, row_label: str) -> bool:
+    page = bp.page
+    rows = page.locator(f"xpath=//div[contains(@class,'row')][./div[normalize-space()={_xq(row_label)}]]"
+                        f"[.//button[normalize-space()='Configure']]")
+    for i in range(min(rows.count(), 10)):
+        r = rows.nth(i)
+        if not r.is_visible():
+            continue
+        btn = r.locator("xpath=.//button[normalize-space()='Configure']").first
+        btn.scroll_into_view_if_needed(timeout=5000)
+        safety.guarded_click(btn, f"controlroom.configure:{row_label}", inside_modal=True)
+        for _ in range(20):
+            page.wait_for_timeout(250)
+            info = page.evaluate(CONFIG_FIELDS_JS)
+            if info and info.get("fields"):
+                return True
+        return False
+    return False
+
+
+def _xq(s: str) -> str:
+    """XPath string literal."""
+    if "'" not in s:
+        return f"'{s}'"
+    if '"' not in s:
+        return f'"{s}"'
+    return "concat(" + ", \"'\", ".join(f"'{p}'" for p in s.split("'")) + ")"
+
+
+def _config_field(bp: BasePage, field_label: str) -> dict:
+    info = bp.page.evaluate(CONFIG_FIELDS_JS) or {}
+    want = _norm_label(field_label)
+    fields = info.get("fields", [])
+    hit = [f for f in fields if _norm_label(f["label"]) == want] or \
+          [f for f in fields if want and (want in _norm_label(f["label"]) or _norm_label(f["label"]) in want)]
+    if not hit:
+        raise ControlRoomNotOpen(f"No field {field_label!r} in the {info.get('title')!r} window. "
+                                 f"Fields: {[f['label'] for f in fields]}")
+    return hit[0]
+
+
+def read_config_setting(bp: BasePage, row_label: str, field_label: str) -> dict:
+    if not open_control_room(bp):
+        raise ControlRoomNotOpen("Control Room khul nahi paya")
+    try:
+        if not _open_row_configure(bp, row_label):
+            raise ControlRoomNotOpen(f"No Control Room row {row_label!r} with a Configure button")
+        f = _config_field(bp, field_label)
+        return {"label": f"{row_label} > {f['label']}", "value": f["value"], "options": f["options"], "css": f["css"]}
+    finally:
+        safety.force_close_modal(bp.page)
+        safety.force_close_modal(bp.page)
+
+
+def set_config_setting(bp: BasePage, row_label: str, field_label: str, want: str) -> dict:
+    from framework import qa_company
+    qa_company.require_test_company(bp.page, f"change setting {row_label} > {field_label}")
+    if not open_control_room(bp):
+        raise ControlRoomNotOpen("Control Room khul nahi paya")
+    try:
+        if not _open_row_configure(bp, row_label):
+            raise ControlRoomNotOpen(f"No Control Room row {row_label!r} with a Configure button")
+        f = _config_field(bp, field_label)
+        label = f"{row_label} > {f['label']}"
+        before = f["value"]
+        if before.strip().lower() == str(want).strip().lower():
+            return {"label": label, "changed": False, "value": before}
+        res = _set_control(bp, f["css"], want)
+        if not res.get("ok"):
+            raise ControlRoomNotOpen(f"{label!r} could not be set to {want!r}: {res.get('why')}")
+        page = bp.page
+        save = page.locator("xpath=(//ngb-modal-window | //div[contains(@class,'modal') and contains(@class,'show')])"
+                            "[last()]//button[contains(normalize-space(),'Save')]").first
+        safety.guarded_click(save, f"controlroom.configure.save:{row_label}", inside_modal=True)
+        page.wait_for_timeout(1500)
+        for txt in ("Yes", "Ok", "OK"):                 # a confirm after the save, if the app asks
+            b = page.locator(f"xpath=//ngb-modal-window//button[normalize-space()='{txt}']")
+            if b.count() and b.first.is_visible():
+                safety.guarded_click(b.first, f"controlroom.configure.confirm:{txt}", inside_modal=True)
+                page.wait_for_timeout(1500)
+                break
+        wait_app_back(bp)
+    finally:
+        safety.force_close_modal(bp.page)
+        safety.force_close_modal(bp.page)
+    now = read_config_setting(bp, row_label, field_label)["value"]
+    CHANGED.append({"feature": label, "from": before, "to": now, "label": label})
+    if now.strip().lower() != str(want).strip().lower():
+        raise ControlRoomNotOpen(f"{label!r}: asked {want!r}, after save it is {now!r}")
+    return {"label": label, "changed": True, "from": before, "value": now}

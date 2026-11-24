@@ -18,6 +18,27 @@ _S = r"""'((?:[^'\\]|\\.)*)'"""
 HELPERS = {"login": "login", "open": "openScreen", "party": "setParty", "item": "addItem",
            "save": "saveForm", "close": "closeForm", "bulk": "randomSaleBills"}
 
+# A login test checks the login screen itself (wrong password, unknown user...). Its recorded login steps stay in
+# the script; the runner signs out first (sign_out) so the test starts on the login page. The real password never
+# stays in it: a typed known password becomes process.env.MB_PASS! ({{config_password}} when it runs).
+LOGIN_TEST_MARK = "// studio: login test - the recorded login steps are kept; the runner signs out first"
+_ENV_VALUE = {"MB_PASS": "{{config_password}}", "MB_USER": "{{config_user}}"}
+
+
+def is_login_test(code: str) -> bool:
+    return "// studio: login test" in (code or "")
+
+
+def mark_login_test(code: str) -> str:
+    """Put the login-test mark on the script (once), right before the first action."""
+    if is_login_test(code):
+        return code
+    ls = (code or "").split("\n")
+    at = next((i for i, ln in enumerate(ls) if ln.strip().startswith("await")), len(ls))
+    ind = re.match(r"\s*", ls[at]).group() if at < len(ls) else "  "
+    ls.insert(at, ind + LOGIN_TEST_MARK)
+    return "\n".join(ls)
+
 
 def q(v) -> str:
     return str(v).replace("\\", "\\\\").replace("'", "\\'")
@@ -76,6 +97,8 @@ def generate(name: str, module: str, author: str, lines: list[str], tid: str = "
             body.append(f"  await expect(page.getByText('{q(r['what'])}')).toBeVisible();")
         elif k == "wait":
             body.append(f"  await page.waitForTimeout({r['secs'] * 1000}); // wait (asked in the steps)")
+        elif k == "key":
+            body.append(f"  await page.keyboard.press('{q(r['key'])}');")
         elif k == "bulk":
             body.append(f"  await randomSaleBills(page, {{ bills: {r['count']}, itemsPerBill: {r['items']} }});")
             used.add("randomSaleBills")
@@ -92,6 +115,156 @@ def count_actions(code: str) -> int:
     return sum(1 for ln in code.split("\n") if ln.strip().startswith("await"))
 
 
+# ------------------------------------------------------------- login block
+#
+# A recording that starts before sign-in contains the whole login: the login page,
+# the e-mail, the password, the eye icon, arrow keys inside the password box...
+# MargBooks' password box has no name or placeholder, so codegen writes it as a bare
+# getByRole('textbox') and nothing says "password". The runner signs in by itself
+# before every test, so the whole block is replaced by login(page).
+
+_LOGIN_START = re.compile(
+    r"\.goto\(\s*'[^']*(?:accounts\.margbooks|/login)|"
+    r"getBy(?:Role|Placeholder|Label)\([^)]*'(?:Email address[^']*|[^']*mobile number|User ID|Password|PIN|OTP)'|"
+    r"type=\"?password", re.I)
+_LOGIN_MORE = re.compile(
+    r"name: '(?:Login|Log in|Sign in|Continue|Next|Submit|Verify|Proceed)'|"
+    r"getByRole\('(?:textbox|img|button|checkbox)'\)(?:\.(?:nth\(\d+\)|first\(\)|last\(\)))?\.(?:click|fill|press|check)\(|"
+    r"\.goto\(\s*'https?://[^/']+/?'\s*\)", re.I)
+
+
+def _company_words() -> list[str]:
+    try:
+        from config.settings import settings
+        comp = (settings.COMPANY or "").split(" (")[0].strip()
+        return [comp] if len(comp) > 3 else []
+    except Exception:  # noqa: BLE001
+        return []
+
+
+# A typed value: the password step of a login (MargBooks' password box is a bare textbox, or it says Password/PIN).
+_LOGIN_SECRET = re.compile(
+    r"getByRole\('textbox'\)(?:\.(?:nth\(\d+\)|first\(\)|last\(\)))?\.fill\(|"
+    r"(?:Password|PIN|OTP)[^)]*\)[^;]*\.fill\(|type=\"?password[^;]*\.fill\(", re.I)
+_LOGIN_GAP = 3          # unknown steps (e.g. a 'Login with password' link) allowed inside a login before the password
+_LOGIN_GAP_MAX = 8      # a longer run of unknown steps stays in the login only when the password fill ends it
+_LOGIN_GAP_LIMIT = 40   # ... and beyond that only plain clicks (links, tabs) do, up to this many
+# A typed literal right before the login's submit (Continue / Login...) is the password too, whatever locator the
+# box has (a CSS id, locator('input').nth(1)...): MargBooks' boxes change, the submit button does not.
+_FILL_LITERAL = re.compile(r"\.fill\(\s*'[^']*'\s*\)")
+_LOGIN_SUBMIT = re.compile(r"name: '(?:Login|Log in|Sign in|Continue|Next|Submit|Verify|Proceed)'|\.press\('Enter'\)",
+                           re.I)
+_LOGIN_SUBMIT_BTN = re.compile(r"name: '(?:Login|Log in|Sign in|Continue|Verify)'", re.I)
+
+
+def single_quotes(code: str) -> str:
+    """JS strings in "..." (or `...` without ${}) written as '...'. Codegen writes single quotes and every rule of
+    the Studio (login block, password redaction, Verify, to_steps) reads them; a script re-formatted by Prettier or
+    VS Code format-on-save before pasting had double quotes, and its whole login and password stayed in it.
+    A string that holds a ' or a backslash escape is left as it is."""
+    out, i, n = [], 0, len(code)
+    while i < n:
+        ch = code[i]
+        if ch == "/" and i + 1 < n and code[i + 1] == "/":          # a // comment: up to the end of the line
+            j = code.find("\n", i)
+            j = n if j < 0 else j
+            out.append(code[i:j])
+            i = j
+            continue
+        if ch in "'\"`":
+            j = i + 1
+            while j < n and code[j] != ch and not (ch != "`" and code[j] == "\n"):
+                j += 2 if code[j] == "\\" else 1
+            body = code[i + 1:j]
+            if ch != "'" and j < n and code[j] == ch and "'" not in body and "\\" not in body \
+                    and "\n" not in body and "${" not in body:
+                out.append("'" + body + "'")
+            else:
+                out.append(code[i:j + 1])
+            i = j + 1
+            continue
+        out.append(ch)
+        i += 1
+    return "".join(out)
+
+
+def is_secret(ln: str, nxt: str = "", submit: re.Pattern | None = None) -> bool:
+    """A typed value of the login: the password box (bare textbox, Password/PIN/OTP), or a literal typed right
+    before the login's submit step `nxt`. Both lines in single quotes (single_quotes)."""
+    if _LOGIN_SECRET.search(ln):
+        return True
+    if _LOGIN_START.search(ln):          # the e-mail / user id box: typed, but not the password
+        return False
+    return bool(_FILL_LITERAL.search(ln) and (submit or _LOGIN_SUBMIT).search(nxt or ""))
+
+
+def login_block(code: str) -> set[int]:
+    """0-based indexes of the lines that belong to a recorded login.
+
+    Until the password has been typed the login is not over: a few steps the rules do not know (a 'Login with
+    password' link, a 'Remember me' box...) stay in the block when a login step follows them. Without this, the
+    block ended at the unknown step and the password typed after it stayed in the script."""
+    comp = _company_words()
+    out: set[int] = set()
+    inside, typed, gap = False, False, []
+    # detection reads every line in single quotes (a pasted, re-formatted script may use double quotes)
+    awaits = [(i, single_quotes(raw.strip())) for i, raw in enumerate(code.split("\n"))
+              if raw.strip().startswith("await")]
+    for k, (i, ln) in enumerate(awaits):
+        nxt = awaits[k + 1][1] if k + 1 < len(awaits) else ""
+        secret = is_secret(ln, nxt) if not typed else bool(_LOGIN_SECRET.search(ln))
+        if _LOGIN_START.search(ln):
+            if len(gap) <= _LOGIN_GAP or secret:
+                out.update(gap)
+            inside = True
+            gap = []
+        elif inside and secret and not typed:
+            out.update(gap)                  # the password, after steps the rules do not know: all login steps
+            gap = []
+        elif inside and not (_LOGIN_MORE.search(ln) or any(c in ln for c in comp)):
+            plain_click = ".click(" in ln and ".goto(" not in ln and ".fill(" not in ln
+            if not typed and (len(gap) < _LOGIN_GAP_MAX or (plain_click and len(gap) < _LOGIN_GAP_LIMIT)):
+                gap.append(i)            # maybe part of the login: decided by the next step
+                continue
+            inside, gap = False, []
+        elif inside and gap:
+            if len(gap) > _LOGIN_GAP and not secret:
+                inside, gap = False, []      # many unknown steps and no password after them: the login was over
+            else:
+                out.update(gap)              # the password typed after them: they were login steps (no password kept)
+                gap = []
+        if inside:
+            out.add(i)
+            if secret:
+                typed = True
+        else:
+            typed = False
+    return out
+
+
+def replace_login(code: str) -> str:
+    """Swap the recorded login for one login(page) line, so no password stays in the script."""
+    if is_login_test(code):              # a login test keeps its login steps (passwords are cleaned by redact)
+        return code
+    idx = login_block(code)
+    if not idx:
+        return code
+    ls = code.split("\n")
+    first = min(idx)
+    keep = []
+    for i, ln in enumerate(ls):
+        if i == first:
+            keep.append("  await login(page);   // reads MB_USER / MB_PASS")
+        if i not in idx:
+            keep.append(ln)
+    code = "\n".join(keep)
+    if not re.search(r"import \{[^}]*\blogin\b[^}]*\} from '\.\./helpers/mb';", code):
+        anchor = re.search(r"import \{[^}]*\} from '@playwright/test';", code)
+        line = "import { login } from '../helpers/mb';"
+        code = code.replace(anchor.group(0), anchor.group(0) + "\n" + line, 1) if anchor else line + "\n" + code
+    return code
+
+
 # ---------------------------------------------------------- to YAML steps
 
 def to_steps(code: str) -> dict:
@@ -100,14 +273,57 @@ def to_steps(code: str) -> dict:
     steps: list[dict] = []
     unknown: list[dict] = []
     note = ""
+    login_test = is_login_test(code)
+    login_idx = set() if login_test else login_block(code)
+    if login_test:
+        steps.append({"action": "sign_out", "note": "Sign out and open the login page (login test)", "_line": 0})
+    started = False
     for n, raw in enumerate(code.split("\n"), 1):
         ln = raw.strip()
         if not ln:
             continue
         if ln.startswith("//"):
-            note = ln[2:].strip()
+            if not ln.startswith("// studio: login test"):
+                note = ln[2:].strip()
             continue
         if not ln.startswith("await"):
+            continue
+        # a comment after the statement ("await login(page);   // reads MB_USER") is not part of it
+        ln = re.sub(r";\s*//[^'\"]*$", ";", ln)
+        if login_test:
+            if not started and ".goto(" in ln:      # the start page: sign_out already opened the login page
+                note = ""
+                continue
+            started = True
+            if re.fullmatch(r"await login\(page\);", ln):
+                unknown.append({"line": n, "text": ln[:110],
+                                "why": "A login test types its own login. Remove login(page), or remove the "
+                                       "'studio: login test' line to make it a normal test."})
+                continue
+            # process.env.MB_PASS! / MB_USER!: the runner's own login, filled in when the step runs
+            shown = ln
+            ln = re.sub(r"process\.env\.(MB_PASS|MB_USER)!?", lambda m: "'" + _ENV_VALUE[m.group(1)] + "'", ln)
+            if ln != shown and not note:
+                note = shown[:110]
+            # MargBooks' password box has no name: codegen writes a bare getByRole('textbox'). On the login page
+            # that is the password field (login.password in the locator file).
+            m = re.fullmatch(r"await page\.(?:getByRole\('textbox'\)(?:\.(?:first|last)\(\)|\.nth\(\d+\))?|"
+                             r"getBy(?:Label|Placeholder)\('(?:Password|PIN)[^']*'\)|"
+                             r"locator\('input\[type=\"?password\"?\]'\))"
+                             r"\.(fill|press|click|dblclick)\((?:" + _S + r")?[^)]*\);", ln)
+            if m:
+                act = {"fill": "fill", "press": "press"}.get(m.group(1), "click")
+                st = {"action": act, "target": "login.password", "note": note or shown[:110], "_line": n}
+                if act != "click":
+                    st["value"] = unq(m.group(2) or "")
+                steps.append(st)
+                note = ""
+                continue
+        if n - 1 in login_idx:          # recorded login: the runner signs in itself
+            if not any(s.get("_login") for s in steps):
+                steps.append({"action": "note", "value": "Log in (the runner signs in before every test)",
+                              "note": "Log in", "_line": n, "_login": True})
+            note = ""
             continue
         step = _helper_step(ln) or _env_step(ln)
         if step == "skip":
@@ -117,8 +333,8 @@ def to_steps(code: str) -> dict:
             if step == "skip":
                 continue
         if step is None:
-            if re.search(r"getByPlaceholder\('(User ID|Password)'\)|type=\"?password", ln, re.I) \
-                    or re.search(r"name: 'Login'", ln):
+            if not login_test and (re.search(r"getByPlaceholder\('(User ID|Password)'\)|type=\"?password", ln, re.I)
+                                   or re.search(r"name: 'Login'", ln)):
                 unknown.append({"line": n, "text": ln[:110],
                                 "why": "Login is done by the runner. Replace the login lines with login(page)."})
                 continue
@@ -130,7 +346,9 @@ def to_steps(code: str) -> dict:
         else:
             unknown.append({"line": n, "text": ln[:110], "why": "This action cannot be replayed."})
         note = ""
-    return {"steps": _merge_party(steps), "unknown": unknown}
+    if login_test and len(steps) == 1:
+        steps = []                       # only the sign-out: the script has no actions
+    return {"steps": _merge_party(steps), "unknown": unknown, "login_test": login_test}
 
 
 def _merge_party(steps: list[dict]) -> list[dict]:
@@ -203,11 +421,12 @@ def _keyboard(ln: str, steps: list[dict]):
     m = re.fullmatch(rf"await page\.keyboard\.press\({_S}\);", ln)
     if not m:
         return None
-    if steps and steps[-1]["action"] in ("set_party", "add_item", "note"):
+    key = unq(m.group(1))
+    if key == "Enter" and steps and steps[-1]["action"] in ("set_party", "add_item", "note"):
         return "skip"        # those steps already press Enter themselves
-    if steps and steps[-1].get("target"):
-        return {"action": "press", "target": steps[-1]["target"], "value": unq(m.group(1))}
-    return None
+    if key == "Enter" and steps and steps[-1].get("target"):
+        return {"action": "press", "target": steps[-1]["target"], "value": key}
+    return {"action": "press", "value": key}      # F10, Alt+N, Escape...: a key on the page, no target
 
 
 # ------------------------------------------------------- Chrome Recorder

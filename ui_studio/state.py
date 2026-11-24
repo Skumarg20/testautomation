@@ -8,16 +8,17 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import os
 import sqlite3
 import threading
 import time
 from contextlib import contextmanager
+from pathlib import Path
 
 from config.settings import ROOT
 
-DB = ROOT / "config" / "studio.db"
+DB = Path(os.environ["STUDIO_DB"]) if os.environ.get("STUDIO_DB") else ROOT / "config" / "studio.db"
 SETTINGS = ROOT / "config" / "studio_settings.json"
-_lock = threading.RLock()
 
 MODULES = ["Sale", "Purchase", "Inventory", "Accounts", "Masters", "Control Room", "Reports", "CRM"]
 TRADES = ["Pharma Distributor", "Pharma Agent", "Pharma Retail", "FMCG", "Garment"]
@@ -56,26 +57,80 @@ def save_settings(new: dict) -> dict:
 
 # ----------------------------------------------------------------------- db
 
-@contextmanager
-def db():
-    with _lock:
+def _migrate(con):
+    """Columns added after the first release (old databases get them on first open)."""
+    cols = {r[1] for r in con.execute("PRAGMA table_info(runs)")}
+    if "run_by" not in cols:
+        con.execute("ALTER TABLE runs ADD COLUMN run_by TEXT DEFAULT ''")
+    # The failure in simple words, kept with the run's own error: the rules' summary when the run is saved, and the
+    # AI's when a QA asks for it (JSON {"what", "why", "next", "side", "side_text"}; '' = not made yet).
+    if "explain" not in cols:
+        con.execute("ALTER TABLE runs ADD COLUMN explain TEXT DEFAULT ''")
+    if "explain_ai" not in cols:
+        con.execute("ALTER TABLE runs ADD COLUMN explain_ai TEXT DEFAULT ''")
+
+
+_SCHEMA = """
+CREATE TABLE IF NOT EXISTS ai_usage(ts REAL, month TEXT, feature TEXT, model TEXT, tin INT, tout INT, case_id TEXT);
+CREATE TABLE IF NOT EXISTS ai_cache(k TEXT PRIMARY KEY, v TEXT, ts REAL);
+CREATE TABLE IF NOT EXISTS tests(id TEXT PRIMARY KEY, name TEXT, module TEXT, author TEXT, priority TEXT,
+    description TEXT, kind TEXT, created TEXT, lines TEXT, code TEXT, spec_file TEXT, seq INT);
+CREATE TABLE IF NOT EXISTS runs(id TEXT PRIMARY KEY, test_id TEXT, name TEXT, module TEXT, author TEXT,
+    at TEXT, passed INT, total INT, result TEXT, err TEXT, fail_at INT, steps TEXT, dir TEXT, ai_fixes INT,
+    ts REAL);
+"""
+_ready: set[str] = set()          # database files whose tables were created/migrated by this process
+_init_lock = threading.Lock()     # only the one-time schema set-up is serialised, never normal queries
+_extra_schema: list = []          # other modules' table set-up (accounts), run once per database file
+
+
+def add_schema(fn):
+    """Register fn(con) to create more tables; it runs once per database file per process."""
+    _extra_schema.append(fn)
+    _ready.clear()
+
+
+def _connect():
+    con = sqlite3.connect(DB, timeout=30)          # run processes and the server share the file
+    con.row_factory = sqlite3.Row
+    con.execute("PRAGMA busy_timeout=30000")
+    return con
+
+
+def _init(key: str):
+    with _init_lock:
+        if key in _ready and DB.exists():
+            return
         DB.parent.mkdir(parents=True, exist_ok=True)
-        con = sqlite3.connect(DB)
-        con.row_factory = sqlite3.Row
-        con.executescript("""
-        CREATE TABLE IF NOT EXISTS ai_usage(ts REAL, month TEXT, feature TEXT, model TEXT, tin INT, tout INT, case_id TEXT);
-        CREATE TABLE IF NOT EXISTS ai_cache(k TEXT PRIMARY KEY, v TEXT, ts REAL);
-        CREATE TABLE IF NOT EXISTS tests(id TEXT PRIMARY KEY, name TEXT, module TEXT, author TEXT, priority TEXT,
-            description TEXT, kind TEXT, created TEXT, lines TEXT, code TEXT, spec_file TEXT, seq INT);
-        CREATE TABLE IF NOT EXISTS runs(id TEXT PRIMARY KEY, test_id TEXT, name TEXT, module TEXT, author TEXT,
-            at TEXT, passed INT, total INT, result TEXT, err TEXT, fail_at INT, steps TEXT, dir TEXT, ai_fixes INT,
-            ts REAL);
-        """)
+        con = _connect()
         try:
-            yield con
+            try:   # WAL: readers (login, session checks) never wait for a run process that is writing
+                con.execute("PRAGMA journal_mode=WAL")
+            except sqlite3.Error:
+                pass
+            con.executescript(_SCHEMA)
+            _migrate(con)
+            for fn in _extra_schema:
+                fn(con)
             con.commit()
         finally:
             con.close()
+        _ready.add(key)
+
+
+@contextmanager
+def db():
+    """One short-lived connection per use. No process-wide lock: SQLite (WAL, busy timeout) handles concurrency,
+    so one request waiting for a write lock no longer makes every other request (login, session check) queue."""
+    key = str(DB)
+    if key not in _ready or not DB.exists():
+        _init(key)
+    con = _connect()
+    try:
+        yield con
+        con.commit()
+    finally:
+        con.close()
 
 
 # ------------------------------------------------------------------- tokens

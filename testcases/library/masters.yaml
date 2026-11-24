@@ -1,0 +1,6412 @@
+- id: TC_MSTR_001
+  module: masters
+  title: Open Master > Inventory Master > Item
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-01 (KB careportal_enriched_v5.csv#ce983a40, #7e11d1c2)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - '"Item List" window appears with a "Create" button'
+  steps: []
+- id: TC_MSTR_002
+  module: masters
+  title: Create an item with only the mandatory fields (Product, Unit 1st, HSN/SAC, Tax Category, Company) and Save
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-02 (KB vimeo_transcripts_hinglish_english.csv#cfb7a4f2,
+    careportal_enriched_v5.csv#2ad671cf)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - 'Item is saved: the app asks Do you want to add item Opening (no separate saved message); after No the item
+    appears in the Item List'
+  steps:
+  - action: use_company
+    value: QA GST Garment
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+i
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create/F2
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 3
+  - action: fill
+    target: '#txtProduct'
+    value: QA_Itm002_TMP
+    note: Product
+  - action: click
+    target: '#unit'
+    note: Unit 1st
+  - action: sleep
+    value: 1
+  - action: press
+    value: P
+    note: PCS
+  - action: press
+    value: C
+  - action: press
+    value: S
+  - action: sleep
+    value: 2
+  - action: press
+    value: Enter
+  - action: sleep
+    value: 1
+  - action: assert_value
+    target: '#unit'
+    value: PCS
+  - action: press
+    value: Enter
+    note: Unit in Decimal
+  - action: sleep
+    value: 1
+  - action: assert_visible
+    target: '#hsn:focus'
+    note: Cursor on HSN/SAC
+  - action: press
+    value: Space
+    note: HSN list
+  - action: sleep
+    value: 2
+  - action: press
+    value: Enter
+    note: Take 12345678
+  - action: sleep
+    value: 1.5
+  - action: assert_value
+    target: '#hsn'
+    value: '12345678'
+  - action: press
+    value: G
+    note: 'Tax Category: GST Sale - 12%'
+  - action: press
+    value: S
+  - action: press
+    value: T
+  - action: press
+    value: ' '
+  - action: press
+    value: S
+  - action: press
+    value: a
+  - action: press
+    value: l
+  - action: press
+    value: e
+  - action: press
+    value: ' '
+  - action: press
+    value: '-'
+  - action: press
+    value: ' '
+  - action: press
+    value: '1'
+  - action: press
+    value: '2'
+  - action: sleep
+    value: 2
+  - action: press
+    value: Enter
+  - action: sleep
+    value: 1.5
+  - action: assert_value
+    target: '#taxxCategory'
+    value: GST Sale - 12%
+  - action: assert_visible
+    target: '#txtcompName:focus'
+    note: Cursor on Company
+  - action: press
+    value: O
+    note: 'Company: Others'
+  - action: press
+    value: t
+  - action: press
+    value: h
+  - action: sleep
+    value: 2
+  - action: press
+    value: Enter
+  - action: sleep
+    value: 1.5
+  - action: assert_value
+    target: '#txtcompName'
+    value: Others
+    note: 'Company: Others'
+  - action: click
+    target: xpath=//button[contains(normalize-space(.),"Save")]
+    note: F10 Save
+  - action: wait_text
+    value: Do you want to add item Opening
+    note: 'Saved: asks whether to add opening stock'
+  - action: screenshot
+    value: TC_MSTR_002
+  - action: click
+    target: '#btnNo'
+    inside_modal: true
+    note: No opening stock
+  - action: sleep
+    value: 3
+  - action: press
+    value: Alt+i
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: sleep
+    value: 2
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_Itm002
+    note: Search
+  - action: sleep
+    value: 3
+  - action: assert_visible
+    target: xpath=//div[@role="row"][.//div[@col-id="Product"][normalize-space()="QA_Itm002_TMP"]]
+    note: Item appears in the Item List
+  - action: click
+    target: xpath=//div[@role="row"][.//div[@col-id="Product"][normalize-space()="QA_Itm002_TMP"]]
+    note: Click the row
+    always: true
+  - action: click
+    target: xpath=//div[@role="row"][.//div[@col-id="Product"][normalize-space()="QA_Itm002_TMP"]]//button[starts-with(@id,"Griddeletetbtn")]
+    note: Delete it (clean-up so the case can run again)
+    always: true
+  - action: wait_text
+    value: Are you sure you want to delete the selected Record?
+    always: true
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    always: true
+  - action: sleep
+    value: 3
+    always: true
+  - action: assert_not_visible
+    target: xpath=//div[@role="row"][.//div[@col-id="Product"][normalize-space()="QA_Itm002_TMP"]]
+    always: true
+  - action: press
+    value: Alt+h
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  verification:
+    status: corrected
+    company: QA GST Garment
+    date: '2026-11-19'
+    run:
+      passed: 70
+      total: 70
+    evidence:
+    - artifacts/run_2026-11-18_23-25-22/TC_MSTR_002.png
+    kb:
+    - careportal_enriched_v5.csv#2ad671cf
+    notes: 'Create Item with only Product (QA_Itm002_TMP), Unit PCS, HSN/SAC 12345678 (SpaceBar list), Tax Category
+      GST Sale - 12% and Company Others -> F10: no ''record saved successfully'' text is shown; the app goes straight
+      to ''Do you want to add item Opening'' (Yes/No); after No the item is in the Item List. The steps delete the
+      item at the end (always: true) so the case can run again.'
+- id: TC_MSTR_003
+  module: masters
+  title: After IM-02 answer Yes to the opening-stock prompt, enter a quantity and Save
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-03 (KB careportal_enriched_v5.csv#2ad671cf)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - 'Opening stock is recorded for the item; stock value/quantity in UNVERIFIED location (which screen shows it:
+    Q3)'
+  steps: []
+- id: TC_MSTR_004
+  module: masters
+  title: After IM-02 answer No (or dismiss) to the opening-stock prompt
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-03b (KB vimeo_transcripts_hinglish_english.csv#cfb7a4f2
+    (inferred from transcript, UNVERIFIED live))'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - 'Item exists with zero stock quantity (KB: "stock showing ... zero quantity")'
+  steps: []
+- id: TC_MSTR_005
+  module: masters
+  title: Create an item with a tax category of each rate slab (e.g. 5%, 18%, 28%)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-04 (KB onedrive_processed_data.csv#a24e37ef, vimeo_transcripts_hinglish_english.csv#59824a8e)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - 'Item saves; the chosen category is shown on the item. The list of available category names is UNVERIFIED (default
+    text seen: "Rate wise GST tax rates"). Slabs 5/18/28 are named as common in the transcript'
+  steps:
+  - action: use_company
+    value: QA GST Mobile Trade
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+I
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create Item
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 4
+  - action: click
+    target: '#txtProduct'
+  - action: fill
+    target: '#txtProduct'
+    value: QA_Slab5_{now}
+    note: Product QA_Slab5_{now}
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#unit'
+  - action: fill
+    target: '#unit'
+    value: PCS
+    note: Unit PCS
+  - action: sleep
+    value: 2.5
+  - action: click
+    target: xpath=//button[@role="option"][normalize-space()="PCS"]
+    note: Pick PCS
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#hsn'
+  - action: fill
+    target: '#hsn'
+    value: '8517'
+    note: HSN 8517
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//button[@role="option"][normalize-space()="8517"]
+    note: Pick HSN 8517
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#taxxCategory'
+  - action: fill
+    target: '#taxxCategory'
+    value: GST Sale - 5
+    note: Tax category
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//button[@role="option"][normalize-space()="GST Sale - 5%"]
+    note: Pick 'GST Sale - 5%'
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#txtcompName'
+  - action: fill
+    target: '#txtcompName'
+    value: Others
+    note: Company
+  - action: wait_text
+    value: Select Agency
+  - action: sleep
+    value: 1.5
+  - action: click
+    target: xpath=//ngb-modal-window//div[@role="gridcell"][normalize-space()="Others"]
+    inside_modal: true
+    note: Others
+  - action: sleep
+    value: 2
+  - action: assert_value
+    target: '#txtProduct'
+    value: QA_Slab5_{now}
+  - action: assert_value
+    target: '#taxxCategory'
+    value: GST Sale - 5%
+    note: Tax category GST Sale - 5%
+  - action: press
+    value: F10
+    note: Save
+  - action: wait_text
+    value: Record Saved Successfully
+  - action: click
+    target: xpath=//ngb-modal-window//button[normalize-space()="No"]
+    inside_modal: true
+    optional: true
+    note: No opening stock
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+H
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+I
+  - action: wait_text
+    value: Item List
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_Slab5_{now}
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//div[contains(@class,"ag-row")]//div[normalize-space()="QA_Slab5_{now}"]
+    note: Row of the new item
+  - action: sleep
+    value: 1
+  - action: press
+    value: F3
+    note: Modify (F3)
+  - action: sleep
+    value: 4
+  - action: assert_value
+    target: '#txtProduct'
+    value: QA_Slab5_{now}
+    note: Item opened
+  - action: assert_value
+    target: '#taxxCategory'
+    value: GST Sale - 5%
+    note: Saved item shows tax category GST Sale - 5%
+  - action: screenshot
+    value: TC_MSTR_005_5
+  - action: press
+    value: Escape
+  - action: sleep
+    value: 2
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+  - action: sleep
+    value: 1
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+I
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create Item
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 4
+  - action: click
+    target: '#txtProduct'
+  - action: fill
+    target: '#txtProduct'
+    value: QA_Slab18_{now}
+    note: Product QA_Slab18_{now}
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#unit'
+  - action: fill
+    target: '#unit'
+    value: PCS
+    note: Unit PCS
+  - action: sleep
+    value: 2.5
+  - action: click
+    target: xpath=//button[@role="option"][normalize-space()="PCS"]
+    note: Pick PCS
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#hsn'
+  - action: fill
+    target: '#hsn'
+    value: '8517'
+    note: HSN 8517
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//button[@role="option"][normalize-space()="8517"]
+    note: Pick HSN 8517
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#taxxCategory'
+  - action: fill
+    target: '#taxxCategory'
+    value: GST Sale - 18
+    note: Tax category
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//button[@role="option"][normalize-space()="GST Sale - 18%"]
+    note: Pick 'GST Sale - 18%'
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#txtcompName'
+  - action: fill
+    target: '#txtcompName'
+    value: Others
+    note: Company
+  - action: wait_text
+    value: Select Agency
+  - action: sleep
+    value: 1.5
+  - action: click
+    target: xpath=//ngb-modal-window//div[@role="gridcell"][normalize-space()="Others"]
+    inside_modal: true
+    note: Others
+  - action: sleep
+    value: 2
+  - action: assert_value
+    target: '#txtProduct'
+    value: QA_Slab18_{now}
+  - action: assert_value
+    target: '#taxxCategory'
+    value: GST Sale - 18%
+    note: Tax category GST Sale - 18%
+  - action: press
+    value: F10
+    note: Save
+  - action: wait_text
+    value: Record Saved Successfully
+  - action: click
+    target: xpath=//ngb-modal-window//button[normalize-space()="No"]
+    inside_modal: true
+    optional: true
+    note: No opening stock
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+H
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+I
+  - action: wait_text
+    value: Item List
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_Slab18_{now}
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//div[contains(@class,"ag-row")]//div[normalize-space()="QA_Slab18_{now}"]
+    note: Row of the new item
+  - action: sleep
+    value: 1
+  - action: press
+    value: F3
+    note: Modify (F3)
+  - action: sleep
+    value: 4
+  - action: assert_value
+    target: '#txtProduct'
+    value: QA_Slab18_{now}
+    note: Item opened
+  - action: assert_value
+    target: '#taxxCategory'
+    value: GST Sale - 18%
+    note: Saved item shows tax category GST Sale - 18%
+  - action: screenshot
+    value: TC_MSTR_005_18
+  - action: press
+    value: Escape
+  - action: sleep
+    value: 2
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+  - action: sleep
+    value: 1
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+I
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create Item
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 4
+  - action: click
+    target: '#txtProduct'
+  - action: fill
+    target: '#txtProduct'
+    value: QA_Slab28_{now}
+    note: Product QA_Slab28_{now}
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#unit'
+  - action: fill
+    target: '#unit'
+    value: PCS
+    note: Unit PCS
+  - action: sleep
+    value: 2.5
+  - action: click
+    target: xpath=//button[@role="option"][normalize-space()="PCS"]
+    note: Pick PCS
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#hsn'
+  - action: fill
+    target: '#hsn'
+    value: '8517'
+    note: HSN 8517
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//button[@role="option"][normalize-space()="8517"]
+    note: Pick HSN 8517
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#taxxCategory'
+  - action: fill
+    target: '#taxxCategory'
+    value: GST Sale - 28
+    note: Tax category
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//button[@role="option"][normalize-space()="GST Sale - 28%"]
+    note: Pick 'GST Sale - 28%'
+  - action: sleep
+    value: 1
+  - action: click
+    target: '#txtcompName'
+  - action: fill
+    target: '#txtcompName'
+    value: Others
+    note: Company
+  - action: wait_text
+    value: Select Agency
+  - action: sleep
+    value: 1.5
+  - action: click
+    target: xpath=//ngb-modal-window//div[@role="gridcell"][normalize-space()="Others"]
+    inside_modal: true
+    note: Others
+  - action: sleep
+    value: 2
+  - action: assert_value
+    target: '#txtProduct'
+    value: QA_Slab28_{now}
+  - action: assert_value
+    target: '#taxxCategory'
+    value: GST Sale - 28%
+    note: Tax category GST Sale - 28%
+  - action: press
+    value: F10
+    note: Save
+  - action: wait_text
+    value: Record Saved Successfully
+  - action: click
+    target: xpath=//ngb-modal-window//button[normalize-space()="No"]
+    inside_modal: true
+    optional: true
+    note: No opening stock
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+H
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+I
+  - action: wait_text
+    value: Item List
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_Slab28_{now}
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//div[contains(@class,"ag-row")]//div[normalize-space()="QA_Slab28_{now}"]
+    note: Row of the new item
+  - action: sleep
+    value: 1
+  - action: press
+    value: F3
+    note: Modify (F3)
+  - action: sleep
+    value: 4
+  - action: assert_value
+    target: '#txtProduct'
+    value: QA_Slab28_{now}
+    note: Item opened
+  - action: assert_value
+    target: '#taxxCategory'
+    value: GST Sale - 28%
+    note: Saved item shows tax category GST Sale - 28%
+  - action: screenshot
+    value: TC_MSTR_005_28
+  - action: press
+    value: Escape
+  - action: sleep
+    value: 2
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+  - action: sleep
+    value: 1
+  - action: click
+    target: xpath=//button[starts-with(@id,"btnEsc")]
+    optional: true
+    always: true
+    note: Esc Close an open bill (if any)
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+    always: true
+    note: 'Yes'
+  - action: sleep
+    value: 2
+    always: true
+  - action: press
+    value: Alt+H
+    always: true
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  verification:
+    status: verified
+    company: QA GST Mobile Trade
+    date: '2026-11-19'
+    run:
+      passed: 172
+      total: 172
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_005_5.png
+    - artifacts/verify/shots/8812_TC_MSTR_005_18.png
+    - artifacts/verify/shots/8812_TC_MSTR_005_28.png
+    kb:
+    - e2e_scripts:item-master-crud.md IM-04
+    notes: 'Create Item (Alt+I, F2) three times: QA_Slab5/18/28_<run>, unit PCS, HSN 8517, Tax Category picked from
+      the list (offered: GST Sale - 5%, 12%, 18%, 28%, Nil Rated, Exempt, StockTrf-Out, Export, Deemed Export, SEZ
+      ...), company Others; F10 ''Record Saved Successfully'' (opening stock: No). Each item reopened from the Item
+      List with F3 shows its own category (GST Sale - 5% / 18% / 28%). Names unique per run; the items stay (QA_
+      masters). Also left from exploration: item QA_Slab5_T1 (unit BOTTLE).'
+- id: TC_MSTR_006
+  module: masters
+  title: Tax Category pre-filled on a new Create Item form
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-04b (KB onedrive_processed_data.csv#a24e37ef)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - 'Without a Rate wise GST tax setting for the item (or its company/category/salt), Tax Category on Create Item
+    is NOT pre-filled: it shows ''Select Tax Category'' and offers the normal GST rate list (e.g. GST Sale - 12%)'
+  - It is pre-filled with 'Rate wise GST tax rates' only when Rate wise GST tax is set for the item or a list it
+    belongs to
+  steps:
+  - action: use_company
+    value: QA GST Computer Hardware
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+i
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create/F2
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 3
+  - action: assert_visible
+    target: '#taxxCategory'
+    note: Tax Category* field on Create Item
+  - action: assert_value
+    target: '#taxxCategory'
+    value: ''
+    note: 'No Rate wise GST tax is set in this company: the field is NOT pre-filled'
+  - action: assert_visible
+    target: xpath=//input[@id="taxxCategory"][@placeholder="Select Tax Category"]
+    note: It shows the placeholder 'Select Tax Category'
+  - action: assert_not_visible
+    target: xpath=//input[@id="taxxCategory"][contains(@value,"Rate wise")]
+  - action: fill
+    target: '#taxxCategory'
+    value: GST Sale
+    note: Type GST Sale in Tax Category
+  - action: sleep
+    value: 2
+  - action: assert_visible
+    target: xpath=//*[@role="option"][contains(normalize-space(.),"GST Sale - 12%")]
+    note: The normal GST rate list (Sale master) is offered
+  - action: screenshot
+    value: TC_MSTR_006
+  - action: press
+    value: Escape
+    always: true
+  - action: sleep
+    value: 1
+    always: true
+  - action: click
+    target: xpath=//button[contains(normalize-space(.),"Close")][contains(normalize-space(.),"Esc")]
+    note: Esc Close the form (nothing saved)
+    always: true
+    optional: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+    always: true
+  - action: press
+    value: Alt+h
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  verification:
+    status: corrected
+    company: QA GST Computer Hardware
+    date: '2026-11-19'
+    run:
+      passed: 23
+      total: 23
+    evidence:
+    - artifacts/run_2026-11-19_22-52-08/TC_MSTR_006.png
+    kb:
+    - onedrive:MARG BOOKS (2)/RATE WISE GST/Rate_Wise_GST_v1.0_Edited.docx#3.1
+    notes: Create Item opens with Tax Category* empty (placeholder 'Select Tax Category'); typing 'GST Sale' lists
+      the normal rates (GST Sale - 12%). The Rate Wise GST doc says the field is pre-filled with 'Rate wise GST
+      tax rates' only when Rate wise GST tax was set for the item / company / category / salt, otherwise the normal
+      list is offered as before; no Rate wise GST is set in this company, so the case expectation was corrected
+      to that condition. The pre-filled branch was not tried (setting Rate wise GST would change tax for every item
+      of the company).
+- id: TC_MSTR_007
+  module: masters
+  title: Exempt / nil-rated / 0% tax category on an item
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - trade:all
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-04c (n/a)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Exempt / nil-rated items use the tax categories GST Sale-Exempt, GST Sale-Nil Rated (or GST Sale Tax Free);
+    they bill with GST 0
+  steps:
+  - action: use_company
+    value: QA GST Automobile
+  - action: press
+    value: Alt+I
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create item
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 4
+  - action: fill
+    target: '#txtProduct'
+    value: QA_Tmp_Cat
+  - action: sleep
+    value: 4
+  - action: click
+    target: '#unit'
+  - action: press
+    value: P
+  - action: press
+    value: C
+  - action: press
+    value: S
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//*[@role="listbox"]//*[@role="option"][normalize-space()="PCS"]
+  - action: sleep
+    value: 1.5
+  - action: click
+    target: '#hsn'
+  - action: press
+    value: Control+A
+  - action: press
+    value: '3'
+    note: HSN 3004
+  - action: press
+    value: '0'
+  - action: press
+    value: '0'
+  - action: press
+    value: '4'
+  - action: sleep
+    value: 2.5
+  - action: click
+    target: xpath=(//*[@role="listbox"]//*[@role="option"])[1]
+  - action: sleep
+    value: 1.5
+  - action: click
+    target: '#taxxCategory'
+  - action: press
+    value: E
+    note: Type 'Ex' in Tax Category
+  - action: press
+    value: x
+  - action: sleep
+    value: 2.5
+  - action: assert_visible
+    target: xpath=//*[@role="listbox"]//*[@role="option"][normalize-space()="GST Sale-Exempt"]
+    note: 'Category offered: GST Sale-Exempt'
+  - action: assert_visible
+    target: xpath=//*[@role="listbox"]//*[@role="option"][normalize-space()="GST Sale-Nil Rated"]
+    note: 'Category offered: GST Sale-Nil Rated'
+  - action: assert_visible
+    target: xpath=//*[@role="listbox"]//*[@role="option"][normalize-space()="GST Sale Tax Free"]
+    note: 'Category offered: GST Sale Tax Free'
+  - action: screenshot
+    value: TC_MSTR_007
+  - action: press
+    value: Escape
+  - action: press
+    value: Escape
+  verification:
+    status: verified
+    company: QA GST Automobile
+    date: '2026-11-19'
+    run:
+      passed: 34
+      total: 34
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_007.png
+    kb:
+    - careportal_enriched_v5.csv#a24e37ef
+    notes: Create Item > Tax Category typeahead ('Ex') offers 'GST Sale-Exempt', 'GST Sale-Nil Rated' and 'GST Sale
+      Tax Free' (plus GST-Export (Exempted), Deemed Export, SEZ, StockTrf-Out (Exempt)); there is no plain '0%'
+      slab. These categories were used for QA_Item_Exempt / QA_Item_Nil in other GST companies and bill with tax
+      0 (TC_SALE_139, TC_SALE_134). Nothing saved here.
+- id: TC_MSTR_008
+  module: masters
+  title: Create an item with Unit in Decimal = Yes, then = No
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-05 (KB careportal_enriched_v5.csv#7e11d1c2)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Yes allows decimal quantities in transactions, No restricts them. The effect in a bill is a J05 concern; here
+    assert only the saved value
+  steps: []
+- id: TC_MSTR_009
+  module: masters
+  title: Pick HSN/SAC by SpaceBar from the HSN List, or type a new HSN code
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-06 (KB careportal_enriched_v5.csv#f1ae949c, vimeo_transcripts_hinglish_english.csv#d9bbfe84,
+    #59824a8e)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - HSN List opens on SpaceBar and a selected HSN fills the field; a new HSN can be typed and created (name optional);
+    an HSN reused by a second item shows in the list
+  steps:
+  - action: use_company
+    value: QA GST Chemist
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+i
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create/F2
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 3
+  - action: fill
+    target: '#txtProduct'
+    value: QA_HSNPICK_TMP
+    note: Product (the item is not saved)
+  - action: click
+    target: '#unit'
+    note: Unit 1st
+  - action: sleep
+    value: 1
+  - action: press
+    value: P
+    note: Type PCS
+  - action: press
+    value: C
+  - action: press
+    value: S
+  - action: sleep
+    value: 2
+  - action: press
+    value: Enter
+    note: Take PCS
+  - action: sleep
+    value: 1
+  - action: assert_value
+    target: '#unit'
+    value: PCS
+  - action: press
+    value: Enter
+    note: Unit-2
+  - action: sleep
+    value: 1
+  - action: press
+    value: Enter
+    note: Unit in Decimal
+  - action: sleep
+    value: 1
+  - action: assert_visible
+    target: '#hsn:focus'
+    note: Cursor on HSN/SAC
+  - action: press
+    value: Space
+    note: SpaceBar opens the HSN list
+  - action: sleep
+    value: 2
+  - action: assert_visible
+    target: xpath=//*[normalize-space()="12345678"][not(self::input)]
+    note: Existing HSN 12345678 (used by the QA items) is offered
+  - action: assert_visible
+    target: xpath=//*[normalize-space()="F2 - Create New"]
+  - action: press
+    value: Enter
+    note: Pick it
+  - action: sleep
+    value: 1.5
+  - action: assert_value
+    target: '#hsn'
+    value: '12345678'
+    note: Selected HSN fills the field
+  - action: click
+    target: '#hsn'
+  - action: press
+    value: Control+a
+  - action: press
+    value: '9'
+    note: Type a new HSN code
+  - action: press
+    value: '9'
+  - action: press
+    value: '8'
+  - action: press
+    value: '8'
+  - action: press
+    value: '7'
+  - action: press
+    value: '7'
+  - action: press
+    value: '5'
+  - action: press
+    value: '5'
+  - action: sleep
+    value: 2
+  - action: assert_visible
+    target: xpath=//*[normalize-space()="F2 - Create New"]
+    note: 'Unknown code: F2 - Create New is offered'
+  - action: press
+    value: F2
+  - action: wait_text
+    value: Create HSN/SAC
+  - action: assert_value
+    target: '#inphsncode'
+    value: '99887755'
+    note: Code carried into Create HSN/SAC; HSN/SAC Name left empty (optional)
+  - action: click
+    target: '#btn-Save'
+    inside_modal: true
+    note: F10 Save
+  - action: sleep
+    value: 3
+  - action: assert_value
+    target: '#hsn'
+    value: '99887755'
+    note: New HSN created and filled in
+  - action: screenshot
+    value: TC_MSTR_009
+  - action: click
+    target: xpath=//button[contains(normalize-space(.),"Esc")][contains(normalize-space(.),"Close")]
+    inside_modal: true
+    note: Esc Close the item form without saving
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+    note: Discard? -> Yes (when asked)
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+h
+    always: true
+  - action: sleep
+    value: 3
+    always: true
+  - action: hover
+    target: '#lft-dropdown'
+    note: Mouse over the side menu
+    always: true
+  - action: sleep
+    value: 1
+    always: true
+  - action: fill
+    target: input[placeholder="Type to search"]
+    value: HSN
+    note: 'Menu search: HSN'
+    inside_modal: true
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: click
+    target: xpath=//p[normalize-space()="Master / Inventory Master / HSN/SAC"]
+    note: Open Master / Inventory Master / HSN/SAC
+    inside_modal: true
+    always: true
+  - action: wait_text
+    value: HSN/SAC List
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: assert_visible
+    target: xpath=//div[@role="row"][.//div[normalize-space()="99887755"]]
+    note: HSN 99887755 is listed
+    always: true
+  - action: click
+    target: xpath=//div[@role="row"][.//div[normalize-space()="99887755"]]//button[starts-with(@id,"Griddeletetbtn")]
+    note: Delete on the 99887755 row (clean-up so the case can run again)
+    always: true
+  - action: wait_text
+    value: Are you sure you want to delete the selected Record?
+    always: true
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    always: true
+  - action: sleep
+    value: 3
+    always: true
+  - action: assert_not_visible
+    target: xpath=//div[@role="row"][.//div[normalize-space()="99887755"]]
+    note: 99887755 removed
+    always: true
+  verification:
+    status: verified
+    company: QA GST Chemist
+    date: '2026-11-19'
+    run:
+      passed: 67
+      total: 67
+    evidence:
+    - artifacts/run_2026-11-18_23-25-22/TC_MSTR_009.png
+    kb:
+    - careportal_enriched_v5.csv#f1ae949c
+    notes: 'Item master Create Item: on HSN/SAC, SpaceBar opens the HSN list (existing 12345678, used by the QA
+      items, plus ''F2 - Create New''); Enter fills 12345678. Typing an unknown code 99887755 offers F2 - Create
+      New; F2 opens Create HSN/SAC with the code carried over, Name left empty (optional), F10 creates it and fills
+      the item field. The item is not saved; the new HSN is deleted at the end (clean-up, always: true). ''Reused
+      by a second item'' is shown by 12345678 being offered (it is on several QA items).'
+- id: TC_MSTR_010
+  module: masters
+  title: Enter prices (M.R.P, Purchase Rate, Cost, Sale Rate) and save
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-07 (KB onedrive_processed_data.csv#a24e37ef)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Values persist after reopening via F3. Defaults on a new form are 0.00
+  steps: []
+- id: TC_MSTR_011
+  module: masters
+  title: Create a new Company (brand) inline from the Company field and use it on the item
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-08 (KB vimeo_transcripts_hinglish_english.csv#59824a8e
+    (transcript; mechanics UNVERIFIED))'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Company can be created from within Create Item ("Click on Create"); the new brand is then selectable
+  steps: []
+- id: TC_MSTR_012
+  module: masters
+  title: 'Edit an item: select row, press F3, change HSN/SAC, click Update'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-09 (KB careportal_enriched_v5.csv#f1ae949c)'
+  - 'Group: J08 Item master CRUD'
+  - 'Data: HSN 3004 (QA_HSN_4) exists in the HSN/SAC master'
+  expected:
+  - '"Modify Item" opens; after Update the item''s HSN/SAC shows the new code'
+  steps:
+  - action: use_company
+    value: QA GST Pharma Distribution
+  - action: press
+    value: Alt+I
+    note: Item list (Alt+I)
+  - action: wait_text
+    value: Item List
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_Item_Exempt
+    note: Search QA_Item_Exempt
+  - action: sleep
+    value: 2.5
+  - action: assert_visible
+    target: xpath=//div[contains(@class,"ag-row")][@row-index="0"]//div[normalize-space()="QA_Item_Exempt"]
+    note: Item is the selected first row
+  - action: press
+    value: F3
+    note: F3 = Modify
+  - action: wait_text
+    value: Modify Item
+  - action: sleep
+    value: 2
+  - action: assert_value
+    target: '#txtProduct'
+    value: QA_Item_Exempt
+  - action: click
+    target: '#hsn'
+    note: HSN/SAC
+  - action: press
+    value: Control+A
+  - action: press
+    value: '3'
+    note: New HSN 3004
+  - action: press
+    value: '0'
+  - action: press
+    value: '0'
+  - action: press
+    value: '4'
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//*[@role="listbox"]//*[@role="option"][normalize-space()="3004"]
+    note: Pick 3004
+  - action: sleep
+    value: 1
+  - action: assert_value
+    target: '#hsn'
+    value: '3004'
+  - action: click
+    target: '#btnSave'
+    note: F10 Update
+  - action: sleep
+    value: 3
+  - action: press
+    value: Alt+I
+    note: Item list (Alt+I)
+  - action: wait_text
+    value: Item List
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_Item_Exempt
+    note: Search QA_Item_Exempt
+  - action: sleep
+    value: 2.5
+  - action: assert_visible
+    target: xpath=//div[contains(@class,"ag-row")][@row-index="0"]//div[normalize-space()="QA_Item_Exempt"]
+    note: Item is the selected first row
+  - action: press
+    value: F3
+    note: F3 = Modify
+  - action: wait_text
+    value: Modify Item
+  - action: sleep
+    value: 2
+  - action: assert_value
+    target: '#txtProduct'
+    value: QA_Item_Exempt
+  - action: assert_value
+    target: '#hsn'
+    value: 3004         QA_HSN_4
+    note: After Update the item's HSN/SAC shows 3004 (QA_HSN_4)
+  - action: screenshot
+    value: TC_MSTR_012
+  - action: press
+    value: Escape
+  verification:
+    status: verified
+    company: QA GST Pharma Distribution
+    date: '2026-11-18'
+    run:
+      passed: 34
+      total: 34
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_012.png
+    kb:
+    - careportal_enriched_v5.csv#f1ae949c
+    notes: 'Item list: searched QA_Item_Exempt (first row selected), F3 opens ''Modify Item''; HSN/SAC changed 12345678
+      -> 3004 (picked from the list), F10 Update; reopening shows HSN/SAC 3004 (QA_HSN_4). QA_Item_Exempt now keeps
+      HSN 3004.'
+- id: TC_MSTR_013
+  module: masters
+  title: Edit an item name, packing, unit or prices and Update
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-09b (KB careportal_enriched_v5.csv#f1ae949c (pattern
+    only))'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Updated values show in the list and on reopening. Field-level rules on edit (e.g. unit locked after a transaction)
+    UNVERIFIED (Q5)
+  steps: []
+- id: TC_MSTR_014
+  module: masters
+  title: Change the Tax Category on an existing item
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  - app_defect
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-10 (KB jira_vectordb.csv#990fb774, onedrive_processed_data.csv#01b0c227)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - An Effective Date appears; it defaults to the current date and stays editable (per Jira). "Show Tax History"
+    on the item form lists past rates (per GST-update doc). Exact UI UNVERIFIED
+  steps:
+  - action: use_company
+    value: QA GST Billing General
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 3
+  - action: press
+    value: Alt+i
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//div[@role="row"][.//div[@col-id="Product"][normalize-space()="QA_Item_GST5"]]//div[@col-id="Product"]
+    note: Row QA_Item_GST5
+  - action: click
+    target: xpath=//div[@role="row"][.//div[@col-id="Product"][normalize-space()="QA_Item_GST5"]]//button[starts-with(@id,"Grideditbtn")]
+    note: Edit (pencil)
+  - action: wait_text
+    value: Modify Item
+  - action: sleep
+    value: 3
+  - action: assert_value
+    target: '#taxxCategory'
+    value: GST Sale - 5%
+    note: Current Tax Category
+  - action: fill
+    target: '#taxxCategory'
+    value: GST Sale - 12
+    note: Change Tax Category
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//*[@role="option"][normalize-space()="GST Sale - 12%"]
+    note: GST Sale - 12%
+  - action: sleep
+    value: 2
+  - action: wait_text
+    value: Applicable From
+    note: An 'Applicable From' window asks for the Effective From date
+  - action: assert_enabled
+    target: xpath=//ngb-modal-window//input[@id='fromDateFilter']
+    note: Effective From is editable
+  - action: screenshot
+    value: TC_MSTR_014_effective
+  - action: assert_value
+    target: xpath=//ngb-modal-window//input[@id='fromDateFilter']
+    value: '{today}'
+    note: Effective From defaults to today's date
+  - action: click
+    target: xpath=//ngb-modal-window[contains(.,"Applicable From")]//button[contains(@class,"close")]
+    inside_modal: true
+    note: '× : cancel the change'
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: assert_value
+    target: '#taxxCategory'
+    value: GST Sale - 5%
+    note: 'Cancelled: back to 5%'
+  - action: click
+    target: '#btn-View'
+    note: 'View: Tax Change History'
+  - action: wait_text
+    value: Tax Change History
+  - action: assert_visible
+    target: xpath=//ngb-modal-window[contains(.,"Tax Change History")]//*[normalize-space()="GST Sale - 5%"]
+    note: History lists the current rate with its From Date
+  - action: screenshot
+    value: TC_MSTR_014
+  - action: press
+    value: Escape
+    always: true
+  - action: sleep
+    value: 1
+    always: true
+  - action: click
+    target: xpath=//button[contains(normalize-space(.),"Close")][contains(normalize-space(.),"Esc")]
+    note: Close the item without saving
+    always: true
+    optional: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+    always: true
+  - action: press
+    value: Alt+h
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  verification:
+    status: app_defect
+    company: QA GST Billing General
+    date: '2026-11-20'
+    run:
+      passed: 33
+      total: 33
+    evidence:
+    - artifacts/verify/shots/1795122434_8811_fail_step19.png
+    - artifacts/verify/shots/8811_m014.png
+    - artifacts/run_2026-11-20_09-53-24/TC_MSTR_014.png
+    kb:
+    - jira:MBC-16831
+    - jira:MBC-16871
+    - onedrive:MARG BOOKS (2)/GST UPDATES/GST_Update_v1.0.docx#1
+    notes: 'Modify Item QA_Item_GST5, Tax Category 5% -> 12%: the ''Applicable From'' window opens with an editable
+      Effective From; cancelling (x) puts the category back to 5%; View shows ''Tax Change History'' (From 01-04-2026,
+      GST Sale - 5%). Nothing saved. Defect (time-dependent): at 02:35 IST on 20-11-2026 Effective From defaulted
+      to 19-11-2026 (min date 2026-11-19) while the local date was 20-11-2026, i.e. the default is the UTC date,
+      so between 00:00 and 05:30 IST it is yesterday; jira MBC-16831/16871 require the current system date. The
+      same steps failed at step 19 then (2 runs) and pass in daytime (re-run 09:58 IST: 33/33).'
+  known_issue: true
+- id: TC_MSTR_015
+  module: masters
+  title: Delete an item that has no transactions
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-11 (KB careportal_enriched_v5.csv#88f4cfd3)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Click delete icon, confirm "Yes"; message "Record deleted successfully"; item disappears from the list
+  steps: []
+- id: TC_MSTR_016
+  module: masters
+  title: Delete an item that has transactions
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-12 (KB careportal_enriched_v5.csv#88f4cfd3; jira_vectordb.csv#87a67294
+    (MB-030141: false "item is used" report))'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Item is NOT deleted. The exact refusal text is UNVERIFIED (a Jira ticket quotes "item is used")
+  steps: []
+- id: TC_MSTR_017
+  module: masters
+  title: Delete an item with zero stock but with no transactions vs stock > 0
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-12b (KB careportal_enriched_v5.csv#e5839768)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - KB states deletion is allowed only for items with no transactions or zero stock quantity. The two clauses are
+    joined by "or"; combination behaviour UNVERIFIED (Q6)
+  steps: []
+- id: TC_MSTR_018
+  module: masters
+  title: Save with Product empty
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-13 (KB onedrive_processed_data.csv#a24e37ef (red icon
+    on empty Product))'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Not saved; Product shows a red error icon. Message text UNVERIFIED
+  steps: []
+- id: TC_MSTR_019
+  module: masters
+  title: 'Save with each other mandatory field empty in turn: Unit 1st, HSN/SAC, Tax Category, Company'
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-13b (KB careportal_enriched_v5.csv#2ad671cf, vimeo_transcripts_hinglish_english.csv#cfb7a4f2)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Each blocks the save. Message text UNVERIFIED. Note HSN/SAC is optional when "HSN/SAC Required?" is No (see
+    IM-17)
+  steps:
+  - action: use_company
+    value: QA GST Grocery
+  - action: press
+    value: Alt+I
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create item (F2)
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 4
+  - action: fill
+    target: '#txtProduct'
+    value: QA_Item_Mand
+    note: Only the product name
+  - action: click
+    target: '#btnSave'
+    note: F10 Save
+  - action: sleep
+    value: 2
+  - action: wait_text
+    value: Unit required
+    note: Message 'Unit required !'
+  - action: assert_visible
+    target: xpath=//input[@id="unit"][contains(@class,"ng-invalid")]
+    note: Unit 1st flagged (!)
+  - action: assert_visible
+    target: xpath=//input[@id="hsn"][contains(@class,"ng-invalid")]
+    note: HSN/SAC flagged (!)
+  - action: assert_visible
+    target: xpath=//input[@id="taxxCategory"][contains(@class,"ng-invalid")]
+    note: Tax Category flagged (!)
+  - action: assert_visible
+    target: xpath=//input[@id="txtcompName"][contains(@class,"ng-invalid")]
+    note: Company flagged (!)
+  - action: assert_text
+    value: Create Item
+    note: 'Not saved: still on Create Item'
+  - action: screenshot
+    value: TC_MSTR_019
+  - action: press
+    value: Escape
+  verification:
+    status: verified
+    company: QA GST Grocery
+    date: '2026-11-18'
+    run:
+      passed: 17
+      total: 17
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_019.png
+    kb:
+    - careportal_enriched_v5.csv#2ad671cf
+    notes: 'Create Item with only Product filled: F10 Save is refused, ''Unit required !'' is shown on Unit 1st
+      and Unit 1st, HSN/SAC, Tax Category and Company are all marked invalid (!); the form stays on Create Item.
+      Checked with all four empty at once (each is flagged individually); HSN/SAC Required setting not changed.'
+- id: TC_MSTR_020
+  module: masters
+  title: Save an item with no unit selected (regression)
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-13c (KB jira_vectordb.csv#a3031fae, support_tickets_vectordb.csv#4783b004)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - 'Reported defect MB-036985: item saved with no error or alert and bad data reached reports. Expected (correct)
+    behaviour: save blocked. Confirm whether fixed; record as a KNOWN DEFECT candidate'
+  steps: []
+- id: TC_MSTR_021
+  module: masters
+  title: Create an item whose Product name already exists (default setting)
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-14 (KB careportal_enriched_v5.csv#ce983a40 (setting
+    exists), jira_vectordb.csv#1840fc4a)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Rejected as a duplicate. Message text UNVERIFIED
+  steps: []
+- id: TC_MSTR_022
+  module: masters
+  title: Set "Product Name Duplicate Allowed?" = Yes (Create Item > Settings icon, ESC to save) then create a second
+    item with same name
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-14b (KB careportal_enriched_v5.csv#ce983a40, jira_vectordb.csv#d0be7bf8
+    (MB-038343))'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Allowed. With Item Code enabled, at least one of Product Name, Item Code, Packing must differ
+  steps: []
+- id: TC_MSTR_023
+  module: masters
+  title: 'Duplicates allowed: same Product Name, one with packing and one with blank packing'
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-14c (KB jira_vectordb.csv#96ce16cc, #b94b330c, #5f9b196c)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Jira lists this as a case to test; expected result UNVERIFIED (ticket "product dup - allow item name but packing
+    blank - save")
+  steps: []
+- id: TC_MSTR_024
+  module: masters
+  title: Duplicates allowed, same name but different item code still shows a duplicate error
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-14d (KB support_tickets_vectordb.csv#5c9c9526, jira_vectordb.csv#cf103c92)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - 'Reported defect (support ticket): error shown although duplicates are allowed. Record as regression check'
+  steps: []
+- id: TC_MSTR_025
+  module: masters
+  title: Settings change "Product Name Duplicate Allowed?" is tenant-wide
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-14e (KB careportal_enriched_v5.csv#ce983a40; e2e/CLAUDE.md
+    rule 0)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Affects every item on the tenant; test must restore the original value. Mark xdist_group("chemist-tenant")
+  steps: []
+- id: TC_MSTR_026
+  module: masters
+  title: Product name max length
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-15 (n/a)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - UNVERIFIED (no KB value; planner to read maxlength from the live input)
+  steps: []
+- id: TC_MSTR_027
+  module: masters
+  title: Special characters and unicode in Product name (&, /, ', ", Hindi text)
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-15b (n/a)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Saves and displays unchanged. UNVERIFIED
+  steps: []
+- id: TC_MSTR_028
+  module: masters
+  title: Leading/trailing spaces and mixed case in Product name vs duplicate check
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-15c (n/a)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - UNVERIFIED (is the duplicate check case-insensitive?)
+  steps: []
+- id: TC_MSTR_029
+  module: masters
+  title: 'M.R.P / rates: zero, negative, very large, more than 2 decimals'
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-15d (n/a; docs/clean-code-rules.md G26)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - 'UNVERIFIED. Rule for the suite: compare as Decimal, never float'
+  steps: []
+- id: TC_MSTR_030
+  module: masters
+  title: Sale Rate above M.R.P, or Purchase Rate above Sale Rate
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-15e (n/a)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - UNVERIFIED (is there a warning?)
+  steps: []
+- id: TC_MSTR_031
+  module: masters
+  title: Double click Save / refresh during save
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-16 (n/a)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Exactly one item created. UNVERIFIED
+  steps: []
+- id: TC_MSTR_032
+  module: masters
+  title: 'Control: "HSN/SAC Required?" = Yes/No in Create Item > Settings (and Rename of the label)'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-17 (KB careportal_enriched_v5.csv#1df2ebf5)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Yes enables the HSN/SAC field and allows renaming its label; No disables it. Changes saved with ESC. Tenant-wide
+    setting; restore after test
+  steps:
+  - action: use_company
+    value: QA GST Garment
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+i
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create/F2
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 3
+  - &id001
+    action: click
+    target: '#aControlRoomSetting'
+    note: Settings (Item Setting panel)
+  - &id002
+    action: wait_text
+    value: Item Setting
+  - &id003
+    action: sleep
+    value: 1
+  - action: select
+    target: '#Hsn'
+    value: 'No'
+    note: HSN/SAC Requried? = No
+  - &id004
+    action: press
+    value: Escape
+    note: Esc closes the panel and keeps the change
+  - &id005
+    action: sleep
+    value: 3
+  - action: assert_not_visible
+    target: '#hsn'
+    note: 'No: the HSN/SAC field is gone from Create Item'
+  - action: assert_not_visible
+    target: xpath=//label[normalize-space()="HSN/SAC*"]
+  - action: screenshot
+    value: TC_MSTR_032_no
+  - *id001
+  - *id002
+  - *id003
+  - action: select
+    target: '#Hsn'
+    value: 'Yes'
+    note: HSN/SAC Requried? = Yes
+  - action: click
+    target: '#hsnRename'
+    inside_modal: true
+    note: Rename
+  - action: press
+    value: Control+a
+  - action: press
+    value: Q
+    note: Rename to QAHSN
+  - action: press
+    value: A
+  - action: press
+    value: H
+  - action: press
+    value: S
+  - action: press
+    value: N
+  - action: press
+    value: Tab
+  - action: sleep
+    value: 1
+  - *id004
+  - *id005
+  - action: assert_visible
+    target: '#hsn'
+    note: 'Yes: the field is back'
+  - action: assert_visible
+    target: xpath=//label[normalize-space()="QAHSN*"]
+    note: Renamed label QAHSN*
+  - action: screenshot
+    value: TC_MSTR_032_yes
+  - action: click
+    target: '#aControlRoomSetting'
+    note: Settings (Item Setting panel)
+    always: true
+  - action: wait_text
+    value: Item Setting
+    always: true
+  - action: sleep
+    value: 1
+    always: true
+  - action: select
+    target: '#Hsn'
+    value: 'Yes'
+    always: true
+  - action: click
+    target: '#hsnRename'
+    inside_modal: true
+    note: Rename
+    always: true
+  - action: press
+    value: Control+a
+    always: true
+  - action: press
+    value: H
+    note: Rename to HSN/SAC
+    always: true
+  - action: press
+    value: S
+    always: true
+  - action: press
+    value: N
+    always: true
+  - action: press
+    value: /
+    always: true
+  - action: press
+    value: S
+    always: true
+  - action: press
+    value: A
+    always: true
+  - action: press
+    value: C
+    always: true
+  - action: press
+    value: Tab
+    always: true
+  - action: sleep
+    value: 1
+    always: true
+  - action: press
+    value: Escape
+    note: Esc closes the panel and keeps the change
+    always: true
+  - action: sleep
+    value: 3
+    always: true
+  - action: assert_visible
+    target: xpath=//label[normalize-space()="HSN/SAC*"]
+    note: Label back to HSN/SAC*
+    always: true
+  - action: press
+    value: Escape
+    note: Leave the empty Create Item
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+    always: true
+  - action: press
+    value: Alt+h
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  verification:
+    status: verified
+    company: QA GST Garment
+    date: '2026-11-19'
+    run:
+      passed: 58
+      total: 58
+    evidence:
+    - artifacts/run_2026-11-18_23-25-22/TC_MSTR_032_no.png
+    - artifacts/run_2026-11-18_23-25-22/TC_MSTR_032_yes.png
+    kb:
+    - careportal_enriched_v5.csv#1df2ebf5
+    notes: 'Create Item > Settings (Item Setting panel): ''HSN/SAC Requried?'' = No + Esc removes the HSN/SAC field
+      from the form (the doc says ''disables''; it is hidden); Yes + Rename ''QAHSN'' + Esc brings the field back
+      labelled ''QAHSN*''. Changes are kept on Esc. The steps put Yes / HSN/SAC back at the end (always: true).'
+- id: TC_MSTR_033
+  module: masters
+  title: Search / filter the Item List by the new item name
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-18 (n/a (Item List per careportal_enriched_v5.csv#ce983a40))'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - New item is found; list shows only matching rows. Search control behaviour UNVERIFIED
+  steps: []
+- id: TC_MSTR_034
+  module: masters
+  title: Visibility = Hide on an item
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-19 (KB careportal_enriched_v5.csv#6dffb56b)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Hidden from the item list at billing time for operators; owner can still see it. Billing check belongs to J05
+  steps: []
+- id: TC_MSTR_035
+  module: masters
+  title: Billing prohibited = No/Yes on an item
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-19b (KB careportal_enriched_v5.csv#6dffb56b)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - A prohibited item cannot be billed (field label text partly cut in KB, UNVERIFIED)
+  steps: []
+- id: TC_MSTR_036
+  module: masters
+  title: New item (with its tax category) is selectable in a sale bill and the GST rate applied equals the item's
+    category
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-20 (KB careportal_enriched_v5.csv#7e11d1c2 ("apply
+    the correct GST rate to the item"))'
+  - 'Group: J08 Item master CRUD'
+  - 'Data: QA_Item_GST18 created in this company with GST Sale - 18%'
+  expected:
+  - Rate on the bill = category rate. Belongs to J05/J07 but is the downstream check for this journey
+  steps:
+  - action: use_company
+    value: QA GST Mobile Trade
+  - action: press
+    value: Alt+N
+    note: New sale bill (Alt+N)
+  - action: wait_text
+    value: Select Party
+    note: Party list opens
+  - action: click
+    target: xpath=//ngb-modal-window//div[@col-id][normalize-space()="QA_Party_Debtor"]
+    inside_modal: true
+    note: Pick QA_Party_Debtor
+  - action: press
+    value: Enter
+  - action: assert_value
+    target: '[formcontrolname="ledgerName"]'
+    value: QA_Party_Debtor
+  - action: sleep
+    value: 4
+    note: Wait for the cursor to reach the first product cell
+  - action: press
+    value: Q
+    note: Type QA_Item_GST18 (opens the item list)
+  - action: press
+    value: A
+  - action: press
+    value: _
+  - action: press
+    value: I
+  - action: press
+    value: t
+  - action: press
+    value: e
+  - action: press
+    value: m
+  - action: press
+    value: _
+  - action: press
+    value: G
+  - action: press
+    value: S
+  - action: press
+    value: T
+  - action: press
+    value: '1'
+  - action: press
+    value: '8'
+  - action: sleep
+    value: 1.5
+  - action: assert_visible
+    target: xpath=//ngb-modal-window//div[@row-index="0"]//div[@col-id][normalize-space()="QA_Item_GST18"]
+    note: 'List filtered: the item is the first row'
+  - action: press
+    value: Enter
+    note: Take the item
+  - action: sleep
+    value: 1.5
+  - action: assert_visible
+    target: '#txt-quantity-0'
+    note: Cursor on Qty
+  - action: press
+    value: Control+A
+  - action: press
+    value: '1'
+    note: Qty 1
+  - action: press
+    value: Enter
+  - action: sleep
+    value: 1
+  - action: press
+    value: Enter
+    note: Rate
+  - action: sleep
+    value: 1
+  - action: press
+    value: Enter
+    note: 'Disc %: next line'
+  - action: sleep
+    value: 1.5
+  - action: assert_visible
+    target: xpath=//div[normalize-space()="CGST"]/following-sibling::div[1][normalize-space(translate(.," "," "))="9.00"]
+    note: 'Item QA_Item_GST18 (category GST Sale - 18%): CGST 9% of 100'
+  - action: assert_visible
+    target: xpath=//div[normalize-space()="SGST"]/following-sibling::div[1][normalize-space(translate(.," "," "))="9.00"]
+    note: 'Tax Info: SGST 9.00'
+  - action: assert_visible
+    target: 'xpath=//div[contains(@class,"bill-value-text")][normalize-space(translate(.," "," "))="Invoice Value
+      : 118.00"]'
+    note: 100 + 18% = 118.00
+  - action: screenshot
+    value: TC_MSTR_036
+  - action: press
+    value: Alt+H
+    note: 'Leave the bill unsaved: back to the dashboard'
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    note: Yes, the unsaved data may be lost
+  - action: sleep
+    value: 3
+    note: Dashboard
+  verification:
+    status: verified
+    company: QA GST Mobile Trade
+    date: '2026-11-18'
+    run:
+      passed: 40
+      total: 40
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_036.png
+    kb:
+    - careportal_enriched_v5.csv#7e11d1c2
+    notes: 'QA_Item_GST18 (created today with Tax Category ''GST Sale - 18%'') is selectable in a sale bill (QA_Party_Debtor,
+      exclusive): rate 100 gives CGST 9.00 + SGST 9.00 (18%), Invoice Value 118.00 - the rate applied equals the
+      item''s category. Bill not saved.'
+- id: TC_MSTR_037
+  module: masters
+  title: Bulk update of GST rate HSN-wise (Utilities & Tools > Ease of GST) changes the rate shown on items with
+    that HSN
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  - blocked
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-21 (KB careportal_enriched_v5.csv#652cd5f2)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Item Master shows the new tax rate; Effective Date not editable there; confirm by typing "Sure". Out of CRUD
+    scope; note only
+  steps:
+  - action: use_company
+    value: QA GST Computer Hardware
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 3
+  - action: hover
+    target: '#lft-dropdown'
+    note: Mouse over the side menu
+  - action: sleep
+    value: 1
+  - action: fill
+    target: input[placeholder="Type to search"]
+    value: Ease
+    note: 'Menu search: Ease'
+    inside_modal: true
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//p[normalize-space()="Other Tools / Ease Of Gst"]
+    note: Open Other Tools / Ease Of Gst
+    inside_modal: true
+  - action: wait_text
+    value: Ease Of Gst
+  - action: sleep
+    value: 4
+  - action: assert_visible
+    target: xpath=//*[normalize-space()="New Tax Category"]
+    note: TaxCategory grid with a New Tax Category column
+  - action: screenshot
+    value: TC_MSTR_037
+  - action: sleep
+    value: 2
+    always: true
+  - action: press
+    value: Alt+h
+    always: true
+  - action: sleep
+    value: 2
+  verification:
+    status: blocked
+    company: QA GST Computer Hardware
+    date: '2026-11-19'
+    run:
+      passed: 15
+      total: 15
+    evidence:
+    - ''
+    kb:
+    - careportal_enriched_v5.csv#652cd5f2
+    notes: Utilities > Other Tools > Ease Of Gst exists (HSN / TaxCategory views, 'New Tax Category' per category;
+      Save first asks Applicable/Effective From, see TC_MSTR_165). Applying a bulk HSN-wise rate change rewrites
+      the GST of every item with that HSN in the shared QA company and its tax history (tenant-wide; the case itself
+      says out of CRUD scope), so the change, the 'Sure' confirmation and the item-master result were not exercised.
+- id: TC_MSTR_038
+  module: masters
+  title: Remove a duplicate item via Utilities & Tools > Non Working Data > Delete > Duplicate Item
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-22 (KB careportal_enriched_v5.csv#e5839768)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Only items with no transactions or zero stock can be removed; "Delete The Selected Record?" asks Yes. Destructive
+    bulk path, out of scope for P1
+  steps: []
+- id: TC_MSTR_039
+  module: masters
+  title: Operator / limited user opens Item master (create, edit, delete)
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-23 (n/a)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - 'UNVERIFIED: no limited account exists (see scenarios/auth.md RB-03, Q3)'
+  steps: []
+- id: TC_MSTR_040
+  module: masters
+  title: Item created in company A must not appear in company B's Item List
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-24 (n/a)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - 'UNVERIFIED; needs a second company with a known item (see auth.md CO-07, Q8). Test idea: API list with company
+    B context'
+  steps: []
+- id: TC_MSTR_041
+  module: masters
+  title: Item create/list/update/delete via API
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-25 (n/a)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - 'UNVERIFIED: endpoint paths, payload and status codes not retrievable (ask_codebase unavailable). The planner
+    must capture them from the live network log'
+  steps: []
+- id: TC_MSTR_042
+  module: masters
+  title: Item created in a previous financial year / opening stock in a new FY
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-26 (KB onedrive_processed_data.csv#1f1e5fdc)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - 'UNVERIFIED: item master is likely company-wide, FY handling of opening stock unknown. "Multi Deletion" considers
+    transactions in current and previous FY, which affects deletability'
+  steps: []
+- id: TC_MSTR_043
+  module: masters
+  title: Multi Deletion of unused items and brands
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/item-master-crud.md IM-27 (KB onedrive_processed_data.csv#1f1e5fdc)'
+  - 'Group: J08 Item master CRUD'
+  expected:
+  - Feature filters items/brands with no billing in the current and previous FY, then deletes them. Out of scope
+    (bulk destructive)
+  steps: []
+- id: TC_MSTR_044
+  module: masters
+  title: Open Master > Accounts Master > Group
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-01 (KB careportal_enriched_v5.csv#d96b054c, #478035fd)'
+  - 'Group: Account group'
+  expected:
+  - '"Account Group List" window with a tree of groups, a Create button (F2) and a search box'
+  steps: []
+- id: TC_MSTR_045
+  module: masters
+  title: 'Create a group: Group Name, Under Group (a parent such as Bank Accounts or Indirect Expenses), Prohibited
+    = No, Save'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-02 (KB careportal_enriched_v5.csv#d96b054c)'
+  - 'Group: Account group'
+  expected:
+  - '"Record Saved Successfully"; the new group is listed under its parent'
+  steps: []
+- id: TC_MSTR_046
+  module: masters
+  title: 'Modify a group: Edit icon, change it, Update'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-03 (KB careportal_enriched_v5.csv#478035fd)'
+  - 'Group: Account group'
+  expected:
+  - '"Record Updated Successfully"'
+  steps: []
+- id: TC_MSTR_047
+  module: masters
+  title: Save a group without a name
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-04 (KB #d96b054c (field list); wording UNVERIFIED)'
+  - 'Group: Account group'
+  expected:
+  - Save refused (name is mandatory). Wording UNVERIFIED
+  steps: []
+- id: TC_MSTR_048
+  module: masters
+  title: Save a group without an Under Group
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-05 (KB #d96b054c; CODE usp_AccountGroupMasterUpdate
+    takes @parentlinkid (codekb:MargBooks:schema#241b0cbc))'
+  - 'Group: Account group'
+  expected:
+  - Save refused. Wording UNVERIFIED
+  steps: []
+- id: TC_MSTR_049
+  module: masters
+  title: Create a group whose name already exists in the company
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-06 (CODE margbookscoreapi:margerpdal/AccountGroup.cs:292-299
+    IsAccountGroupNameExists (codekb:MargBooks:code#58e75544))'
+  - 'Group: Account group'
+  expected:
+  - Refused. The data layer counts rows with the same name in the same company that are not deleted
+  steps: []
+- id: TC_MSTR_050
+  module: masters
+  title: Duplicate name differing only in letter case
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-07 (CODE #58e75544; collation UNVERIFIED)'
+  - 'Group: Account group'
+  expected:
+  - 'UNVERIFIED in code: the SQL compares name = @name; whether it is case-blind depends on the database collation'
+  steps: []
+- id: TC_MSTR_051
+  module: masters
+  title: Create a group with the name of a predefined group (e.g. Sundry Debtors)
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-08 (CODE #58e75544 (no filter on predefined rows))'
+  - 'Group: Account group'
+  expected:
+  - Refused as a duplicate (AG-06 applies to predefined groups too)
+  steps: []
+- id: TC_MSTR_052
+  module: masters
+  title: Delete a predefined group
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-09 (KB careportal_enriched_v5.csv#478035fd)'
+  - 'Group: Account group'
+  expected:
+  - 'Refused: "Predefined Account Groups cannot be deleted"'
+  steps: []
+- id: TC_MSTR_053
+  module: masters
+  title: Delete a group that a ledger uses
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-10 (KB careportal_enriched_v5.csv#478035fd; CODE
+    AccountGroupDal.Delete reads dbo.LedgerMaster (codekb:MargBooks:api#4dadb5bb))'
+  - 'Group: Account group'
+  expected:
+  - 'Refused: a group selected in a ledger cannot be deleted'
+  steps: []
+- id: TC_MSTR_054
+  module: masters
+  title: Delete a user group with no ledgers
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-11 (KB #478035fd; CODE DELETE AccountGroup/Delete
+    -> usp_AccountGroupMasterDelete (codekb:MargBooks:api#004a478f))'
+  - 'Group: Account group'
+  expected:
+  - Group removed from the list. Confirmation text UNVERIFIED
+  steps: []
+- id: TC_MSTR_055
+  module: masters
+  title: Prohibited = Yes on a group, then pick one of its ledgers in a bill
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-12 (KB careportal_enriched_v5.csv#205e3e22)'
+  - 'Group: Account group'
+  expected:
+  - Alert "Ledger Prohibited From Account Group"; setting Prohibited = No resolves it
+  steps: []
+- id: TC_MSTR_056
+  module: masters
+  title: 'Group name: long, special characters (& / ( ) .), leading/trailing spaces'
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-13 (UNVERIFIED)'
+  - 'Group: Account group'
+  expected:
+  - UNVERIFIED limits; predefined names already contain & / ( ) . - so these characters must be accepted
+  steps: []
+- id: TC_MSTR_057
+  module: masters
+  title: Rename a group used by ledgers
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-14 (CODE usp_AccountGroupMasterUpdate updates by
+    @linkid (#241b0cbc))'
+  - 'Group: Account group'
+  expected:
+  - Ledgers keep pointing to the group (link by id, not name). UNVERIFIED in UI
+  steps: []
+- id: TC_MSTR_058
+  module: masters
+  title: Create / read / update / delete a group by API (POST AccountGroup/Save, GET AccountGroup/GetById, PUT AccountGroup/Update,
+    DELETE...
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-15 (CODE #4dadb5bb, #1ed47937, #004a478f, codekb:MargBooks:schema#bc143a20)'
+  - 'Group: Account group'
+  - 'Scenario: Create / read / update / delete a group by API (POST AccountGroup/Save, GET AccountGroup/GetById,
+    PUT AccountGroup/Update, DELETE AccountGroup/Delete; open API POST Account/createGroup)'
+  expected:
+  - CRUD for the owner company; payload and auth contract UNVERIFIED
+  steps: []
+- id: TC_MSTR_059
+  module: masters
+  title: A group created in company A is absent in company B
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-16 (CODE #58e75544, #bc143a20)'
+  - 'Group: Account group'
+  expected:
+  - All group SQL filters by complinkid; UNVERIFIED live
+  steps: []
+- id: TC_MSTR_060
+  module: masters
+  title: Jira "Account Group Fixed ID duplicate issue"
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md AG-17 (KB jira_vectordb.csv#5cf8b56c)'
+  - 'Group: Account group'
+  expected:
+  - Duplicate fixed ids on groups have occurred; a regression check after group create is advisable
+  steps: []
+- id: TC_MSTR_061
+  module: masters
+  title: 'Create a ledger under Indirect Expenses (or a user group under it): name + account group, Save'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md GL-01 (KB careportal_enriched_v5.csv#b8a0ae88, onedrive_processed_data.csv#f03d3903)'
+  - 'Group: Non-party ledger (expense, income, bank, tax)'
+  expected:
+  - Saved; Indirect Expenses ledgers are admin expenses such as office expenses
+  steps: []
+- id: TC_MSTR_062
+  module: masters
+  title: 'The Create Ledger form for a non-party group shows General Info only: Ledger Name, Account Group, GST
+    Applicable, Opening Balance; no...'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md GL-02 (KB onedrive_processed_data.csv#44f37361)'
+  - 'Group: Non-party ledger (expense, income, bank, tax)'
+  - 'Scenario: The Create Ledger form for a non-party group shows General Info only: Ledger Name, Account Group,
+    GST Applicable, Opening Balance; no party fields'
+  expected:
+  - The KB screenshot of a Forex Gain/Loss ledger shows Ledger Name, Account Group and GST Applicable (Not Applicable)
+  steps:
+  - action: use_company
+    value: QA GST Automobile
+  - action: press
+    value: Alt+L
+    note: Ledger list
+  - action: wait_text
+    value: Ledger Master
+  - action: press
+    value: F2
+    note: Create ledger
+  - action: wait_text
+    value: GST Verification
+  - action: sleep
+    value: 3
+  - action: fill
+    target: '#txtlegername'
+    value: QA_Exp_Ledger
+    note: Ledger Name
+  - action: click
+    target: '#drpAccountGroup'
+  - action: press
+    value: Control+A
+  - action: press
+    value: E
+    note: 'Account Group: Expen...'
+  - action: press
+    value: x
+  - action: press
+    value: p
+  - action: press
+    value: e
+  - action: press
+    value: n
+  - action: sleep
+    value: 2.5
+  - action: click
+    target: xpath=//*[@role="listbox"]//*[@role="option"][normalize-space()="Indirect Expenses"]
+    note: Indirect Expenses
+  - action: sleep
+    value: 2
+  - action: assert_visible
+    target: '#ddlGSTApplicability'
+    note: GST Applicability shown
+  - action: assert_options
+    target: '#ddlGSTApplicability'
+    value: Applicable | Not Applicable | Non GST
+  - action: assert_value
+    target: '#ddlGSTApplicability'
+    value: Not Applicable
+    note: Default Not Applicable
+  - action: assert_visible
+    target: '#txtOpeningBalance'
+    note: Opening Balance
+  - action: assert_not_visible
+    target: '#txtMobile'
+    note: 'No party fields: Mobile'
+  - action: assert_not_visible
+    target: '#ddlStateLinkID'
+    note: No State
+  - action: assert_not_visible
+    target: '#txtGSTNo'
+    note: No GSTIN
+  - action: screenshot
+    value: TC_MSTR_062
+  - action: press
+    value: Escape
+  verification:
+    status: verified
+    company: QA GST Automobile
+    date: '2026-11-19'
+    run:
+      passed: 26
+      total: 26
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_062.png
+    kb:
+    - onedrive_processed_data.csv#44f37361
+    notes: Create Ledger with Account Group 'Indirect Expenses' shows only Ledger Name, Account Group, GST Applicability
+      (Applicable / Not Applicable / Non GST, default Not Applicable) and Opening Balance Dr/Cr; the party fields
+      (Mobile, State, GSTIN, address) are gone. Not saved.
+- id: TC_MSTR_063
+  module: masters
+  title: Modify a non-party ledger (change GST Applicable or the account group), Update
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md GL-03 (KB careportal_enriched_v5.csv#980bd762 (change
+    account group via Modify Ledger))'
+  - 'Group: Non-party ledger (expense, income, bank, tax)'
+  - 'Data: QA_Exp_Ledger (Indirect Expenses, GST Not Applicable) created once for this case'
+  expected:
+  - '"Record Updated Successfully"; the change shows on reopen'
+  steps:
+  - action: use_company
+    value: QA GST Chemist
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+l
+    note: Ledger list
+  - action: wait_text
+    value: Ledger Master
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_Exp_Ledger
+    note: Search QA_Exp_Ledger (QA expense ledger, Indirect Expenses, GST Not Applicable)
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//div[@role="row"][.//div[@col-id="LedgerName"][normalize-space()="QA_Exp_Ledger"]]
+    note: Click the ledger row
+  - action: click
+    target: xpath=//div[@role="row"][.//div[@col-id="LedgerName"][normalize-space()="QA_Exp_Ledger"]]//button[starts-with(@id,"Grideditbtn")]
+    note: Edit (modify) on that row
+  - action: wait_text
+    value: GST Applicable
+  - action: sleep
+    value: 2
+  - action: assert_value
+    target: '#txtlegername'
+    value: QA_Exp_Ledger
+  - action: click
+    target: '#drpAccountGroup'
+    note: Account Group
+  - action: press
+    value: Control+a
+  - action: press
+    value: D
+    note: Type Direct Exp
+  - action: press
+    value: i
+  - action: press
+    value: r
+  - action: press
+    value: e
+  - action: press
+    value: c
+  - action: press
+    value: t
+  - action: press
+    value: ' '
+  - action: press
+    value: E
+  - action: press
+    value: x
+  - action: press
+    value: p
+  - action: sleep
+    value: 2
+  - action: press
+    value: Enter
+  - action: sleep
+    value: 1
+  - action: assert_value
+    target: '#drpAccountGroup'
+    value: Direct Expenses
+  - action: click
+    target: xpath=//button[contains(normalize-space(.),"Update")]
+    note: F10 Update
+  - action: wait_text
+    value: Record Updated Successfully
+    note: 'Message: Record Updated Successfully.'
+  - action: sleep
+    value: 2
+  - action: screenshot
+    value: TC_MSTR_063
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+l
+    note: Ledger list
+  - action: wait_text
+    value: Ledger Master
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_Exp_Ledger
+    note: Search QA_Exp_Ledger (QA expense ledger, Indirect Expenses, GST Not Applicable)
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//div[@role="row"][.//div[@col-id="LedgerName"][normalize-space()="QA_Exp_Ledger"]]
+    note: Click the ledger row
+  - action: click
+    target: xpath=//div[@role="row"][.//div[@col-id="LedgerName"][normalize-space()="QA_Exp_Ledger"]]//button[starts-with(@id,"Grideditbtn")]
+    note: Edit (modify) on that row
+  - action: wait_text
+    value: GST Applicable
+  - action: sleep
+    value: 2
+  - action: assert_value
+    target: '#txtlegername'
+    value: QA_Exp_Ledger
+  - action: assert_value
+    target: '#drpAccountGroup'
+    value: Direct Expenses
+    note: 'Reopened: the new group is kept'
+  - action: click
+    target: '#drpAccountGroup'
+    note: Account Group
+    always: true
+  - action: press
+    value: Control+a
+    always: true
+  - action: press
+    value: I
+    note: Type Indirect Exp
+    always: true
+  - action: press
+    value: n
+    always: true
+  - action: press
+    value: d
+    always: true
+  - action: press
+    value: i
+    always: true
+  - action: press
+    value: r
+    always: true
+  - action: press
+    value: e
+    always: true
+  - action: press
+    value: c
+    always: true
+  - action: press
+    value: t
+    always: true
+  - action: press
+    value: ' '
+    always: true
+  - action: press
+    value: E
+    always: true
+  - action: press
+    value: x
+    always: true
+  - action: press
+    value: p
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: press
+    value: Enter
+    always: true
+  - action: sleep
+    value: 1
+    always: true
+  - action: assert_value
+    target: '#drpAccountGroup'
+    value: Indirect Expenses
+    always: true
+  - action: click
+    target: xpath=//button[contains(normalize-space(.),"Update")]
+    note: F10 Update
+    always: true
+  - action: wait_text
+    value: Record Updated Successfully
+    note: 'Message: Record Updated Successfully.'
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: press
+    value: Alt+h
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  verification:
+    status: verified
+    company: QA GST Chemist
+    date: '2026-11-19'
+    run:
+      passed: 67
+      total: 67
+    evidence:
+    - artifacts/run_2026-11-18_23-25-22/TC_MSTR_063.png
+    kb:
+    - careportal_enriched_v5.csv#980bd762
+    notes: 'Ledger list -> QA_Exp_Ledger (non-party, Indirect Expenses, GST Not Applicable; created for this case)
+      -> Edit -> Account Group = Direct Expenses -> F10 Update: ''Record Updated Successfully.''; reopened, the
+      group shows Direct Expenses. The steps put the group back to Indirect Expenses at the end (always: true).
+      Setting GST Applicable = Applicable also asks for HSN / Sale Type / ITC / Reverse charge, so the group change
+      was used.'
+- id: TC_MSTR_064
+  module: masters
+  title: Delete a non-party ledger with no transactions
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md GL-04 (KB careportal_enriched_v5.csv#f6bd22bb (same
+    rule as party ledgers))'
+  - 'Group: Non-party ledger (expense, income, bank, tax)'
+  expected:
+  - Removed from the Ledger Master list
+  steps: []
+- id: TC_MSTR_065
+  module: masters
+  title: Delete a non-party ledger that has transactions
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md GL-05 (KB careportal_enriched_v5.csv#f6bd22bb)'
+  - 'Group: Non-party ledger (expense, income, bank, tax)'
+  expected:
+  - Refused
+  steps: []
+- id: TC_MSTR_066
+  module: masters
+  title: Ledger name duplicate when "Ledger Name Duplicate allowed ?" = No
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md GL-06 (KB careportal_enriched_v5.csv#3b37ea40, #c4c32709)'
+  - 'Group: Non-party ledger (expense, income, bank, tax)'
+  expected:
+  - Alert "Ledger Name Already Exist"
+  steps: []
+- id: TC_MSTR_067
+  module: masters
+  title: Move a ledger to another account group
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/ledger-master-crud.md GL-07 (KB careportal_enriched_v5.csv#980bd762)'
+  - 'Group: Non-party ledger (expense, income, bank, tax)'
+  expected:
+  - The ledger now belongs to the new group (Modify shows it)
+  steps: []
+- id: TC_MSTR_068
+  module: masters
+  title: Open Master > Accounts Master > Ledger
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-01 (KB careportal_enriched_v5.csv#5fe16050, #f6bd22bb)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - A "Ledger Master" window lists all ledgers; a Create button (or F2) is available
+  steps: []
+- id: TC_MSTR_069
+  module: masters
+  title: Create a customer ledger with only mandatory fields (name, account group Sundry Debtors, station if enabled)
+    and Save
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-02 (KB careportal_enriched_v5.csv#5fe16050, #085d1e1b)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Ledger is created; it appears in the ledger list and in the sale bill party picker. Mandatory fields are marked
+    with a red asterisk (*); exact set UNVERIFIED
+  steps: []
+- id: TC_MSTR_070
+  module: masters
+  title: Create a supplier ledger with account group Sundry Creditors
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-03 (KB vimeo_transcripts_hinglish_english.csv#45d0f78f, careportal_enriched_v5.csv#085d1e1b)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Ledger saved under Sundry Creditors and selectable in a purchase bill
+  steps: []
+- id: TC_MSTR_071
+  module: masters
+  title: 'Create a ledger with full details: address, country, state, city, pincode, GSTIN, opening balance with
+    Dr/Cr, credit days, mobile, WhatsApp'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-04 (KB careportal_enriched_v5.csv#82cf84c4, #9eac622d)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - All values persist and show again on Modify. Opening balance side for a customer is Debit, for a supplier Credit
+  steps: []
+- id: TC_MSTR_072
+  module: masters
+  title: 'Create a ledger from the sale bill: Sale > Bill > Party Name > Select Party > Create'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-05 (KB careportal_enriched_v5.csv#f680f130)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - '"Create Ledger" window opens; after save the new ledger is selected on the bill'
+  steps: []
+- id: TC_MSTR_073
+  module: masters
+  title: 'Modify a ledger: Edit icon, change a field, Update'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-06 (KB careportal_enriched_v5.csv#f6bd22bb)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Message "Record Updated Successfully"; the list and the next reopen show the new value
+  steps: []
+- id: TC_MSTR_074
+  module: masters
+  title: Search the ledger list for a just-created ledger name
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-07 (KB vimeo_transcripts_hinglish_english.csv#f2666820 (search
+    then Enter shows the ledger); rule UNVERIFIED)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Ledger found. Search behaviour (prefix or contains, case) UNVERIFIED
+  steps: []
+- id: TC_MSTR_075
+  module: masters
+  title: 'GST verification while creating a ledger: enter GSTIN, use the verify action'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - blocked
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-08 (KB careportal_enriched_v5.csv#4162a53d)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Party details (name, address, state) are fetched from the GST number. Needs the GST portal; likely not automatable
+    on QA
+  steps:
+  - action: use_company
+    value: QA GST Pharma Distribution
+  - action: press
+    value: Alt+L
+    note: Ledger list (Alt+L)
+  - action: wait_text
+    value: Ledger Master
+  - action: press
+    value: F2
+    note: Create ledger (F2)
+  - action: wait_text
+    value: GST Verification
+  - action: select
+    target: '#ddlLedgerType'
+    value: Registered
+    note: Ledger type Registered
+  - action: assert_visible
+    target: '#txtGSTNo'
+    note: GSTIN field shown
+  - action: click_text
+    value: GST Verification
+    exact: true
+    note: GST Verification button
+  - action: wait_text
+    value: Enter GSTIN number and get party details automatically
+  - action: assert_text
+    value: Verify
+  - action: screenshot
+    value: TC_MSTR_075
+  verification:
+    status: blocked
+    company: QA GST Pharma Distribution
+    date: '2026-11-18'
+    run:
+      passed: 11
+      total: 11
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_075.png
+    kb: []
+    notes: Ledger create (Alt+L, F2) has a 'GST Verification' button; it opens 'GST Verification - Enter GSTIN number
+      and get party details automatically' with GST No. and Verify. Verify fetches the party from the GST portal,
+      which needs a real live GSTIN and portal access; not done here. Steps stop at the dialog.
+- id: TC_MSTR_076
+  module: masters
+  title: Save a ledger with the required name empty
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-09 (KB careportal_enriched_v5.csv#5fe16050 (mandatory *); wording
+    UNVERIFIED)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Save refused, nothing created. Error wording UNVERIFIED
+  steps: []
+- id: TC_MSTR_077
+  module: masters
+  title: Save a ledger without an account group
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-10 (KB careportal_enriched_v5.csv#5fe16050 (group is part of
+    the mandatory path); wording UNVERIFIED)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Save refused. Wording UNVERIFIED
+  steps: []
+- id: TC_MSTR_078
+  module: masters
+  title: 'Station enabled: save a customer or supplier ledger without a station'
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-11 (KB careportal_enriched_v5.csv#44127743)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Save refused; Station is a required field while the Station option is on, and can be turned off in settings
+  steps: []
+- id: TC_MSTR_079
+  module: masters
+  title: Save a ledger with an invalid GSTIN (14 chars, bad structure, wrong check character)
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-12 (UNVERIFIED)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Each invalid GSTIN marks the field invalid; F10 shows Invalid GSTNo and the ledger is not saved
+  steps:
+  - action: use_company
+    value: QA GST Billing General
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+l
+    note: Ledger list
+  - action: wait_text
+    value: Ledger Master
+  - action: sleep
+    value: 3
+  - action: press
+    value: F2
+    note: Create ledger
+  - action: wait_text
+    value: Create Party
+  - action: sleep
+    value: 3
+  - action: fill
+    target: '#txtlegername'
+    value: QA_Party_GSTBad079
+    note: Party name (not saved)
+  - action: fill
+    target: '#ddlstation'
+    value: Others
+    note: Station
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//*[@role="listbox"]//*[@role="option" and normalize-space()="Others"]
+    note: Pick Others
+  - action: fill
+    target: '#txtMobile'
+    value: '{{mobile}}'
+    note: Mobile (required)
+    save_as: mob_1
+  - action: select
+    target: '#ddlLedgerType'
+    value: Registered
+    note: Ledger Type Registered shows GSTIN
+  - action: click
+    target: '#txtGSTNo'
+  - action: press
+    value: Control+a
+  - action: fill
+    target: '#txtGSTNo'
+    value: 09ABCDE1234F1Z
+    note: 14 characters
+  - action: press
+    target: '#txtGSTNo'
+    value: Tab
+  - action: sleep
+    value: 1
+  - action: assert_visible
+    target: xpath=//input[@id="txtGSTNo" and contains(@class,"ng-invalid")]
+    note: GSTIN field marked invalid
+  - action: press
+    value: F10
+    note: Try to save
+  - action: wait_text
+    value: Invalid GSTNo
+    note: 'Message: Invalid GSTNo'
+  - action: assert_visible
+    target: '#txtGSTNo'
+    note: 'Not saved: still on Create Party'
+  - action: sleep
+    value: 4
+  - action: click
+    target: '#txtGSTNo'
+  - action: press
+    value: Control+a
+  - action: fill
+    target: '#txtGSTNo'
+    value: 0912345ABCDE1Z5
+    note: Bad structure (digits where PAN letters go)
+  - action: press
+    target: '#txtGSTNo'
+    value: Tab
+  - action: sleep
+    value: 1
+  - action: assert_visible
+    target: xpath=//input[@id="txtGSTNo" and contains(@class,"ng-invalid")]
+    note: GSTIN field marked invalid
+  - action: press
+    value: F10
+    note: Try to save
+  - action: wait_text
+    value: Invalid GSTNo
+    note: 'Message: Invalid GSTNo'
+  - action: assert_visible
+    target: '#txtGSTNo'
+    note: 'Not saved: still on Create Party'
+  - action: sleep
+    value: 4
+  - action: click
+    target: '#txtGSTNo'
+  - action: press
+    value: Control+a
+  - action: fill
+    target: '#txtGSTNo'
+    value: 09AAACS1234A1Z5
+    note: Right structure, wrong check character (correct is 4)
+  - action: press
+    target: '#txtGSTNo'
+    value: Tab
+  - action: sleep
+    value: 1
+  - action: assert_visible
+    target: xpath=//input[@id="txtGSTNo" and contains(@class,"ng-invalid")]
+    note: GSTIN field marked invalid
+  - action: press
+    value: F10
+    note: Try to save
+  - action: wait_text
+    value: Invalid GSTNo
+    note: 'Message: Invalid GSTNo'
+  - action: assert_visible
+    target: '#txtGSTNo'
+    note: 'Not saved: still on Create Party'
+  - action: sleep
+    value: 4
+  - action: screenshot
+    value: TC_MSTR_079
+  - action: press
+    value: F9
+    note: Clear the form (nothing saved)
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: press
+    value: Escape
+    note: Close Create Party
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: press
+    value: Alt+h
+    always: true
+  - action: sleep
+    value: 3
+  verification:
+    status: corrected
+    company: QA GST Billing General
+    date: '2026-11-19'
+    run:
+      passed: 52
+      total: 52
+    evidence:
+    - artifacts/run_2026-11-18_23-25-22/TC_MSTR_079.png
+    kb:
+    - codekb:margweblogin:.claude/docs/blast-radius/functions/ts/Services.md#helperservice-isvalidgstin
+    notes: 'Create Party (Ledger Type Registered): GSTIN 09ABCDE1234F1Z (14 chars), 0912345ABCDE1Z5 (bad structure)
+      and 09AAACS1234A1Z5 (wrong check character) each mark the GSTIN field invalid and F10 shows the toast ''Invalid
+      GSTNo''; the ledger is not saved (form cleared with F9 and closed). No GSTIN was saved.'
+- id: TC_MSTR_080
+  module: masters
+  title: GSTIN state code differs from the selected State
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-13 (UNVERIFIED)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - UNVERIFIED (no KB or code evidence)
+  steps: []
+- id: TC_MSTR_081
+  module: masters
+  title: Create a second ledger with the same name as an existing one
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-14 (KB jira_vectordb.csv#b024d6a9 (hint only))'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - 'UNVERIFIED: duplicate allowed or blocked unknown. A Jira item mentions removing spaces in the ledger master
+    table for a second customer, hinting at trimming/duplicate handling'
+  steps: []
+- id: TC_MSTR_082
+  module: masters
+  title: Delete a ledger that has transactions
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-15 (KB careportal_enriched_v5.csv#f6bd22bb)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - 'Deletion refused: a ledger with transactions cannot be deleted; the transactions must be deleted first'
+  steps: []
+- id: TC_MSTR_083
+  module: masters
+  title: Delete a ledger that has no transactions
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-16 (KB careportal_enriched_v5.csv#f6bd22bb (process exists;
+    steps truncated in the chunk))'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Ledger removed from the list. Confirmation dialog text UNVERIFIED
+  steps: []
+- id: TC_MSTR_084
+  module: masters
+  title: Delete a ledger that has a journal voucher in an older financial year
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-17 (KB support_tickets_vectordb.csv#33c01bed; Jira "Ledger
+    not able to delete" jira_vectordb.csv#fb844b2f)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - 'KB reports the app deleted it anyway while the entry stayed, leaving blank ledger names in the old entry. Treat
+    as a possible defect: expected is the MS-15 refusal'
+  steps: []
+- id: TC_MSTR_085
+  module: masters
+  title: 'Ledger name: very long, special characters (& '' / -), unicode, leading/trailing spaces'
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-18 (UNVERIFIED)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - 'UNVERIFIED: max length and allowed set unknown. Questions Q3, Q4'
+  steps: []
+- id: TC_MSTR_086
+  module: masters
+  title: 'Mobile / pincode / credit days / opening balance: zero, negative, non-numeric, very large, odd paise'
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-19 (UNVERIFIED)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - UNVERIFIED limits. Opening balance must keep its Dr/Cr side (see MS-04)
+  steps: []
+- id: TC_MSTR_087
+  module: masters
+  title: 'Double submit: press Save twice quickly, or refresh mid-save'
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-20 (UNVERIFIED (checklist: duplicates))'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - 'UNVERIFIED: expect one ledger only. Check the list count afterwards'
+  steps: []
+- id: TC_MSTR_088
+  module: masters
+  title: Edit a ledger that is already used on a posted bill (change name/group/GSTIN)
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-21 (UNVERIFIED (checklist: edit after posting))'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - 'UNVERIFIED: whether the existing bill changes. Group change on a ledger with transactions is a risk'
+  steps: []
+- id: TC_MSTR_089
+  module: masters
+  title: Opening balance on the ledger shows in the ledger report / trial balance
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-22 (KB careportal_enriched_v5.csv#82cf84c4 (field exists);
+    reconciliation UNVERIFIED)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Opening balance is reflected in the ledger balance. Report path and figure format UNVERIFIED
+  steps: []
+- id: TC_MSTR_090
+  module: masters
+  title: Limited user without Master rights opens Master > Ledger by menu and by URL
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-23 (scenarios/auth.md RB-03; UNVERIFIED)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - 'UNVERIFIED: no limited account exists (auth.md RB-03/RB-04, Q3). Guard only filters by menu items and plan'
+  steps: []
+- id: TC_MSTR_091
+  module: masters
+  title: Each trade account (chemist, pharma, retail, grocery) can create a ledger
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-24 (UNVERIFIED)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - 'UNVERIFIED: labels and mandatory fields (e.g. Station, GSTIN, drug licence) may differ by trade'
+  steps: []
+- id: TC_MSTR_092
+  module: masters
+  title: A ledger created in company A does not appear in company B's ledger list or party picker
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-25 (CODE module MargBooks.LedgerAPI; rule UNVERIFIED (see auth.md
+    CO-07, Q8))'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - 'UNVERIFIED live; test idea: create in A, switch company, search by unique name. The API module serving this
+    is MargBooks.LedgerAPI'
+  steps: []
+- id: TC_MSTR_093
+  module: masters
+  title: Same ledger name in two companies
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-26 (UNVERIFIED)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Allowed, no clash. UNVERIFIED
+  steps: []
+- id: TC_MSTR_094
+  module: masters
+  title: Create / read / update / delete a ledger through the ledger API with a company A token
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-27 (CODE module MargBooks.LedgerAPI, LedgerController.cs; contract
+    UNVERIFIED)'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - CRUD works for the owner; a company B id returns denial. Endpoint paths, payload and status codes UNVERIFIED
+    (not read from code)
+  steps: []
+- id: TC_MSTR_095
+  module: masters
+  title: Ledger created via UI is returned by the API, and an API-created ledger shows in the UI list
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md MS-28 (UNVERIFIED (reconciliation idea from checklist))'
+  - 'Group: Ledger master (customer / vendor)'
+  expected:
+  - Both views agree on name, group, GSTIN, opening balance
+  steps: []
+- id: TC_MSTR_096
+  module: masters
+  title: 'Create an item: Master > Inventory Master > Item > Create/F2; Product name, Packing, Unit 1st, Unit in
+    Decimal, HSN/SAC, Tax Category'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/masters.md IM-01 (KB careportal_enriched_v5.csv#7e11d1c2, #89501edb)'
+  - 'Group: Item master (supporting master data)'
+  expected:
+  - Item saved and appears in the Item List (Description, Packing, Company, Stock, Unit, Sale Rate). Mandatory fields
+    have an asterisk; exact set UNVERIFIED
+  steps:
+  - action: use_company
+    value: QA GST Grocery
+  - action: press
+    value: Alt+I
+    note: Master > Inventory Master > Item (Alt+I)
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create/F2
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 4
+  - action: assert_visible
+    target: xpath=//label[contains(normalize-space(),"Product")][contains(.,"*")] | //*[normalize-space(text())="Product"]/following-sibling::*[contains(.,"*")]
+      | //*[contains(normalize-space(),"Product *") or contains(normalize-space(),"Product*")]
+    note: Product marked with *
+  - action: assert_visible
+    target: xpath=//label[contains(normalize-space(),"Unit 1st")][contains(.,"*")] | //*[normalize-space(text())="Unit
+      1st"]/following-sibling::*[contains(.,"*")] | //*[contains(normalize-space(),"Unit 1st *") or contains(normalize-space(),"Unit
+      1st*")]
+    note: Unit 1st marked with *
+  - action: assert_visible
+    target: xpath=//label[contains(normalize-space(),"HSN/SAC")][contains(.,"*")] | //*[normalize-space(text())="HSN/SAC"]/following-sibling::*[contains(.,"*")]
+      | //*[contains(normalize-space(),"HSN/SAC *") or contains(normalize-space(),"HSN/SAC*")]
+    note: HSN/SAC marked with *
+  - action: assert_visible
+    target: xpath=//label[contains(normalize-space(),"Tax Category")][contains(.,"*")] | //*[normalize-space(text())="Tax
+      Category"]/following-sibling::*[contains(.,"*")] | //*[contains(normalize-space(),"Tax Category *") or contains(normalize-space(),"Tax
+      Category*")]
+    note: Tax Category marked with *
+  - action: assert_visible
+    target: xpath=//label[contains(normalize-space(),"Company")][contains(.,"*")] | //*[normalize-space(text())="Company"]/following-sibling::*[contains(.,"*")]
+      | //*[contains(normalize-space(),"Company *") or contains(normalize-space(),"Company*")]
+    note: Company marked with *
+  - action: fill
+    target: '#txtProduct'
+    value: QA_Item_Create96
+    note: Product
+  - action: fill
+    target: '#txtPacking'
+    value: 1x10
+    note: Packing
+  - action: click
+    target: '#unit'
+  - action: press
+    value: P
+  - action: press
+    value: C
+  - action: press
+    value: S
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//*[@role="listbox"]//*[@role="option"][normalize-space()="PCS"]
+    note: Pick PCS
+  - action: click
+    target: '#hsn'
+  - action: press
+    value: '3'
+  - action: press
+    value: '0'
+  - action: press
+    value: '0'
+  - action: press
+    value: '4'
+  - action: sleep
+    value: 2.5
+  - action: click
+    target: xpath=(//*[@role="listbox"]//*[@role="option"])[1]
+    note: Pick HSN 3004
+  - action: click
+    target: '#taxxCategory'
+  - action: press
+    value: G
+  - action: press
+    value: S
+  - action: press
+    value: T
+  - action: press
+    value: ' '
+  - action: press
+    value: S
+  - action: press
+    value: a
+  - action: press
+    value: l
+  - action: press
+    value: e
+  - action: press
+    value: ' '
+  - action: press
+    value: '-'
+  - action: press
+    value: ' '
+  - action: press
+    value: '5'
+  - action: press
+    value: '%'
+  - action: sleep
+    value: 2.5
+  - action: click
+    target: xpath=//*[@role="listbox"]//*[@role="option"][normalize-space()="GST Sale - 5%"]
+    note: Pick GST Sale - 5%
+  - action: click
+    target: '#txtcompName'
+  - action: press
+    value: O
+  - action: press
+    value: t
+  - action: press
+    value: h
+  - action: press
+    value: e
+  - action: press
+    value: r
+  - action: press
+    value: s
+  - action: sleep
+    value: 2.5
+  - action: press
+    value: Enter
+    note: Company Others
+  - action: sleep
+    value: 2
+  - action: click
+    target: '#btnSave'
+    note: F10 Save
+  - action: wait_text
+    value: Do you want to add item Opening
+  - action: click
+    target: '#btnNo'
+    inside_modal: true
+    note: No opening
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+I
+  - action: wait_text
+    value: Item List
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_Item_Create96
+  - action: sleep
+    value: 2.5
+  - action: assert_visible
+    target: xpath=//div[contains(@class,"ag-row")]//div[normalize-space()="QA_Item_Create96"]
+    note: New item in the Item List
+  - action: assert_text
+    value: Description
+  - action: assert_text
+    value: Packing
+  - action: assert_text
+    value: Company
+  - action: assert_text
+    value: Stock
+  - action: assert_text
+    value: Unit
+  - action: assert_text
+    value: Sale Rate
+  - action: screenshot
+    value: TC_MSTR_096
+  verification:
+    status: verified
+    company: QA GST Grocery
+    date: '2026-11-18'
+    run:
+      passed: 68
+      total: 68
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_096.png
+    kb:
+    - careportal_enriched_v5.csv#7e11d1c2
+    notes: 'Item List (Alt+I) > Create/F2: Product, Unit 1st, HSN/SAC, Tax Category and Company carry an asterisk.
+      Created QA_Item_Create96 (Packing 1x10, Unit PCS, HSN 3004, GST Sale - 5%, Company Others), F10, declined
+      opening stock; the Item List (Description, Packing, Company, Stock, Unit, Sale Rate) shows it. Unit in Decimal
+      left at No. Re-running needs a new item name.'
+- id: TC_MSTR_097
+  module: masters
+  title: Save an item without HSN/SAC when "HSN / SAC Required?" is Yes in the Control Room
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/masters.md IM-02 (KB careportal_enriched_v5.csv#6576a008)'
+  - 'Group: Item master (supporting master data)'
+  expected:
+  - HSN is mandatory in Item Master when the setting is on; save refused. Wording UNVERIFIED
+  steps:
+  - action: use_company
+    value: QA GST Garment
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+i
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create/F2
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 3
+  - action: fill
+    target: '#txtProduct'
+    value: QA_NoHSN_TMP
+    note: Product (must not be saved)
+  - action: click
+    target: '#unit'
+  - action: sleep
+    value: 1
+  - action: press
+    value: P
+  - action: press
+    value: C
+  - action: press
+    value: S
+  - action: sleep
+    value: 2
+  - action: press
+    value: Enter
+  - action: sleep
+    value: 1
+  - action: assert_value
+    target: '#hsn'
+    value: ''
+    note: HSN/SAC left empty
+  - action: click
+    target: xpath=//button[contains(normalize-space(.),"Save")]
+    note: F10 Save
+  - action: sleep
+    value: 1
+  - action: wait_text
+    value: Hsn required
+    note: 'Message under HSN/SAC: Hsn required !'
+  - action: assert_visible
+    target: '#txtProduct'
+    note: 'Save refused: still on Create Item'
+  - action: screenshot
+    value: TC_MSTR_097
+  - action: press
+    value: Escape
+    note: Leave the form without saving
+  - action: sleep
+    value: 2
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+  - action: sleep
+    value: 1
+  - action: press
+    value: Alt+i
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: sleep
+    value: 2
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_NoHSN
+    note: Search QA_NoHSN
+  - action: sleep
+    value: 3
+  - action: assert_not_visible
+    target: xpath=//div[@role="row"]//div[@col-id][normalize-space()="QA_NoHSN_TMP"]
+    note: The item was not created
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  verification:
+    status: verified
+    company: QA GST Garment
+    date: '2026-11-19'
+    run:
+      passed: 35
+      total: 35
+    evidence:
+    - artifacts/run_2026-11-18_23-25-22/TC_MSTR_097.png
+    kb:
+    - careportal_enriched_v5.csv#6576a008
+    notes: 'With ''HSN/SAC Requried?'' = Yes (company value), Create Item with Product QA_NoHSN_TMP and Unit PCS
+      but no HSN/SAC -> Save: the form shows ''Hsn required !'' under HSN/SAC and stays open; the item is not in
+      the Item List afterwards. Tax Category and Company were also left empty (they show their own ''!'' marks):
+      the focus flow of the form makes filling them by keystrokes unreliable, so HSN is not the only missing field.'
+- id: TC_MSTR_098
+  module: masters
+  title: 'Create an HSN/SAC code: Master > Inventory Master > HSN / SAC > Create, code + name, Save'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/masters.md IM-03 (KB careportal_enriched_v5.csv#320937c5)'
+  - 'Group: Item master (supporting master data)'
+  expected:
+  - HSN is created and selectable on an item
+  steps:
+  - action: use_company
+    value: QA GST Mobile Trade
+  - action: goto
+    target: /mstr/hsn
+    note: Master > Inventory Master > HSN / SAC
+  - action: wait_text
+    value: HSN/SAC List
+  - action: press
+    value: F2
+    note: Create (F2)
+  - action: wait_text
+    value: Create HSN/SAC
+  - action: click
+    target: '#inphsncode'
+    inside_modal: true
+  - action: press
+    value: '8'
+    note: Code 8517
+  - action: press
+    value: '5'
+  - action: press
+    value: '1'
+  - action: press
+    value: '7'
+  - action: press
+    value: Tab
+  - action: click
+    target: '#inphsnname'
+    inside_modal: true
+  - action: press
+    value: Q
+    note: Name QA_HSN_98
+  - action: press
+    value: A
+  - action: press
+    value: _
+  - action: press
+    value: H
+  - action: press
+    value: S
+  - action: press
+    value: N
+  - action: press
+    value: _
+  - action: press
+    value: '9'
+  - action: press
+    value: '8'
+  - action: press
+    value: F10
+    note: Save
+  - action: sleep
+    value: 3
+  - action: press
+    value: Escape
+    note: Close the next empty Create HSN/SAC
+  - action: sleep
+    value: 1.5
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_HSN_98
+  - action: sleep
+    value: 2.5
+  - action: assert_visible
+    target: xpath=//div[contains(@class,"ag-row")]//div[normalize-space()="8517"]
+    note: HSN 8517 listed
+  - action: press
+    value: Alt+I
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create item
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 4
+  - action: fill
+    target: '#txtProduct'
+    value: QA_Tmp_HSN98
+    note: Product name first (the form returns focus to Product)
+  - action: sleep
+    value: 4
+  - action: click
+    target: '#unit'
+  - action: press
+    value: P
+    note: Unit PCS
+  - action: press
+    value: C
+  - action: press
+    value: S
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//*[@role="listbox"]//*[@role="option"][normalize-space()="PCS"]
+  - action: sleep
+    value: 1.5
+  - action: click
+    target: '#hsn'
+  - action: press
+    value: '8'
+    note: 'HSN/SAC: type 8517'
+  - action: press
+    value: '5'
+  - action: press
+    value: '1'
+  - action: press
+    value: '7'
+  - action: sleep
+    value: 2.5
+  - action: assert_visible
+    target: xpath=//*[@role="listbox"]//*[@role="option"][contains(normalize-space(),"8517")]
+    note: 8517 offered on the item
+  - action: screenshot
+    value: TC_MSTR_098
+  - action: press
+    value: Escape
+  - action: press
+    value: Escape
+  verification:
+    status: verified
+    company: QA GST Mobile Trade
+    date: '2026-11-18'
+    run:
+      passed: 52
+      total: 52
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_098.png
+    kb:
+    - careportal_enriched_v5.csv#320937c5
+    notes: 'Master > Inventory Master > HSN/SAC > Create (F2): code 8517 + name QA_HSN_98, F10 (the dialog reopens
+      empty; Esc closes it); 8517 is listed and the Create Item HSN/SAC field offers it. Duplicate codes are accepted,
+      so re-runs add another 8517 row.'
+- id: TC_MSTR_099
+  module: masters
+  title: Unit in Decimal = No, then a decimal quantity on a bill
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md IM-04 (KB careportal_enriched_v5.csv#7e11d1c2 (option restricts
+    decimals); behaviour UNVERIFIED)'
+  - 'Group: Item master (supporting master data)'
+  expected:
+  - Decimal quantity refused. Exact message UNVERIFIED
+  steps: []
+- id: TC_MSTR_100
+  module: masters
+  title: Item with the same name as an existing item
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md IM-05 (UNVERIFIED)'
+  - 'Group: Item master (supporting master data)'
+  expected:
+  - UNVERIFIED
+  steps: []
+- id: TC_MSTR_101
+  module: masters
+  title: Item created in company A absent from company B
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md IM-06 (CODE module MargBooks.ItemAPI; rule UNVERIFIED)'
+  - 'Group: Item master (supporting master data)'
+  expected:
+  - UNVERIFIED. Module MargBooks.ItemAPI
+  steps: []
+- id: TC_MSTR_102
+  module: masters
+  title: 'Enable the customer module, then create a customer: mobile, ID, name, gender, age, ledger, address, pin,
+    e-mail, WhatsApp'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md CU-01 (KB careportal_enriched_v5.csv#b58668e6, #8659e05b)'
+  - 'Group: Customer master (Master > Other Master > Customer)'
+  expected:
+  - Customer saved and listed. Customer ID is auto-generated by the software. The customer module must be enabled
+    first (setting path UNVERIFIED)
+  steps: []
+- id: TC_MSTR_103
+  module: masters
+  title: Create a customer from the sale bill without leaving the billing screen
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md CU-02 (KB careportal_enriched_v5.csv#b58668e6)'
+  - 'Group: Customer master (Master > Other Master > Customer)'
+  expected:
+  - Customer created inline and attached to the bill
+  steps: []
+- id: TC_MSTR_104
+  module: masters
+  title: Create a second customer with an existing mobile number
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md CU-03 (KB jira_vectordb.csv#0529399b)'
+  - 'Group: Customer master (Master > Other Master > Customer)'
+  expected:
+  - UNVERIFIED. A Jira task asks to delete duplicate customers uniquely identified by mobile number, so duplicates
+    have occurred
+  steps: []
+- id: TC_MSTR_105
+  module: masters
+  title: 'Mobile number: 9, 10, 11 digits, letters'
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md CU-04 (UNVERIFIED)'
+  - 'Group: Customer master (Master > Other Master > Customer)'
+  expected:
+  - UNVERIFIED
+  steps: []
+- id: TC_MSTR_106
+  module: masters
+  title: Customer linked to Cash Account for cash billing, or to a named ledger for credit billing
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/masters.md CU-05 (KB careportal_enriched_v5.csv#8659e05b)'
+  - 'Group: Customer master (Master > Other Master > Customer)'
+  expected:
+  - The ledger choice drives where the bill posts
+  steps: []
+- id: TC_MSTR_107
+  module: masters
+  title: New party (own data), On Account, opening balance 1234.50 Dr, save
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/opening-balance-entry.md OB-01 (KB #ae4f03c8; LIVE)'
+  - 'Group: J18 Opening balance entry'
+  expected:
+  - '"Record saved successfully."; Opening Balance list shows the party with "1,234.500 Dr"'
+  steps: []
+- id: TC_MSTR_108
+  module: masters
+  title: Same with Cr
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/opening-balance-entry.md OB-02 (KB #ae4f03c8; LIVE)'
+  - 'Group: J18 Opening balance entry'
+  expected:
+  - List shows "... Cr"
+  steps: []
+- id: TC_MSTR_109
+  module: masters
+  title: Change an existing (own) party's opening balance from the Opening Balance list (Edit/F3) to another amount
+    and side
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/opening-balance-entry.md OB-03 (KB #e970a2d0 (path); LIVE)'
+  - 'Group: J18 Opening balance entry'
+  expected:
+  - List shows the new amount and side; form reopens with the saved values
+  steps: []
+- id: TC_MSTR_110
+  module: masters
+  title: Party with Bill By Bill and an opening balance
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/opening-balance-entry.md OB-04 (KB #37c5efe8; LIVE contradicts)'
+  - 'Group: J18 Opening balance entry'
+  expected:
+  - 'Bill-wise "Opening Balance" window appears (KB). LIVE: no window appeared on Enter or Save; saved directly.
+    NEEDS DECISION'
+  steps: []
+- id: TC_MSTR_111
+  module: masters
+  title: Opening balance shows in the Trial Balance (Opening Balance on)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/opening-balance-entry.md OB-05 (KB #fba17458; LIVE (covered by J19))'
+  - 'Group: J18 Opening balance entry'
+  expected:
+  - Party row under Sundry Debtors with the amount on the Dr side
+  steps: []
+- id: TC_MSTR_112
+  module: masters
+  title: KB says a change needs the previous financial year
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/opening-balance-entry.md OB-06 (KB #e970a2d0)'
+  - 'Group: J18 Opening balance entry'
+  expected:
+  - 'LIVE: change in the current FY saved without a prompt. NEEDS DECISION'
+  steps: []
+- id: TC_MSTR_113
+  module: masters
+  title: Zero opening balance
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/opening-balance-entry.md OB-07 (UNVERIFIED)'
+  - 'Group: J18 Opening balance entry'
+  expected:
+  - Saved, list shows no balance. Display UNVERIFIED
+  steps: []
+- id: TC_MSTR_114
+  module: masters
+  title: Non-numeric text in the amount
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/opening-balance-entry.md OB-08 (UNVERIFIED)'
+  - 'Group: J18 Opening balance entry'
+  expected:
+  - Rejected or filtered. UNVERIFIED
+  steps: []
+- id: TC_MSTR_115
+  module: masters
+  title: Amount with more than 3 decimals
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/opening-balance-entry.md OB-09 (LIVE (3 decimals), rule UNVERIFIED)'
+  - 'Group: J18 Opening balance entry'
+  expected:
+  - Rounding rule UNVERIFIED (list shows 3 decimals)
+  steps: []
+- id: TC_MSTR_116
+  module: masters
+  title: Delete own party with an opening balance only
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/opening-balance-entry.md OB-10 (LIVE)'
+  - 'Group: J18 Opening balance entry'
+  expected:
+  - '"Record deleted successfully."'
+  steps: []
+- id: TC_MSTR_117
+  module: masters
+  title: Opening balance of company A not visible in company B
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/opening-balance-entry.md OB-11 (UNVERIFIED)'
+  - 'Group: J18 Opening balance entry'
+  expected:
+  - UNVERIFIED
+  steps: []
+- id: TC_MSTR_118
+  module: masters
+  title: User without the Opening Balance right
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/opening-balance-entry.md OB-12 (UNVERIFIED)'
+  - 'Group: J18 Opening balance entry'
+  expected:
+  - Denied. UNVERIFIED
+  steps: []
+- id: TC_MSTR_119
+  module: masters
+  title: Create a route with a unique name
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md RT-01 (KB careportal_enriched_v5.csv#67cd74fd)'
+  - 'Group: Route'
+  expected:
+  - '"Record Saved Successfully"; route listed in Route List'
+  steps: []
+- id: TC_MSTR_120
+  module: masters
+  title: Rename a route via Edit
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md RT-02 (KB careportal_enriched_v5.csv#67cd74fd
+    (modify process))'
+  - 'Group: Route'
+  expected:
+  - '"Record Updated Successfully"; list shows the new name only'
+  steps: []
+- id: TC_MSTR_121
+  module: masters
+  title: Rename a route that an area uses
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md RT-03 (UNVERIFIED (derived: area stores routelinkid,
+    CODE #565d33ec))'
+  - 'Group: Route'
+  expected:
+  - The Area List shows the new route name for that area
+  steps: []
+- id: TC_MSTR_122
+  module: masters
+  title: Save a route with an empty name
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md RT-04 (UNVERIFIED (KB marks the field mandatory
+    only by *))'
+  - 'Group: Route'
+  expected:
+  - Refused, nothing created
+  steps: []
+- id: TC_MSTR_123
+  module: masters
+  title: Create a route whose name already exists (same case and other case)
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md RT-05 (UNVERIFIED wording)'
+  - 'Group: Route'
+  expected:
+  - Refused with a duplicate message
+  steps: []
+- id: TC_MSTR_124
+  module: masters
+  title: Delete a route that an area uses
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md RT-06 (UNVERIFIED)'
+  - 'Group: Route'
+  expected:
+  - Refused, route stays
+  steps: []
+- id: TC_MSTR_125
+  module: masters
+  title: Delete an unused route
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md RT-07 (KB careportal_enriched_v5.csv#67cd74fd)'
+  - 'Group: Route'
+  expected:
+  - Confirmation asked; route removed from list
+  steps: []
+- id: TC_MSTR_126
+  module: masters
+  title: 'Route master disabled in settings: menu hides Route'
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md RT-08'
+  - 'Group: Route'
+  expected:
+  - KB careportal_enriched_v5.csv#e2b09670; not automated (tenant-wide setting)
+  steps: []
+- id: TC_MSTR_127
+  module: masters
+  title: Create an area under a route
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md AR-01 (KB careportal_enriched_v5.csv#78e25a3c;
+    CODE #e588117a)'
+  - 'Group: Area'
+  expected:
+  - Saved; Area List shows area with its route
+  steps: []
+- id: TC_MSTR_128
+  module: masters
+  title: Save an area without a route
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md AR-02 (CODE #e588117a (route field on the form);
+    rule UNVERIFIED)'
+  - 'Group: Area'
+  expected:
+  - Refused
+  steps: []
+- id: TC_MSTR_129
+  module: masters
+  title: Save an area with an empty name
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md AR-03 (UNVERIFIED)'
+  - 'Group: Area'
+  expected:
+  - Refused
+  steps: []
+- id: TC_MSTR_130
+  module: masters
+  title: Duplicate area name
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md AR-04 (UNVERIFIED (Jira MB-028699 shows duplicates
+    once existed))'
+  - 'Group: Area'
+  expected:
+  - Refused
+  steps: []
+- id: TC_MSTR_131
+  module: masters
+  title: Rename an area
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md AR-05 (KB careportal_enriched_v5.csv#78e25a3c
+    (modify process))'
+  - 'Group: Area'
+  expected:
+  - '"Record Updated Successfully"; list shows new name'
+  steps: []
+- id: TC_MSTR_132
+  module: masters
+  title: Delete an area
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md AR-06 (KB careportal_enriched_v5.csv#78e25a3c;
+    CODE #b591800f)'
+  - 'Group: Area'
+  expected:
+  - Removed from list
+  steps: []
+- id: TC_MSTR_133
+  module: masters
+  title: Area name of 50+ characters
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md AR-07 (CODE #618a44da)'
+  - 'Group: Area'
+  expected:
+  - Refused by the API (ErrAreaNameLength); UI max length is 30 (live)
+  steps: []
+- id: TC_MSTR_134
+  module: masters
+  title: Area used on a customer / party then deleted
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md AR-08 (UNVERIFIED)'
+  - 'Group: Area'
+  expected:
+  - 'UNVERIFIED: the procedure has no usage check (CODE #b591800f); not automated, Customer master needs its module
+    enabled'
+  steps: []
+- id: TC_MSTR_135
+  module: masters
+  title: Create a station
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md ST-01 (KB careportal_enriched_v5.csv#8b0bc945)'
+  - 'Group: Station'
+  expected:
+  - Saved; listed in Station list
+  steps: []
+- id: TC_MSTR_136
+  module: masters
+  title: Pick the new station on a customer ledger
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md ST-02 (KB careportal_enriched_v5.csv#8b0bc945,
+    #b443f252)'
+  - 'Group: Station'
+  expected:
+  - Ledger saved; Ledger Master shows the station
+  steps: []
+- id: TC_MSTR_137
+  module: masters
+  title: Rename a station
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md ST-03 (KB careportal_enriched_v5.csv#8b0bc945)'
+  - 'Group: Station'
+  expected:
+  - '"Record Updated Successfully"; list shows new name'
+  steps: []
+- id: TC_MSTR_138
+  module: masters
+  title: Empty station name
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md ST-04 (UNVERIFIED)'
+  - 'Group: Station'
+  expected:
+  - Refused
+  steps: []
+- id: TC_MSTR_139
+  module: masters
+  title: Duplicate station name (same and other case)
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md ST-05 (UNVERIFIED)'
+  - 'Group: Station'
+  expected:
+  - Refused
+  steps: []
+- id: TC_MSTR_140
+  module: masters
+  title: Station name longer than 15 characters (UI allows 25)
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md ST-06 (CODE #d9b151d3 (15 in the update procedure)
+    vs live UI 25: NEEDS DECISION)'
+  - 'Group: Station'
+  expected:
+  - Saved and listed in full
+  steps: []
+- id: TC_MSTR_141
+  module: masters
+  title: Delete a station a ledger uses
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md ST-07 (UNVERIFIED)'
+  - 'Group: Station'
+  expected:
+  - 'UNVERIFIED: no usage check visible in code (CODE #1979b04e)'
+  steps: []
+- id: TC_MSTR_142
+  module: masters
+  title: Delete an unused station
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/route-station-area-masters.md ST-08 (KB careportal_enriched_v5.csv#8b0bc945)'
+  - 'Group: Station'
+  expected:
+  - Removed from list
+  steps: []
+- id: TC_MSTR_143
+  module: masters
+  title: Open Master > Inventory Master > Unit
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md UN-01 (KB careportal_enriched_v5.csv#78d0fc17)'
+  - 'Group: Unit master'
+  expected:
+  - '"Unit List" with a predefined list, Create button'
+  steps: []
+- id: TC_MSTR_144
+  module: masters
+  title: 'Create a unit: Unit Name, UQC, Save'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md UN-02 (KB #78d0fc17; CODE codekb:MargBooks:screen#7aeffc75
+    (form fields unitname, uqc, alias, printname))'
+  - 'Group: Unit master'
+  expected:
+  - Unit saved and listed with its UQC
+  steps: []
+- id: TC_MSTR_145
+  module: masters
+  title: Unit name length
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md UN-03 (CODE codekb:MargBooks:schema#8cc5ba8f,
+    #75d95203)'
+  - 'Group: Unit master'
+  expected:
+  - DB column is nvarchar(10) (alias 10, print name 20); longer input must be cut or refused
+  steps: []
+- id: TC_MSTR_146
+  module: masters
+  title: Save without a unit name
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md UN-04 (CODE #7aeffc75; UNVERIFIED)'
+  - 'Group: Unit master'
+  expected:
+  - Refused (name is mandatory). Wording UNVERIFIED
+  steps: []
+- id: TC_MSTR_147
+  module: masters
+  title: Duplicate unit name in the company
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md UN-05 (UNVERIFIED)'
+  - 'Group: Unit master'
+  expected:
+  - Refused. Wording and case rule UNVERIFIED
+  steps: []
+- id: TC_MSTR_148
+  module: masters
+  title: Modify a unit (Edit icon, change, Update)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md UN-06 (KB #78d0fc17; CODE PUT Unit/Update ->
+    usp_UnitMasterUpdate (schema#8cc5ba8f))'
+  - 'Group: Unit master'
+  expected:
+  - Change shown in the list
+  steps: []
+- id: TC_MSTR_149
+  module: masters
+  title: Delete an unused user unit, confirm Yes
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md UN-07 (KB careportal_enriched_v5.csv#ccfaf1aa)'
+  - 'Group: Unit master'
+  expected:
+  - Removed from the list
+  steps: []
+- id: TC_MSTR_150
+  module: masters
+  title: Delete a unit selected in an item
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md UN-08 (KB #ccfaf1aa)'
+  - 'Group: Unit master'
+  expected:
+  - 'Refused: "neither predefined ... nor if any unit is already selected in the item" can be deleted'
+  steps: []
+- id: TC_MSTR_151
+  module: masters
+  title: Delete a predefined unit
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md UN-09 (KB #ccfaf1aa)'
+  - 'Group: Unit master'
+  expected:
+  - Refused
+  steps: []
+- id: TC_MSTR_152
+  module: masters
+  title: New unit offered in item master Unit 1st lookup
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md UN-10 (KB careportal_enriched_v5.csv#7e11d1c2,
+    #86336d40)'
+  - 'Group: Unit master'
+  expected:
+  - The unit is selectable when creating an item
+  steps: []
+- id: TC_MSTR_153
+  module: masters
+  title: GSTR-1 HSN summary shows the wrong UQC (PCS) when billed in strip/box
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md UN-11 (KB support_tickets_vectordb.csv#7c1aa83c)'
+  - 'Group: Unit master'
+  expected:
+  - Regression risk on UQC mapping; not reproduced here
+  steps: []
+- id: TC_MSTR_154
+  module: masters
+  title: Open Master > Inventory Master > HSN / SAC
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-01 (KB careportal_enriched_v5.csv#320937c5,
+    #27613ae1)'
+  - 'Group: HSN / SAC master'
+  expected:
+  - '"HSN/SAC List" with Create, search'
+  steps:
+  - action: use_company
+    value: QA GST Automobile
+  - action: goto
+    target: /mstr/hsn
+    note: Master > Inventory Master > HSN / SAC
+  - action: wait_text
+    value: HSN/SAC List
+    note: '''HSN/SAC List'''
+  - action: assert_visible
+    target: xpath=//button[contains(normalize-space(),"Create/F2")]
+    note: Create/F2
+  - action: assert_visible
+    target: input[placeholder="Search here.."]
+    note: Search box
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: '3004'
+    note: Search 3004
+  - action: sleep
+    value: 2.5
+  - action: assert_visible
+    target: xpath=//div[contains(@class,"ag-row")]//div[normalize-space()="3004"]
+    note: Search finds QA_HSN_4 (3004)
+  - action: screenshot
+    value: TC_MSTR_154
+  verification:
+    status: verified
+    company: QA GST Automobile
+    date: '2026-11-19'
+    run:
+      passed: 9
+      total: 9
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_154.png
+    kb:
+    - careportal_enriched_v5.csv#320937c5
+    notes: Master > Inventory Master > HSN/SAC opens 'HSN/SAC List' with Create/F2, search box (Search By Name /
+      HSN Code) and the list; searching 3004 finds QA_HSN_4.
+- id: TC_MSTR_155
+  module: masters
+  title: 'Create: HSN/SAC Code + HSN/SAC Name, Save'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-02 (KB #320937c5)'
+  - 'Group: HSN / SAC master'
+  expected:
+  - Code created and listed
+  steps:
+  - action: use_company
+    value: QA GST Chemist
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 3
+  - action: hover
+    target: '#lft-dropdown'
+    note: Mouse over the side menu
+  - action: sleep
+    value: 1
+  - action: fill
+    target: input[placeholder="Type to search"]
+    value: HSN
+    note: 'Menu search: HSN'
+    inside_modal: true
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//p[normalize-space()="Master / Inventory Master / HSN/SAC"]
+    note: Open Master / Inventory Master / HSN/SAC
+    inside_modal: true
+  - action: wait_text
+    value: HSN/SAC List
+  - action: sleep
+    value: 2
+  - action: press
+    value: F2
+    note: Create/F2
+  - action: wait_text
+    value: Create HSN/SAC
+  - action: fill
+    target: '#inphsncode'
+    value: '99887766'
+    inside_modal: true
+    note: HSN/SAC Code
+  - action: fill
+    target: '#inphsnname'
+    value: QA_HSN_155
+    inside_modal: true
+    note: HSN/SAC Name
+  - action: click
+    target: '#btn-Save'
+    inside_modal: true
+    note: F10 Save
+  - action: sleep
+    value: 3
+  - action: assert_visible
+    target: xpath=//div[@role="row"][.//div[normalize-space()="QA_HSN_155"]][.//div[normalize-space()="99887766"]]
+    note: Code created and listed
+  - action: screenshot
+    value: TC_MSTR_155
+  - action: assert_visible
+    target: xpath=//div[@role="row"][.//div[normalize-space()="99887766"]]
+    note: HSN 99887766 is listed
+    always: true
+  - action: click
+    target: xpath=//div[@role="row"][.//div[normalize-space()="99887766"]]//button[starts-with(@id,"Griddeletetbtn")]
+    note: Delete on the 99887766 row (clean-up so the case can run again)
+    always: true
+  - action: wait_text
+    value: Are you sure you want to delete the selected Record?
+    always: true
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    always: true
+  - action: sleep
+    value: 3
+    always: true
+  - action: assert_not_visible
+    target: xpath=//div[@role="row"][.//div[normalize-space()="99887766"]]
+    note: 99887766 removed
+    always: true
+  verification:
+    status: verified
+    company: QA GST Chemist
+    date: '2026-11-19'
+    run:
+      passed: 24
+      total: 24
+    evidence:
+    - artifacts/run_2026-11-18_23-25-22/TC_MSTR_155.png
+    kb: []
+    notes: 'Master > Inventory Master > HSN/SAC (opened through the side-menu search) -> Create/F2 -> HSN/SAC Code
+      99887766 + Name QA_HSN_155 -> F10: the code is listed at once (no message shown). The steps delete it again
+      at the end (clean-up, always: true) so the case can be re-run.'
+- id: TC_MSTR_156
+  module: masters
+  title: Code length
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - trade:all
+  - app_defect
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-03 (KB #27613ae1; CODE schema#c660f768, #63df901e)'
+  - 'Group: HSN / SAC master'
+  expected:
+  - Codes "can be of any digit such as 2,4,6,8"; DB hsn varchar(10), hsnname varchar(25)
+  steps:
+  - action: use_company
+    value: QA GST Pharma Distribution
+  - action: goto
+    target: /mstr/hsn
+    note: Master > Inventory Master > HSN/SAC
+  - action: wait_text
+    value: HSN/SAC List
+  - action: press
+    value: F2
+    note: Create (F2)
+  - action: wait_text
+    value: Create HSN/SAC
+  - action: click
+    target: '#inphsncode'
+    inside_modal: true
+  - action: press
+    value: '1'
+    note: Type a 10-digit code
+  - action: press
+    value: '2'
+  - action: press
+    value: '3'
+  - action: press
+    value: '4'
+  - action: press
+    value: '5'
+  - action: press
+    value: '6'
+  - action: press
+    value: '7'
+  - action: press
+    value: '8'
+  - action: press
+    value: '9'
+  - action: press
+    value: '0'
+  - action: assert_value
+    target: '#inphsncode'
+    value: '12345678'
+    note: Field keeps 8 digits (maxlength 8)
+  - action: press
+    value: Control+A
+  - action: press
+    value: '3'
+    note: 4-digit code 3004
+  - action: press
+    value: '0'
+  - action: press
+    value: '0'
+  - action: press
+    value: '4'
+  - action: click
+    target: '#inphsnname'
+    inside_modal: true
+  - action: press
+    value: Q
+    note: Name QA_HSN_4
+  - action: press
+    value: A
+  - action: press
+    value: _
+  - action: press
+    value: H
+  - action: press
+    value: S
+  - action: press
+    value: N
+  - action: press
+    value: _
+  - action: press
+    value: '4'
+  - action: press
+    value: F10
+    note: Save
+  - action: sleep
+    value: 3
+  - action: press
+    value: F2
+    note: Create again
+  - action: wait_text
+    value: Create HSN/SAC
+  - action: click
+    target: '#inphsncode'
+    inside_modal: true
+  - action: press
+    value: Control+A
+  - action: press
+    value: '3'
+    note: 2-digit code 30
+  - action: press
+    value: '0'
+  - action: click
+    target: '#inphsnname'
+    inside_modal: true
+  - action: press
+    value: Q
+    note: Name QA_HSN_2
+  - action: press
+    value: A
+  - action: press
+    value: _
+  - action: press
+    value: H
+  - action: press
+    value: S
+  - action: press
+    value: N
+  - action: press
+    value: _
+  - action: press
+    value: '2'
+  - action: press
+    value: F10
+    note: Save
+  - action: sleep
+    value: 3
+  - action: screenshot
+    value: TC_MSTR_156
+  - action: press
+    value: Escape
+  - action: sleep
+    value: 1.5
+  - action: fill
+    target: input[placeholder="Search here.."]
+    value: QA_HSN
+    note: Search QA_HSN
+  - action: sleep
+    value: 2.5
+  - action: assert_visible
+    target: xpath=//div[contains(@class,"ag-row")]//div[@col-id][normalize-space()="3004"]
+    note: 4-digit code saved
+  - action: assert_visible
+    target: xpath=//div[contains(@class,"ag-row")]//div[@col-id][normalize-space()="30"]
+    note: 'KB: a 2-digit code can also be saved'
+  verification:
+    status: app_defect
+    company: QA GST Pharma Distribution
+    date: '2026-11-18'
+    run:
+      passed: 56
+      total: 57
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_156.png
+    kb:
+    - careportal_enriched_v5.csv#27613ae1
+    - codekb:schema#c660f768
+    notes: 'HSN/SAC master create form: code field takes at most 8 digits (10 typed -> 12345678), a 4-digit code
+      3004 (QA_HSN_4) saves, but a 2-digit code is refused with ''HSN/SAC Code required minimum 4 character!'' (input
+      minlength 4, maxlength 8). The KB text (careportal #27613ae1) says codes can be of any digit such as 2, 4,
+      6, 8; the app allows only 4-8. Note for the PO: current GST rules need at least 4 digits, so the KB text may
+      be the outdated side.'
+  known_issue: true
+- id: TC_MSTR_157
+  module: masters
+  title: Save without a code
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-04 (UNVERIFIED)'
+  - 'Group: HSN / SAC master'
+  expected:
+  - Refused. Wording UNVERIFIED
+  steps: []
+- id: TC_MSTR_158
+  module: masters
+  title: Non-numeric / invalid code
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-05 (UNVERIFIED; KB #514affd4 (invalid HSN
+    fails e-way bill upload))'
+  - 'Group: HSN / SAC master'
+  expected:
+  - UNVERIFIED whether the UI refuses letters or odd lengths
+  steps: []
+- id: TC_MSTR_159
+  module: masters
+  title: Duplicate code
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  - trade:all
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-06 (UNVERIFIED)'
+  - 'Group: HSN / SAC master'
+  expected:
+  - UNVERIFIED
+  steps: []
+- id: TC_MSTR_160
+  module: masters
+  title: Modify a code (Edit, change, Update)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-07 (KB careportal_enriched_v5.csv#1952d682;
+    CODE api#f99b4842)'
+  - 'Group: HSN / SAC master'
+  expected:
+  - Updated
+  steps: []
+- id: TC_MSTR_161
+  module: masters
+  title: Delete an unused code with Yes on "Are you sure you want to delete the selected Record?"
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-08 (KB #1952d682; CODE schema#61e4990a)'
+  - 'Group: HSN / SAC master'
+  expected:
+  - Removed (soft delete, isdelete = 1)
+  steps: []
+- id: TC_MSTR_162
+  module: masters
+  title: Delete a code set on an item
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - trade:all
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-09 (KB #1952d682)'
+  - 'Group: HSN / SAC master'
+  expected:
+  - '"cannot be deleted"'
+  steps: []
+- id: TC_MSTR_163
+  module: masters
+  title: New code offered in the item master HSN/SAC lookup
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  - passed
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-10 (KB #7e11d1c2)'
+  - 'Group: HSN / SAC master'
+  expected:
+  - Selectable
+  steps:
+  - action: use_company
+    value: QA GST Billing General
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 3
+  - action: hover
+    target: '#lft-dropdown'
+    note: Mouse over the side menu
+  - action: sleep
+    value: 1
+  - action: fill
+    target: input[placeholder="Type to search"]
+    value: HSN
+    note: 'Menu search: HSN'
+    inside_modal: true
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//p[normalize-space()="Master / Inventory Master / HSN/SAC"]
+    note: Open Master / Inventory Master / HSN/SAC
+    inside_modal: true
+  - action: wait_text
+    value: HSN/SAC List
+  - action: sleep
+    value: 2
+  - action: press
+    value: F2
+    note: Create/F2
+  - action: wait_text
+    value: Create HSN/SAC
+  - action: fill
+    target: '#inphsncode'
+    value: '99887744'
+    inside_modal: true
+    note: HSN/SAC Code
+  - action: fill
+    target: '#inphsnname'
+    value: QA_HSN_163
+    inside_modal: true
+    note: HSN/SAC Name
+  - action: click
+    target: '#btn-Save'
+    inside_modal: true
+    note: F10 Save
+  - action: sleep
+    value: 3
+  - action: assert_visible
+    target: xpath=//div[@role="row"][.//div[normalize-space()="QA_HSN_163"]][.//div[normalize-space()="99887744"]]
+    note: Code created and listed
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+i
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create/F2
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 3
+  - action: fill
+    target: '#txtProduct'
+    value: QA_HSNPICK_TMP
+    note: Product (the item is not saved)
+  - action: click
+    target: '#unit'
+    note: Unit 1st
+  - action: sleep
+    value: 1
+  - action: press
+    value: P
+    note: Type PCS
+  - action: press
+    value: C
+  - action: press
+    value: S
+  - action: sleep
+    value: 2
+  - action: press
+    value: Enter
+    note: Take PCS
+  - action: sleep
+    value: 1
+  - action: assert_value
+    target: '#unit'
+    value: PCS
+  - action: press
+    value: Enter
+    note: Unit-2
+  - action: sleep
+    value: 1
+  - action: press
+    value: Enter
+    note: Unit in Decimal
+  - action: sleep
+    value: 1
+  - action: assert_visible
+    target: '#hsn:focus'
+    note: Cursor on HSN/SAC
+  - action: press
+    value: Space
+    note: SpaceBar opens the HSN list
+  - action: sleep
+    value: 2
+  - action: assert_visible
+    target: xpath=//*[normalize-space()="99887744"][not(self::input)]
+    note: The new code 99887744 is offered in the item HSN/SAC list
+  - action: click
+    target: xpath=//*[normalize-space()="99887744"][not(self::input)]
+    inside_modal: true
+    note: Click it in the list
+  - action: sleep
+    value: 1.5
+  - action: assert_value
+    target: '#hsn'
+    value: '99887744'
+    note: 'Selectable: fills the item''s HSN/SAC'
+  - action: screenshot
+    value: TC_MSTR_163
+  - action: press
+    value: Escape
+    note: Leave the unsaved item form
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//button[contains(normalize-space(.),"Esc")][contains(normalize-space(.),"Close")]
+    inside_modal: true
+    optional: true
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+h
+    always: true
+  - action: sleep
+    value: 3
+    always: true
+  - action: hover
+    target: '#lft-dropdown'
+    note: Mouse over the side menu
+    always: true
+  - action: sleep
+    value: 1
+    always: true
+  - action: fill
+    target: input[placeholder="Type to search"]
+    value: HSN
+    note: 'Menu search: HSN'
+    inside_modal: true
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: click
+    target: xpath=//p[normalize-space()="Master / Inventory Master / HSN/SAC"]
+    note: Open Master / Inventory Master / HSN/SAC
+    inside_modal: true
+    always: true
+  - action: wait_text
+    value: HSN/SAC List
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: assert_visible
+    target: xpath=//div[@role="row"][.//div[normalize-space()="99887744"]]
+    note: HSN 99887744 is listed
+    always: true
+  - action: click
+    target: xpath=//div[@role="row"][.//div[normalize-space()="99887744"]]//button[starts-with(@id,"Griddeletetbtn")]
+    note: Delete on the 99887744 row (clean-up so the case can run again)
+    always: true
+  - action: wait_text
+    value: Are you sure you want to delete the selected Record?
+    always: true
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    always: true
+  - action: sleep
+    value: 3
+    always: true
+  - action: assert_not_visible
+    target: xpath=//div[@role="row"][.//div[normalize-space()="99887744"]]
+    note: 99887744 removed
+    always: true
+  verification:
+    status: verified
+    company: QA GST Billing General
+    date: '2026-11-19'
+    run:
+      passed: 66
+      total: 66
+    evidence:
+    - artifacts/run_2026-11-18_23-25-22/TC_MSTR_163.png
+    kb:
+    - careportal_enriched_v5.csv#7e11d1c2
+    notes: 'A new HSN/SAC code 99887744 (QA_HSN_163) created in Master > Inventory Master > HSN/SAC is offered at
+      once in Create Item > HSN/SAC (SpaceBar list) and fills the field when picked. The item is not saved; the
+      code is deleted at the end (always: true).'
+- id: TC_MSTR_164
+  module: masters
+  title: HSN GST rate fields (cgst, sgst, igst, cess) on the HSN form
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-11 (CODE codekb:MargBooks:screen#bca52e2d)'
+  - 'Group: HSN / SAC master'
+  expected:
+  - Create HSN/SAC shows only HSN/SAC Code and HSN/SAC Name; the cgst/sgst/igst/cess controls are not shown (hidden
+    by settings)
+  steps:
+  - action: use_company
+    value: QA GST Grocery
+  - action: goto
+    target: /mstr/hsn
+    note: Master > Inventory Master > HSN/SAC
+  - action: wait_text
+    value: HSN/SAC List
+  - action: press
+    value: F2
+    note: Create (F2)
+  - action: wait_text
+    value: Create HSN/SAC
+  - action: assert_visible
+    target: '#inphsncode'
+    note: HSN/SAC Code
+  - action: assert_visible
+    target: '#inphsnname'
+    note: HSN/SAC Name
+  - action: assert_not_visible
+    target: xpath=//ngb-modal-window//input[contains(@formcontrolname,"gst") or contains(@formcontrolname,"cess")
+      or contains(@id,"gst") or contains(@id,"cess")]
+    note: No CGST/SGST/IGST/Cess fields shown
+  - action: screenshot
+    value: TC_MSTR_164
+  - action: press
+    value: Escape
+  verification:
+    status: corrected
+    company: QA GST Grocery
+    date: '2026-11-18'
+    run:
+      passed: 10
+      total: 10
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_164.png
+    kb:
+    - codekb:MargBooks:screen#bca52e2d
+    notes: Create HSN/SAC (F2 on the HSN/SAC list) shows only HSN/SAC Code* and HSN/SAC Name (plus Save/Clear/Close);
+      no CGST/SGST/IGST/Cess rate fields with this company's settings. The KB code note says the form has those
+      controls behind settings; live they are hidden. GST rates come from the item's Tax Category instead.
+- id: TC_MSTR_165
+  module: masters
+  title: Changing GST rate HSN-wise (Utilities > Ease of GST)
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  - blocked
+  destructive: true
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-12 (KB #652cd5f2)'
+  - 'Group: HSN / SAC master'
+  expected:
+  - Tenant-wide change, needs "Sure"; out of scope
+  steps:
+  - action: use_company
+    value: QA GST Garment
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 3
+  - action: hover
+    target: '#lft-dropdown'
+    note: Mouse over the side menu
+  - action: sleep
+    value: 1
+  - action: fill
+    target: input[placeholder="Type to search"]
+    value: Ease
+    note: 'Menu search: Ease'
+    inside_modal: true
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//p[normalize-space()="Other Tools / Ease Of Gst"]
+    note: Open Other Tools / Ease Of Gst
+    inside_modal: true
+  - action: wait_text
+    value: Ease Of Gst
+  - action: sleep
+    value: 4
+  - action: assert_visible
+    target: xpath=//*[normalize-space()="New Tax Category"]
+    note: TaxCategory grid with a New Tax Category column
+  - action: click
+    target: '#btn-Save'
+    note: F10 Save (no change made)
+  - action: wait_text
+    value: Effective From
+    note: Asks Applicable From / Effective From before applying
+  - action: screenshot
+    value: TC_MSTR_165
+  - action: click
+    target: xpath=//ngb-modal-window//button[normalize-space()="×"]
+    inside_modal: true
+    note: 'Close the prompt: nothing applied'
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: press
+    value: Alt+h
+    always: true
+  - action: sleep
+    value: 2
+  verification:
+    status: blocked
+    company: QA GST Garment
+    date: '2026-11-19'
+    run:
+      passed: 18
+      total: 18
+    evidence:
+    - artifacts/run_2026-11-18_23-25-22/TC_MSTR_165.png
+    kb:
+    - careportal_enriched_v5.csv#652cd5f2
+    notes: 'Utilities > Other Tools > Ease Of Gst opens with HSN / TaxCategory views and a ''New Tax Category''
+      column per tax category; F10 Save first asks ''Applicable From / Effective From''. The steps stop there and
+      close the prompt: applying an HSN-wise GST rate change rewrites the tax of every item with that HSN in the
+      shared QA company (tenant-wide, as the case itself says: out of scope), so the ''Sure'' confirmation and the
+      result were not exercised.'
+- id: TC_MSTR_166
+  module: masters
+  title: Control Room renames the "HSN / SAC" field
+  priority: p2
+  tags:
+  - imported
+  - trade:all
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/unit-uqc-hsn-rate-masters.md HS-13 (KB #d56d2fcd)'
+  - 'Group: HSN / SAC master'
+  expected:
+  - Field label may differ per tenant
+  steps:
+  - action: use_company
+    value: QA GST Mobile Trade
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: assert_setting
+    value: HSN/SAC Required? = Yes
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: click
+    target: '#aControlRoomSetting'
+    note: Settings
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//*[normalize-space()="Control Room"]/ancestor::*[.//button[contains(normalize-space(),"Configure")]][1]//button[contains(normalize-space(),"Configure")]
+    note: Control Room > Configure
+  - action: wait_text
+    value: All Options
+  - action: sleep
+    value: 2
+  - action: fill
+    target: xpath=//input[@placeholder="Search"]
+    value: HSN
+    note: Search 'HSN'
+  - action: sleep
+    value: 2
+  - action: assert_visible
+    target: '#txt1027'
+    note: Row 'HSN/SAC Field Name (Rename)'
+  - action: click
+    target: '#txt1027'
+  - action: press
+    target: '#txt1027'
+    value: Control+a
+  - action: press
+    target: '#txt1027'
+    value: Delete
+  - action: fill
+    target: '#txt1027'
+    value: QA HSN Code
+    note: Rename to 'QA HSN Code'
+  - action: press
+    target: '#txt1027'
+    value: Tab
+  - action: assert_value
+    target: '#txt1027'
+    value: QA HSN Code
+  - action: sleep
+    value: 1
+  - action: press
+    value: Escape
+    note: 'Esc: save changes?'
+  - action: sleep
+    value: 1.5
+  - action: click
+    target: xpath=//div[contains(@class,'modal')]//button[@id='btnYes']
+    inside_modal: true
+    note: Save
+  - action: sleep
+    value: 4
+  - action: reload
+  - action: sleep
+    value: 6
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+I
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create Item
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 3
+  - action: assert_visible
+    target: xpath=//label[starts-with(normalize-space(),"QA HSN Code")]
+    note: HSN field label is 'QA HSN Code'
+  - action: assert_not_visible
+    target: xpath=//label[starts-with(normalize-space(),"HSN/SAC")]
+    note: No 'HSN/SAC' label
+  - action: press
+    value: Escape
+  - action: sleep
+    value: 2
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+  - action: screenshot
+    value: TC_MSTR_166
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: click
+    target: '#aControlRoomSetting'
+    note: Settings
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//*[normalize-space()="Control Room"]/ancestor::*[.//button[contains(normalize-space(),"Configure")]][1]//button[contains(normalize-space(),"Configure")]
+    note: Control Room > Configure
+  - action: wait_text
+    value: All Options
+  - action: sleep
+    value: 2
+  - action: fill
+    target: xpath=//input[@placeholder="Search"]
+    value: HSN
+    note: Search 'HSN'
+  - action: sleep
+    value: 2
+  - action: assert_visible
+    target: '#txt1027'
+    note: Row 'HSN/SAC Field Name (Rename)'
+  - action: click
+    target: '#txt1027'
+  - action: press
+    target: '#txt1027'
+    value: Control+a
+  - action: press
+    target: '#txt1027'
+    value: Delete
+  - action: fill
+    target: '#txt1027'
+    value: HSN/SAC
+    note: Rename to 'HSN/SAC'
+  - action: press
+    target: '#txt1027'
+    value: Tab
+  - action: assert_value
+    target: '#txt1027'
+    value: HSN/SAC
+  - action: sleep
+    value: 1
+  - action: press
+    value: Escape
+    note: 'Esc: save changes?'
+  - action: sleep
+    value: 1.5
+  - action: click
+    target: xpath=//div[contains(@class,'modal')]//button[@id='btnYes']
+    inside_modal: true
+    note: Save
+  - action: sleep
+    value: 4
+  - action: reload
+  - action: sleep
+    value: 6
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: press
+    value: Alt+I
+    note: Item list
+  - action: wait_text
+    value: Item List
+  - action: press
+    value: F2
+    note: Create Item
+  - action: wait_text
+    value: Create Item
+  - action: sleep
+    value: 3
+  - action: assert_visible
+    target: xpath=//label[starts-with(normalize-space(),"HSN/SAC")]
+    note: HSN field label is 'HSN/SAC'
+  - action: assert_not_visible
+    target: xpath=//label[starts-with(normalize-space(),"QA HSN Code")]
+    note: No 'QA HSN Code' label
+  - action: press
+    value: Escape
+  - action: sleep
+    value: 2
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+  - action: screenshot
+    value: TC_MSTR_166_default
+  - action: click
+    target: xpath=//button[starts-with(@id,"btnEsc")]
+    optional: true
+    always: true
+    note: Esc Close an open bill (if any)
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+    always: true
+    note: 'Yes'
+  - action: sleep
+    value: 2
+    always: true
+  - action: press
+    value: Alt+H
+    always: true
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: press
+    value: Alt+H
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: click
+    target: '#aControlRoomSetting'
+    always: true
+    note: Settings
+  - action: sleep
+    value: 2
+    always: true
+  - action: click
+    target: xpath=//*[normalize-space()="Control Room"]/ancestor::*[.//button[contains(normalize-space(),"Configure")]][1]//button[contains(normalize-space(),"Configure")]
+    always: true
+    note: Control Room > Configure
+  - action: wait_text
+    value: All Options
+    always: true
+  - action: sleep
+    value: 2
+    always: true
+  - action: fill
+    target: xpath=//input[@placeholder="Search"]
+    value: HSN
+    always: true
+    note: Search 'HSN'
+  - action: sleep
+    value: 2
+    always: true
+  - action: click
+    target: '#txt1027'
+    always: true
+  - action: press
+    target: '#txt1027'
+    value: Control+a
+    always: true
+  - action: press
+    target: '#txt1027'
+    value: Delete
+    always: true
+  - action: fill
+    target: '#txt1027'
+    value: HSN/SAC
+    always: true
+    note: Rename to 'HSN/SAC'
+  - action: press
+    target: '#txt1027'
+    value: Tab
+    always: true
+  - action: sleep
+    value: 1
+    always: true
+  - action: press
+    value: Escape
+    always: true
+    note: 'Esc: save changes?'
+  - action: sleep
+    value: 1.5
+    always: true
+  - action: click
+    target: xpath=//div[contains(@class,'modal')]//button[@id='btnYes']
+    inside_modal: true
+    always: true
+    note: Save
+    optional: true
+  - action: sleep
+    value: 4
+    always: true
+  - action: reload
+    always: true
+  - action: sleep
+    value: 6
+    always: true
+  verification:
+    status: verified
+    company: QA GST Mobile Trade
+    date: '2026-11-19'
+    run:
+      passed: 103
+      total: 103
+    evidence:
+    - artifacts/verify/shots/8812_TC_MSTR_166.png
+    - artifacts/verify/shots/8812_TC_MSTR_166_default.png
+    kb:
+    - codekb:registry:setting:7 (HSN/SAC Required? with 'HSN/SAC Field Name (Rename)'
+    - ' profile string index 3 rename label text)'
+    - e2e_scripts:unit-uqc-hsn-rate-masters.md HS-13
+    notes: 'Control Room > search HSN: row 38 ''HSN/SAC Field Name (Rename)'' (text, empty in this company; HSN/SAC
+      Required? = Yes). Typing ''QA HSN Code'', Esc > Save > reload: Create Item shows the field as ''QA HSN Code*''
+      (no ''HSN/SAC'' label). Set back to ''HSN/SAC'' the label is HSN/SAC again. set_setting cannot change this
+      text setting, so the steps do it through the Control Room UI (tool gap). Side note: clearing the rename field
+      (empty, as it was found) and saving left the item form label BLANK, so the steps restore it with the text
+      ''HSN/SAC'' instead of empty.'

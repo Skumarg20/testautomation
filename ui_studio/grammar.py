@@ -27,7 +27,7 @@ import re
 from ui_studio import memory
 
 MAX_BULK = 5000
-KINDS = ("login", "open", "pick", "search", "item", "fill", "click", "verify", "wait", "bulk")
+KINDS = ("login", "open", "pick", "search", "item", "fill", "click", "verify", "wait", "bulk", "key")
 _Q = r'["“]([^"”]*)["”]'
 
 
@@ -128,6 +128,77 @@ def _open(M: Memory, ctx: dict, screen: str) -> dict:
                screen_key=M.screens[screen]["key"])
 
 
+_KEY = r"(f\d{1,2}|enter|esc|escape|tab|space|backspace|delete|home|end|page ?up|page ?down|arrow ?(?:up|down|left|right)|"        r"(?:alt|ctrl|control|shift)\s*\+\s*[a-z0-9]+|(?:up|down|left|right)(?: arrow)?)"
+_HI_TAIL = r"\s+(karo|kare|kijiye|kariye|kar do|kardo|kar|dabao|daba do|chuno|chun lo|daalo|dalo|lagao|jodo|do)$"
+
+
+def _key_name(k: str) -> str:
+    k = re.sub(r"\s+", "", k.strip().lower())
+    k = {"esc": "Escape", "escape": "Escape", "enter": "Enter", "tab": "Tab", "space": "Space", "backspace": "Backspace",
+         "delete": "Delete", "home": "Home", "end": "End", "pageup": "PageUp", "pagedown": "PageDown",
+         "up": "ArrowUp", "down": "ArrowDown", "left": "ArrowLeft", "right": "ArrowRight",
+         "uparrow": "ArrowUp", "downarrow": "ArrowDown", "leftarrow": "ArrowLeft", "rightarrow": "ArrowRight",
+         "arrowup": "ArrowUp", "arrowdown": "ArrowDown", "arrowleft": "ArrowLeft", "arrowright": "ArrowRight"}.get(k, k)
+    if re.fullmatch(r"f\d{1,2}", k):
+        return k.upper()
+    m = re.fullmatch(r"(alt|ctrl|control|shift)\+([a-z0-9]+)", k)
+    if m:
+        mod = {"ctrl": "Control", "control": "Control", "alt": "Alt", "shift": "Shift"}[m.group(1)]
+        key = m.group(2).upper() if len(m.group(2)) == 1 else m.group(2).capitalize()
+        return f"{mod}+{key}"
+    return k
+
+
+def _canon(rn: str) -> str:
+    """Everyday English / Hinglish wording -> the canonical grammar line (same meaning, never a guess).
+
+    "pick Cash Account as party" -> select party "Cash Account"
+    "party Cash Account chuno"   -> select party "Cash Account"
+    "add QA_Item qty 2 rate 100" -> select item "QA_Item" with qty "2", rate "100"
+    "press F10 to save" / "bill save karo" -> save bill
+    """
+    t = rn.strip()
+    low = t.lower()
+    # save / close
+    if re.fullmatch(r"(press\s+)?f10(\s+(to|and)\s+save.*)?|(bill|invoice|entry)?\s*save\s*(karo|kare|kar do|kardo|kijiye)?|"
+                    r"save\s+(the\s+)?(bill|invoice|entry)\s*(karo|kar do)?|f10\s+dabao|save\s+button\s+dabao", low):
+        return "save bill"
+    if re.fullmatch(r"(bill|form)\s+band\s+(karo|kar do)|close\s+(the\s+)?(bill|form)|esc\s+(se\s+)?band\s+karo", low):
+        return "close bill"
+    # party
+    m = re.fullmatch(r"(?:select|choose|pick|set|use)\s+[\"“]?(.+?)[\"”]?\s+as\s+(?:the\s+)?(?:party|customer|supplier|ledger)", t, re.I)         or re.fullmatch(r"(?:party|customer|supplier)\s+(?:me\s+|mein\s+|ko\s+)?[\"“]?(.+?)[\"”]?" + _HI_TAIL, t, re.I)         or re.fullmatch(r"(?:party|customer|supplier)\s+(?:set|select)\s+(?:karo|kar do)\s+[\"“]?(.+?)[\"”]?", t, re.I)
+    if m:
+        return f'select party "{m.group(1).strip()}"'
+    # item with qty / rate / discount in any order, with or without the word "item"
+    m = re.fullmatch(r"(?:add|select|pick|choose)?\s*(?:the\s+)?(?:item|product)?\s*[\"“]?([A-Za-z][\w .\-/]*?)[\"”]?"
+                     r"((?:\s*,?\s*(?:\d+(?:\.\d+)?\s*(?:qty|quantity|rate|disc(?:ount)?)|(?:qty|quantity|rate|disc(?:ount)?)\s*:?\s*\d+(?:\.\d+)?))+)"
+                     r"(?:" + _HI_TAIL + r")?", t, re.I)
+    if m and not re.match(r"(enter|type|put|write|fill|set|wait|verify|check)\b", low):
+        name, rest = m.group(1).strip(), m.group(2)
+        if name.lower() not in ("item", "product", "the", ""):
+            vals = {}
+            for mm in re.finditer(r"(\d+(?:\.\d+)?)\s*(qty|quantity|rate|disc(?:ount)?)|(qty|quantity|rate|disc(?:ount)?)\s*:?\s*(\d+(?:\.\d+)?)", rest, re.I):
+                k = (mm.group(2) or mm.group(3)).lower()
+                v = mm.group(1) or mm.group(4)
+                k = "qty" if k.startswith("q") else "rate" if k == "rate" else "discount"
+                vals[k] = v
+            if "qty" in vals:
+                extra = ", ".join(f'{k} "{vals[k]}"' for k in ("qty", "rate", "discount") if k in vals)
+                return f'select item "{name}" with {extra}'
+    m = re.fullmatch(r"(?:item|product)\s+[\"“]?(.+?)[\"”]?" + _HI_TAIL, t, re.I) or re.fullmatch(r"add\s+(?:item|product)\s+[\"“]?(.+?)[\"”]?", t, re.I)
+    if m and not re.search(r"\d", m.group(1)[-3:]):
+        return f'select item "{m.group(1).strip()}" with qty "1"'
+    # verify phrasing
+    m = re.fullmatch(r"(?:check|verify|confirm|make sure|ensure)\s+(?:that\s+)?[\"“]?(.+?)[\"”]?\s+(?:appears|is shown|is visible|shows|comes|aata hai|aaye|dikhe)", t, re.I)         or re.fullmatch(r"[\"“]?(.+?)[\"”]?\s+(?:dikhna chahiye|aana chahiye|dikhe|aaye|should appear|should be shown)", t, re.I)
+    if m:
+        return f'verify "{m.group(1).strip()}"'
+    # wait
+    m = re.fullmatch(r"(\d+)\s*(?:sec(?:ond)?s?|s)\s+(?:wait|ruko|rukiye)(?:\s+karo)?", low)
+    if m:
+        return f"wait {m.group(1)} seconds"
+    return t
+
+
 def parse(line: str, ctx: dict, M: Memory | None = None) -> dict:
     M = M or Memory()
     rn = re.sub(r"\s+", " ", re.sub(r"[.!?]+$", "", line.strip()))
@@ -136,6 +207,12 @@ def parse(line: str, ctx: dict, M: Memory | None = None) -> dict:
         return {"status": "empty"}
     if t.startswith(("#", "//")):
         return {"status": "note"}
+    # keyboard keys: "press F10", "press Alt+N", "Enter dabao", "press the Escape key"
+    m = re.fullmatch(rf"(?:press|hit|type)\s+(?:the\s+)?{_KEY}(?:\s+key)?", t) or re.fullmatch(rf"{_KEY}(?:\s+key)?\s+(?:dabao|press karo|daba do)", t)
+    if m and not re.fullmatch(r"(press\s+)?f10(\s+(to|and)\s+save.*)?", t):
+        return _ok(kind="key", key=_key_name(m.group(1)), screen=ctx.get("screen"), note="Key " + _key_name(m.group(1)))
+    rn = _canon(rn)
+    t = rn.lower()
 
     if re.fullmatch(r"(log ?in|login|sign in)( to the app| karo)?", t):
         ctx["screen"] = None
@@ -277,6 +354,9 @@ def palette(screen: str | None, M: Memory | None = None) -> list[str]:
 
 
 def check(lines: list[str]) -> dict:
+    if not isinstance(lines, list):
+        raise ValueError("lines must be a list of text lines.")
+    lines = ["" if x is None else x if isinstance(x, str) else str(x) for x in lines]
     M = Memory()
     results, ctx = parse_all(lines, M)
     ok = sum(1 for r in results if r["status"] == "ok")
@@ -327,6 +407,8 @@ def to_steps(lines: list[str]) -> list[dict]:
             steps.append({"action": "assert_text", "value": r["what"], "note": note})
         elif k == "wait":
             steps.append({"action": "sleep", "value": str(r["secs"]), "note": note})
+        elif k == "key":
+            steps.append({"action": "press", "value": r["key"], "note": note})
         elif k == "bulk":
             steps.append({"action": "bulk_sale_bills", "value": f"{r['count']} | {r['items']}", "note": note,
                           "destructive": True})

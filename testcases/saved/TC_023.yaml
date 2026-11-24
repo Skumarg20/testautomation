@@ -1,0 +1,15 @@
+- id: TC_023
+  module: sales
+  title: QA4 R3 trav 211756
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by QA Tester 4 | 2026-11-23 21:19
+  expected: []
+  steps:
+  - action: note
+    value: Log in (the runner signs in before every test)
+    note: Log in

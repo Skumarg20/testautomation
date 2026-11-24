@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Test Studio – MargBooks no-code automation</title>
+<title>MargBooks Test Studio</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='9' fill='%23E8262C'/><path d='M12 9h10.5c4.4 0 7.2 2.4 7.2 6 0 2.3-1.2 4-3.1 4.8 2.6.7 4.2 2.7 4.2 5.4 0 4-3.1 6.8-8 6.8H12z' fill='%23fff'/><path d='M17.3 13.6v5.1h4.4c1.7 0 2.7-1 2.7-2.6s-1-2.5-2.7-2.5zm0 9.3v5.5h5c1.9 0 3-1.1 3-2.8s-1.1-2.7-3-2.7z' fill='%23E8262C'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Kalam:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -23,19 +24,33 @@ button,input,select,textarea{font:inherit;color:inherit}
 [hidden]{display:none!important}
 
 /* rail */
-.rail{width:78px;flex:none;background:var(--rail);display:flex;flex-direction:column;align-items:center;padding:12px 6px;gap:2px;position:sticky;top:0;height:100vh}
-.logo{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,#4F6BF0,#7A4FF0);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px}
-.nav{width:66px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px;border-radius:10px;border:0;background:none;color:#A9B3CC;font-size:11px;font-weight:600;cursor:pointer;position:relative}
-.nav svg{width:21px;height:21px}
+.rail{width:224px;flex:none;background:var(--rail);display:flex;flex-direction:column;align-items:stretch;padding:14px 10px 10px;gap:1px;position:fixed;top:0;left:0;bottom:0;height:100vh;overflow-y:auto;z-index:50;scrollbar-width:thin;scrollbar-color:#2E385A transparent}
+.brand{display:flex;align-items:center;gap:10px;margin:0 4px 14px;color:#fff;line-height:1.15}
+.brand .logo svg{width:34px;height:34px;display:block}
+.brand span{font-size:14px;font-weight:700;letter-spacing:.2px;display:block}.brand small{font-size:11px;color:#9AA4C2;display:block}
+.nav-group{font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#6F7A99;margin:14px 10px 4px}
+.nav{width:100%;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:11px;padding:8px 10px;border-radius:8px;border:0;background:none;color:#B4BDD6;font:600 13.5px/1.2 var(--ui);cursor:pointer;position:relative;text-align:left}
+.nav svg{width:19px;height:19px;flex:none}
+.nav .nl{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nav:hover{background:var(--rail2);color:#fff}
+.nav:focus-visible{outline:2px solid #7C96F5;outline-offset:1px}
 .nav.on{background:var(--rail2);color:#fff}
-.nav.on::before{content:"";position:absolute;left:-6px;top:10px;bottom:10px;width:3px;border-radius:3px;background:#7C96F5}
+.nav.on::before{content:"";position:absolute;left:-10px;top:8px;bottom:8px;width:3px;border-radius:3px;background:#7C96F5}
 .nav.rec svg{color:#FF7A7E}
-.rail .who{margin-top:auto;width:66px}
-.rail .who select{width:100%;background:var(--rail2);border:1px solid #333D5C;color:#fff;border-radius:8px;padding:4px;font-size:11px}
+.rail .who{margin-top:auto;padding-top:12px;border-top:1px solid #262F4D}
+.rail .who label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#6F7A99;margin:0 4px 5px}
+.rail .who select{width:100%;background:var(--rail2);border:1px solid #333D5C;color:#fff;border-radius:8px;padding:7px 8px;font-size:12.5px}
+.ucard{display:flex;align-items:center;gap:10px;padding:4px}
+.ucard .av{width:34px;height:34px;flex:none;border-radius:50%;background:#3A4A7E;color:#fff;font:700 12.5px/34px var(--ui);text-align:center}
+.ucard .un{flex:1;min-width:0}.ucard .un b{display:block;color:#fff;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ucard .un span{display:block;color:#9AA4C2;font-size:11.5px}
+.ucard .out{border:0;background:none;color:#9AA4C2;cursor:pointer;padding:6px;border-radius:7px;display:flex}
+.ucard .out:hover{background:var(--rail2);color:#fff}.ucard .out svg{width:18px;height:18px}
+@media (max-width:1100px){.rail{width:72px;padding:12px 8px}.brand{justify-content:center;margin:0 0 12px}.brand .bt,.nav .nl,.nav-group,.rail .who label,.ucard .un{display:none}
+ .nav{justify-content:center;padding:9px 0}.nav.on::before{left:-8px}.nav .badge{position:absolute;top:2px;right:6px}.rail .who select{padding:4px;font-size:11px}.ucard{flex-direction:column;gap:4px}body>main{margin-left:72px}}
 
 /* page */
-main{flex:1;min-width:0;padding:16px 20px 32px}
+main{flex:1;min-width:0;padding:16px 22px 32px;margin-left:224px}
 .view{display:none}.view.on{display:block}
 .ph{display:flex;align-items:center;gap:12px;margin-bottom:14px}
 .ph h1{font-size:20px;font-weight:800;margin:0;letter-spacing:-.01em}
@@ -69,6 +84,45 @@ table.tb{width:100%;border-collapse:collapse;font-size:13px}
 .tb tr.click{cursor:pointer}.tb tr.click:hover td{background:#F7F9FD}
 code,.mono{font-family:var(--mono);font-size:12px}
 #toast{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:6px;z-index:90}
+.nav .badge{background:var(--rec);color:#fff;border-radius:999px;font-size:10.5px;line-height:17px;min-width:18px;padding:0 5px;text-align:center;margin-left:auto}
+.fb-item{border:1px solid #E3E8F2;border-radius:10px;padding:10px 12px;margin-bottom:8px;background:#fff}
+.fb-item .fb-ctx{font-size:12px;margin-top:6px}.fb-item .fb-ctx td{padding:1px 10px 1px 0;vertical-align:top}
+.fb-item .fb-adm{display:grid;grid-template-columns:160px 1fr auto;gap:8px;margin-top:8px;align-items:start}
+.fb-link{background:none;border:0;color:var(--ink);text-decoration:underline;cursor:pointer;font-size:12px;padding:0;margin-left:6px}
+.um-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.um-head h2{margin:0}.um-count{background:var(--ink-l);color:var(--ink);border-radius:999px;font-size:12px;font-weight:700;padding:2px 9px}
+.um-roles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.um-role{background:#F7F9FC;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:12.5px;color:var(--muted)}
+.um-role b{color:var(--text);font-size:13px;margin-right:6px}
+.um-table{width:100%;border-collapse:collapse}
+.um-table th{font-size:11.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 12px;border-bottom:1px solid var(--line)}
+.um-table td{padding:10px 12px;border-bottom:1px solid var(--line2);vertical-align:middle;font-size:13px}
+.um-table tr:last-child td{border-bottom:0}.um-table tr:hover td{background:#FAFBFD}
+.u-cell{display:flex;align-items:center;gap:10px;min-width:0}
+.u-av{width:34px;height:34px;flex:none;border-radius:50%;background:var(--ink-l);color:var(--ink);font:700 12.5px/34px var(--ui);text-align:center}
+.u-cell b{display:block;font-size:13.5px}.u-cell span{display:block;color:var(--muted);font-size:12px;word-break:break-all}
+.pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:2px 10px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.pill.on{color:var(--ok);background:var(--ok-l)}.pill.off{color:#6B7489;background:#F0F2F6}.pill.need{color:var(--warn);background:var(--warn-l)}
+.role-sel{height:30px;padding:2px 8px;font-size:12.5px;width:auto;min-width:86px;border-radius:7px}
+.u-actions{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
+.u-actions .btn{padding:5px 10px;font-size:12.5px}
+.u-actions .btn.danger{color:var(--bad);border-color:#F3C9C9}.u-actions .btn.danger:hover{background:var(--bad-l)}
+.um-add{display:grid;grid-template-columns:minmax(200px,1.5fr) minmax(150px,1fr) minmax(150px,1fr) 120px auto;gap:12px;align-items:end;background:#F7F9FC;border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:12px}
+.um-add .f{margin-top:0}
+@media (max-width:1100px){.um-roles{grid-template-columns:1fr}.um-add{grid-template-columns:1fr 1fr}}
+.login-wrap{width:min(860px,94vw);display:grid;grid-template-columns:1fr 1fr;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(20,26,46,.16)}
+.login-side{background:linear-gradient(160deg,#141A2E 0%,#232C4D 100%);color:#fff;padding:34px 32px;display:flex;flex-direction:column;gap:18px}
+.login-side .brand-row{display:flex;align-items:center;gap:12px}.login-side .brand-row svg{width:42px;height:42px}
+.login-side h1{font-size:22px;margin:6px 0 0;line-height:1.25}.login-side p{color:#B4BDD6;margin:0;font-size:13.5px}
+.login-side ul{list-style:none;padding:0;margin:4px 0 0;display:grid;gap:10px}
+.login-side li{display:flex;gap:10px;align-items:flex-start;color:#D6DCEC;font-size:13px}.login-side li b{color:#7C96F5}
+.login-form{padding:34px 32px;display:flex;flex-direction:column;justify-content:center}
+.login-form h2{margin:0 0 4px;font-size:21px}.login-form .hint{margin:0 0 18px}
+.login-form .btn.p{width:100%;justify-content:center;height:42px;font-size:14.5px;margin-top:6px}
+.pw-wrap{position:relative}.pw-wrap .inp{padding-right:64px}
+.pw-wrap button{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--ink);font-weight:700;font-size:12px;cursor:pointer;padding:6px}
+@media (max-width:720px){.login-wrap{grid-template-columns:1fr}.login-side{display:none}}
 .toast{background:#141A2E;color:#fff;border-radius:9px;padding:9px 12px;max-width:420px;font-size:13px;box-shadow:0 8px 24px rgba(15,25,45,.25)}
 .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}
 .kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
@@ -229,6 +283,53 @@ code,.mono{font-family:var(--mono);font-size:12px}
 .mod:hover{border-color:#AFC0F5}
 .mod.on{background:var(--ink);border-color:var(--ink);color:#fff}.mod.on b{background:#ffffff33;color:#fff}
 .mod:disabled{opacity:.45;cursor:not-allowed}
+.cs-grid{display:grid;grid-template-columns:230px minmax(0,1fr);gap:12px;align-items:start}
+.cs-nav{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;padding:8px;display:flex;flex-direction:column;gap:2px}
+.cs-mod{display:flex;align-items:center;gap:8px;width:100%;border:0;background:none;border-radius:8px;padding:7px 10px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;text-align:left}
+.cs-mod span{flex:1}
+.cs-mod b{font-size:11px;color:var(--muted);background:#F1F3F8;border-radius:99px;padding:0 7px;font-variant-numeric:tabular-nums}
+.cs-mod:hover{background:#F3F5FA}
+.cs-mod.on{background:var(--ink);color:#fff}.cs-mod.on b{background:#ffffff33;color:#fff}
+.cs-sep{border-top:1px solid var(--line2);margin:4px 2px}
+.seg{display:inline-flex;border:1px solid #CDD4E2;border-radius:8px;overflow:hidden}
+.seg button{border:0;background:#fff;padding:5px 11px;font-size:12.5px;font-weight:600;cursor:pointer;color:#55607A}
+.seg button+button{border-left:1px solid #CDD4E2}
+.seg button.on{background:var(--ink-l);color:var(--ink)}
+.cs-case{border:1px solid var(--line);border-radius:9px;background:#fff;margin-bottom:6px}
+.cs-case>summary{list-style:none;display:flex;gap:10px;align-items:baseline;padding:8px 10px;cursor:pointer}
+.cs-case>summary::-webkit-details-marker{display:none}
+.cs-case>summary:hover{background:#FAFBFD;border-radius:9px}
+.cs-case[open]>summary{border-bottom:1px solid var(--line2)}
+.cs-id{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.cs-t{flex:1;min-width:0;font-weight:600;font-size:13px}
+.cs-tags{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.cs-body{padding:10px 12px;font-size:13px}
+.cs-body h4{margin:8px 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#55607A}
+.cs-body h4:first-child{margin-top:0}
+.cs-body ul{margin:0;padding-left:18px}
+.cs-warn{background:var(--warn-l);border:1px solid #EED7A2;color:#6B4E0A;border-radius:8px;padding:8px 10px;font-size:12.5px;margin-bottom:8px}
+.cs-node{font-family:var(--mono);font-size:11.5px;color:var(--muted);word-break:break-all}
+.cs-out{margin-top:8px}
+.cs-paper{background:#FBFCFE;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13.5px;line-height:1.55;white-space:normal}
+.cs-paper b{font-size:14px}
+.cs-paper ol{margin:0;padding-left:22px}
+.cs-write{margin:10px 0 4px}
+.cs-more{margin-top:10px}.cs-more>summary{cursor:pointer;font-size:12px;font-weight:700;color:#55607A}
+.sv-bg{position:fixed;inset:0;background:rgba(15,25,45,.55);display:flex;align-items:center;justify-content:center;z-index:85;padding:16px}
+.sv-bg[hidden]{display:none}
+.sv{background:#fff;border-radius:12px;padding:12px;width:min(1200px,100%);max-height:100%;display:flex;flex-direction:column}
+.sv-head{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.sv-head b{font-size:15px}
+.sv .code{flex:1;min-height:0;display:flex}
+.sv-body{display:grid;grid-template-columns:48px minmax(0,1fr);overflow:auto;flex:1;max-height:calc(100vh - 150px)}
+.sv-body .gut div.in{color:#FFD27A;font-weight:700}
+.sv-pane{position:relative;min-width:0}
+.sv-hl{position:absolute;left:0;right:0;background:rgba(124,150,245,.16);border-left:3px solid #7C96F5;pointer-events:none;display:none}
+#svText{position:relative;border:0;outline:none;resize:none;background:transparent;color:#DCE3F7;font-family:var(--mono);font-size:12px;line-height:20px;padding:10px;white-space:pre;overflow-x:auto;overflow-y:hidden;width:100%;tab-size:4}
+#svText:not([readonly]){background:rgba(255,255,255,.03)}
+@media (max-width:640px){.sv-bg{padding:0}.sv{border-radius:0;height:100%}.sv-body{grid-template-columns:36px minmax(0,1fr)}}
+.cs-out pre.cv{max-height:300px;white-space:pre-wrap;word-break:break-word}
+@media (max-width:900px){.cs-grid{grid-template-columns:1fr}.cs-nav{position:static;max-height:none;flex-direction:row;overflow:auto}.cs-mod{width:auto;white-space:nowrap}.cs-sep{display:none}}
 .tc-empty{border:1px dashed #CDD4E2;border-radius:10px;padding:16px;text-align:center;color:var(--muted);margin-top:10px}
 .run-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:12px;align-items:start}
 .tc{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:#fff;cursor:pointer;margin-bottom:6px}
@@ -243,6 +344,21 @@ code,.mono{font-family:var(--mono);font-size:12px}
 .screen .bar{height:22px;background:#2A6E6D;display:flex;align-items:center;gap:5px;padding:0 8px;color:#fff;font-size:11px}
 .screen .bar i{width:7px;height:7px;border-radius:50%;background:#ffffff70;display:inline-block}
 .screen .body{height:130px;position:relative;padding:10px 12px;font-size:12px;color:#445}
+.screen .body.live{height:auto;min-height:130px}
+.lb-bg{position:fixed;inset:0;background:rgba(10,14,28,.78);z-index:80;display:flex;align-items:center;justify-content:center;padding:24px}
+.lb-bg[hidden]{display:none}
+.lb{background:var(--paper);border-radius:12px;max-width:min(1400px,96vw);max-height:94vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.lb-head{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.lb-body{position:relative;display:flex;align-items:center;justify-content:center;background:#0E1220;min-height:200px;overflow:auto}
+.lb-body img{max-width:100%;max-height:calc(94vh - 60px);display:block}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:64px;border:0;border-radius:8px;background:rgba(255,255,255,.18);color:#fff;font-size:34px;cursor:pointer}
+.lb-nav:hover{background:rgba(255,255,255,.32)}#lbPrev{left:8px}#lbNext{right:8px}.lb-nav[disabled]{opacity:.25;cursor:default}
+.thumbimg{height:90px;border:1px solid var(--line);border-radius:6px;cursor:zoom-in;display:block}
+.thumbs a[data-lb]{display:block;min-width:0;text-decoration:none;color:inherit;font-size:11px}
+.backbar{margin:-4px 0 10px}
+#memTable td{overflow-wrap:anywhere;word-break:break-word}
+.cs-case.flash>summary{background:#EEF1FF;transition:background .3s}
+.screen .body.live img{display:block;width:100%;height:auto;margin-top:6px;border:1px solid var(--line);border-radius:6px;background:#fff}
 .screen .recl{position:absolute;right:10px;top:6px;color:var(--rec);font-weight:800;font-size:11px}
 .fake{display:grid;grid-template-columns:80px 1fr 64px 1fr;gap:6px 8px;max-width:480px;margin-top:6px}
 .fake span{background:#fff;border:1px solid #CBD5E1;border-radius:3px;height:18px}
@@ -257,7 +373,9 @@ code,.mono{font-family:var(--mono);font-size:12px}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(640px,96vw);background:#fff;box-shadow:-10px 0 30px rgba(15,25,45,.2);z-index:60;display:flex;flex-direction:column}
 .drawer header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
 .drawer .in{padding:12px 16px;overflow:auto}
-.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.thumbs a[data-lb] .thumbimg{width:100%;height:80px;object-fit:cover;object-position:top}
+.thumbs a[data-lb] span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .thumb{border:1px solid var(--line);border-radius:6px;height:56px;background:linear-gradient(#2A6E6D 0 9px,#F6F8FB 9px);font-size:10.5px;padding:12px 5px 3px;color:#445;overflow:hidden}
 .thumb.badt{outline:2px solid var(--bad)}
 .files{display:grid;grid-template-columns:1fr 1fr;gap:6px}
@@ -282,21 +400,28 @@ code,.mono{font-family:var(--mono);font-size:12px}
 pre.cv{background:#0F1424;color:#DCE3F7;border-radius:8px;padding:10px;overflow:auto;font-family:var(--mono);font-size:11.5px;line-height:1.5;max-height:340px}
 
 @media (max-width:1150px){.wr-grid,.w-grid,.w-head{grid-template-columns:1fr}.ed-wrap,.rec-grid,.run-grid,.mem-grid,.set-grid{grid-template-columns:1fr}.starts,.kpis{grid-template-columns:1fr 1fr}.sheet{grid-template-columns:52px minmax(0,1fr)}.notes{display:none}}
-@media (max-width:640px){body{flex-direction:column}.rail{flex-direction:row;width:auto;height:auto;position:static;overflow:auto}.rail .who,.logo{display:none}.starts,.kpis{grid-template-columns:1fr}.stepper{flex-wrap:wrap}}
+@media (max-width:640px){body{flex-direction:column}.rail{flex-direction:row;width:auto;height:auto;position:static;overflow:auto;padding:6px}.rail .who,.brand,.nav-group,.nav .nl{display:none}.nav{width:auto;padding:9px}.nav.on::before{display:none}body>main{margin-left:0}.starts,.kpis{grid-template-columns:1fr}.stepper{flex-wrap:wrap}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <nav class="rail" aria-label="Main">
-  <div class="logo" title="Test Studio">TS</div>
-  <button class="nav on" data-v="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 11l9-7 9 7v9H5v-9"/></svg>Home</button>
-  <button class="nav rec" data-v="record"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>Record</button>
-  <button class="nav" data-v="write"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg>Write</button>
-  <button class="nav" data-v="run"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M7 4l13 8-13 8z"/></svg>Run</button>
-  <button class="nav" data-v="report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 3h9l4 4v14H6z"/><path d="M9 13l2 2 4-4"/></svg>Reports</button>
-  <button class="nav" data-v="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3a6 6 0 00-6 6c0 2 1 3 2 4v3h8v-3c1-1 2-2 2-4a6 6 0 00-6-6z"/><path d="M9 20h6"/></svg>Learn app</button>
-  <button class="nav" data-v="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>Settings</button>
-  <div class="who"><select id="who" aria-label="You are"></select></div>
+  <div class="brand" title="MargBooks Test Studio"><div class="logo"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#E8262C"/><path d="M12 9h10.5c4.4 0 7.2 2.4 7.2 6 0 2.3-1.2 4-3.1 4.8 2.6.7 4.2 2.7 4.2 5.4 0 4-3.1 6.8-8 6.8H12z" fill="#fff"/><path d="M17.3 13.6v5.1h4.4c1.7 0 2.7-1 2.7-2.6s-1-2.5-2.7-2.5zm0 9.3v5.5h5c1.9 0 3-1.1 3-2.8s-1.1-2.7-3-2.7z" fill="#E8262C"/></svg></div><span class="bt"><span>MargBooks</span><small>Test Studio</small></span></div>
+  <button class="nav on" data-v="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 11l9-7 9 7v9H5v-9"/></svg><span class="nl">Home</span></button>
+  <div class="nav-group">Build</div>
+  <button class="nav rec" data-v="record"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg><span class="nl">Record</span></button>
+  <button class="nav" data-v="write"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg><span class="nl">Write</span></button>
+  <div class="nav-group">Test</div>
+  <button class="nav" data-v="cases"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6h.01M4 12h.01M4 18h.01" stroke-width="3" stroke-linecap="round"/></svg><span class="nl">Test cases</span></button>
+  <button class="nav" data-v="run"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M7 4l13 8-13 8z"/></svg><span class="nl">Run</span></button>
+  <button class="nav" data-v="report"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 3h9l4 4v14H6z"/><path d="M9 13l2 2 4-4"/></svg><span class="nl">Reports</span></button>
+  <div class="nav-group">Team</div>
+  <button class="nav" data-v="feedback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><span class="nl">Feedback</span><span class="badge" id="fbBadge" hidden></span></button>
+  <button class="nav adminOnly" data-v="team"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14.5 20c.3-2.6 1.8-4.5 4-4.5 1.6 0 2.5.8 2.5.8"/></svg><span class="nl">Team</span></button>
+  <div class="nav-group">Setup</div>
+  <button class="nav" data-v="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3a6 6 0 00-6 6c0 2 1 3 2 4v3h8v-3c1-1 2-2 2-4a6 6 0 00-6-6z"/><path d="M9 20h6"/></svg><span class="nl">Learn app</span></button>
+  <button class="nav" data-v="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg><span class="nl">Settings</span></button>
+  <div class="who"><label for="who">You are</label><select id="who" aria-label="You are"></select></div>
 </nav>
 
 <main>
@@ -310,12 +435,52 @@ pre.cv{background:#0F1424;color:#DCE3F7;border-radius:8px;padding:10px;overflow:
     <button class="start" data-go="report"><span class="ic" style="background:var(--warn-l);color:var(--warn)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l4 4v14H6z"/></svg></span><span><b>See reports</b><span>What passed, what failed and why</span></span></button>
   </div>
   <div class="kpis" id="kpis"></div>
-  <div class="card"><div class="row"><div class="grow"><h2 style="margin:0">App memory</h2><span class="hint" id="memLine"></span></div><button class="btn" data-go="learn">Learn the app again</button></div></div>
+  <div class="card"><div class="row"><div class="grow"><h2 style="margin:0">App memory</h2><span class="hint" id="memLine"></span></div><button class="btn adminOnly" data-go="learn">Learn the app again</button></div></div>
+</section>
+
+<!-- TEST CASES (module wise) -->
+<section class="view" id="v-cases">
+  <div class="ph"><div><h1>Test cases</h1><p>Pick a module to see its test cases. Click a case for its expected result and where it came from.</p></div></div>
+  <div class="cs-grid">
+    <nav class="card cs-nav" aria-label="Modules" id="csNav"></nav>
+    <div class="card">
+      <div class="row" style="margin-bottom:10px">
+        <h2 class="grow" style="margin:0" id="csTitle">All test cases</h2>
+        <div class="seg" role="radiogroup" aria-label="Show" id="csShow">
+          <button data-show="all" class="on" role="radio" aria-checked="true">All</button><button data-show="auto" role="radio" aria-checked="false">Automated</button><button data-show="draft" role="radio" aria-checked="false">Not automated</button><button data-show="scripts" role="radio" aria-checked="false">Scripts</button>
+        </div>
+        <select id="csTrade" class="inp" style="width:200px" aria-label="Trade">
+          <option value="">All trades</option><option value="chemist">Chemist [Pharmacy]</option><option value="pharma">Pharma Distribution</option>
+          <option value="billing">Billing [General]</option><option value="grocery">Supermarket / Grocery</option><option value="garment">Garment</option>
+          <option value="mobile">Mobile Trade</option><option value="computer">Computer Hardware</option><option value="automobile">Automobile</option>
+        </select>
+        <input id="csFind" class="inp" style="width:240px" placeholder="Search ID or title" aria-label="Search test cases">
+      </div>
+      <div class="row" style="margin-bottom:10px;gap:8px;flex-wrap:wrap">
+        <span class="hint">Checked in the live app:</span>
+        <select id="csVer" class="inp" style="width:230px" aria-label="Verification result">
+          <option value="">All cases</option><option value="ready">Script ready (verified + corrected)</option>
+          <option value="verified">Verified</option><option value="corrected">Corrected</option>
+          <option value="app_defect">App defect</option><option value="blocked">Blocked</option>
+          <option value="not_applicable">Not applicable</option><option value="any">Any checked</option><option value="none">Not checked yet</option>
+        </select>
+        <select id="csGst" class="inp" style="width:190px" aria-label="Company type">
+          <option value="">GST and non-GST companies</option><option value="nongst">QA companies (no GST)</option><option value="gst">QA GST companies</option>
+        </select>
+        <span class="hint" id="csVerLine"></span>
+      </div>
+      <p class="hint" id="csLine" style="margin:0 0 8px"></p>
+      <div class="cs-warn" id="csProblem" hidden></div>
+      <div id="csList"></div>
+      <div class="row" id="csMoreRow" hidden style="justify-content:center;margin-top:8px"><button class="btn" id="csMore">Show more</button></div>
+    </div>
+  </div>
 </section>
 
 <!-- RECORD -->
 <section class="view" id="v-record">
-  <div class="ph"><div><h1>Record automation case</h1><p>Enter the start URL, click Record, test the screen by hand in the window that opens, then click Stop. The script appears here.</p></div><span class="sp"></span><span class="hint" id="recTok"></span></div>
+  <div class="backbar" hidden><button class="btn sm" data-back>&#8592; Back to test cases</button> <span class="hint backwhat"></span></div>
+  <div class="ph"><div><h1>Record automation case</h1><p id="recIntro">Enter the start URL, click Record, test the screen by hand in the window that opens, then click Stop. The script appears here.</p></div><span class="sp"></span><span class="hint" id="recTok"></span></div>
   <div id="recSlot">
     <div id="pipe">
       <div class="stepper" id="stepper"></div>
@@ -335,6 +500,7 @@ pre.cv{background:#0F1424;color:#DCE3F7;border-radius:8px;padding:10px;overflow:
 
 <!-- WRITE -->
 <section class="view" id="v-write">
+  <div class="backbar" hidden><button class="btn sm" data-back>&#8592; Back to test cases</button> <span class="hint backwhat"></span></div>
   <div class="ph"><div><h1>Write a test case</h1><p>Write the case in your own words – one step per line, values in "quotes". Every line is checked as you type.</p></div><span class="sp"></span><span id="wTok"></span></div>
   <div class="card w-head">
     <div><label class="f" for="tName">Test case name</label><input id="tName" class="inp" placeholder="e.g. Sale bill with discount"></div>
@@ -360,6 +526,7 @@ pre.cv{background:#0F1424;color:#DCE3F7;border-radius:8px;padding:10px;overflow:
 
 <!-- RUN -->
 <section class="view" id="v-run">
+  <div class="backbar" hidden><button class="btn sm" data-back>&#8592; Back to test cases</button> <span class="hint backwhat"></span></div>
   <div class="ph"><div><h1>Run tests</h1><p>Pick tests and press Run. Each step gets a screenshot; the whole run is recorded on video.</p></div><span class="sp"></span><span class="env" id="envPill2"><i></i></span></div>
   <div class="run-grid">
     <div class="card">
@@ -377,11 +544,13 @@ pre.cv{background:#0F1424;color:#DCE3F7;border-radius:8px;padding:10px;overflow:
       <div class="row" style="margin-top:12px"><button class="btn g lg" id="btnRun">▶ Run</button></div>
     </div>
     <div class="card">
-      <div class="row"><h2 class="grow" id="runTitle" style="margin:0">Nothing running</h2><span id="runTime" class="hint"></span></div>
+      <div class="row"><h2 class="grow" id="runTitle" style="margin:0">Nothing running</h2><span id="runTime" class="hint"></span><button class="btn sm" id="btnStopRun" hidden>■ Stop run</button></div>
+      <p class="hint" id="runWait" hidden style="margin:6px 0 0;color:var(--warn)"></p>
       <div class="prog" style="margin-top:8px"><i id="prog"></i></div>
       <div class="screen"><div class="bar"><i></i><i></i><i></i><span id="scrUrl">books5.margbooks.com</span></div>
-        <div class="body"><span class="recl" id="recl" hidden>● REC</span><b id="scrTitle">—</b>
-          <div class="fake"><em>Party Name</em><span></span><em>Bill No.</em><span></span><em>Product</em><span></span><em>Qty</em><span></span><em>Rate</em><span></span><em>Disc 1.%</em><span></span></div></div></div>
+        <div class="body live"><span class="recl" id="recl" hidden>● REC</span><b id="scrTitle">—</b>
+          <img id="scrImg" alt="Live screen of the test browser (newest step screenshot)" hidden>
+          <span class="hint" id="scrHint">The browser screen appears here after the first step (screenshots must be on).</span></div></div>
       <ul class="steps" id="runSteps"></ul>
       <div class="fail" id="failBox" hidden></div>
     </div>
@@ -390,9 +559,17 @@ pre.cv{background:#0F1424;color:#DCE3F7;border-radius:8px;padding:10px;overflow:
 
 <!-- REPORTS -->
 <section class="view" id="v-report">
-  <div class="ph"><div><h1>Reports</h1><p>Every run: who wrote the test, how many steps passed, and where it stopped.</p></div></div>
+  <div class="ph"><div><h1>Reports</h1><p>Every run: who ran it, who wrote the test, how many steps passed, and where it stopped.</p></div></div>
   <div class="kpis" id="rkpis"></div>
-  <div class="card" style="padding:0"><table class="tb" id="runTable"><thead><tr><th>Run</th><th>Test</th><th>Module</th><th>Written by</th><th>When</th><th>Steps</th><th>Result</th></tr></thead><tbody></tbody></table></div>
+  <div class="row" style="flex-wrap:wrap;gap:8px;margin-bottom:10px" id="rFilters">
+    <input id="rFind" class="inp" style="width:220px" placeholder="Search run, test ID or title" aria-label="Search runs">
+    <select id="rMod" class="inp" style="width:170px" aria-label="Module"><option value="">All modules</option></select>
+    <select id="rRes" class="inp" style="width:150px" aria-label="Result"><option value="">All results</option><option>Pass</option><option>Fail</option><option>Blocked</option><option>Skip</option></select>
+    <select id="rBy" class="inp" style="width:190px" aria-label="Run by"><option value="">Everyone</option></select>
+    <select id="rWhen" class="inp" style="width:150px" aria-label="When"><option value="">Any time</option><option value="1">Today</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option></select>
+    <span class="hint" id="rCount"></span>
+  </div>
+  <div class="card" style="padding:0"><table class="tb" id="runTable"><thead><tr><th>Run</th><th>Test</th><th>Module</th><th>Run by</th><th>Written by</th><th>When</th><th>Steps</th><th>Result</th></tr></thead><tbody></tbody></table></div>
 </section>
 
 <!-- LEARN -->
@@ -421,15 +598,76 @@ pre.cv{background:#0F1424;color:#DCE3F7;border-radius:8px;padding:10px;overflow:
   <div class="card" style="padding:0">
     <div class="row" style="padding:10px 12px"><h2 class="grow" style="margin:0">Remembered fields</h2>
       <select id="mScreen" class="inp" style="width:170px" aria-label="Screen"></select><input id="mFind" class="inp" style="width:200px" placeholder="Find a field…" aria-label="Find field"></div>
-    <table class="tb" id="memTable"><thead><tr><th>Screen</th><th>Field</th><th>Locator</th><th>Stability</th><th>Other names</th></tr></thead><tbody></tbody></table>
+    <div style="overflow-x:auto"><table class="tb" id="memTable" style="table-layout:fixed;width:100%"><colgroup><col style="width:11%"><col style="width:17%"><col><col style="width:9%"><col style="width:15%"></colgroup><thead><tr><th>Screen</th><th>Field</th><th>Locator</th><th>Stability</th><th>Other names</th></tr></thead><tbody></tbody></table></div>
   </div>
 </section>
 
 <!-- SETTINGS -->
+<!-- FEEDBACK -->
+<section class="view" id="v-feedback">
+  <div class="ph"><div><h1>Feedback</h1><p id="fbIntro">Problems the team reported: a test case, a run, a replay, the Studio itself, or an idea.</p></div><span class="sp"></span><button class="btn p" id="btnFbNew">+ Give feedback</button></div>
+  <div class="kpis" id="fbKpis"></div>
+  <div class="row" style="flex-wrap:wrap;gap:8px;margin-bottom:10px">
+    <select id="fbStatus" class="inp" style="width:200px" aria-label="Status"><option value="live">Open + in progress</option><option value="">All</option><option value="open">Open</option><option value="in_progress">In progress</option><option value="fixed">Fixed</option><option value="wont_fix">Won't fix</option></select>
+    <select id="fbKindF" class="inp" style="width:260px" aria-label="Kind"><option value="">All kinds</option></select>
+    <input id="fbFind" class="inp" style="width:240px" placeholder="Search text, test, run or name" aria-label="Search feedback">
+    <label class="opt" id="fbMineWrap" hidden><input type="checkbox" id="fbMine"> Only mine</label>
+    <span class="hint" id="fbCount"></span>
+  </div>
+  <div id="fbList"></div>
+</section>
+
+<!-- TEAM (admin) -->
+<section class="view" id="v-team">
+  <div class="ph"><div><h1>Team</h1><p>Who wrote, recorded and ran what, how much of the app is covered, what fails and why, and the feedback the team gave.</p></div><span class="sp"></span>
+    <select id="tmDays" class="inp" style="width:170px" aria-label="Period"><option value="1">Today</option><option value="7" selected>Last 7 days</option><option value="30">Last 30 days</option><option value="">All time</option></select>
+    <button class="btn" id="tmRefresh">Refresh</button></div>
+  <div class="kpis" id="tmKpis"></div>
+  <div class="card" style="margin-top:12px"><h2 style="margin-top:0">People <span class="hint" id="tmPeopleHint"></span></h2>
+    <div style="overflow:auto"><table class="tb" id="tmPeople"><thead><tr><th>Name</th><th>Role</th><th title="Written in plain English (Write)">Wrote</th><th>Recorded</th><th title="Python scripts written with “Write as a script”">Scripts</th><th>Runs</th><th>Pass / Fail</th><th>Pass rate</th><th>Feedback (open)</th><th>Last active</th><th>Last login</th><th title="Own MargBooks login saved (team mode)">MB login</th></tr></thead><tbody></tbody></table></div></div>
+    <div class="card" id="usersCard" hidden style="margin-top:12px">
+      <div class="um-head"><h2>Users &amp; access</h2><span class="um-count" id="umCount"></span><span class="sp" style="flex:1"></span><button class="btn p" id="btnShowAddUser">+ Add user</button></div>
+      <p class="hint" style="margin:6px 0 0">Only these people can open the Studio. They log in with their e-mail. When you add someone (or press Reset password) you get a message with a one-time <b>set your password</b> link to send them: nobody has to remember a password you typed. Disable stops a person at once; Enable gives access back.</p>
+      <div class="um-roles">
+        <div class="um-role"><b>QA</b>Write and record tests, run them, see reports, give feedback.</div>
+        <div class="um-role"><b>Admin</b>Everything a QA does, plus this Team screen, users, Settings (environment, AI), Learn app and Python script editing.</div>
+      </div>
+      <div class="um-add" id="umAdd" hidden>
+        <div><label class="f" for="nuUser">E-mail (their login)</label><input id="nuUser" class="inp" type="email" placeholder="name@margerp.net" autocomplete="off"></div>
+        <div><label class="f" for="nuName">Full name</label><input id="nuName" class="inp" placeholder="Asha Verma" autocomplete="off"></div>
+        <div><label class="f" for="nuPass">Password <span class="hint">(optional)</span></label><input id="nuPass" class="inp" type="text" placeholder="empty: they set it from the link" autocomplete="off"></div>
+        <div><label class="f" for="nuRole">Role</label><select id="nuRole" class="inp"><option value="qa">QA</option><option value="admin">Admin</option></select></div>
+        <div class="row" style="gap:6px"><button class="btn" id="btnCancelAddUser" type="button">Cancel</button><button class="btn p" id="btnAddUser" type="button">Add user</button></div>
+      </div>
+      <div style="overflow-x:auto;margin-top:12px"><table class="um-table" id="usersTable"><thead><tr><th>User</th><th>Role</th><th>Status</th><th>MargBooks login</th><th>Last login</th><th></th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="card" id="usersLocal" style="margin-top:12px"><h2 style="margin-top:0">Users &amp; access</h2><p class="hint" style="margin:0">This Studio runs for one PC (studio.bat), so there are no logins. To give the QA team access with their own logins and roles (admin / qa), start it with <b>studio-server.bat</b>; users are then managed here (ui_studio/DEPLOY.md).</p></div>
+  <div class="card" style="margin-top:12px"><h2 style="margin-top:0">Coverage by module</h2>
+    <div style="overflow:auto"><table class="tb" id="tmModules"><thead><tr><th>Module</th><th>Test cases</th><th>Covered</th><th style="min-width:160px">Coverage</th><th>Studio steps</th><th>Python scripts</th><th>Never run</th><th>Last run: pass / fail</th></tr></thead><tbody></tbody></table></div></div>
+  <div class="two" style="margin-top:12px">
+    <div class="card"><h2 style="margin-top:0">Why tests failed</h2><div id="tmSides"></div>
+      <h3 style="font-size:13px;margin-top:14px">Most failed tests</h3><div id="tmMostFailed"></div>
+      <h3 style="font-size:13px;margin-top:14px">Flaky tests <span class="hint">(passed and failed in this period)</span></h3><div id="tmFlaky"></div></div>
+    <div class="card"><div class="row"><h2 class="grow" style="margin:0">Activity</h2><select id="tmWho" class="inp" style="width:180px" aria-label="Person"><option value="">Everyone</option></select></div><ul class="steps" id="tmFeed" style="max-height:620px;overflow:auto"></ul></div>
+  </div>
+</section>
+
 <section class="view" id="v-settings">
-  <div class="ph"><div><h1>Settings</h1><p>Fill once. The password is stored encrypted on this computer and never written into a test file.</p></div></div>
+  <div class="ph"><div><h1>Settings</h1><p id="setIntro">Fill once. The App under test password is kept in config/environments.json on the computer that runs the Studio (keep that file private, do not share or back it up carelessly). It is never written into a test file.</p></div></div>
   <div class="set-grid">
-    <div class="card">
+    <div class="card" id="teamCard" hidden>
+      <h2>My MargBooks login</h2>
+      <p class="hint" style="margin-top:0">Your tests run with this login, so two QAs never log each other out. The password is stored encrypted on the server and is never shown again.</p>
+      <label class="f" for="myMbUser">MargBooks user ID (email or mobile)</label><input id="myMbUser" class="inp" autocomplete="off">
+      <label class="f" for="myMbPass">MargBooks password</label><input id="myMbPass" class="inp" type="password" autocomplete="new-password">
+      <p class="hint" id="myMbState"></p>
+      <div class="row"><button class="btn p" id="btnMyMb">Save my MargBooks login</button><button class="btn" id="btnMyMbTest">Test my login</button><button class="btn q" data-fb='{"place":"login","kind":"login"}'>Login not working? Tell the admin</button></div>
+      <h2 style="margin-top:16px">My Studio password</h2>
+      <label class="f" for="myOld">Current password</label><input id="myOld" class="inp" type="password" autocomplete="current-password">
+      <label class="f" for="myNew">New password (8+ characters)</label><input id="myNew" class="inp" type="password" autocomplete="new-password">
+      <div class="row" style="margin-top:10px"><button class="btn" id="btnMyPw">Change password</button></div>
+    </div>
+    <div class="card adminOnly">
       <h2>App under test</h2>
       <label class="f" for="sUrl">URL</label><input id="sUrl" class="inp" placeholder="https://books5.margbooks.com">
       <label class="f" for="sUser">User ID</label><input id="sUser" class="inp" autocomplete="off">
@@ -438,9 +676,9 @@ pre.cv{background:#0F1424;color:#DCE3F7;border-radius:8px;padding:10px;overflow:
       <label class="f" for="sTrade">Business type</label><select id="sTrade" class="inp"></select>
       <label class="opt" style="margin-top:8px"><input type="checkbox" id="sTestCo"> This is a <b>test company</b> (needed for Learn the app)</label>
       <label class="opt"><input type="checkbox" id="sWrites"> Allow tests that create or change data</label>
-      <div class="row" style="margin-top:10px"><button class="btn p" id="btnSaveSet">Save</button><button class="btn" id="btnTestLogin">Test login</button></div>
+      <div class="row" style="margin-top:10px"><button class="btn p" id="btnSaveSet">Save</button><button class="btn" id="btnTestLogin">Test login</button><button class="btn q" data-fb='{"place":"login","kind":"login"}'>Report a login problem</button></div>
     </div>
-    <div class="card">
+    <div class="card adminOnly">
       <h2>Bulk data rules</h2>
       <p class="hint" style="margin-top:0">Used for lines like “Create 500 sale bills with 50 items each”.</p>
       <label class="opt"><input type="checkbox" id="bParty"> Party: random, Sundry Debtors only</label>
@@ -452,7 +690,7 @@ pre.cv{background:#0F1424;color:#DCE3F7;border-radius:8px;padding:10px;overflow:
       <label class="f" for="sCg">Codegen command</label><input id="sCg" class="inp mono">
       <label class="f" for="sOut">Save recorded tests to</label><input id="sOut" class="inp mono">
     </div>
-    <div class="card">
+    <div class="card adminOnly">
       <h2>AI usage</h2>
       <label class="f" for="sAiMode">When to use AI</label><select id="sAiMode" class="inp"><option value="local_first">Only when local checks can't decide (fewest tokens)</option><option value="always">Double-check every script</option><option value="never">Never</option></select>
       <label class="f" for="sBudget">Monthly token limit</label><input id="sBudget" class="inp" inputmode="numeric">
@@ -468,8 +706,59 @@ pre.cv{background:#0F1424;color:#DCE3F7;border-radius:8px;padding:10px;overflow:
 </section>
 </main>
 
+<div id="loginGate" hidden style="position:fixed;inset:0;z-index:200;background:var(--bg,#F4F6FA);display:grid;place-items:center">
+  <div class="login-wrap">
+    <div class="login-side">
+      <div class="brand-row"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#E8262C"/><path d="M12 9h10.5c4.4 0 7.2 2.4 7.2 6 0 2.3-1.2 4-3.1 4.8 2.6.7 4.2 2.7 4.2 5.4 0 4-3.1 6.8-8 6.8H12z" fill="#fff"/><path d="M17.3 13.6v5.1h4.4c1.7 0 2.7-1 2.7-2.6s-1-2.5-2.7-2.5zm0 9.3v5.5h5c1.9 0 3-1.1 3-2.8s-1.1-2.7-3-2.7z" fill="#E8262C"/></svg><div><b style="font-size:16px">MargBooks</b><div style="color:#9AA4C2;font-size:12px">Test Studio</div></div></div>
+      <div><h1>Test MargBooks without writing code.</h1><p style="margin-top:8px">Record, write in plain English, run and report – for the whole QA team.</p></div>
+      <ul><li><b>●</b>Record a test by using the app</li><li><b>✓</b>Write steps in plain English, checked as you type</li><li><b>▶</b>Run with video, screenshots and a clear report</li></ul>
+    </div>
+    <form id="lgForm" class="login-form">
+      <h2>Log in</h2>
+      <p class="hint">Use your Studio e-mail and password. Ask your Studio admin if you do not have an account.</p>
+      <label class="f" for="lgUser">E-mail</label><input id="lgUser" class="inp" type="email" autocomplete="username" placeholder="name@margerp.net" required>
+      <label class="f" for="lgPass">Password</label><div class="pw-wrap"><input id="lgPass" class="inp" type="password" autocomplete="current-password" required><button type="button" id="lgEye" aria-label="Show password">Show</button></div>
+      <p id="lgErr" style="color:var(--bad,#C62828);min-height:1.2em;margin:8px 0 0"></p>
+      <button class="btn p" type="submit">Log in</button>
+    </form>
+  </div>
+</div>
+
 <div id="drawer" class="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="drTitle"><header><h3 id="drTitle" style="margin:0;font-size:15px"></h3><button class="btn" id="drClose">Close</button></header><div class="in" id="drBody"></div></div>
+<div class="modal-bg" id="fbModal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="fbTitle" style="width:min(620px,96vw)">
+  <h3 id="fbTitle">Report a problem</h3>
+  <p class="hint" style="margin-top:0">The admin sees this with the details below and replies under <b>Feedback</b>. Never write a password here.</p>
+  <label class="f" for="fbKind">What kind of problem?</label><select id="fbKind" class="inp"></select>
+  <div id="fbCtx" style="margin:8px 0;font-size:12px;max-height:170px;overflow:auto;background:#F6F8FB;border-radius:8px;padding:8px"></div>
+  <label class="f" for="fbText">What happened? What did you expect?</label>
+  <textarea id="fbText" class="inp" rows="5" maxlength="5000" placeholder="e.g. Step 6 fails every time: the supplier balance is fixed in the test, but it changes after each run."></textarea>
+  <p id="fbErr" style="color:var(--bad);min-height:1.1em;margin:4px 0 0"></p>
+  <div class="row" style="justify-content:flex-end;margin-top:8px"><button class="btn" id="fbCancel">Cancel</button><button class="btn p" id="fbSend">Send feedback</button></div>
+</div></div>
 <div class="modal-bg" id="modal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle"><h3 id="mTitle"></h3><div id="mBody"></div><div class="row" style="justify-content:flex-end;margin-top:12px" id="mFoot"></div></div></div>
+<div class="sv-bg" id="sv" hidden><div class="sv" role="dialog" aria-modal="true" aria-labelledby="svTitle">
+  <div class="sv-head">
+    <div class="grow" style="min-width:0"><b id="svTitle">Script</b><div class="cs-node" id="svFile"></div></div>
+    <span id="svState"></span>
+    <button class="btn sm" id="svJump">Go to this test</button>
+    <button class="btn sm" id="svCopy">Copy</button>
+    <button class="btn p sm" id="svEdit">Edit</button>
+    <button class="btn sm" id="svCancel" hidden>Cancel</button>
+    <button class="btn g sm" id="svSave" hidden>Save</button>
+    <button class="btn sm" id="svClose" aria-label="Close">Close</button>
+  </div>
+  <div class="code"><div class="sv-body" id="svBody"><div class="gut" id="svGut"></div><div class="sv-pane"><div class="sv-hl" id="svHl"></div><textarea id="svText" spellcheck="false" readonly aria-label="Script text"></textarea></div></div></div>
+  <p class="hint" id="svHint" style="margin:6px 2px 0"></p>
+</div></div>
+<div class="lb-bg" id="lb" hidden role="dialog" aria-modal="true" aria-label="Screenshot">
+  <div class="lb">
+    <div class="lb-head"><b id="lbCap"></b><span class="grow"></span><span class="hint" id="lbPos"></span>
+      <a class="btn sm" id="lbOpen" target="_blank" rel="noopener">Open full size</a>
+      <button class="btn sm" id="lbClose" aria-label="Close">&#10005; Close</button></div>
+    <div class="lb-body"><button class="lb-nav" id="lbPrev" aria-label="Previous screenshot">&#8249;</button>
+      <img id="lbImg" alt=""><button class="lb-nav" id="lbNext" aria-label="Next screenshot">&#8250;</button></div>
+  </div>
+</div>
 <div id="toast" aria-live="polite"></div>
 <script>
 'use strict';
@@ -489,16 +778,19 @@ function modal(title, html, btns) {
   $('#mTitle').textContent = title; $('#mBody').innerHTML = html;
   $('#mFoot').innerHTML = btns.map((b, i) => `<button class="btn ${b.cls || ''}" data-i="${i}">${esc(b.label)}</button>`).join('');
   $('#modal').hidden = false;
-  $$('#mFoot button').forEach(el => { el.onclick = () => { $('#modal').hidden = true; btns[+el.dataset.i].fn?.(); }; });
+  $$('#mFoot button').forEach(el => { el.onclick = () => { const b = btns[+el.dataset.i]; if (!b.keep) $('#modal').hidden = true; b.fn?.(); }; });
   $('#mFoot button:last-child').focus();
 }
 
 /* ---------- server calls ---------- */
 async function api(path, body) {
-  const opt = body === undefined ? {} : { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) };
+  // X-Studio: the server (team mode) accepts changes only from this page (CSRF guard)
+  const opt = body === undefined ? { headers: { 'X-Studio': '1' } } : { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Studio': '1' }, body: JSON.stringify(body) };
+  if (opt.body && new Blob([opt.body]).size > 20 * 1024 * 1024) throw new Error('This is too large to send (the limit is 20 MB). Paste only the test you recorded.');
   let r, d;
   try { r = await fetch(path, opt); } catch (e) { throw new Error('Cannot reach the Test Studio agent. Is it still running?'); }
   try { d = await r.json(); } catch (e) { d = { error: 'The agent sent an unreadable reply (' + r.status + ').' }; }
+  if (r.status === 401 && d && d.login) { showLogin(); throw new Error('Please log in.'); }
   if (!r.ok || (d && d.error)) throw new Error((d && d.error) || ('Error ' + r.status));
   return d;
 }
@@ -515,6 +807,7 @@ function poller(fn, ms = 700) {
   return () => { on = false; };
 }
 function download(kind, id) {
+  if (kind === 'trace' || kind === 'video') toast('Preparing the download… large files take a few seconds.');
   const a = document.createElement('a'); a.href = `/api/download?kind=${enc(kind)}&id=${enc(id)}`; a.download = '';
   document.body.appendChild(a); a.click(); a.remove();
 }
@@ -527,10 +820,15 @@ const meName = () => me || 'Tester';
 async function refreshState() {
   try { ST = await api('/api/state'); } catch (e) { toast(e.message); return; }
   const users = (ST.users || []).slice(); if (me && !users.includes(me)) users.push(me);
-  if (!me && users.length) me = users[0];
-  $('#who').innerHTML = (users.length ? users : ['Tester']).map(u => `<option ${u === me ? 'selected' : ''}>${esc(u)}</option>`).join('');
+  if (ST.server && ST.me) me = ST.me.name; else if (!me && users.length) me = users[0];
+  if ($('#who')) $('#who').innerHTML = (users.length ? users : ['Tester']).map(u => `<option ${u === me ? 'selected' : ''}>${esc(u)}</option>`).join('');
   $('#aiUse').textContent = aiLine();
   $('#envPill').innerHTML = `<i></i>${esc(envText())}`; $('#envPill2').innerHTML = `<i></i>${esc(envText())} · Chrome`;
+  // the Record screen may have been drawn before the state came: fill in the URL now (without redrawing the paste box)
+  if ($('#recCmd')) $('#recCmd').textContent = `python -m playwright codegen --target=playwright-test ${defaultStart()}`.trim();
+  if ($('#recBat')) $('#recBat').textContent = `record.bat ${defaultStart()}`.trim();
+  if ($('#rStart') && !$('#rStart').value && defaultStart()) $('#rStart').value = defaultStart();
+  fbBadge(ST.feedback_open || 0);
 }
 const aiLine = () => `AI this month: ${(ST.ai?.used || 0).toLocaleString('en-IN')} tokens`;
 function envText() { const e = ST.env || {}; return `${String(e.app_url || 'no URL set').replace(/^https?:\/\//, '')} · ${String(e.company || 'no company').split(' (')[0]}`; }
@@ -538,12 +836,21 @@ const allModules = (extra = []) => { const m = new Set([...(ST.modules || []), .
 async function loadTests() { try { TESTS = (await api('/api/tests')).tests || []; } catch (e) { toast(e.message); } return TESTS; }
 
 /* ---------- navigation & home ---------- */
-function go(v) {
+const VIEWS = ['home', 'cases', 'record', 'write', 'run', 'report', 'learn', 'feedback', 'team', 'settings'];
+function go(v, fromHistory) {
+  if (!VIEWS.includes(v) || ((v === 'learn' || v === 'team') && !isAdmin())) v = 'home';     // Learn the app is for admins (team mode)
+  if (!fromHistory && history.state?.v !== v) { try { history.pushState({ v }, '', '#' + v); } catch (e) { /* file:// */ } }
+  if (v === 'home' || v === 'cases') RETURN = null;      // back on Test cases (or Home): the back bar has done its job
+  setTimeout(showBackbars, 0);
   if (v === 'record') { if (rec.src !== 'record' || rec.stage === 'saved') resetRec('record'); mountPipe('record'); }
   if (v === 'write') { if (rec.src !== 'written') resetRec('written'); mountPipe('write'); }
   $$('.view').forEach(s => s.classList.toggle('on', s.id === 'v-' + v));
   $$('.nav').forEach(b => b.classList.toggle('on', b.dataset.v === v));
-  ({ home: renderHome, write: renderEditor, run: renderRunList, report: renderReport, learn: renderMemory, record: renderRecord, settings: loadSettings })[v]?.();
+  if (v === 'cases' || v === 'run') {           // a known issue on a test shows next to it (⚠): load them, redraw if any
+    const had = JSON.stringify(KNOWN);
+    loadKnown().then(k => { if (JSON.stringify(k) !== had && $('#v-' + v).classList.contains('on')) (v === 'cases' ? renderCases : renderRunList)(); });
+  }
+  ({ home: renderHome, cases: renderCases, write: renderEditor, run: renderRunList, report: renderReport, learn: renderMemory, feedback: renderFeedback, team: renderTeam, record: renderRecord, settings: loadSettings })[v]?.();
   window.scrollTo(0, 0);
 }
 async function renderHome() {
@@ -595,7 +902,7 @@ function metaHtml(p, i, line) {
     const s = aiSug[low(line)];
     h += !s ? '<div class="aisug pend">✦ AI will suggest a fix when you stop typing…</div>'
       : s.pending ? '<div class="aisug pend">✦ Asking AI (only this line + matching field names)…</div>'
-      : s.ok ? `<div class="aisug">✦ AI suggests <b>${esc(s.rewrite)}</b><button class="btn a sm" data-ai="${i}" data-text="${esc(s.rewrite)}">Use</button><span class="hint">${s.cached ? 'cached · 0 tokens' : esc(s.tokens) + ' tokens'} · checked against app memory</span></div>`
+      : s.ok ? `<div class="aisug">✦ AI suggests <b>${esc(s.rewrite).replace(/\n/g, '<br>')}</b><button class="btn a sm" data-ai="${i}" data-text="${esc(s.rewrite)}">Use</button><span class="hint">${s.cached ? 'cached · 0 tokens' : esc(s.tokens) + ' tokens'} · checked against app memory</span></div>`
       : `<div class="aisug no">✦ ${esc(s.msg || 'AI could not map this line.')}</div>`;
   }
   return h;
@@ -607,7 +914,7 @@ function drawLines() {
   const ci = document.activeElement === ta ? caretLine() : -1;
   $('#tgut').innerHTML = P.map((p, i) => `<div class="${p.status}">${i + 1}<i>${p.status === 'ok' ? '✓' : p.status === 'bad' ? '✗' : p.status === 'note' ? '#' : ''}</i></div>`).join('');
   $('#tbands').innerHTML = P.map((p, i) => `<div class="${p.status}${i === ci ? ' cur' : ''}"></div>`).join('');
-  $('#tcheck').innerHTML = P.map((p, i) => p.status === 'empty' ? '' : `<div class="ck ${p.status}${i === ci ? ' cur' : ''}" data-line="${i}"><div class="ckh"><span class="ckn">${i + 1}</span><span class="sst">${p.status === 'ok' ? '✓' : p.status === 'bad' ? '✗' : '#'}</span><b>${esc(lines[i].trim())}</b></div><div class="smeta">${metaHtml(p, i, lines[i])}</div></div>`).join('')
+  $('#tcheck').innerHTML = P.map((p, i) => p.status === 'empty' ? '' : `<div class="ck ${p.status}${i === ci ? ' cur' : ''}" data-line="${i}"><div class="ckh"><span class="ckn">${i + 1}</span><span class="sst">${p.status === 'ok' ? '✓' : p.status === 'bad' ? '✗' : '#'}</span><b>${esc(lines[i].trim())}</b>${p.status === 'bad' ? fbBtn({ place: 'write', kind: 'studio', step: lines[i].trim(), context: { Module: cur?.module || '', Test: cur?.name || '' } }, 'Studio is wrong?', 'fb-link') : ''}</div><div class="smeta">${metaHtml(p, i, lines[i])}</div></div>`).join('')
     || '<p class="hint" style="padding:12px;margin:0">Start typing on the left, for example: <code>create sale bill</code></p>';
   const bad = P.filter(p => p.status === 'bad').length, good = P.filter(p => p.status === 'ok').length;
   $('#score').innerHTML = bad ? `<span class="tag t-bad">${bad} line${bad > 1 ? 's' : ''} to fix</span> <span class="tag t-ok">${good} OK</span>` : good ? `<span class="tag t-ok">All ${good} lines mapped</span>` : '';
@@ -648,7 +955,7 @@ async function saveTest() {
   if (!cur.name.trim()) { toast('Give the test case a name.'); $('#tName').focus(); return; }
   try {
     const r = await api('/api/tests/save-draft', { id: cur.id, name: cur.name.trim(), module: cur.module, author: cur.author || meName(), lines });
-    cur.id = r.id; $('#tAuthor').textContent = (cur.author || meName()) + ' · ' + cur.id; toast(`Draft ${cur.id} saved.`);
+    cur.id = r.id; if (r.author) cur.author = r.author; $('#tAuthor').textContent = (cur.author || meName()) + ' · ' + cur.id; toast(`Draft ${cur.id} saved.`);
     await loadTests(); $('#tPick').innerHTML = '<option value="">Open a saved case…</option>' + TESTS.filter(t => t.lines).map(t => `<option value="${esc(t.id)}">${esc(t.id)} · ${esc(t.name)} (${esc(t.author)})</option>`).join('');
   } catch (e) { toast(e.message); }
 }
@@ -668,6 +975,7 @@ const SRC = {
   record: { steps: [['record', 'Record'], ['review', 'Verify'], ['replay', 'Replay'], ['save', 'Save']], first: 'record', file: 'recorded.spec.ts' },
   written: { steps: [['write', 'Write'], ['generate', 'Generate'], ['review', 'Verify'], ['replay', 'Replay'], ['save', 'Save']], first: 'write', file: 'written.spec.ts' }
 };
+const NO_SKIP = ['login'];                 // findings a QA may not skip: a password would stay in the saved test
 const newRec = src => ({ src, stage: 'idle', code: '', fed: 0, actions: [], next: 0, session: null, findings: [], applied: new Set(), skipped: new Set(), tok: { local: 0, ai: 0 }, attempt: 1, max: 0, aiFixes: 0, clock: null, stopPoll: null, t0: 0, fixedLines: new Set(), err: null, steps: [], job: null, giveUp: false, saved: null, genFrom: '', stale: false, startUrl: rec?.startUrl || '', busy: false });
 let rec = null; rec = newRec('record');
 function resetRec(src) {
@@ -698,11 +1006,19 @@ function renderRecord() {
   $('#codeBox').hidden = rec.stage === 'idle'; $('#codeEmpty').hidden = rec.stage !== 'idle';
   tokLine(); const P = $('#recPanel'); let h = '';
   const stale = rec.src === 'written' && rec.stale && ['recorded', 'reviewed', 'failed', 'passed'].includes(rec.stage) ? `<div class="stalebox">The steps changed after the code was generated.<span class="grow"></span><button class="btn sm" id="btnRegen">Generate again</button></div>` : '';
-  if (rec.stage === 'idle') {
+  if (rec.stage === 'idle' && AUTH.server && !AUTH.local) {        // another PC: record there, paste here
+    h = `<div class="status"><span class="dot"></span><div><b>Record on your own PC</b><span class="hint">The Studio runs on a server, so its browser window is not on your screen.</span></div></div>
+    <ol class="hint" style="padding-left:18px;line-height:1.7"><li>On your PC run: <code id="recCmd">python -m playwright codegen --target=playwright-test ${esc(defaultStart())}</code> (or <code id="recBat">record.bat ${esc(defaultStart())}</code>).</li><li>Test the screen by hand, then copy all the code from the Playwright Inspector.</li><li>Paste it below and click <b>Use this code</b>.</li></ol>
+    <label class="f" for="rPaste">Recorded code</label><textarea id="rPaste" class="inp mono" rows="8" placeholder="import { test, expect } from '@playwright/test';"></textarea>
+    <label class="opt" style="margin-top:8px"><input type="checkbox" id="rLoginTest"> This test checks the login screen (wrong password, unknown user…) – keep my login steps</label><span class="hint" style="display:block;margin:2px 0 0 22px">Normal tests: leave it off, the runner signs in by itself. Login test: the runner signs out first, then runs your login steps. Your real password is never saved: it becomes MB_PASS.</span>
+    <div class="row" style="margin-top:12px"><button class="btn p lg" id="btnPaste">Use this code</button></div>`;
+  }
+  else if (rec.stage === 'idle') {
     const u = rec.startUrl || defaultStart();
     h = `<div class="status"><span class="dot"></span><div><b>Ready to record</b><span class="hint">A browser window opens at this URL. Test the screen as you normally do.</span></div></div>
     <label class="f" for="rStart">Start URL (login page)</label><input id="rStart" class="inp mono" value="${esc(u)}" placeholder="https://books5.margbooks.com/login">
     <label class="opt" style="margin-top:8px"><input type="checkbox" id="rReuse"> I am already logged in – reuse the saved login session</label>
+    <label class="opt" style="margin-top:8px"><input type="checkbox" id="rLoginTest"> This test checks the login screen (wrong password, unknown user…) – keep my login steps</label><span class="hint" style="display:block;margin:2px 0 0 22px">Normal tests: leave it off, the runner signs in by itself. Login test: the runner signs out first, then runs your login steps. Your real password is never saved: it becomes MB_PASS.</span>
     <div class="row" style="margin-top:12px"><button class="btn r lg" id="btnRec">● Record automation case</button></div>
     <p class="hint" style="margin:10px 0 0">The agent starts Playwright codegen at this address and watches the script it writes.</p>`;
   }
@@ -710,34 +1026,38 @@ function renderRecord() {
     <ul class="feed" id="feed">${rec.actions.map((t, i) => `<li><span class="k">${i + 1}</span><span>${esc(t)}</span><span class="hint">✓</span></li>`).join('')}</ul>
     <div class="row" style="margin-top:10px"><button class="btn lg" id="btnStop" ${rec.fed < 1 || rec.busy ? 'disabled' : ''}>■ Stop recording</button></div>`;
   else if (rec.stage === 'recorded') h = stale + (rec.src === 'record'
-    ? `<div class="status"><span class="dot" style="background:var(--ok)"></span><div><b>Recording stopped – ${rec.fed} actions captured</b><span class="hint">The script is on the right. You may edit it.</span></div></div>`
+    ? `<div class="status"><span class="dot" style="background:var(--ok)"></span><div><b>${rec.pasted ? `Code pasted – ${rec.fed} actions` : `Recording stopped – ${rec.fed} actions captured`}</b><span class="hint">The script is on the right. You may edit it.</span></div></div>`
     : `<div class="status"><span class="dot" style="background:var(--ok)"></span><div><b>Code generated – ${rec.code.split('\n').filter(l => l.trim().startsWith('await')).length} actions</b><span class="hint">Every locator comes from app memory. You may edit the code on the right.</span></div></div>`)
-    + `<div class="row" style="margin-top:12px"><button class="btn p lg" id="btnReview">Verify script</button>${rec.src === 'record' ? '<button class="btn" id="btnAgain">Record again</button>' : '<button class="btn" id="btnEditSteps">Edit steps</button>'}</div>
+    + `<div class="row" style="margin-top:12px"><button class="btn p lg" id="btnReview">Verify script</button>${rec.src === 'record' ? `<button class="btn" id="btnAgain">${rec.pasted ? 'Paste other code' : 'Record again'}</button>` : '<button class="btn" id="btnEditSteps">Edit steps</button>'}</div>
     <p class="hint" style="margin:10px 0 0">Verify checks the script against app memory and project rules first (free). AI is asked only about what those can't decide.</p>`;
   else if (rec.stage === 'reviewing') h = `<div class="status"><span class="dot" style="background:var(--ink)"></span><div><b>Verifying script…</b><span class="hint" id="revMsg">Checking app memory and project rules</span></div></div>`;
   else if (rec.stage === 'reviewed') {
     const open = rec.findings.filter(f => !rec.applied.has(f.id)), local = rec.findings.filter(f => f.src !== 'AI').length;
     h = stale + `<div class="row"><div class="grow"><b>${rec.findings.length ? rec.findings.length + ' suggestions' : 'No problems found ✓'}</b> <span class="hint">· ${local} from local checks (0 tokens) · ${rec.findings.length - local} from AI</span></div>${open.length ? '<button class="btn" id="btnAll">Confirm all</button>' : ''}<button class="btn g" id="btnReplay">▶ Replay</button></div>`
       + rec.findings.map(f => { const done = rec.applied.has(f.id); return `<div class="find ${done ? 'applied' : ''}"><div class="hd"><span class="tag ${f.sev === 'Must fix' ? 't-bad' : f.sev === 'Should fix' ? 't-warn' : 't-mute'}">${esc(f.sev)}</span>${esc(f.title)}<span class="grow"></span><span class="tag ${f.src === 'AI' ? 't-ai' : 't-mute'}">${esc(f.src)}${f.tokens ? ' · ' + esc(f.tokens) + ' tok' : ''}</span></div>
-        <div class="hint" style="margin-top:4px">${esc(f.why)}</div><div class="diff">${(f.old || []).map(l => `<div class="m">- ${esc(String(l).trim())}</div>`).join('')}${(f.neu || []).map(l => `<div class="p">+ ${esc(String(l).trim())}</div>`).join('')}</div>
-        ${done ? (rec.skipped.has(f.id) ? '<span class="tag t-mute">Skipped</span>' : '<span class="tag t-ok">Applied ✓</span>') : `<button class="btn" data-apply="${esc(f.id)}">Confirm change</button> <button class="btn q" data-skip="${esc(f.id)}">Skip</button>`}</div>`; }).join('');
+        <div class="hint" style="margin-top:4px">${esc(f.why)}${fbBtn({ place: 'verify', kind: 'studio', context: { Suggestion: f.title, Why: f.why, 'Lines': (f.old || []).join('\n'), 'Change to': (f.neu || []).join('\n') } }, 'Wrong suggestion?', 'fb-link')}</div><div class="diff">${(f.old || []).map(l => `<div class="m">- ${esc(String(l).trim())}</div>`).join('')}${(f.neu || []).map(l => `<div class="p">+ ${esc(String(l).trim())}</div>`).join('')}</div>
+        ${done ? (rec.skipped.has(f.id) ? '<span class="tag t-mute">Skipped</span>' : '<span class="tag t-ok">Applied ✓</span>') : f.manual ? '<span class="tag t-bad">Fix the code (or paste it again)</span>' : `<button class="btn" data-apply="${esc(f.id)}">Confirm change</button>${NO_SKIP.includes(f.id) ? ' <span class="hint">A password must never stay in a test, so this cannot be skipped.</span>' : ` <button class="btn q" data-skip="${esc(f.id)}">Skip</button>`}`}</div>`; }).join('');
   }
   else if (['replaying', 'failed', 'fixing'].includes(rec.stage)) {
-    const live = rec.stage === 'replaying';
-    h = `<div class="status ${live ? 'live' : ''}"><span class="dot" style="${live ? '' : 'background:' + (rec.stage === 'failed' ? 'var(--bad)' : 'var(--ai)')}"></span><div><b>${live ? `Replaying (attempt ${rec.attempt})…` : rec.stage === 'failed' ? 'Replay failed' : `AI is fixing (attempt ${rec.attempt} of ${rec.max})…`}</b><span class="hint">${live ? 'Running the script in a fresh browser.' : rec.stage === 'fixing' ? 'Sent only: the error, 3 lines around it and matching fields from app memory.' : ''}</span></div></div>
+    const live = rec.stage === 'replaying', wt = live && rec.waiting;
+    h = `<div class="status ${live && !wt ? 'live' : ''}"><span class="dot" style="${wt ? 'background:var(--warn)' : live ? '' : 'background:' + (rec.stage === 'failed' ? 'var(--bad)' : 'var(--ai)')}"></span><div><b>${wt ? 'Waiting in the queue…' : live ? `Replaying (attempt ${rec.attempt})…` : rec.stage === 'failed' ? 'Replay failed' : `AI is fixing (attempt ${rec.attempt} of ${rec.max})…`}</b><span class="hint">${wt ? 'Waiting: ' + esc(rec.waiting) + '. The replay starts by itself when it is free.' : live ? 'Running the script in a fresh browser.' : rec.stage === 'fixing' ? 'Sent only: the error, 3 lines around it and matching fields from app memory.' : ''}</span></div></div>
       <ul class="rsteps" id="rsteps">${rec.steps.length ? rec.steps.map(s => `<li class="${s.status === 'ok' ? 'ok' : s.status === 'bad' ? 'bad' : s.status === 'doing' ? 'now' : ''}"><span class="i">${s.status === 'ok' ? '✓' : s.status === 'bad' ? '✗' : s.status === 'skip' ? '–' : '·'}</span><span>${esc(String(s.text).replace(/^await\s+/, ''))}</span><span class="hint">${s.status === 'skip' ? 'skipped' : s.secs != null && s.status !== 'todo' ? esc(s.secs) + 's' : ''}</span></li>`).join('') : '<li><span class="i">·</span><span>Starting the browser…</span><span class="hint"></span></li>'}</ul>
-      ${rec.err ? `<div class="errbox"><b>${esc(rec.err.plain || 'The replay stopped')}</b><pre>${esc(rec.err.err || '')}</pre>${rec.err.fixText ? `<div style="margin-top:6px;color:var(--ai)"><b>AI fix:</b> ${esc(rec.err.fixText)}</div>` : ''}${rec.stage === 'failed' && rec.giveUp ? `<div class="row" style="margin-top:8px"><button class="btn" id="btnPackRec">Bug pack for developer</button><button class="btn p" id="btnRetry">Try replay again</button></div>` : ''}</div>` : ''}`;
+      ${rec.err ? `<div class="errbox">${rec.err.explain && rec.err.explain.what ? explainHtml(rec.err.explain, { error: rec.err.err, step: rec.err.lineText, name: 'replay' }) + `<details><summary class="hint">Technical message</summary><pre>${esc(rec.err.err || '')}</pre></details>` : `<b>${esc(rec.err.plain || 'The replay stopped')}</b><pre>${esc(rec.err.err || '')}</pre>`}${rec.err.fixText ? `<div style="margin-top:6px;color:var(--ai)"><b>AI fix:</b> ${esc(rec.err.fixText)}</div>` : ''}${rec.stage === 'failed' && rec.giveUp ? `<div class="row" style="margin-top:8px"><button class="btn" id="btnPackRec">Bug pack for developer</button><button class="btn p" id="btnRetry">Try replay again</button>${fbBtn({ place: 'replay', test: (rec.src === 'written' && cur?.id) || '', run: rec.job || '', step: rec.err.lineText || '', error: rec.err.err || rec.err.plain || '', context: { Problem: rec.err.plain || '', 'AI fix': rec.err.fixText || '' } })}</div>` : ''}</div>` : ''}`;
   }
   else if (rec.stage === 'passed') {
     const nm = rec.src === 'written' ? (cur?.name || '') : guessName(), md = rec.src === 'written' ? (cur?.module || '') : '';
-    const ds = rec.src === 'written' ? (cur?.lines || []).filter(l => l.trim()).join(' → ') : '';
+    const opened = rec.src === 'written' && cur?.id;          // re-saving an opened test keeps what it had
+    const ds = opened && cur.description != null ? cur.description : rec.src === 'written' ? (cur?.lines || []).filter(l => l.trim()).join(' → ') : '';
+    const pr = ({ p1: 'High', p2: 'Medium', p3: 'Low', high: 'High', medium: 'Medium', low: 'Low' })[String((opened && cur.priority) || 'Medium').toLowerCase()] || 'Medium';
     h = stale + `<div class="savebox"><div class="row"><b class="grow" style="font-size:15px;color:var(--ok)">Replay passed ✓</b><span class="hint">attempt ${rec.attempt} · ${rec.aiFixes} AI fix</span></div>
       <p class="hint" style="margin:4px 0 6px">Tell us what this test is so others can find it.</p>
       <div class="two"><div><label class="f" for="svMod">Module *</label><select id="svMod" class="inp"><option value="">Choose…</option>${allModules([md]).map(m => `<option ${m === md ? 'selected' : ''}>${esc(m)}</option>`).join('')}</select></div>
-      <div><label class="f" for="svPri">Priority</label><select id="svPri" class="inp"><option>High</option><option selected>Medium</option><option>Low</option></select></div></div>
+      <div><label class="f" for="svPri">Priority</label><select id="svPri" class="inp">${['High', 'Medium', 'Low'].map(p => `<option ${p === pr ? 'selected' : ''}>${p}</option>`).join('')}</select></div></div>
       <label class="f" for="svName">Test case *</label><input id="svName" class="inp" value="${esc(nm)}">
       <label class="f" for="svDesc">Description</label><textarea id="svDesc" class="inp" rows="3" placeholder="What does this test prove?">${esc(ds)}</textarea>
-      <label class="f" for="svBy">Written by *</label><input id="svBy" class="inp" list="usersList" value="${esc(me)}" placeholder="Type your name"><datalist id="usersList">${(ST.users || []).map(u => `<option value="${esc(u)}"></option>`).join('')}</datalist>
+      ${AUTH.server ? `<label class="f" for="svBy">Written by</label><input id="svBy" class="inp" value="${esc(rec.src === 'written' && cur?.id && cur?.author ? cur.author : (AUTH.user?.name || me))}" readonly style="background:#F6F8FB" title="Team mode: the logged-in user">`
+        : `<label class="f" for="svBy">Written by *</label><input id="svBy" class="inp" list="usersList" value="${esc(me)}" placeholder="Type your name"><datalist id="usersList">${(ST.users || []).map(u => `<option value="${esc(u)}"></option>`).join('')}</datalist>`}
+      ${rec.src === 'written' && cur?.id ? `<p class="hint" style="margin:6px 0 0">Saving updates <b>${esc(cur.id)}</b>.</p>` : ''}
       <div class="hint" id="svErr" style="color:var(--bad)"></div>
       <div class="row" style="margin-top:10px"><button class="btn g lg" id="btnSaveRec">Save test case</button></div></div>`;
   }
@@ -751,8 +1071,9 @@ function renderRecord() {
 async function startRec() {
   const u = ($('#rStart')?.value || '').trim();
   if (!/^https?:\/\/\S+\.\S+/.test(u)) { toast('Enter a valid start URL, e.g. https://books5.margbooks.com/login'); $('#rStart')?.focus(); return; }
-  const reuse = !!$('#rReuse')?.checked; let r;
-  try { r = await api('/api/record/start', { url: u, reuse_login: reuse }); } catch (e) { toast(e.message); return; }
+  const reuse = !!$('#rReuse')?.checked, loginTest = !!$('#rLoginTest')?.checked; let r;
+  if (reuse && loginTest) { toast('A login test starts signed out: untick “reuse the saved login session”.'); return; }
+  try { r = await api('/api/record/start', { url: u, reuse_login: reuse, login_test: loginTest }); } catch (e) { toast(e.message); return; }
   resetRec('record'); rec.startUrl = u; rec.session = r.session; rec.stage = 'recording'; rec.t0 = Date.now();
   setCode(''); renderRecord(); toast('Codegen started – a Chromium window opened at ' + u);
   const mine = rec;
@@ -806,11 +1127,11 @@ async function startReplay(retry) {
   mine.stopPoll = poller(async () => {
     if (rec !== mine) return false;
     const d = await api('/api/replay/status?job=' + enc(mine.job)); if (rec !== mine) return false;
-    mine.attempt = d.attempt || 1; mine.max = d.max ?? mine.max; mine.aiFixes = d.aiFixes || 0; mine.steps = d.steps || []; mine.err = d.err || null; mine.giveUp = !!d.giveUp; mine.tok = d.tokens || mine.tok;
+    mine.attempt = d.attempt || 1; mine.max = d.max ?? mine.max; mine.aiFixes = d.aiFixes || 0; mine.steps = d.steps || []; mine.err = d.err || null; mine.giveUp = !!d.giveUp; mine.tok = d.tokens || mine.tok; mine.waiting = d.waiting || '';
     if (d.code && d.code !== mine.code) { mine.code = d.code; $('#code').value = d.code; }
     (d.fixedLines || []).forEach(l => mine.fixedLines.add(String(l).trim()));
     const ns = { queued: 'replaying', running: 'replaying', fixing: 'fixing', passed: 'passed', failed: 'failed' }[d.state] || 'replaying';
-    const sig = JSON.stringify([ns, mine.steps, mine.err, mine.attempt, mine.giveUp]);
+    const sig = JSON.stringify([ns, mine.steps, mine.err, mine.attempt, mine.giveUp, mine.waiting]);
     if (sig !== last) { last = sig; mine.stage = ns; renderRecord(); }
     if (d.state === 'passed') { toast('Replay passed ✓'); api('/api/state').then(s => { ST.ai = s.ai; }).catch(() => { }); return false; }
     if (d.state === 'failed') { still++; if (mine.giveUp || still > 5 || (mine.max || 0) === 0) { mine.giveUp = true; mine.stage = 'failed'; renderRecord(); return false; } } else still = 0;
@@ -821,17 +1142,323 @@ async function saveRecorded() {
   if (!mod) e.push('Choose a module.'); if (!name) e.push('Give the test case a name.'); if (!by) e.push('Write your name.');
   if (e.length) { $('#svErr').textContent = e.join(' '); (!mod ? $('#svMod') : !name ? $('#svName') : $('#svBy')).focus(); return; }
   const body = { code: $('#code').value, name, module: mod, priority: $('#svPri').value, description: $('#svDesc').value, author: by, source: rec.src === 'written' ? 'written' : 'record' };
-  if (rec.src === 'written') body.lines = (cur?.lines || []).filter(l => l.trim());
+  if (rec.src === 'written') { body.lines = (cur?.lines || []).filter(l => l.trim()); if (cur?.id) body.id = cur.id; }   // re-saving an opened test updates it
   let r; try { r = await api('/api/save', body); } catch (er) { $('#svErr').textContent = er.message; return; }
-  me = by; try { localStorage.setItem('ts_me', me); } catch (er) { /* ignore */ }
-  rec.saved = { id: r.id, name, module: mod, author: by, spec: r.spec, yaml: r.yaml }; rec.stage = 'saved';
-  if (rec.src === 'written' && cur) { cur.id = r.id; cur.author = by; cur.name = name; cur.module = mod; }
-  renderRecord(); toast(`${r.id} saved · written by ${by}.`); refreshState();
+  const author = r.author || by;                     // what the server stored (team mode: the logged-in user)
+  if (!AUTH.server) { me = by; try { localStorage.setItem('ts_me', me); } catch (er) { /* ignore */ } }
+  rec.saved = { id: r.id, name, module: mod, author, spec: r.spec, yaml: r.yaml }; rec.stage = 'saved';
+  if (rec.src === 'written' && cur) { cur.id = r.id; cur.author = author; cur.name = name; cur.module = mod; cur.priority = body.priority; cur.description = body.description; $('#tAuthor').textContent = author + ' · ' + r.id; }
+  renderRecord(); toast(`${r.id} ${r.updated ? 'updated' : 'saved'} · written by ${author}.`); refreshState();
+  loadTests();                                        // Test cases / Run / Write show the saved name, module and priority at once
+}
+
+/* ---------- test cases, module wise ---------- */
+const CS = { mod: '*', show: 'all', find: '', trade: '', ver: '', gst: '', limit: Infinity };   // every case of the module, no paging
+let SCRIPTS = null, scriptProblem = '';
+try { const s = JSON.parse(localStorage.getItem('ts.cases') || '{}'); ['mod', 'show', 'trade', 'ver', 'gst', 'find'].forEach(k => { if (s[k] != null && s[k] !== '') CS[k] = s[k]; }); } catch (e) { /* no storage: defaults */ }
+const isDraft = t => t.draft && !t.steps;
+const CASE_TEXT = {};
+function writeAsText(id) {
+  const d = CASE_TEXT[id]; if (!d) return;
+  if (d.steps.length) { toast(`${d.id} is already automated. Run it from here or from the Run screen.`); return; }
+  leaveCases(id, 'written as text'); go('write');
+  cur = { ...newCase(), name: d.name, module: d.module,
+    lines: [`# ${d.id}: write each step the way the agent understands it; red lines need rewording`, ...d.text_steps, '', ...d.expected.map(e => '# Expected: ' + e)] };
+  if (!allModules().includes(d.module)) cur.module = allModules()[0];
+  parsed = []; resetRec('written'); renderEditor();
+  toast('The test is filled in. Fix the red lines, then Save.');
+}
+async function writeAsScript(id, btn) {
+  const d = CASE_TEXT[id]; if (!d) return;
+  if (d.scripts.length) { openSV(d.scripts[0].node, true); return; }
+  const caseEl = () => $$('#csList details.cs-case').find(x => x.dataset.csid === id);
+  const lock = on => $$('[data-wscript]').filter(b => b.dataset.wscript === id).forEach(b => { b.disabled = on; b.textContent = on ? '‹/› Writing the script…' : '‹/› Write as a script'; });
+  const box = () => {                      // the progress / result box at the top of the case, made again after a redraw
+    const body = caseEl()?.querySelector('.cs-body'); if (!body) return null;
+    let b = body.querySelector('.ws-box'); if (!b) { body.insertAdjacentHTML('afterbegin', '<div class="ws-box cs-paper" style="margin-bottom:8px"></div>'); b = body.querySelector('.ws-box'); }
+    return b;
+  };
+  const show = h => { const b = box(); if (b) b.innerHTML = h; };
+  lock(true);
+  show(`<b>Writing the script for ${esc(id)}…</b><div class="prog" style="margin:8px 0"><i style="width:5%"></i></div><div class="hint">Starting…</div>`);
+  let r; try { r = await api('/api/scripts/new', { case: id, who: meName() }); } catch (e) { lock(false); show(`<b style="color:var(--bad)">Could not start writing the script</b><div class="hint">${esc(e.message)}</div>`); return; }
+  const finish = async res => {
+    SCRIPTS = null; await loadTests();
+    const el = caseEl(); if (el) { const body = el.querySelector('.cs-body'); delete body.dataset.done; await openCase(el); }
+    lock(false);
+    if (!res.created) { show(`<b>This test case already has a script.</b><div class="row" style="margin-top:6px">${scriptBtns(res.node)}</div>`); openSV(res.node, false); return; }
+    const notes = (res.notes || []).filter(Boolean), file = `e2e_scripts/${res.node.split('::')[0]}`;
+    show(res.ai
+      ? `<b style="color:var(--ok)">✓ Script written and checked</b> <span class="hint">· not run yet</span>
+         <div class="hint" style="margin-top:4px">${esc(file)}</div>
+         <p class="hint" style="margin:6px 0">It uses this journey's own fixtures and page objects; Python, fixtures and methods were checked and pytest loads it. Run it once to see it work.</p>
+         ${notes.length ? `<details><summary class="hint">The AI was not sure about ${notes.length} thing${notes.length > 1 ? 's' : ''}</summary><ul>${notes.map(n => `<li>${esc(n)}</li>`).join('')}</ul></details>` : ''}
+         <div class="row" style="margin-top:8px">${scriptBtns(res.node)}</div>`
+      : `<b style="color:var(--warn)">Only a starting point was written</b><div class="hint" style="margin-top:4px">${esc(file)}</div>
+         <p class="hint" style="margin:6px 0">The steps are in the script as comments, with a skipped test. ${esc(notes.join(' '))}</p>
+         <div class="row" style="margin-top:8px">${scriptBtns(res.node)}</div>`);
+  };
+  if (r.state === 'done') { await finish(r.result); return; }
+  poller(async () => {
+    let s; try { s = await api(`/api/scripts/new/status?job=${enc(r.job)}`); } catch (e) { lock(false); show(`<b style="color:var(--bad)">${esc(e.message)}</b>`); return false; }
+    if (s.state === 'running') {
+      show(`<b>Writing the script for ${esc(id)}…</b> <span class="hint">${esc(Math.round(s.elapsed))}s</span>
+        <div class="prog" style="margin:8px 0"><i style="width:${Math.max(5, Math.round((s.step || 0) / (s.steps || 4) * 100))}%"></i></div>
+        <div>Step ${esc(s.step || 1)} of ${esc(s.steps || 4)}: ${esc(s.stage)}</div>
+        <div class="hint" style="margin-top:4px">The AI usually needs 30–90 seconds. You can keep working; the result appears here.</div>`);
+      return;
+    }
+    if (s.state === 'error') { lock(false); show(`<b style="color:var(--bad)">The script could not be written</b><div class="hint">${esc(s.error)}</div>`); return false; }
+    await finish(s.result); return false;
+  }, 1500);
+}
+async function loadScripts() { if (SCRIPTS) return SCRIPTS; try { const r = await api('/api/scripts'); SCRIPTS = r.scripts || []; scriptProblem = r.problem || ''; } catch (e) { SCRIPTS = []; toast(e.message); } return SCRIPTS; }
+const runTag = st => ({ running: '<span class="tag t-ink">running…</span>', passed: '<span class="tag t-ok">passed</span>', failed: '<span class="tag t-bad">failed</span>', skipped: '<span class="tag t-warn">skipped</span>' })[st] || '';
+const VER_CLS = { verified: 't-ok', corrected: 't-ok', app_defect: 't-bad', blocked: 't-warn', not_applicable: 't-mute' };
+const verTag = v => v ? `<span class="tag ${VER_CLS[v.status] || 't-mute'}" title="${esc(v.company)} · ${esc(v.date)}">${esc(v.label)}${v.ready ? ' · script ready' : ''}</span>${v.gst ? '<span class="tag t-mute">GST</span>' : ''}` : '';
+async function renderCases() { renderCases.done = renderCasesInner(); return renderCases.done; }
+async function renderCasesInner() {
+  const scr = CS.show === 'scripts';
+  if (!TESTS.length || (scr && !SCRIPTS)) $('#csList').innerHTML = '<div class="tc-empty">Loading test cases…</div>';
+  if (!TESTS.length) await loadTests();
+  if (scr) await loadScripts();
+  if (!scr && !TESTS.length) { $('#csList').innerHTML = '<div class="tc-empty">Could not load the test cases. Check that Test Studio is still running (studio.bat), then click Test cases again.</div>'; return; }
+  // A trade shows its whole suite: cases tagged trade:all (common) plus trade:<that trade> (specific).
+  const inTrade = t => !CS.trade || (t.ver && t.ver.trade === CS.trade) || (!t.ver && ((t.tags || []).includes('trade:all') || (t.tags || []).includes('trade:' + CS.trade)));
+  const inVer = t => { const v = t.ver; if (CS.gst && (!v || (CS.gst === 'gst') !== !!v.gst)) return false;
+    if (!CS.ver) return true; if (CS.ver === 'none') return !v; if (!v) return false;
+    if (CS.ver === 'any') return true; if (CS.ver === 'ready') return v.ready; return v.status === CS.ver; };
+  const items = scr ? SCRIPTS.map(s => ({ ...s, module: s.label })) : TESTS.filter(t => inTrade(t) && inVer(t));
+  if (!scr) { const vt = TESTS.filter(inTrade), chk = vt.filter(t => t.ver), rdy = chk.filter(t => t.ver.ready).length, dfc = chk.filter(t => t.ver.status === 'app_defect').length;
+    $('#csVerLine').textContent = `${chk.length} of ${vt.length} checked in the app · ${rdy} script ready · ${dfc} app defects`; }
+  const mods = [...new Set(items.map(t => t.module || 'General'))].sort((a, b) => a.localeCompare(b));
+  if (CS.mod !== '*' && !mods.includes(CS.mod)) CS.mod = '*';
+  const count = m => items.filter(t => m === '*' || t.module === m).length;
+  $('#csNav').innerHTML = `<button class="cs-mod ${CS.mod === '*' ? 'on' : ''}" data-csmod="*" aria-current="${CS.mod === '*'}"><span>All modules</span><b>${count('*')}</b></button><div class="cs-sep"></div>` +
+    mods.map(m => `<button class="cs-mod ${CS.mod === m ? 'on' : ''}" data-csmod="${esc(m)}" aria-current="${CS.mod === m}"><span>${esc(m)}</span><b>${count(m)}</b></button>`).join('');
+  $$('#csShow button').forEach(b => { b.classList.toggle('on', b.dataset.show === CS.show); b.setAttribute('aria-checked', b.dataset.show === CS.show); });
+  const q = CS.find.toLowerCase();
+  const inMod = items.filter(t => CS.mod === '*' || t.module === CS.mod);
+  const where = CS.mod === '*' ? 'All modules' : CS.mod;
+  $('#csProblem').hidden = !(scr && scriptProblem); $('#csProblem').textContent = scr ? scriptProblem : '';
+  if (scr) {
+    const list = inMod.filter(s => !q || s.node.toLowerCase().includes(q) || s.title.toLowerCase().includes(q) || s.ids.some(i => i.toLowerCase().includes(q)) || s.cases.some(i => i.toLowerCase().includes(q)));
+    $('#csTitle').textContent = `${where} · ${list.length} script${list.length === 1 ? '' : 's'}`;
+    $('#csLine').textContent = `Python test scripts from ai-projects (e2e_scripts/). ${inMod.filter(s => s.skipped).length} are marked skip in their source. They run against premargbooks.com only.`;
+    $('#csList').innerHTML = list.slice(0, CS.limit).map(s => `<details class="cs-case" data-node="${esc(s.node)}"><summary>
+        <span class="cs-t">${esc(s.title)}<br><span class="cs-node">${esc(s.node.replace(/^tests\/journeys\//, ''))}</span></span>
+        <span class="cs-tags">${CS.mod === '*' ? `<span class="tag t-mute">${esc(s.module)}</span>` : ''}${s.priority ? `<span class="tag t-mute">${esc(s.priority.toUpperCase())}</span>` : ''}${s.params ? `<span class="tag t-mute">${esc(s.params)} variants</span>` : ''}${s.cases.length ? `<span class="tag t-ink">${esc(s.cases.length)} case${s.cases.length > 1 ? 's' : ''}</span>` : ''}${s.skipped ? '<span class="tag t-warn">skip in source</span>' : '<span class="tag t-ok">script</span>'}</span>
+      </summary><div class="cs-body hint">Loading…</div></details>`).join('') || '<div class="tc-empty">No scripts match.</div>';
+    $('#csMoreRow').hidden = list.length <= CS.limit; $('#csMore').textContent = `Show more (${list.length - CS.limit} left)`;
+    return;
+  }
+  const automated = t => !isDraft(t) || !!t.scripts;
+  const list = inMod.filter(t => (CS.show === 'all' || (CS.show === 'draft') !== automated(t))
+    && (!q || t.id.toLowerCase().includes(q) || (t.name || '').toLowerCase().includes(q)));
+  const nAuto = inMod.filter(t => !isDraft(t)).length, nScr = inMod.filter(t => t.scripts).length, nNone = inMod.filter(t => isDraft(t) && !t.scripts).length;
+  $('#csTitle').textContent = `${where} · ${list.length} test case${list.length === 1 ? '' : 's'}`;
+  $('#csLine').textContent = `${nAuto} with Studio steps · ${nScr} with a Python script · ${nNone} not automated yet. Click a case to read it as normal text, then Write it as text or as a script.`;
+  $('#csList').innerHTML = list.slice(0, CS.limit).map(t => `<details class="cs-case" data-csid="${esc(t.id)}"><summary>
+      <span class="cs-id">${esc(t.id)}</span><span class="cs-t">${esc(t.name)}</span>
+      <span class="cs-tags">${CS.mod === '*' ? `<span class="tag t-mute">${esc(t.module)}</span>` : ''}<span class="tag t-mute">${esc((t.priority || 'p2').toUpperCase())}</span>${!isDraft(t) ? `<span class="tag t-ok">${esc(t.steps)} steps</span>` : ''}${t.scripts ? '<span class="tag t-ok">Python script</span>' : ''}${isDraft(t) && !t.scripts ? '<span class="tag t-warn">not automated</span>' : ''}${knownTag(t.id)}${(t.tags || []).includes('unverified') && !t.ver ? '<span class="tag t-mute">unverified</span>' : ''}${verTag(t.ver)}</span>
+    </summary><div class="cs-body hint">Loading…</div></details>`).join('') || '<div class="tc-empty">No test cases match.</div>';
+  $('#csMoreRow').hidden = list.length <= CS.limit;
+  $('#csMore').textContent = `Show more (${list.length - CS.limit} left)`;
+}
+function saveCS() { try { localStorage.setItem('ts.cases', JSON.stringify({ mod: CS.mod, show: CS.show, trade: CS.trade, ver: CS.ver, gst: CS.gst, find: CS.find })); } catch (e) { /* ignore */ } }
+/* ---------- screenshot viewer (in-page, closable) ---------- */
+const LB = { list: [], i: 0 };
+function lbOpen(a) {
+  const box = a.closest('.row, .thumbs, .cs-body, .drawer') || document.body;
+  LB.list = [...box.querySelectorAll('a[data-lb]')]; LB.i = Math.max(0, LB.list.indexOf(a)); lbShow(); $('#lb').hidden = false; $('#lbClose').focus();
+}
+function lbShow() {
+  const a = LB.list[LB.i]; if (!a) return;
+  $('#lbImg').src = a.getAttribute('href'); $('#lbImg').alt = a.dataset.cap || 'screenshot'; $('#lbCap').textContent = a.dataset.cap || '';
+  $('#lbOpen').href = a.getAttribute('href'); $('#lbPos').textContent = LB.list.length > 1 ? `${LB.i + 1} / ${LB.list.length}` : '';
+  $('#lbPrev').disabled = LB.i === 0; $('#lbNext').disabled = LB.i >= LB.list.length - 1;
+}
+function lbClose() { $('#lb').hidden = true; $('#lbImg').removeAttribute('src'); }
+/* ---------- coming back to the case you left ---------- */
+let RETURN = null;
+function leaveCases(id, what) { if (id) RETURN = { id, what, y: window.scrollY }; }
+function showBackbars() {
+  $$('.backbar').forEach(b => { b.hidden = !RETURN; const w = b.querySelector('.backwhat'); if (w && RETURN) w.textContent = `${RETURN.id}${RETURN.what ? ' · ' + RETURN.what : ''}`; });
+}
+async function backToCases() {
+  const r = RETURN; go('cases'); await renderCases.done;
+  if (!r) return;
+  const el = [...$$('#csList .cs-case')].find(x => x.dataset.csid === r.id);
+  if (el) { el.open = true; await openCase(el); el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 1600); }
+  else window.scrollTo(0, r.y || 0);
+}
+const liOf = a => a.length ? `<ul>${a.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="hint" style="margin:0">—</p>';
+// Python scripts are edited and run by a Studio admin (DEPLOY.md section 4); a QA can read them
+const scriptBtns = node => `<button class="btn sm" data-sview="${esc(node)}">Show script</button>` + (isAdmin()
+  ? `<button class="btn sm" data-sedit="${esc(node)}">Edit script</button><button class="btn g sm" data-srun="${esc(node)}" data-headed="1" title="Runs the script in a browser window you can watch">▶ Run script (show browser)</button><button class="btn sm" data-srun="${esc(node)}" title="Faster: no browser window, the log shows what happened">Run in background</button>`
+  : '<span class="hint">A Studio admin runs and edits Python scripts.</span>');
+async function openCase(el) {
+  const body = el.querySelector('.cs-body'); if (body.dataset.done) return;
+  if (el.dataset.node) return openScript(el, body);
+  try {
+    const d = await api(`/api/tests/case?id=${enc(el.dataset.csid)}`); body.dataset.done = '1'; body.classList.remove('hint');
+    CASE_TEXT[d.id] = d;
+    const status = d.steps.length ? `<span class="tag t-ok">automated in Studio · ${esc(d.steps.length)} steps</span>`
+      : d.scripts.length ? '<span class="tag t-ok">automated as a Python script</span>'
+      : '<span class="tag t-warn">not automated yet</span> <span class="hint">The test is written below in normal text. Use Write to automate it.</span>';
+    body.innerHTML = `<div class="cs-text">
+        <p style="margin:0 0 8px">${status}</p>
+        ${verBlock(d)}
+        <div class="cs-paper"><b>${esc(d.id)} · ${esc(d.name)}</b>
+          ${d.detail && d.detail.preconditions.length ? `<h4>Before you start</h4>${liOf(d.detail.preconditions)}` : ''}
+          <h4>Test steps</h4><ol>${d.text_steps.map(x => `<li>${esc(x)}</li>`).join('')}</ol>
+          <h4>Expected result</h4>${liOf(d.detail ? d.detail.expected : d.expected)}
+          ${d.detail && d.detail.refs.length ? `<details class="cs-more"><summary>Where this is in the code / docs</summary>${liOf(d.detail.refs)}</details>` : ''}
+          ${d.detail ? `<p class="hint" style="margin:6px 0 0">${d.detail.checked_live ? 'Steps checked in the live app' : 'Steps written from the code, specs and docs: not yet checked in the live app'}${d.detail.updated ? ' · ' + esc(d.detail.updated) : ''}</p>` : ''}</div>
+        <div class="row cs-write">
+          ${d.steps.length ? `<span class="hint">Already automated (${esc(d.steps.length)} steps): it runs as it is, no need to write it again.</span>
+          <button class="btn g sm" data-csrun="${esc(d.id)}">▶ Run</button>`
+          : `<span class="hint">Write this test:</span>
+          <button class="btn p sm" data-wtext="${esc(d.id)}">✎ Write as normal text</button>
+          ${isAdmin() ? `<button class="btn sm" data-wscript="${esc(d.id)}">‹/› ${d.scripts.length ? 'Write / fix the script' : 'Write as a script'}</button>` : ''}
+          <button class="btn r sm" data-csrec="${esc(d.name)}">● Record it</button>`}
+        </div></div>
+      ${d.scripts.length ? `<h4>Python script${d.scripts.length > 1 ? 's' : ''}</h4>${d.scripts.map(s => `<div class="row" style="margin-bottom:6px"><span class="grow">${esc(s.title)}<br><span class="cs-node">${esc(s.node)}</span></span>${s.skipped ? '<span class="tag t-warn">skip in source</span>' : ''}${scriptBtns(s.node)}</div>`).join('')}<div class="cs-out"></div>` : ''}
+      ${knownLine(d.id)}<div class="row" style="margin-top:8px">${fbBtn({ place: 'case', kind: 'test_wrong', test: d.id, context: { Title: d.name } }, '⚑ Report a problem with this test case', 'btn sm')}</div>
+      ${d.notes.length ? `<details class="cs-more"><summary>Where it came from</summary>${liOf(d.notes)}</details>` : ''}
+      <p class="hint" style="margin:8px 0 0">${d.destructive ? 'Writes data · ' : ''}${esc(d.file)}</p>`;
+  } catch (e) { body.textContent = e.message; }
+}
+function verBlock(d) {
+  const v = d.verification;
+  if (!v) return `<p class="hint" style="margin:0 0 8px">Not checked in the live app yet.${d.url ? ` App URL: <a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.url)}</a>` : ''}</p>`;
+  const run = v.total ? `${esc(v.passed)}/${esc(v.total)} steps passed` : '';
+  return `<div class="cs-paper" style="margin-bottom:8px;border-left:4px solid var(--${v.status === 'app_defect' ? 'bad' : v.ready ? 'ok' : 'warn'})">
+    <b>Checked in the live app:</b> ${verTag(v)}
+    <table class="kv" style="margin-top:6px;border-collapse:collapse">
+      <tr><td class="hint" style="padding:2px 10px 2px 0">App URL</td><td>${d.url ? `<a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.url)}</a>` : '—'}</td></tr>
+      ${d.where ? `<tr><td class="hint" style="padding:2px 10px 2px 0">Screen</td><td>${esc(d.where)}</td></tr>` : ''}
+      <tr><td class="hint" style="padding:2px 10px 2px 0">Company</td><td>${esc(v.company)}${v.trade ? ` (${esc(v.trade)}${v.gst ? ', GST registered' : ''})` : ''}</td></tr>
+      <tr><td class="hint" style="padding:2px 10px 2px 0">Checked on</td><td>${esc(v.date)}${run ? ' · ' + run : ''}</td></tr>
+      ${v.notes ? `<tr><td class="hint" style="padding:2px 10px 2px 0;vertical-align:top">What was seen</td><td style="white-space:pre-wrap">${esc(v.notes)}</td></tr>` : ''}
+      ${v.kb.length ? `<tr><td class="hint" style="padding:2px 10px 2px 0">KB source</td><td>${v.kb.map(k => `<span class="tag t-mute">${esc(k)}</span>`).join(' ')}</td></tr>` : ''}
+    </table>
+    ${v.shots.length ? `<div class="row" style="flex-wrap:wrap;gap:6px;margin-top:6px">${v.shots.map(x => `<a href="${esc(x.url)}" data-lb data-cap="${esc(d.id)} · ${esc(x.name)}" title="Click to enlarge"><img class="thumbimg" src="${esc(x.url)}" alt="screenshot ${esc(x.name)}" loading="lazy"></a>`).join('')}</div>` : ''}
+    <p class="hint" style="margin:6px 0 0">${v.ready ? 'Manual QA: open the URL in the company above, follow the steps below and compare with the expected result.' : v.status === 'app_defect' ? 'The app did not do what the expected result says (see What was seen). The script asserts the correct behaviour, so it fails until the app is fixed.' : ''}</p>
+  </div>`;
+}
+async function openScript(el, body) {
+  try {
+    const s = await api(`/api/scripts/detail?node=${enc(el.dataset.node)}`); body.dataset.done = '1'; body.classList.remove('hint');
+    body.innerHTML = `${s.doc ? `<h4>What it checks</h4><p style="margin:0;white-space:pre-wrap">${esc(s.doc)}</p>` : ''}
+      ${s.file_doc ? `<h4>About this file</h4><p style="margin:0;white-space:pre-wrap">${esc(s.file_doc)}</p>` : ''}
+      <h4>Test cases</h4>${s.cases.length ? `<p style="margin:0">${s.cases.map(c => `<span class="tag t-ink">${esc(c)}</span>`).join(' ')}</p>` : `<p class="hint" style="margin:0">${s.ids.length ? 'Scenario IDs ' + esc(s.ids.join(', ')) + ' (not matched to one imported case)' : 'Not linked to an imported case.'}</p>`}
+      <h4>Script</h4><p class="cs-node" style="margin:0">${esc(s.node)}${s.params ? ` · ${esc(s.params)} variants` : ''}${s.skipped ? ' · marked skip in its source' : ''}</p>
+      <div class="row" style="margin-top:10px">${scriptBtns(s.node)}</div><div class="cs-out"></div>`;
+  } catch (e) { body.textContent = e.message; }
+}
+async function runScript(btn) {
+  const node = btn.dataset.srun, body = btn.closest('.cs-body'), out = body && body.querySelector('.cs-out');
+  if (running) { toast('A run is already going: see the Run screen.'); go('run'); return; }
+  let r; try { r = await api('/api/scripts/run', { node, headed: !!btn.dataset.headed, who: meName() }); }
+  catch (e) {
+    toast(e.message);
+    try { const c = await api('/api/scripts/current'); if (c.job) followScript(c.job, c.node); } catch (x) { /* none */ }
+    return;
+  }
+  if (out) out.innerHTML = `<p class="hint" style="margin:6px 0">Running on the <a href="#run" data-go3="run">Run screen</a>.</p>`;
+  followScript(r.job, node);
+}
+/* a Python script run on the Run screen, the same picture as a Studio run: steps, live screen, report */
+async function followScript(job, node) {
+  running = true; $('#btnRun').disabled = true; $('#failBox').hidden = true; $('#btnStopRun').hidden = true;
+  go('run');
+  const title = node.split('::').pop().replace(/^test_/, '').replace(/_/g, ' ');
+  $('#runTitle').textContent = 'Python script: ' + title; $('#runSteps').innerHTML = '<li class="now"><span class="ic">·</span><span>Starting the browser and signing in with the Settings login…</span><span class="hint"></span></li>';
+  $('#scrImg').hidden = true; $('#scrHint').hidden = false; $('#recl').hidden = false; $('#prog').style.width = '5%';
+  $('#scrTitle').textContent = title; $('#runWait').hidden = true;
+  let lastShot = '';
+  await new Promise(res => {
+    poller(async () => {
+      const d = await api(`/api/scripts/status?job=${enc(job)}`);
+      const steps = d.steps || [];
+      if (steps.length) $('#runSteps').innerHTML = steps.map(s => `<li class="${s.status === 'ok' ? 'ok' : 'bad'}"><span class="ic">${s.status === 'ok' ? '✓' : '✗'}</span><span>${esc(s.text)}${s.error ? `<br><span class="hint" style="color:var(--bad)">${esc(s.error)}</span>` : ''}</span><span class="hint">${s.secs != null ? esc(s.secs) + 's' : ''}</span></li>`).join('');
+      if (d.shot && d.shot !== lastShot) { lastShot = d.shot; $('#scrImg').src = `/api/scripts/shot?job=${enc(job)}&name=${enc(d.shot)}`; $('#scrImg').hidden = false; $('#scrHint').hidden = true; }
+      $('#runWait').hidden = !d.waiting; if (d.waiting) $('#runWait').textContent = 'Waiting: ' + d.waiting;
+      $('#runTime').textContent = `${Math.round(d.elapsed || d.secs || 0)}s`;
+      if (d.state === 'running') { $('#prog').style.width = Math.min(90, 5 + steps.length * 3) + '%'; return; }
+      running = false; $('#recl').hidden = true; $('#prog').style.width = '100%';
+      $('#runTitle').textContent = 'Python script: ' + title + ' – ' + ({ passed: 'passed', failed: 'failed', skipped: 'skipped' }[d.state] || d.state);
+      updRunBtn(); finishScript(d, node); res(); return false;
+    }, 1200);
+  });
+}
+function finishScript(d, node) {
+  const steps = d.steps || [], bad = steps.findIndex(s => s.status !== 'ok'), report = d.run_id ? `<button class="btn p" data-open="${esc(d.run_id)}">Full report (video, screenshots) · ${esc(d.run_id)}</button>` : '';
+  if (d.state === 'passed') { toast('Script passed ✓'); $('#failBox').hidden = false; $('#failBox').innerHTML = `<h3 style="color:var(--ok)">Passed · ${esc(d.summary || '')}</h3><div class="row" style="margin-top:8px">${report}</div>`; return; }
+  $('#failBox').hidden = false;
+  $('#failBox').innerHTML = `<h3>${d.state === 'skipped' ? 'Not run (skipped)' : 'Failed' + (bad >= 0 ? ' at step ' + (bad + 1) : '')} · ${esc(d.summary || '')}</h3>
+    ${d.explain && d.explain.what ? explainHtml(d.explain, { error: (d.log || '').split(/\r?\n/).filter(l => l.startsWith('E ')).join(' | '), name: node, run: d.run_id || '' }) : d.hint ? `<div><b>What this means:</b> ${esc(d.hint)}</div>` : ''}
+    ${bad >= 0 && steps[bad].error ? `<div style="margin-top:4px"><b>What happened:</b> ${esc(steps[bad].text)} – ${esc(steps[bad].error)}</div>` : ''}
+    <details style="margin-top:6px"><summary class="hint">Script log (pytest)</summary><pre class="cv">${esc((d.log || '').split('\n').slice(-80).join('\n'))}</pre></details>
+    <div class="row" style="margin-top:8px">${report}${fbBtn({ place: 'run', test: node.split('::').pop(), run: d.run_id || '', step: bad >= 0 ? String(bad + 1) : '', error: d.hint || (bad >= 0 ? steps[bad].error : d.summary) || '' })}</div>`;
+}
+
+/* ---------- script viewer / editor: the whole file as plain text ---------- */
+const SV = { node: '', text: '', hash: '', start: 0, end: 0, editing: false };
+const svDirty = () => SV.editing && $('#svText').value !== SV.text;
+function svDraw() {
+  const ta = $('#svText'), n = ta.value.split('\n').length;
+  $('#svGut').innerHTML = Array.from({ length: n }, (_, i) => `<div class="${i + 1 >= SV.start && i + 1 <= SV.end ? 'in' : ''}">${i + 1}</div>`).join('');
+  ta.style.height = (n * 20 + 24) + 'px';
+  const hl = $('#svHl'); hl.style.display = SV.start ? 'block' : 'none';
+  if (SV.start) { hl.style.top = (10 + (SV.start - 1) * 20) + 'px'; hl.style.height = ((SV.end - SV.start + 1) * 20) + 'px'; }
+}
+function svMode(edit) {
+  edit = edit && isAdmin();
+  SV.editing = edit; const ta = $('#svText'); ta.readOnly = !edit;
+  $('#svEdit').hidden = edit || !isAdmin(); $('#svSave').hidden = !edit; $('#svCancel').hidden = !edit;
+  $('#svState').innerHTML = edit ? '<span class="tag t-warn">editing</span>' : '<span class="tag t-mute">read only</span>';
+  $('#svHint').textContent = edit
+    ? 'Edit the script here, then Save (Ctrl+S). It is checked for Python syntax before saving, and the old version is kept in e2e_scripts/results/studio-backups/.'
+    : isAdmin() ? 'The whole file, as plain text. The highlighted lines are this test. Press Edit to fix it here.'
+    : 'The whole file, as plain text. The highlighted lines are this test. A Studio admin edits and runs scripts.';
+  if (edit) ta.focus();
+}
+function svJump() {
+  if (!SV.start) return;
+  const ta = $('#svText'), lines = ta.value.split('\n'), pos = lines.slice(0, SV.start - 1).join('\n').length + (SV.start > 1 ? 1 : 0);
+  $('#svBody').scrollTop = Math.max(0, (SV.start - 4) * 20);
+  if (SV.editing) { ta.focus({ preventScroll: true }); ta.setSelectionRange(pos, pos); }
+}
+async function openSV(node, edit) {
+  let d; try { d = await api(`/api/scripts/source?node=${enc(node)}`); } catch (e) { toast(e.message); return; }
+  Object.assign(SV, { node, text: d.text, hash: d.hash, start: d.start, end: d.end });
+  $('#svTitle').textContent = node.split('::').pop().replace(/^test_/, '').replace(/_/g, ' ');
+  $('#svFile').textContent = `e2e_scripts/${d.file}` + (d.start ? `  ·  lines ${d.start}–${d.end}` : '');
+  $('#svText').value = d.text; $('#sv').hidden = false; svMode(edit && isAdmin()); $('#svEdit').hidden = !isAdmin() || SV.editing; svDraw(); svJump();
+}
+function closeSV() {
+  if (svDirty() && !confirm('You have unsaved changes in this script. Close without saving?')) return;
+  $('#sv').hidden = true; SV.editing = false;
+}
+async function saveSV() {
+  const btn = $('#svSave'); btn.disabled = true;
+  try {
+    const d = await api('/api/scripts/save', { node: SV.node, text: $('#svText').value, hash: SV.hash });
+    Object.assign(SV, { text: $('#svText').value.replace(/\r\n/g, '\n'), hash: d.hash, start: d.start, end: d.end });
+    SCRIPTS = null; svMode(false); svDraw();
+    $('#svFile').textContent = `e2e_scripts/${d.file}` + (d.start ? `  ·  lines ${d.start}–${d.end}` : '');
+    toast(d.start ? 'Script saved. Run it to check your fix.' : 'Saved, but this test name is no longer in the file.');
+  } catch (e) { toast(e.message); }
+  btn.disabled = false;
 }
 
 /* ---------- run ---------- */
 let running = false, runMod = null;
+const RUNSEL = new Set();                  // the tests the QA ticked on the Run screen
 async function renderRunList() {
+  if (!running) resumeRun();             // after F5 the QA's live run comes back at once (not only after picking a module)
   await Promise.all([refreshState(), loadTests()]);
   const mods = allModules().map(m => [m, TESTS.filter(t => t.module === m).length]);
   $('#modPick').innerHTML = `<button class="mod ${runMod === '*' ? 'on' : ''}" data-mod="*" role="radio" aria-checked="${runMod === '*'}">All modules <b>${TESTS.length}</b></button>` + mods.map(([m, n]) => `<button class="mod ${runMod === m ? 'on' : ''}" data-mod="${esc(m)}" role="radio" aria-checked="${runMod === m}" ${n ? '' : 'disabled'}>${esc(m)} <b>${n}</b></button>`).join('');
@@ -839,41 +1466,82 @@ async function renderRunList() {
   if (!runMod) { $('#tcHead').hidden = true; $('#tcList').innerHTML = '<div class="tc-empty">Pick a module above to see its test cases.</div>'; updRunBtn(); return; }
   const list = TESTS.filter(t => runMod === '*' || t.module === runMod);
   $('#tcHead').hidden = false; $('#tcTitle').textContent = `${runMod === '*' ? 'All' : runMod} test cases (${list.length})`;
-  $('#tcList').innerHTML = list.map(t => { const bad = t.bad || 0;
-    return `<label class="tc"><input type="checkbox" value="${esc(t.id)}" ${bad ? 'disabled' : 'checked'}><span><b>${esc(t.id)} · ${esc(t.name)}</b><span class="hint">${esc(t.module || '')} · by ${esc(t.author || '—')} · ${t.type === 'recorded' ? '<span class="tag t-ink">recorded</span>' : t.type === 'builtin' ? '<span class="tag t-mute">built-in</span> ' + esc(t.steps) + ' steps' : esc(t.steps) + ' steps'} ${bad ? '<span class="tag t-bad">' + esc(bad) + ' line(s) to fix</span>' : ''}</span></span></label>`; }).join('') || '<div class="tc-empty">No test cases in this module yet.</div>';
+  // Nothing is ticked until the QA ticks it (a whole module is hundreds of real tests), and their ticks are kept
+  // when the list is drawn again (coming back to Run, a run finishing).
+  $('#tcList').innerHTML = list.map(t => { const bad = t.bad || 0, dr = isDraft(t);
+    return `<label class="tc"><input type="checkbox" value="${esc(t.id)}" ${bad || dr ? 'disabled' : RUNSEL.has(t.id) ? 'checked' : ''}><span><b>${esc(t.id)} · ${esc(t.name)}</b> ${knownTag(t.id)}<span class="hint">${esc(t.module || '')} · by ${esc(t.author || '—')} · ${t.type === 'recorded' ? '<span class="tag t-ink">recorded</span>' : t.type === 'builtin' ? '<span class="tag t-mute">built-in</span> ' + esc(t.steps) + ' steps' : esc(t.steps) + ' steps'} ${bad ? '<span class="tag t-bad">' + esc(bad) + ' line(s) to fix</span>' : ''}${dr ? (t.scripts ? `<span class="tag t-ink">${isAdmin() ? 'Python script: run it from Test cases' : 'Python script: a Studio admin runs it'}</span>` : '<span class="tag t-warn">not automated</span>') : ''}</span></span></label>`; }).join('') || '<div class="tc-empty">No test cases in this module yet.</div>';
   updRunBtn();
 }
 function updRunBtn() {
   const all = $$('#tcList input:not(:disabled)'), on = all.filter(i => i.checked).length;
+  all.forEach(i => { if (i.checked) RUNSEL.add(i.value); else RUNSEL.delete(i.value); });
   $('#tcAll').checked = !!all.length && on === all.length; $('#tcAll').indeterminate = on > 0 && on < all.length;
   $('#btnRun').disabled = !on || running; $('#btnRun').textContent = on ? `▶ Run ${on} test${on > 1 ? 's' : ''}` : '▶ Run';
 }
 function renderRun(d, withVideo) {
-  const c = d.current;
-  $('#runTitle').textContent = d.state === 'queued' ? 'Waiting in the queue…' : c ? `${c.id} · ${c.name}` : 'Running…';
-  $('#runTime').textContent = d.seconds != null ? Number(d.seconds).toFixed(1) + ' s' : '';
+  const c = d.current, waiting = d.state === 'queued' || !!d.waiting, live = d.state === 'queued' || d.state === 'running';
+  const saving = live && !waiting && d.phase === 'saving';
+  // no step runs yet (signing in) or the run is stopping: say what happens instead of a bare title and timer
+  const note = live && !waiting && !saving && d.note ? d.note : '';
+  $('#runTitle').textContent = d.stopping ? 'Stopping…' : waiting ? 'Waiting in the queue…' : c ? `${c.id} · ${c.name}` : live ? (d.title || 'Starting…') : (d.title || 'Run finished');
+  // why it waits (DEPLOY.md section 5): a queued run must not look like a hung one
+  $('#runWait').hidden = !((waiting || saving || note) && live);
+  $('#runWait').textContent = waiting ? `Waiting: ${d.waiting || 'the run is in the queue'}. It starts by itself when it is free.`
+    : saving ? (d.stopping ? 'Stopped. Saving the video and the bug pack (trace) of the steps that ran… this can take a minute on a busy server.'
+      : 'All steps are done. Saving the video and the bug pack (trace)… this can take a minute on a busy server.')
+    : note ? note : '';
+  $('#runTime').textContent = waiting && !(d.seconds > 0) ? '' : d.seconds != null ? Number(d.seconds).toFixed(1) + ' s' + (d.waited >= 1 ? ` (waited ${Math.round(d.waited)} s)` : '') : '';
+  $('#btnStopRun').hidden = !live; $('#btnStopRun').disabled = !!d.stopping;
   const st = d.steps || [];
   $('#runSteps').innerHTML = st.map(s => `<li class="${s.status === 'ok' ? 'ok' : s.status === 'bad' ? 'bad' : s.status === 'doing' ? 'now' : ''}"><span class="ic">${s.status === 'ok' ? '✓' : s.status === 'bad' ? '✗' : s.status === 'skip' ? '–' : '·'}</span><span>${esc(s.text)}</span><span class="hint">${s.status === 'skip' ? 'skipped' : s.secs != null && s.status !== 'todo' ? esc(s.secs) + 's' : ''}</span></li>`).join('');
   const now = $('#runSteps li.now'); if (now) now.scrollIntoView({ block: 'nearest' });
   const total = d.total || 1, doneSteps = st.filter(s => ['ok', 'bad', 'skip'].includes(s.status)).length;
   $('#prog').style.width = Math.min(100, ((d.done || 0) + (st.length ? doneSteps / st.length : 0)) / total * 100) + '%';
   $('#scrTitle').textContent = c ? c.name : '—'; $('#scrUrl').textContent = String(ST.env?.app_url || '').replace(/^https?:\/\//, '') || '—';
-  $('#recl').hidden = !(withVideo && d.state === 'running');
+  $('#recl').hidden = !(withVideo && d.state === 'running' && !waiting && !saving && !d.stopping && !!c);
+  if (d.shot_n && d.shot_n !== renderRun.lastShot && renderRun.rid) {
+    renderRun.lastShot = d.shot_n;
+    const img = $('#scrImg'); img.src = `/api/run/shot?id=${enc(renderRun.rid)}&n=${d.shot_n}`; img.hidden = false; $('#scrHint').hidden = true;
+  }
 }
 async function runTests(ids) {
-  if (running) return; if (!ids.length) { toast('Pick at least one test.'); return; }
-  const body = { ids, video: $('#oVideo').checked, shots: $('#oShot').checked, bugpack: $('#oTrace').checked, stop_first: $('#oStop').checked };
+  if (running) { toast('A run is already going in this tab. Wait for it to finish or stop it on the Run screen (or use another tab).'); return; } if (!ids.length) { toast('Pick at least one test.'); return; }
+  const body = { ids, video: $('#oVideo').checked, shots: $('#oShot').checked, bugpack: $('#oTrace').checked, stop_first: $('#oStop').checked, who: meName() };   // who ran it: Reports and the Team view
   let r; try { r = await api('/api/run', body); } catch (e) { toast(e.message); return; }
-  running = true; $('#btnRun').disabled = true; $('#failBox').hidden = true; go('run');
+  return followRun(r.run_id, body.video);
+}
+async function followRun(rid, video, stay) {
+  running = true; $('#btnRun').disabled = true; $('#failBox').hidden = true;
+  if (!stay && !$('#v-run').classList.contains('on')) go('run');
+  renderRun.rid = rid; renderRun.lastShot = 0; $('#scrImg').hidden = true; $('#scrHint').hidden = false;
+  try { sessionStorage.setItem('ts.followRun', rid); } catch (e) { /* storage blocked */ }
   $('#runSteps').innerHTML = ''; $('#prog').style.width = '0%';
   await new Promise(res => {
     poller(async () => {
-      const d = await api('/api/run?id=' + enc(r.run_id)); renderRun(d, body.video);
+      const d = await api('/api/run?id=' + enc(rid)); renderRun(d, video);
       if (d.state === 'queued' || d.state === 'running') return;
-      running = false; $('#recl').hidden = true; $('#runTitle').textContent = d.state === 'error' ? 'Run stopped' : 'Run finished'; updRunBtn();
-      finishRun(d, r.run_id).then(res); return false;
+      running = false; $('#recl').hidden = true; $('#btnStopRun').hidden = true; $('#runWait').hidden = true;
+      $('#runTitle').textContent = d.state === 'error' ? 'Run stopped' : d.state === 'stopped' ? (d.title || 'Run stopped') : 'Run finished'; updRunBtn();
+      finishRun(d, rid).then(res); return false;
     }, 700);
   });
+}
+/* after a reload (F5) the Run screen picks up the QA's run that is still going */
+async function resumeRun() {
+  if (running || resumeRun.busy) return; resumeRun.busy = true;
+  // this tab's own run first (kept across F5), else a run that has a browser before one still in the queue
+  try { const d = await api('/api/run/mine'), runs = d.runs || []; let kept = ''; try { kept = sessionStorage.getItem('ts.followRun') || ''; } catch (e) { /* storage blocked */ }
+    const x = runs.find(r => r.id === kept) || runs.find(r => r.state === 'running') || runs[0]; if (x && !running) { followRun(x.id, x.video, true); } }
+  catch (e) { /* nothing to resume */ }
+  if (!running) {                    // a Python script that is still going comes back on the Run screen too
+    try { const c = await api('/api/scripts/current'); if (c.job && !running) followScript(c.job, c.node); } catch (e) { /* none */ }
+  }
+  resumeRun.busy = false;
+}
+async function stopRun() {
+  if (!renderRun.rid) return;
+  modal('Stop this run?', '<p>Tests that have not started will not run. The test that is running stops at its next step; its clean-up steps still run.</p>',
+    [{ label: 'Keep running' }, { label: 'Stop run', cls: 'r', fn: async () => { try { await api('/api/run/stop', { id: renderRun.rid }); $('#btnStopRun').disabled = true; toast('Stopping the run…'); } catch (e) { toast(e.message); } } }]);
 }
 async function finishRun(d, rid) {
   const bad = (d.results || []).filter(x => x.result === 'Fail');
@@ -882,37 +1550,67 @@ async function finishRun(d, rid) {
     $('#failBox').innerHTML = `<h3>${esc(d.title || 'The run stopped')}</h3><pre style="white-space:pre-wrap;font-size:11.5px;margin:6px 0 0">${esc(String(d.log || '').slice(-500))}</pre>`;
     return;
   }
-  if (!bad.length) { toast(d.state === 'error' ? 'The run stopped with an error.' : 'All tests passed ✓'); return; }
+  const skip = (d.results || []).filter(x => x.result === 'Skip' || x.result === 'Blocked');
+  if (!bad.length && skip.length) {
+    $('#failBox').hidden = false;
+    $('#failBox').innerHTML = `<h3>${esc(skip.length)} test${skip.length > 1 ? 's were' : ' was'} not run or blocked by the test company's state</h3>` +
+      skip.slice(0, 5).map(x => `<div style="margin-top:4px"><b>${esc(x.test)}:</b> ${esc(x.err || 'skipped')}</div>`).join('') +
+      `<div class="row" style="margin-top:8px">${skip.some(x => /create or change data/.test(x.err || '')) ? '<button class="btn p" data-go2="settings">Open Settings</button>' : ''}${fbBtn({ place: 'run', kind: 'data', test: skip[0].test, run: rid, error: skip[0].err || 'skipped' })}</div>`;
+    return;
+  }
+  if (!bad.length) { toast(d.state === 'error' ? 'The run stopped with an error.' : d.state === 'stopped' ? 'The run was stopped.' : 'All tests passed ✓'); return; }
   let rowId = rid; try { const rs = (await api('/api/runs')).runs || []; const m = rs.find(x => x.test === bad[0].test); if (m) rowId = m.id; } catch (e) { /* keep run id */ }
   const f = bad[0]; $('#failBox').hidden = false;
-  $('#failBox').innerHTML = `<h3>${esc(f.test)} failed${f.failAt != null ? ' at step ' + (f.failAt + 1) : ''}</h3><div><b>What happened:</b> ${esc(f.err || 'The test stopped.')}</div>
-    <div class="row" style="margin-top:8px"><button class="btn" data-dl="recorder" data-id="${esc(f.test)}">Chrome Recorder file</button><button class="btn" data-pack="${esc(rowId)}">Bug pack for developer</button><button class="btn p" data-open="${esc(rowId)}">Full report</button></div>`;
+  $('#failBox').innerHTML = `<h3>${esc(f.test)} failed${f.failAt != null ? ' at step ' + (f.failAt + 1) : ''}</h3>${explainHtml(f.explain, { error: f.err, name: f.test, run: rowId })}<details><summary class="hint">Technical message</summary><pre class="cv">${esc(f.err || 'The test stopped.')}</pre></details>
+    <div class="row" style="margin-top:8px"><button class="btn" data-dl="recorder" data-id="${esc(f.test)}">Chrome Recorder file</button><button class="btn" data-pack="${esc(rowId)}">Bug pack for developer</button><button class="btn p" data-open="${esc(rowId)}">Full report</button>${fbBtn({ place: 'run', test: f.test, run: rowId, step: f.failAt != null ? String(f.failAt + 1) : '', error: f.err || '' })}</div>${knownLine(f.test)}`;
 }
 
 /* ---------- reports ---------- */
 async function renderReport() {
   let d; try { d = await api('/api/runs'); } catch (e) { toast(e.message); return; }
-  const k = d.kpis || {};
-  $('#rkpis').innerHTML = [[k.runs ?? 0, 'runs'], [k.passed ?? 0, 'passed'], [k.failed ?? 0, 'failed'], [k.testers ?? 0, 'testers']].map(([b, s]) => `<div class="kpi"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('');
-  const rs = d.runs || [];
-  $('#runTable tbody').innerHTML = rs.map(r => `<tr class="click" data-open="${esc(r.id)}"><td>${esc(r.id)}</td><td>${esc(r.test)} · ${esc(r.name)}</td><td>${esc(r.module || '')}</td><td>${esc(r.author || '')}</td><td>${esc(r.at)}</td><td>${esc(r.passed)}/${esc(r.total)}</td><td><span class="tag ${r.result === 'Pass' ? 't-ok' : r.result === 'Fail' ? 't-bad' : 't-mute'}">${esc(r.result)}</span></td></tr>`).join('')
-    || '<tr><td colspan="7" class="hint">No runs yet. Pick tests on the Run screen and press Run.</td></tr>';
+  REPORT.runs = d.runs || []; REPORT.kpis = d.kpis || {};
+  const keep = (sel, vals, first) => { const el = $(sel), v = el.value; el.innerHTML = `<option value="">${first}</option>` + vals.map(([val, lab]) => `<option value="${esc(val)}">${esc(lab)}</option>`).join(''); el.value = vals.some(x => x[0] === v) ? v : ''; };
+  keep('#rMod', [...new Set(REPORT.runs.map(r => r.module).filter(Boolean))].sort().map(m => [m, m]), 'All modules');
+  const by = new Map(REPORT.runs.filter(r => r.runBy).map(r => [r.runBy, r.runByName || r.runBy]));
+  keep('#rBy', [...(AUTH.server && AUTH.user ? [['@me', 'My runs']] : []), ...[...by].sort((a, b) => a[1].localeCompare(b[1]))], 'Everyone');
+  drawReport();
+}
+const REPORT = { runs: [], kpis: {} };
+function runDate(at) { const t = Date.parse(String(at || '').replace(/-/g, ' ')); return isNaN(t) ? null : t; }
+function drawReport() {
+  const q = $('#rFind').value.trim().toLowerCase(), mod = $('#rMod').value, res = $('#rRes').value, by = $('#rBy').value, days = +$('#rWhen').value || 0;
+  const since = days ? new Date(new Date().setHours(0, 0, 0, 0)).getTime() - (days - 1) * 86400000 : 0;
+  const rs = REPORT.runs.filter(r => (!q || `${r.id} ${r.test} ${r.name}`.toLowerCase().includes(q)) && (!mod || r.module === mod) && (!res || r.result === res)
+    && (!by || (by === '@me' ? r.runBy === AUTH.user?.username : r.runBy === by)) && (!since || (runDate(r.at) ?? 0) >= since));
+  const n = x => rs.filter(r => r.result === x).length, filtered = rs.length !== REPORT.runs.length;
+  $('#rkpis').innerHTML = [[rs.length, 'runs'], [n('Pass'), 'passed'], [n('Fail'), 'failed'], [rs.length - n('Pass') - n('Fail'), 'skipped or blocked'], [new Set(rs.map(r => r.runBy).filter(Boolean)).size, 'testers']].map(([b, s]) => `<div class="kpi"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('');
+  $('#rCount').textContent = filtered ? `${rs.length} of ${REPORT.runs.length} runs` : '';
+  $('#runTable tbody').innerHTML = rs.map(r => `<tr class="click" data-open="${esc(r.id)}"><td>${esc(r.id)}</td><td>${esc(r.test)} · ${esc(r.name)}</td><td>${esc(r.module || '')}</td><td>${r.runBy ? esc(r.runByName || r.runBy) : '<span class="hint">—</span>'}</td><td>${esc(r.author || '')}</td><td>${esc(r.at)}</td><td>${esc(r.passed)}/${esc(r.total)}</td><td><span class="tag ${r.result === 'Pass' ? 't-ok' : r.result === 'Fail' ? 't-bad' : r.result === 'Blocked' ? 't-warn' : 't-mute'}" title="${r.result === 'Blocked' ? 'The QA company could not be put into the state this test needs. Not an app failure.' : ''}">${esc(r.result)}</span>${r.result === 'Pass' && String(r.err || '').startsWith('Note:') ? ' <span class="tag t-mute" title="' + esc(r.err) + '">data restored</span>' : ''}</td></tr>`).join('')
+    || `<tr><td colspan="8" class="hint">${REPORT.runs.length ? 'No runs match these filters.' : 'No runs yet. Pick tests on the Run screen and press Run.'}</td></tr>`;
+}
+/* heading of a Skip run in the drawer: a run the user stopped part way is not a test that never started */
+function skipHead(r, st) {
+  const m = /^Stopped by the user(?: at step (\d+))?/.exec(String(r.err || ''));
+  const ran = (st || []).some(s => s.status === 'Pass' || s.status === 'Fail');
+  if (m) return m[1] ? `Stopped at step ${m[1]}` : 'Stopped by the user';
+  return ran ? 'Stopped part way' : 'Not run';
 }
 async function openRun(id) {
   let d; try { d = await api('/api/runs/detail?id=' + enc(id)); } catch (e) { toast(e.message); return; }
-  const r = d.run || {}, st = d.steps || [], f = d.files || {}, shots = f.screens || [];
+  const r = d.run || {}, st = d.steps || [], f = d.files || {}, shots = (f.screens || []).slice().sort((a, b) => String(a.name).localeCompare(String(b.name), undefined, { numeric: true }));
   const dis = (ok, label, kind, tid, note) => `<button class="btn q" ${ok ? `data-dl="${kind}" data-id="${esc(tid)}"` : 'disabled'} ${ok ? '' : 'title="Not recorded in this run"'}>${ok ? 'Download' : 'Not available'}</button>`;
   $('#drTitle').textContent = `${r.id} · ${r.test} ${r.name}`;
-  $('#drBody').innerHTML = `<p class="hint" style="margin-top:0">Module <b>${esc(r.module || '-')}</b> · written by <b>${esc(r.author || '-')}</b> · run ${esc(r.at)} · <span class="tag ${r.result === 'Pass' ? 't-ok' : 't-bad'}">${esc(r.result)}</span>${r.aiFixes ? ` · <span class="tag t-ai">${esc(r.aiFixes)} AI fix</span>` : ''}</p>
-    ${r.err ? `<div class="understood bad" style="margin-bottom:10px"><b>Stopped${r.failAt != null ? ' at step ' + (r.failAt + 1) : ''}</b><div>${esc(r.err)}</div></div>` : ''}
+  const tagCls = { Pass: 't-ok', Fail: 't-bad', Blocked: 't-warn' }[r.result] || 't-mute', stepNo = r.failAt != null && r.failAt >= 0 && r.result !== 'Skip';
+  $('#drBody').innerHTML = `<p class="hint" style="margin-top:0">Module <b>${esc(r.module || '-')}</b> · written by <b>${esc(r.author || '-')}</b>${r.runBy ? ` · run by <b>${esc(r.runByName || r.runBy)}</b>` : ''} · run ${esc(r.at)} · <span class="tag ${tagCls}">${esc(r.result)}</span>${r.aiFixes ? ` · <span class="tag t-ai">${esc(r.aiFixes)} AI fix</span>` : ''}</p>
+    ${r.err ? `<div class="understood ${r.result === 'Pass' ? '' : 'bad'}" style="margin-bottom:10px"><b>${r.result === 'Skip' ? skipHead(r, st) : r.result === 'Pass' ? 'Note' : 'Stopped' + (stepNo ? ' at step ' + (r.failAt + 1) : '')}</b>${d.explain && d.explain.what ? explainHtml(d.explain, { error: r.err, name: r.test + ' ' + r.name, run: r.id }) + `<details><summary class="hint">Technical message</summary><div>${esc(r.err)}</div></details>` : `<div>${esc(r.err)}</div>`}</div>` : ''}
     <h3 style="font-size:13px">Steps</h3><ul class="steps">${st.map(s => `<li class="${s.status === 'Pass' ? 'ok' : s.status === 'Fail' ? 'bad' : ''}"><span class="ic">${s.status === 'Pass' ? '✓' : s.status === 'Fail' ? '✗' : '–'}</span><span>${esc(s.text)}</span><span class="hint">${s.status === 'Skip' ? 'skipped' : ''}</span></li>`).join('') || '<li><span></span><span class="hint">No step details were kept for this run.</span></li>'}</ul>
-    <h3 style="font-size:13px;margin-top:12px">Screenshots</h3>${shots.length ? `<div class="thumbs">${shots.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener"><div class="thumb">${esc(String(s.name).slice(0, 34))}</div></a>`).join('')}</div>` : '<p class="hint" style="margin:0">No screenshots were taken in this run.</p>'}
+    <h3 style="font-size:13px;margin-top:12px">Screenshots</h3>${shots.length ? `<div class="thumbs">${shots.map(s => `<a href="${esc(s.url)}" data-lb data-cap="${esc(s.name)}" title="Click to enlarge"><img class="thumbimg" src="${esc(s.url)}" alt="${esc(s.name)}" loading="lazy"><span>${esc(String(s.name).slice(0, 34))}</span></a>`).join('')}</div>` : '<p class="hint" style="margin:0">No screenshots were taken in this run.</p>'}
     <h3 style="font-size:13px;margin-top:12px">Files</h3><div class="files">
       <div class="file"><b>Video · run.webm</b><span class="hint">Whole run</span><br>${dis(f.video, '', 'video', r.id)}</div>
       <div class="file"><b>Chrome Recorder · recorder.json</b><span class="hint">DevTools → Recorder → Import → Replay</span><br>${dis(true, '', 'recorder', r.test)}</div>
       <div class="file"><b>Playwright trace · trace.zip</b><span class="hint">DOM, network, console per step</span><br>${dis(f.trace, '', 'trace', r.id)}</div>
       <div class="file"><b>Script · test.spec.ts</b><span class="hint">Code for developers</span><br>${dis(true, '', 'spec', r.test)}</div></div>
-    <div class="row" style="margin-top:12px"><button class="btn p" data-dl="report" data-id="${esc(r.id)}">Download report (HTML)</button><button class="btn" data-pack="${esc(r.id)}">Bug pack for developer</button></div>`;
+    <div class="row" style="margin-top:12px"><button class="btn p" data-dl="report" data-id="${esc(r.id)}">Download report (HTML)</button><button class="btn" data-pack="${esc(r.id)}">Bug pack for developer</button>${fbBtn({ place: 'report', kind: r.result === 'Pass' ? 'idea' : 'studio', test: r.test, run: r.id, step: stepNo ? String(r.failAt + 1) : '', error: r.err || '', context: { Result: r.result, Module: r.module || '', 'Written by': r.author || '' } })}</div>${knownLine(r.test)}`;
   $('#drawer').hidden = false; $('#drClose').focus();
 }
 
@@ -923,7 +1621,7 @@ async function renderMemory() {
   try { r = await api(`/api/memory?screen=${enc(keep)}&q=${enc(q)}`); } catch (e) { toast(e.message); return; }
   sc.innerHTML = '<option value="">All screens</option>' + (r.screens || []).map(n => `<option ${n === keep ? 'selected' : ''}>${esc(n)}</option>`).join('');
   const rows = (r.rows || []).map(fd => { const c = fd.stab >= 90 ? '#14874A' : fd.stab >= 82 ? '#B7791F' : '#D23A3A', l = fd.loc || {};
-    return `<tr><td>${esc(fd.screen)}</td><td><b>${esc(fd.field)}</b></td><td><code>${esc(l.primary || '')}</code>${l.xpath ? `<br><code class="hint">${esc(l.xpath)}</code>` : ''}</td><td><span class="stab"><i style="width:${Math.max(0, Math.min(100, +fd.stab || 0))}%;background:${c}"></i></span>${esc(fd.stab)}%</td><td>${(fd.aliases || []).slice(0, 4).map(esc).join(', ')}${(fd.taught || []).map(a => ` <span class="tag t-ai">${esc(a)}</span>`).join('')}</td></tr>`; });
+    return `<tr><td>${esc(fd.screen)}</td><td><b>${esc(fd.field)}</b></td><td><code>${esc(l.primary || '')}</code>${l.xpath ? `<br><code class="hint">${esc(l.xpath)}</code>` : ''}</td><td><span class="stab"><i style="width:${Math.max(0, Math.min(100, +fd.stab || 0))}%;background:${c}"></i></span>${esc(fd.stab)}%</td><td>${(fd.aliases || []).slice(0, 4).map(esc).join(', ')}${(fd.taught || []).map(a => ` <span class="tag t-ai">${esc(a)}${isAdmin() ? ` <button class="btn q sm" style="padding:0 4px;min-height:0" data-untaught="${esc(a)}" data-screen="${esc(fd.screen)}" title="Forget this taught word (for everyone)" aria-label="Forget taught word ${esc(a)}">✕</button>` : ''}</span>`).join('')}</td></tr>`; });
   $('#memTable tbody').innerHTML = rows.join('') || `<tr><td colspan="5" class="hint">${!r.total && !q && !keep ? 'App memory is empty – click Start learning.' : 'Nothing found.'}</td></tr>`;
 }
 function followLearn(job, btn, onDone) {
@@ -945,6 +1643,7 @@ async function learn() {
 let SET = {};
 const numOnly = s => parseInt(String(s).replace(/[^\d]/g, ''), 10) || 0;
 async function loadSettings() {
+  if (!isAdmin()) return;              // QA: only their own cards (the shared settings are admin-only)
   try { SET = await api('/api/settings'); } catch (e) { toast(e.message); return; }
   $('#sUrl').value = SET.url || ''; $('#sUser').value = SET.user || ''; $('#sComp').value = SET.company || '';
   $('#sPass').value = ''; $('#sPass').type = 'password'; $('#btnEye').textContent = 'Show'; $('#sPass').placeholder = SET.has_password ? '•••• saved' : '';
@@ -967,7 +1666,8 @@ async function saveSettings() {
 function newBlankCase() { cur = newCase(); parsed = []; resetRec('written'); renderEditor(); $('#tName').focus(); }
 function boot() {
   $('#who').onchange = e => { me = e.target.value; try { localStorage.setItem('ts_me', me); } catch (er) { /* ignore */ } if (cur && !cur.id) cur.author = me; renderHome(); toast(`You are now ${me}.`); };
-  $$('.nav').forEach(b => b.onclick = () => go(b.dataset.v));
+  // a screen opened from the nav is not "from Test cases" any more: drop the old back bar (it would point to a case the QA left)
+  $$('.nav').forEach(b => b.onclick = () => { if (!$('#v-' + b.dataset.v)?.classList.contains('on')) RETURN = null; go(b.dataset.v); });
   $$('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
   const TA = $('#tsrc');
   TA.addEventListener('input', () => { if (!cur) cur = newCase(); refresh(); });
@@ -987,14 +1687,53 @@ function boot() {
   $('#tPick').onchange = async e => {
     const id = e.target.value; if (!id) return;
     try { const d = await api('/api/tests/open?id=' + enc(id)); if (!(d.lines || []).length) { toast('This case was recorded, so it has no written lines to edit.'); e.target.value = ''; return; }
-      cur = { id: d.id, name: d.name, module: d.module, author: d.author, lines: d.lines }; parsed = []; resetRec('written'); renderEditor(); } catch (er) { toast(er.message); }
+      cur = { id: d.id, name: d.name, module: d.module, author: d.author, lines: d.lines, priority: d.priority, description: d.description };
+      // team mode: another QA's test is opened as your own copy (only its author or an admin may change it)
+      if (AUTH.server && !isAdmin() && d.author && d.author !== AUTH.user?.name) { cur = { ...cur, id: null, author: AUTH.user.name, name: d.name + ' (copy)' }; toast(`${d.id} was written by ${d.author}. Your changes are saved as a new test.`); }
+      parsed = []; resetRec('written'); renderEditor(); } catch (er) { toast(er.message); }
   };
   $('#btnNew').onclick = newBlankCase;
   $('#btnSave').onclick = () => saveTest();
   $('#btnGen').onclick = generate;
   $('#btnRun').onclick = () => runTests($$('#tcList input:checked').map(i => i.value));
+  $('#btnStopRun').onclick = stopRun;
   $('#modPick').addEventListener('click', e => { const b = e.target.closest('[data-mod]'); if (b && !b.disabled) { runMod = b.dataset.mod; renderRunList(); } });
   $('#tcList').addEventListener('change', updRunBtn);
+  let rTimer = null; $('#rFind').addEventListener('input', () => { clearTimeout(rTimer); rTimer = setTimeout(drawReport, 200); });
+  ['#rMod', '#rRes', '#rBy', '#rWhen'].forEach(k => $(k).addEventListener('change', drawReport));
+  // test cases, module wise
+  $('#csNav').addEventListener('click', e => { const b = e.target.closest('[data-csmod]'); if (b) { CS.mod = b.dataset.csmod; saveCS(); renderCases(); window.scrollTo(0, 0); } });
+  $('#csShow').addEventListener('click', e => { const b = e.target.closest('[data-show]'); if (b) { CS.show = b.dataset.show; saveCS(); renderCases(); } });
+  let csTimer = null;
+  $('#csFind').addEventListener('input', e => { clearTimeout(csTimer); csTimer = setTimeout(() => { CS.find = e.target.value.trim(); saveCS(); renderCases(); }, 200); });
+  // script viewer / editor
+  $('#svClose').onclick = closeSV; $('#svEdit').onclick = () => svMode(true); $('#svSave').onclick = saveSV; $('#svJump').onclick = svJump;
+  $('#svCancel').onclick = () => { if (svDirty() && !confirm('Throw away your changes?')) return; $('#svText').value = SV.text; svMode(false); svDraw(); };
+  $('#svCopy').onclick = () => { navigator.clipboard?.writeText($('#svText').value); toast('Script copied.'); };
+  $('#sv').addEventListener('click', e => { if (e.target.id === 'sv') closeSV(); });
+  $('#svText').addEventListener('input', svDraw);
+  $('#svText').addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') { e.preventDefault(); if (SV.editing) saveSV(); }
+    else if (e.key === 'Tab' && SV.editing) { e.preventDefault(); const t = e.target, a = t.selectionStart; t.setRangeText('    ', a, t.selectionEnd, 'end'); svDraw(); }
+    else if (e.key === 'Escape') { e.stopPropagation(); closeSV(); }
+  });
+  window.addEventListener('beforeunload', e => { if (svDirty()) { e.preventDefault(); e.returnValue = ''; } });
+  $('#csTrade').addEventListener('change', e => { CS.trade = e.target.value; saveCS(); renderCases(); });
+  $('#csTrade').value = CS.trade || ''; $('#csVer').value = CS.ver || ''; $('#csGst').value = CS.gst || ''; $('#csFind').value = CS.find || '';
+  $('#csVer').addEventListener('change', e => { CS.ver = e.target.value; saveCS(); renderCases(); });
+  $('#csGst').addEventListener('change', e => { CS.gst = e.target.value; saveCS(); renderCases(); });
+  $('#csMore').onclick = () => { CS.limit += 200; renderCases(); };
+  $('#csList').addEventListener('toggle', e => { if (e.target.open) openCase(e.target); }, true);
+  $('#csList').addEventListener('click', e => {
+    const sr = e.target.closest('[data-srun]'); if (sr) { if (!sr.disabled) runScript(sr); return; }
+    const wt = e.target.closest('[data-wtext]'); if (wt) { writeAsText(wt.dataset.wtext); return; }
+    const ws = e.target.closest('[data-wscript]'); if (ws) { if (!ws.disabled) writeAsScript(ws.dataset.wscript, ws); return; }
+    const sv = e.target.closest('[data-sview]'); if (sv) { openSV(sv.dataset.sview, false); return; }
+    const se = e.target.closest('[data-sedit]'); if (se) { openSV(se.dataset.sedit, true); return; }
+    const r = e.target.closest('[data-csrun]'); if (r) { if (running) { toast('A run is already going in this tab. Wait for it to finish or stop it on the Run screen (or use another tab).'); return; } leaveCases(r.dataset.csrun, 'run'); runTests([r.dataset.csrun]); return; }
+    const rc = e.target.closest('[data-csrec]'); if (rc) { leaveCases(rc.closest('.cs-case')?.dataset.csid || '', 'record'); go('record'); toast(`Record the steps, then save it as “${rc.dataset.csrec}”.`); return; }
+    const w = e.target.closest('[data-cswrite]'); if (w) { go('write'); newBlankCase(); $('#tName').value = w.dataset.cswrite; if (cur) cur.name = w.dataset.cswrite; const sel = $('#tMod'); if ([...sel.options].some(o => o.value === w.dataset.csmodule)) { sel.value = w.dataset.csmodule; if (cur) cur.module = w.dataset.csmodule; } }
+  });
   $('#tcAll').addEventListener('change', e => { $$('#tcList input:not(:disabled)').forEach(i => { i.checked = e.target.checked; }); updRunBtn(); });
   // record + pipeline
   $('#recPanel').addEventListener('click', e => {
@@ -1003,7 +1742,9 @@ function boot() {
     else if (id === 'btnAgain') { resetRec('record'); renderRecord(); }
     else if (id === 'btnStop') stopRec();
     else if (id === 'btnReview') review();
-    else if (id === 'btnAll') applyFindings(rec.findings.map(f => f.id));
+    else if (id === 'btnAll') applyFindings(rec.findings.filter(f => !f.manual).map(f => f.id));
+    else if (id === 'btnReplay' && rec.findings.some(f => (f.manual || NO_SKIP.includes(f.id)) && f.sev === 'Must fix' && !rec.applied.has(f.id))) {
+      toast(rec.findings.some(f => f.id === 'no-actions') ? 'There is nothing to replay: paste the Playwright TypeScript code first.' : 'Confirm the login change first: a password must never stay in a test.'); }
     else if (id === 'btnReplay') { const must = rec.findings.filter(f => f.sev === 'Must fix' && !rec.applied.has(f.id)).length;
       if (must) modal('Replay without fixes?', `<p>${must} “Must fix” suggestion(s) are not applied. The replay may fail; AI will then try to fix it.</p>`, [{ label: 'Go back' }, { label: 'Replay anyway', cls: 'g', fn: () => startReplay(false) }]); else startReplay(false); }
     else if (id === 'btnRetry') startReplay(true);
@@ -1014,7 +1755,7 @@ function boot() {
     else if (id === 'btnEditSteps') { $('#tsrc').focus(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
     else if (id === 'btnWriteNew') { newBlankCase(); window.scrollTo(0, 0); }
     const ap = e.target.closest('[data-apply]'); if (ap) applyFindings([ap.dataset.apply]);
-    const sk = e.target.closest('[data-skip]'); if (sk) { rec.applied.add(sk.dataset.skip); rec.skipped.add(sk.dataset.skip); renderRecord(); }
+    const sk = e.target.closest('[data-skip]'); if (sk && !NO_SKIP.includes(sk.dataset.skip)) { rec.applied.add(sk.dataset.skip); rec.skipped.add(sk.dataset.skip); renderRecord(); }
     const g2 = e.target.closest('[data-go2]'); if (g2) go(g2.dataset.go2);
   });
   $('#code').addEventListener('input', () => { rec.code = $('#code').value; drawGutter(); });
@@ -1022,11 +1763,22 @@ function boot() {
   $('#btnCopy').onclick = () => { navigator.clipboard?.writeText($('#code').value); toast('Script copied.'); };
   document.addEventListener('click', e => {
     const o = e.target.closest('[data-open]'); if (o) { openRun(o.dataset.open); return; }
+    const g3 = e.target.closest('[data-go3]'); if (g3) { e.preventDefault(); go(g3.dataset.go3); return; }
     const d = e.target.closest('[data-dl]'); if (d && !d.disabled) { download(d.dataset.dl, d.dataset.id); return; }
     const p = e.target.closest('[data-pack]'); if (p) { download('bugpack', p.dataset.pack); toast('Bug pack downloading.'); }
   });
   $('#drClose').onclick = () => { $('#drawer').hidden = true; };
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { $('#drawer').hidden = true; $('#modal').hidden = true; } });
+  document.addEventListener('keydown', e => {
+    if (!$('#lb').hidden) { if (e.key === 'Escape') lbClose(); else if (e.key === 'ArrowLeft' && LB.i > 0) { LB.i--; lbShow(); } else if (e.key === 'ArrowRight' && LB.i < LB.list.length - 1) { LB.i++; lbShow(); } return; }
+    if (e.key === 'Escape') { if (!$('#sv').hidden) { closeSV(); return; } $('#drawer').hidden = true; $('#modal').hidden = true; } });
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[data-lb]'); if (a) { e.preventDefault(); lbOpen(a); return; }
+    if (e.target.closest('[data-back]')) { backToCases(); }
+  });
+  $('#lbClose').onclick = lbClose; $('#lb').addEventListener('click', e => { if (e.target.id === 'lb') lbClose(); });
+  $('#lbPrev').onclick = () => { if (LB.i > 0) { LB.i--; lbShow(); } }; $('#lbNext').onclick = () => { if (LB.i < LB.list.length - 1) { LB.i++; lbShow(); } };
+  window.addEventListener('popstate', e => { const v = e.state?.v || 'home'; if (!$('#lb').hidden) lbClose(); go(v, true); });
+  try { history.replaceState({ v: (location.hash || '#home').slice(1) || 'home' }, '', location.hash || '#home'); } catch (e) { /* ignore */ }
   $('#btnLearn').onclick = () => modal('Start learning?', '<p>This logs in, <b>backs up Control Room settings</b>, turns settings and menus on, then opens every screen. Use a <b>test company</b> only.</p>', [{ label: 'Cancel' }, { label: 'Start learning', cls: 'g', fn: learn }]);
   $('#btnRestore').onclick = () => modal('Restore settings?', '<p>The Control Room settings saved before learning will be put back.</p>', [{ label: 'Cancel' }, { label: 'Restore', cls: 'p', fn: async () => { $('#learnLog').textContent = ''; try { const r = await api('/api/learn/restore', {}); followLearn(r.job, $('#btnRestore')); } catch (e) { toast(e.message); } } }]);
   $('#btnCode').onclick = async () => {
@@ -1034,6 +1786,11 @@ function boot() {
     try { const r = await api('/api/code/read', { web: $('#pWeb').value.trim(), api: $('#pApi').value.trim() }); $('#codeLog').textContent = r.message || ''; $('#codeRes').textContent = r.ok ? `${r.elements ?? 0} fields · ${r.routes ?? 0} routes` : 'Not read'; if (r.ok) { renderMemory(); refreshState(); } }
     catch (e) { $('#codeLog').textContent = e.message; $('#codeRes').textContent = 'Not read'; } btn.disabled = false;
   };
+  $('#memTable').addEventListener('click', async e => {
+    const b = e.target.closest('[data-untaught]'); if (!b) return;
+    if (!confirm(`Forget the taught word “${b.dataset.untaught}” on ${b.dataset.screen}? It stops working for everyone.`)) return;
+    try { await api('/api/write/untaught', { term: b.dataset.untaught, screen: b.dataset.screen }); toast('Taught word removed.'); renderMemory(); } catch (er) { toast(er.message); }
+  });
   $('#mScreen').onchange = renderMemory; $('#mFind').oninput = () => { clearTimeout(memTimer); memTimer = setTimeout(renderMemory, 250); };
   $('#btnEye').onclick = () => { const p = $('#sPass'); p.type = p.type === 'password' ? 'text' : 'password'; $('#btnEye').textContent = p.type === 'password' ? 'Show' : 'Hide'; };
   $('#btnSaveSet').onclick = saveSettings;
@@ -1042,8 +1799,304 @@ function boot() {
     try { const r = await api('/api/settings/test-login', {}); toast(r.message || (r.ok ? 'Logged in.' : 'Login failed.')); } catch (e) { toast(e.message); }
     b.disabled = false; b.textContent = 'Test login';
   };
-  renderHome();
+  // open the screen the address names (#cases after F5, a bookmarked link), not always Home
+  teamGate().then(ok => { if (ok) { const v = (location.hash || '#home').slice(1) || 'home'; go(VIEWS.includes(v) ? v : 'home', true); } });
 }
+
+/* ---------- team (server) mode: Studio login, my MargBooks login, users ---------- */
+/* ---------- feedback ---------- */
+const FB_KINDS = { app_bug: 'App bug (MargBooks itself is wrong)', test_wrong: 'Test case is wrong (steps or expected result)', studio: 'Studio / runner problem (the test is right, the tool failed)', data: 'Test data or company setup (stock, setting, party…)', login: 'Login or access problem', idea: 'Suggestion or new feature' };
+const FB_PLACE_KIND = { run: 'studio', report: 'studio', case: 'test_wrong', replay: 'studio', verify: 'studio', write: 'studio', login: 'login', general: 'studio' };
+const FB_TITLE = { run: 'Report a problem with this run', report: 'Report a problem with this run', case: 'Report a problem with this test case', replay: 'Report a replay problem', verify: 'This suggestion is wrong', write: 'The Studio does not understand this line', login: 'Report a login problem', general: 'Give feedback' };
+const FB_ST_CLS = { open: 't-bad', in_progress: 't-warn', fixed: 't-ok', wont_fix: 't-mute' };
+let FB = null, KNOWN = {};
+const fbBtn = (ctx, label = '⚑ Report a problem', cls = 'btn') => `<button type="button" class="${cls}" data-fb="${esc(JSON.stringify(ctx))}">${esc(label)}</button>`;
+const knownTag = id => KNOWN[id] ? `<span class="tag t-warn" title="${esc(KNOWN[id].last)}">⚠ ${esc(KNOWN[id].n)} known issue${KNOWN[id].n > 1 ? 's' : ''}</span>` : '';
+const knownLine = id => KNOWN[id] ? `<p class="hint" style="margin:8px 0 0;color:var(--warn)">⚠ ${esc(KNOWN[id].n)} open feedback on ${esc(id)}: “${esc(KNOWN[id].last)}”. <a href="#feedback" data-fbgo="1">See Feedback</a></p>` : '';
+async function loadKnown() { try { KNOWN = (await api('/api/feedback/known')).known || {}; } catch (e) { /* keep the last one */ } return KNOWN; }
+function fbBadge(n) { const b = $('#fbBadge'); if (!b) return; b.hidden = !n || !isAdmin(); b.textContent = n > 99 ? '99+' : String(n); }
+function openFeedback(ctx = {}) {
+  FB = Object.assign({ place: 'general' }, ctx);
+  const kind = ctx.kind || FB_PLACE_KIND[FB.place] || 'studio';
+  $('#fbTitle').textContent = FB_TITLE[FB.place] || 'Give feedback';
+  $('#fbKind').innerHTML = Object.entries(FB_KINDS).map(([k, v]) => `<option value="${k}" ${k === kind ? 'selected' : ''}>${esc(v)}</option>`).join('');
+  const rows = [['Test', FB.test], ['Run', FB.run], [FB.place === 'write' ? 'Line' : 'Step', FB.step], ['Error', FB.error], ...Object.entries(FB.context || {})].filter(r => r[1]);
+  $('#fbCtx').innerHTML = (rows.length ? `<table class="kv" style="border-collapse:collapse">${rows.map(([k, v]) => `<tr><td class="hint" style="padding:2px 10px 2px 0;vertical-align:top;white-space:nowrap">${esc(k)}</td><td style="white-space:pre-wrap;word-break:break-word">${esc(String(v).slice(0, 700))}</td></tr>`).join('')}</table>` : '')
+    + `<div class="hint" style="margin-top:4px">Sent with it: your name, the screen, ${esc(envText())}</div>`;
+  $('#fbText').value = ''; $('#fbErr').textContent = ''; $('#fbModal').hidden = false; setTimeout(() => $('#fbText').focus(), 30);
+}
+async function sendFeedback() {
+  const text = $('#fbText').value.trim();
+  if (text.length < 5) { $('#fbErr').textContent = 'Write a few words: what you did, what you saw, what you expected.'; $('#fbText').focus(); return; }
+  const b = $('#fbSend'); if (b.disabled) return; b.disabled = true; b.textContent = 'Sending…';
+  try {
+    const r = await api('/api/feedback', { kind: $('#fbKind').value, place: FB.place, text, test: FB.test || '', run: FB.run || '', step: FB.step ? String(FB.step) : '', error: FB.error || '', context: Object.assign({ Screen: (location.hash || '#home').slice(1) }, FB.context || {}), who: meName() });
+    $('#fbModal').hidden = true; toast(`Thanks – ${r.ref} sent. Follow it under Feedback.`);
+    await loadKnown(); refreshState();
+    if ($('#v-feedback').classList.contains('on')) renderFeedback();
+  } catch (e) { $('#fbErr').textContent = e.message; }
+  finally { b.disabled = false; b.textContent = 'Send feedback'; }
+}
+let FBD = null, fbTimer = null;
+async function renderFeedback() {
+  if ($('#fbKindF').options.length < 2) $('#fbKindF').innerHTML = '<option value="">All kinds</option>' + Object.entries(FB_KINDS).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('');
+  const q = `status=${enc($('#fbStatus').value)}&kind=${enc($('#fbKindF').value)}&q=${enc($('#fbFind').value.trim())}&mine=${$('#fbMine').checked ? '1' : ''}`;
+  try { FBD = await api('/api/feedback?' + q); } catch (e) { $('#fbList').innerHTML = `<div class="tc-empty">${esc(e.message)}</div>`; return; }
+  const admin = FBD.admin, c = FBD.counts || {};
+  $('#fbMineWrap').hidden = !(admin && AUTH.server);
+  $('#fbIntro').textContent = admin ? 'Everything the team reported. Open the run or the test from here, set a status and reply: the QA sees your reply under Feedback.'
+    : 'Your feedback and the admin’s replies. Use “Report a problem” on a run, a test case or a replay: the details are added for you.';
+  $('#fbKpis').innerHTML = [['open', 'open'], ['in_progress', 'in progress'], ['fixed', 'fixed'], ['wont_fix', 'won’t fix']].map(([k, s]) => `<div class="kpi"><b>${esc(c[k] || 0)}</b><span>${s}</span></div>`).join('');
+  $('#fbCount').textContent = `${FBD.items.length} shown`;
+  $('#fbList').innerHTML = FBD.items.map(f => {
+    const ctx = [['Test', f.test ? `<a href="#cases" data-fbtest="${esc(f.test)}">${esc(f.test)}</a>` : ''], ['Run', f.run && /^R-/.test(f.run) ? `<a href="#report" data-fbrun="${esc(f.run)}">${esc(f.run)}</a> · <a href="#" data-fbpack="${esc(f.run)}">bug pack</a>` : esc(f.run)],
+      [f.place === 'write' ? 'Line' : 'Step', esc(f.step)], ['Error', esc(f.error)], ...Object.entries(f.context || {}).filter(([k]) => k !== 'Screen').map(([k, v]) => [esc(k), esc(v)]), ['Environment', esc(f.env)]].filter(r => r[1]);
+    return `<div class="fb-item" data-fbid="${esc(f.id)}"><div class="row" style="gap:6px;flex-wrap:wrap"><b>${esc(f.ref)}</b><span class="tag ${FB_ST_CLS[f.status] || 't-mute'}">${esc(f.statusName)}</span><span class="tag t-mute">${esc(f.kindName.split(' (')[0])}</span><span class="grow"></span><span class="hint">${esc(f.by)} · ${esc(f.at)} · from ${esc(f.placeName)}</span></div>
+      <div style="margin-top:6px;white-space:pre-wrap">${esc(f.text)}</div>
+      ${ctx.length ? `<table class="fb-ctx">${ctx.map(([k, v]) => `<tr><td class="hint">${k}</td><td style="white-space:pre-wrap;word-break:break-word">${v}</td></tr>`).join('')}</table>` : ''}
+      ${f.reply ? `<div class="understood" style="margin-top:8px"><b>Reply${f.repliedBy ? ' from ' + esc(f.repliedBy) : ''}${f.updated ? ' · ' + esc(f.updated) : ''}</b><div style="white-space:pre-wrap">${esc(f.reply)}</div></div>` : ''}
+      ${admin ? `<div class="fb-adm"><select class="inp" data-fbst="${esc(f.id)}" aria-label="Status of ${esc(f.ref)}">${Object.entries(FBD.statuses).map(([k, v]) => `<option value="${k}" ${k === f.status ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select><textarea class="inp" rows="2" data-fbrep="${esc(f.id)}" placeholder="Reply to ${esc(f.by)} (what was wrong, what you changed)" aria-label="Reply to ${esc(f.ref)}">${esc(f.reply)}</textarea><button class="btn p sm" data-fbsave="${esc(f.id)}">Save</button></div>` : ''}
+    </div>`;
+  }).join('') || `<div class="tc-empty">${$('#fbStatus').value === 'live' ? 'No open feedback. ' : 'No feedback matches. '}Use “+ Give feedback”, or “Report a problem” on a run, a test case or a replay.</div>`;
+}
+async function fbListClick(e) {
+  const a = e.target.closest('[data-fbtest],[data-fbrun],[data-fbpack],[data-fbsave]'); if (!a) return; e.preventDefault();
+  if (a.dataset.fbtest) { go('cases'); $('#csFind').value = a.dataset.fbtest; $('#csFind').dispatchEvent(new Event('input')); return; }
+  if (a.dataset.fbrun) { openRun(a.dataset.fbrun); return; }
+  if (a.dataset.fbpack) { download('bugpack', a.dataset.fbpack); toast('Bug pack downloading.'); return; }
+  const id = a.dataset.fbsave; a.disabled = true;
+  try { await api('/api/feedback/update', { id, status: $(`[data-fbst="${id}"]`).value, reply: $(`[data-fbrep="${id}"]`).value, who: meName() }); toast('Saved. The QA sees it under Feedback.'); await loadKnown(); refreshState(); renderFeedback(); }
+  catch (err) { toast(err.message); a.disabled = false; }
+}
+document.addEventListener('click', e => {           // every “Report a problem” button, on any screen
+  const gf = e.target.closest('[data-fbgo]');
+  if (gf) { e.preventDefault(); e.stopPropagation(); $('#drawer').hidden = true; go('feedback'); return; }
+  const el = e.target.closest('[data-fb]'); if (!el) return;
+  e.preventDefault(); e.stopPropagation();
+  let c = {}; try { c = JSON.parse(el.dataset.fb || el.getAttribute('data-fb') || '{}'); } catch (x) { /* plain feedback */ }
+  openFeedback(c);
+}, true);
+document.addEventListener('DOMContentLoaded', () => {
+  $('#fbSend').onclick = sendFeedback; $('#fbCancel').onclick = () => { $('#fbModal').hidden = true; };
+  $('#fbModal').addEventListener('keydown', e => { if (e.key === 'Escape') $('#fbModal').hidden = true; if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) sendFeedback(); });
+  $('#btnFbNew').onclick = () => openFeedback({ place: 'general' });
+  $('#fbList').addEventListener('click', fbListClick);
+  ['fbStatus', 'fbKindF', 'fbMine'].forEach(id => $('#' + id).addEventListener('change', renderFeedback));
+  $('#fbFind').addEventListener('input', () => { clearTimeout(fbTimer); fbTimer = setTimeout(renderFeedback, 250); });
+  loadKnown();
+});
+
+/* ---------- a failure in simple words (ui_studio/explain.py) ---------- */
+const SIDE_CLS = { test: 't-warn', app: 't-bad', setup: 't-ink', login: 't-ink', studio: 't-ai' };
+function explainHtml(x, ctx = {}) {
+  if (!x || !x.what) return '';
+  return `<div class="understood bad" data-explainbox style="margin:8px 0"><b>${esc(x.what)}</b>
+    <div style="margin-top:4px"><b>Why:</b> ${esc(x.why)}</div>
+    <div style="margin-top:2px"><b>What to do:</b> ${esc(x.next)}</div>
+    <div class="row" style="margin-top:6px;gap:6px;flex-wrap:wrap">${x.side_text ? `<span class="tag ${SIDE_CLS[x.side] || 't-mute'}">${esc(x.side_text)}</span>` : ''}${x.ai ? '<span class="tag t-ai">explained by AI</span>' : `<button type="button" class="fb-link" data-explain="${esc(JSON.stringify({ error: String(ctx.error || '').slice(0, 1500), step: ctx.step || '', name: ctx.name || '', run: ctx.run || '' }))}">Not clear? Explain with AI</button>`}</div></div>`;
+}
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-explain]'); if (!b) return;
+  e.preventDefault(); e.stopPropagation(); if (b.disabled) return; b.disabled = true; b.textContent = 'Asking AI…';
+  let c = {}; try { c = JSON.parse(b.dataset.explain); } catch (x) { /* empty */ }
+  try { const x = await api('/api/explain/ai', c); const box = b.closest('[data-explainbox]'); if (box) box.outerHTML = explainHtml(x, c); }
+  catch (err) { toast(err.message); b.disabled = false; b.textContent = 'Not clear? Explain with AI'; }
+}, true);
+
+/* ---------- Team (admin): people, coverage, failures, activity (ui_studio/team.py) ---------- */
+let TEAM = null;
+const pct = v => v == null ? '—' : v + '%';
+const bar = (v, cls = 'var(--ok)') => `<div class="prog" style="height:8px"><i style="width:${Math.max(0, Math.min(100, v || 0))}%;background:${cls}"></i></div>`;
+async function renderTeam() {
+  let d; try { d = await api('/api/team?days=' + enc($('#tmDays').value)); } catch (e) { $('#tmKpis').innerHTML = `<div class="tc-empty">${esc(e.message)}</div>`; return; }
+  TEAM = d; const k = d.kpis;
+  if (AUTH.server && isAdmin()) renderUsers();           // who has access is managed here too
+  $('#tmKpis').innerHTML = [[`${k.coverage}%`, `covered · ${k.covered.toLocaleString('en-IN')} of ${k.cases.toLocaleString('en-IN')} test cases`],
+    [k.automated, 'with Studio steps'], [k.scripts, 'with a Python script'], [k.new_tests, 'tests written / recorded'],
+    [k.runs, 'runs'], [pct(k.pass_rate), `pass rate · ${k.passed} passed, ${k.failed} failed`], [k.flaky, 'flaky tests'],
+    [k.feedback_open, `open feedback · ${k.feedback_new} new`], [k.active_qas, `active people${k.accounts ? ' · ' + k.accounts + ' accounts' : ''}`]]
+    .map(([b, s]) => `<div class="kpi"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('');
+  $('#tmPeopleHint').textContent = d.since ? `since ${d.since}` : 'all time';
+  $('#tmPeople tbody').innerHTML = d.people.map(p => `<tr data-tmwho="${esc(p.name)}" style="cursor:pointer" title="Show ${esc(p.name)}'s activity">
+      <td><b>${esc(p.name)}</b>${p.disabled ? ' <span class="tag t-mute">disabled</span>' : ''}</td><td>${esc(ROLE_NAME[p.role] || p.role || '—')}</td>
+      <td>${esc(p.tests_written)}</td><td>${esc(p.tests_recorded)}</td><td>${esc(p.scripts_written)}</td><td>${esc(p.runs)}</td>
+      <td><span style="color:var(--ok)">${esc(p.passed)}</span> / <span style="color:var(--bad)">${esc(p.failed)}</span></td><td>${pct(p.pass_rate)}</td>
+      <td>${esc(p.feedback)}${p.feedback_open ? ` <span class="tag t-warn">${esc(p.feedback_open)} open</span>` : ''}</td>
+      <td class="hint">${esc(p.last_active || '—')}</td><td class="hint">${esc(p.last_login || '—')}</td>
+      <td>${p.mb_login == null ? '—' : p.mb_login ? '✓' : '<span class="tag t-warn">missing</span>'}</td></tr>`).join('') || '<tr><td colspan="12" class="hint">Nobody did anything in this period.</td></tr>';
+  $('#tmModules tbody').innerHTML = d.modules.map(m => `<tr><td><b>${esc(m.module)}</b></td><td>${esc(m.total)}</td><td>${esc(m.covered)}</td>
+      <td><div class="row" style="gap:6px"><span style="width:36px">${esc(m.coverage)}%</span><span class="grow">${bar(m.coverage, m.coverage >= 60 ? 'var(--ok)' : m.coverage >= 25 ? 'var(--warn)' : 'var(--bad)')}</span></div></td>
+      <td>${esc(m.automated)}</td><td>${esc(m.scripts)}</td><td>${m.never_run ? `<span class="tag t-warn">${esc(m.never_run)}</span>` : '0'}</td>
+      <td><span style="color:var(--ok)">${esc(m.last_pass)}</span> / <span style="color:var(--bad)">${esc(m.last_fail)}</span></td></tr>`).join('');
+  const sides = d.failures.by_side, total = sides.reduce((a, s) => a + s.count, 0);
+  $('#tmSides').innerHTML = total ? sides.map(s => `<div style="margin:6px 0"><div class="row"><span class="grow">${esc(s.label)}</span><b>${esc(s.count)}</b></div>${bar(Math.round(s.count / total * 100), s.side === 'app' ? 'var(--bad)' : s.side === 'test' ? 'var(--warn)' : 'var(--ink)')}</div>`).join('')
+    : '<p class="hint">No failures in this period.</p>';
+  const testRows = list => list.length ? `<table class="tb"><tr><th>Test</th><th>Runs</th><th>Failed</th><th>Last</th></tr>${list.map(x => `<tr><td><a href="#report" data-open="${esc(x.last_run)}">${esc(x.test)}</a><br><span class="hint">${esc(String(x.name).slice(0, 70))}</span></td><td>${esc(x.runs)}</td><td>${esc(x.failed)}</td><td>${esc(x.last)}</td></tr>`).join('')}</table>` : '<p class="hint">None.</p>';
+  $('#tmMostFailed').innerHTML = testRows(d.failures.most_failed); $('#tmFlaky').innerHTML = testRows(d.failures.flaky);
+  const people = [...new Set(d.activity.map(a => a.who).filter(Boolean))].sort();
+  const keep = $('#tmWho').value;
+  $('#tmWho').innerHTML = '<option value="">Everyone</option>' + people.map(p => `<option ${p === keep ? 'selected' : ''}>${esc(p)}</option>`).join('');
+  drawTeamFeed();
+}
+function drawTeamFeed() {
+  const w = $('#tmWho').value, icon = { run: '▶', test: '✎', feedback: '⚑', script_written: '‹/›' };
+  const list = (TEAM?.activity || []).filter(a => !w || a.who === w);
+  $('#tmFeed').innerHTML = list.map(a => `<li><span class="ic">${icon[a.kind] || '·'}</span><span><b>${esc(a.who || 'Unknown')}</b> ${esc(a.what)}${a.detail ? ` <span class="hint">· ${esc(String(a.detail).slice(0, 80))}</span>` : ''}${a.kind === 'run' ? ` <a href="#report" data-open="${esc(a.ref)}">${esc(a.ref)}</a>` : ''}</span><span class="hint">${esc(a.at)}</span></li>`).join('') || '<li><span class="ic">·</span><span class="hint">No activity in this period.</span></li>';
+}
+document.addEventListener('DOMContentLoaded', () => {
+  $('#tmDays').onchange = renderTeam; $('#tmRefresh').onclick = renderTeam; $('#tmWho').onchange = drawTeamFeed;
+  $('#tmPeople').addEventListener('click', e => { const r = e.target.closest('[data-tmwho]'); if (!r) return; $('#tmWho').value = r.dataset.tmwho; if ($('#tmWho').value !== r.dataset.tmwho) { $('#tmWho').insertAdjacentHTML('beforeend', `<option>${esc(r.dataset.tmwho)}</option>`); $('#tmWho').value = r.dataset.tmwho; } drawTeamFeed(); $('#tmFeed').scrollIntoView({ behavior: 'smooth', block: 'nearest' }); });
+});
+
+const ROLE_NAME = { qa: 'QA', admin: 'Admin' };
+let AUTH = { server: false, user: null };
+const isAdmin = () => !AUTH.server || AUTH.user?.role === 'admin';
+function showLogin(msg) {
+  const g = $('#loginGate'); g.hidden = false; $('#lgErr').textContent = msg || '';
+  setTimeout(() => $('#lgUser')?.focus(), 50);
+}
+async function teamGate() {
+  try { AUTH = await api('/api/auth/state'); } catch (e) { return true; }
+  if (!AUTH.server) return true;
+  const setpw = (location.hash.match(/^#setpw=([\w-]+)/) || [])[1];
+  if (setpw) { showSetPassword(setpw); return false; }
+  if (!AUTH.user) { showLogin(); return false; }
+  $('#loginGate').hidden = true;
+  me = AUTH.user.name;                       // who did it = the logged-in user, not a free choice
+  const ini = String(AUTH.user.name || AUTH.user.username || '?').split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  $('.who').innerHTML = `<div class="ucard"><span class="av" title="${esc(AUTH.user.name)}">${esc(ini)}</span><span class="un"><b>${esc(AUTH.user.name)}</b><span>${AUTH.user.role === 'admin' ? 'Admin' : 'QA'} · ${esc(AUTH.user.username)}</span></span><button class="out" id="btnLogout" title="Log out" aria-label="Log out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M15 4h3a2 2 0 012 2v12a2 2 0 01-2 2h-3"/><path d="M10 17l-5-5 5-5M5 12h11"/></svg></button></div>`;
+  $('#btnLogout').onclick = async () => { try { await api('/api/auth/logout', {}); } catch (e) { /* ignore */ } location.reload(); };
+  $$('.adminOnly').forEach(el => { el.hidden = !isAdmin(); });
+  $('#teamCard').hidden = false; $('#usersCard').hidden = !isAdmin(); $('#usersLocal').hidden = true;
+  $$('.nav[data-v="learn"]').forEach(b => { b.hidden = !isAdmin(); });
+  if (!AUTH.local) $('#recIntro').textContent = 'Record the test on your own PC (record.bat), paste the code here and click Use this code. Then Verify, Replay and Save it.';
+  if (!isAdmin()) $('#setIntro').textContent = 'Your own MargBooks login and your Studio password. The MargBooks password is stored encrypted on the server and never shown again.';
+  renderMyAccount(); if (isAdmin()) renderUsers();
+  if (!AUTH.user.mb_user) toast('Add your own MargBooks login in Settings before you run tests.');
+  return true;
+}
+async function showSetPassword(token) {
+  const g = $('#loginGate'); g.hidden = false;
+  const form = $('#lgForm'); form.hidden = true;
+  let box = $('#spForm');
+  if (!box) {
+    form.insertAdjacentHTML('afterend', `<form id="spForm" class="login-form"><h2>Set your password</h2><p class="hint" id="spFor">Checking your link…</p>
+      <label class="f" for="spNew">New password</label><input id="spNew" class="inp" type="password" autocomplete="new-password" minlength="8" required>
+      <label class="f" for="spNew2">Same password again</label><input id="spNew2" class="inp" type="password" autocomplete="new-password" minlength="8" required>
+      <p id="spErr" style="color:var(--bad);min-height:1.2em;margin:8px 0 0"></p><button class="btn p" type="submit">Set password</button></form>`);
+    box = $('#spForm');
+  }
+  let email = '';
+  try { email = (await api('/api/auth/invite', { token })).email; } catch (e) { /* shown below */ }
+  if (!email) { $('#spFor').textContent = 'This link is not valid any more (it was used or it expired). Ask your Studio admin for a new one.'; box.querySelectorAll('input,button').forEach(x => { x.disabled = true; }); return; }
+  $('#spFor').innerHTML = `For <b>${esc(email)}</b>. At least 8 characters.`;
+  box.onsubmit = async ev => {
+    ev.preventDefault(); $('#spErr').textContent = '';
+    if ($('#spNew').value !== $('#spNew2').value) { $('#spErr').textContent = 'The two passwords are not the same.'; return; }
+    try { await api('/api/auth/setpw', { token, password: $('#spNew').value });
+      history.replaceState(null, '', location.pathname); box.remove(); form.hidden = false; showLogin('Password set ✓ Log in now.');
+      $('#lgUser').value = email; $('#lgErr').style.color = 'var(--ok)'; setTimeout(() => $('#lgPass').focus(), 60); }
+    catch (e) { $('#spErr').textContent = e.message; }
+  };
+  setTimeout(() => $('#spNew').focus(), 60);
+}
+async function doLogin(ev) {
+  ev.preventDefault(); $('#lgErr').textContent = '';
+  const b = $('#lgForm button[type="submit"]'); if (b && b.disabled) return;      // one login at a time
+  if (b) { b.disabled = true; b.textContent = 'Logging in…'; }
+  const slow = setTimeout(() => { if (b && b.disabled) $('#lgErr').textContent = 'Still logging in… the Studio is busy, please wait.'; }, 4000);
+  try { await api('/api/auth/login', { username: $('#lgUser').value.trim(), password: $('#lgPass').value }); clearTimeout(slow); if (b) b.textContent = 'Opening the Studio…'; location.reload(); }
+  catch (e) { clearTimeout(slow); $('#lgErr').textContent = e.message; $('#lgPass').value = ''; if (b) { b.disabled = false; b.textContent = 'Log in'; } }
+}
+function renderMyAccount() {
+  const u = AUTH.user || {};
+  $('#myMbUser').value = u.mb_user || '';
+  $('#myMbState').textContent = u.has_mb_password ? 'A password is saved (encrypted on the server). Leave it empty to keep it.' : 'No MargBooks password saved yet.';
+}
+async function saveMyMargbooks() {
+  try { const r = await api('/api/me/margbooks', { user: $('#myMbUser').value.trim(), password: $('#myMbPass').value });
+    AUTH.user = r.user; $('#myMbPass').value = ''; renderMyAccount(); toast('Your MargBooks login is saved.'); } catch (e) { toast(e.message); }
+}
+async function changeMyPassword() {
+  try { await api('/api/me/password', { old: $('#myOld').value, new: $('#myNew').value }); toast('Password changed. Log in again.'); setTimeout(() => location.reload(), 1200); }
+  catch (e) { toast(e.message); }
+}
+async function renderUsers() {
+  let d; try { d = await api('/api/users'); } catch (e) { $('#usersTable tbody').innerHTML = `<tr><td colspan="6">${esc(e.message)}</td></tr>`; return; }
+  const when = v => { const n = Number(v); return n ? new Date(n * 1000).toLocaleString('en-IN', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }) : '—'; };
+  const ini = u => String(u.name || u.username).split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  $('#umCount').textContent = `${d.users.length} ${d.users.length === 1 ? 'person' : 'people'}`;
+  $('#usersTable tbody').innerHTML = d.users.map(u => `<tr>
+    <td><div class="u-cell"><span class="u-av">${esc(ini(u))}</span><span><b>${esc(u.name || u.username)}${AUTH.user?.username === u.username ? ' <span class="tag t-ink" style="display:inline-flex">you</span>' : ''}</b><span>${esc(u.username)}</span></span></div></td>
+    <td><select class="inp role-sel" data-urole="${esc(u.username)}" aria-label="Role of ${esc(u.username)}"><option value="qa" ${u.role === 'qa' ? 'selected' : ''}>QA</option><option value="admin" ${u.role === 'admin' ? 'selected' : ''}>Admin</option></select></td>
+    <td>${u.disabled ? '<span class="pill off">Disabled</span>' : u.invite_open ? '<span class="pill need" title="Their set-your-password link is not used yet">Invite pending</span>' : '<span class="pill on">Active</span>'}</td>
+    <td>${u.mb_user ? `<span class="pill on" title="${esc(u.mb_user)}">Set</span>` : '<span class="pill need" title="They add it in Settings > My MargBooks login">Not set</span>'}</td>
+    <td class="hint">${esc(when(u.last_login))}</td>
+    <td><div class="u-actions"><button class="btn" data-ureset="${esc(u.username)}">Reset password</button><button class="btn" data-uemail="${esc(u.username)}">Change e-mail</button><button class="btn ${u.disabled ? '' : 'danger'}" data-uoff="${esc(u.username)}" data-off="${u.disabled ? 0 : 1}">${u.disabled ? 'Enable' : 'Disable'}</button></div></td></tr>`).join('');
+}
+async function usersClick(e) {
+  const rs = e.target.closest('[data-ureset]'), off = e.target.closest('[data-uoff]'), em = e.target.closest('[data-uemail]');
+  try {
+    if (em) { const v = prompt(`New login e-mail for ${em.dataset.uemail}:`, em.dataset.uemail.includes('@') ? em.dataset.uemail : ''); if (!v) return;
+      await api('/api/users', { username: em.dataset.uemail, new_email: v.trim() });
+      toast(`Login is now ${v.trim()}.` + (AUTH.user?.username === em.dataset.uemail ? ' Log in again with it.' : ''));
+      if (AUTH.user?.username === em.dataset.uemail) { setTimeout(() => location.reload(), 1200); return; }
+      renderUsers(); return; }
+    if (rs) { const r = await api('/api/users', { username: rs.dataset.ureset, invite: true }); renderUsers(); shareAccess(r, '', 'reset'); return; }
+    if (off) { await api('/api/users', { username: off.dataset.uoff, disabled: off.dataset.off === '1' }); renderUsers(); }
+  } catch (er) { toast(er.message); }
+}
+async function usersRole(e) {
+  const s = e.target.closest('[data-urole]'); if (!s) return;
+  try { await api('/api/users', { username: s.dataset.urole, role: s.value }); toast('Role changed.'); } catch (er) { toast(er.message); renderUsers(); }
+}
+async function addUser() {
+  const pw = $('#nuPass').value;
+  try { const r = await api('/api/users', { create: true, username: $('#nuUser').value.trim(), name: $('#nuName').value.trim(), password: pw, role: $('#nuRole').value });
+    ['#nuUser', '#nuName', '#nuPass'].forEach(k => { $(k).value = ''; }); $('#umAdd').hidden = true; renderUsers();
+    shareAccess(r, pw, 'added'); } catch (e) { toast(e.message); }
+}
+/* the message an admin sends a person: where to log in, their e-mail, the one-time "set your password" link */
+function shareAccess(r, pw, why) {
+  const u = r.user || {}, first = String(u.name || '').split(' ')[0] || 'there';
+  const msg = `Hi ${first},\n\n${why === 'added' ? 'Your MargBooks Test Studio account is ready.' : 'Here is a link to set a new Test Studio password.'}\n\n`
+    + `1. Set your password (link works once, for ${r.expires_hours} hours):\n${r.invite_url}\n\n`
+    + `2. Then log in at ${r.login_url}\n   E-mail: ${u.username}` + (pw ? `\n   Password: ${pw}  (or set your own with the link)` : '')
+    + `\n\n3. After the first login, add your own MargBooks login in Settings > My MargBooks login.`;
+  modal(why === 'added' ? `Send this to ${u.name || u.username}` : `New password link for ${u.name || u.username}`,
+    `<p class="hint" style="margin-top:0">Copy it and send it on WhatsApp, Teams or e-mail. The link works once and expires in ${esc(r.expires_hours)} hours; Reset password makes a new one.</p>
+     <textarea id="shareMsg" class="inp mono" rows="14" readonly style="width:100%;font-size:12.5px">${esc(msg)}</textarea>
+     <div class="row" style="gap:6px;margin-top:8px"><button class="btn" type="button" id="copyLink">Copy link only</button><span class="hint" id="copyNote"></span></div>`,
+    [{ label: 'Close' }, { label: 'Copy message', cls: 'p', keep: true, fn: () => copyText(msg) }]);
+  $('#copyLink').onclick = () => copyText(r.invite_url);
+}
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); } catch (e) { const ta = $('#shareMsg'); if (ta) { ta.focus(); ta.select(); document.execCommand('copy'); } }
+  const n = $('#copyNote'); if (n) n.textContent = 'Copied ✓'; toast('Copied.');
+}
+async function usePastedCode() {
+  const c = ($('#rPaste')?.value || '').trim();
+  if (!c) { toast('Paste the code that codegen wrote first.'); return; }
+  // the agent checks it is Playwright TypeScript and swaps the recorded login (with its password) for login(page)
+  const loginTest = !!$('#rLoginTest')?.checked;
+  let r; try { r = await api('/api/record/paste', { code: c, login_test: loginTest }); } catch (e) { toast(e.message); return; }
+  rec.src = 'record'; rec.pasted = true; rec.fed = r.actions || 0; rec.stage = 'recorded'; setCode(r.code); renderRecord();
+  if (r.login_test) toast('Login test: your login steps are kept; a real password became process.env.MB_PASS!.');
+  else if (r.code !== c.replace(/\r\n/g, '\n')) toast('The recorded login was replaced by login(page): no password is kept in the script.');
+}
+document.addEventListener('DOMContentLoaded', () => {
+  $('#lgForm').addEventListener('submit', doLogin);
+  $('#lgEye').onclick = () => { const p = $('#lgPass'); p.type = p.type === 'password' ? 'text' : 'password'; $('#lgEye').textContent = p.type === 'password' ? 'Show' : 'Hide'; };
+  $('#btnMyMb').onclick = saveMyMargbooks;
+  $('#btnMyMbTest').onclick = async () => { const b = $('#btnMyMbTest'); b.disabled = true; b.textContent = 'Testing… (up to 2 min)';
+    try { const r = await api('/api/me/margbooks/test', {}); toast(r.message || (r.ok ? 'Logged in.' : 'Login failed.')); } catch (e) { toast(e.message); }
+    b.disabled = false; b.textContent = 'Test my login'; }; $('#btnMyPw').onclick = changeMyPassword; $('#btnAddUser').onclick = addUser;
+  $('#btnShowAddUser').onclick = () => { $('#umAdd').hidden = false; $('#nuUser').focus(); };
+  $('#btnCancelAddUser').onclick = () => { $('#umAdd').hidden = true; };
+  $('#usersTable').addEventListener('click', usersClick); $('#usersTable').addEventListener('change', usersRole);
+  $('#recPanel').addEventListener('click', e => { if (e.target.closest('button')?.id === 'btnPaste') usePastedCode(); });
+});
+document.addEventListener('DOMContentLoaded', () => { $$('.nav').forEach(b => { b.title = b.textContent.trim(); }); });   // the icon-only rail (small screens) still names each button
 document.addEventListener('DOMContentLoaded', boot);
 </script>
 </body>

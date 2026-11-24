@@ -1,0 +1,22 @@
+- id: TC_008
+  module: masters
+  title: TC_COTH_136 Drug Helpline header icon is shown for chemist companies (chemist
+    half)
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by overnight-agent | 2026-11-18 03:16
+  expected: []
+  steps:
+  - action: open_screen
+    target: dashboard
+    note: Open Dashboard
+  - action: sleep
+    value: '2'
+    note: Wait 2 seconds
+  - action: assert_text
+    value: Drug Helpline
+    note: Verify "Drug Helpline"

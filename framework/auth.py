@@ -10,6 +10,10 @@ Screen 3 kiye bina koi bhi page khaali grey aata hai.
 """
 from __future__ import annotations
 
+import threading
+import time as _time
+from contextlib import contextmanager
+
 from playwright.sync_api import Page
 
 from config.settings import settings
@@ -30,6 +34,46 @@ ORG_TEXTS = ("Organisation List", "Organisation Name")
 
 class LoginBlocked(RuntimeError):
     pass
+
+
+class LoginStopped(LoginBlocked):
+    """The run was stopped by the user while it was signing in."""
+
+
+# A time limit (and a stop signal) for one sign-in. Every wait inside login() asks _budget_ms() first, so a hanging
+# MargBooks (hand-off page, Organisation List) ends the sign-in within the limit instead of adding up its many
+# 60 s waits (a run was seen holding the shared login for 14 minutes). Thread-local: only the thread that called
+# login() under time_limit() is limited; app_ready() elsewhere keeps its own timeout.
+_limit = threading.local()
+
+
+@contextmanager
+def time_limit(seconds: float, stop=None):
+    """Limit the login() calls in this block to `seconds` in all; `stop` (a threading.Event) ends them early."""
+    old = getattr(_limit, "v", None)
+    _limit.v = (_time.time() + float(seconds), float(seconds), stop)
+    try:
+        yield
+    finally:
+        _limit.v = old
+
+
+def _budget_ms(want: int) -> int:
+    """`want` ms, cut to what is left of the sign-in time limit. Raises when the limit is over or Stop was pressed."""
+    v = getattr(_limit, "v", None)
+    if not v:
+        return want
+    deadline, secs, stop = v
+    if stop is not None and stop.is_set():
+        raise LoginStopped("Stopped by the user while signing in.")
+    left = int((deadline - _time.time()) * 1000)
+    if left <= 0:
+        raise LoginBlocked(f"Sign-in did not finish within {int(secs)} s (MargBooks did not open the company).")
+    return max(1, min(int(want), left))
+
+
+def _pause(page: Page, ms: int) -> None:
+    page.wait_for_timeout(_budget_ms(ms))
 
 
 def on_org_page(page: Page) -> bool:
@@ -63,12 +107,32 @@ def wait_for_next_screen(page: Page, timeout_ms: int = 30000) -> str:
             except Exception:  # noqa: BLE001
                 pass
             return "org"
-        page.wait_for_timeout(700)
+        _pause(page, 700)
     return "unknown"
+
+
+def _safe_url(url: str) -> str:
+    """The URL without its query string: the app's hand-off URL (login?c=...) carries the user's
+    credentials Base64-encoded, and error messages end up in logs and on screen."""
+    return str(url).split("?", 1)[0] + ("?..." if "?" in str(url) else "")
+
+
+def _settle(page: Page, timeout_ms: int = 15000) -> None:
+    """Wait for the network to go quiet, but do not fail when it never does.
+
+    The live app (books6) keeps polling in the background, so "networkidle" sometimes never comes and the
+    login died with a TimeoutError although it had worked. What decides success is checked right after
+    (app_ready / the Organisation List), so a quiet network is only a nicety here."""
+    timeout_ms = _budget_ms(timeout_ms)
+    try:
+        page.wait_for_load_state("networkidle", timeout=timeout_ms)
+    except Exception:  # noqa: BLE001
+        page.wait_for_load_state("domcontentloaded", timeout=_budget_ms(30000))
 
 
 def app_ready(page: Page, timeout_ms: int = 20000) -> bool:
     """Company chuni ja chuki hai aur app poora load ho gaya hai?"""
+    timeout_ms = _budget_ms(timeout_ms)
     try:
         page.get_by_text(READY_MARKER, exact=False).first.wait_for(
             state="visible", timeout=timeout_ms)
@@ -155,6 +219,19 @@ def _dump_org_page(page):
         pass
 
 
+def _org_opened(bp: BasePage, ms: int) -> bool:
+    """Did the click open the company? On a busy MargBooks the click works but the app takes longer than `ms` to
+    load: once the page is no longer the Organisation List, give it up to a minute (like the hand-off page)."""
+    page = bp.page
+    if app_ready(page, ms):
+        return True
+    try:
+        on_list = bp.page_has_text("Organisation List") or bp.page_has_text("Organisation Name")
+    except Exception:  # noqa: BLE001  (page navigating)
+        on_list = False
+    return (not on_list) and app_ready(page, 60000)
+
+
 def _pick_organisation(bp: BasePage, verbose: bool) -> bool:
     """
     Organisation List se company chuno.
@@ -175,8 +252,8 @@ def _pick_organisation(bp: BasePage, verbose: bool) -> bool:
     for _ in range(10):
         if _org_rows(page):
             break
-        page.wait_for_timeout(700)
-    page.wait_for_timeout(500)
+        _pause(page, 700)
+    _pause(page, 500)
 
     names = _org_rows(page)
     if verbose:
@@ -202,8 +279,8 @@ def _pick_organisation(bp: BasePage, verbose: bool) -> bool:
 
             # (a) seedha cell pe click
             safety.guarded_click(cell, "org.name_cell", timeout=5000)
-            page.wait_for_timeout(3500)
-            if app_ready(page, 12000):
+            _pause(page, 3500)
+            if _org_opened(bp, 12000):
                 return True
 
             # (b) double click -- kai ERP grids me row double-click se khulti hai
@@ -212,8 +289,8 @@ def _pick_organisation(bp: BasePage, verbose: bool) -> bool:
             safety.assert_safe(cell, "org.dblclick")
             safety.audit_click(cell, "org.dblclick")
             cell.dblclick(timeout=4000)
-            page.wait_for_timeout(3500)
-            if app_ready(page, 12000):
+            _pause(page, 3500)
+            if _org_opened(bp, 12000):
                 return True
 
             # (c) row ka apna click handler seedha JS se chalao.
@@ -229,24 +306,27 @@ def _pick_organisation(bp: BasePage, verbose: bool) -> bool:
                 c.dispatchEvent(ev);
               }
             """)
-            page.wait_for_timeout(4000)
-            if app_ready(page, 12000):
+            _pause(page, 4000)
+            if _org_opened(bp, 12000):
                 return True
 
             # (d) cell ke andar koi link/span ho to uspe
             try:
                 inner = cell.locator("a, span, div").first
                 safety.guarded_click(inner, "org.name_inner", timeout=3000)
-                page.wait_for_timeout(3500)
-                if app_ready(page, 12000):
+                _pause(page, 3500)
+                if _org_opened(bp, 12000):
                     return True
             except Exception:  # noqa: BLE001
                 pass
 
             if verbose:
-                print(f"      row {i}: chaar tareeke fail. URL abhi: {page.url}")
+                print(f"      row {i}: chaar tareeke fail. URL abhi: {_safe_url(page.url)}")
                 bp.screenshot(f"org_click_try_{i}")
         except Exception:  # noqa: BLE001
+            # the cell went away mid-try: usually the company started to open (the list was replaced)
+            if _org_opened(bp, 5000):
+                return True
             continue
 
     # --- fallback: kisi bhi element pe jiska text bilkul company name ho ---
@@ -263,7 +343,7 @@ def _pick_organisation(bp: BasePage, verbose: bool) -> bool:
                     continue
                 el.scroll_into_view_if_needed()
                 safety.guarded_click(el, "org.by_text", timeout=4000)
-                page.wait_for_timeout(4000)
+                _pause(page, 4000)
                 if app_ready(page):
                     return True
             except Exception:  # noqa: BLE001
@@ -271,6 +351,9 @@ def _pick_organisation(bp: BasePage, verbose: bool) -> bool:
     except Exception:  # noqa: BLE001
         pass
 
+    # a slow MargBooks may still be opening the company after the last try
+    if app_ready(page, 20000):
+        return True
     # failure -> diagnosis ke liye poora page dump kar do
     bp.screenshot("login_org_pick_failed")
     _dump_org_page(page)
@@ -349,7 +432,7 @@ def login(page: Page, verbose: bool = False) -> BasePage:
     # optional saved session
     if settings.USE_SAVED_SESSION:
         bp.goto(f"{settings.BASE_URL}/dashboard")
-        page.wait_for_timeout(2500)
+        _pause(page, 2500)
         if app_ready(page, 6000):
             say("saved session chal gaya")
             sync_app_host(page, verbose=verbose)
@@ -358,14 +441,14 @@ def login(page: Page, verbose: bool = False) -> BasePage:
     # --- 1. Mobile / Email ---
     say(f"opening {settings.LOGIN_URL}")
     bp.goto(settings.LOGIN_URL)
-    page.wait_for_load_state("networkidle")
+    _settle(page)
     if verbose:
         bp.screenshot("login_1_signin")
 
     say(f"user = {settings.USER}")
     bp.fill("login.username", settings.USER)
     bp.click("login.submit")
-    page.wait_for_timeout(3500)
+    _pause(page, 3500)
     if verbose:
         bp.screenshot("login_2_password")
 
@@ -377,8 +460,8 @@ def login(page: Page, verbose: bool = False) -> BasePage:
         say("password bhar rahe hain -> CONTINUE")
         bp.fill("login.password", secret)
         bp.click("login.continue")
-        page.wait_for_load_state("networkidle")
-        page.wait_for_timeout(4000)
+        _settle(page)
+        _pause(page, 4000)
     elif bp.page_has_text("OTP") and not bp.page_has_text("Login With OTP"):
         bp.screenshot("login_otp_blocked")
         raise LoginBlocked(
@@ -390,13 +473,29 @@ def login(page: Page, verbose: bool = False) -> BasePage:
         bp.screenshot("login_3_org_list")   # fail ho to bhi rukega nahi
 
     # --- 3. Organisation List (ye step pehle miss ho raha tha) ---
+    # After sign-in the app passes through its own hand-off page (<app>/login?c=...) before the dashboard.
+    # On a slow server it stays there for a while; that is not an unknown screen, so wait for the app.
+    if not app_ready(page, 6000) and "/login?c=" in page.url and "accounts." not in page.url:
+        app_ready(page, 60000)
+        # Busy server (several logins at the same moment): the hand-off page can hang. Loading it again
+        # usually finishes the sign-in; seen when 8 Studio runs logged in together.
+        for _ in range(2):
+            if app_ready(page, 3000) or "/login" not in page.url:
+                break
+            say("hand-off page hangs -> loading it again")
+            try:
+                page.reload(wait_until="domcontentloaded", timeout=_budget_ms(60000))
+            except Exception:  # noqa: BLE001
+                pass
+            _settle(page)
+            app_ready(page, 60000)
     if not app_ready(page, 6000):
         if bp.page_has_text("Organisation List") or bp.page_has_text("Organisation Name"):
             _pick_organisation(bp, verbose)
         else:
             bp.screenshot("login_unknown_screen")
             raise LoginBlocked(
-                f"Anjaan screen pe atke hain: {page.url}\n"
+                f"Anjaan screen pe atke hain: {_safe_url(page.url)}\n"
                 f"artifacts/login_unknown_screen.png dekho."
             )
 
@@ -404,7 +503,7 @@ def login(page: Page, verbose: bool = False) -> BasePage:
         bp.screenshot("login_not_ready")
         raise LoginBlocked(
             f"Company chun li par app load nahi hua ('{READY_MARKER}' nahi mila).\n"
-            f"URL: {page.url} -- artifacts/login_not_ready.png dekho."
+            f"URL: {_safe_url(page.url)} -- artifacts/login_not_ready.png dekho."
         )
 
     # Asli host pakdo -- is se PEHLE koi bhi bp.goto("/...") galat host pe jayega
@@ -412,7 +511,7 @@ def login(page: Page, verbose: bool = False) -> BasePage:
 
     if verbose:
         bp.screenshot("login_4_ready")
-        say(f"READY -> {page.url}")
+        say(f"READY -> {_safe_url(page.url)}")
 
     if settings.USE_SAVED_SESSION:
         page.context.storage_state(path=str(settings.STORAGE_STATE))
@@ -435,7 +534,7 @@ def check():
         page = ctx.new_page()
         try:
             login(page, verbose=True)
-            print(f"\n*** LOGIN + COMPANY SELECT SUCCESS ***\n{page.url}")
+            print(f"\n*** LOGIN + COMPANY SELECT SUCCESS ***\n{_safe_url(page.url)}")
         except Exception as e:
             print(f"\n*** FAIL ***\n{e}")
         finally:

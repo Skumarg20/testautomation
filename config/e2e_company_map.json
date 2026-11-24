@@ -1,0 +1,6 @@
+{
+  "_about": "Python scripts (e2e_scripts) were written for premargbooks companies. When Test Studio runs them, each of these companies is replaced by the QA test company on the right. Only QA test companies can be written to (the Studio QA guard refuses every write elsewhere).",
+  "Pharma New Company 23-09": "QA Chemist",
+  "Garments New 29-08": "QA Garment",
+  "General Billing 13_10": "QA Billing General"
+}

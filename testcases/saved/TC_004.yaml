@@ -1,0 +1,21 @@
+- id: TC_004
+  module: masters
+  title: TC_CHEM_004 Salt Master is enabled by default for Chemist and Pharma companies
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by overnight-agent | 2026-11-18 03:16
+  expected: []
+  steps:
+  - action: open_screen
+    target: salt
+    note: Open Salt
+  - action: sleep
+    value: '2'
+    note: Wait 2 seconds
+  - action: assert_text
+    value: Salt
+    note: Verify "Salt"

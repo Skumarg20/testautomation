@@ -318,8 +318,10 @@ def _extract(data: dict) -> str:
 def _anthropic(system: str, user: str, max_tokens: int) -> str:
     import anthropic
     client = anthropic.Anthropic(api_key=anthropic_key())
+    # No temperature: the current Anthropic SDK/API reject sampling parameters (temperature, top_p,
+    # top_k). Sending temperature=0 made every AI call fail with "unexpected keyword argument".
     r = client.messages.create(model=settings.AGENT_MODEL, max_tokens=max_tokens,
-                               system=system, temperature=0,
+                               system=system,
                                messages=[{"role": "user", "content": user}])
     return "".join(b.text for b in r.content if b.type == "text")
 

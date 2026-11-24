@@ -1,0 +1,21 @@
+- id: TC_009
+  module: sales
+  title: TC_CSAL_124 POS bill is always billed to the default Cash ledger
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by overnight-agent | 2026-11-18 03:16
+  expected: []
+  steps:
+  - action: open_screen
+    target: sale_pos
+    note: Open Sale POS
+  - action: sleep
+    value: '2'
+    note: Wait 2 seconds
+  - action: assert_text
+    value: Cash
+    note: Verify "Cash"

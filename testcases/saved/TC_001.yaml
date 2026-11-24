@@ -1,0 +1,52 @@
+- id: TC_001
+  module: sales
+  title: 'TC_CHEM_195 Chemist sale grid columns: Product, Packing, Batch, Exp. Date,
+    Unit, M.R.P, Amount'
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by overnight-agent | 2026-11-18 03:16
+  expected: []
+  steps:
+  - action: open_screen
+    target: sale_bill
+    note: Open Sale Bill
+  - action: sleep
+    value: '2'
+    note: Wait 2 seconds
+  - action: assert_text
+    value: Patient Mob./ID
+    note: Verify "Patient Mob./ID"
+  - action: assert_text
+    value: Patient Name
+    note: Verify "Patient Name"
+  - action: assert_text
+    value: Address
+    note: Verify "Address"
+  - action: assert_text
+    value: Doctor Mob./ID
+    note: Verify "Doctor Mob./ID"
+  - action: assert_text
+    value: Doctor Name
+    note: Verify "Doctor Name"
+  - action: assert_text
+    value: Product
+    note: Verify "Product"
+  - action: assert_text
+    value: Packing
+    note: Verify "Packing"
+  - action: assert_text
+    value: Batch
+    note: Verify "Batch"
+  - action: assert_text
+    value: Exp. Date
+    note: Verify "Exp. Date"
+  - action: assert_text
+    value: M.R.P
+    note: Verify "M.R.P"
+  - action: assert_text
+    value: Amount
+    note: Verify "Amount"

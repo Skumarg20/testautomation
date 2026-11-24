@@ -1,0 +1,64 @@
+[project]
+name = "margbooks-e2e"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+  "playwright>=1.50,<1.64",  # fixtures/steps.py reads private internals; raise after the learning test passes
+  "pytest>=8",
+  "pytest-playwright>=0.7",
+  "pytest-xdist>=3.6",
+  "pytest-timeout>=2.3",  # live cases can freeze on a dead browser tab; a limit fails them instead of hanging
+  "pytest-json-report>=1.5",
+  "pytest-html>=4",
+  "pydantic>=2.7",
+  "pydantic-settings>=2.3",
+  "python-dotenv>=1.0",
+  "axe-playwright-python>=0.1.4",
+  "httpx>=0.27",
+  "pillow>=10",
+  "pixelmatch>=0.3",
+  "pytest-rerunfailures>=14",
+]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.6", "mypy>=1.11"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --dist=loadgroup --junitxml=results/junit.xml --json-report --json-report-file=results/report.json --html=results/report.html --self-contained-html"
+markers = [
+  "p0: priority 0 journey (PR smoke)",
+  "p1: priority 1 journey",
+  "p2: priority 2 journey",
+  "p3: priority 3 journey (phase 2)",
+  "journey(id): journey slug id from coverage/journey-matrix.json (the J-ref is the matrix `ref` field)",
+  "framework: framework self-checks, no app needed",
+  "api: API-level tests",
+  "a11y: accessibility checks",
+  "visual: screenshot baselines",
+  "permanent(effect): leaves an irreversible change on QA; skipped unless --allow-permanent",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+# Planning probes (tests/journeys/zz_probe_*) are throwaway scripts, not collected and not linted.
+extend-exclude = ["tests/journeys/zz_probe_*"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "PT", "N", "C90", "PLR0913", "SIM", "ERA"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 8
+
+[tool.ruff.lint.pylint]
+max-args = 3
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+ignore_missing_imports = true
+exclude = ["tests/journeys/zz_probe_"]
+
+[tool.setuptools]
+py-modules = []

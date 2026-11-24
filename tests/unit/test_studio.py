@@ -147,8 +147,58 @@ def test_codegen_lines_convert_and_unreadable_ones_are_reported_not_guessed():
             "  await page.getByRole('button', { name: 'Save' }).click();\n"
             "  await page.mouse.wheel(0, 100);\n});\n")
     conv = script.to_steps(code)
-    assert [s["action"] for s in conv["steps"]] == ["click"]
-    assert len(conv["unknown"]) == 2 and "login" in conv["unknown"][0]["why"].lower()
+    # the recorded login becomes one note (the runner signs in itself); mouse.wheel is not guessed
+    assert [s["action"] for s in conv["steps"]] == ["note", "click"]
+    assert len(conv["unknown"]) == 1 and "mouse.wheel" in conv["unknown"][0]["text"]
+
+
+MB_LOGIN = """import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://books5.margbooks.com/');
+  await page.goto('https://accounts.margbooks.com/login');
+  await page.getByRole('textbox', { name: 'Email address or mobile number' }).fill('a@b.c');
+  await page.getByRole('textbox', { name: 'Email address or mobile number' }).press('Enter');
+  await page.getByRole('textbox').click();
+  await page.getByRole('textbox').fill('Demo@1234');
+  await page.getByRole('img').nth(2).click();
+  await page.getByRole('textbox').press('ArrowLeft');
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.getByRole('link', { name: 'Masters' }).click();
+  await page.locator('#ddlStatus').selectOption('De-Active');
+  await page.getByRole('button').filter({ hasText: '×' }).click();
+});"""
+
+
+def test_margbooks_login_with_unnamed_password_box_is_replaced_by_login():
+    conv = script.to_steps(MB_LOGIN)
+    assert conv["unknown"] == []
+    assert [s["action"] for s in conv["steps"]] == ["open_screen", "note", "click", "select", "click"]
+    out = recorder.redact(MB_LOGIN)
+    assert "Demo@1234" not in out and "a@b.c" not in out and out.count("await login(page)") == 1
+    assert "getByRole('link', { name: 'Masters' })" in out
+    # what the tester gets after Stop must replay as-is
+    again = script.to_steps(out)
+    assert again["unknown"] == [] and [s["action"] for s in again["steps"]][:2] == ["open_screen", "note"]
+
+
+def test_login_line_with_comment_and_dialog_click_replay():
+    code = ("test('x', async ({ page }) => {\n  await login(page);   // reads MB_USER / MB_PASS\n"
+            "  await page.getByRole('dialog').click();\n  await page.waitForTimeout(2000); // wait (asked in the steps)\n});")
+    conv = script.to_steps(code)
+    assert conv["unknown"] == []
+    assert [(s["action"], s.get("target")) for s in conv["steps"]] == \
+        [("note", None), ("click", "role=dialog"), ("sleep", None)]
+    # a bare textbox is still not guessed
+    assert script.to_steps("  await page.getByRole('textbox').click();")["unknown"]
+
+
+def test_single_argument_select_option_and_close_button_filter_convert():
+    from ui import codegen_import as c
+    assert c._one("await page.locator('#ddl200').selectOption('2');") == \
+        {"action": "select", "target": "#ddl200", "value": "2"}
+    st = c._one("await page.getByRole('button').filter({ hasText: '×' }).click();")
+    assert st["action"] == "click" and st["target"].startswith("css=") and "×" in st["target"]
 
 
 def test_recorder_json_is_importable_shape():
@@ -359,7 +409,7 @@ def test_reuse_login_without_a_saved_session_says_so(monkeypatch, tmp_path):
 def test_recorded_password_never_stays_in_the_script():
     code = "  await page.getByPlaceholder('Password').fill('Demo@1234');\n  await page.getByPlaceholder('User ID').fill('a@b.c');"
     out = recorder.redact(code)
-    assert "Demo@1234" not in out and "MB_PASS" in out and "a@b.c" in out
+    assert "Demo@1234" not in out and "a@b.c" not in out and "await login(page)" in out
     assert recorder.describe("await page.getByPlaceholder('Password').fill('x');") == "Typed password"
 
 
@@ -405,7 +455,8 @@ def test_bug_pack_has_everything_and_no_password(saved, tmp_path, monkeypatch):
     (d / "TC_001_step01.png").write_bytes(b"p")
     steps = [{"text": "Log in", "status": "ok"}, {"text": "Save", "status": "bad"}]
     with state.db() as c:
-        c.execute("INSERT INTO runs VALUES('R-0001','TC-001','n','Sale','Ajay Rai','now',1,2,'Fail','boom',1,?,?,0,1)",
+        c.execute("INSERT INTO runs(id,test_id,name,module,author,at,passed,total,result,err,fail_at,steps,dir,ai_fixes,ts) "
+                  "VALUES('R-0001','TC-001','n','Sale','Ajay Rai','now',1,2,'Fail','boom',1,?,?,0,1)",
                   (json.dumps(steps), str(d)))
     monkeypatch.setattr(envs, "apply_active", lambda: {"app_url": "https://x", "company": "C", "password": "TopSecret1"})
     z = zipfile.ZipFile(io.BytesIO(studio_tests.bug_pack("R-0001")))
@@ -434,7 +485,7 @@ def http():
         req = urllib.request.Request(base + path, data=None if body is None else json.dumps(body).encode(),
                                      headers={"Content-Type": "application/json"})
         try:
-            with urllib.request.urlopen(req, timeout=10) as r:
+            with urllib.request.urlopen(req, timeout=30) as r:
                 return r.status, json.loads(r.read() or b"{}")
         except urllib.error.HTTPError as e:
             return e.code, json.loads(e.read() or b"{}")
@@ -475,3 +526,64 @@ def test_api_errors_are_plain_json(http):
 def test_api_download_unknown_file_is_404_not_a_traceback(http):
     s, e = http("/api/download?kind=trace&id=R-9999")
     assert s == 404 and "error" in e
+
+
+# ------------------------------------------------- Python scripts (e2e_scripts/)
+
+def test_script_env_never_passes_this_projects_margbooks_settings(monkeypatch):
+    from ui_studio import e2e
+    monkeypatch.setenv("MARGBOOKS_LOGIN_URL", "https://accounts.margbooks.com")
+    monkeypatch.setenv("MARGBOOKS_APP_URL", "https://books5.margbooks.com")
+    monkeypatch.setenv("QA_CHEMIST_PASS", "x")
+    env = e2e.script_env()
+    assert not any(k.startswith(("MARGBOOKS_", "QA_")) for k in env)
+    assert env["PYTHONUTF8"] == "1"
+
+
+@pytest.mark.skipif(not (__import__("config.settings", fromlist=["ROOT"]).ROOT / "e2e_scripts").exists(),
+                    reason="e2e_scripts not present")
+def test_script_catalogue_reads_tests_and_links_scenario_ids():
+    from ui_studio import e2e
+    scripts, by_case = e2e.catalogue()
+    assert len(scripts) > 1000 and all("::test_" in s["node"] for s in scripts)
+    assert not any("zz_probe" in s["node"] for s in scripts)
+    si = [s for s in scripts if "SI-01" in s["ids"] and s["file"].endswith("test_sales_invoice_gst.py")]
+    assert si and si[0]["cases"]                     # SI-01 found its imported case
+    with pytest.raises(KeyError):
+        e2e.script_detail("tests/journeys/../../evil.py::test_x")
+
+
+# ------------------------------------------------------------- everyday wording (grammar._canon + keys)
+
+@pytest.mark.parametrize("line,kind,check", [
+    ("party Cash Account chuno", "pick", lambda r: r["value"] == "Cash Account"),
+    ("pick Cash Account as party", "pick", lambda r: r["value"] == "Cash Account"),
+    ("item QA_Item_GST12 2 qty 100 rate", "item", lambda r: r["value"] == "QA_Item_GST12"),
+    ("add QA_Item_GST5 qty 3 rate 50 discount 10", "item", lambda r: len(r["extras"]) == 3),
+    ("bill save karo", "click", lambda r: r["field"]["name"] == "Save"),
+    ("press F10 to save", "click", lambda r: r["field"]["name"] == "Save"),
+    ("press Alt+N", "key", lambda r: r["key"] == "Alt+N"),
+    ("Enter dabao", "key", lambda r: r["key"] == "Enter"),
+    ("press the escape key", "key", lambda r: r["key"] == "Escape"),
+    ("Sale Bill Saved dikhna chahiye", "verify", lambda r: r["what"] == "Sale Bill Saved"),
+    ("check that Saved appears", "verify", lambda r: r["what"] == "Saved"),
+])
+def test_everyday_wording_maps_to_the_grammar(line, kind, check):
+    res, _ = grammar.parse_all(["Log in", "Open Sale Bill", line])
+    r = res[-1]
+    assert r["status"] == "ok" and r["kind"] == kind and check(r), r
+
+
+def test_key_steps_round_trip_through_the_script():
+    lines = ["Log in", "Open Sale Bill", "press Alt+N", "press F2", "select party \"Cash Account\"", "save bill"]
+    code = script.generate("k", "Sale", "QA", lines)["code"]
+    assert "keyboard.press('Alt+N')" in code and "keyboard.press('F2')" in code
+    back = script.to_steps(code)
+    assert not back["unknown"]
+    assert [s["value"] for s in back["steps"] if s["action"] == "press"] == ["Alt+N", "F2"]
+    assert [s["action"] for s in grammar.to_steps(lines) if s["action"] == "press"] == ["press", "press"]
+
+
+def test_unclear_line_is_still_red_not_guessed():
+    res, _ = grammar.parse_all(["Log in", "Open Sale Bill", "do the thing with the stuff"])
+    assert res[-1]["status"] == "bad"

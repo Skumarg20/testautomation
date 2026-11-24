@@ -1,0 +1,405 @@
+- id: TC_OS_001
+  module: online_store
+  title: Create own Online Store (Online Store tab, submit)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-04 (app-onlinestore.component.ts:723-727; order-dashboard.component.html:6;
+    .ts:369-375; codekb:MargBooks:api#d7fb4bfa)'
+  expected:
+  - Toast "Store Created Successfully. Redirecting to dashboared..." and lands on the dashboard titled "Online Store
+    Dashboard"
+  steps: []
+- id: TC_OS_002
+  module: online_store
+  title: Create store with Store Name / Mobile / Email blank, or a malformed GSTIN
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-05 (app-onlinestore.component.ts createForm (no Validators))'
+  expected:
+  - Should be refused. Code has no validators and saves anyway. UNVERIFIED (expected per Marg_Books_Test_Cases_v1.0.xlsx#MMT-005)
+  steps: []
+- id: TC_OS_003
+  module: online_store
+  title: SaveOnlineStore fails (API status not "200")
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-06 (app-onlinestore.component.ts:724-729)'
+  expected:
+  - Should show "Store not Created". The code assigns res.status = "200", so success is always shown. UNVERIFIED
+    live
+  steps: []
+- id: TC_OS_004
+  module: online_store
+  title: Marg Mart registration via the Marg Mart tab
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-07 (app-onlinestore.component.ts:323-324; careportal_enriched_v5.csv#q183749;
+    careportal_enriched_v5.csv#ab90667b, #54294ca4 (website activation))'
+  expected:
+  - Opens margmart.com/vendor/#/registration?... in a new tab; theme, Auto Build, QR and admin login follow on margmart.com
+  steps: []
+- id: TC_OS_005
+  module: online_store
+  title: Rate Selection drives the upload price
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-11 (OnlineStoreItemList.ts:273,306,584-616; OnlineStoreProductList.component.ts:284,318;
+    codekb:MargBooks:screen#07d51e5c, #17b22ba8)'
+  expected:
+  - With Rate B selected, the item list's sale price caption is Rate B and the uploaded rate is rateb
+  steps: []
+- id: TC_OS_006
+  module: online_store
+  title: Accept online Orders, Min. Order Amount, Delivery Charges, Add Taxes, Custom Charges are not shown
+  priority: p2
+  tags:
+  - imported
+  - negative
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-13 (online-store-setting.component.html:18-149; onlineStore.ControlRoom.Config.html:3-118)'
+  expected:
+  - None of the five rows is rendered in the modal or in Store Configuration
+  steps: []
+- id: TC_OS_007
+  module: online_store
+  title: Control Room opened from the order dashboard
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-14 (homelayout.component.ts:1631-1632; global.ts:18821;
+    controlroom.setting.component.html:144-145; codekb:MargBooks:screen#05655e3b)'
+  expected:
+  - Shows the "Store Configuration" panel with Rate Selection only
+  steps: []
+- id: TC_OS_008
+  module: online_store
+  title: Converted bill totals
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  - blocked
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-20 (jira_vectordb.csv#MBC-16813, #MBC-17618; jira_vectordb.csv#950bc481,
+    #27d35948)'
+  expected:
+  - Bill net amount reconciles with the order Amount at the configured rate, with GST counted once (regression for
+    MBC-16813 / MBC-17618). Exact rounding UNVERIFIED
+  steps:
+  - action: use_company
+    value: QA GST Garment
+  verification:
+    status: blocked
+    company: QA GST Garment
+    date: '2026-11-20'
+    run:
+      passed: 0
+      total: 0
+    evidence: []
+    kb:
+    - jira:MBC-16813
+    - jira:MBC-17618
+    notes: Needs an online-store order placed by a customer on the published storefront (a second user / the store
+      app) to convert into a bill; this environment has only the back-office session. Nothing was run.
+- id: TC_OS_009
+  module: online_store
+  title: Click Convert To Order on an already Converted order
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-21 (order-dashboard.component.ts:640-643)'
+  expected:
+  - Should be refused or need confirmation. Code calls statedetails regardless of status, so a duplicate bill is
+    possible. UNVERIFIED
+  steps: []
+- id: TC_OS_010
+  module: online_store
+  title: Temp-save, or save then resave the converted bill
+  priority: p2
+  tags:
+  - imported
+  - negative
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-22 (processout.transaction.component.ts:11986; jira_vectordb.csv#MBC-5415;
+    jira_vectordb.csv#d199b9ae)'
+  expected:
+  - Status update is skipped on temp-save and on resave (no double "Converted" call); resave works without a backend
+    error (MBC-5415)
+  steps: []
+- id: TC_OS_011
+  module: online_store
+  title: Convert when the fixed ledger 83 is missing
+  priority: p2
+  tags:
+  - imported
+  - negative
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-23 (order-dashboard.component.ts:762-782)'
+  expected:
+  - Toast "Transaction data not found !"
+  steps: []
+- id: TC_OS_012
+  module: online_store
+  title: Converted bill keeps the customer's mobile number
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-24 (jira_vectordb.csv#MBC-6711; jira_vectordb.csv#0907801d)'
+  expected:
+  - Mobile shows on the bill (regression for MBC-6711 / MB-31673)
+  steps: []
+- id: TC_OS_013
+  module: online_store
+  title: Customer whose mobile number matches an existing ledger
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - unverified
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-25 (jira_vectordb.csv#MBC-16732; jira_vectordb.csv#396dff19,
+    support_tickets_vectordb.csv#e41f7fc2)'
+  expected:
+  - The existing ledger is matched, not a new one or the generic ledger (MBC-16732). Expected behaviour UNVERIFIED
+    for own Online Store mode
+  steps: []
+- id: TC_OS_014
+  module: online_store
+  title: Seed orders with qty 1, a large qty, decimal qty and odd-paise price
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  - unverified
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-26 (order-dashboard.component.ts:428 (number: 2))'
+  expected:
+  - Grid Amount shows 2 decimals; bill line amounts round consistently. UNVERIFIED rounding rule
+  steps: []
+- id: TC_OS_015
+  module: online_store
+  title: Seed an order below the "minimum order amount" with accept-orders off
+  priority: p2
+  tags:
+  - imported
+  - negative
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-27 (OnlineStore.cs:238-301; ProfilerMaster.model.ts:521-522;
+    order-dashboard.component.ts:1432 (commented))'
+  expected:
+  - Accepted. No server or UI rule enforces either setting; record as a gap
+  steps: []
+- id: TC_OS_016
+  module: online_store
+  title: StatusUpdationOfOnlineStore with an order linkid of another company
+  priority: p2
+  tags:
+  - imported
+  - security
+  - unverified
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-29 (OnlineStore.cs:570)'
+  expected:
+  - Should be refused. The update filters only on linkid (no complinkid) and builds SQL by string concatenation.
+    API-layer test, UNVERIFIED
+  steps: []
+- id: TC_OS_017
+  module: online_store
+  title: Upload n selected items
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-31 (OnlineStoreProductList.component.ts:216-231; order-dashboard.component.ts:1715-1721;
+    codekb:MargBooks:api#83fa973b)'
+  expected:
+  - Confirm "Do you really want to upload <n> item(s)?"; then "Item(s) uploaded successfully"; Manage Item count
+    rises by n
+  steps: []
+- id: TC_OS_018
+  module: online_store
+  title: Unmap / hide uploaded items
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-32 (OnlineStoreProductList.component.ts:186,247,266)'
+  expected:
+  - '"Item(s) unmapped successfully" / "Item Hide Successfully"; none selected gives "Please select at least one
+    item to unmap."'
+  steps: []
+- id: TC_OS_019
+  module: online_store
+  title: Marg Mart Manage Item upload
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-33 (OnlineStoreItemList.ts:760-777; global.ts:19418; careportal_enriched_v5.csv#q183865;
+    careportal_enriched_v5.csv#9c896621; jira_vectordb.csv#a63d2330 (Limit reached))'
+  expected:
+  - '"<n> Products successfully uploaded"; over plan limit gives "Limit Reached"; item image from Item Master uploaded'
+  steps: []
+- id: TC_OS_020
+  module: online_store
+  title: Copy store link (own Online Store)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-34 (order-dashboard.component.ts:1383-1395)'
+  expected:
+  - Toast "Link Successfully copy to clipboard"; the URL should be the public store URL. Code builds http://localhost:4200/?site=...,
+    see KB vs live
+  steps: []
+- id: TC_OS_021
+  module: online_store
+  title: QR code (own Online Store)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-35 (order-dashboard.component.html:535-539; order-dashboard.component.ts:1724-1734)'
+  expected:
+  - '"Scan QR Code" overlay with a Close button; the QR encodes the same store URL as OS-34'
+  steps: []
+- id: TC_OS_022
+  module: online_store
+  title: Switch store mode button
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-36 (order-dashboard.component.html:324; .ts:1028-1029,
+    1676-1697, 1708)'
+  expected:
+  - '"Switch to MargMart" ↔ "Switch to Online Store". With no Marg Mart store: "No Store found for Marg Mart. Redirecting
+    to create store"'
+  steps: []
+- id: TC_OS_023
+  module: online_store
+  title: Limited user without Online Store / Sale rights opens /other/onlinestore or /report/crm/E-Commerce/dashboard
+    by URL
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-37 (none (checklist))'
+  expected:
+  - 'Access denied. Not covered: no limited user on the QA login. UNVERIFIED'
+  steps: []
+- id: TC_OS_024
+  module: online_store
+  title: Convert a multi-item order, delete one item line from the sale bill, then save
+  priority: p2
+  tags:
+  - imported
+  - negative
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/online-store.md OS-38 (jira_vectordb.csv#08528225, #f644b4ef; processout.transaction.component.ts:11986-11988)'
+  expected:
+  - Order status is still updated to "Converted" and the order leaves the Pending view (regression for "Order Status
+    Not Updated After Item Deletion During Conversion")
+  steps: []

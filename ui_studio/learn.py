@@ -64,11 +64,20 @@ def status(job: str, since: int = 0) -> dict:
 
 def read_code(web: str, api: str) -> dict:
     from framework import code_scanner
-    web, api = (web or "").strip(), (api or "").strip()
+    from pathlib import Path
+    web = web.strip() if isinstance(web, str) else ""
+    api = api.strip() if isinstance(api, str) else ""
     if not web and not api:
         raise ValueError("Give the Angular folder, the .NET folder, or both.")
-    state.save_settings({"web_dir": web, "api_dir": api})
-    elements = routes = 0
+    for p in (web, api):                 # checked BEFORE anything is saved: a refused path is never stored
+        if not p:
+            continue
+        try:
+            ok = Path(p).expanduser().is_dir()
+        except OSError:
+            ok = False
+        if not ok:
+            raise ValueError(f"Folder {p} was not found. Give the folder of the MargBooks project on this computer.")
     msgs = []
     for p in (web, api):
         if not p:
@@ -78,5 +87,8 @@ def read_code(web: str, api: str) -> dict:
             msgs.append(f"{p}: {len(data.get('elements', []))} fields, {len(data.get('routes', []))} routes")
         except FileNotFoundError as e:
             raise ValueError(str(e))
+        except OSError as e:
+            raise ValueError(f"Folder {p} could not be read ({e.strerror or 'access denied'}).")
+    state.save_settings({"web_dir": web, "api_dir": api})
     st = code_scanner.stats()
     return {"ok": True, "message": "; ".join(msgs), "elements": st.get("elements", 0), "routes": st.get("routes", 0)}

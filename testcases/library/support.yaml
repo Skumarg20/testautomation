@@ -1,0 +1,892 @@
+- id: TC_SUP_001
+  module: support
+  title: Click the header **Help** button
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-01 (homeLayout.component.html:842, :3085-3260; homelayout.component.ts:1379-1400)'
+  - 'Class: a'
+  expected:
+  - The help drawer slides in with "Help ?", the "24x7 support" banner and the sections Contact info, Help topics,
+    Support (Raise ticket, Chat Now), Learn and Follow us
+  steps: []
+- id: TC_SUP_002
+  module: support
+  title: Help drawer contact block
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-02 (homeLayout.component.html:3115, :3123, :3126,
+    :3146; careportal_enriched_v5.csv#182bdae8 (contacts under Help))'
+  - 'Class: a'
+  expected:
+  - Shows 011-30969630, 011-66969630, support@margbooks.com and the demo number +91-8010971097
+  steps: []
+- id: TC_SUP_003
+  module: support
+  title: Click the copy button next to support@margbooks.com
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-03 (homeLayout.component.html:3130-3139; homelayout.component.ts:3994-4002)'
+  - 'Class: a (needs clipboard permission)'
+  expected:
+  - The clipboard holds support@margbooks.com and the copied icon shows for about 2 s
+  steps: []
+- id: TC_SUP_004
+  module: support
+  title: Help drawer → **Raise ticket**
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-04 (homeLayout.component.html:3194; homelayout.component.ts:3986-3991;
+    support-ticket.component.html:5)'
+  - 'Class: a'
+  expected:
+  - The drawer closes and the URL becomes /support/support-ticket with the heading "Support Ticket"
+  steps: []
+- id: TC_SUP_005
+  module: support
+  title: Go straight to /support/support-ticket while logged in
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-05 (support.module.ts:60; app-routing.module.ts:51-60;
+    support-ticket.component.html:7-39; codekb:MargBooks:screen#407b0b2c)'
+  - 'Class: a'
+  expected:
+  - The list loads (Authgaurd passes) and the buttons Home, Remote Support and Create/F2 are shown
+  steps: []
+- id: TC_SUP_006
+  module: support
+  title: Go to /support/support-ticket with no session
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-06 (support.module.ts:60 (canActivate: [Authgaurd]))'
+  - 'Class: a'
+  expected:
+  - Authgaurd redirects to login. Exact target UNVERIFIED
+  steps: []
+- id: TC_SUP_007
+  module: support
+  title: Ticket list grid
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-07 (support-ticket.component.ts:144-165, :429)'
+  - 'Class: a'
+  expected:
+  - Columns S.No., Ticket ID, ProblemType, Description, Status, ReOpen, Action; rows newest first (ID descending)
+  steps: []
+- id: TC_SUP_008
+  module: support
+  title: Focus a ticket row
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-08 (support-ticket.component.html:193-238; support-ticket.component.ts:222-228;
+    careportal_enriched_v5.csv#7d655275)'
+  - 'Class: a'
+  expected:
+  - Other Info shows Ticket Date (yyyy-mm-dd, first 10 chars), Main Disposition, Sub Disposition and an Attachment
+    tick or cross. (The KB's "Ticket Summary" is the mobile app's ticket list, not this panel)
+  steps: []
+- id: TC_SUP_009
+  module: support
+  title: Double-click a ticket row
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-09 (support-ticket.component.ts:217-220, :527-540;
+    support-chat.component.html:3, :42; support-chat.component.ts:27, :156-160; codekb:MargBooks:screen#86972eae,
+    codekb:MargBooks:api#54ae6ca3)'
+  - 'Class: a'
+  expected:
+  - 'The "Support Chat" modal opens with "Ticket ID : <ID>" and the message history; the message box is read-only;
+    Esc closes it'
+  steps: []
+- id: TC_SUP_010
+  module: support
+  title: Click **Create/F2**, or press F2 on the list
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-10 (support-ticket.component.html:30; support-ticket.component.ts:596-598,
+    :697-708; create-ticket.component.html:1-158; create-ticket.component.ts:81, :482; careportal_enriched_v5.csv#3e8e10de)'
+  - 'Class: a'
+  expected:
+  - 'The "Create Ticket" modal opens: Main Disposition * (focused), Sub Disposition *, Problem Type *, Description,
+    Attachment, and the buttons Save and Close'
+  steps: []
+- id: TC_SUP_011
+  module: support
+  title: 'Cascade: pick a Main Disposition'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-11 (create-ticket.component.ts:453-474; careportal_enriched_v5.csv#3e8e10de,
+    #caa96906)'
+  - 'Class: a'
+  expected:
+  - Sub Disposition lists only items whose Subdispositionid equals the chosen ID, and focus moves to Sub Disposition
+  steps: []
+- id: TC_SUP_012
+  module: support
+  title: 'Cascade: pick a Sub Disposition, then a Problem Type'
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-12 (create-ticket.component.ts:825-856; careportal_enriched_v5.csv#caa96906)'
+  - 'Class: a'
+  expected:
+  - Problem Type lists only items whose ProblemTypeID equals the Sub Disposition; picking one moves focus to Description
+  steps: []
+- id: TC_SUP_013
+  module: support
+  title: Main Disposition list content
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-13 (create-ticket.component.ts:479; create-ticket.component.html:19-22)'
+  - 'Class: a'
+  expected:
+  - IDs 60, 61, 62, 71 and 72 never appear, and the first option is "Select"
+  steps: []
+- id: TC_SUP_014
+  module: support
+  title: Click Save with all fields empty
+  priority: p2
+  tags:
+  - imported
+  - negative
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-14 (create-ticket.component.ts:403-409; common.service
+    IsValidForm (src/app/Services/Common.service.ts:402-423); create-ticket.component.html:24-26, :110)'
+  - 'Class: a (assert no Save request)'
+  expected:
+  - Nothing is sent to MargSupport/Save. The error marker "!" opens the popover "Problem Type 1 required !" and
+    focus moves to the first invalid control. Description shows no marker (D3)
+  steps: []
+- id: TC_SUP_015
+  module: support
+  title: Fill all three selects, leave Description empty, click Save
+  priority: p2
+  tags:
+  - imported
+  - negative
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-15 (create-ticket.component.ts:359, :403-409; create-ticket.component.html:110)'
+  - 'Class: a'
+  expected:
+  - No request and no message (silent block, D3)
+  steps: []
+- id: TC_SUP_016
+  module: support
+  title: Type 1001 characters into Description
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-16 (create-ticket.component.html:108)'
+  - 'Class: a'
+  expected:
+  - Only 1000 characters are kept (maxlength)
+  steps: []
+- id: TC_SUP_017
+  module: support
+  title: Type 4 or more characters of a common word into Description (e.g. "gstr")
+  priority: p2
+  tags:
+  - imported
+  - positive
+  - passed
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-17 (create-ticket.component.ts:298-337; create-ticket.component.html:92-103;
+    en.json:694; global.ts:121; careportal_enriched_v5.csv#caa96906 ("May be this is useful for you!" pop-up))'
+  - 'Class: a'
+  expected:
+  - After about 300 ms, GET QuestionSearchMargBook/GetQuestionSugestion?keyword= is called. When results come back,
+    the popover "May be this is useful for you!" lists links that open in a new tab, with the typed words in <mark>
+  steps:
+  - action: use_company
+    value: QA GST Mobile Trade
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//*[normalize-space(text())='Help']/ancestor::a[1]
+    note: 'Header: Help'
+  - action: wait_text
+    value: Create support ticket
+  - action: sleep
+    value: 1.5
+  - action: click_text
+    value: Raise ticket
+    exact: true
+    note: Raise ticket
+  - action: wait_text
+    value: Create/F2
+    note: Support ticket list
+  - action: sleep
+    value: 2
+  - action: click_text
+    value: Create/F2
+    note: New ticket
+  - action: wait_text
+    value: Create Ticket
+  - action: sleep
+    value: 1
+  - action: watch_requests
+    value: GetQuestionSugestion
+  - action: click
+    target: '#Description'
+    inside_modal: true
+    note: Description
+  - action: press
+    target: '#Description'
+    value: g
+  - action: press
+    target: '#Description'
+    value: s
+  - action: press
+    target: '#Description'
+    value: t
+  - action: press
+    target: '#Description'
+    value: r
+  - action: wait_text
+    value: May be this is useful for you!
+    note: Suggestion popover
+  - action: assert_requests
+    value: GetQuestionSugestion >= 1
+    note: GET QuestionSearchMargBook/GetQuestionSugestion?keyword= called
+  - action: assert_visible
+    target: xpath=//*[contains(@class,'popover')]//a[@target='_blank'][.//mark[normalize-space()='GSTR' or normalize-space()='gstr']]
+    note: Links open in a new tab, typed word in <mark>
+  - action: screenshot
+    value: TC_SUP_017
+  - action: press
+    value: Escape
+    note: Close the ticket form without saving
+  - action: sleep
+    value: 1
+  - action: press
+    value: Alt+H
+  - action: sleep
+    value: 2
+  verification:
+    status: verified
+    company: QA GST Mobile Trade
+    date: '2026-11-19'
+    run:
+      passed: 26
+      total: 26
+    evidence:
+    - artifacts/verify/shots/8812_TC_SUP_017.png
+    kb:
+    - e2e_scripts:support-helpdesk.md SH-17
+    - careportal:caa96906
+    notes: Help > Raise ticket > Create/F2 opens 'Create Ticket'; typing 'gstr' in Description calls GET QuestionSearchMargBook/GetQuestionSugestion?keyword=gstr
+      and shows the popover 'May be this is useful for you!' with care-portal links (target _blank) that have the
+      typed word in <mark>. The ticket is not submitted (form closed with Escape).
+- id: TC_SUP_018
+  module: support
+  title: Type 3 characters or fewer
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-18 (create-ticket.component.ts:304, :327-329)'
+  - 'Class: a'
+  expected:
+  - No suggestion request is made and the popover stays closed
+  steps: []
+- id: TC_SUP_019
+  module: support
+  title: Type a description with regex characters (e.g. GST (sale) while suggestions return results
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - app_defect
+  destructive: false
+  draft: false
+  preconditions:
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-19 (create-ticket.component.ts:299-303, :331-337)'
+  - 'Class: a'
+  expected:
+  - With regex characters in the description (GST (sale) the suggestions popover renders with readable titles and
+    no error
+  steps:
+  - action: use_company
+    value: QA GST Computer Hardware
+  - action: press
+    value: Alt+h
+  - action: sleep
+    value: 3
+  - action: click
+    target: xpath=//a[@title="Help"]
+    note: 'Header: Help'
+  - action: sleep
+    value: 2
+  - action: click
+    target: xpath=//*[normalize-space(text())="Raise ticket"]
+    note: Create support ticket > Raise ticket
+  - action: wait_text
+    value: Support Ticket
+  - action: sleep
+    value: 2
+  - action: press
+    value: F2
+    note: Create/F2 (the ticket is not submitted)
+  - action: wait_text
+    value: Create Ticket
+  - action: click
+    target: '#Description'
+    inside_modal: true
+  - action: press
+    value: G
+    note: Plain text first
+  - action: press
+    value: S
+  - action: press
+    value: T
+  - action: press
+    value: ' '
+  - action: press
+    value: s
+  - action: press
+    value: a
+  - action: press
+    value: l
+  - action: press
+    value: e
+  - action: sleep
+    value: 4
+  - action: assert_visible
+    target: xpath=//ngb-popover-window//li[1]/a[normalize-space()!=""]
+    note: Suggestions popover lists care-portal titles
+  - action: click
+    target: '#Description'
+    inside_modal: true
+  - action: press
+    value: Control+a
+  - action: press
+    value: Delete
+  - action: sleep
+    value: 2
+  - action: press
+    value: G
+    note: 'Text with a regex character: GST (sale'
+  - action: press
+    value: S
+  - action: press
+    value: T
+  - action: press
+    value: ' '
+  - action: press
+    value: (
+  - action: press
+    value: s
+  - action: press
+    value: a
+  - action: press
+    value: l
+  - action: press
+    value: e
+  - action: sleep
+    value: 4
+  - action: assert_visible
+    target: xpath=//ngb-popover-window
+    note: The popover still renders
+  - action: screenshot
+    value: TC_SUP_019
+  - action: assert_visible
+    target: xpath=//ngb-popover-window//li[1]/a[normalize-space()!=""]
+    note: Its suggestions show their titles
+  - action: click
+    target: xpath=//ngb-modal-window//button[normalize-space()="×"]
+    inside_modal: true
+    note: Close Create Ticket without saving
+    always: true
+  - action: click
+    target: '#btnYes'
+    inside_modal: true
+    optional: true
+    always: true
+  - action: press
+    value: Alt+h
+    always: true
+  verification:
+    status: app_defect
+    company: QA GST Computer Hardware
+    date: '2026-11-19'
+    run:
+      passed: 37
+      total: 41
+    evidence:
+    - artifacts/run_2026-11-18_23-25-22/TC_SUP_019.png
+    - artifacts/verify/shots/1795105757_8811_fail_step38.png
+    kb:
+    - codekb:create-ticket.component.ts:299-303
+    - :331-337
+    notes: 'Help > Raise ticket > Create/F2 > Description: ''GST sale'' shows the ''May be this is useful for you!''
+      popover with care-portal titles. With ''GST (sale'' the popover still opens but all 12 entries are empty links
+      (no title text; only the first has an href), and the browser console showed two ''status of 500'' resource
+      errors while typing. No ticket was submitted. Consistent with the code risk noted in the source (an invalid
+      RegExp built from the typed text).'
+  known_issue: true
+- id: TC_SUP_020
+  module: support
+  title: Type Hindi or emoji in Description and save (stubbed)
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-20 (create-ticket.component.ts:299-303, :359)'
+  - 'Class: b'
+  expected:
+  - 'Expected: the text is kept as typed in the stubbed request''s Description. The modal has no character filter
+    (:299-303 is commented out). Server acceptance is UNVERIFIED'
+  steps: []
+- id: TC_SUP_021
+  module: support
+  title: Attach a file larger than 2 MB (2,097,153 bytes)
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-21 (create-ticket.component.ts:711-714; global.ts:18897,
+    :18963)'
+  - 'Class: a'
+  expected:
+  - Warning "Maximum file size allowed is 2 MB."; the file name is not set
+  steps: []
+- id: TC_SUP_022
+  module: support
+  title: Attach a file of exactly 2,097,152 bytes, and a small .png
+  priority: p2
+  tags:
+  - imported
+  - boundary
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-22 (create-ticket.component.ts:711, :720; careportal_enriched_v5.csv#caa96906
+    (Attachment icon))'
+  - 'Class: a'
+  expected:
+  - 'Accepted: #fileName shows the file name (the check is strictly >)'
+  steps: []
+- id: TC_SUP_023
+  module: support
+  title: Attach backup.mbk
+  priority: p2
+  tags:
+  - imported
+  - negative
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-23 (create-ticket.component.ts:715-717; global.ts:18966)'
+  - 'Class: a'
+  expected:
+  - Warning "Invalid image format. Only jpg/jpeg/png format is supported."; not attached
+  steps: []
+- id: TC_SUP_024
+  module: support
+  title: Attach a .pdf or .zip
+  priority: p2
+  tags:
+  - imported
+  - negative
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-24 (create-ticket.component.ts:706-731; create-ticket.component.html:163)'
+  - 'Class: a'
+  expected:
+  - Code accepts it, though the message wording implies images only (D6). A human decides the intended rule
+  steps: []
+- id: TC_SUP_025
+  module: support
+  title: Fill the form, then click Close (and separately press Esc)
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-25 (create-ticket.component.ts:684-685, :821-823;
+    create-ticket.component.html:144-146; support-ticket.component.ts:701-706)'
+  - 'Class: a'
+  expected:
+  - The modal closes, no Save request is made, and the list is not reloaded
+  steps: []
+- id: TC_SUP_026
+  module: support
+  title: Complete a valid ticket with a .png attachment and click Save, with **/MargSupport/Save routed to {"Data":"1","status":{"status":"1"}}
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-26 (create-ticket.component.ts:349-384, :388-451;
+    global.ts:18945; MargSupportController.cs:77-127; StatusAction.cs:5; codekb:MargBooks:api#b016ecee)'
+  - 'Class: b'
+  expected:
+  - Exactly one POST. Its body contains ID:0, ProblemType_id:"1", the three IDs and their _D names, Description,
+    Mobile, FirmName, LicNo, PartnerCode, ProductLinkId, ProductName, ImageName, base64 FileContent, MBVersion/MBDomain/BuildOn,
+    UserEmail, BranchName, BranchCode. Then "Record saved successfully." appears, the modal closes and the list
+    POST is re-issued. **Never send it unstubbed**
+  steps: []
+- id: TC_SUP_027
+  module: support
+  title: Save with the stub returning {"status":{"status":"0"}}, and separately HTTP 417 "Dbinfolinkid is zero"
+  priority: p2
+  tags:
+  - imported
+  - negative
+  - unverified
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-27 (create-ticket.component.ts:447-449; MargSupportController.cs:85,
+    :298)'
+  - 'Class: b'
+  expected:
+  - The error alert comes from showError; the modal stays open with the data kept. Exact text UNVERIFIED
+  steps: []
+- id: TC_SUP_028
+  module: support
+  title: Double-click Save (or Save then F10) quickly
+  priority: p2
+  tags:
+  - imported
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-28 (create-ticket.component.ts:388-451, :687-692 (no
+    in-flight flag))'
+  - 'Class: b'
+  expected:
+  - 'Expected: one ticket. Code has no disabled-while-saving guard, so count the stubbed requests; more than one
+    means a defect'
+  steps: []
+- id: TC_SUP_029
+  module: support
+  title: Press F10 in a **new** Create Ticket modal
+  priority: p2
+  tags:
+  - imported
+  - negative
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-29 (create-ticket.component.ts:687-692; support-ticket.component.ts:697-700)'
+  - 'Class: b (stub as a safety net)'
+  expected:
+  - 'Expected: same as Save. Code risk D1 (TypeError on editdata.TicketNo); the stub must see zero requests'
+  steps: []
+- id: TC_SUP_030
+  module: support
+  title: Action → Edit on a ticket whose Status is not 'Pending'
+  priority: p2
+  tags:
+  - imported
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-30 (support-ticket.component.ts:167-181; en.json:564;
+    global.ts:168)'
+  - 'Class: a'
+  expected:
+  - Warning "You cant edit this record"; no modal
+  steps: []
+- id: TC_SUP_031
+  module: support
+  title: Action → Edit on a 'Pending' ticket
+  priority: p2
+  tags:
+  - imported
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-31 (create-ticket.component.ts:118-147, :764-805;
+    create-ticket.component.html:150-157; global.ts:18942)'
+  - 'Class: a (open) / b (Update)'
+  expected:
+  - The modal title is "Update Ticket" with the selects and Description pre-filled; the footer shows Update. Clicking
+    Update must be stubbed (MargSupport/Save with the existing ID, then "Record updated successfully.")
+  steps: []
+- id: TC_SUP_032
+  module: support
+  title: Action → Delete on a non-'Pending' ticket
+  priority: p2
+  tags:
+  - imported
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-32 (support-ticket.component.ts:655-657; en.json:605)'
+  - 'Class: a'
+  expected:
+  - Warning "You cant delete this record"; no request
+  steps: []
+- id: TC_SUP_033
+  module: support
+  title: Action → Delete on a 'Pending' ticket → confirm, with **/MBSupportDeleteRecord stubbed to success
+  priority: p2
+  tags:
+  - imported
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-33 (support-ticket.component.ts:637-653; global.ts:18939,
+    :18955)'
+  - 'Class: b'
+  expected:
+  - Confirmation "Are you sure you want to delete the selected Record?"; request body {Usertypeid:"0", Userid, Id};
+    then "Record deleted successfully." and the list reloads. If you cancel the confirmation, no request is sent
+  steps: []
+- id: TC_SUP_034
+  module: support
+  title: A 'Closed' ticket shows "Reopen". Click it, type a message and send, with **/MBSupportUpdateStatus stubbed
+  priority: p2
+  tags:
+  - imported
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-34 (ticket-template-button.ts:52-57; support-ticket.component.ts:574-584;
+    support-chat.component.ts:76-121; codekb:MargBooks:api#d0690103)'
+  - 'Class: b'
+  expected:
+  - The chat opens with typing enabled. The body has Id, Status:"5", Remarks, Problemtype, Description, ImageName,
+    ImagePath. After sending, typing is disabled again
+  steps: []
+- id: TC_SUP_035
+  module: support
+  title: Search the list for a Ticket ID or a visible ProblemType text
+  priority: p2
+  tags:
+  - imported
+  - negative
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-35 (support-ticket.component.html:167-170; support-ticket.component.ts:43,
+    :513-524)'
+  - 'Class: a'
+  expected:
+  - 'Expected: matching rows only, with "not found" when nothing matches. Code risk D8 (the filter uses Problemtype)'
+  steps: []
+- id: TC_SUP_036
+  module: support
+  title: Go offline (context.setOffline(true)), then open the list, and separately click Save
+  priority: p2
+  tags:
+  - imported
+  - negative
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-36 (support-ticket.component.ts:414-418; create-ticket.component.ts:399-401;
+    global.ts:19031)'
+  - 'Class: a'
+  expected:
+  - '"Internet Required for this option!" appears and no list or Save request is made'
+  steps: []
+- id: TC_SUP_037
+  module: support
+  title: Switch to company B and reopen the list
+  priority: p2
+  tags:
+  - imported
+  - unverified
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-37 (support-ticket.component.ts:419-424; MargSupportController.cs:321-333;
+    codekb:MargBooks:api#5a32dfe5)'
+  - 'Class: a'
+  expected:
+  - 'Expected per the server: the same licence-scoped tickets (filtered by LicNo/UserId, not by company). Whether
+    the business wants company-scoped tickets is UNVERIFIED and needs a human decision'
+  steps: []
+- id: TC_SUP_038
+  module: support
+  title: Help drawer → **Visit portal**
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-38 (homeLayout.component.html:3180; homelayout.component.ts:2681-2687;
+    vimeo_transcripts_hinglish_english.csv#e85c606b)'
+  - 'Class: a (assert URL, do not browse)'
+  expected:
+  - A new tab opens at https://care.margcompusoft.com/marg-book (assert the popup URL only)
+  steps: []
+- id: TC_SUP_039
+  module: support
+  title: Help drawer → **Chat Now**
+  priority: p2
+  tags:
+  - imported
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-39 (homelayout.component.ts:4004-4010)'
+  - 'Class: c'
+  expected:
+  - The Zoho SalesIQ float window opens if the widget is loaded; otherwise nothing happens except a console warning
+  steps: []
+- id: TC_SUP_040
+  module: support
+  title: 'A real ticket end to end: Save unstubbed, then a WhatsApp to 91<mobile> and an email arrive, and the ticket
+    number appears in the list'
+  priority: p2
+  tags:
+  - imported
+  destructive: true
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-40 (MargSupportController.cs:229-288; onedrive_processed_data.csv#e47e2049
+    (ticket ID generated, handled in BSS Panel))'
+  - 'Class: c'
+  expected:
+  - Arranged with Marg support on a test licence only
+  steps: []
+- id: TC_SUP_041
+  module: support
+  title: Remote Support button
+  priority: p2
+  tags:
+  - imported
+  - positive
+  destructive: false
+  draft: true
+  preconditions:
+  - DRAFT — imported scenario, no steps yet. Record or write the steps in Test Studio.
+  - 'Source: ai-projects e2e/scenarios/support-helpdesk.md SH-41 (support-ticket.component.html:23-26)'
+  - 'Class: a'
+  expected:
+  - The link points to https://anydesk.com/en/downloads/thank-you?dv=win_exe with target _blank. Assert href only,
+    do not download
+  steps: []

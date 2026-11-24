@@ -1,0 +1,26 @@
+- id: TC_003
+  module: accounting
+  title: TC_CACC_128 Payment list opens (empty company shows the create prompt; columns
+    need at least one voucher)
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by overnight-agent | 2026-11-18 03:16
+  - CHEMIST AUTOMATION (AGENT) has no payment voucher, so the column grid is not shown; with writes off this checks the empty state
+  expected: []
+  steps:
+  - action: open_screen
+    target: payment
+    note: Open Payment
+  - action: sleep
+    value: '2'
+    note: Wait 2 seconds
+  - action: assert_text
+    value: Payment Voucher List
+    note: Verify "Payment Voucher List"
+  - action: assert_text
+    value: Create/F2
+    note: Verify "Create/F2"

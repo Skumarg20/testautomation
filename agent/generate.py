@@ -88,7 +88,7 @@ def main():
 
     cases = result.get("cases", [])
     out = settings.TESTCASES / (args.out or f"9_generated_{args.page}.yaml")
-    prev = yaml.safe_load(out.read_text()) if out.exists() else []
+    prev = yaml.safe_load(out.read_text(encoding="utf-8")) if out.exists() else []
     out.write_text(yaml.safe_dump((prev or []) + cases, sort_keys=False, allow_unicode=True))
     rprint(f"[green]{len(cases)} cases written -> {out}[/]")
     for c in cases:

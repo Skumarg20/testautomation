@@ -1,0 +1,19 @@
+- id: TC_016
+  module: sales
+  title: QA4 R2 api 195352 v2
+  priority: p2
+  tags:
+  - studio
+  - priority-high
+  destructive: false
+  preconditions:
+  - Created by QA Tester 4 | 2026-11-23 19:53
+  expected:
+  - R2 UI resave
+  steps:
+  - action: note
+    value: Log in (the runner signs in before every test)
+    note: Log in
+  - action: open_screen
+    target: sale_bill
+    note: Open Sale Bill

@@ -1,0 +1,24 @@
+- id: TC_006
+  module: masters
+  title: TC_CMAS_240 Dashboard has Dashboard and Getting Started tabs
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by overnight-agent | 2026-11-18 03:16
+  expected: []
+  steps:
+  - action: open_screen
+    target: dashboard
+    note: Open Dashboard
+  - action: sleep
+    value: '2'
+    note: Wait 2 seconds
+  - action: assert_text
+    value: Dashboard
+    note: Verify "Dashboard"
+  - action: assert_text
+    value: Getting Started
+    note: Verify "Getting Started"

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "code-kb": {
+      "command": "python",
+      "args": [
+        "e2e_scripts/.claude/mcp/kb_mcp.py"
+      ]
+    }
+  }
+}

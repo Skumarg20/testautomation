@@ -28,6 +28,11 @@ def test_case(case, app, request, pytestconfig):
     if tags and not set(tags) & set(case.marks):
         pytest.skip(f"--tags {tags} filter")
 
+    # A draft (e.g. an imported scenario) has no runnable steps yet. Without this it
+    # would run zero steps and show as PASSED. The UI runner skips drafts the same way.
+    if case.draft or not case.steps:
+        pytest.skip("DRAFT -- no steps yet (record or write them in Test Studio)")
+
     for m in case.marks:
         request.node.add_marker(getattr(pytest.mark, m))
     request.node.case_id = case.id

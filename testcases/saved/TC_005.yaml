@@ -1,0 +1,21 @@
+- id: TC_005
+  module: masters
+  title: TC_CMAS_237 Utilities & Tools shows Data Backup (do not start it)
+  priority: p2
+  tags:
+  - studio
+  - draft-lines
+  destructive: false
+  preconditions:
+  - Created by overnight-agent | 2026-11-18 03:16
+  expected: []
+  steps:
+  - action: open_screen
+    target: utilities
+    note: Open Utilities
+  - action: sleep
+    value: '2'
+    note: Wait 2 seconds
+  - action: assert_text
+    value: Data Backup
+    note: Verify "Data Backup"

@@ -18,13 +18,13 @@ SCREENS: dict[str, dict] = {
     # Create form alag PAGE hai -- list se Create/F2 dabane par khulta hai.
     # Iska naksha kabhi bana hi nahi tha, isliye saare create test fail the.
     "item_create": {"url": "/item-master/item-create",
-                    "marker": ["Create Item", "Description", "M.R.P"],
+                    "marker": ["Create Item", "Product", "Description", "M.R.P"],
                     "menu": "master", "path": ["Inventory Master", "Item"],
                     "after_create": True},
     "party":       {"url": "/partymaster/list", "marker": "Ledger Master",
                     "menu": "master", "path": ["Accounts Master", "Ledger"]},
     "party_create": {"url": "/partymaster/action/create",
-                     "marker": ["Ledger Name", "Create Ledger"],
+                     "marker": ["Create Party", "Party Name", "Ledger Name", "Create Ledger"],
                      "menu": "master", "path": ["Accounts Master", "Ledger"],
                      "after_create": True},
     "group":       {"url": None, "marker": "Group",
@@ -46,22 +46,23 @@ SCREENS: dict[str, dict] = {
 
     # ---- Sale ----
     # Label pe click = LIST | "+" pe click = NAYA form  (plus: True)
-    "sale_list":        {"marker": ["Sale Bill", "Bill No"], "menu": "sale", "path": ["Bill"]},
-    "sale_bill":        {"marker": ["Party Name"], "menu": "sale", "path": ["Bill"], "plus": True},
+    "sale_list":        {"marker": ["Sale Bill List"], "menu": "sale", "path": ["Bill"]},
+    "sale_bill":        {"marker": ["Party Name"], "menu": "sale", "path": ["Bill"], "plus": True, "tab": "Sale Bill"},
     "sale_challan":     {"marker": ["Party Name", "Challan"], "menu": "sale", "path": ["Challan"], "plus": True},
     "sale_pos":         {"marker": ["POS", "Party Name"], "menu": "sale", "path": ["POS"]},
     "sale_quotation":   {"marker": ["Party Name", "Quotation"], "menu": "sale", "path": ["Quotation"], "plus": True},
     "counter_sale":     {"marker": ["Counter", "Party Name"], "menu": "sale", "path": ["Counter Sale"]},
     "sale_stock_issue": {"marker": ["Stock Issue", "Party Name"], "menu": "sale", "path": ["Stock Issue"], "plus": True},
     "sale_order":       {"marker": ["Party Name", "Order"], "menu": "sale", "path": ["Order"], "plus": True},
-    "sale_return":      {"marker": ["Party Name", "Return"], "menu": "sale", "path": ["Return"], "plus": True},
+    "sale_return":      {"marker": ["Party Name", "Return"], "menu": "sale", "path": ["Return"], "plus": True,
+                         "tab": "Sale Return"},
     "sale_return_challan": {"marker": ["Party Name", "Return"], "menu": "sale", "path": ["Return Challan"], "plus": True},
     "sale_draft":       {"marker": ["Draft"], "menu": "sale", "path": ["Draft"]},
     "sale_pd_cn":       {"marker": ["Party Name"], "menu": "sale", "path": ["Price Diff.Sale C/N"], "plus": True},
     "sale_pd_dn":       {"marker": ["Party Name"], "menu": "sale", "path": ["Price Diff.Sale D/N"], "plus": True},
 
     # ---- Purchase ----
-    "purchase_list":       {"marker": ["Purchase", "Bill No"], "menu": "purchase", "path": ["Bill"]},
+    "purchase_list":       {"url": "/purchase/purchasebook/bill", "marker": ["Purchase Bill List", "Bill No"], "menu": "purchase", "path": ["Bill"]},
     "purchase_bill":       {"marker": ["Party Name"], "menu": "purchase", "path": ["Bill"], "plus": True},
     "purchase_challan":    {"marker": ["Party Name", "Challan"], "menu": "purchase", "path": ["Challan"], "plus": True},
     "purchase_quotation":  {"marker": ["Party Name", "Quotation"], "menu": "purchase", "path": ["Quotation"], "plus": True},
@@ -75,15 +76,15 @@ SCREENS: dict[str, dict] = {
     "purchase_draft":      {"marker": ["Draft", "purchase draft"], "menu": "purchase", "path": ["purchase draft"]},
 
     # ---- Accounting ----
-    "receipt":     {"url": None, "marker": "Receipt",
+    "receipt":     {"url": "/transaction/voucher/receipt/53", "marker": "Receipt",
                     "menu": "accounting", "path": ["Receipt"]},
-    "payment":     {"url": None, "marker": "Payment",
+    "payment":     {"url": "/transaction/voucher/payment/51", "marker": "Payment",
                     "menu": "accounting", "path": ["Payment"]},
-    "credit_note": {"url": None, "marker": "Credit Note",
+    "credit_note": {"url": "/transaction/voucher/creditnote/57", "marker": "Credit Note",
                     "menu": "accounting", "path": ["Credit Note"]},
-    "debit_note":  {"url": None, "marker": "Debit Note",
+    "debit_note":  {"url": "/transaction/voucher/debitnote/56", "marker": "Debit Note",
                     "menu": "accounting", "path": ["Debit Note"]},
-    "journal":     {"url": None, "marker": "Journal",
+    "journal":     {"url": "/transaction/voucher/journal/58", "marker": "Journal",
                     "menu": "accounting", "path": ["Journal"]},
 
     # ---- Stock ----
@@ -93,10 +94,10 @@ SCREENS: dict[str, dict] = {
                        "menu": "stock", "path": ["Physical Stock"]},
 
     # ---- Seedhe sidebar links (inka koi dropdown nahi hai) ----
-    "dashboard":   {"url": "/dashboard", "marker": ["Last Sync", "Net Sale"],
+    "dashboard":   {"url": "/dashboard", "marker": ["Last Sync", "Net Sale", "Getting Started"],
                     "nav": "dashboard"},
     "report":      {"marker": ["Report"], "nav": "report"},
-    "utilities":   {"marker": ["Utilities"], "nav": "utilities"},
+    "utilities":   {"url": "/mb/utillity-menu", "marker": ["Utilities & Tools"], "nav": "utilities"},
 }
 
 
@@ -126,6 +127,11 @@ def _close_open_form(bp: BasePage):
             bp.page.wait_for_timeout(600)
     except Exception:  # noqa: BLE001
         pass
+
+
+# Screen key -> MargBooks keyboard shortcut (from the dashboard or an empty form).
+SHORTCUTS = {"sale_bill": "Alt+N", "sale_list": "Alt+M", "sale_challan": "Alt+C", "counter_sale": "Alt+A",
+             "purchase_bill": "Alt+P", "item": "Alt+I", "sale_stock_issue": "Alt+K", "dashboard": "Alt+H"}
 
 
 def open_screen(bp: BasePage, key: str, verbose: bool = False,
@@ -161,14 +167,36 @@ def open_screen(bp: BasePage, key: str, verbose: bool = False,
         """
         want = (cfg.get("url") or "").rstrip("/")
         if not want:
-            return True                  # jiska apna URL hi nahi (popup form)
+            # No pinned URL: at least we must have left the dashboard (its tiles carry most screen names,
+            # so the text check alone said "open" while nothing had moved).
+            return key == "dashboard" or not (bp.page.url or "").split("?")[0].rstrip("/").endswith("/dashboard")
         here = (bp.page.url or "").rstrip("/")
         return here.endswith(want)
+
+    def tab_ok() -> bool:
+        """Forms open as tabs ("Sale Bill 1", "Sale Return Credit Note 1"). A Sale Bill also says "Party Name",
+        so text alone took a Sale Bill for a Sale Return (Billing General): the ACTIVE tab must match too."""
+        want = cfg.get("tab")
+        if not want:
+            return True
+        try:
+            titles = bp.page.evaluate("""() => [...document.querySelectorAll('li.active > a, .nav-tabs .active')]
+                .filter(a => a.getClientRects().length).map(a => (a.innerText || '').trim())""")
+        except Exception:  # noqa: BLE001
+            return True
+        titles = [t for t in titles if t and not t.lower().startswith(("notification", "announcement"))]
+        if not titles:                      # no form tabs in this layout: nothing to compare
+            return True
+        return any(t.lower().startswith(want.lower()) for t in titles)
 
     def seen() -> bool:
         """Screen sach me khuli hai? Text AUR URL, dono."""
         text_ok = any(bp.page_has_text(m) for m in markers)
         if not text_ok:
+            return False
+        if not tab_ok():
+            if verbose:
+                print(f"   '{key}' ka text mila par khula tab '{cfg.get('tab')}' nahi hai")
             return False
         if not url_ok():
             if verbose:
@@ -183,6 +211,9 @@ def open_screen(bp: BasePage, key: str, verbose: bool = False,
         Testing ke SAATH-SAATH agent apna gyaan badhata rahe -- yahi asli baat
         hai. Agli baar us screen ka koi bhi field bina bataye mil jayega.
         """
+        import os
+        if os.environ.get("MB_NO_CAPTURE"):     # parallel sessions: never write the shared registry at once
+            return
         try:
             from framework import catalogue
             catalogue.capture(bp.page, key, verbose=verbose)
@@ -222,6 +253,33 @@ def open_screen(bp: BasePage, key: str, verbose: bool = False,
             except Exception:  # noqa: BLE001
                 continue
         return seen()
+
+    # MargBooks' own keyboard shortcuts (Alt+N new sale bill, Alt+M sale list, Alt+P purchase bill...) are what a
+    # user presses and, unlike the side menu, work whether the menu is collapsed or expanded. The live-app checks
+    # (artifacts/verify) found the menu route for sale_bill hanging for minutes while Alt+N opened it every time.
+    keys = SHORTCUTS.get(key)
+    if keys and prefer != "url":
+        try:
+            # leave a focused text box without clicking anything (a click could land on a button)
+            bp.page.evaluate("() => { const e = document.activeElement; if (e && /INPUT|TEXTAREA/.test(e.tagName)) e.blur(); }")
+        except Exception:  # noqa: BLE001
+            pass
+        for _ in range(2):
+            try:
+                bp.page.keyboard.press(keys)
+                bp.page.wait_for_timeout(3500)
+                check_authorized(bp.page, key)
+                if seen():
+                    if verbose:
+                        print(f"   '{key}' {keys} se khul gaya")
+                    remember()
+                    return True
+            except Exception as e:  # noqa: BLE001
+                from framework.safety import ModuleNotEnabled
+                if isinstance(e, ModuleNotEnabled):
+                    raise
+                if verbose:
+                    print(f"   {keys} se nahi khula: {str(e)[:80]}")
 
     if cfg.get("url") and prefer != "menu":
         bp.goto(cfg["url"], check_auth=False)

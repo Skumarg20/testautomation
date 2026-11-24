@@ -21,12 +21,43 @@ class BasePage:
     _SEL_START = ("#", "[", ".", "//", "xpath=", "css=", "role=", "text=", "label=", "nearlabel=",
                   "placeholder=", "testid=", "exact_text=", "input", "button", "select", "textarea", "a[")
 
+    # A logical key is exactly "page.element" (identifiers). Anything else is a selector. "a.dropdown-toggle"
+    # looks like a key but its first part is an HTML tag: it is CSS. (Treated as a key it was "learned" into
+    # the registry as page 'a' and polluted it.)
+    _KEY_RE = __import__("re").compile(r"^[A-Za-z_][A-Za-z0-9_]*\.[A-Za-z_][A-Za-z0-9_]*$")
+    _HTML_TAGS = {"a", "b", "i", "p", "div", "span", "button", "input", "select", "textarea", "label", "li", "ul",
+                  "ol", "td", "th", "tr", "table", "tbody", "thead", "img", "svg", "form", "nav", "h1", "h2", "h3",
+                  "h4", "h5", "h6", "em", "strong", "small", "section", "header", "footer", "option", "mat", "ng"}
+
     @classmethod
     def looks_like_selector(cls, key: str) -> bool:
-        """'sale.save' is a logical key; '[id^="btnSave"]' or 'role=button:Save' is a selector."""
+        """'sale.save' is a logical key; '[id^="btnSave"]', 'role=button:Save', 'a.menulink' are selectors."""
         k = str(key or "").strip()
-        return k.startswith(cls._SEL_START) and not (k.count(".") == 1 and " " not in k and "[" not in k
-                                                      and "=" not in k and not k.startswith("."))
+        if not cls._KEY_RE.match(k):
+            return True
+        page = k.split(".", 1)[0]
+        if page in store._data:              # a registry section (nav, sale, item, ...): logical key
+            return False
+        return page.lower() in cls._HTML_TAGS
+
+    # Registry entries the self-healing must never change: the side menu and the login form. A healed "nav.sale"
+    # once became the dashboard's "Create Sale Bill" button, so every Sale > Return opened a Sale Bill.
+    PINNED = ("nav.", "login.")
+
+    @staticmethod
+    def _first_visible(loc: Locator) -> Locator:
+        """The first match that is on screen. With two bills open in tabs (Sale Return + Sale Bill) every field
+        exists twice and the hidden tab's copy comes first in the page: clicking `.first` hit the hidden one
+        (TC_SALE_051 'input.mydate'). One match, or none visible: `.first` as before."""
+        try:
+            n = loc.count()
+            if n > 1:
+                for i in range(min(n, 20)):
+                    if loc.nth(i).is_visible():
+                        return loc.nth(i)
+        except Exception:  # noqa: BLE001
+            pass
+        return loc.first
 
     def find(self, key: str, probe_ms: int = 2500, want: str = "any") -> Locator:
         """
@@ -34,15 +65,20 @@ class BasePage:
         probe karta hai; jo mila usko promote kar deta hai.
         """
         last_err = None
+        pinned = str(key).startswith(self.PINNED)
+        if self.looks_like_selector(key) and not pinned:
+            loc = self._to_locator(key)
+            loc.first.wait_for(state="attached", timeout=max(probe_ms, 5000))
+            return self._first_visible(loc)
         try:
             candidates = store.candidates(key)
         except LocatorNotFound:
             # Test Studio steps carry a real selector ('[formcontrolname="x"]', '#id',
             # 'role=button:Save'), not a logical key. Use it directly.
             if self.looks_like_selector(key):
-                loc = self._to_locator(key).first
-                loc.wait_for(state="attached", timeout=max(probe_ms, 5000))
-                return loc
+                loc = self._to_locator(key)
+                loc.first.wait_for(state="attached", timeout=max(probe_ms, 5000))
+                return self._first_visible(loc)
             # key locators file me hai hi nahi -- seekh lo
             learned = self._learn(key, want)
             if learned:
@@ -52,11 +88,16 @@ class BasePage:
             try:
                 loc = self._to_locator(sel)
                 loc.first.wait_for(state="attached", timeout=probe_ms)
-                store.promote(key, sel)
+                # promote only what is really on screen: a hidden element that merely exists in the page
+                # (a Control Room select, a dashboard tile) must not become the first choice
+                if not pinned and loc.first.is_visible():
+                    store.promote(key, sel)
                 return loc.first
             except (PWTimeout, Exception) as e:  # noqa: BLE001
                 last_err = e
                 continue
+        if pinned:                  # fixed entries: never guessed, never rewritten
+            raise LocatorNotFound(f"'{key}': none of its fixed selectors is in the page ({last_err})")
         # 1. Catalogue me dekho -- shayad ye field pehle kisi run me dekha ho.
         # Registry me har element ke KAI raaste hote hain. App badalne par
         # aksar ek hi tootta hai -- isliye ek-ek karke sab try karte hain.
@@ -64,6 +105,8 @@ class BasePage:
             try:
                 loc = self._to_locator(cat_sel).first
                 loc.wait_for(state="attached", timeout=probe_ms)
+                if not loc.is_visible():                        # only what is on screen is learned
+                    continue
                 store.add(key, [cat_sel] + list(candidates))   # yaad rakh lo
                 store.save()
                 log.info(f"  [registry] {key} -> {cat_sel}")
@@ -379,6 +422,40 @@ class BasePage:
         if value:
             el.type(str(value), delay=15)    # Marg ke fields keystroke pe lookup firte hain
         self.settle()                        # server ka jawab aane do
+        if value:
+            try:                              # only a field on the page itself (not one in a popup form) opens a lookup
+                in_modal = el.evaluate("e => !!e.closest('ngb-modal-window, .modal')", timeout=1000)
+            except Exception:  # noqa: BLE001  (the grid editor closed when the lookup opened)
+                in_modal = False
+            if not in_modal:
+                self._finish_in_lookup(str(value))
+
+    # Typing in a grid's Product / Party cell: the first key opens the Select Item / Select Party window and the
+    # rest of the text lands in its search box -- sometimes with the first letters lost while the window opened
+    # (TC_SALE_087 typed "QA_Item_GST12", the search box got "Item_G" -> "Not Found!").
+    _LOOKUP_SEARCH_JS = """(want) => {
+        const box = [...document.querySelectorAll('ngb-modal-window input, .modal.show input')]
+            .find(e => e.getClientRects().length && e.type !== 'checkbox' && e.type !== 'radio' && !e.readOnly);
+        if (!box) return null;
+        return box.value;
+    }"""
+
+    def _finish_in_lookup(self, value: str):
+        try:
+            got = self.page.evaluate(self._LOOKUP_SEARCH_JS, value)
+        except Exception:  # noqa: BLE001
+            return
+        if got is None or got == value or not got or got.lower() not in value.lower():
+            return                            # no lookup window, already right, or the user's own other text
+        box = self.page.locator("ngb-modal-window input:visible, .modal.show input:visible").first
+        try:
+            box.focus()
+            box.press("Control+a")
+            box.type(value, delay=15)
+            self.settle()
+            print(f"  [fill] the lookup search box had {got!r}: typed the full {value!r}")
+        except Exception:  # noqa: BLE001
+            pass
 
     def select(self, key: str, value: str):
         self.find(key).select_option(label=str(value))
@@ -397,12 +474,50 @@ class BasePage:
             return False
 
     def wait_for_text(self, needle: str, timeout_ms: int | None = None):
-        self.page.get_by_text(needle, exact=False).first.wait_for(
-            state="visible", timeout=timeout_ms or settings.TIMEOUT
-        )
+        # Any VISIBLE match counts: the app keeps hidden copies of many messages/labels, and `.first` may be one.
+        import time as _t
+        loc = self.page.get_by_text(needle, exact=False)
+        end = _t.time() + (timeout_ms or settings.TIMEOUT) / 1000
+        since = self._page_now() - self.TOAST_GRACE_MS
+        while True:
+            n = min(loc.count(), 30)
+            if any(loc.nth(i).is_visible() for i in range(n)):
+                return
+            if self._toast_seen(needle, since):      # a short-lived message that was shown and already went away
+                return
+            if _t.time() > end:
+                try:                                   # does the page itself contain it? (helps tell tool vs app)
+                    inpage = self.page.evaluate("t => (document.body.innerText || '').toLowerCase().includes(t)",
+                                                str(needle).lower())
+                except Exception:  # noqa: BLE001
+                    inpage = None
+                hint = " (the page text DOES contain it: the tool could not see it)" if inpage else ""
+                raise TimeoutError(f"no visible text {needle!r} after {(timeout_ms or settings.TIMEOUT) // 1000} s{hint}")
+            self.page.wait_for_timeout(250)
 
     def page_has_text(self, needle: str) -> bool:
-        return needle.lower() in (self.page.inner_text("body") or "").lower()
+        if needle.lower() in (self.page.inner_text("body") or "").lower():
+            return True
+        return self._toast_seen(needle, self._page_now() - self.TOAST_GRACE_MS)
+
+    # A toast (e.g. "Item Is Banned For Selected Party") stays ~3 s. In Test Studio every step also takes a
+    # screenshot, so by the next step it can be gone although the app showed it (run R-0026). Messages are
+    # recorded as they appear (safety.TOAST_JS); one shown in the last 15 s counts as seen.
+    TOAST_GRACE_MS = 15000
+
+    def _page_now(self) -> float:
+        try:
+            return float(self.page.evaluate("Date.now()"))
+        except Exception:  # noqa: BLE001
+            return 0.0
+
+    def _toast_seen(self, needle: str, since_ms: float) -> bool:
+        try:
+            toasts = self.page.evaluate("() => window.__mbToasts || []")
+        except Exception:  # noqa: BLE001
+            return False
+        n = " ".join(str(needle).lower().split())
+        return any(n in str(t.get("t", "")).lower() and float(t.get("at", 0)) >= since_ms for t in toasts)
 
     def screenshot(self, name: str):
         """

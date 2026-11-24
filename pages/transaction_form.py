@@ -13,6 +13,8 @@ from __future__ import annotations
 
 import re
 
+import re
+
 from playwright.sync_api import Locator
 
 from config.settings import settings
@@ -291,48 +293,94 @@ class TransactionForm:
                 "save() roka gaya: ALLOW_DESTRUCTIVE=false.\n"
                 "  Demo/khaali company pe hi .env me true karna."
             )
-        # ASLI save flow (asli project se seekha):
-        #   Save par DOUBLE click -> #btn-Save (final confirm)
-        #   -> beech me MOP window aa sakti hai -> phir preview -> #btn-Close
-        # Main ek hi click karta tha, isliye bill kabhi save hota hi nahi tha.
-        btn = self.f("btnSave").first
-        safety.assert_safe(btn, "form.save")
-        safety.audit_click(btn, "form.save")
-        btn.dblclick()
-        self.bp.settle(quiet_ms=800, timeout_ms=25000)
+        # Save the way a user does: F10 (the first F10 may only leave the grid / stop on Bill Discount),
+        # SAVE in the Mode Of Payment window when it opens, the final confirm, then close the Print popup.
+        # Afterwards CHECK that it saved: a save that silently did nothing used to pass (live-app check found it).
+        page = self.page
+        before = self._bill_no_quick()
+        printed = False
 
-        # Mode of Payment window (Control Room se on ho to aati hai)
-        try:
-            mop = self.page.locator("#BalanceAdjusted")
-            if mop.is_visible(timeout=2500):
+        def vis(sel: str) -> bool:
+            try:
+                loc = page.locator(sel)
+                return loc.count() > 0 and loc.first.is_visible()
+            except Exception:  # noqa: BLE001
+                return False
+
+        for _ in range(6):
+            if vis("#BalanceAdjusted"):                                   # Mode Of Payment window
                 self._mop_seen = True
-                sv = self.page.locator("#btn-Save").first
-                if sv.is_visible(timeout=1500):
-                    safety.guarded_click(sv, "mop.save", timeout=4000)
-                    self.bp.settle()
-        except Exception:  # noqa: BLE001
-            pass
-
-        # final save
-        try:
-            final = self.page.locator("#btn-Save").first
-            if final.is_visible(timeout=3000):
-                safety.guarded_click(final, "form.final_save", timeout=5000)
+                for sel in ("#btn-Save", ".modal.show button:has-text('SAVE')", "ngb-modal-window button:has-text('SAVE')"):
+                    if vis(sel):
+                        safety.guarded_click(page.locator(sel).first, "mop.save", timeout=5000, inside_modal=True)
+                        break
                 self.bp.settle(quiet_ms=800, timeout_ms=25000)
-        except Exception:  # noqa: BLE001
-            pass
+                continue
+            if vis("#btn-Close") or page.get_by_text("Select Format", exact=False).count():   # Print popup: saved
+                printed = True
+                if vis("#btn-Close"):
+                    safety.guarded_click(page.locator("#btn-Close").first, "preview.close", timeout=4000, inside_modal=True)
+                else:
+                    page.keyboard.press("Escape")
+                page.wait_for_timeout(800)
+                break
+            if vis("#btnYes") and self._save_confirm():                   # e.g. "Allow Without Bill No.?"
+                safety.guarded_click(page.locator("#btnYes").first, "form.save_confirm", timeout=5000, inside_modal=True)
+                self.bp.settle(quiet_ms=800, timeout_ms=25000)
+                continue
+            if vis("#btn-Save"):                                          # final confirm
+                safety.guarded_click(page.locator("#btn-Save").first, "form.final_save", timeout=5000, inside_modal=True)
+                self.bp.settle(quiet_ms=800, timeout_ms=25000)
+                continue
+            if self._saved_since(before):
+                break
+            safety.audit_key("F10", "form.save")
+            page.keyboard.press("F10")
+            self.bp.settle(quiet_ms=800, timeout_ms=25000)
+            page.wait_for_timeout(600)
 
-        # print preview band karo
-        try:
-            pv = self.page.locator("#btn-Close").first
-            if pv.is_visible(timeout=2500):
-                safety.guarded_click(pv, "preview.close", timeout=4000)
-                self.page.wait_for_timeout(700)
-        except Exception:  # noqa: BLE001
-            pass
-
+        if not (printed or self._saved_since(before)):
+            raise SaveBlocked(f"The bill was not saved: the form still shows bill {before or '(no number)'} with its "
+                              f"lines after F10 / Save. A message or a required field may be stopping the save.")
         self.clear_popups()
         return self
+
+    # Questions the app asks while SAVING that a user answers Yes to in order to finish the save. Only these are
+    # answered: a different Yes/No (delete, leave without saving) is never clicked by save().
+    SAVE_CONFIRMS = ("allow without bill no",)
+
+    def _save_confirm(self) -> bool:
+        try:
+            txt = self.page.evaluate("""() => [...document.querySelectorAll('ngb-modal-window, .modal.show, .swal2-popup')]
+                .filter(m => m.getClientRects().length).map(m => m.innerText).join(' ')""")
+        except Exception:  # noqa: BLE001
+            return False
+        low = " ".join(str(txt).lower().split())
+        return any(c in low for c in self.SAVE_CONFIRMS)
+
+    def _bill_no_quick(self) -> str:
+        try:
+            el = self.page.locator("[id^='txtentryNo']").first
+            return (el.input_value(timeout=1500) or "").strip() if el.count() else ""
+        except Exception:  # noqa: BLE001
+            return ""
+
+    def _saved_since(self, before: str) -> bool:
+        """Saved = a 'saved' message is on screen, or the form moved on (new bill number, or the form closed)."""
+        try:
+            if self.page.get_by_text(re.compile(r"(saved|updated) successfully", re.I)).count():
+                return True
+        except Exception:  # noqa: BLE001
+            pass
+        now = self._bill_no_quick()
+        if before and now and now != before:
+            return True
+        try:
+            if not self.page.locator("[id^='txtentryNo']").count():
+                return True                     # the bill form is gone (e.g. back on the list after an update)
+        except Exception:  # noqa: BLE001
+            pass
+        return False
 
     def close(self):
         """Form band karo -- BINA save kiye. Ye hamesha surakshit hai."""
